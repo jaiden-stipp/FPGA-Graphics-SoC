@@ -1,0 +1,52 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"RV32I Renderer SoC game package v1", "type":"object",
+  "required":["format","version","segments"], "additionalProperties":false,
+  "properties":{
+    "format":{"const":"soc-game-package"}, "version":{"const":1},
+    "app":{"type":"string"},
+    "segments":{"type":"array","minItems":1,"items":{
+      "type":"object","required":["file","address","bytes","sha256"],"additionalProperties":false,
+      "properties":{
+        "file":{"type":"string","pattern":"^[^/\\\\]+$"},
+        "address":{"type":"integer","minimum":0,"maximum":2281697280,"multipleOf":4},
+        "bytes":{"type":"integer","minimum":0,"maximum":134213632},
+        "sha256":{"type":"string","pattern":"^[0-9a-f]{64}$"}
+      }
+    }},
+    "content":{"$ref":"#/$defs/content"},
+    "target":{"type":"object","required":["id","runtime_abi","required_features"],"additionalProperties":false,
+      "properties":{"id":{"enum":["de2-115-fixed-v1","de2-115-fixed-v2"]},"runtime_abi":{"const":1},
+        "required_features":{"type":"array","items":{"type":"string"},"uniqueItems":true}}}
+  },
+  "$defs":{
+    "content":{
+      "type":"object",
+      "required":["format","version","runtime_abi","game","units","material_policy","palette_colors","meshes","collision","animation","configuration","source"],
+      "additionalProperties":false,
+      "properties":{
+        "format":{"const":"soc-game-assets"},"version":{"const":1},"runtime_abi":{"const":1},
+        "game":{"type":"string","minLength":1},"units":{"const":"gpu-q8.8"},
+        "material_policy":{"const":"indexed-flat-rgb"},
+        "palette_colors":{"type":"integer","minimum":1,"maximum":256},
+        "meshes":{"type":"array","minItems":1,"maxItems":16,"items":{
+          "type":"object","required":["vertices","triangles"],"additionalProperties":false,
+          "properties":{"vertices":{"type":"integer","minimum":1,"maximum":128},
+                        "triangles":{"type":"integer","minimum":1,"maximum":256}}
+        }},
+        "collision":{"type":"object","required":["abi","floors","walls"],"additionalProperties":false,
+          "properties":{"abi":{"const":"triangle-q12-normal-v1"},
+            "floors":{"type":"integer","minimum":0,"maximum":16384},
+            "walls":{"type":"integer","minimum":0,"maximum":16384}}},
+        "animation":{"type":"object","required":["abi","clips"],"additionalProperties":false,
+          "properties":{"abi":{"enum":["none","indexed-joints-q14-v1"]},"clips":{"type":"array"}}},
+        "configuration":{"type":"object","required":["module","physics","camera","spawn","game"],
+          "properties":{"module":{"type":"string"},"physics":{"type":"object"},
+            "camera":{"type":"object"},"spawn":{"type":"array","minItems":3,"maxItems":3,"items":{"type":"integer"}},
+            "game":{"type":"object"}}},
+        "source":{"type":"object","required":["profile","sha256"],"additionalProperties":false,
+          "properties":{"profile":{"type":"string"},"sha256":{"type":"string","pattern":"^[0-9a-f]{64}$"}}}
+      }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+external/
+rtl/generated/
+firmware/generated/
+sim/generated/
+build/
+__pycache__/
+*.wlf
+transcript
+modelsim.ini
+SoC.qpf
+SoC.qsf
+db/
+incremental_db/
+*.qws
+*.rpt
+*.summary

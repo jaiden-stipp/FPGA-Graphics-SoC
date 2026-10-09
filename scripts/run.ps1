@@ -1,0 +1,21 @@
+# Use a real Python runtime rather than the Windows Store execution alias.
+if ($args.Count -lt 1) { throw 'Usage: .\scripts\run.ps1 soc.py sm64-scene [options]' }
+$runnerScript = [string]$args[0]
+$runnerAllowed = @('soc.py', 'load_game.py', 'portable_game.py', 'test_portable_pipeline.py', 'test_sdram_package.py', 'test_game_packages.py', 'test_quake_pipeline.py', 'diagnose_quake.py', 'sm64_subset.py', 'scene_assets.py', 'game_assets.py', 'diagnose_game.py', 'diagnose_animation.py', 'rv32i_subset.py', 'keyboard_udp.py', 'test_scene_pipeline.py', 'test_player.py', 'test_camera.py', 'test_animation.py')
+$runnerAllowed += @('quake_demo.py','mouse_udp.py','test_interactive_demo.py')
+$runnerAllowed += @('sm64_castle.py','test_world_pipeline.py','profile_game.py')
+if ($runnerScript -notin $runnerAllowed) { throw "Unknown project command: $runnerScript" }
+$runnerPython = Get-Command python.exe -ErrorAction SilentlyContinue | Where-Object Source -NotLike '*WindowsApps*' | Select-Object -First 1 -ExpandProperty Source
+if (-not $runnerPython) {
+    $runnerBundled = Join-Path $env:USERPROFILE '.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe'
+    if (Test-Path -LiteralPath $runnerBundled) { $runnerPython = $runnerBundled }
+}
+if (-not $runnerPython) { throw 'Install Python 3.10+ or use a configured Python interpreter to run scripts directly.' }
+$runnerArguments = @($args | Select-Object -Skip 1)
+$runnerRoot = Split-Path $PSScriptRoot -Parent
+Push-Location -LiteralPath $runnerRoot
+try {
+    & $runnerPython (Join-Path $PSScriptRoot $runnerScript) @runnerArguments
+    $runnerResult = $LASTEXITCODE
+} finally { Pop-Location }
+exit $runnerResult

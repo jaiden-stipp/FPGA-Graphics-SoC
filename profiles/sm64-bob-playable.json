@@ -1,0 +1,148 @@
+{
+  "name": "sm64-bob-opaque-area",
+  "sources": [
+    "levels/bob/areas/1/1/model.inc.c",
+    "levels/bob/areas/1/2/model.inc.c",
+    "levels/bob/areas/1/5/model.inc.c",
+    "levels/bob/areas/1/6/model.inc.c"
+  ],
+  "roots": [
+    {
+      "name": "bob_seg7_dl_07004390",
+      "layer": "opaque"
+    },
+    {
+      "name": "bob_seg7_dl_07009D80",
+      "layer": "opaque"
+    },
+    {
+      "name": "bob_seg7_dl_0700DD18",
+      "layer": "opaque"
+    },
+    {
+      "name": "bob_seg7_dl_0700E338",
+      "layer": "opaque"
+    }
+  ],
+  "omitted_layers": [
+    {
+      "name": "bob_seg7_dl_0700A470",
+      "layer": "transparent_decal",
+      "reason": "No alpha/decal blend support; decorative surfaces do not supply collision"
+    },
+    {
+      "name": "bob_seg7_dl_0700A920",
+      "layer": "alpha",
+      "reason": "Texture alpha and two-sided culling need a separate appearance adapter"
+    }
+  ],
+  "discard_state": [
+    "gsDPPipeSync",
+    "gsDPSetCycleType",
+    "gsDPSetRenderMode",
+    "gsDPSetDepthSource",
+    "gsDPSetFogColor",
+    "gsSPFogPosition",
+    "gsSPSetGeometryMode",
+    "gsSPClearGeometryMode",
+    "gsDPSetCombineMode",
+    "gsDPSetTile",
+    "gsSPTexture",
+    "gsDPTileSync",
+    "gsDPSetTileSize",
+    "gsDPLoadSync",
+    "gsDPLoadBlock",
+    "gsSPLight"
+  ],
+  "texture_colors": {
+    "generic_09005800": [
+      0.28,
+      0.7,
+      0.24
+    ],
+    "generic_09009800": [
+      0.65,
+      0.61,
+      0.52
+    ],
+    "generic_09006000": [
+      0.65,
+      0.4,
+      0.19
+    ],
+    "generic_09003800": [
+      0.65,
+      0.61,
+      0.52
+    ],
+    "generic_09002000": [
+      0.65,
+      0.61,
+      0.52
+    ],
+    "generic_09001800": [
+      0.65,
+      0.61,
+      0.52
+    ],
+    "generic_09005000": [
+      0.65,
+      0.61,
+      0.52
+    ],
+    "generic_09004800": [
+      0.65,
+      0.61,
+      0.52
+    ],
+    "generic_09003000": [
+      0.65,
+      0.61,
+      0.52
+    ],
+    "generic_09009000": [
+      0.65,
+      0.61,
+      0.52
+    ],
+    "generic_0900A000": [
+      0.65,
+      0.61,
+      0.52
+    ],
+    "bob_seg7_texture_07001000": [
+      0.65,
+      0.61,
+      0.52
+    ],
+    "bob_seg7_texture_07001800": [
+      0.65,
+      0.61,
+      0.52
+    ],
+    "bob_seg7_texture_07000800": [
+      0.65,
+      0.61,
+      0.52
+    ],
+    "bob_seg7_texture_07002000": [
+      0.65,
+      0.61,
+      0.52
+    ]
+  },
+  "description": "Original opaque Bob-omb Battlefield surfaces merged before shared Q8.8 normalization. No source edits, filler triangles, or simplification. Decorative alpha/decal lists are explicitly omitted. Whole original triangles intersecting the start-field/path/bridge area are selected; the distant mountain and tiny distant geometry are outside this stage.",
+  "selection_bounds": {
+    "min": [
+      -8192,
+      -384,
+      -1500
+    ],
+    "max": [
+      2048,
+      4295,
+      8193
+    ]
+  },
+  "extent_q8_8": 4096
+}

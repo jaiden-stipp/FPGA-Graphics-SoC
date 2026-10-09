@@ -1,0 +1,9 @@
+{
+  "name":"quake-e1m1-scene", "module":"quake", "map":"maps/e1m1.bsp",
+  "map_sha256":"7b7061ec63c3e8ecb9c0e0a8075f18823efea6578666d57d601c191bcaf16c26",
+  "selection_radius":768, "scale":4,
+  "appearance":{"policy":"indexed-flat-rgb","background":[45,45,60],"skip_textures":["sky","*","clip","trigger"]},
+  "physics":{"speed":24,"radius":64,"height":224,"step_height":72,"gravity":4,"jump_speed":36,"kill_y":-4096},
+  "camera":{"eye_height":184,"focal":160,"near_z":257},
+  "description":"Quake shareware E1M1 world-model faces around the original start, preserved as whole polygons. Swap source Y/Z for GPU axes, orient winding to source plane normals, and use original texture/lightmap averages as flat colors. First-person exploration only; no Quake engine, entities, doors, combat, textures or liquids."
+}

@@ -1,0 +1,29 @@
+name: SoC simulation
+on: [push, pull_request]
+jobs:
+  portable:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install simulator and RV32I toolchain
+        run: sudo apt-get update && sudo apt-get install -y iverilog clang llvm libarchive-tools gcc-riscv64-unknown-elf binutils-riscv64-unknown-elf
+      - run: python3 scripts/test_scene_pipeline.py
+      - run: python3 scripts/test_sdram_package.py
+      - run: python3 scripts/soc.py bootstrap
+      - run: python3 scripts/soc.py build-fw --cc riscv64-unknown-elf-gcc
+      - run: python3 scripts/test_player.py
+      - run: python3 scripts/test_camera.py
+      - run: python3 scripts/test_animation.py
+      - run: python3 scripts/soc.py sim --simulator iverilog
+      - run: python3 scripts/soc.py game-packages --fetch-quake --cc riscv64-unknown-elf-gcc
+      - run: python3 scripts/test_game_packages.py
+      - run: python3 scripts/test_quake_pipeline.py
+      - run: python3 scripts/soc.py portable-game --project examples/portable-room/game.project.json
+      - run: python3 scripts/soc.py portable-game --project examples/custom-port/game.project.json
+      - run: python3 scripts/portable_game.py export-quake
+      - run: python3 scripts/soc.py portable-game --project build/quake.scene-ir.project.json
+      - run: python3 scripts/test_portable_pipeline.py
+      - run: python3 scripts/quake_demo.py
+      - run: python3 scripts/soc.py portable-game --project build/quake-interactive/game.project.json
+      - run: python3 scripts/test_interactive_demo.py
+      - run: python3 scripts/soc.py sim --simulator iverilog --tests udp_extended_input_tb

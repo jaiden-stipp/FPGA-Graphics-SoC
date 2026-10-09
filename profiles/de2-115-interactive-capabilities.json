@@ -1,0 +1,9 @@
+{
+  "format":"soc-target-capabilities", "version":1,
+  "id":"de2-115-fixed-v2", "runtime_abi":1,
+  "features":["indexed-flat-rgb","triangle-collision","first-person-controller","custom-rv32i-gameplay","mouse-look-v1","gpu-hud","dynamic-objects","mesh-frame-animation"],
+  "limits":{"mesh_handles":16,"vertices_per_mesh":128,"triangles_per_mesh":256,
+    "palette_colors":256,"coordinate_abs":8192,"near_min":257,
+    "cpu_bytes":65536,"stack_reserved_bytes":4096,"asset_bytes":134213632},
+  "unsupported":["textures","alpha-blending","programmable-shaders","audio","os","cpu-floating-point","automatic-engine-port","runtime-scene-streaming"]
+}

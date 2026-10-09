@@ -1,0 +1,20 @@
+{
+  "format": "soc-source-game", "version": 1, "name": "beacon-run",
+  "module": "beacon", "units": "gpu-q8.8",
+  "palette": [[100,170,230],[65,145,65],[110,100,85],[145,130,105],[30,210,230],[255,180,35],[60,255,100]],
+  "world": [
+    {"kind":"floor", "bounds":[-1024,1024,0,-768,768], "color":1},
+    {"kind":"box", "bounds":[-192,192,0,64,-64,384], "colors":[2,2,2,2,3,2]},
+    {"kind":"box", "bounds":[288,704,0,128,192,608], "colors":[2,2,2,2,3,2]}
+  ],
+  "actors": [
+    {"kind":"box", "bounds":[-28,28,0,128,-28,28], "colors":[4,4,4,4,4,4]},
+    {"kind":"diamond", "radius":32, "height":80, "color":5}
+  ],
+  "spawn":[-640,0,-576],
+  "physics":{"speed":16,"radius":28,"height":128,"step_height":32,"gravity":7,"jump_speed":42,"kill_y":-512},
+  "camera":{"distance":800,"min_distance":256,"target_height":80,"focal":256,"near_z":128},
+  "game":{"beacons":[[-384,0,-192],[0,64,160],[480,128,400]],"collect_radius":96,"collect_height":80},
+  "appearance":{"policy":"indexed-flat-rgb","textures":false,"alpha":false},
+  "description":"Independent original game: collect three floating beacons, jumping onto two platforms. WASD/arrows move, Space jumps, R restarts. Geometry is authored here in fixed GPU units; no SM64 source assets."
+}

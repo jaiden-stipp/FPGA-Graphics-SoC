@@ -1,0 +1,233 @@
+{
+  "format": "soc-flat-material-profile",
+  "version": 1,
+  "description": "Authored flat-color approximation for pinned castle/slide source materials. No original texture pixels are available or reconstructed.",
+  "source_commit": "2b17d081c9798b31b91dc71f37994b0da28cffc9",
+  "colors": {
+    "grass": [
+      87,
+      155,
+      47
+    ],
+    "grass_dark": [
+      55,
+      110,
+      37
+    ],
+    "foliage": [
+      44,
+      103,
+      46
+    ],
+    "stone": [
+      212,
+      207,
+      190
+    ],
+    "stone_dark": [
+      133,
+      127,
+      114
+    ],
+    "roof": [
+      177,
+      48,
+      43
+    ],
+    "roof_dark": [
+      125,
+      34,
+      33
+    ],
+    "path": [
+      184,
+      156,
+      115
+    ],
+    "earth": [
+      117,
+      89,
+      62
+    ],
+    "wood": [
+      131,
+      85,
+      45
+    ],
+    "water": [
+      59,
+      126,
+      195
+    ],
+    "carpet": [
+      166,
+      39,
+      50
+    ],
+    "sky_wall": [
+      107,
+      166,
+      218
+    ],
+    "cream": [
+      229,
+      219,
+      180
+    ],
+    "tile_dark": [
+      68,
+      64,
+      66
+    ],
+    "white": [
+      233,
+      229,
+      212
+    ],
+    "gold": [
+      208,
+      171,
+      73
+    ],
+    "pink": [
+      213,
+      148,
+      155
+    ],
+    "painting_blue": [
+      75,
+      131,
+      185
+    ],
+    "painting_green": [
+      82,
+      142,
+      74
+    ],
+    "painting_brown": [
+      151,
+      104,
+      66
+    ],
+    "painting_red": [
+      177,
+      71,
+      50
+    ],
+    "light": [
+      255,
+      234,
+      162
+    ],
+    "slide": [
+      176,
+      123,
+      68
+    ],
+    "slide_rail": [
+      109,
+      76,
+      44
+    ],
+    "banner": [
+      189,
+      61,
+      45
+    ],
+    "default": [
+      151,
+      140,
+      121
+    ]
+  },
+  "materials": {
+    "castle_grounds_seg7_texture_07000000": "stone_dark",
+    "castle_grounds_seg7_texture_07001000": "pink",
+    "castle_grounds_seg7_texture_07002000": "pink",
+    "castle_grounds_seg7_texture_0700C9E8": "path",
+    "castle_grounds_seg7_texture_0700D9E8": "banner",
+    "castle_grounds_seg7_us_texture_0700EAE8": "banner",
+    "default": "default",
+    "inside_09000000": "carpet",
+    "inside_09001000": "sky_wall",
+    "inside_09002000": "carpet",
+    "inside_09003000": "white",
+    "inside_09003800": "cream",
+    "inside_09004000": "wood",
+    "inside_09004800": "cream",
+    "inside_09005000": "sky_wall",
+    "inside_09005800": "carpet",
+    "inside_09006000": "water",
+    "inside_09007000": "stone",
+    "inside_09008000": "sky_wall",
+    "inside_09008800": "carpet",
+    "inside_09009000": "earth",
+    "inside_0900A000": "tile_dark",
+    "inside_0900B000": "cream",
+    "inside_0900B800": "tile_dark",
+    "inside_castle_seg7_texture_07000800": "gold",
+    "inside_castle_seg7_texture_07001000": "light",
+    "inside_castle_seg7_texture_07002000": "pink",
+    "inside_castle_seg7_texture_07003000": "gold",
+    "inside_castle_seg7_texture_07006000": "pink",
+    "inside_castle_seg7_texture_07006800": "pink",
+    "inside_castle_seg7_texture_07007000": "pink",
+    "inside_castle_seg7_texture_07007800": "pink",
+    "inside_castle_seg7_texture_07008000": "pink",
+    "inside_castle_seg7_texture_07008800": "pink",
+    "inside_castle_seg7_texture_07009000": "pink",
+    "inside_castle_seg7_texture_07009800": "pink",
+    "inside_castle_seg7_texture_0700A000": "painting_blue",
+    "inside_castle_seg7_texture_0700A800": "painting_blue",
+    "inside_castle_seg7_texture_0700B800": "painting_blue",
+    "inside_castle_seg7_texture_0700C800": "painting_green",
+    "inside_castle_seg7_texture_0700D800": "painting_green",
+    "inside_castle_seg7_texture_0700E800": "painting_brown",
+    "inside_castle_seg7_texture_0700F800": "painting_brown",
+    "inside_castle_seg7_texture_07010800": "painting_red",
+    "inside_castle_seg7_texture_07011800": "painting_red",
+    "inside_castle_seg7_texture_07012800": "painting_blue",
+    "inside_castle_seg7_texture_07013800": "painting_blue",
+    "inside_castle_seg7_texture_07014800": "painting_green",
+    "inside_castle_seg7_texture_07015800": "painting_green",
+    "inside_castle_seg7_texture_07017800": "painting_brown",
+    "inside_castle_seg7_texture_07018800": "painting_red",
+    "inside_castle_seg7_texture_07019800": "painting_red",
+    "inside_castle_seg7_texture_0701A800": "painting_blue",
+    "inside_castle_seg7_texture_0701B800": "painting_blue",
+    "inside_castle_seg7_texture_0701C800": "painting_green",
+    "inside_castle_seg7_texture_0701D800": "painting_green",
+    "inside_castle_seg7_texture_0701E800": "painting_brown",
+    "inside_castle_seg7_texture_0701F800": "painting_brown",
+    "inside_castle_seg7_texture_07020800": "painting_red",
+    "mountain_09000000": "stone",
+    "mountain_09001800": "slide",
+    "mountain_09005800": "slide_rail",
+    "mountain_09007000": "path",
+    "mountain_09007800": "earth",
+    "mountain_0900C000": "slide",
+    "outside_09000000": "earth",
+    "outside_09001000": "stone",
+    "outside_09002000": "grass",
+    "outside_09003000": "stone",
+    "outside_09003800": "wood",
+    "outside_09004000": "path",
+    "outside_09004800": "grass_dark",
+    "outside_09005800": "foliage",
+    "outside_09006000": "wood",
+    "outside_09006800": "earth",
+    "outside_09007800": "roof",
+    "outside_09008000": "grass",
+    "outside_09009000": "earth",
+    "outside_09009800": "stone_dark",
+    "outside_0900A000": "wood",
+    "outside_0900A800": "roof_dark",
+    "outside_0900B000": "pink",
+    "outside_0900B400": "foliage",
+    "outside_0900BC00": "foliage",
+    "pss_seg7_texture_07000000": "white",
+    "pss_seg7_texture_07000800": "slide_rail",
+    "pss_seg7_texture_07001000": "banner",
+    "texture_castle_light": "light"
+  }
+}

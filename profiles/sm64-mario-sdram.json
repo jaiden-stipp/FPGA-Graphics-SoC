@@ -1,0 +1,464 @@
+{
+  "name": "sm64-mario-sdram",
+  "world_profile": "profiles/sm64-bob-sdram.json",
+  "spawn_source": [
+    -6558,
+    0,
+    6464
+  ],
+  "validation_views": [
+    {
+      "name": "bridge",
+      "source": [
+        0,
+        600,
+        5632
+      ]
+    }
+  ],
+  "physics": {
+    "speed": 8,
+    "radius": 18,
+    "height": 128,
+    "step_height": 12,
+    "gravity": 3,
+    "jump_speed": 30,
+    "kill_y": -1536
+  },
+  "animation": {
+    "geo_source": "actors/mario/geo.inc.c",
+    "geo_root": "mario_geo_low_poly_body",
+    "switch_choices": {
+      "geo_switch_mario_cap_on_off": 0,
+      "geo_switch_mario_eyes": 0,
+      "geo_switch_mario_hand": 0
+    },
+    "neutral_callbacks": [
+      "geo_move_mario_part_from_parent",
+      "geo_mario_tilt_torso",
+      "geo_mario_head_rotation",
+      "geo_mario_hand_foot_scaler"
+    ],
+    "omit_static_alpha": [
+      "mario_cap_wings"
+    ],
+    "omit_held_objects": [
+      "geo_switch_mario_hand_grab_pos"
+    ],
+    "walk_rate_q8": 512,
+    "ground_parts": [
+      "mario_low_poly_left_foot",
+      "mario_low_poly_right_foot"
+    ],
+    "clips": [
+      {
+        "role": "idle",
+        "source": "assets/anims/anim_C5.inc.c",
+        "symbol": "anim_C5"
+      },
+      {
+        "role": "walk",
+        "source": "assets/anims/anim_48.inc.c",
+        "symbol": "anim_48"
+      },
+      {
+        "role": "jump",
+        "source": "assets/anims/anim_4D_4E.inc.c",
+        "symbol": "anim_4D"
+      },
+      {
+        "role": "land",
+        "source": "assets/anims/anim_4D_4E.inc.c",
+        "symbol": "anim_4E"
+      }
+    ]
+  },
+  "camera": {
+    "pitch_degrees": 30,
+    "distance": 960,
+    "min_distance": 384,
+    "target_height": 80,
+    "follow_shift": 2,
+    "vertical_shift": 3,
+    "air_shift": 4,
+    "lookahead_ticks": 4,
+    "lookahead_limit": 48,
+    "look_shift": 2,
+    "clearance": 16,
+    "recovery_step": 8,
+    "max_vertical_lag": 128,
+    "snap_distance": 256,
+    "focal": 256,
+    "near_z": 128
+  },
+  "actor": {
+    "opaque_environment": true,
+    "source": "actors/mario/model.inc.c",
+    "discard_state": [
+      "gsDPPipeSync",
+      "gsDPSetCombineMode",
+      "gsDPSetTile",
+      "gsSPTexture",
+      "gsDPTileSync",
+      "gsDPSetTileSize",
+      "gsDPLoadSync",
+      "gsDPLoadBlock"
+    ],
+    "light_colors": {
+      "mario_blue_lights_group": [
+        0,
+        0,
+        1
+      ],
+      "mario_red_lights_group": [
+        1,
+        0,
+        0
+      ],
+      "mario_white_lights_group": [
+        1,
+        1,
+        1
+      ],
+      "mario_brown1_lights_group": [
+        0.447,
+        0.11,
+        0.055
+      ],
+      "mario_beige_lights_group": [
+        0.996,
+        0.757,
+        0.475
+      ],
+      "mario_brown2_lights_group": [
+        0.451,
+        0.024,
+        0
+      ]
+    },
+    "texture_colors": {
+      "mario_texture_yellow_button": [
+        1,
+        0.85,
+        0.08
+      ],
+      "mario_texture_m_logo": [
+        0.98,
+        0.96,
+        0.9
+      ],
+      "mario_texture_eyes_front": [
+        0.996,
+        0.757,
+        0.475
+      ],
+      "mario_texture_mustache": [
+        0.15,
+        0.06,
+        0.02
+      ]
+    },
+    "parts": [
+      {
+        "display_list": "mario_low_poly_butt",
+        "light": "mario_blue_lights_group",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "translation": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "display_list": "mario_low_poly_torso",
+        "light": "mario_blue_lights_group",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "translation": [
+          68,
+          0,
+          0
+        ]
+      },
+      {
+        "display_list": "mario_low_poly_cap_on_eyes_front",
+        "light": "mario_beige_lights_group",
+        "rotation": [
+          1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          1
+        ],
+        "translation": [
+          155,
+          0,
+          0
+        ]
+      },
+      {
+        "display_list": "mario_low_poly_left_arm",
+        "light": "mario_red_lights_group",
+        "rotation": [
+          -1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "translation": [
+          135,
+          -10,
+          79
+        ]
+      },
+      {
+        "display_list": "mario_low_poly_left_forearm_shared_dl",
+        "light": "mario_red_lights_group",
+        "rotation": [
+          -1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "translation": [
+          70,
+          -10,
+          79
+        ]
+      },
+      {
+        "display_list": "mario_low_poly_left_hand_closed",
+        "light": "mario_white_lights_group",
+        "rotation": [
+          -1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "translation": [
+          10,
+          -10,
+          79
+        ]
+      },
+      {
+        "display_list": "mario_low_poly_right_arm",
+        "light": "mario_red_lights_group",
+        "rotation": [
+          -1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "translation": [
+          136,
+          -10,
+          -79
+        ]
+      },
+      {
+        "display_list": "mario_low_poly_right_forearm_shared_dl",
+        "light": "mario_red_lights_group",
+        "rotation": [
+          -1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "translation": [
+          71,
+          -10,
+          -79
+        ]
+      },
+      {
+        "display_list": "mario_low_poly_right_hand_closed",
+        "light": "mario_white_lights_group",
+        "rotation": [
+          -1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "translation": [
+          11,
+          -10,
+          -79
+        ]
+      },
+      {
+        "display_list": "mario_low_poly_left_thigh",
+        "light": "mario_blue_lights_group",
+        "rotation": [
+          -1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "translation": [
+          13,
+          -8,
+          42
+        ]
+      },
+      {
+        "display_list": "mario_low_poly_left_leg_shared_dl",
+        "light": "mario_blue_lights_group",
+        "rotation": [
+          -1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "translation": [
+          -76,
+          -8,
+          42
+        ]
+      },
+      {
+        "display_list": "mario_low_poly_left_foot",
+        "light": "mario_brown1_lights_group",
+        "rotation": [
+          -1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "translation": [
+          -143,
+          -8,
+          42
+        ]
+      },
+      {
+        "display_list": "mario_low_poly_right_thigh",
+        "light": "mario_blue_lights_group",
+        "rotation": [
+          -1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "translation": [
+          13,
+          -8,
+          -42
+        ]
+      },
+      {
+        "display_list": "mario_low_poly_right_leg_shared_dl",
+        "light": "mario_blue_lights_group",
+        "rotation": [
+          -1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "translation": [
+          -76,
+          -8,
+          -42
+        ]
+      },
+      {
+        "display_list": "mario_low_poly_right_foot",
+        "light": "mario_brown1_lights_group",
+        "rotation": [
+          -1,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          -1
+        ],
+        "translation": [
+          -143,
+          -8,
+          -42
+        ]
+      }
+    ]
+  }
+}

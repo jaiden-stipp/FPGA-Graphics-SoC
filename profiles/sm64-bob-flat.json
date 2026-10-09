@@ -1,0 +1,17 @@
+{
+  "name": "sm64-bob-flat",
+  "source": "levels/bob/areas/1/1/model.inc.c",
+  "display_list": "bob_seg7_dl_07004390",
+  "discard_state": [
+    "gsDPPipeSync", "gsDPSetCycleType", "gsDPSetRenderMode", "gsDPSetDepthSource",
+    "gsDPSetFogColor", "gsSPFogPosition", "gsSPSetGeometryMode", "gsSPClearGeometryMode",
+    "gsDPSetCombineMode", "gsDPSetTile", "gsSPTexture", "gsDPTileSync", "gsDPSetTileSize",
+    "gsDPLoadSync", "gsDPLoadBlock", "gsSPLight"
+  ],
+  "texture_colors": {
+    "generic_09005800": [0.28, 0.7, 0.24],
+    "generic_09009800": [0.65, 0.61, 0.52],
+    "generic_09006000": [0.65, 0.4, 0.19]
+  },
+  "description": "Static Bob-omb Battlefield terrain display list. Replace textures with material colors, bake directional flat lighting, discard N64 fog/combine/AA state. Keep original triangle winding. No gameplay, actors or animation."
+}

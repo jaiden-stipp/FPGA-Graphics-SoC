@@ -1,0 +1,26 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"Source-neutral SoC scene IR v1","type":"object",
+  "required":["format","version","target","coordinates","palette","meshes"],
+  "properties":{
+    "format":{"const":"soc-scene-ir"},"version":{"const":1},
+    "target":{"type":"object","required":["id","runtime_abi","required_features"],
+      "properties":{"id":{"enum":["de2-115-fixed-v1","de2-115-fixed-v2"]},"runtime_abi":{"const":1},
+        "required_features":{"type":"array","items":{"type":"string"},"uniqueItems":true}}},
+    "coordinates":{"type":"object","required":["origin","scale","axes"],
+      "properties":{"origin":{"$ref":"#/$defs/point"},"scale":{"type":"number","exclusiveMinimum":0},
+        "axes":{"type":"array","minItems":3,"maxItems":3,"items":{"enum":[-3,-2,-1,1,2,3]}}}},
+    "palette":{"type":"array","minItems":2,"maxItems":256,"items":{"type":"array","minItems":3,"maxItems":3,"items":{"type":"integer","minimum":0,"maximum":255}}},
+    "meshes":{"type":"array","minItems":1,"items":{"type":"object","required":["id","vertices","triangles"],
+      "properties":{"id":{"type":"string","minLength":1},"role":{"enum":["world","actor"]},
+        "retain_degenerate_actor_faces":{"type":"boolean"},
+        "vertices":{"type":"array","minItems":3,"items":{"$ref":"#/$defs/point"}},
+        "triangles":{"type":"array","minItems":1,"items":{"type":"array","minItems":4,"maxItems":4,"items":{"type":"integer","minimum":0}}}}}},
+    "controller":{"type":"object","required":["spawn","physics","camera"],
+      "properties":{"spawn":{"$ref":"#/$defs/point"},"physics":{"type":"object"},"camera":{"type":"object"}}},
+    "projection":{"type":"object","required":["focal","near_z"],
+      "properties":{"focal":{"type":"integer","minimum":128,"maximum":512},"near_z":{"type":"integer","minimum":257,"maximum":1024}}},
+    "provenance":{"type":"object"}
+  },
+  "$defs":{"point":{"type":"array","minItems":3,"maxItems":3,"items":{"type":"number"}}}
+}

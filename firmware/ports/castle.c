@@ -1,0 +1,120 @@
+// Castle traversal foundation. Original actor/terrain/collision data; scoped
+// walking controller. Original SM64 slide actions and mission are not yet ported.
+#include "soc.h"
+#include "gfx.h"
+#include "game_port.h"
+#include "game_services.h"
+#include "world_data.h"
+#include "castle_actor_data.h"
+#include "castle_transitions.h"
+#include "castle_rules.h"
+static player_t player;
+static animation_t animation;
+static animation_matrix_t joints[GAME_ANIMATION_JOINTS];
+static scene_vertex_t posed[GAME_ANIMATION_VERTICES];
+static game_view_t view;
+static camera_orbit_t camera;
+// Original radial/8-direction camera uses a 1000-unit base distance and
+// 125-unit eye focus. Interiors use a shorter boom to fit their rooms.
+static const camera_orbit_config_t outdoor_camera={1000,125,20,1000,2,3,16};
+static const camera_orbit_config_t indoor_camera={800,125,20,1000,2,3,16};
+#define CASTLE_DEFAULT_PITCH (-16)
+static uint32_t current_area,previous_buttons,transition_cooldown;
+static uint32_t pending_event,pending_ticks;
+volatile player_t game_player;
+volatile uint32_t castle_area,castle_mission_state;
+volatile uint32_t castle_exit_event;
+volatile uint32_t castle_pose_upload_cycles,castle_prepare_cycles,castle_draw_cycles;
+static void camera_update(void) {
+    player_t origin={0};
+    game_view_update(&view,&origin,0,castle_rotations);
+    camera_world_t cw={world_areas[current_area].camera_surfaces,world_areas[current_area].camera_count};
+    const camera_orbit_config_t *cfg=current_area>=1 && current_area<=3?&indoor_camera:&outdoor_camera;
+    camera_orbit_step(&camera,&player,cfg,&cw,view.view,4);
+}
+static void enter_area(uint32_t area,const int16_t arrival[3],uint8_t yaw) {
+    current_area=area;world_select(world_areas+area,&player);
+    player.x=arrival[0];player.y=arrival[1];player.z=arrival[2];player.grounded=0;
+    view.yaw=yaw;view.pitch=CASTLE_DEFAULT_PITCH;camera.initialized=0;
+    transition_cooldown=15;pending_event=pending_ticks=0;
+    world_collision(world_areas+area,&player);
+    animation_reset(&animation,&player,&game_animation_package);
+}
+int game_port_init(void) {
+    current_area=previous_buttons=transition_cooldown=0;view.yaw=128;view.pitch=CASTLE_DEFAULT_PITCH;
+    camera.initialized=0;
+    pending_event=pending_ticks=castle_exit_event=0;
+    world_select(world_areas,&player);
+    animation_reset(&animation,&player,&game_animation_package);
+    castle_mission_state=0;camera_update();return 0;
+}
+void game_port_update(uint32_t word) {
+    game_input_t input;game_input_decode(&input,word);
+    if(input.has_look) {
+        view.yaw=input.yaw;view.pitch=CASTLE_DEFAULT_PITCH+input.pitch;
+        if(view.pitch< -32)view.pitch=-32;if(view.pitch>0)view.pitch=0;
+    }
+    world_collision(world_areas+current_area,&player);
+    player_step(&player,world_areas[current_area].physics,game_movement_keys(&input,view.yaw));
+    if(pending_ticks) {
+        if(!--pending_ticks) {
+            const world_exit_t *exit=world_exit_find(castle_exits,CASTLE_EXIT_COUNT,current_area,pending_event);
+            if(exit)enter_area(exit->destination_area,exit->arrival,exit->yaw);
+            else pending_event=0;
+        }
+    }else if(transition_cooldown)--transition_cooldown;
+    else {
+        world_contact_t contact;
+        if(world_floor_contact(world_areas+current_area,&player,&contact) && contact.surface) {
+            uint32_t event=castle_floor_event(contact.surface->type,player.y,contact.height);
+            if(event) {
+                // level_update.c falls back to F1 when the area has no F3.
+                const world_exit_t *exit=world_exit_find(castle_exits,CASTLE_EXIT_COUNT,current_area,event);
+                if(!exit) {event=CASTLE_EXIT_DEATH;exit=world_exit_find(castle_exits,CASTLE_EXIT_COUNT,current_area,event);}
+                if(exit) {pending_event=castle_exit_event=event;pending_ticks=20;}
+            }
+        }
+        int32_t i=world_transition_find(castle_transitions,CASTLE_TRANSITION_COUNT,current_area,&player,
+            (input.buttons&GAME_USE)&&!(previous_buttons&GAME_USE),70,3);
+        if(i>=0 && !pending_event) {
+            const world_transition_t *t=castle_transitions+i;
+            enter_area(t->destination_area,t->arrival,t->yaw);
+        }
+    }
+    previous_buttons=input.buttons;
+    animation_step(&animation,&player,&game_animation_package);
+    camera_update();
+    game_player.x=player.x;game_player.y=player.y;game_player.z=player.z;
+    game_player.grounded=player.grounded;game_player.velocity_y=player.velocity_y;
+    game_player.facing=player.facing;game_player.previous_keys=player.previous_keys;game_player.respawns=player.respawns;
+    castle_area=current_area;
+}
+int game_port_render(uint32_t frame) {
+    uint32_t start=SOC_CYCLES;
+    animation_pose(&animation,&game_animation_package,joints,posed);
+    for(uint32_t i=0;i<GAME_ANIMATION_VERTICES;++i) {
+        posed[i].x=(int16_t)(posed[i].x*4);posed[i].y=(int16_t)(posed[i].y*4);posed[i].z=(int16_t)(posed[i].z*4);
+    }
+    uint32_t offset=0;
+    for(uint32_t h=0;h<PORTABLE_MESH_COUNT;++h) {
+        if(game_mesh_frame((uint8_t)h,posed+offset,portable_meshes[h].vertex_count))return -1;
+        offset+=portable_meshes[h].vertex_count;
+    }
+    castle_pose_upload_cycles=SOC_CYCLES-start;start=SOC_CYCLES;
+    if(world_prepare(world_areas+current_area,&player,view.view,PORTABLE_MESH_COUNT))return -1;
+    castle_prepare_cycles=SOC_CYCLES-start;start=SOC_CYCLES;
+    if(gfx_identity_view() || gfx_begin_frame(frame))return -1;
+    if(world_draw(world_areas+current_area,&player,view.view,PORTABLE_MESH_COUNT))return -1;
+    int32_t co=castle_rotations[(player.facing<<3)&255][0],si=castle_rotations[(player.facing<<3)&255][1];
+    int16_t model[12];
+    for(uint32_t row=0;row<3;++row) {
+        uint32_t b=row<<2;
+        model[b]=(int16_t)((fixed_mul(view.view[b],co)-fixed_mul(view.view[b+2],si))>>8);
+        model[b+1]=view.view[b+1];
+        model[b+2]=(int16_t)((fixed_mul(view.view[b],si)+fixed_mul(view.view[b+2],co))>>8);
+        model[b+3]=view.view[b+3];
+    }
+    for(uint32_t h=0;h<PORTABLE_MESH_COUNT;++h)if(gfx_draw_matrix((uint8_t)h,model))return -1;
+    castle_draw_cycles=SOC_CYCLES-start;
+    return gfx_end_frame();
+}

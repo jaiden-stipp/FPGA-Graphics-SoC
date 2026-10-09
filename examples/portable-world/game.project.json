@@ -1,0 +1,11 @@
+{
+  "format": "soc-game-project",
+  "version": 1,
+  "name": "portable-world",
+  "scene": "world.json",
+  "port": {
+    "kind": "custom",
+    "sources": ["../../firmware/ports/world_explorer.c", "../../firmware/src/world.c", "../../firmware/src/game_services.c"],
+    "exports": ["world_select", "world_collision", "world_prepare", "world_draw", "world_transition_find", "world_areas", "player_bind_query", "player_floor_index"]
+  }
+}

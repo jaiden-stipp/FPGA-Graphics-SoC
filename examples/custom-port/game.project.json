@@ -1,0 +1,12 @@
+{
+  "format": "soc-game-project",
+  "version": 1,
+  "name": "portable-custom",
+  "scene": "scene.json",
+  "port": {
+    "kind": "custom",
+    "sources": [
+      "game.c"
+    ]
+  }
+}
