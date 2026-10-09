@@ -1,5 +1,8 @@
 # RV32I Renderer SoC
 
+The [hardware improvement record](docs/hardware-improvement-record.md) tracks
+benchmark evidence, reproducible comparisons and supported resume claims.
+
 The [interactive Quake demo](docs/quake-interactive.md) adds focused mouse look,
 a GPU HUD, a moving door, an armor pickup and an original animated soldier.
 It reuses the portable game path and adds a backward-compatible input wrapper;

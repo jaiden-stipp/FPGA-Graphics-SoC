@@ -2,7 +2,8 @@
 module soc_memory #(
     parameter HEX_FILE = "build/firmware.hex",
     parameter MIF_FILE = "build/firmware.mif",
-    parameter ENABLE_SDRAM = 0
+    parameter ENABLE_SDRAM = 0,
+    parameter ENABLE_CACHE = 1
 )(
     input logic clk, reset,
     input logic [31:0] pc, addr, wdata,
@@ -36,6 +37,7 @@ module soc_memory #(
 );
     logic ram_selected, ram_misaligned, ram_write, mmio_write;
     logic [31:0] ram_rdata, mmio_rdata;
+    wire [191:0] cache_statistics;
     wire [31:0] bus_addr = load_hold ? load_addr : addr;
     wire [31:0] bus_wdata = load_hold ? load_wdata : wdata;
     wire [2:0] bus_funct3 = load_hold ? 3'b010 : funct3;
@@ -65,6 +67,7 @@ module soc_memory #(
         .frame_done(frame_done), .frame_done_id(frame_done_id),
         .frame_statistics(frame_statistics), .frame_pending(frame_pending),
         .buttons(buttons), .look_state(look_state),
+        .cache_statistics(cache_statistics),
         .error_flags(error_flags), .scratch(scratch)
     );
     assign rdata = ram_selected ? ram_rdata : sdram_selected ? ext_rdata : mmio_rdata;
@@ -85,16 +88,41 @@ module soc_memory #(
             .request_data(req_data), .request_byte_enable(req_bytes), .request_ready(req_ready),
             .response_valid(response_valid), .response_data(response_data)
         );
+        logic mem_valid, mem_write, mem_ready, mem_response;
+        logic [24:0] mem_addr;
+        logic [31:0] mem_data, mem_rdata;
+        logic [3:0] mem_bytes;
+        if (ENABLE_CACHE) begin : cached
+            wire [31:0] hits, misses, fills, writes, busy;
+            assign cache_statistics = {32'h43410101,hits,misses,fills,writes,busy};
+            sdram_cache cache (
+                .clk(clk), .reset(sdram_reset), .bypass(load_hold), .invalidate(load_hold || reset),
+                .request_valid(req_valid), .request_write(req_write), .request_address(req_addr),
+                .request_data(req_data), .request_byte_enable(req_bytes), .request_ready(req_ready),
+                .response_valid(response_valid), .response_data(response_data),
+                .memory_valid(mem_valid), .memory_write(mem_write), .memory_address(mem_addr),
+                .memory_data(mem_data), .memory_byte_enable(mem_bytes), .memory_ready(mem_ready),
+                .memory_response_valid(mem_response), .memory_response_data(mem_rdata),
+                .read_hits(hits), .read_misses(misses), .fill_words(fills),
+                .write_requests(writes), .busy_cycles(busy)
+            );
+        end else begin : uncached
+            assign cache_statistics = 0;
+            assign mem_valid=req_valid; assign mem_write=req_write; assign mem_addr=req_addr;
+            assign mem_data=req_data; assign mem_bytes=req_bytes;
+            assign req_ready=mem_ready; assign response_valid=mem_response; assign response_data=mem_rdata;
+        end
         sdram_controller controller (
-            .clk(clk), .reset(sdram_reset), .request_valid(req_valid), .request_write(req_write),
-            .request_address(req_addr), .request_data(req_data), .request_byte_enable(req_bytes),
-            .request_ready(req_ready), .response_valid(response_valid), .response_data(response_data),
+            .clk(clk), .reset(sdram_reset), .request_valid(mem_valid), .request_write(mem_write),
+            .request_address(mem_addr), .request_data(mem_data), .request_byte_enable(mem_bytes),
+            .request_ready(mem_ready), .response_valid(mem_response), .response_data(mem_rdata),
             .initialized(sdram_initialized), .refresh_count(refresh_count),
             .DRAM_CLK(DRAM_CLK), .DRAM_CKE(DRAM_CKE), .DRAM_CS_N(DRAM_CS_N),
             .DRAM_RAS_N(DRAM_RAS_N), .DRAM_CAS_N(DRAM_CAS_N), .DRAM_WE_N(DRAM_WE_N),
             .DRAM_ADDR(DRAM_ADDR), .DRAM_BA(DRAM_BA), .DRAM_DQM(DRAM_DQM), .DRAM_DQ(DRAM_DQ)
         );
     end else begin : no_external_memory
+        assign cache_statistics = 0;
         assign {ext_stall,ext_bad,ext_write,sdram_initialized} = 4'b0001;
         assign ext_rdata = 0; assign refresh_count = 0;
         assign {DRAM_CLK,DRAM_CKE,DRAM_CS_N,DRAM_RAS_N,DRAM_CAS_N,DRAM_WE_N} = 6'b001111;

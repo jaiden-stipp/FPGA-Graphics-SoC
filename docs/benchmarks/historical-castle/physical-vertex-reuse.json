@@ -1,0 +1,81 @@
+{
+  "package": "C:\\Users\\Orb1t\\Documents\\Codex\\FPGA-Game-SoC\\build\\mario-castle-sdram.package.json",
+  "samples": [
+    {
+      "time": 175498.984,
+      "frame": 57
+    },
+    {
+      "time": 175499.234,
+      "frame": 62
+    },
+    {
+      "time": 175499.5,
+      "frame": 67
+    },
+    {
+      "time": 175499.75,
+      "frame": 72
+    },
+    {
+      "time": 175500.0,
+      "frame": 77
+    },
+    {
+      "time": 175500.25,
+      "frame": 82
+    },
+    {
+      "time": 175500.5,
+      "frame": 87
+    },
+    {
+      "time": 175500.75,
+      "frame": 92
+    }
+  ],
+  "observed_fps": 19.818799546962286,
+  "metrics": {
+    "game_frame": 92,
+    "game_cpu_cycles": 1790552,
+    "game_frame_cycles": 2502504,
+    "game_present_cycles": 711944,
+    "game_update_cycles": 48001,
+    "castle_pose_upload_cycles": 332852,
+    "castle_prepare_cycles": 82667,
+    "castle_draw_cycles": 1278772,
+    "castle_area": 0,
+    "castle_exit_event": 0
+  },
+  "gpu_stats": {
+    "triangles_submitted": 505,
+    "triangles_clipped": 2,
+    "triangles_culled": 246,
+    "bounding_box_pixels": 184742,
+    "pixels_inside": 62693,
+    "depth_rejected": 8494,
+    "pixels_written": 54199,
+    "geometry_cycles": 50806,
+    "geometry_stall_cycles": 134240,
+    "raster_cycles": 195060,
+    "clear_cycles": 76800,
+    "total_cycles": 1989558,
+    "swap_wait_cycles": 635329
+  },
+  "snapshot_cpu_held": true,
+  "snapshot_note": "Last published frame counters; other globals may belong to a partial next frame.",
+  "hardware_programming_requested": false,
+  "restore_package": "C:\\Users\\Orb1t\\Documents\\Codex\\FPGA-Game-SoC\\build\\quake-interactive-sdram.package.json",
+  "restored_status": {
+    "initialized": true,
+    "held": false,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 0,
+    "refresh_count": 1936061371,
+    "input_abi": 1229848833
+  }
+}

@@ -273,7 +273,7 @@ def sources(full=False):
     files += [ROOT / "rtl/generated/RV32I_SoC.sv", ROOT / "rtl/generated/soc_ram.sv"]
     files += [ROOT / ('rtl/generated/soc_'+name+'.sv') for name in
               ('PC_IF','IF_ID','ID_EX','EX_MEM','MEM_WB','RegFile','PipelineAssertions')]
-    files += [ROOT/'rtl/sdram_capture_clock.sv', ROOT/'rtl/sdram_controller.sv', ROOT/'rtl/sdram_bridge.sv', ROOT/'rtl/udp_memory_loader.sv']
+    files += [ROOT/'rtl/sdram_capture_clock.sv', ROOT/'rtl/sdram_controller.sv', ROOT/'rtl/sdram_bridge.sv', ROOT/'rtl/sdram_cache.sv', ROOT/'rtl/udp_memory_loader.sv']
     files += [ROOT / "rtl/soc_mmio.sv", ROOT / "rtl/soc_memory.sv"]
     renderer = ROOT / "external/renderer/rtl"
     files += [renderer / "command/graphics_command_stream_decoder.sv"]
@@ -299,7 +299,7 @@ def simulate(args):
     if args.full and simulator != "modelsim":
         raise RuntimeError("Full VGA test requires ModelSim with the altera_mf library")
     tests = ["soc_mmio_tb", "soc_memory_tb", "cpu_stream_tb", "game_stream_tb", "udp_controls_tb", "scene_stream_tb", "mario_stream_tb"]
-    available = tests + ['sdram_memory_tb','sdram_cpu_tb','udp_loader_tb','udp_extended_input_tb']
+    available = tests + ['sdram_cache_tb','sdram_memory_tb','sdram_cpu_tb','udp_loader_tb','udp_extended_input_tb']
     if args.full:
         tests += ["soc_top_tb", "soc_game_top_tb", "soc_scene_top_tb", "soc_mario_top_tb", "soc_mario_bridge_top_tb"]
         available += ['sdram_mario_top_tb','beacon_sdram_top_tb','quake_sdram_top_tb','portable_scene_top_tb','quake_interactive_top_tb','castle_world_top_tb']
@@ -361,6 +361,7 @@ def quartus(_args):
              'set_global_assignment -name SDC_FILE fpga/soc.sdc']
     boot=json.loads((BUILD/'boot.json').read_text()) if (BUILD/'boot.json').exists() else {'sdram':False}
     lines.append(f'set_parameter -name ENABLE_SDRAM {int(boot["sdram"])}')
+    lines.append(f'set_parameter -name ENABLE_CACHE {int(not getattr(_args,"disable_cache",False))}')
     for path in sources(True):
         # Monitor/assertions are excluded from synthesis by upstream translate_off.
         kind = "VERILOG_FILE" if path.suffix == ".v" else "SYSTEMVERILOG_FILE"
@@ -550,6 +551,7 @@ def main():
     p.add_argument('--work-dir',type=Path,help='Independent ModelSim library for concurrent verification')
     p.set_defaults(func=simulate)
     p = sub.add_parser("quartus-project")
+    p.add_argument('--disable-cache',action='store_true',help='Generate an uncached SDRAM baseline project')
     p.set_defaults(func=quartus)
     p = sub.add_parser("build-fpga")
     p.add_argument("--quartus-bin", type=Path, help="Edition-specific Quartus executable directory")

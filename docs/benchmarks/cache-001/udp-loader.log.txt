@@ -1,0 +1,49 @@
+Reading C:/intelFPGA/18.1/modelsim_ase/tcl/vsim/pref.tcl
+
+# 10.5b
+
+# vsim -c -L altera_mf -lib build\cache-final-simlib udp_loader_tb -do "onerror {quit -code 1}; run -all; quit -code 0" 
+# Start time: 15:44:15 on Oct 09,2026
+# Loading sv_std.std
+# Loading build\cache-final-simlib.pipeline_pkg
+# Loading build\cache-final-simlib.pipeline_pkg_sv_unit
+# Loading build\cache-final-simlib.udp_loader_tb
+# Loading build\cache-final-simlib.udp_controls
+# Loading build\cache-final-simlib.udp_memory_loader
+# Loading build\cache-final-simlib.ethernet_command_receiver
+# Loading build\cache-final-simlib.mii_udp_receiver
+# Loading build\cache-final-simlib.async_fifo
+# Loading build\cache-final-simlib.mii_response_transmitter
+# Loading build\cache-final-simlib.async_byte_fifo
+# Loading build\cache-final-simlib.graphics_command_stream_decoder
+# Loading build\cache-final-simlib.soc_memory
+# Loading build\cache-final-simlib.soc_ram
+# Loading build\cache-final-simlib.soc_mmio
+# Loading build\cache-final-simlib.sdram_device_model
+# Loading build\cache-final-simlib.sdram_bridge
+# Loading build\cache-final-simlib.sdram_cache
+# Loading build\cache-final-simlib.sdram_controller
+# Loading build\cache-final-simlib.sdram_capture_clock
+# ** Warning: (vsim-3017) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/udp_loader_tb.sv(12): [TFMPC] - Too few port connections. Expected 25, found 24.
+#    Time: 0 ps  Iteration: 0  Instance: /udp_loader_tb/controls File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/udp_controls.sv
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/udp_loader_tb.sv(12): [TFMPC] - Missing connection for port 'look_state'.
+# ** Warning: (vsim-3017) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/udp_loader_tb.sv(20): [TFMPC] - Too few port connections. Expected 46, found 36.
+#    Time: 0 ps  Iteration: 0  Instance: /udp_loader_tb/memory File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/soc_memory.sv
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/udp_loader_tb.sv(20): [TFMPC] - Missing connection for port 'instruction'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/udp_loader_tb.sv(20): [TFMPC] - Missing connection for port 'rdata'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/udp_loader_tb.sv(20): [TFMPC] - Missing connection for port 'misaligned'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/udp_loader_tb.sv(20): [TFMPC] - Missing connection for port 'write_performed'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/udp_loader_tb.sv(20): [TFMPC] - Missing connection for port 'byte_data'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/udp_loader_tb.sv(20): [TFMPC] - Missing connection for port 'byte_valid'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/udp_loader_tb.sv(20): [TFMPC] - Missing connection for port 'look_state'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/udp_loader_tb.sv(20): [TFMPC] - Missing connection for port 'frame_pending'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/udp_loader_tb.sv(20): [TFMPC] - Missing connection for port 'error_flags'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/udp_loader_tb.sv(20): [TFMPC] - Missing connection for port 'cpu_stall'.
+# onerror {quit -code 1}
+#  Warning: onerror command for use within macro
+#  run -all
+# PASS udp_loader_tb (MII/CRC/CDC, CPU and SDRAM readback, range/hold guards, keyboard preserved)
+# ** Note: $finish    : C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/udp_loader_tb.sv(67)
+#    Time: 794300 ns  Iteration: 1  Instance: /udp_loader_tb
+# End time: 15:44:16 on Oct 09,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 13

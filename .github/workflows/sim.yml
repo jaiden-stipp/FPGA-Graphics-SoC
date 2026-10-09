@@ -10,6 +10,7 @@ jobs:
       - run: python3 scripts/test_scene_pipeline.py
       - run: python3 scripts/test_sdram_package.py
       - run: python3 scripts/soc.py bootstrap
+      - run: python3 scripts/soc.py sim --simulator iverilog --tests sdram_cache_tb,sdram_memory_tb,udp_loader_tb
       - run: python3 scripts/soc.py build-fw --cc riscv64-unknown-elf-gcc
       - run: python3 scripts/test_player.py
       - run: python3 scripts/test_camera.py

@@ -1,0 +1,79 @@
+{
+  "experiment": "CACHE-001",
+  "date": "2026-10-09",
+  "method": "ModelSim Intel FPGA Edition 10.5b; simulation only",
+  "source_base_commit": "e128e8d796c382c936d9b0603923a14a4f02ccac",
+  "source_state": "uncommitted implementation; per-file hashes below",
+  "sha256": {
+    "rtl/sdram_cache.sv": "935533ef3b18ec2d78d68179b215434024f02ecc8864f69e8bc49ac7e218717c",
+    "rtl/sdram_bridge.sv": "b58bd47a0b71f179df8acb3855e935fb8b6def5b04fad0221caf7864b59974ed",
+    "rtl/soc_memory.sv": "3d0174c326a5d669ddf644b4c8ff25341ef630255d4a363f2641add71220e87a",
+    "rtl/soc_mmio.sv": "12601fd7bfc5d281b99899b6f7c3784e28383716169902e7f79a0ba1848453a5",
+    "rtl/soc_top.sv": "f8b8c3b6fefb4729eebc99e8c3d79b6528233f2dd0b2323982f9ad1e855453e3",
+    "rtl/boards/de2_115_soc_top.sv": "becb2084a8dbde61f242f1be7cf7f3ca62c104ff8ccf073417a1a3401a19dbb2",
+    "sim/sdram_cache_tb.sv": "91c525df4e36452104d94ef6271fa2229e7f4f42d5371fb8b5e678aca023c489",
+    "sim/sdram_memory_tb.sv": "ff90a8ec1b8fad953aa939f78d507f1bea62f543932c0939228eb87f87b19aa5",
+    "sim/sdram_cpu_tb.sv": "b8ba07d8209d33eedebd4f2644c529f12ec340d079a01133c2771bd4926559db",
+    "sim/soc_mmio_tb.sv": "03ea9bb4601bee086d3cd2c0a80030fcf00515f3a32bbb3bfbc549db9c77b23a",
+    "scripts/soc.py": "451c9d06504ec59c7319166981597bc83be68cb8841a669ed5c0f605dba2ee22",
+    "build/sdram-test-sdram.hex": "aff976074247c5bd5eea07b9a0a69829411319d9afae10e2632847e9264c557b",
+    "CacheSoC.qsf": "d145355edb3c632e52b1783ed8f22bbd8979c6f52e7f07dec2d7ec9cecb934e5",
+    "fpga/soc.sdc": "8bab502639ba541613e3cfaa35303f2869d321c5e1a3ad7741fb2ad25f8f4d7c",
+    "build/firmware.mif": "f70ee691343753ca316bec2aa5d0d4f84b7a8f9a193f9b662d9a4ff1d188c36a",
+    "upstream.lock.json": "fba7b84d51c10cc547f1364edba571911e38467be37885caf29cfd19f3e2f9b4",
+    "sm64.lock.json": "e1212b609b4ef8a111a631d3055a41f991e68274145bf7be4031fb284bd352ff"
+  },
+  "clock_period_ns_configuration": 20,
+  "memory_access_sample_count_per_case": 1,
+  "uncached": {
+    "cold_read_cycles": 13,
+    "repeated_read_cycles": 13
+  },
+  "cached": {
+    "cold_read_cycles": 107,
+    "repeated_read_cycles": 3
+  },
+  "notes": [
+    "Cycles count positive clock edges in the access task until bridge completion.",
+    "Refresh phase and access pattern affect timing; these are deterministic fixture samples, not a distribution.",
+    "No physical-board cache benchmark or game FPS claim.",
+    "The later quartus-project --disable-cache option selects the baseline; simulation source enumeration is unchanged.",
+    "Final RAM coding pattern corrected after first synthesis mapped the data array to registers; rejected synthesis summary preserved.",
+    "Final cache and diagnostic wiring passed all six testbenches; uncached memory comparison also passed."
+  ],
+  "programmed_baseline_sof_sha256": "b89797f51864cf1aa39e7c7835ad7105fb4d2a689986eed8f624cd8f70318617",
+  "raw_evidence_sha256": {
+    "docs\\benchmarks\\cache-001\\cache-ram-inference.txt": "7fec37eec648afd6efc997ffdb3cbc32d0530b764000aa455945f9698fa91acf",
+    "docs\\benchmarks\\cache-001\\cache-unit.log.txt": "aa41bd2e03b77a33a746c92b6f2ae7a836d475327db8b3485a0586ba6505be81",
+    "docs\\benchmarks\\cache-001\\cache.fit.summary.txt": "5021a61281f705e70834caf11be3743cf0d1bbf247936affaf85c27fa4a6eb39",
+    "docs\\benchmarks\\cache-001\\cache.map.summary.txt": "fa4a94955dc12d797b270f742bbf777665cfa89f4068eb109dd488c8c5c39405",
+    "docs\\benchmarks\\cache-001\\cache.sta.summary.txt": "789c5648caa8d0cf14ed4b401601c6fe041c263ec40f99a84c3aefe600f4c2fd",
+    "docs\\benchmarks\\cache-001\\CacheSoC.qsf.txt": "d145355edb3c632e52b1783ed8f22bbd8979c6f52e7f07dec2d7ec9cecb934e5",
+    "docs\\benchmarks\\cache-001\\cpu-pipeline.log.txt": "3857b621113120776c1456fcbd86298ef31c279bf1658e5159b998b46e59d051",
+    "docs\\benchmarks\\cache-001\\local-memory.log.txt": "9526257b087fc9273bcac9d1c2364bd0236fcfc3414af4ecd08338aaf815f1e1",
+    "docs\\benchmarks\\cache-001\\memory-cached.log.txt": "34c30e6e8e7e577a067be33459289725cc3b5fc9e7b9e582ee74bc8f16f03e0e",
+    "docs\\benchmarks\\cache-001\\memory-uncached.log.txt": "107974819443a3b54605a9f9d8a2863a0553e9ec83af16fb319e14022ced6ff6",
+    "docs\\benchmarks\\cache-001\\mmio.log.txt": "9ad570f922ce32c7b6e0ad22d4555dcc2a6e551eb810cb2bc0ba4f88179026b9",
+    "docs\\benchmarks\\cache-001\\quartus-asm.log.txt": "c9fe4e40755b7c0d57b54e1e7bdd14ecf186218c425084c5cb8c340153311e26",
+    "docs\\benchmarks\\cache-001\\quartus-fit.log.txt": "ee4f5224efb019a4a205988f3c98416abbe9ee0ade926d11444741e6990f9301",
+    "docs\\benchmarks\\cache-001\\quartus-map.log.txt": "dbee4c625ab915246c074405c0051ccd8376d3cef26924471192ac59da429d1a",
+    "docs\\benchmarks\\cache-001\\quartus-sta.log.txt": "e10b9e1ed0a22653fc0db9c5431101747d6e77fa71314884b2121c48b1b31364",
+    "docs\\benchmarks\\cache-001\\rejected-register-array.map.summary.txt": "97981d2ccba7d3bde51e72828285cff29c234d9a24c3c063d218f835a440845c",
+    "docs\\benchmarks\\cache-001\\udp-loader.log.txt": "f3ac7a76041e058a832af4d4b35e2f1a5963e8b408639a43f89d440a805870de"
+  },
+  "build": {
+    "tool": "Quartus Prime Lite 18.1.0 Build 625",
+    "device": "EP4CE115F29C7",
+    "stages_passed": [
+      "map",
+      "fit",
+      "sta",
+      "asm"
+    ],
+    "programmed": false,
+    "candidate_sof_sha256": "bc0948f73f1ff97f71d36411eb62e376d485d9559d8d6aa46d0f9d84cd596927",
+    "minimum_reported_slack_ns": 0.11,
+    "fitted_logic_elements": 20833,
+    "fitted_memory_bits": 2659668
+  }
+}

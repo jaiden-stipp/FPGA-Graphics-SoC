@@ -3,7 +3,8 @@
 module soc_top #(
     parameter HEX_FILE = "build/firmware.hex",
     parameter MIF_FILE = "build/firmware.mif",
-    parameter ENABLE_SDRAM = 0
+    parameter ENABLE_SDRAM = 0,
+    parameter ENABLE_CACHE = 1
 )(
     input logic clk, reset,
     input logic [7:0] buttons,
@@ -48,7 +49,7 @@ module soc_top #(
         .trace_mem_address(), .trace_mem_data(), .trace_mem_funct3(),
         .trace_branch(), .trace_jump(), .trace_jalr(), .commit_valid()
     );
-    soc_memory #(.HEX_FILE(HEX_FILE), .MIF_FILE(MIF_FILE), .ENABLE_SDRAM(ENABLE_SDRAM)) memory (
+    soc_memory #(.HEX_FILE(HEX_FILE), .MIF_FILE(MIF_FILE), .ENABLE_SDRAM(ENABLE_SDRAM), .ENABLE_CACHE(ENABLE_CACHE)) memory (
         .clk(clk), .reset(system_reset), .pc(debug_pc), .instruction(instruction),
         .sdram_reset(sdram_reset), .cpu_stall(cpu_stall),
         .load_hold(load_hold), .load_valid(load_valid), .load_write(load_write),

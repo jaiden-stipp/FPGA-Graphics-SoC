@@ -47,6 +47,16 @@ All offsets below are relative to `0x40000000`.
 | `0x54` | BUTTONS | R | Bits 0..4: left, right, forward/zoom-in, back/zoom-out, reset-view; active-high, synchronized |
 | `0x58` | CYCLES | R | Free-running 32-bit clock counter, reset to zero |
 | `0x5c` | CLOCK_HZ | R | Peripheral/CPU clock frequency; default 50,000,000 |
+| `0x64` | INPUT_ABI | R | `0x494e0101` |
+| `0x68` | CACHE_ABI | R | `0x43410101` when enabled; otherwise zero |
+| `0x6c` | CACHE_READ_HITS | R | Live cached CPU read hits |
+| `0x70` | CACHE_READ_MISSES | R | Live cached CPU read misses |
+| `0x74` | CACHE_FILL_WORDS | R | Live returned line-fill words, including discarded fills |
+| `0x78` | CACHE_WRITE_REQUESTS | R | Live stores, including loader bypass stores |
+| `0x7c` | CACHE_BUSY_CYCLES | R | Live non-IDLE cache cycles, including loader work |
+
+Cache counters reset on SDRAM reset, wrap at 32 bits and are not atomically
+snapshotted. See [cache architecture and counter definitions](sdram-cache.md).
 
 Reserved offsets, reads of write-only registers, and writes of read-only registers
 set BAD_ACCESS. A full-FIFO DATA store does not enqueue and sets FIFO_OVERFLOW.

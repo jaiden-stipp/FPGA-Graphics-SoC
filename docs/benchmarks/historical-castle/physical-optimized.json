@@ -1,0 +1,64 @@
+{
+  "samples": [
+    {
+      "time": 174602.296,
+      "scratch": 43
+    },
+    {
+      "time": 174602.546,
+      "scratch": 46
+    },
+    {
+      "time": 174602.796,
+      "scratch": 50
+    },
+    {
+      "time": 174603.046,
+      "scratch": 54
+    },
+    {
+      "time": 174603.296,
+      "scratch": 58
+    },
+    {
+      "time": 174603.546,
+      "scratch": 61
+    },
+    {
+      "time": 174603.796,
+      "scratch": 65
+    },
+    {
+      "time": 174604.046,
+      "scratch": 69
+    }
+  ],
+  "metrics": {
+    "game_frame": 73,
+    "game_cpu_cycles": 2632611,
+    "game_frame_cycles": 3336709,
+    "game_present_cycles": 704090,
+    "game_update_cycles": 90651,
+    "castle_pose_upload_cycles": 332257,
+    "castle_prepare_cycles": 82686,
+    "castle_draw_cycles": 2126745,
+    "world_direct_triangles": 293
+  },
+  "gpu_stats": {
+    "triangles_submitted": 505,
+    "triangles_clipped": 2,
+    "triangles_culled": 246,
+    "bounding_box_pixels": 184435,
+    "pixels_inside": 62562,
+    "depth_rejected": 8435,
+    "pixels_written": 54127,
+    "geometry_cycles": 51950,
+    "geometry_stall_cycles": 99448,
+    "raster_cycles": 194755,
+    "clear_cycles": 76800,
+    "total_cycles": 2829679,
+    "swap_wait_cycles": 664143
+  },
+  "hardware_image_changed": false,
+  "mission_complete": false
+}

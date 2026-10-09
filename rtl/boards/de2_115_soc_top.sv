@@ -2,7 +2,8 @@ module de2_115_soc_top #(
     parameter HEX_FILE = "build/firmware.hex",
     parameter MIF_FILE = "build/firmware.mif",
     parameter integer INPUT_TIMEOUT_CYCLES = 15000000,
-    parameter ENABLE_SDRAM = 0
+    parameter ENABLE_SDRAM = 0,
+    parameter ENABLE_CACHE = 1
 )(
     input logic CLOCK_50,
     input logic [1:0] KEY,
@@ -51,7 +52,7 @@ module de2_115_soc_top #(
         .load_ready(load_ready), .load_rdata(load_rdata), .sdram_initialized(sdram_initialized),
         .scratch(scratch), .refresh_count(refresh_count)
     );
-    soc_top #(.HEX_FILE(HEX_FILE), .MIF_FILE(MIF_FILE), .ENABLE_SDRAM(ENABLE_SDRAM)) soc (
+    soc_top #(.HEX_FILE(HEX_FILE), .MIF_FILE(MIF_FILE), .ENABLE_SDRAM(ENABLE_SDRAM), .ENABLE_CACHE(ENABLE_CACHE)) soc (
         .clk(CLOCK_50), .reset(!reset_sync[1]),
         .buttons(network_buttons | {6'b0, !KEY3, !KEY[1]}),
         .look_state(network_look),

@@ -1,0 +1,64 @@
+{
+  "samples": [
+    {
+      "time": 173969.421,
+      "scratch": 1
+    },
+    {
+      "time": 173969.671,
+      "scratch": 3
+    },
+    {
+      "time": 173969.921,
+      "scratch": 6
+    },
+    {
+      "time": 173970.171,
+      "scratch": 8
+    },
+    {
+      "time": 173970.421,
+      "scratch": 11
+    },
+    {
+      "time": 173970.671,
+      "scratch": 13
+    },
+    {
+      "time": 173970.921,
+      "scratch": 16
+    },
+    {
+      "time": 173971.171,
+      "scratch": 18
+    },
+    {
+      "time": 173971.437,
+      "scratch": 21
+    },
+    {
+      "time": 173971.687,
+      "scratch": 23
+    },
+    {
+      "time": 173971.937,
+      "scratch": 26
+    },
+    {
+      "time": 173972.187,
+      "scratch": 28
+    }
+  ],
+  "metrics": {
+    "game_frame": 28,
+    "game_cpu_cycles": 4212564,
+    "game_frame_cycles": 5005212,
+    "game_present_cycles": 792640,
+    "castle_area": 0,
+    "world_visible_chunks": 7,
+    "world_direct_triangles": 288,
+    "world_uploaded_chunks": 0
+  },
+  "hardware_image_changed": false,
+  "mission_complete": false
+}

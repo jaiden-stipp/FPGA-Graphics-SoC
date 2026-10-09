@@ -9,6 +9,8 @@ transcript
 modelsim.ini
 SoC.qpf
 SoC.qsf
+CacheSoC.qpf
+CacheSoC.qsf
 db/
 incremental_db/
 *.qws

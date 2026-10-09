@@ -1,0 +1,1080 @@
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+    Info: Copyright (C) 2018  Intel Corporation. All rights reserved.
+    Info: Your use of Intel Corporation's design tools, logic functions 
+    Info: and other software and tools, and its AMPP partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Intel Program License 
+    Info: Subscription Agreement, the Intel Quartus Prime License Agreement,
+    Info: the Intel FPGA IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Intel and sold by Intel or its authorized distributors.  Please
+    Info: refer to the applicable agreement for further details.
+    Info: Processing started: Fri Oct 09 15:44:26 2026
+Info: Command: quartus_map CacheSoC
+Info (20032): Parallel compilation is enabled and will use up to 4 processors
+Info (12021): Found 1 design units, including 0 entities, in source file external/rv32i/5-stage-pipeline/pipeline_pkg.sv
+    Info (12022): Found design unit 1: pipeline_pkg (SystemVerilog) File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/rv32i/5-Stage-Pipeline/pipeline_pkg.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file external/rv32i/5-stage-pipeline/alu.sv
+    Info (12023): Found entity 1: ALU File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/rv32i/5-Stage-Pipeline/ALU.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file external/rv32i/5-stage-pipeline/branchunit.sv
+    Info (12023): Found entity 1: BranchUnit File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/rv32i/5-Stage-Pipeline/BranchUnit.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file external/rv32i/5-stage-pipeline/controlunit.sv
+    Info (12023): Found entity 1: ControlUnit File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/rv32i/5-Stage-Pipeline/ControlUnit.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file external/rv32i/5-stage-pipeline/ex_mem.sv
+    Info (12023): Found entity 1: EX_MEM File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/rv32i/5-Stage-Pipeline/EX_MEM.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file external/rv32i/5-stage-pipeline/forwardingunit.sv
+    Info (12023): Found entity 1: ForwardingUnit File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/rv32i/5-Stage-Pipeline/ForwardingUnit.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file external/rv32i/5-stage-pipeline/forwardmux.sv
+    Info (12023): Found entity 1: ForwardMux File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/rv32i/5-Stage-Pipeline/ForwardMux.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file external/rv32i/5-stage-pipeline/hazardunit.sv
+    Info (12023): Found entity 1: HazardUnit File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/rv32i/5-Stage-Pipeline/HazardUnit.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file external/rv32i/5-stage-pipeline/id_ex.sv
+    Info (12023): Found entity 1: ID_EX File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/rv32i/5-Stage-Pipeline/ID_EX.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file external/rv32i/5-stage-pipeline/if_id.sv
+    Info (12023): Found entity 1: IF_ID File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/rv32i/5-Stage-Pipeline/IF_ID.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file external/rv32i/5-stage-pipeline/immgen.sv
+    Info (12023): Found entity 1: ImmGen File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/rv32i/5-Stage-Pipeline/ImmGen.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file external/rv32i/5-stage-pipeline/mem_wb.sv
+    Info (12023): Found entity 1: MEM_WB File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/rv32i/5-Stage-Pipeline/MEM_WB.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file external/rv32i/5-stage-pipeline/monitor.sv
+    Info (12023): Found entity 1: Monitor File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/rv32i/5-Stage-Pipeline/Monitor.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file external/rv32i/5-stage-pipeline/pc_if.sv
+    Info (12023): Found entity 1: PC_IF File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/rv32i/5-Stage-Pipeline/PC_IF.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file external/rv32i/5-stage-pipeline/regfile.sv
+    Info (12023): Found entity 1: RegFile File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/rv32i/5-Stage-Pipeline/RegFile.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file external/rv32i/5-stage-pipeline/resultmux.sv
+    Info (12023): Found entity 1: ResultMux File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/rv32i/5-Stage-Pipeline/ResultMux.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file external/rv32i/5-stage-pipeline/verification/pipelineassertions.sv
+    Info (12023): Found entity 1: PipelineAssertions File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/rv32i/5-Stage-Pipeline/verification/PipelineAssertions.sv Line: 5
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/generated/rv32i_soc.sv
+    Info (12023): Found entity 1: RV32I_SoC File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/RV32I_SoC.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/generated/soc_ram.sv
+    Info (12023): Found entity 1: soc_ram File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/soc_ram.sv Line: 9
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/generated/soc_pc_if.sv
+    Info (12023): Found entity 1: soc_PC_IF File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/soc_PC_IF.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/generated/soc_if_id.sv
+    Info (12023): Found entity 1: soc_IF_ID File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/soc_IF_ID.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/generated/soc_id_ex.sv
+    Info (12023): Found entity 1: soc_ID_EX File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/soc_ID_EX.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/generated/soc_ex_mem.sv
+    Info (12023): Found entity 1: soc_EX_MEM File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/soc_EX_MEM.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/generated/soc_mem_wb.sv
+    Info (12023): Found entity 1: soc_MEM_WB File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/soc_MEM_WB.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/generated/soc_regfile.sv
+    Info (12023): Found entity 1: soc_RegFile File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/soc_RegFile.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/generated/soc_pipelineassertions.sv
+    Info (12023): Found entity 1: soc_PipelineAssertions File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/soc_PipelineAssertions.sv Line: 5
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/sdram_capture_clock.sv
+    Info (12023): Found entity 1: sdram_capture_clock File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/sdram_capture_clock.sv Line: 4
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/sdram_controller.sv
+    Info (12023): Found entity 1: sdram_controller File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/sdram_controller.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/sdram_bridge.sv
+    Info (12023): Found entity 1: sdram_bridge File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/sdram_bridge.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/udp_memory_loader.sv
+    Info (12023): Found entity 1: udp_memory_loader File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/udp_memory_loader.sv Line: 4
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/soc_mmio.sv
+    Info (12023): Found entity 1: soc_mmio File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/soc_mmio.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/soc_memory.sv
+    Info (12023): Found entity 1: soc_memory File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/soc_memory.sv Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file external/renderer/rtl/command/graphics_command_stream_decoder.sv
+    Info (12023): Found entity 1: graphics_command_stream_decoder File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/command/graphics_command_stream_decoder.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file external/renderer/rtl/network/async_byte_fifo.sv
+    Info (12023): Found entity 1: async_byte_fifo File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/network/async_byte_fifo.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file external/renderer/rtl/network/async_fifo.sv
+    Info (12023): Found entity 1: async_fifo File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/network/async_fifo.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file external/renderer/rtl/network/ethernet_command_receiver.sv
+    Info (12023): Found entity 1: ethernet_command_receiver File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/network/ethernet_command_receiver.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file external/renderer/rtl/network/mii_arp_responder.sv
+    Info (12023): Found entity 1: mii_arp_responder File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/network/mii_arp_responder.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file external/renderer/rtl/network/mii_response_transmitter.sv
+    Info (12023): Found entity 1: mii_response_transmitter File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/network/mii_response_transmitter.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file external/renderer/rtl/network/mii_udp_receiver.sv
+    Info (12023): Found entity 1: mii_udp_receiver File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/network/mii_udp_receiver.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/udp_controls.sv
+    Info (12023): Found entity 1: udp_controls File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/udp_controls.sv Line: 4
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/generated/palette_ip.v
+    Info (12023): Found entity 1: palette_256x24 File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/palette_ip.v Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/generated/graphics_pipeline.sv
+    Info (12023): Found entity 1: graphics_pipeline File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/graphics_pipeline.sv Line: 5
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/generated/graphics_renderer_core.sv
+    Info (12023): Found entity 1: graphics_renderer_core File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/graphics_renderer_core.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/generated/graphics_stream_renderer.sv
+    Info (12023): Found entity 1: graphics_stream_renderer File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/graphics_stream_renderer.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file external/renderer/rtl/common/iterative_signed_divider.sv
+    Info (12023): Found entity 1: iterative_signed_divider File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/common/iterative_signed_divider.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file external/renderer/rtl/command/graphics_command_processor.sv
+    Info (12023): Found entity 1: graphics_command_processor File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/command/graphics_command_processor.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file external/renderer/rtl/pipeline/depth_test_stage.sv
+    Info (12023): Found entity 1: depth_test_stage File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/depth_test_stage.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file external/renderer/rtl/pipeline/indexed_mesh_store.sv
+    Info (12023): Found entity 1: indexed_mesh_store File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/indexed_mesh_store.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file external/renderer/rtl/pipeline/render_performance_counters.sv
+    Info (12023): Found entity 1: render_performance_counters File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/render_performance_counters.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file external/renderer/rtl/pipeline/renderer.sv
+    Info (12023): Found entity 1: renderer File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/renderer.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file external/renderer/rtl/pipeline/transform_3d_pipeline.sv
+    Info (12023): Found entity 1: transform_3d_pipeline File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/transform_3d_pipeline.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file external/renderer/rtl/pipeline/triangle_fifo.sv
+    Info (12023): Found entity 1: triangle_fifo File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/triangle_fifo.sv Line: 5
+Info (12021): Found 1 design units, including 1 entities, in source file external/renderer/rtl/pipeline/view_transform_stage.sv
+    Info (12023): Found entity 1: view_transform_stage File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/view_transform_stage.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file external/renderer/rtl/memory/framebuffer.sv
+    Info (12023): Found entity 1: framebuffer File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/framebuffer.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file external/renderer/rtl/memory/framebuffer_ip.v
+    Info (12023): Found entity 1: framebuffer_320x240_8bit File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/framebuffer_ip.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file external/renderer/rtl/memory/zbuffer.sv
+    Info (12023): Found entity 1: zbuffer File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/zbuffer.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file external/renderer/rtl/memory/zbuffer_ip.v
+    Info (12023): Found entity 1: zbuffer_320x240_8bit File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/zbuffer_ip.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file external/renderer/rtl/video/vga_controller.sv
+    Info (12023): Found entity 1: vga_controller_640x480 File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/video/vga_controller.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file external/renderer/rtl/video/vga_page_swap_controller.sv
+    Info (12023): Found entity 1: vga_page_swap_controller File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/video/vga_page_swap_controller.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file external/renderer/rtl/video/vga_pll.sv
+    Info (12023): Found entity 1: vga_pll File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/video/vga_pll.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file external/renderer/rtl/video/vga_timing.sv
+    Info (12023): Found entity 1: vga_timing_640x480 File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/video/vga_timing.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/soc_top.sv
+    Info (12023): Found entity 1: soc_top File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/soc_top.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/boards/de2_115_soc_top.sv
+    Info (12023): Found entity 1: de2_115_soc_top File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/boards/de2_115_soc_top.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/sdram_cache.sv
+    Info (12023): Found entity 1: sdram_cache File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/sdram_cache.sv Line: 4
+Info (12127): Elaborating entity "de2_115_soc_top" for the top level hierarchy
+Info (12128): Elaborating entity "udp_controls" for hierarchy "udp_controls:controls" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/boards/de2_115_soc_top.sv Line: 54
+Info (12128): Elaborating entity "udp_memory_loader" for hierarchy "udp_controls:controls|udp_memory_loader:loader" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/udp_controls.sv Line: 38
+Info (12128): Elaborating entity "ethernet_command_receiver" for hierarchy "udp_controls:controls|ethernet_command_receiver:ethernet" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/udp_controls.sv Line: 60
+Info (12128): Elaborating entity "mii_udp_receiver" for hierarchy "udp_controls:controls|ethernet_command_receiver:ethernet|mii_udp_receiver:receiver" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/network/ethernet_command_receiver.sv Line: 105
+Info (12128): Elaborating entity "async_fifo" for hierarchy "udp_controls:controls|ethernet_command_receiver:ethernet|async_fifo:arp_response_queue" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/network/ethernet_command_receiver.sv Line: 142
+Info (12128): Elaborating entity "async_fifo" for hierarchy "udp_controls:controls|ethernet_command_receiver:ethernet|async_fifo:packet_response_queue" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/network/ethernet_command_receiver.sv Line: 156
+Info (12128): Elaborating entity "async_fifo" for hierarchy "udp_controls:controls|ethernet_command_receiver:ethernet|async_fifo:frame_response_queue" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/network/ethernet_command_receiver.sv Line: 170
+Info (12128): Elaborating entity "mii_response_transmitter" for hierarchy "udp_controls:controls|ethernet_command_receiver:ethernet|mii_response_transmitter:response_transmitter" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/network/ethernet_command_receiver.sv Line: 201
+Info (12128): Elaborating entity "async_byte_fifo" for hierarchy "udp_controls:controls|ethernet_command_receiver:ethernet|async_byte_fifo:receive_fifo" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/network/ethernet_command_receiver.sv Line: 217
+Info (12128): Elaborating entity "async_fifo" for hierarchy "udp_controls:controls|ethernet_command_receiver:ethernet|async_byte_fifo:receive_fifo|async_fifo:fifo" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/network/async_byte_fifo.sv Line: 32
+Info (12128): Elaborating entity "graphics_command_stream_decoder" for hierarchy "udp_controls:controls|ethernet_command_receiver:ethernet|graphics_command_stream_decoder:decoder" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/network/ethernet_command_receiver.sv Line: 229
+Info (10264): Verilog HDL Case Statement information at graphics_command_stream_decoder.sv(162): all case item expressions in this case statement are onehot File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/command/graphics_command_stream_decoder.sv Line: 162
+Info (12128): Elaborating entity "soc_top" for hierarchy "soc_top:soc" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/boards/de2_115_soc_top.sv Line: 70
+Info (12128): Elaborating entity "RV32I_SoC" for hierarchy "soc_top:soc|RV32I_SoC:cpu" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/soc_top.sv Line: 51
+Warning (10036): Verilog HDL or VHDL warning at RV32I_SoC.sv(78): object "halt" assigned a value but never read File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/RV32I_SoC.sv Line: 78
+Warning (10036): Verilog HDL or VHDL warning at RV32I_SoC.sv(256): object "misaligned" assigned a value but never read File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/RV32I_SoC.sv Line: 256
+Warning (10036): Verilog HDL or VHDL warning at RV32I_SoC.sv(256): object "mem_write_performed" assigned a value but never read File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/RV32I_SoC.sv Line: 256
+Info (12128): Elaborating entity "soc_PC_IF" for hierarchy "soc_top:soc|RV32I_SoC:cpu|soc_PC_IF:pc_if" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/RV32I_SoC.sv Line: 47
+Info (12128): Elaborating entity "soc_IF_ID" for hierarchy "soc_top:soc|RV32I_SoC:cpu|soc_IF_ID:stage1" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/RV32I_SoC.sv Line: 66
+Info (12128): Elaborating entity "ControlUnit" for hierarchy "soc_top:soc|RV32I_SoC:cpu|ControlUnit:CU" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/RV32I_SoC.sv Line: 100
+Warning (10270): Verilog HDL Case Statement warning at ControlUnit.sv(30): incomplete case statement has no default case item File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/rv32i/5-Stage-Pipeline/ControlUnit.sv Line: 30
+Info (12128): Elaborating entity "soc_RegFile" for hierarchy "soc_top:soc|RV32I_SoC:cpu|soc_RegFile:RF" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/RV32I_SoC.sv Line: 115
+Info (12128): Elaborating entity "ImmGen" for hierarchy "soc_top:soc|RV32I_SoC:cpu|ImmGen:IG" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/RV32I_SoC.sv Line: 123
+Info (12128): Elaborating entity "HazardUnit" for hierarchy "soc_top:soc|RV32I_SoC:cpu|HazardUnit:HU" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/RV32I_SoC.sv Line: 150
+Info (12128): Elaborating entity "soc_ID_EX" for hierarchy "soc_top:soc|RV32I_SoC:cpu|soc_ID_EX:stage2" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/RV32I_SoC.sv Line: 181
+Info (12128): Elaborating entity "ForwardMux" for hierarchy "soc_top:soc|RV32I_SoC:cpu|ForwardMux:Afw" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/RV32I_SoC.sv Line: 198
+Info (12128): Elaborating entity "ALU" for hierarchy "soc_top:soc|RV32I_SoC:cpu|ALU:alu" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/RV32I_SoC.sv Line: 216
+Info (12128): Elaborating entity "BranchUnit" for hierarchy "soc_top:soc|RV32I_SoC:cpu|BranchUnit:BU" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/RV32I_SoC.sv Line: 230
+Info (12128): Elaborating entity "soc_EX_MEM" for hierarchy "soc_top:soc|RV32I_SoC:cpu|soc_EX_MEM:stage3" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/RV32I_SoC.sv Line: 252
+Info (12128): Elaborating entity "soc_MEM_WB" for hierarchy "soc_top:soc|RV32I_SoC:cpu|soc_MEM_WB:stage4" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/RV32I_SoC.sv Line: 292
+Info (12128): Elaborating entity "ResultMux" for hierarchy "soc_top:soc|RV32I_SoC:cpu|ResultMux:RM" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/RV32I_SoC.sv Line: 307
+Info (12128): Elaborating entity "ForwardingUnit" for hierarchy "soc_top:soc|RV32I_SoC:cpu|ForwardingUnit:FU" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/RV32I_SoC.sv Line: 364
+Info (12128): Elaborating entity "soc_memory" for hierarchy "soc_top:soc|soc_memory:memory" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/soc_top.sv Line: 70
+Info (12128): Elaborating entity "soc_ram" for hierarchy "soc_top:soc|soc_memory:memory|soc_ram:ram" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/soc_memory.sv Line: 59
+Info (12128): Elaborating entity "altsyncram" for hierarchy "soc_top:soc|soc_memory:memory|soc_ram:ram|altsyncram:ram_ip" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/soc_ram.sv Line: 113
+Info (12130): Elaborated megafunction instantiation "soc_top:soc|soc_memory:memory|soc_ram:ram|altsyncram:ram_ip" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/soc_ram.sv Line: 113
+Info (12133): Instantiated megafunction "soc_top:soc|soc_memory:memory|soc_ram:ram|altsyncram:ram_ip" with the following parameter: File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/soc_ram.sv Line: 113
+    Info (12134): Parameter "address_reg_b" = "CLOCK0"
+    Info (12134): Parameter "byteena_reg_b" = "CLOCK0"
+    Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
+    Info (12134): Parameter "clock_enable_input_b" = "BYPASS"
+    Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
+    Info (12134): Parameter "clock_enable_output_b" = "BYPASS"
+    Info (12134): Parameter "indata_reg_b" = "CLOCK0"
+    Info (12134): Parameter "init_file" = "build/firmware.mif"
+    Info (12134): Parameter "intended_device_family" = "Cyclone IV E"
+    Info (12134): Parameter "lpm_type" = "altsyncram"
+    Info (12134): Parameter "numwords_a" = "16384"
+    Info (12134): Parameter "numwords_b" = "16384"
+    Info (12134): Parameter "operation_mode" = "BIDIR_DUAL_PORT"
+    Info (12134): Parameter "outdata_aclr_a" = "NONE"
+    Info (12134): Parameter "outdata_aclr_b" = "NONE"
+    Info (12134): Parameter "outdata_reg_a" = "UNREGISTERED"
+    Info (12134): Parameter "outdata_reg_b" = "UNREGISTERED"
+    Info (12134): Parameter "power_up_uninitialized" = "FALSE"
+    Info (12134): Parameter "read_during_write_mode_mixed_ports" = "DONT_CARE"
+    Info (12134): Parameter "read_during_write_mode_port_b" = "NEW_DATA_NO_NBE_READ"
+    Info (12134): Parameter "widthad_a" = "14"
+    Info (12134): Parameter "widthad_b" = "14"
+    Info (12134): Parameter "width_a" = "32"
+    Info (12134): Parameter "width_b" = "32"
+    Info (12134): Parameter "width_byteena_a" = "1"
+    Info (12134): Parameter "width_byteena_b" = "4"
+    Info (12134): Parameter "wrcontrol_wraddress_reg_b" = "CLOCK0"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_koh2.tdf
+    Info (12023): Found entity 1: altsyncram_koh2 File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/altsyncram_koh2.tdf Line: 33
+Info (12128): Elaborating entity "altsyncram_koh2" for hierarchy "soc_top:soc|soc_memory:memory|soc_ram:ram|altsyncram:ram_ip|altsyncram_koh2:auto_generated" File: c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
+Info (12021): Found 1 design units, including 1 entities, in source file db/decode_jsa.tdf
+    Info (12023): Found entity 1: decode_jsa File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/decode_jsa.tdf Line: 22
+Info (12128): Elaborating entity "decode_jsa" for hierarchy "soc_top:soc|soc_memory:memory|soc_ram:ram|altsyncram:ram_ip|altsyncram_koh2:auto_generated|decode_jsa:decode2" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/altsyncram_koh2.tdf Line: 48
+Info (12021): Found 1 design units, including 1 entities, in source file db/decode_c8a.tdf
+    Info (12023): Found entity 1: decode_c8a File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/decode_c8a.tdf Line: 22
+Info (12128): Elaborating entity "decode_c8a" for hierarchy "soc_top:soc|soc_memory:memory|soc_ram:ram|altsyncram:ram_ip|altsyncram_koh2:auto_generated|decode_c8a:rden_decode_a" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/altsyncram_koh2.tdf Line: 50
+Info (12021): Found 1 design units, including 1 entities, in source file db/mux_gob.tdf
+    Info (12023): Found entity 1: mux_gob File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/mux_gob.tdf Line: 22
+Info (12128): Elaborating entity "mux_gob" for hierarchy "soc_top:soc|soc_memory:memory|soc_ram:ram|altsyncram:ram_ip|altsyncram_koh2:auto_generated|mux_gob:mux4" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/altsyncram_koh2.tdf Line: 52
+Info (12128): Elaborating entity "soc_mmio" for hierarchy "soc_top:soc|soc_memory:memory|soc_mmio:mmio" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/soc_memory.sv Line: 72
+Info (10264): Verilog HDL Case Statement information at soc_mmio.sv(128): all case item expressions in this case statement are onehot File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/soc_mmio.sv Line: 128
+Info (12128): Elaborating entity "sdram_bridge" for hierarchy "soc_top:soc|soc_memory:memory|sdram_bridge:external_memory.bridge" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/soc_memory.sv Line: 90
+Info (12128): Elaborating entity "sdram_cache" for hierarchy "soc_top:soc|soc_memory:memory|sdram_cache:external_memory.cached.cache" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/soc_memory.sv Line: 108
+Info (19000): Inferred 4 megafunctions from design logic
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "soc_top:soc|soc_memory:memory|sdram_cache:external_memory.cached.cache|altsyncram:words[0][31]__1" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 8
+        Info (286033): Parameter WIDTHAD_A set to 10
+        Info (286033): Parameter NUMWORDS_A set to 1024
+        Info (286033): Parameter WIDTH_B set to 8
+        Info (286033): Parameter WIDTHAD_B set to 10
+        Info (286033): Parameter NUMWORDS_B set to 1024
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter READ_DURING_WRITE_MODE_MIXED_PORTS set to OLD_DATA
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "soc_top:soc|soc_memory:memory|sdram_cache:external_memory.cached.cache|altsyncram:words[0][23]__2" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 8
+        Info (286033): Parameter WIDTHAD_A set to 10
+        Info (286033): Parameter NUMWORDS_A set to 1024
+        Info (286033): Parameter WIDTH_B set to 8
+        Info (286033): Parameter WIDTHAD_B set to 10
+        Info (286033): Parameter NUMWORDS_B set to 1024
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter READ_DURING_WRITE_MODE_MIXED_PORTS set to OLD_DATA
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "soc_top:soc|soc_memory:memory|sdram_cache:external_memory.cached.cache|altsyncram:words[0][15]__3" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 8
+        Info (286033): Parameter WIDTHAD_A set to 10
+        Info (286033): Parameter NUMWORDS_A set to 1024
+        Info (286033): Parameter WIDTH_B set to 8
+        Info (286033): Parameter WIDTHAD_B set to 10
+        Info (286033): Parameter NUMWORDS_B set to 1024
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter READ_DURING_WRITE_MODE_MIXED_PORTS set to OLD_DATA
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "soc_top:soc|soc_memory:memory|sdram_cache:external_memory.cached.cache|altsyncram:words[0][7]__4" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 8
+        Info (286033): Parameter WIDTHAD_A set to 10
+        Info (286033): Parameter NUMWORDS_A set to 1024
+        Info (286033): Parameter WIDTH_B set to 8
+        Info (286033): Parameter WIDTHAD_B set to 10
+        Info (286033): Parameter NUMWORDS_B set to 1024
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter READ_DURING_WRITE_MODE_MIXED_PORTS set to OLD_DATA
+Info (12128): Elaborating entity "altsyncram" for hierarchy "soc_top:soc|soc_memory:memory|sdram_cache:external_memory.cached.cache|altsyncram:words[0][31]__1"
+Info (12130): Elaborated megafunction instantiation "soc_top:soc|soc_memory:memory|sdram_cache:external_memory.cached.cache|altsyncram:words[0][31]__1"
+Info (12133): Instantiated megafunction "soc_top:soc|soc_memory:memory|sdram_cache:external_memory.cached.cache|altsyncram:words[0][31]__1" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "8"
+    Info (12134): Parameter "WIDTHAD_A" = "10"
+    Info (12134): Parameter "NUMWORDS_A" = "1024"
+    Info (12134): Parameter "WIDTH_B" = "8"
+    Info (12134): Parameter "WIDTHAD_B" = "10"
+    Info (12134): Parameter "NUMWORDS_B" = "1024"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+    Info (12134): Parameter "READ_DURING_WRITE_MODE_MIXED_PORTS" = "OLD_DATA"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_g2h1.tdf
+    Info (12023): Found entity 1: altsyncram_g2h1 File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/altsyncram_g2h1.tdf Line: 27
+Info (12128): Elaborating entity "altsyncram_g2h1" for hierarchy "soc_top:soc|soc_memory:memory|sdram_cache:external_memory.cached.cache|altsyncram:words[0][31]__1|altsyncram_g2h1:auto_generated" File: c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
+Info (12128): Elaborating entity "sdram_controller" for hierarchy "soc_top:soc|soc_memory:memory|sdram_controller:external_memory.controller" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/soc_memory.sv Line: 123
+Info (12128): Elaborating entity "sdram_capture_clock" for hierarchy "soc_top:soc|soc_memory:memory|sdram_controller:external_memory.controller|sdram_capture_clock:read_clock" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/sdram_controller.sv Line: 35
+Info (12128): Elaborating entity "altpll" for hierarchy "soc_top:soc|soc_memory:memory|sdram_controller:external_memory.controller|sdram_capture_clock:read_clock|altpll:pll" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/sdram_capture_clock.sv Line: 16
+Info (12130): Elaborated megafunction instantiation "soc_top:soc|soc_memory:memory|sdram_controller:external_memory.controller|sdram_capture_clock:read_clock|altpll:pll" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/sdram_capture_clock.sv Line: 16
+Info (12133): Instantiated megafunction "soc_top:soc|soc_memory:memory|sdram_controller:external_memory.controller|sdram_capture_clock:read_clock|altpll:pll" with the following parameter: File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/sdram_capture_clock.sv Line: 16
+    Info (12134): Parameter "bandwidth_type" = "AUTO"
+    Info (12134): Parameter "clk0_divide_by" = "1"
+    Info (12134): Parameter "clk0_multiply_by" = "1"
+    Info (12134): Parameter "clk0_duty_cycle" = "50"
+    Info (12134): Parameter "clk0_phase_shift" = "4500"
+    Info (12134): Parameter "compensate_clock" = "CLK0"
+    Info (12134): Parameter "inclk0_input_frequency" = "20000"
+    Info (12134): Parameter "intended_device_family" = "Cyclone IV E"
+    Info (12134): Parameter "lpm_type" = "altpll"
+    Info (12134): Parameter "operation_mode" = "NORMAL"
+    Info (12134): Parameter "pll_type" = "AUTO"
+    Info (12134): Parameter "port_areset" = "PORT_USED"
+    Info (12134): Parameter "port_inclk0" = "PORT_USED"
+    Info (12134): Parameter "port_locked" = "PORT_USED"
+    Info (12134): Parameter "width_clock" = "5"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altpll_e531.tdf
+    Info (12023): Found entity 1: altpll_e531 File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/altpll_e531.tdf Line: 27
+Info (12128): Elaborating entity "altpll_e531" for hierarchy "soc_top:soc|soc_memory:memory|sdram_controller:external_memory.controller|sdram_capture_clock:read_clock|altpll:pll|altpll_e531:auto_generated" File: c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altpll.tdf Line: 897
+Info (12128): Elaborating entity "graphics_stream_renderer" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/soc_top.sv Line: 81
+Info (12128): Elaborating entity "graphics_renderer_core" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/graphics_stream_renderer.sv Line: 65
+Info (12128): Elaborating entity "graphics_command_processor" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_command_processor:command_processor" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/graphics_renderer_core.sv Line: 119
+Info (10264): Verilog HDL Case Statement information at graphics_command_processor.sv(96): all case item expressions in this case statement are onehot File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/command/graphics_command_processor.sv Line: 96
+Info (12128): Elaborating entity "indexed_mesh_store" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|indexed_mesh_store:mesh_store" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/graphics_renderer_core.sv Line: 152
+Info (10264): Verilog HDL Case Statement information at indexed_mesh_store.sv(171): all case item expressions in this case statement are onehot File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/indexed_mesh_store.sv Line: 171
+Info (12128): Elaborating entity "graphics_pipeline" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/graphics_renderer_core.sv Line: 182
+Info (12128): Elaborating entity "vga_pll" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|vga_pll:clock_generator" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/graphics_pipeline.sv Line: 91
+Info (12128): Elaborating entity "altpll" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|vga_pll:clock_generator|altpll:altpll_component" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/video/vga_pll.sv Line: 31
+Info (12130): Elaborated megafunction instantiation "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|vga_pll:clock_generator|altpll:altpll_component" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/video/vga_pll.sv Line: 31
+Info (12133): Instantiated megafunction "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|vga_pll:clock_generator|altpll:altpll_component" with the following parameter: File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/video/vga_pll.sv Line: 31
+    Info (12134): Parameter "bandwidth_type" = "AUTO"
+    Info (12134): Parameter "clk0_divide_by" = "288"
+    Info (12134): Parameter "clk0_duty_cycle" = "50"
+    Info (12134): Parameter "clk0_multiply_by" = "145"
+    Info (12134): Parameter "clk0_phase_shift" = "0"
+    Info (12134): Parameter "compensate_clock" = "CLK0"
+    Info (12134): Parameter "inclk0_input_frequency" = "20000"
+    Info (12134): Parameter "intended_device_family" = "Cyclone IV E"
+    Info (12134): Parameter "lpm_type" = "altpll"
+    Info (12134): Parameter "operation_mode" = "NORMAL"
+    Info (12134): Parameter "pll_type" = "AUTO"
+    Info (12134): Parameter "port_areset" = "PORT_USED"
+    Info (12134): Parameter "port_inclk0" = "PORT_USED"
+    Info (12134): Parameter "port_locked" = "PORT_USED"
+    Info (12134): Parameter "width_clock" = "5"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altpll_f731.tdf
+    Info (12023): Found entity 1: altpll_f731 File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/altpll_f731.tdf Line: 27
+Info (12128): Elaborating entity "altpll_f731" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|vga_pll:clock_generator|altpll:altpll_component|altpll_f731:auto_generated" File: c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altpll.tdf Line: 897
+Info (12128): Elaborating entity "triangle_fifo" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|triangle_fifo:triangle_feed" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/graphics_pipeline.sv Line: 109
+Info (10264): Verilog HDL Case Statement information at triangle_fifo.sv(79): all case item expressions in this case statement are onehot File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/triangle_fifo.sv Line: 79
+Info (12128): Elaborating entity "view_transform_stage" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|view_transform_stage:view_transform" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/graphics_pipeline.sv Line: 123
+Info (12128): Elaborating entity "transform_3d_pipeline" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|transform_3d_pipeline:transform" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/graphics_pipeline.sv Line: 142
+Info (12128): Elaborating entity "iterative_signed_divider" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|transform_3d_pipeline:transform|iterative_signed_divider:shared_divider" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/transform_3d_pipeline.sv Line: 175
+Info (12128): Elaborating entity "renderer" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|renderer:rasterizer" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/graphics_pipeline.sv Line: 171
+Info (12128): Elaborating entity "iterative_signed_divider" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|renderer:rasterizer|iterative_signed_divider:depth_dx_divider" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/renderer.sv Line: 204
+Info (12128): Elaborating entity "depth_test_stage" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|renderer:rasterizer|depth_test_stage:depth_test" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/renderer.sv Line: 244
+Info (12128): Elaborating entity "render_performance_counters" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|render_performance_counters:performance_counters" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/graphics_pipeline.sv Line: 194
+Info (12128): Elaborating entity "zbuffer" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|zbuffer:depth_memory" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/graphics_pipeline.sv Line: 210
+Info (12128): Elaborating entity "zbuffer_320x240_8bit" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|zbuffer:depth_memory|zbuffer_320x240_8bit:zbuffer_ram" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/zbuffer.sv Line: 90
+Info (12128): Elaborating entity "altsyncram" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|zbuffer:depth_memory|zbuffer_320x240_8bit:zbuffer_ram|altsyncram:zbuffer_ram" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/zbuffer_ip.v Line: 39
+Info (12130): Elaborated megafunction instantiation "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|zbuffer:depth_memory|zbuffer_320x240_8bit:zbuffer_ram|altsyncram:zbuffer_ram" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/zbuffer_ip.v Line: 39
+Info (12133): Instantiated megafunction "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|zbuffer:depth_memory|zbuffer_320x240_8bit:zbuffer_ram|altsyncram:zbuffer_ram" with the following parameter: File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/zbuffer_ip.v Line: 39
+    Info (12134): Parameter "operation_mode" = "DUAL_PORT"
+    Info (12134): Parameter "width_a" = "8"
+    Info (12134): Parameter "widthad_a" = "17"
+    Info (12134): Parameter "numwords_a" = "76800"
+    Info (12134): Parameter "width_b" = "8"
+    Info (12134): Parameter "widthad_b" = "17"
+    Info (12134): Parameter "numwords_b" = "76800"
+    Info (12134): Parameter "address_reg_b" = "CLOCK1"
+    Info (12134): Parameter "rdcontrol_reg_b" = "CLOCK1"
+    Info (12134): Parameter "outdata_reg_b" = "UNREGISTERED"
+    Info (12134): Parameter "ram_block_type" = "M9K"
+    Info (12134): Parameter "intended_device_family" = "Cyclone IV E"
+    Info (12134): Parameter "power_up_uninitialized" = "FALSE"
+    Info (12134): Parameter "read_during_write_mode_mixed_ports" = "DONT_CARE"
+    Info (12134): Parameter "lpm_type" = "altsyncram"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_9if1.tdf
+    Info (12023): Found entity 1: altsyncram_9if1 File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/altsyncram_9if1.tdf Line: 31
+Info (12128): Elaborating entity "altsyncram_9if1" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|zbuffer:depth_memory|zbuffer_320x240_8bit:zbuffer_ram|altsyncram:zbuffer_ram|altsyncram_9if1:auto_generated" File: c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
+Info (12021): Found 1 design units, including 1 entities, in source file db/decode_5ua.tdf
+    Info (12023): Found entity 1: decode_5ua File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/decode_5ua.tdf Line: 22
+Info (12128): Elaborating entity "decode_5ua" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|zbuffer:depth_memory|zbuffer_320x240_8bit:zbuffer_ram|altsyncram:zbuffer_ram|altsyncram_9if1:auto_generated|decode_5ua:decode2" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/altsyncram_9if1.tdf Line: 45
+Info (12021): Found 1 design units, including 1 entities, in source file db/mux_lob.tdf
+    Info (12023): Found entity 1: mux_lob File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/mux_lob.tdf Line: 22
+Info (12128): Elaborating entity "mux_lob" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|zbuffer:depth_memory|zbuffer_320x240_8bit:zbuffer_ram|altsyncram:zbuffer_ram|altsyncram_9if1:auto_generated|mux_lob:mux3" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/altsyncram_9if1.tdf Line: 48
+Info (12128): Elaborating entity "vga_controller_640x480" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|vga_controller_640x480:display" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/graphics_pipeline.sv Line: 266
+Info (12128): Elaborating entity "vga_timing_640x480" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|vga_controller_640x480:display|vga_timing_640x480:timing" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/video/vga_controller.sv Line: 299
+Info (12128): Elaborating entity "vga_page_swap_controller" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|vga_controller_640x480:display|vga_page_swap_controller:page_swap" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/video/vga_controller.sv Line: 314
+Info (12128): Elaborating entity "framebuffer" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|vga_controller_640x480:display|framebuffer:framebuffer0" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/video/vga_controller.sv Line: 352
+Info (12128): Elaborating entity "framebuffer_320x240_8bit" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|vga_controller_640x480:display|framebuffer:framebuffer0|framebuffer_320x240_8bit:framebuffer_ram" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/framebuffer.sv Line: 87
+Info (12128): Elaborating entity "palette_256x24" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|vga_controller_640x480:display|palette_256x24:palette" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/video/vga_controller.sv Line: 384
+Info (12128): Elaborating entity "altsyncram" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|vga_controller_640x480:display|palette_256x24:palette|altsyncram:palette_ram" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/palette_ip.v Line: 43
+Info (12130): Elaborated megafunction instantiation "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|vga_controller_640x480:display|palette_256x24:palette|altsyncram:palette_ram" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/palette_ip.v Line: 43
+Info (12133): Instantiated megafunction "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|vga_controller_640x480:display|palette_256x24:palette|altsyncram:palette_ram" with the following parameter: File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/palette_ip.v Line: 43
+    Info (12134): Parameter "operation_mode" = "DUAL_PORT"
+    Info (12134): Parameter "width_a" = "24"
+    Info (12134): Parameter "widthad_a" = "8"
+    Info (12134): Parameter "numwords_a" = "256"
+    Info (12134): Parameter "width_b" = "24"
+    Info (12134): Parameter "widthad_b" = "8"
+    Info (12134): Parameter "numwords_b" = "256"
+    Info (12134): Parameter "address_reg_b" = "CLOCK1"
+    Info (12134): Parameter "rdcontrol_reg_b" = "CLOCK1"
+    Info (12134): Parameter "outdata_reg_b" = "UNREGISTERED"
+    Info (12134): Parameter "ram_block_type" = "M9K"
+    Info (12134): Parameter "intended_device_family" = "Cyclone IV E"
+    Info (12134): Parameter "init_file" = "external/renderer/rtl/memory/palette_default.mif"
+    Info (12134): Parameter "power_up_uninitialized" = "FALSE"
+    Info (12134): Parameter "read_during_write_mode_mixed_ports" = "DONT_CARE"
+    Info (12134): Parameter "lpm_type" = "altsyncram"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_76l1.tdf
+    Info (12023): Found entity 1: altsyncram_76l1 File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/altsyncram_76l1.tdf Line: 27
+Info (12128): Elaborating entity "altsyncram_76l1" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|vga_controller_640x480:display|palette_256x24:palette|altsyncram:palette_ram|altsyncram_76l1:auto_generated" File: c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
+Warning (276020): Inferred RAM node "soc_top:soc|soc_memory:memory|soc_mmio:mmio|fifo_rtl_0" from synchronous design logic.  Pass-through logic has been added to match the read-during-write behavior of the original design.
+Warning (276020): Inferred RAM node "soc_top:soc|soc_memory:memory|sdram_cache:external_memory.cached.cache|tags_rtl_0" from synchronous design logic.  Pass-through logic has been added to match the read-during-write behavior of the original design.
+Warning (276027): Inferred dual-clock RAM node "udp_controls:controls|ethernet_command_receiver:ethernet|async_byte_fifo:receive_fifo|async_fifo:fifo|memory_rtl_0" from synchronous design logic.  The read-during-write behavior of a dual-clock RAM is undefined and may not match the behavior of the original design.
+Warning (276027): Inferred dual-clock RAM node "udp_controls:controls|ethernet_command_receiver:ethernet|async_fifo:packet_response_queue|memory_rtl_0" from synchronous design logic.  The read-during-write behavior of a dual-clock RAM is undefined and may not match the behavior of the original design.
+Warning (276027): Inferred dual-clock RAM node "udp_controls:controls|ethernet_command_receiver:ethernet|async_fifo:arp_response_queue|memory_rtl_0" from synchronous design logic.  The read-during-write behavior of a dual-clock RAM is undefined and may not match the behavior of the original design.
+Warning (276027): Inferred dual-clock RAM node "udp_controls:controls|ethernet_command_receiver:ethernet|async_fifo:frame_response_queue|memory_rtl_0" from synchronous design logic.  The read-during-write behavior of a dual-clock RAM is undefined and may not match the behavior of the original design.
+Warning (276020): Inferred RAM node "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|triangle_fifo:triangle_feed|storage3_rtl_0" from synchronous design logic.  Pass-through logic has been added to match the read-during-write behavior of the original design.
+Warning (276020): Inferred RAM node "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|triangle_fifo:triangle_feed|storage2_rtl_0" from synchronous design logic.  Pass-through logic has been added to match the read-during-write behavior of the original design.
+Warning (276020): Inferred RAM node "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|triangle_fifo:triangle_feed|storage1_rtl_0" from synchronous design logic.  Pass-through logic has been added to match the read-during-write behavior of the original design.
+Warning (276020): Inferred RAM node "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|triangle_fifo:triangle_feed|storage0_rtl_0" from synchronous design logic.  Pass-through logic has been added to match the read-during-write behavior of the original design.
+Warning (276020): Inferred RAM node "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|triangle_fifo:triangle_feed|storage4_rtl_0" from synchronous design logic.  Pass-through logic has been added to match the read-during-write behavior of the original design.
+Info (276014): Found 3 instances of uninferred RAM logic
+    Info (276004): RAM logic "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|transform_3d_pipeline:transform|clipped_x" is uninferred due to inappropriate RAM size File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/transform_3d_pipeline.sv Line: 49
+    Info (276004): RAM logic "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|transform_3d_pipeline:transform|clipped_y" is uninferred due to inappropriate RAM size File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/transform_3d_pipeline.sv Line: 50
+    Info (276004): RAM logic "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|transform_3d_pipeline:transform|clipped_z" is uninferred due to inappropriate RAM size File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/transform_3d_pipeline.sv Line: 51
+Info (19000): Inferred 15 megafunctions from design logic
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "soc_top:soc|soc_memory:memory|soc_mmio:mmio|fifo_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 8
+        Info (286033): Parameter WIDTHAD_A set to 8
+        Info (286033): Parameter NUMWORDS_A set to 256
+        Info (286033): Parameter WIDTH_B set to 8
+        Info (286033): Parameter WIDTHAD_B set to 8
+        Info (286033): Parameter NUMWORDS_B set to 256
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "soc_top:soc|soc_memory:memory|sdram_cache:external_memory.cached.cache|tags_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 15
+        Info (286033): Parameter WIDTHAD_A set to 7
+        Info (286033): Parameter NUMWORDS_A set to 128
+        Info (286033): Parameter WIDTH_B set to 15
+        Info (286033): Parameter WIDTHAD_B set to 7
+        Info (286033): Parameter NUMWORDS_B set to 128
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "udp_controls:controls|ethernet_command_receiver:ethernet|async_byte_fifo:receive_fifo|async_fifo:fifo|memory_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 8
+        Info (286033): Parameter WIDTHAD_A set to 11
+        Info (286033): Parameter NUMWORDS_A set to 2048
+        Info (286033): Parameter WIDTH_B set to 8
+        Info (286033): Parameter WIDTHAD_B set to 11
+        Info (286033): Parameter NUMWORDS_B set to 2048
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK1
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter RAM_BLOCK_TYPE set to M9K
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "udp_controls:controls|ethernet_command_receiver:ethernet|async_fifo:packet_response_queue|memory_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 162
+        Info (286033): Parameter WIDTHAD_A set to 2
+        Info (286033): Parameter NUMWORDS_A set to 4
+        Info (286033): Parameter WIDTH_B set to 162
+        Info (286033): Parameter WIDTHAD_B set to 2
+        Info (286033): Parameter NUMWORDS_B set to 4
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK1
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter RAM_BLOCK_TYPE set to M9K
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "udp_controls:controls|ethernet_command_receiver:ethernet|async_fifo:arp_response_queue|memory_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 80
+        Info (286033): Parameter WIDTHAD_A set to 2
+        Info (286033): Parameter NUMWORDS_A set to 4
+        Info (286033): Parameter WIDTH_B set to 80
+        Info (286033): Parameter WIDTHAD_B set to 2
+        Info (286033): Parameter NUMWORDS_B set to 4
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK1
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter RAM_BLOCK_TYPE set to M9K
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "udp_controls:controls|ethernet_command_receiver:ethernet|async_fifo:frame_response_queue|memory_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 263
+        Info (286033): Parameter WIDTHAD_A set to 2
+        Info (286033): Parameter NUMWORDS_A set to 4
+        Info (286033): Parameter WIDTH_B set to 263
+        Info (286033): Parameter WIDTHAD_B set to 2
+        Info (286033): Parameter NUMWORDS_B set to 4
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK1
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter RAM_BLOCK_TYPE set to M9K
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "udp_controls:controls|ethernet_command_receiver:ethernet|graphics_command_stream_decoder:decoder|bulk_payload_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 8
+        Info (286033): Parameter WIDTHAD_A set to 8
+        Info (286033): Parameter NUMWORDS_A set to 255
+        Info (286033): Parameter WIDTH_B set to 8
+        Info (286033): Parameter WIDTHAD_B set to 8
+        Info (286033): Parameter NUMWORDS_B set to 255
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter RAM_BLOCK_TYPE set to M9K
+        Info (286033): Parameter READ_DURING_WRITE_MODE_MIXED_PORTS set to OLD_DATA
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "soc_top:soc|graphics_stream_renderer:graphics|graphics_command_stream_decoder:decoder|bulk_payload_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 8
+        Info (286033): Parameter WIDTHAD_A set to 8
+        Info (286033): Parameter NUMWORDS_A set to 255
+        Info (286033): Parameter WIDTH_B set to 8
+        Info (286033): Parameter WIDTHAD_B set to 8
+        Info (286033): Parameter NUMWORDS_B set to 255
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter RAM_BLOCK_TYPE set to M9K
+        Info (286033): Parameter READ_DURING_WRITE_MODE_MIXED_PORTS set to OLD_DATA
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|triangle_fifo:triangle_feed|storage3_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 36
+        Info (286033): Parameter WIDTHAD_A set to 6
+        Info (286033): Parameter NUMWORDS_A set to 64
+        Info (286033): Parameter WIDTH_B set to 36
+        Info (286033): Parameter WIDTHAD_B set to 6
+        Info (286033): Parameter NUMWORDS_B set to 64
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|triangle_fifo:triangle_feed|storage2_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 36
+        Info (286033): Parameter WIDTHAD_A set to 6
+        Info (286033): Parameter NUMWORDS_A set to 64
+        Info (286033): Parameter WIDTH_B set to 36
+        Info (286033): Parameter WIDTHAD_B set to 6
+        Info (286033): Parameter NUMWORDS_B set to 64
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|triangle_fifo:triangle_feed|storage1_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 36
+        Info (286033): Parameter WIDTHAD_A set to 6
+        Info (286033): Parameter NUMWORDS_A set to 64
+        Info (286033): Parameter WIDTH_B set to 36
+        Info (286033): Parameter WIDTHAD_B set to 6
+        Info (286033): Parameter NUMWORDS_B set to 64
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|triangle_fifo:triangle_feed|storage0_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 36
+        Info (286033): Parameter WIDTHAD_A set to 6
+        Info (286033): Parameter NUMWORDS_A set to 64
+        Info (286033): Parameter WIDTH_B set to 36
+        Info (286033): Parameter WIDTHAD_B set to 6
+        Info (286033): Parameter NUMWORDS_B set to 64
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|triangle_fifo:triangle_feed|storage4_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 8
+        Info (286033): Parameter WIDTHAD_A set to 6
+        Info (286033): Parameter NUMWORDS_A set to 64
+        Info (286033): Parameter WIDTH_B set to 8
+        Info (286033): Parameter WIDTHAD_B set to 6
+        Info (286033): Parameter NUMWORDS_B set to 64
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|indexed_mesh_store:mesh_store|vertex_memory_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 48
+        Info (286033): Parameter WIDTHAD_A set to 11
+        Info (286033): Parameter NUMWORDS_A set to 2048
+        Info (286033): Parameter WIDTH_B set to 48
+        Info (286033): Parameter WIDTHAD_B set to 11
+        Info (286033): Parameter NUMWORDS_B set to 2048
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter RAM_BLOCK_TYPE set to M9K
+        Info (286033): Parameter READ_DURING_WRITE_MODE_MIXED_PORTS set to OLD_DATA
+    Info (276029): Inferred altsyncram megafunction from the following design logic: "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|indexed_mesh_store:mesh_store|index_memory_rtl_0" 
+        Info (286033): Parameter OPERATION_MODE set to DUAL_PORT
+        Info (286033): Parameter WIDTH_A set to 29
+        Info (286033): Parameter WIDTHAD_A set to 12
+        Info (286033): Parameter NUMWORDS_A set to 4096
+        Info (286033): Parameter WIDTH_B set to 29
+        Info (286033): Parameter WIDTHAD_B set to 12
+        Info (286033): Parameter NUMWORDS_B set to 4096
+        Info (286033): Parameter ADDRESS_ACLR_A set to NONE
+        Info (286033): Parameter OUTDATA_REG_B set to UNREGISTERED
+        Info (286033): Parameter ADDRESS_ACLR_B set to NONE
+        Info (286033): Parameter OUTDATA_ACLR_B set to NONE
+        Info (286033): Parameter ADDRESS_REG_B set to CLOCK0
+        Info (286033): Parameter INDATA_ACLR_A set to NONE
+        Info (286033): Parameter WRCONTROL_ACLR_A set to NONE
+        Info (286033): Parameter RAM_BLOCK_TYPE set to M9K
+        Info (286033): Parameter READ_DURING_WRITE_MODE_MIXED_PORTS set to OLD_DATA
+Info (278001): Inferred 29 megafunctions from design logic
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|transform_3d_pipeline:transform|Mult4" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/transform_3d_pipeline.sv Line: 158
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|transform_3d_pipeline:transform|Mult3" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/transform_3d_pipeline.sv Line: 157
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|renderer:rasterizer|Mult1" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/renderer.sv Line: 169
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|renderer:rasterizer|Mult0" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/renderer.sv Line: 168
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|indexed_mesh_store:mesh_store|Mult2" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/indexed_mesh_store.sv Line: 159
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|indexed_mesh_store:mesh_store|Mult1" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/indexed_mesh_store.sv Line: 158
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|indexed_mesh_store:mesh_store|Mult0" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/indexed_mesh_store.sv Line: 157
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|renderer:rasterizer|Mult7" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/renderer.sv Line: 169
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|renderer:rasterizer|Mult6" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/renderer.sv Line: 168
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|renderer:rasterizer|Mult9" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/renderer.sv Line: 169
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|renderer:rasterizer|Mult8" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/renderer.sv Line: 168
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|renderer:rasterizer|Mult11" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/renderer.sv Line: 169
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|renderer:rasterizer|Mult10" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/renderer.sv Line: 168
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|transform_3d_pipeline:transform|Mult5" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/transform_3d_pipeline.sv Line: 97
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|transform_3d_pipeline:transform|Mult6" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/transform_3d_pipeline.sv Line: 98
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|transform_3d_pipeline:transform|Mult7" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/transform_3d_pipeline.sv Line: 112
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|transform_3d_pipeline:transform|Mult8" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/transform_3d_pipeline.sv Line: 113
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|transform_3d_pipeline:transform|Mult2" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/transform_3d_pipeline.sv Line: 132
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|transform_3d_pipeline:transform|Mult0" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/transform_3d_pipeline.sv Line: 132
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|transform_3d_pipeline:transform|Mult1" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/transform_3d_pipeline.sv Line: 132
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|view_transform_stage:view_transform|Mult2" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/view_transform_stage.sv Line: 94
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|renderer:rasterizer|Mult13" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/renderer.sv Line: 399
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|renderer:rasterizer|Mult12" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/renderer.sv Line: 398
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|view_transform_stage:view_transform|Mult1" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/view_transform_stage.sv Line: 93
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|view_transform_stage:view_transform|Mult0" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/view_transform_stage.sv Line: 92
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|renderer:rasterizer|Mult2" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/renderer.sv Line: 265
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|renderer:rasterizer|Mult3" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/renderer.sv Line: 266
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|renderer:rasterizer|Mult4" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/renderer.sv Line: 267
+    Info (278003): Inferred multiplier megafunction ("lpm_mult") from the following logic: "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|renderer:rasterizer|Mult5" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/renderer.sv Line: 268
+Info (12130): Elaborated megafunction instantiation "soc_top:soc|soc_memory:memory|soc_mmio:mmio|altsyncram:fifo_rtl_0"
+Info (12133): Instantiated megafunction "soc_top:soc|soc_memory:memory|soc_mmio:mmio|altsyncram:fifo_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "8"
+    Info (12134): Parameter "WIDTHAD_A" = "8"
+    Info (12134): Parameter "NUMWORDS_A" = "256"
+    Info (12134): Parameter "WIDTH_B" = "8"
+    Info (12134): Parameter "WIDTHAD_B" = "8"
+    Info (12134): Parameter "NUMWORDS_B" = "256"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_psd1.tdf
+    Info (12023): Found entity 1: altsyncram_psd1 File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/altsyncram_psd1.tdf Line: 27
+Info (12130): Elaborated megafunction instantiation "soc_top:soc|soc_memory:memory|sdram_cache:external_memory.cached.cache|altsyncram:tags_rtl_0"
+Info (12133): Instantiated megafunction "soc_top:soc|soc_memory:memory|sdram_cache:external_memory.cached.cache|altsyncram:tags_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "15"
+    Info (12134): Parameter "WIDTHAD_A" = "7"
+    Info (12134): Parameter "NUMWORDS_A" = "128"
+    Info (12134): Parameter "WIDTH_B" = "15"
+    Info (12134): Parameter "WIDTHAD_B" = "7"
+    Info (12134): Parameter "NUMWORDS_B" = "128"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_8gc1.tdf
+    Info (12023): Found entity 1: altsyncram_8gc1 File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/altsyncram_8gc1.tdf Line: 27
+Info (12130): Elaborated megafunction instantiation "udp_controls:controls|ethernet_command_receiver:ethernet|async_byte_fifo:receive_fifo|async_fifo:fifo|altsyncram:memory_rtl_0"
+Info (12133): Instantiated megafunction "udp_controls:controls|ethernet_command_receiver:ethernet|async_byte_fifo:receive_fifo|async_fifo:fifo|altsyncram:memory_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "8"
+    Info (12134): Parameter "WIDTHAD_A" = "11"
+    Info (12134): Parameter "NUMWORDS_A" = "2048"
+    Info (12134): Parameter "WIDTH_B" = "8"
+    Info (12134): Parameter "WIDTHAD_B" = "11"
+    Info (12134): Parameter "NUMWORDS_B" = "2048"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK1"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+    Info (12134): Parameter "RAM_BLOCK_TYPE" = "M9K"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_ahg1.tdf
+    Info (12023): Found entity 1: altsyncram_ahg1 File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/altsyncram_ahg1.tdf Line: 27
+Info (12130): Elaborated megafunction instantiation "udp_controls:controls|ethernet_command_receiver:ethernet|async_fifo:packet_response_queue|altsyncram:memory_rtl_0"
+Info (12133): Instantiated megafunction "udp_controls:controls|ethernet_command_receiver:ethernet|async_fifo:packet_response_queue|altsyncram:memory_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "162"
+    Info (12134): Parameter "WIDTHAD_A" = "2"
+    Info (12134): Parameter "NUMWORDS_A" = "4"
+    Info (12134): Parameter "WIDTH_B" = "162"
+    Info (12134): Parameter "WIDTHAD_B" = "2"
+    Info (12134): Parameter "NUMWORDS_B" = "4"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK1"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+    Info (12134): Parameter "RAM_BLOCK_TYPE" = "M9K"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_oag1.tdf
+    Info (12023): Found entity 1: altsyncram_oag1 File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/altsyncram_oag1.tdf Line: 27
+Info (12130): Elaborated megafunction instantiation "udp_controls:controls|ethernet_command_receiver:ethernet|async_fifo:arp_response_queue|altsyncram:memory_rtl_0"
+Info (12133): Instantiated megafunction "udp_controls:controls|ethernet_command_receiver:ethernet|async_fifo:arp_response_queue|altsyncram:memory_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "80"
+    Info (12134): Parameter "WIDTHAD_A" = "2"
+    Info (12134): Parameter "NUMWORDS_A" = "4"
+    Info (12134): Parameter "WIDTH_B" = "80"
+    Info (12134): Parameter "WIDTHAD_B" = "2"
+    Info (12134): Parameter "NUMWORDS_B" = "4"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK1"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+    Info (12134): Parameter "RAM_BLOCK_TYPE" = "M9K"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_m7g1.tdf
+    Info (12023): Found entity 1: altsyncram_m7g1 File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/altsyncram_m7g1.tdf Line: 27
+Info (12130): Elaborated megafunction instantiation "udp_controls:controls|ethernet_command_receiver:ethernet|async_fifo:frame_response_queue|altsyncram:memory_rtl_0"
+Info (12133): Instantiated megafunction "udp_controls:controls|ethernet_command_receiver:ethernet|async_fifo:frame_response_queue|altsyncram:memory_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "263"
+    Info (12134): Parameter "WIDTHAD_A" = "2"
+    Info (12134): Parameter "NUMWORDS_A" = "4"
+    Info (12134): Parameter "WIDTH_B" = "263"
+    Info (12134): Parameter "WIDTHAD_B" = "2"
+    Info (12134): Parameter "NUMWORDS_B" = "4"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK1"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+    Info (12134): Parameter "RAM_BLOCK_TYPE" = "M9K"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_tag1.tdf
+    Info (12023): Found entity 1: altsyncram_tag1 File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/altsyncram_tag1.tdf Line: 27
+Info (12130): Elaborated megafunction instantiation "udp_controls:controls|ethernet_command_receiver:ethernet|graphics_command_stream_decoder:decoder|altsyncram:bulk_payload_rtl_0"
+Info (12133): Instantiated megafunction "udp_controls:controls|ethernet_command_receiver:ethernet|graphics_command_stream_decoder:decoder|altsyncram:bulk_payload_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "8"
+    Info (12134): Parameter "WIDTHAD_A" = "8"
+    Info (12134): Parameter "NUMWORDS_A" = "255"
+    Info (12134): Parameter "WIDTH_B" = "8"
+    Info (12134): Parameter "WIDTHAD_B" = "8"
+    Info (12134): Parameter "NUMWORDS_B" = "255"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+    Info (12134): Parameter "RAM_BLOCK_TYPE" = "M9K"
+    Info (12134): Parameter "READ_DURING_WRITE_MODE_MIXED_PORTS" = "OLD_DATA"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_5pi1.tdf
+    Info (12023): Found entity 1: altsyncram_5pi1 File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/altsyncram_5pi1.tdf Line: 27
+Info (12130): Elaborated megafunction instantiation "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|triangle_fifo:triangle_feed|altsyncram:storage3_rtl_0"
+Info (12133): Instantiated megafunction "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|triangle_fifo:triangle_feed|altsyncram:storage3_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "36"
+    Info (12134): Parameter "WIDTHAD_A" = "6"
+    Info (12134): Parameter "NUMWORDS_A" = "64"
+    Info (12134): Parameter "WIDTH_B" = "36"
+    Info (12134): Parameter "WIDTHAD_B" = "6"
+    Info (12134): Parameter "NUMWORDS_B" = "64"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_hsd1.tdf
+    Info (12023): Found entity 1: altsyncram_hsd1 File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/altsyncram_hsd1.tdf Line: 27
+Info (12130): Elaborated megafunction instantiation "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|triangle_fifo:triangle_feed|altsyncram:storage4_rtl_0"
+Info (12133): Instantiated megafunction "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|triangle_fifo:triangle_feed|altsyncram:storage4_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "8"
+    Info (12134): Parameter "WIDTHAD_A" = "6"
+    Info (12134): Parameter "NUMWORDS_A" = "64"
+    Info (12134): Parameter "WIDTH_B" = "8"
+    Info (12134): Parameter "WIDTHAD_B" = "6"
+    Info (12134): Parameter "NUMWORDS_B" = "64"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_fpd1.tdf
+    Info (12023): Found entity 1: altsyncram_fpd1 File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/altsyncram_fpd1.tdf Line: 27
+Info (12130): Elaborated megafunction instantiation "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|indexed_mesh_store:mesh_store|altsyncram:vertex_memory_rtl_0"
+Info (12133): Instantiated megafunction "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|indexed_mesh_store:mesh_store|altsyncram:vertex_memory_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "48"
+    Info (12134): Parameter "WIDTHAD_A" = "11"
+    Info (12134): Parameter "NUMWORDS_A" = "2048"
+    Info (12134): Parameter "WIDTH_B" = "48"
+    Info (12134): Parameter "WIDTHAD_B" = "11"
+    Info (12134): Parameter "NUMWORDS_B" = "2048"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+    Info (12134): Parameter "RAM_BLOCK_TYPE" = "M9K"
+    Info (12134): Parameter "READ_DURING_WRITE_MODE_MIXED_PORTS" = "OLD_DATA"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_52j1.tdf
+    Info (12023): Found entity 1: altsyncram_52j1 File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/altsyncram_52j1.tdf Line: 27
+Info (12130): Elaborated megafunction instantiation "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|indexed_mesh_store:mesh_store|altsyncram:index_memory_rtl_0"
+Info (12133): Instantiated megafunction "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|indexed_mesh_store:mesh_store|altsyncram:index_memory_rtl_0" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "29"
+    Info (12134): Parameter "WIDTHAD_A" = "12"
+    Info (12134): Parameter "NUMWORDS_A" = "4096"
+    Info (12134): Parameter "WIDTH_B" = "29"
+    Info (12134): Parameter "WIDTHAD_B" = "12"
+    Info (12134): Parameter "NUMWORDS_B" = "4096"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+    Info (12134): Parameter "RAM_BLOCK_TYPE" = "M9K"
+    Info (12134): Parameter "READ_DURING_WRITE_MODE_MIXED_PORTS" = "OLD_DATA"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_f2j1.tdf
+    Info (12023): Found entity 1: altsyncram_f2j1 File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/altsyncram_f2j1.tdf Line: 27
+Info (12130): Elaborated megafunction instantiation "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|transform_3d_pipeline:transform|lpm_mult:Mult4" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/transform_3d_pipeline.sv Line: 158
+Info (12133): Instantiated megafunction "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|transform_3d_pipeline:transform|lpm_mult:Mult4" with the following parameter: File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/transform_3d_pipeline.sv Line: 158
+    Info (12134): Parameter "LPM_WIDTHA" = "17"
+    Info (12134): Parameter "LPM_WIDTHB" = "17"
+    Info (12134): Parameter "LPM_WIDTHP" = "34"
+    Info (12134): Parameter "LPM_WIDTHR" = "34"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
+Info (12021): Found 1 design units, including 1 entities, in source file db/mult_76t.tdf
+    Info (12023): Found entity 1: mult_76t File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/mult_76t.tdf Line: 28
+Info (12130): Elaborated megafunction instantiation "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|renderer:rasterizer|lpm_mult:Mult1" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/renderer.sv Line: 169
+Info (12133): Instantiated megafunction "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|renderer:rasterizer|lpm_mult:Mult1" with the following parameter: File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/renderer.sv Line: 169
+    Info (12134): Parameter "LPM_WIDTHA" = "10"
+    Info (12134): Parameter "LPM_WIDTHB" = "11"
+    Info (12134): Parameter "LPM_WIDTHP" = "21"
+    Info (12134): Parameter "LPM_WIDTHR" = "21"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "6"
+Info (12021): Found 1 design units, including 1 entities, in source file db/mult_n5t.tdf
+    Info (12023): Found entity 1: mult_n5t File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/mult_n5t.tdf Line: 28
+Info (12130): Elaborated megafunction instantiation "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|renderer:rasterizer|lpm_mult:Mult0" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/renderer.sv Line: 168
+Info (12133): Instantiated megafunction "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|renderer:rasterizer|lpm_mult:Mult0" with the following parameter: File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/renderer.sv Line: 168
+    Info (12134): Parameter "LPM_WIDTHA" = "11"
+    Info (12134): Parameter "LPM_WIDTHB" = "10"
+    Info (12134): Parameter "LPM_WIDTHP" = "21"
+    Info (12134): Parameter "LPM_WIDTHR" = "21"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "6"
+Info (12021): Found 1 design units, including 1 entities, in source file db/mult_o5t.tdf
+    Info (12023): Found entity 1: mult_o5t File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/mult_o5t.tdf Line: 28
+Info (12130): Elaborated megafunction instantiation "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|indexed_mesh_store:mesh_store|lpm_mult:Mult2" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/indexed_mesh_store.sv Line: 159
+Info (12133): Instantiated megafunction "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|indexed_mesh_store:mesh_store|lpm_mult:Mult2" with the following parameter: File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/indexed_mesh_store.sv Line: 159
+    Info (12134): Parameter "LPM_WIDTHA" = "16"
+    Info (12134): Parameter "LPM_WIDTHB" = "16"
+    Info (12134): Parameter "LPM_WIDTHP" = "32"
+    Info (12134): Parameter "LPM_WIDTHR" = "32"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
+Info (12021): Found 1 design units, including 1 entities, in source file db/mult_36t.tdf
+    Info (12023): Found entity 1: mult_36t File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/mult_36t.tdf Line: 28
+Info (12130): Elaborated megafunction instantiation "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|transform_3d_pipeline:transform|lpm_mult:Mult6" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/transform_3d_pipeline.sv Line: 98
+Info (12133): Instantiated megafunction "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|transform_3d_pipeline:transform|lpm_mult:Mult6" with the following parameter: File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/transform_3d_pipeline.sv Line: 98
+    Info (12134): Parameter "LPM_WIDTHA" = "32"
+    Info (12134): Parameter "LPM_WIDTHB" = "16"
+    Info (12134): Parameter "LPM_WIDTHP" = "48"
+    Info (12134): Parameter "LPM_WIDTHR" = "48"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
+Info (12021): Found 1 design units, including 1 entities, in source file db/mult_86t.tdf
+    Info (12023): Found entity 1: mult_86t File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/mult_86t.tdf Line: 30
+Info (12130): Elaborated megafunction instantiation "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|transform_3d_pipeline:transform|lpm_mult:Mult2" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/transform_3d_pipeline.sv Line: 132
+Info (12133): Instantiated megafunction "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|transform_3d_pipeline:transform|lpm_mult:Mult2" with the following parameter: File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/transform_3d_pipeline.sv Line: 132
+    Info (12134): Parameter "LPM_WIDTHA" = "17"
+    Info (12134): Parameter "LPM_WIDTHB" = "18"
+    Info (12134): Parameter "LPM_WIDTHP" = "35"
+    Info (12134): Parameter "LPM_WIDTHR" = "35"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "6"
+Info (12021): Found 1 design units, including 1 entities, in source file db/mult_a6t.tdf
+    Info (12023): Found entity 1: mult_a6t File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/mult_a6t.tdf Line: 28
+Info (12130): Elaborated megafunction instantiation "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|renderer:rasterizer|lpm_mult:Mult13" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/renderer.sv Line: 399
+Info (12133): Instantiated megafunction "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|renderer:rasterizer|lpm_mult:Mult13" with the following parameter: File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/renderer.sv Line: 399
+    Info (12134): Parameter "LPM_WIDTHA" = "32"
+    Info (12134): Parameter "LPM_WIDTHB" = "10"
+    Info (12134): Parameter "LPM_WIDTHP" = "42"
+    Info (12134): Parameter "LPM_WIDTHR" = "42"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
+Info (12021): Found 1 design units, including 1 entities, in source file db/mult_s5t.tdf
+    Info (12023): Found entity 1: mult_s5t File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/mult_s5t.tdf Line: 30
+Info (12130): Elaborated megafunction instantiation "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|renderer:rasterizer|lpm_mult:Mult12" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/renderer.sv Line: 398
+Info (12133): Instantiated megafunction "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|renderer:rasterizer|lpm_mult:Mult12" with the following parameter: File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/renderer.sv Line: 398
+    Info (12134): Parameter "LPM_WIDTHA" = "32"
+    Info (12134): Parameter "LPM_WIDTHB" = "11"
+    Info (12134): Parameter "LPM_WIDTHP" = "43"
+    Info (12134): Parameter "LPM_WIDTHR" = "43"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
+Info (12021): Found 1 design units, including 1 entities, in source file db/mult_u5t.tdf
+    Info (12023): Found entity 1: mult_u5t File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/mult_u5t.tdf Line: 30
+Info (12130): Elaborated megafunction instantiation "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|renderer:rasterizer|lpm_mult:Mult2" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/renderer.sv Line: 265
+Info (12133): Instantiated megafunction "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|renderer:rasterizer|lpm_mult:Mult2" with the following parameter: File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/renderer.sv Line: 265
+    Info (12134): Parameter "LPM_WIDTHA" = "17"
+    Info (12134): Parameter "LPM_WIDTHB" = "10"
+    Info (12134): Parameter "LPM_WIDTHP" = "27"
+    Info (12134): Parameter "LPM_WIDTHR" = "27"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
+Info (12021): Found 1 design units, including 1 entities, in source file db/mult_26t.tdf
+    Info (12023): Found entity 1: mult_26t File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/mult_26t.tdf Line: 28
+Info (12130): Elaborated megafunction instantiation "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|renderer:rasterizer|lpm_mult:Mult4" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/renderer.sv Line: 267
+Info (12133): Instantiated megafunction "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|renderer:rasterizer|lpm_mult:Mult4" with the following parameter: File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/renderer.sv Line: 267
+    Info (12134): Parameter "LPM_WIDTHA" = "11"
+    Info (12134): Parameter "LPM_WIDTHB" = "17"
+    Info (12134): Parameter "LPM_WIDTHP" = "28"
+    Info (12134): Parameter "LPM_WIDTHR" = "28"
+    Info (12134): Parameter "LPM_WIDTHS" = "1"
+    Info (12134): Parameter "LPM_REPRESENTATION" = "SIGNED"
+    Info (12134): Parameter "INPUT_A_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "INPUT_B_IS_CONSTANT" = "NO"
+    Info (12134): Parameter "MAXIMIZE_SPEED" = "5"
+Info (12021): Found 1 design units, including 1 entities, in source file db/mult_46t.tdf
+    Info (12023): Found entity 1: mult_46t File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/mult_46t.tdf Line: 28
+Info (13014): Ignored 175 buffer(s)
+    Info (13019): Ignored 175 SOFT buffer(s)
+Info (13000): Registers with preset signals will power-up high File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/network/mii_response_transmitter.sv Line: 306
+Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "ENET0_TX_ER" is stuck at GND File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/boards/de2_115_soc_top.sv Line: 15
+    Warning (13410): Pin "VGA_SYNC_N" is stuck at GND File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/boards/de2_115_soc_top.sv Line: 18
+    Warning (13410): Pin "DRAM_CKE" is stuck at VCC File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/boards/de2_115_soc_top.sv Line: 20
+    Warning (13410): Pin "DRAM_CS_N" is stuck at GND File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/boards/de2_115_soc_top.sv Line: 20
+Info (286030): Timing-Driven Synthesis is running
+Info (17049): 35 registers lost all their fanouts during netlist optimizations.
+Info (144001): Generated suppressed messages file C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/build/quartus-cache/CacheSoC.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 2 node(s), including 0 DDIO, 2 PLL, 0 transceiver and 0 LCELL
+Info (21057): Implemented 25515 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 12 input pins
+    Info (21059): Implemented 65 output pins
+    Info (21060): Implemented 32 bidirectional pins
+    Info (21061): Implemented 24197 logic cells
+    Info (21064): Implemented 1141 RAM segments
+    Info (21065): Implemented 2 PLLs
+    Info (21062): Implemented 66 DSP elements
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 20 warnings
+    Info: Peak virtual memory: 5449 megabytes
+    Info: Processing ended: Fri Oct 09 15:46:51 2026
+    Info: Elapsed time: 00:02:25
+    Info: Total CPU time (on all processors): 00:02:14

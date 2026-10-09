@@ -18,6 +18,7 @@ module soc_mmio #(
     input logic [415:0] frame_statistics,
     input logic [7:0] buttons,
     input tri0 [23:0] look_state,
+    input tri0 [191:0] cache_statistics,
     output logic frame_pending,
     output logic [3:0] error_flags,
     output logic [31:0] scratch
@@ -48,7 +49,8 @@ module soc_mmio #(
     assign known_read = addr[7:0] == 8'h04 || addr[7:0] == 8'h08 ||
                         addr[7:0] == 8'h0c || addr[7:0] == 8'h14 ||
                         addr[7:0] == 8'h18 || addr[7:0] == 8'h1c ||
-                        (addr[7:0] >= 8'h20 && addr[7:0] <= 8'h5c) || addr[7:0] == 8'h64;
+                        (addr[7:0] >= 8'h20 && addr[7:0] <= 8'h5c) || addr[7:0] == 8'h64 ||
+                        (addr[7:0] >= 8'h68 && addr[7:0] <= 8'h7c);
     assign byte_data = fifo[rd_ptr];
     assign byte_valid = !reset && count != 0;
     assign pop = byte_valid && byte_ready;
@@ -74,6 +76,12 @@ module soc_mmio #(
                 8'h58: rdata = cycles;
                 8'h5c: rdata = CLOCK_HZ;
                 8'h64: rdata = 32'h494e0101;
+                8'h68: rdata = cache_statistics[191:160];
+                8'h6c: rdata = cache_statistics[159:128];
+                8'h70: rdata = cache_statistics[127:96];
+                8'h74: rdata = cache_statistics[95:64];
+                8'h78: rdata = cache_statistics[63:32];
+                8'h7c: rdata = cache_statistics[31:0];
                 default: rdata = stats_snapshot[415 - ((addr[7:0]-8'h20)/4)*32 -: 32];
             endcase
         end
