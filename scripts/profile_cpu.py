@@ -1,5 +1,5 @@
 """Collect atomic completed-frame CPU/GPU profiles; restore baseline software."""
-import argparse, hashlib, json, socket, threading, time
+import argparse, json, time
 from pathlib import Path
 from load_game import Loader,BEGIN,READ,STATUS,package_segments
 from keyboard_udp import packet
@@ -7,25 +7,31 @@ FIELDS=('cycles','retired','memory_freezes','dependency_bubbles','redirects','st
 PHASES=('tick','update','render','present')
 EXTRA=('command_cycles','fifo_wait_span_cycles','bytes','commands','tick_wall_cycles','update_wall_cycles','cpu_wall_cycles','present_wall_cycles','frame_wall_cycles','frame','clock_hz','cpu_abi')
 GPU=('triangles_submitted','triangles_clipped','triangles_culled','bounding_box_pixels','pixels_inside','depth_rejected','pixels_written','geometry_cycles','geometry_stall_cycles','raster_cycles','clear_cycles','total_cycles','swap_wait_cycles')
-def controls(stop,ip,port,moving,events):
-    started=time.monotonic();seq=0
-    with socket.socket(socket.AF_INET,socket.SOCK_DGRAM) as sock:
-        try:
-            while not stop.is_set():
-                elapsed=time.monotonic()-started
-                # Three-second standing warmup, then repeat forward/left/back/right.
-                mask=(4,1,8,2)[int(elapsed-3)%4] if moving and elapsed>=3 else 0
-                sock.sendto(packet(seq,seq,mask),(ip,port))
-                events.append({'t':elapsed,'mask':mask,'sequence':seq&255});seq+=1
-                stop.wait(.02)
-        finally:sock.sendto(packet(seq,seq,0),(ip,port))
+def window(loader,duration,moving,events,collect_samples=False):
+    # The board uses the latest received UDP source port for replies. A single
+    # socket avoids a concurrent controls sender redirecting loader responses.
+    started=time.monotonic();next_sample=started;seq=0;samples=[]
+    while time.monotonic()-started<duration:
+        now=time.monotonic();elapsed=now-started
+        mask=(4,1,8,2)[int(elapsed)%4] if moving else 0
+        loader.socket.sendto(packet(seq,seq,mask),loader.target)
+        events.append({'t':elapsed,'mask':mask,'sequence':seq&255});seq+=1
+        if collect_samples and now>=next_sample:
+            status=loader.operation(STATUS)
+            if status['held'] or not status['initialized'] or not 0<status['scratch']<0x10000000:raise RuntimeError('Game failed: '+str(status))
+            samples.append({'t':time.monotonic(),'frame':status['scratch']})
+            next_sample=now+.25
+        time.sleep(.02)
+    loader.socket.sendto(packet(seq,seq,0),loader.target)
+    return samples
 def read_words(loader,address,count):
     values=[]
     for i in range(0,count,3): values.extend(loader.operation(READ,address+4*i,count=min(3,count-i))['words'][:min(3,count-i)])
     return values
 
-def collect(package,symbols,restore,output,ip='192.168.7.2',port=4000,trials=3,moving=False,instrumented=True):
+def collect(package,symbols,restore,output,ip='192.168.7.2',port=4000,trials=3,moving=False,instrumented=True,reuse_immutable_assets=False):
     candidate=package_segments(package); baseline=package_segments(restore)
+    if reuse_immutable_assets and [(a,d) for a,d,_ in candidate if a>=0x80000000] != [(a,d) for a,d,_ in baseline if a>=0x80000000]:raise ValueError('Reused assets must match baseline exactly')
     syms=json.loads(symbols.read_text())
     needed=['game_player','game_frame_cycles','game_cpu_cycles','game_update_cycles','game_present_cycles']
     if instrumented:needed+=['game_profile_slot','game_profile_slots']
@@ -34,21 +40,22 @@ def collect(package,symbols,restore,output,ip='192.168.7.2',port=4000,trials=3,m
     if instrumented and syms['game_profile_slots']+2*53*4>65536:raise ValueError('Snapshot outside RAM')
     report={'package':str(package.resolve()),'segments':json.loads(package.read_text())['segments'],
             'scope':'Wall-clock controlled movement diagnostic; not a cycle-identical route' if moving else 'Standing spawn view',
-            'instrumented':instrumented,'trials':[],'restore':str(restore.resolve())}
-    loader=Loader(ip,port);stop=None;thread=None
+            'instrumented':instrumented,'reuse_immutable_assets':reuse_immutable_assets,'trials':[],'restore':str(restore.resolve())}
+    loader=Loader(ip,port)
     try:
         for trial in range(trials):
-            loader.transfer(candidate)
-            events=[];stop=threading.Event()
-            thread=threading.Thread(target=controls,args=(stop,ip,port,moving,events),daemon=True);thread.start()
-            time.sleep(3)
-            samples=[]
-            for i in range(21):
-                status=loader.operation(STATUS)
-                if status['held'] or not status['initialized'] or not 0<status['scratch']<0x10000000:raise RuntimeError('Game failed: '+str(status))
-                samples.append({'t':time.monotonic(),'frame':status['scratch']})
-                if i<20:time.sleep(.25)
-            stop.set();thread.join();thread=None
+            loader.transfer(candidate if trial==0 or not reuse_immutable_assets else [segment for segment in candidate if segment[0]<65536])
+            deadline=time.monotonic()+30
+            while time.monotonic()<deadline:
+                initial=loader.operation(STATUS)
+                if initial['scratch']&0xffff0000==0xdead0000:raise RuntimeError('Startup failure: '+str(initial))
+                if initial['initialized'] and not initial['held'] and 0<initial['scratch']<0x10000000:break
+                time.sleep(.05)
+            else:raise RuntimeError('Startup did not finish: '+str(initial))
+            events=[]
+            window(loader,3,False,events)
+            events=[]
+            samples=window(loader,5.3,moving,events,True)
             loader.operation(BEGIN)
             position=read_words(loader,syms['game_player'],3)
             position=[v if v<0x80000000 else v-0x100000000 for v in position]
@@ -70,10 +77,8 @@ def collect(package,symbols,restore,output,ip='192.168.7.2',port=4000,trials=3,m
     except Exception as exc:
         report['failure']=repr(exc);raise
     finally:
-        if stop:stop.set()
-        if thread:thread.join()
         try:
-            loader.transfer(baseline)
+            loader.transfer([segment for segment in baseline if segment[0]<65536] if reuse_immutable_assets and 'failure' not in report else baseline)
             deadline=time.monotonic()+30
             while time.monotonic()<deadline:
                 status=loader.operation(STATUS)
@@ -84,6 +89,6 @@ def collect(package,symbols,restore,output,ip='192.168.7.2',port=4000,trials=3,m
         finally:loader.close();output.parent.mkdir(parents=True,exist_ok=True);output.write_text(json.dumps(report,indent=2)+'\n')
     return report
 if __name__=='__main__':
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('package',type=Path);p.add_argument('--symbols',type=Path,required=True);p.add_argument('--restore',type=Path,required=True);p.add_argument('--out',type=Path,required=True);p.add_argument('--ip',default='192.168.7.2');p.add_argument('--port',type=int,default=4000);p.add_argument('--trials',type=int,default=3);p.add_argument('--moving',action='store_true');p.add_argument('--uninstrumented',action='store_true');a=p.parse_args()
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('package',type=Path);p.add_argument('--symbols',type=Path,required=True);p.add_argument('--restore',type=Path,required=True);p.add_argument('--out',type=Path,required=True);p.add_argument('--ip',default='192.168.7.2');p.add_argument('--port',type=int,default=4000);p.add_argument('--trials',type=int,default=3);p.add_argument('--moving',action='store_true');p.add_argument('--uninstrumented',action='store_true');p.add_argument('--reuse-immutable-assets',action='store_true',help='Opt in only for games whose SDRAM asset segments stay immutable; verify full assets on first trial');a=p.parse_args()
     if not 1<=a.trials<=10:raise ValueError('trials must be 1..10')
-    collect(a.package,a.symbols,a.restore,a.out,a.ip,a.port,a.trials,a.moving,not a.uninstrumented)
+    collect(a.package,a.symbols,a.restore,a.out,a.ip,a.port,a.trials,a.moving,not a.uninstrumented,a.reuse_immutable_assets)
