@@ -1,5 +1,19 @@
 # Hardware improvement and measurement record
 
+## STA-001: fitted timing analysis, October 10, 2026
+
+Baseline source/report revision `ba78b16`; existing IntegerMulSoC bitstream unchanged.
+Fresh TimeQuest queries of the fitted database confirm +0.468 ns worst setup
+(half-cycle local RAM → UDP loader), +1.032 ns CPU endpoint setup
+(forwarding/MUL/next-PC), +1.456 ns GPU endpoint setup (fan-area/culling),
++4.901 ns cache endpoint setup, and +0.115 ns worst hold (Ethernet RX FIFO input).
+The original multicorner report passes its reported checks with no unconstrained
+paths in its coverage summary. CLOCK_50 restricted Fmax 52.45 MHz is a static
+estimate, not a measured operating frequency. No hardware optimization, new board
+test or performance gain is claimed. Detailed conclusions and limits:
+`docs/static-timing-analysis.md`; raw reports and hashes:
+`docs/benchmarks/static-timing-001/`.
+
 Started October 9, 2026. This is the reference for hardware experiments and
 evidence-backed resume claims. No hardware optimization has been implemented or
 measured as part of starting this record.

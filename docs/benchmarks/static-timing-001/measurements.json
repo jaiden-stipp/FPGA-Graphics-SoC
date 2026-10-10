@@ -1,0 +1,119 @@
+{
+  "analysis": "STA-001",
+  "baseline_revision": "ba78b16004b91139e200188f194dc34021cc28c2",
+  "method": "Existing fitted database; fresh slow 1200mV 85C setup and fast 1200mV 0C hold queries. Original multicorner reports archived.",
+  "hardware_changed": false,
+  "new_runtime_trials": 0,
+  "sof_sha256": "84de9a3059e5a40957438df348da434c05e462955e60528491f2f2ac6713484b",
+  "worst_paths": {
+    "setup-full": {
+      "Slack": "0.468",
+      "From Node": "soc_top:soc|soc_memory:memory|soc_ram:ram|altsyncram:ram_ip|altsyncram_koh2:auto_generated|ram_block1a61~portb_we_reg",
+      "To Node": "udp_controls:controls|udp_memory_loader:loader|results[1][29]",
+      "Setup Relationship": "10.000",
+      "Clock Skew": "-0.547",
+      "Data Delay": "8.983"
+    },
+    "cpu-setup": {
+      "Slack": "1.032",
+      "From Node": "soc_top:soc|RV32I_SoC:cpu|soc_MEM_WB:stage4|pc_WB[3]",
+      "To Node": "soc_top:soc|RV32I_SoC:cpu|soc_PC_IF:pc_if|pc[1]",
+      "Setup Relationship": "20.000",
+      "Clock Skew": "-0.106",
+      "Data Delay": "18.860"
+    },
+    "graphics-setup": {
+      "Slack": "1.456",
+      "From Node": "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|transform_3d_pipeline:transform|fan_index[0]",
+      "To Node": "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|transform_3d_pipeline:transform|out_data.z0[2]",
+      "Setup Relationship": "20.000",
+      "Clock Skew": "-0.127",
+      "Data Delay": "18.415"
+    },
+    "cache-setup": {
+      "Slack": "4.901",
+      "From Node": "soc_top:soc|soc_memory:memory|sdram_bridge:external_memory.bridge|request_data[30]",
+      "To Node": "soc_top:soc|soc_memory:memory|sdram_cache:external_memory.cached.cache|saved_data[30]",
+      "Setup Relationship": "10.000",
+      "Clock Skew": "-0.231",
+      "Data Delay": "4.866"
+    },
+    "loader-setup": {
+      "Slack": "0.468",
+      "From Node": "soc_top:soc|soc_memory:memory|soc_ram:ram|altsyncram:ram_ip|altsyncram_koh2:auto_generated|ram_block1a61~portb_we_reg",
+      "To Node": "udp_controls:controls|udp_memory_loader:loader|results[1][29]",
+      "Setup Relationship": "10.000",
+      "Clock Skew": "-0.547",
+      "Data Delay": "8.983"
+    },
+    "hold-full": {
+      "Slack": "0.115",
+      "From Node": "udp_controls:controls|ethernet_command_receiver:ethernet|mii_udp_receiver:receiver|packet_frame_id[15]",
+      "To Node": "udp_controls:controls|ethernet_command_receiver:ethernet|async_fifo:packet_response_queue|altsyncram:memory_rtl_0|altsyncram_oag1:auto_generated|ram_block1a34~porta_datain_reg0",
+      "Clock Skew": "0.249",
+      "Data Delay": "0.468"
+    }
+  },
+  "evidence": {
+    "analyze.tcl": {
+      "sha256": "c6c00f0b0c729fa8e2a35bb1dcd9c044ed392b89390ca99d1bcc76b20aee144a",
+      "bytes": 951
+    },
+    "analyze_timing.py": {
+      "sha256": "877d39183eaa43dd9fa0b3ad0b915a96f49bc33b596c7afb0cecbb3d5ae1ae39",
+      "bytes": 2339
+    },
+    "cache-setup.rpt": {
+      "sha256": "6d9a9f9d5a859e19b35f01bf33c8b55f586dc8afb25bd6bc6f99c87a31e82ef5",
+      "bytes": 66662
+    },
+    "cpu-setup.rpt": {
+      "sha256": "a2bb2d0c898fdefdfd446a7b48a6083efe31d2b8f7aaf1eca7cde9cd90723afa",
+      "bytes": 103647
+    },
+    "graphics-setup.rpt": {
+      "sha256": "16998bc9e953756830f877481ef9dd95176a5b06eb30017b00723fa8a07ab1a0",
+      "bytes": 191510
+    },
+    "hold-full.rpt": {
+      "sha256": "5a3a0976341312ebdba596735523cd2c94e0604fb13d9a1398c72ca4d4e95352",
+      "bytes": 78093
+    },
+    "loader-setup.rpt": {
+      "sha256": "427cf1e489587a6c27453f1979d53960ee1c829bade74ccdac396e69751d0bb0",
+      "bytes": 68685
+    },
+    "original.sta.rpt": {
+      "sha256": "1fbd1530d8c7e855150a2e1b593b93c96b552834ee7e45d0bd5de3ad46410984",
+      "bytes": 1632852
+    },
+    "original.sta.summary": {
+      "sha256": "c50c9feb3eb544615614eef7a52c5e8a4530b889b7989d7f977f7d925a8dd678",
+      "bytes": 6700
+    },
+    "project.qsf": {
+      "sha256": "a19e67dfaa39f30826ab24918de20ae0d9564425e182517765d64f54b53f0350",
+      "bytes": 20801
+    },
+    "setup-full.rpt": {
+      "sha256": "2294bfbf84e325be80bc3ef3415ef68bd3e496db94bd77395777b1530f51d0a3",
+      "bytes": 135200
+    },
+    "soc.sdc": {
+      "sha256": "8bab502639ba541613e3cfaa35303f2869d321c5e1a3ad7741fb2ad25f8f4d7c",
+      "bytes": 2445
+    },
+    "sof-identity.txt": {
+      "sha256": "961578e20fa33d3e548ac11a322ce0bfd407c16c09554c8028a6f45f0ebdea3d",
+      "bytes": 159
+    },
+    "timequest.log": {
+      "sha256": "ec233c801181c10cc7115ac71d2250ffa48be4333bbddd0a6ce09355aa3cdac3",
+      "bytes": 5830
+    }
+  },
+  "runtime_reference_sha256": {
+    "docs\\benchmarks\\post-mul-review-001\\measurements.json": "e50733a5bb7bda5e74f225fad6a693d883adefd815e208fdcd5f703b2dbd97f1",
+    "docs\\benchmarks\\terrain-offload-001\\measurements.json": "286b0bdbac5e52aed94ed70115f9483af9f09011bd7c1fc835d70345a8489b6c"
+  }
+}

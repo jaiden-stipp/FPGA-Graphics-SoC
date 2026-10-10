@@ -1,0 +1,474 @@
+----------------
+; Command Info ;
+----------------
+Report Timing: Found 5 hold paths (0 violated).  Worst case slack is 0.115 
+
+Tcl Command:
+    report_timing -hold -file docs/benchmarks/static-timing-001/hold-full.rpt -npaths 5 -detail full_path
+
+Options:
+    -hold 
+    -npaths 5 
+    -detail full_path 
+    -file {docs/benchmarks/static-timing-001/hold-full.rpt} 
+
+Delay Model:
+    Fast 1200mV 0C Model
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Summary of Paths                                                                                                                                                                                                                                                                                                                                                          ;
++-------+---------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+--------------+--------------+------------+------------+
+; Slack ; From Node                                                                                               ; To Node                                                                                                                                                                          ; Launch Clock ; Latch Clock  ; Relationship ; Clock Skew ; Data Delay ;
++-------+---------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+--------------+--------------+------------+------------+
+; 0.115 ; udp_controls:controls|ethernet_command_receiver:ethernet|mii_udp_receiver:receiver|packet_frame_id[15]  ; udp_controls:controls|ethernet_command_receiver:ethernet|async_fifo:packet_response_queue|altsyncram:memory_rtl_0|altsyncram_oag1:auto_generated|ram_block1a34~porta_datain_reg0 ; ENET0_RX_CLK ; ENET0_RX_CLK ; 0.000        ; 0.249      ; 0.468      ;
+; 0.122 ; udp_controls:controls|ethernet_command_receiver:ethernet|mii_udp_receiver:receiver|packet_sender_ip[21] ; udp_controls:controls|ethernet_command_receiver:ethernet|async_fifo:packet_response_queue|altsyncram:memory_rtl_0|altsyncram_oag1:auto_generated|ram_block1a34~porta_datain_reg0 ; ENET0_RX_CLK ; ENET0_RX_CLK ; 0.000        ; 0.251      ; 0.477      ;
+; 0.129 ; udp_controls:controls|ethernet_command_receiver:ethernet|mii_udp_receiver:receiver|packet_sender_ip[0]  ; udp_controls:controls|ethernet_command_receiver:ethernet|async_fifo:packet_response_queue|altsyncram:memory_rtl_0|altsyncram_oag1:auto_generated|ram_block1a34~porta_datain_reg0 ; ENET0_RX_CLK ; ENET0_RX_CLK ; 0.000        ; 0.240      ; 0.473      ;
+; 0.132 ; udp_controls:controls|ethernet_command_receiver:ethernet|mii_udp_receiver:receiver|packet_sender_ip[7]  ; udp_controls:controls|ethernet_command_receiver:ethernet|async_fifo:packet_response_queue|altsyncram:memory_rtl_0|altsyncram_oag1:auto_generated|ram_block1a34~porta_datain_reg0 ; ENET0_RX_CLK ; ENET0_RX_CLK ; 0.000        ; 0.240      ; 0.476      ;
+; 0.134 ; udp_controls:controls|ethernet_command_receiver:ethernet|mii_udp_receiver:receiver|packet_sender_ip[1]  ; udp_controls:controls|ethernet_command_receiver:ethernet|async_fifo:packet_response_queue|altsyncram:memory_rtl_0|altsyncram_oag1:auto_generated|ram_block1a34~porta_datain_reg0 ; ENET0_RX_CLK ; ENET0_RX_CLK ; 0.000        ; 0.240      ; 0.478      ;
++-------+---------------------------------------------------------------------------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+--------------+--------------+--------------+------------+------------+
+
+Path #1: Hold slack is 0.115 
+===============================================================================
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Path Summary                                                                                                                                                                                          ;
++--------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Property           ; Value                                                                                                                                                                            ;
++--------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; From Node          ; udp_controls:controls|ethernet_command_receiver:ethernet|mii_udp_receiver:receiver|packet_frame_id[15]                                                                           ;
+; To Node            ; udp_controls:controls|ethernet_command_receiver:ethernet|async_fifo:packet_response_queue|altsyncram:memory_rtl_0|altsyncram_oag1:auto_generated|ram_block1a34~porta_datain_reg0 ;
+; Launch Clock       ; ENET0_RX_CLK                                                                                                                                                                     ;
+; Latch Clock        ; ENET0_RX_CLK                                                                                                                                                                     ;
+; Data Arrival Time  ; 1.940                                                                                                                                                                            ;
+; Data Required Time ; 1.825                                                                                                                                                                            ;
+; Slack              ; 0.115                                                                                                                                                                            ;
++--------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
++-----------------------------------------------------------------------------------+
+; Statistics                                                                        ;
++------------------------+-------+-------+-------------+------------+-------+-------+
+; Property               ; Value ; Count ; Total Delay ; % of Total ; Min   ; Max   ;
++------------------------+-------+-------+-------------+------------+-------+-------+
+; Hold Relationship      ; 0.000 ;       ;             ;            ;       ;       ;
+; Clock Skew             ; 0.249 ;       ;             ;            ;       ;       ;
+; Data Delay             ; 0.468 ;       ;             ;            ;       ;       ;
+; Number of Logic Levels ;       ; 0     ;             ;            ;       ;       ;
+; Physical Delays        ;       ;       ;             ;            ;       ;       ;
+;  Arrival Path          ;       ;       ;             ;            ;       ;       ;
+;   Clock                ;       ;       ;             ;            ;       ;       ;
+;    IC                  ;       ; 3     ; 0.871       ; 59         ; 0.000 ; 0.776 ;
+;    Cell                ;       ; 3     ; 0.601       ; 41         ; 0.000 ; 0.328 ;
+;   Data                 ;       ;       ;             ;            ;       ;       ;
+;    IC                  ;       ; 1     ; 0.327       ; 70         ; 0.327 ; 0.327 ;
+;    Cell                ;       ; 2     ; 0.036       ; 8          ; 0.000 ; 0.036 ;
+;    uTco                ;       ; 1     ; 0.105       ; 22         ; 0.105 ; 0.105 ;
+;  Required Path         ;       ;       ;             ;            ;       ;       ;
+;   Clock                ;       ;       ;             ;            ;       ;       ;
+;    IC                  ;       ; 3     ; 0.932       ; 54         ; 0.000 ; 0.833 ;
+;    Cell                ;       ; 3     ; 0.808       ; 46         ; 0.000 ; 0.480 ;
++------------------------+-------+-------+-------------+------------+-------+-------+
+Note: Negative delays are omitted from totals when calculating percentages
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Data Arrival Path                                                                                                                                                                                                                             ;
++---------+---------+----+------+--------+-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Total   ; Incr    ; RF ; Type ; Fanout ; Location          ; Element                                                                                                                                                                          ;
++---------+---------+----+------+--------+-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; 0.000   ; 0.000   ;    ;      ;        ;                   ; launch edge time                                                                                                                                                                 ;
+; 1.472   ; 1.472   ;    ;      ;        ;                   ; clock path                                                                                                                                                                       ;
+;   0.000 ;   0.000 ;    ;      ;        ;                   ; source latency                                                                                                                                                                   ;
+;   0.000 ;   0.000 ;    ;      ; 1      ; PIN_A15           ; ENET0_RX_CLK                                                                                                                                                                     ;
+;   0.000 ;   0.000 ; RR ; IC   ; 1      ; IOIBUF_X56_Y73_N1 ; ENET0_RX_CLK~input|i                                                                                                                                                             ;
+;   0.328 ;   0.328 ; RR ; CELL ; 1      ; IOIBUF_X56_Y73_N1 ; ENET0_RX_CLK~input|o                                                                                                                                                             ;
+;   0.423 ;   0.095 ; RR ; IC   ; 1      ; CLKCTRL_G14       ; ENET0_RX_CLK~inputclkctrl|inclk[0]                                                                                                                                               ;
+;   0.423 ;   0.000 ; RR ; CELL ; 1058   ; CLKCTRL_G14       ; ENET0_RX_CLK~inputclkctrl|outclk                                                                                                                                                 ;
+;   1.199 ;   0.776 ; RR ; IC   ; 1      ; FF_X79_Y51_N31    ; controls|ethernet|receiver|packet_frame_id[15]|clk                                                                                                                               ;
+;   1.472 ;   0.273 ; RR ; CELL ; 1      ; FF_X79_Y51_N31    ; udp_controls:controls|ethernet_command_receiver:ethernet|mii_udp_receiver:receiver|packet_frame_id[15]                                                                           ;
+; 1.940   ; 0.468   ;    ;      ;        ;                   ; data path                                                                                                                                                                        ;
+;   1.577 ;   0.105 ;    ; uTco ; 1      ; FF_X79_Y51_N31    ; udp_controls:controls|ethernet_command_receiver:ethernet|mii_udp_receiver:receiver|packet_frame_id[15]                                                                           ;
+;   1.577 ;   0.000 ; RR ; CELL ; 2      ; FF_X79_Y51_N31    ; controls|ethernet|receiver|packet_frame_id[15]|q                                                                                                                                 ;
+;   1.904 ;   0.327 ; RR ; IC   ; 1      ; M9K_X78_Y50_N0    ; controls|ethernet|packet_response_queue|memory_rtl_0|auto_generated|ram_block1a34|portadatain[11]                                                                                ;
+;   1.940 ;   0.036 ; RR ; CELL ; 0      ; M9K_X78_Y50_N0    ; udp_controls:controls|ethernet_command_receiver:ethernet|async_fifo:packet_response_queue|altsyncram:memory_rtl_0|altsyncram_oag1:auto_generated|ram_block1a34~porta_datain_reg0 ;
++---------+---------+----+------+--------+-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Data Required Path                                                                                                                                                                                                                             ;
++---------+----------+----+------+--------+-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Total   ; Incr     ; RF ; Type ; Fanout ; Location          ; Element                                                                                                                                                                          ;
++---------+----------+----+------+--------+-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; 0.000   ; 0.000    ;    ;      ;        ;                   ; latch edge time                                                                                                                                                                  ;
+; 1.721   ; 1.721    ;    ;      ;        ;                   ; clock path                                                                                                                                                                       ;
+;   0.000 ;   0.000  ;    ;      ;        ;                   ; source latency                                                                                                                                                                   ;
+;   0.000 ;   0.000  ;    ;      ; 1      ; PIN_A15           ; ENET0_RX_CLK                                                                                                                                                                     ;
+;   0.000 ;   0.000  ; RR ; IC   ; 1      ; IOIBUF_X56_Y73_N1 ; ENET0_RX_CLK~input|i                                                                                                                                                             ;
+;   0.328 ;   0.328  ; RR ; CELL ; 1      ; IOIBUF_X56_Y73_N1 ; ENET0_RX_CLK~input|o                                                                                                                                                             ;
+;   0.427 ;   0.099  ; RR ; IC   ; 1      ; CLKCTRL_G14       ; ENET0_RX_CLK~inputclkctrl|inclk[0]                                                                                                                                               ;
+;   0.427 ;   0.000  ; RR ; CELL ; 1058   ; CLKCTRL_G14       ; ENET0_RX_CLK~inputclkctrl|outclk                                                                                                                                                 ;
+;   1.260 ;   0.833  ; RR ; IC   ; 3      ; M9K_X78_Y50_N0    ; controls|ethernet|packet_response_queue|memory_rtl_0|auto_generated|ram_block1a34|clk0                                                                                           ;
+;   1.740 ;   0.480  ; RR ; CELL ; 0      ; M9K_X78_Y50_N0    ; udp_controls:controls|ethernet_command_receiver:ethernet|async_fifo:packet_response_queue|altsyncram:memory_rtl_0|altsyncram_oag1:auto_generated|ram_block1a34~porta_datain_reg0 ;
+;   1.721 ;   -0.019 ;    ;      ;        ;                   ; clock pessimism removed                                                                                                                                                          ;
+; 1.721   ; 0.000    ;    ;      ;        ;                   ; clock uncertainty                                                                                                                                                                ;
+; 1.825   ; 0.104    ;    ; uTh  ; 0      ; M9K_X78_Y50_N0    ; udp_controls:controls|ethernet_command_receiver:ethernet|async_fifo:packet_response_queue|altsyncram:memory_rtl_0|altsyncram_oag1:auto_generated|ram_block1a34~porta_datain_reg0 ;
++---------+----------+----+------+--------+-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+----------------------------
+; Extra Fitter Information ;
+----------------------------
+HTML report is unavailable in plain text report export.
+
+
+Path #2: Hold slack is 0.122 
+===============================================================================
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Path Summary                                                                                                                                                                                          ;
++--------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Property           ; Value                                                                                                                                                                            ;
++--------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; From Node          ; udp_controls:controls|ethernet_command_receiver:ethernet|mii_udp_receiver:receiver|packet_sender_ip[21]                                                                          ;
+; To Node            ; udp_controls:controls|ethernet_command_receiver:ethernet|async_fifo:packet_response_queue|altsyncram:memory_rtl_0|altsyncram_oag1:auto_generated|ram_block1a34~porta_datain_reg0 ;
+; Launch Clock       ; ENET0_RX_CLK                                                                                                                                                                     ;
+; Latch Clock        ; ENET0_RX_CLK                                                                                                                                                                     ;
+; Data Arrival Time  ; 1.947                                                                                                                                                                            ;
+; Data Required Time ; 1.825                                                                                                                                                                            ;
+; Slack              ; 0.122                                                                                                                                                                            ;
++--------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
++-----------------------------------------------------------------------------------+
+; Statistics                                                                        ;
++------------------------+-------+-------+-------------+------------+-------+-------+
+; Property               ; Value ; Count ; Total Delay ; % of Total ; Min   ; Max   ;
++------------------------+-------+-------+-------------+------------+-------+-------+
+; Hold Relationship      ; 0.000 ;       ;             ;            ;       ;       ;
+; Clock Skew             ; 0.251 ;       ;             ;            ;       ;       ;
+; Data Delay             ; 0.477 ;       ;             ;            ;       ;       ;
+; Number of Logic Levels ;       ; 0     ;             ;            ;       ;       ;
+; Physical Delays        ;       ;       ;             ;            ;       ;       ;
+;  Arrival Path          ;       ;       ;             ;            ;       ;       ;
+;   Clock                ;       ;       ;             ;            ;       ;       ;
+;    IC                  ;       ; 3     ; 0.869       ; 59         ; 0.000 ; 0.774 ;
+;    Cell                ;       ; 3     ; 0.601       ; 41         ; 0.000 ; 0.328 ;
+;   Data                 ;       ;       ;             ;            ;       ;       ;
+;    IC                  ;       ; 1     ; 0.336       ; 70         ; 0.336 ; 0.336 ;
+;    Cell                ;       ; 2     ; 0.036       ; 8          ; 0.000 ; 0.036 ;
+;    uTco                ;       ; 1     ; 0.105       ; 22         ; 0.105 ; 0.105 ;
+;  Required Path         ;       ;       ;             ;            ;       ;       ;
+;   Clock                ;       ;       ;             ;            ;       ;       ;
+;    IC                  ;       ; 3     ; 0.932       ; 54         ; 0.000 ; 0.833 ;
+;    Cell                ;       ; 3     ; 0.808       ; 46         ; 0.000 ; 0.480 ;
++------------------------+-------+-------+-------------+------------+-------+-------+
+Note: Negative delays are omitted from totals when calculating percentages
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Data Arrival Path                                                                                                                                                                                                                             ;
++---------+---------+----+------+--------+-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Total   ; Incr    ; RF ; Type ; Fanout ; Location          ; Element                                                                                                                                                                          ;
++---------+---------+----+------+--------+-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; 0.000   ; 0.000   ;    ;      ;        ;                   ; launch edge time                                                                                                                                                                 ;
+; 1.470   ; 1.470   ;    ;      ;        ;                   ; clock path                                                                                                                                                                       ;
+;   0.000 ;   0.000 ;    ;      ;        ;                   ; source latency                                                                                                                                                                   ;
+;   0.000 ;   0.000 ;    ;      ; 1      ; PIN_A15           ; ENET0_RX_CLK                                                                                                                                                                     ;
+;   0.000 ;   0.000 ; RR ; IC   ; 1      ; IOIBUF_X56_Y73_N1 ; ENET0_RX_CLK~input|i                                                                                                                                                             ;
+;   0.328 ;   0.328 ; RR ; CELL ; 1      ; IOIBUF_X56_Y73_N1 ; ENET0_RX_CLK~input|o                                                                                                                                                             ;
+;   0.423 ;   0.095 ; RR ; IC   ; 1      ; CLKCTRL_G14       ; ENET0_RX_CLK~inputclkctrl|inclk[0]                                                                                                                                               ;
+;   0.423 ;   0.000 ; RR ; CELL ; 1058   ; CLKCTRL_G14       ; ENET0_RX_CLK~inputclkctrl|outclk                                                                                                                                                 ;
+;   1.197 ;   0.774 ; RR ; IC   ; 1      ; FF_X80_Y51_N31    ; controls|ethernet|receiver|packet_sender_ip[21]|clk                                                                                                                              ;
+;   1.470 ;   0.273 ; RR ; CELL ; 1      ; FF_X80_Y51_N31    ; udp_controls:controls|ethernet_command_receiver:ethernet|mii_udp_receiver:receiver|packet_sender_ip[21]                                                                          ;
+; 1.947   ; 0.477   ;    ;      ;        ;                   ; data path                                                                                                                                                                        ;
+;   1.575 ;   0.105 ;    ; uTco ; 1      ; FF_X80_Y51_N31    ; udp_controls:controls|ethernet_command_receiver:ethernet|mii_udp_receiver:receiver|packet_sender_ip[21]                                                                          ;
+;   1.575 ;   0.000 ; RR ; CELL ; 2      ; FF_X80_Y51_N31    ; controls|ethernet|receiver|packet_sender_ip[21]|q                                                                                                                                ;
+;   1.911 ;   0.336 ; RR ; IC   ; 1      ; M9K_X78_Y50_N0    ; controls|ethernet|packet_response_queue|memory_rtl_0|auto_generated|ram_block1a34|portadatain[26]                                                                                ;
+;   1.947 ;   0.036 ; RR ; CELL ; 0      ; M9K_X78_Y50_N0    ; udp_controls:controls|ethernet_command_receiver:ethernet|async_fifo:packet_response_queue|altsyncram:memory_rtl_0|altsyncram_oag1:auto_generated|ram_block1a34~porta_datain_reg0 ;
++---------+---------+----+------+--------+-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Data Required Path                                                                                                                                                                                                                             ;
++---------+----------+----+------+--------+-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Total   ; Incr     ; RF ; Type ; Fanout ; Location          ; Element                                                                                                                                                                          ;
++---------+----------+----+------+--------+-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; 0.000   ; 0.000    ;    ;      ;        ;                   ; latch edge time                                                                                                                                                                  ;
+; 1.721   ; 1.721    ;    ;      ;        ;                   ; clock path                                                                                                                                                                       ;
+;   0.000 ;   0.000  ;    ;      ;        ;                   ; source latency                                                                                                                                                                   ;
+;   0.000 ;   0.000  ;    ;      ; 1      ; PIN_A15           ; ENET0_RX_CLK                                                                                                                                                                     ;
+;   0.000 ;   0.000  ; RR ; IC   ; 1      ; IOIBUF_X56_Y73_N1 ; ENET0_RX_CLK~input|i                                                                                                                                                             ;
+;   0.328 ;   0.328  ; RR ; CELL ; 1      ; IOIBUF_X56_Y73_N1 ; ENET0_RX_CLK~input|o                                                                                                                                                             ;
+;   0.427 ;   0.099  ; RR ; IC   ; 1      ; CLKCTRL_G14       ; ENET0_RX_CLK~inputclkctrl|inclk[0]                                                                                                                                               ;
+;   0.427 ;   0.000  ; RR ; CELL ; 1058   ; CLKCTRL_G14       ; ENET0_RX_CLK~inputclkctrl|outclk                                                                                                                                                 ;
+;   1.260 ;   0.833  ; RR ; IC   ; 3      ; M9K_X78_Y50_N0    ; controls|ethernet|packet_response_queue|memory_rtl_0|auto_generated|ram_block1a34|clk0                                                                                           ;
+;   1.740 ;   0.480  ; RR ; CELL ; 0      ; M9K_X78_Y50_N0    ; udp_controls:controls|ethernet_command_receiver:ethernet|async_fifo:packet_response_queue|altsyncram:memory_rtl_0|altsyncram_oag1:auto_generated|ram_block1a34~porta_datain_reg0 ;
+;   1.721 ;   -0.019 ;    ;      ;        ;                   ; clock pessimism removed                                                                                                                                                          ;
+; 1.721   ; 0.000    ;    ;      ;        ;                   ; clock uncertainty                                                                                                                                                                ;
+; 1.825   ; 0.104    ;    ; uTh  ; 0      ; M9K_X78_Y50_N0    ; udp_controls:controls|ethernet_command_receiver:ethernet|async_fifo:packet_response_queue|altsyncram:memory_rtl_0|altsyncram_oag1:auto_generated|ram_block1a34~porta_datain_reg0 ;
++---------+----------+----+------+--------+-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+----------------------------
+; Extra Fitter Information ;
+----------------------------
+HTML report is unavailable in plain text report export.
+
+
+Path #3: Hold slack is 0.129 
+===============================================================================
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Path Summary                                                                                                                                                                                          ;
++--------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Property           ; Value                                                                                                                                                                            ;
++--------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; From Node          ; udp_controls:controls|ethernet_command_receiver:ethernet|mii_udp_receiver:receiver|packet_sender_ip[0]                                                                           ;
+; To Node            ; udp_controls:controls|ethernet_command_receiver:ethernet|async_fifo:packet_response_queue|altsyncram:memory_rtl_0|altsyncram_oag1:auto_generated|ram_block1a34~porta_datain_reg0 ;
+; Launch Clock       ; ENET0_RX_CLK                                                                                                                                                                     ;
+; Latch Clock        ; ENET0_RX_CLK                                                                                                                                                                     ;
+; Data Arrival Time  ; 1.954                                                                                                                                                                            ;
+; Data Required Time ; 1.825                                                                                                                                                                            ;
+; Slack              ; 0.129                                                                                                                                                                            ;
++--------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
++-----------------------------------------------------------------------------------+
+; Statistics                                                                        ;
++------------------------+-------+-------+-------------+------------+-------+-------+
+; Property               ; Value ; Count ; Total Delay ; % of Total ; Min   ; Max   ;
++------------------------+-------+-------+-------------+------------+-------+-------+
+; Hold Relationship      ; 0.000 ;       ;             ;            ;       ;       ;
+; Clock Skew             ; 0.240 ;       ;             ;            ;       ;       ;
+; Data Delay             ; 0.473 ;       ;             ;            ;       ;       ;
+; Number of Logic Levels ;       ; 0     ;             ;            ;       ;       ;
+; Physical Delays        ;       ;       ;             ;            ;       ;       ;
+;  Arrival Path          ;       ;       ;             ;            ;       ;       ;
+;   Clock                ;       ;       ;             ;            ;       ;       ;
+;    IC                  ;       ; 3     ; 0.880       ; 59         ; 0.000 ; 0.785 ;
+;    Cell                ;       ; 3     ; 0.601       ; 41         ; 0.000 ; 0.328 ;
+;   Data                 ;       ;       ;             ;            ;       ;       ;
+;    IC                  ;       ; 1     ; 0.332       ; 70         ; 0.332 ; 0.332 ;
+;    Cell                ;       ; 2     ; 0.036       ; 8          ; 0.000 ; 0.036 ;
+;    uTco                ;       ; 1     ; 0.105       ; 22         ; 0.105 ; 0.105 ;
+;  Required Path         ;       ;       ;             ;            ;       ;       ;
+;   Clock                ;       ;       ;             ;            ;       ;       ;
+;    IC                  ;       ; 3     ; 0.932       ; 54         ; 0.000 ; 0.833 ;
+;    Cell                ;       ; 3     ; 0.808       ; 46         ; 0.000 ; 0.480 ;
++------------------------+-------+-------+-------------+------------+-------+-------+
+Note: Negative delays are omitted from totals when calculating percentages
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Data Arrival Path                                                                                                                                                                                                                             ;
++---------+---------+----+------+--------+-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Total   ; Incr    ; RF ; Type ; Fanout ; Location          ; Element                                                                                                                                                                          ;
++---------+---------+----+------+--------+-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; 0.000   ; 0.000   ;    ;      ;        ;                   ; launch edge time                                                                                                                                                                 ;
+; 1.481   ; 1.481   ;    ;      ;        ;                   ; clock path                                                                                                                                                                       ;
+;   0.000 ;   0.000 ;    ;      ;        ;                   ; source latency                                                                                                                                                                   ;
+;   0.000 ;   0.000 ;    ;      ; 1      ; PIN_A15           ; ENET0_RX_CLK                                                                                                                                                                     ;
+;   0.000 ;   0.000 ; RR ; IC   ; 1      ; IOIBUF_X56_Y73_N1 ; ENET0_RX_CLK~input|i                                                                                                                                                             ;
+;   0.328 ;   0.328 ; RR ; CELL ; 1      ; IOIBUF_X56_Y73_N1 ; ENET0_RX_CLK~input|o                                                                                                                                                             ;
+;   0.423 ;   0.095 ; RR ; IC   ; 1      ; CLKCTRL_G14       ; ENET0_RX_CLK~inputclkctrl|inclk[0]                                                                                                                                               ;
+;   0.423 ;   0.000 ; RR ; CELL ; 1058   ; CLKCTRL_G14       ; ENET0_RX_CLK~inputclkctrl|outclk                                                                                                                                                 ;
+;   1.208 ;   0.785 ; RR ; IC   ; 1      ; FF_X81_Y50_N13    ; controls|ethernet|receiver|packet_sender_ip[0]|clk                                                                                                                               ;
+;   1.481 ;   0.273 ; RR ; CELL ; 1      ; FF_X81_Y50_N13    ; udp_controls:controls|ethernet_command_receiver:ethernet|mii_udp_receiver:receiver|packet_sender_ip[0]                                                                           ;
+; 1.954   ; 0.473   ;    ;      ;        ;                   ; data path                                                                                                                                                                        ;
+;   1.586 ;   0.105 ;    ; uTco ; 1      ; FF_X81_Y50_N13    ; udp_controls:controls|ethernet_command_receiver:ethernet|mii_udp_receiver:receiver|packet_sender_ip[0]                                                                           ;
+;   1.586 ;   0.000 ; RR ; CELL ; 2      ; FF_X81_Y50_N13    ; controls|ethernet|receiver|packet_sender_ip[0]|q                                                                                                                                 ;
+;   1.918 ;   0.332 ; RR ; IC   ; 1      ; M9K_X78_Y50_N0    ; controls|ethernet|packet_response_queue|memory_rtl_0|auto_generated|ram_block1a34|portadatain[12]                                                                                ;
+;   1.954 ;   0.036 ; RR ; CELL ; 0      ; M9K_X78_Y50_N0    ; udp_controls:controls|ethernet_command_receiver:ethernet|async_fifo:packet_response_queue|altsyncram:memory_rtl_0|altsyncram_oag1:auto_generated|ram_block1a34~porta_datain_reg0 ;
++---------+---------+----+------+--------+-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Data Required Path                                                                                                                                                                                                                             ;
++---------+----------+----+------+--------+-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Total   ; Incr     ; RF ; Type ; Fanout ; Location          ; Element                                                                                                                                                                          ;
++---------+----------+----+------+--------+-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; 0.000   ; 0.000    ;    ;      ;        ;                   ; latch edge time                                                                                                                                                                  ;
+; 1.721   ; 1.721    ;    ;      ;        ;                   ; clock path                                                                                                                                                                       ;
+;   0.000 ;   0.000  ;    ;      ;        ;                   ; source latency                                                                                                                                                                   ;
+;   0.000 ;   0.000  ;    ;      ; 1      ; PIN_A15           ; ENET0_RX_CLK                                                                                                                                                                     ;
+;   0.000 ;   0.000  ; RR ; IC   ; 1      ; IOIBUF_X56_Y73_N1 ; ENET0_RX_CLK~input|i                                                                                                                                                             ;
+;   0.328 ;   0.328  ; RR ; CELL ; 1      ; IOIBUF_X56_Y73_N1 ; ENET0_RX_CLK~input|o                                                                                                                                                             ;
+;   0.427 ;   0.099  ; RR ; IC   ; 1      ; CLKCTRL_G14       ; ENET0_RX_CLK~inputclkctrl|inclk[0]                                                                                                                                               ;
+;   0.427 ;   0.000  ; RR ; CELL ; 1058   ; CLKCTRL_G14       ; ENET0_RX_CLK~inputclkctrl|outclk                                                                                                                                                 ;
+;   1.260 ;   0.833  ; RR ; IC   ; 3      ; M9K_X78_Y50_N0    ; controls|ethernet|packet_response_queue|memory_rtl_0|auto_generated|ram_block1a34|clk0                                                                                           ;
+;   1.740 ;   0.480  ; RR ; CELL ; 0      ; M9K_X78_Y50_N0    ; udp_controls:controls|ethernet_command_receiver:ethernet|async_fifo:packet_response_queue|altsyncram:memory_rtl_0|altsyncram_oag1:auto_generated|ram_block1a34~porta_datain_reg0 ;
+;   1.721 ;   -0.019 ;    ;      ;        ;                   ; clock pessimism removed                                                                                                                                                          ;
+; 1.721   ; 0.000    ;    ;      ;        ;                   ; clock uncertainty                                                                                                                                                                ;
+; 1.825   ; 0.104    ;    ; uTh  ; 0      ; M9K_X78_Y50_N0    ; udp_controls:controls|ethernet_command_receiver:ethernet|async_fifo:packet_response_queue|altsyncram:memory_rtl_0|altsyncram_oag1:auto_generated|ram_block1a34~porta_datain_reg0 ;
++---------+----------+----+------+--------+-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+----------------------------
+; Extra Fitter Information ;
+----------------------------
+HTML report is unavailable in plain text report export.
+
+
+Path #4: Hold slack is 0.132 
+===============================================================================
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Path Summary                                                                                                                                                                                          ;
++--------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Property           ; Value                                                                                                                                                                            ;
++--------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; From Node          ; udp_controls:controls|ethernet_command_receiver:ethernet|mii_udp_receiver:receiver|packet_sender_ip[7]                                                                           ;
+; To Node            ; udp_controls:controls|ethernet_command_receiver:ethernet|async_fifo:packet_response_queue|altsyncram:memory_rtl_0|altsyncram_oag1:auto_generated|ram_block1a34~porta_datain_reg0 ;
+; Launch Clock       ; ENET0_RX_CLK                                                                                                                                                                     ;
+; Latch Clock        ; ENET0_RX_CLK                                                                                                                                                                     ;
+; Data Arrival Time  ; 1.957                                                                                                                                                                            ;
+; Data Required Time ; 1.825                                                                                                                                                                            ;
+; Slack              ; 0.132                                                                                                                                                                            ;
++--------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
++-----------------------------------------------------------------------------------+
+; Statistics                                                                        ;
++------------------------+-------+-------+-------------+------------+-------+-------+
+; Property               ; Value ; Count ; Total Delay ; % of Total ; Min   ; Max   ;
++------------------------+-------+-------+-------------+------------+-------+-------+
+; Hold Relationship      ; 0.000 ;       ;             ;            ;       ;       ;
+; Clock Skew             ; 0.240 ;       ;             ;            ;       ;       ;
+; Data Delay             ; 0.476 ;       ;             ;            ;       ;       ;
+; Number of Logic Levels ;       ; 0     ;             ;            ;       ;       ;
+; Physical Delays        ;       ;       ;             ;            ;       ;       ;
+;  Arrival Path          ;       ;       ;             ;            ;       ;       ;
+;   Clock                ;       ;       ;             ;            ;       ;       ;
+;    IC                  ;       ; 3     ; 0.880       ; 59         ; 0.000 ; 0.785 ;
+;    Cell                ;       ; 3     ; 0.601       ; 41         ; 0.000 ; 0.328 ;
+;   Data                 ;       ;       ;             ;            ;       ;       ;
+;    IC                  ;       ; 1     ; 0.335       ; 70         ; 0.335 ; 0.335 ;
+;    Cell                ;       ; 2     ; 0.036       ; 8          ; 0.000 ; 0.036 ;
+;    uTco                ;       ; 1     ; 0.105       ; 22         ; 0.105 ; 0.105 ;
+;  Required Path         ;       ;       ;             ;            ;       ;       ;
+;   Clock                ;       ;       ;             ;            ;       ;       ;
+;    IC                  ;       ; 3     ; 0.932       ; 54         ; 0.000 ; 0.833 ;
+;    Cell                ;       ; 3     ; 0.808       ; 46         ; 0.000 ; 0.480 ;
++------------------------+-------+-------+-------------+------------+-------+-------+
+Note: Negative delays are omitted from totals when calculating percentages
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Data Arrival Path                                                                                                                                                                                                                             ;
++---------+---------+----+------+--------+-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Total   ; Incr    ; RF ; Type ; Fanout ; Location          ; Element                                                                                                                                                                          ;
++---------+---------+----+------+--------+-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; 0.000   ; 0.000   ;    ;      ;        ;                   ; launch edge time                                                                                                                                                                 ;
+; 1.481   ; 1.481   ;    ;      ;        ;                   ; clock path                                                                                                                                                                       ;
+;   0.000 ;   0.000 ;    ;      ;        ;                   ; source latency                                                                                                                                                                   ;
+;   0.000 ;   0.000 ;    ;      ; 1      ; PIN_A15           ; ENET0_RX_CLK                                                                                                                                                                     ;
+;   0.000 ;   0.000 ; RR ; IC   ; 1      ; IOIBUF_X56_Y73_N1 ; ENET0_RX_CLK~input|i                                                                                                                                                             ;
+;   0.328 ;   0.328 ; RR ; CELL ; 1      ; IOIBUF_X56_Y73_N1 ; ENET0_RX_CLK~input|o                                                                                                                                                             ;
+;   0.423 ;   0.095 ; RR ; IC   ; 1      ; CLKCTRL_G14       ; ENET0_RX_CLK~inputclkctrl|inclk[0]                                                                                                                                               ;
+;   0.423 ;   0.000 ; RR ; CELL ; 1058   ; CLKCTRL_G14       ; ENET0_RX_CLK~inputclkctrl|outclk                                                                                                                                                 ;
+;   1.208 ;   0.785 ; RR ; IC   ; 1      ; FF_X81_Y50_N15    ; controls|ethernet|receiver|packet_sender_ip[7]|clk                                                                                                                               ;
+;   1.481 ;   0.273 ; RR ; CELL ; 1      ; FF_X81_Y50_N15    ; udp_controls:controls|ethernet_command_receiver:ethernet|mii_udp_receiver:receiver|packet_sender_ip[7]                                                                           ;
+; 1.957   ; 0.476   ;    ;      ;        ;                   ; data path                                                                                                                                                                        ;
+;   1.586 ;   0.105 ;    ; uTco ; 1      ; FF_X81_Y50_N15    ; udp_controls:controls|ethernet_command_receiver:ethernet|mii_udp_receiver:receiver|packet_sender_ip[7]                                                                           ;
+;   1.586 ;   0.000 ; RR ; CELL ; 2      ; FF_X81_Y50_N15    ; controls|ethernet|receiver|packet_sender_ip[7]|q                                                                                                                                 ;
+;   1.921 ;   0.335 ; RR ; IC   ; 1      ; M9K_X78_Y50_N0    ; controls|ethernet|packet_response_queue|memory_rtl_0|auto_generated|ram_block1a34|portadatain[19]                                                                                ;
+;   1.957 ;   0.036 ; RR ; CELL ; 0      ; M9K_X78_Y50_N0    ; udp_controls:controls|ethernet_command_receiver:ethernet|async_fifo:packet_response_queue|altsyncram:memory_rtl_0|altsyncram_oag1:auto_generated|ram_block1a34~porta_datain_reg0 ;
++---------+---------+----+------+--------+-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Data Required Path                                                                                                                                                                                                                             ;
++---------+----------+----+------+--------+-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Total   ; Incr     ; RF ; Type ; Fanout ; Location          ; Element                                                                                                                                                                          ;
++---------+----------+----+------+--------+-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; 0.000   ; 0.000    ;    ;      ;        ;                   ; latch edge time                                                                                                                                                                  ;
+; 1.721   ; 1.721    ;    ;      ;        ;                   ; clock path                                                                                                                                                                       ;
+;   0.000 ;   0.000  ;    ;      ;        ;                   ; source latency                                                                                                                                                                   ;
+;   0.000 ;   0.000  ;    ;      ; 1      ; PIN_A15           ; ENET0_RX_CLK                                                                                                                                                                     ;
+;   0.000 ;   0.000  ; RR ; IC   ; 1      ; IOIBUF_X56_Y73_N1 ; ENET0_RX_CLK~input|i                                                                                                                                                             ;
+;   0.328 ;   0.328  ; RR ; CELL ; 1      ; IOIBUF_X56_Y73_N1 ; ENET0_RX_CLK~input|o                                                                                                                                                             ;
+;   0.427 ;   0.099  ; RR ; IC   ; 1      ; CLKCTRL_G14       ; ENET0_RX_CLK~inputclkctrl|inclk[0]                                                                                                                                               ;
+;   0.427 ;   0.000  ; RR ; CELL ; 1058   ; CLKCTRL_G14       ; ENET0_RX_CLK~inputclkctrl|outclk                                                                                                                                                 ;
+;   1.260 ;   0.833  ; RR ; IC   ; 3      ; M9K_X78_Y50_N0    ; controls|ethernet|packet_response_queue|memory_rtl_0|auto_generated|ram_block1a34|clk0                                                                                           ;
+;   1.740 ;   0.480  ; RR ; CELL ; 0      ; M9K_X78_Y50_N0    ; udp_controls:controls|ethernet_command_receiver:ethernet|async_fifo:packet_response_queue|altsyncram:memory_rtl_0|altsyncram_oag1:auto_generated|ram_block1a34~porta_datain_reg0 ;
+;   1.721 ;   -0.019 ;    ;      ;        ;                   ; clock pessimism removed                                                                                                                                                          ;
+; 1.721   ; 0.000    ;    ;      ;        ;                   ; clock uncertainty                                                                                                                                                                ;
+; 1.825   ; 0.104    ;    ; uTh  ; 0      ; M9K_X78_Y50_N0    ; udp_controls:controls|ethernet_command_receiver:ethernet|async_fifo:packet_response_queue|altsyncram:memory_rtl_0|altsyncram_oag1:auto_generated|ram_block1a34~porta_datain_reg0 ;
++---------+----------+----+------+--------+-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+----------------------------
+; Extra Fitter Information ;
+----------------------------
+HTML report is unavailable in plain text report export.
+
+
+Path #5: Hold slack is 0.134 
+===============================================================================
++-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Path Summary                                                                                                                                                                                          ;
++--------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Property           ; Value                                                                                                                                                                            ;
++--------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; From Node          ; udp_controls:controls|ethernet_command_receiver:ethernet|mii_udp_receiver:receiver|packet_sender_ip[1]                                                                           ;
+; To Node            ; udp_controls:controls|ethernet_command_receiver:ethernet|async_fifo:packet_response_queue|altsyncram:memory_rtl_0|altsyncram_oag1:auto_generated|ram_block1a34~porta_datain_reg0 ;
+; Launch Clock       ; ENET0_RX_CLK                                                                                                                                                                     ;
+; Latch Clock        ; ENET0_RX_CLK                                                                                                                                                                     ;
+; Data Arrival Time  ; 1.959                                                                                                                                                                            ;
+; Data Required Time ; 1.825                                                                                                                                                                            ;
+; Slack              ; 0.134                                                                                                                                                                            ;
++--------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
++-----------------------------------------------------------------------------------+
+; Statistics                                                                        ;
++------------------------+-------+-------+-------------+------------+-------+-------+
+; Property               ; Value ; Count ; Total Delay ; % of Total ; Min   ; Max   ;
++------------------------+-------+-------+-------------+------------+-------+-------+
+; Hold Relationship      ; 0.000 ;       ;             ;            ;       ;       ;
+; Clock Skew             ; 0.240 ;       ;             ;            ;       ;       ;
+; Data Delay             ; 0.478 ;       ;             ;            ;       ;       ;
+; Number of Logic Levels ;       ; 0     ;             ;            ;       ;       ;
+; Physical Delays        ;       ;       ;             ;            ;       ;       ;
+;  Arrival Path          ;       ;       ;             ;            ;       ;       ;
+;   Clock                ;       ;       ;             ;            ;       ;       ;
+;    IC                  ;       ; 3     ; 0.880       ; 59         ; 0.000 ; 0.785 ;
+;    Cell                ;       ; 3     ; 0.601       ; 41         ; 0.000 ; 0.328 ;
+;   Data                 ;       ;       ;             ;            ;       ;       ;
+;    IC                  ;       ; 1     ; 0.337       ; 71         ; 0.337 ; 0.337 ;
+;    Cell                ;       ; 2     ; 0.036       ; 8          ; 0.000 ; 0.036 ;
+;    uTco                ;       ; 1     ; 0.105       ; 22         ; 0.105 ; 0.105 ;
+;  Required Path         ;       ;       ;             ;            ;       ;       ;
+;   Clock                ;       ;       ;             ;            ;       ;       ;
+;    IC                  ;       ; 3     ; 0.932       ; 54         ; 0.000 ; 0.833 ;
+;    Cell                ;       ; 3     ; 0.808       ; 46         ; 0.000 ; 0.480 ;
++------------------------+-------+-------+-------------+------------+-------+-------+
+Note: Negative delays are omitted from totals when calculating percentages
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Data Arrival Path                                                                                                                                                                                                                             ;
++---------+---------+----+------+--------+-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Total   ; Incr    ; RF ; Type ; Fanout ; Location          ; Element                                                                                                                                                                          ;
++---------+---------+----+------+--------+-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; 0.000   ; 0.000   ;    ;      ;        ;                   ; launch edge time                                                                                                                                                                 ;
+; 1.481   ; 1.481   ;    ;      ;        ;                   ; clock path                                                                                                                                                                       ;
+;   0.000 ;   0.000 ;    ;      ;        ;                   ; source latency                                                                                                                                                                   ;
+;   0.000 ;   0.000 ;    ;      ; 1      ; PIN_A15           ; ENET0_RX_CLK                                                                                                                                                                     ;
+;   0.000 ;   0.000 ; RR ; IC   ; 1      ; IOIBUF_X56_Y73_N1 ; ENET0_RX_CLK~input|i                                                                                                                                                             ;
+;   0.328 ;   0.328 ; RR ; CELL ; 1      ; IOIBUF_X56_Y73_N1 ; ENET0_RX_CLK~input|o                                                                                                                                                             ;
+;   0.423 ;   0.095 ; RR ; IC   ; 1      ; CLKCTRL_G14       ; ENET0_RX_CLK~inputclkctrl|inclk[0]                                                                                                                                               ;
+;   0.423 ;   0.000 ; RR ; CELL ; 1058   ; CLKCTRL_G14       ; ENET0_RX_CLK~inputclkctrl|outclk                                                                                                                                                 ;
+;   1.208 ;   0.785 ; RR ; IC   ; 1      ; FF_X81_Y50_N23    ; controls|ethernet|receiver|packet_sender_ip[1]|clk                                                                                                                               ;
+;   1.481 ;   0.273 ; RR ; CELL ; 1      ; FF_X81_Y50_N23    ; udp_controls:controls|ethernet_command_receiver:ethernet|mii_udp_receiver:receiver|packet_sender_ip[1]                                                                           ;
+; 1.959   ; 0.478   ;    ;      ;        ;                   ; data path                                                                                                                                                                        ;
+;   1.586 ;   0.105 ;    ; uTco ; 1      ; FF_X81_Y50_N23    ; udp_controls:controls|ethernet_command_receiver:ethernet|mii_udp_receiver:receiver|packet_sender_ip[1]                                                                           ;
+;   1.586 ;   0.000 ; RR ; CELL ; 2      ; FF_X81_Y50_N23    ; controls|ethernet|receiver|packet_sender_ip[1]|q                                                                                                                                 ;
+;   1.923 ;   0.337 ; RR ; IC   ; 1      ; M9K_X78_Y50_N0    ; controls|ethernet|packet_response_queue|memory_rtl_0|auto_generated|ram_block1a34|portadatain[13]                                                                                ;
+;   1.959 ;   0.036 ; RR ; CELL ; 0      ; M9K_X78_Y50_N0    ; udp_controls:controls|ethernet_command_receiver:ethernet|async_fifo:packet_response_queue|altsyncram:memory_rtl_0|altsyncram_oag1:auto_generated|ram_block1a34~porta_datain_reg0 ;
++---------+---------+----+------+--------+-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Data Required Path                                                                                                                                                                                                                             ;
++---------+----------+----+------+--------+-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Total   ; Incr     ; RF ; Type ; Fanout ; Location          ; Element                                                                                                                                                                          ;
++---------+----------+----+------+--------+-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; 0.000   ; 0.000    ;    ;      ;        ;                   ; latch edge time                                                                                                                                                                  ;
+; 1.721   ; 1.721    ;    ;      ;        ;                   ; clock path                                                                                                                                                                       ;
+;   0.000 ;   0.000  ;    ;      ;        ;                   ; source latency                                                                                                                                                                   ;
+;   0.000 ;   0.000  ;    ;      ; 1      ; PIN_A15           ; ENET0_RX_CLK                                                                                                                                                                     ;
+;   0.000 ;   0.000  ; RR ; IC   ; 1      ; IOIBUF_X56_Y73_N1 ; ENET0_RX_CLK~input|i                                                                                                                                                             ;
+;   0.328 ;   0.328  ; RR ; CELL ; 1      ; IOIBUF_X56_Y73_N1 ; ENET0_RX_CLK~input|o                                                                                                                                                             ;
+;   0.427 ;   0.099  ; RR ; IC   ; 1      ; CLKCTRL_G14       ; ENET0_RX_CLK~inputclkctrl|inclk[0]                                                                                                                                               ;
+;   0.427 ;   0.000  ; RR ; CELL ; 1058   ; CLKCTRL_G14       ; ENET0_RX_CLK~inputclkctrl|outclk                                                                                                                                                 ;
+;   1.260 ;   0.833  ; RR ; IC   ; 3      ; M9K_X78_Y50_N0    ; controls|ethernet|packet_response_queue|memory_rtl_0|auto_generated|ram_block1a34|clk0                                                                                           ;
+;   1.740 ;   0.480  ; RR ; CELL ; 0      ; M9K_X78_Y50_N0    ; udp_controls:controls|ethernet_command_receiver:ethernet|async_fifo:packet_response_queue|altsyncram:memory_rtl_0|altsyncram_oag1:auto_generated|ram_block1a34~porta_datain_reg0 ;
+;   1.721 ;   -0.019 ;    ;      ;        ;                   ; clock pessimism removed                                                                                                                                                          ;
+; 1.721   ; 0.000    ;    ;      ;        ;                   ; clock uncertainty                                                                                                                                                                ;
+; 1.825   ; 0.104    ;    ; uTh  ; 0      ; M9K_X78_Y50_N0    ; udp_controls:controls|ethernet_command_receiver:ethernet|async_fifo:packet_response_queue|altsyncram:memory_rtl_0|altsyncram_oag1:auto_generated|ram_block1a34~porta_datain_reg0 ;
++---------+----------+----+------+--------+-------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+----------------------------
+; Extra Fitter Information ;
+----------------------------
+HTML report is unavailable in plain text report export.
+
+
