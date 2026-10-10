@@ -1,0 +1,110 @@
+{
+  "baseline_revision": "6b8a298",
+  "candidate_revision": "3cec38543b88b7bf784408e1fc6adf9cfbb6c7a8",
+  "cases": [
+    "before",
+    "direct",
+    "safe",
+    "fine-direct",
+    "fine-safe",
+    "fine-safe-moving"
+  ],
+  "artifacts": [
+    {
+      "path": "build\\mario-castle-fixed-pose-mul.bin",
+      "sha256": "fc09b6f8e5424f83343567bcbc3504a027fb3f4f8d1af3b096b8dd2035df5170"
+    },
+    {
+      "path": "build\\mario-castle-fixed-pose-mul.assets.bin",
+      "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+    },
+    {
+      "path": "build\\mario-castle-fixed-pose-mul.package.json",
+      "sha256": "c1a98b72d18dddf7d26641d153ab0503da42efb115c3c389f1a57f3985ca5978"
+    },
+    {
+      "path": "build\\mario-castle-fixed-pose-mul.symbols.json",
+      "sha256": "6afb6737060d17758bf90fb07ad0bd8b0129d0834d2e654742bee36d62308749"
+    },
+    {
+      "path": "build\\terrain-fixed-direct-mul.bin",
+      "sha256": "ab7041279368f691ab2a5b2f4be31b707931e71e777e4318838aff4f74ea6663"
+    },
+    {
+      "path": "build\\terrain-fixed-direct-mul.assets.bin",
+      "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+    },
+    {
+      "path": "build\\terrain-fixed-direct-mul.package.json",
+      "sha256": "bb2ab5f885236b88785363303e86998859c8259482976913fecfbb25fbd23b9f"
+    },
+    {
+      "path": "build\\terrain-fixed-direct-mul.symbols.json",
+      "sha256": "204a2379f1d32bf11f5661def82607b046954ce6200bff98d790f2e70b7af405"
+    },
+    {
+      "path": "build\\terrain-fixed-safe-mul.bin",
+      "sha256": "89cfa5a75473a0eb4b6714d115b35bc681af34d03a0a2a2a8450b993152f6cfb"
+    },
+    {
+      "path": "build\\terrain-fixed-safe-mul.assets.bin",
+      "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+    },
+    {
+      "path": "build\\terrain-fixed-safe-mul.package.json",
+      "sha256": "7028ff90e3f35714dcf5b9fffc5b4621dbd05810ad2643c19f45a9d44ab1500b"
+    },
+    {
+      "path": "build\\terrain-fixed-safe-mul.symbols.json",
+      "sha256": "a15f30aa1073f3336849da28162d9ceaef7e1483baed30f5d6dab279bf540991"
+    },
+    {
+      "path": "build\\terrain-fixed-direct-fine-mul.bin",
+      "sha256": "2a22907cc34a2b47bd1a9b3d56c6155d618086cdad35f28795d543d48c1ad06b"
+    },
+    {
+      "path": "build\\terrain-fixed-direct-fine-mul.assets.bin",
+      "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+    },
+    {
+      "path": "build\\terrain-fixed-direct-fine-mul.package.json",
+      "sha256": "83a8eb33fae6a9c9c76ce9cd6e5149cf21739b7c977ed2b07eb05d15a3615895"
+    },
+    {
+      "path": "build\\terrain-fixed-direct-fine-mul.symbols.json",
+      "sha256": "6a47fb6f5d2341aaae86d3fb6590811b383bb12e6f86343382b854461a354a67"
+    },
+    {
+      "path": "build\\terrain-fixed-safe-fine-mul.bin",
+      "sha256": "e02336f9c075dd8d3c2b82eaf9eed0139f9448e63b46972bed8f8f9ee66c4f4c"
+    },
+    {
+      "path": "build\\terrain-fixed-safe-fine-mul.assets.bin",
+      "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+    },
+    {
+      "path": "build\\terrain-fixed-safe-fine-mul.package.json",
+      "sha256": "175f3edacd7d74a1f2d8cbef9c7635b7d0ec1f7c63b042b4916fcb49c556ddda"
+    },
+    {
+      "path": "build\\terrain-fixed-safe-fine-mul.symbols.json",
+      "sha256": "2d566bedb150dd31b1e3b44af82009f377b7a6222ae10a6e65d9de2fb16259d1"
+    },
+    {
+      "path": "build\\terrain-fixed-safe-fine-mul.bin",
+      "sha256": "e02336f9c075dd8d3c2b82eaf9eed0139f9448e63b46972bed8f8f9ee66c4f4c"
+    },
+    {
+      "path": "build\\terrain-fixed-safe-fine-mul.assets.bin",
+      "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+    },
+    {
+      "path": "build\\terrain-fixed-safe-fine-mul.package.json",
+      "sha256": "175f3edacd7d74a1f2d8cbef9c7635b7d0ec1f7c63b042b4916fcb49c556ddda"
+    },
+    {
+      "path": "build\\terrain-fixed-safe-fine-mul.symbols.json",
+      "sha256": "2d566bedb150dd31b1e3b44af82009f377b7a6222ae10a6e65d9de2fb16259d1"
+    }
+  ]
+}

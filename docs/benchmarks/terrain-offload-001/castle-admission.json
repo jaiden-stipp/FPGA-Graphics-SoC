@@ -1,0 +1,72 @@
+{
+  "scope": "Host production castle spawn after 40 neutral updates; not a physical timing measurement",
+  "position": [
+    -1328,
+    260,
+    4664
+  ],
+  "view": [
+    -256,
+    0,
+    0,
+    0,
+    0,
+    237,
+    -98,
+    -463,
+    0,
+    -98,
+    -237,
+    4207
+  ],
+  "chunks": [
+    {
+      "safe": 0,
+      "fractional_translation": 1,
+      "box_exceeds_safe_frustum": 1,
+      "source_bounds_valid": 1
+    },
+    {
+      "safe": 0,
+      "fractional_translation": 1,
+      "box_exceeds_safe_frustum": 1,
+      "source_bounds_valid": 1
+    },
+    {
+      "safe": 0,
+      "fractional_translation": 1,
+      "box_exceeds_safe_frustum": 1,
+      "source_bounds_valid": 1
+    },
+    {
+      "safe": 0,
+      "fractional_translation": 1,
+      "box_exceeds_safe_frustum": 1,
+      "source_bounds_valid": 1
+    },
+    {
+      "safe": 0,
+      "fractional_translation": 1,
+      "box_exceeds_safe_frustum": 1,
+      "source_bounds_valid": 1
+    },
+    {
+      "safe": 0,
+      "fractional_translation": 1,
+      "box_exceeds_safe_frustum": 1,
+      "source_bounds_valid": 1
+    },
+    {
+      "safe": 0,
+      "fractional_translation": 1,
+      "box_exceeds_safe_frustum": 1,
+      "source_bounds_valid": 1
+    },
+    {
+      "safe": 0,
+      "fractional_translation": 1,
+      "box_exceeds_safe_frustum": 1,
+      "source_bounds_valid": 1
+    }
+  ]
+}

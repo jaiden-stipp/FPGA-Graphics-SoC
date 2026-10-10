@@ -1,0 +1,93 @@
+{
+  "format": "soc-game-package",
+  "version": 1,
+  "app": "portable",
+  "segments": [
+    {
+      "file": "terrain-fixed-direct-mul.bin",
+      "address": 0,
+      "bytes": 27080,
+      "sha256": "ab7041279368f691ab2a5b2f4be31b707931e71e777e4318838aff4f74ea6663"
+    },
+    {
+      "file": "terrain-fixed-direct-mul.assets.bin",
+      "address": 2147483648,
+      "bytes": 883124,
+      "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+    }
+  ],
+  "required_cpu_features": {
+    "mul": true,
+    "mmio_feature_bit": 0
+  },
+  "content": {
+    "format": "soc-game-assets",
+    "version": 1,
+    "runtime_abi": 1,
+    "game": "mario-castle",
+    "units": "gpu-q8.8",
+    "material_policy": "indexed-flat-rgb",
+    "palette_colors": 101,
+    "meshes": [
+      {
+        "vertices": 128,
+        "triangles": 200
+      },
+      {
+        "vertices": 8,
+        "triangles": 12
+      }
+    ],
+    "collision": {
+      "abi": "triangle-q12-normal-v1",
+      "floors": 2816,
+      "walls": 4747
+    },
+    "animation": {
+      "abi": "none",
+      "clips": []
+    },
+    "configuration": {
+      "module": "world",
+      "physics": {},
+      "camera": {
+        "focal": 256,
+        "near_z": 257
+      },
+      "spawn": [
+        0,
+        0,
+        0
+      ],
+      "game": {
+        "port": "custom",
+        "implementation_status": "castle-traversal-foundation; mission incomplete"
+      },
+      "world": {
+        "abi": "sdram-areas-v1",
+        "areas": 5,
+        "stored_chunks": 72,
+        "render_scale": 4,
+        "near_gpu": 257,
+        "far_gpu": 30000,
+        "focal_gpu": 256,
+        "resident_handles": 2,
+        "cache_policy": "uploads-between-frames; uncached-visible-triangles-software-clipped"
+      }
+    },
+    "source": {
+      "profile": "game.project.json",
+      "sha256": "a4da0e61a05d55be5e5f0a5e842156d20fcf47f93fb4f17b364534ce49a2e439"
+    }
+  },
+  "target": {
+    "id": "de2-115-fixed-v2",
+    "runtime_abi": 1,
+    "required_features": [
+      "indexed-flat-rgb",
+      "triangle-collision",
+      "custom-rv32i-gameplay",
+      "mouse-look-v1"
+    ]
+  }
+}

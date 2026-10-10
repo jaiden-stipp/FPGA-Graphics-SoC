@@ -1,0 +1,1780 @@
+{
+  "date": "2026-10-10",
+  "baseline_revision": "6b8a298",
+  "candidate_revision": "3cec385",
+  "clock_hz_configured": 50000000,
+  "cases": {
+    "before": {
+      "median_fps": 29.969064191683287,
+      "fps_range": [
+        29.77571539044662,
+        30.088156381793052
+      ],
+      "positions": [
+        [
+          -1328,
+          260,
+          4664
+        ],
+        [
+          -1328,
+          260,
+          4664
+        ],
+        [
+          -1328,
+          260,
+          4664
+        ]
+      ],
+      "phases": {
+        "tick": {
+          "cycles": 53,
+          "retired": 37,
+          "memory_freezes": 0,
+          "dependency_bubbles": 8,
+          "redirects": 4,
+          "status_reads": 0,
+          "full_status_reads": 0
+        },
+        "update": {
+          "cycles": 40367,
+          "retired": 17170,
+          "memory_freezes": 17850,
+          "dependency_bubbles": 1397,
+          "redirects": 1975,
+          "status_reads": 0,
+          "full_status_reads": 0
+        },
+        "render": {
+          "cycles": 945793,
+          "retired": 704484,
+          "memory_freezes": 44672,
+          "dependency_bubbles": 29455,
+          "redirects": 83591,
+          "status_reads": 7011,
+          "full_status_reads": 0
+        },
+        "present": {
+          "cycles": 681440,
+          "retired": 433665,
+          "memory_freezes": 0,
+          "dependency_bubbles": 123883,
+          "redirects": 61946,
+          "status_reads": 61935,
+          "full_status_reads": 0
+        }
+      },
+      "metrics": {
+        "command_cycles": 294210,
+        "fifo_wait_span_cycles": 0,
+        "bytes": 7011,
+        "commands": 242,
+        "tick_wall_cycles": 18,
+        "update_wall_cycles": 40365,
+        "cpu_wall_cycles": 986158,
+        "present_wall_cycles": 681309,
+        "frame_wall_cycles": 1667598,
+        "frame": 251,
+        "clock_hz": 50000000,
+        "cpu_abi": 1129316609
+      },
+      "gpu": {
+        "triangles_submitted": 444,
+        "triangles_clipped": 6,
+        "triangles_culled": 185,
+        "bounding_box_pixels": 264023,
+        "pixels_inside": 91151,
+        "depth_rejected": 6154,
+        "pixels_written": 84997,
+        "geometry_cycles": 41702,
+        "geometry_stall_cycles": 236049,
+        "raster_cycles": 274523,
+        "clear_cycles": 76800,
+        "total_cycles": 1522653,
+        "swap_wait_cycles": 500638
+      },
+      "detail": {
+        "chunk_selection": {
+          "cycles": 4443,
+          "calls": 1
+        },
+        "vertex_transform_outcodes": {
+          "cycles": 317187,
+          "calls": 8
+        },
+        "triangle_clipping": {
+          "cycles": 202326,
+          "calls": 785
+        },
+        "animation_step": {
+          "cycles": 109,
+          "calls": 1
+        },
+        "animation_joints": {
+          "cycles": 20108,
+          "calls": 1
+        },
+        "animation_skin": {
+          "cycles": 35540,
+          "calls": 1
+        },
+        "camera": {
+          "cycles": 38045,
+          "calls": 1
+        }
+      }
+    },
+    "direct": {
+      "median_fps": 29.969064191683287,
+      "fps_range": [
+        29.868114817925512,
+        30.082391262793312
+      ],
+      "positions": [
+        [
+          -1328,
+          260,
+          4664
+        ],
+        [
+          -1328,
+          260,
+          4664
+        ],
+        [
+          -1328,
+          260,
+          4664
+        ]
+      ],
+      "phases": {
+        "tick": {
+          "cycles": 53,
+          "retired": 37,
+          "memory_freezes": 0,
+          "dependency_bubbles": 8,
+          "redirects": 4,
+          "status_reads": 0,
+          "full_status_reads": 0
+        },
+        "update": {
+          "cycles": 40364,
+          "retired": 17170,
+          "memory_freezes": 17847,
+          "dependency_bubbles": 1397,
+          "redirects": 1975,
+          "status_reads": 0,
+          "full_status_reads": 0
+        },
+        "render": {
+          "cycles": 934397,
+          "retired": 698415,
+          "memory_freezes": 44663,
+          "dependency_bubbles": 24137,
+          "redirects": 83591,
+          "status_reads": 7011,
+          "full_status_reads": 0
+        },
+        "present": {
+          "cycles": 692836,
+          "retired": 440917,
+          "memory_freezes": 0,
+          "dependency_bubbles": 125955,
+          "redirects": 62982,
+          "status_reads": 62971,
+          "full_status_reads": 0
+        }
+      },
+      "metrics": {
+        "command_cycles": 281882,
+        "fifo_wait_span_cycles": 0,
+        "bytes": 7011,
+        "commands": 242,
+        "tick_wall_cycles": 18,
+        "update_wall_cycles": 40362,
+        "cpu_wall_cycles": 974759,
+        "present_wall_cycles": 692705,
+        "frame_wall_cycles": 1667595,
+        "frame": 251,
+        "clock_hz": 50000000,
+        "cpu_abi": 1129316609
+      },
+      "gpu": {
+        "triangles_submitted": 444,
+        "triangles_clipped": 6,
+        "triangles_culled": 185,
+        "bounding_box_pixels": 264023,
+        "pixels_inside": 91151,
+        "depth_rejected": 6154,
+        "pixels_written": 84997,
+        "geometry_cycles": 41702,
+        "geometry_stall_cycles": 236524,
+        "raster_cycles": 274523,
+        "clear_cycles": 76800,
+        "total_cycles": 1524456,
+        "swap_wait_cycles": 511771
+      },
+      "detail": {
+        "chunk_selection": {
+          "cycles": 4398,
+          "calls": 1
+        },
+        "vertex_transform_outcodes": {
+          "cycles": 317182,
+          "calls": 8
+        },
+        "triangle_clipping": {
+          "cycles": 202325,
+          "calls": 785
+        },
+        "animation_step": {
+          "cycles": 109,
+          "calls": 1
+        },
+        "animation_joints": {
+          "cycles": 20107,
+          "calls": 1
+        },
+        "animation_skin": {
+          "cycles": 35540,
+          "calls": 1
+        },
+        "camera": {
+          "cycles": 38042,
+          "calls": 1
+        }
+      }
+    },
+    "safe": {
+      "median_fps": 30.07518797006251,
+      "fps_range": [
+        29.982702286924678,
+        30.162412993259412
+      ],
+      "positions": [
+        [
+          -1328,
+          260,
+          4664
+        ],
+        [
+          -1328,
+          260,
+          4664
+        ],
+        [
+          -1328,
+          260,
+          4664
+        ]
+      ],
+      "phases": {
+        "tick": {
+          "cycles": 53,
+          "retired": 37,
+          "memory_freezes": 0,
+          "dependency_bubbles": 8,
+          "redirects": 4,
+          "status_reads": 0,
+          "full_status_reads": 0
+        },
+        "update": {
+          "cycles": 40356,
+          "retired": 17170,
+          "memory_freezes": 17839,
+          "dependency_bubbles": 1397,
+          "redirects": 1975,
+          "status_reads": 0,
+          "full_status_reads": 0
+        },
+        "render": {
+          "cycles": 937682,
+          "retired": 701064,
+          "memory_freezes": 44840,
+          "dependency_bubbles": 23548,
+          "redirects": 84115,
+          "status_reads": 7011,
+          "full_status_reads": 0
+        },
+        "present": {
+          "cycles": 689558,
+          "retired": 438831,
+          "memory_freezes": 0,
+          "dependency_bubbles": 125359,
+          "redirects": 62684,
+          "status_reads": 62673,
+          "full_status_reads": 0
+        }
+      },
+      "metrics": {
+        "command_cycles": 281882,
+        "fifo_wait_span_cycles": 0,
+        "bytes": 7011,
+        "commands": 242,
+        "tick_wall_cycles": 18,
+        "update_wall_cycles": 40354,
+        "cpu_wall_cycles": 978036,
+        "present_wall_cycles": 689427,
+        "frame_wall_cycles": 1667594,
+        "frame": 251,
+        "clock_hz": 50000000,
+        "cpu_abi": 1129316609
+      },
+      "gpu": {
+        "triangles_submitted": 444,
+        "triangles_clipped": 6,
+        "triangles_culled": 185,
+        "bounding_box_pixels": 264023,
+        "pixels_inside": 91151,
+        "depth_rejected": 6154,
+        "pixels_written": 84997,
+        "geometry_cycles": 41702,
+        "geometry_stall_cycles": 236571,
+        "raster_cycles": 274523,
+        "clear_cycles": 76800,
+        "total_cycles": 1520072,
+        "swap_wait_cycles": 508435
+      },
+      "detail": {
+        "chunk_selection": {
+          "cycles": 8584,
+          "calls": 1
+        },
+        "vertex_transform_outcodes": {
+          "cycles": 315244,
+          "calls": 8
+        },
+        "triangle_clipping": {
+          "cycles": 199349,
+          "calls": 785
+        },
+        "animation_step": {
+          "cycles": 109,
+          "calls": 1
+        },
+        "animation_joints": {
+          "cycles": 20113,
+          "calls": 1
+        },
+        "animation_skin": {
+          "cycles": 35542,
+          "calls": 1
+        },
+        "camera": {
+          "cycles": 38034,
+          "calls": 1
+        }
+      }
+    },
+    "fine-direct": {
+      "median_fps": 19.927189116532556,
+      "fps_range": [
+        19.914926527376636,
+        19.964768056383846
+      ],
+      "positions": [
+        [
+          -1328,
+          260,
+          4664
+        ],
+        [
+          -1328,
+          260,
+          4664
+        ],
+        [
+          -1328,
+          260,
+          4664
+        ]
+      ],
+      "phases": {
+        "tick": {
+          "cycles": 53,
+          "retired": 37,
+          "memory_freezes": 0,
+          "dependency_bubbles": 8,
+          "redirects": 4,
+          "status_reads": 0,
+          "full_status_reads": 0
+        },
+        "update": {
+          "cycles": 80639,
+          "retired": 34241,
+          "memory_freezes": 35730,
+          "dependency_bubbles": 2782,
+          "redirects": 3943,
+          "status_reads": 0,
+          "full_status_reads": 0
+        },
+        "render": {
+          "cycles": 1491015,
+          "retired": 1140925,
+          "memory_freezes": 44668,
+          "dependency_bubbles": 37438,
+          "redirects": 133992,
+          "status_reads": 7011,
+          "full_status_reads": 0
+        },
+        "present": {
+          "cycles": 929897,
+          "retired": 591774,
+          "memory_freezes": 0,
+          "dependency_bubbles": 169057,
+          "redirects": 84533,
+          "status_reads": 84522,
+          "full_status_reads": 0
+        }
+      },
+      "metrics": {
+        "command_cycles": 809867,
+        "fifo_wait_span_cycles": 0,
+        "bytes": 7011,
+        "commands": 242,
+        "tick_wall_cycles": 18,
+        "update_wall_cycles": 80637,
+        "cpu_wall_cycles": 1571652,
+        "present_wall_cycles": 929766,
+        "frame_wall_cycles": 2501549,
+        "frame": 167,
+        "clock_hz": 50000000,
+        "cpu_abi": 1129316609
+      },
+      "gpu": {
+        "triangles_submitted": 444,
+        "triangles_clipped": 6,
+        "triangles_culled": 185,
+        "bounding_box_pixels": 264023,
+        "pixels_inside": 91151,
+        "depth_rejected": 6154,
+        "pixels_written": 84997,
+        "geometry_cycles": 43317,
+        "geometry_stall_cycles": 219285,
+        "raster_cycles": 274523,
+        "clear_cycles": 76800,
+        "total_cycles": 2247756,
+        "swap_wait_cycles": 763501
+      },
+      "detail": {
+        "chunk_selection": {
+          "cycles": 4398,
+          "calls": 1
+        },
+        "vertex_transform_outcodes": {
+          "cycles": 314275,
+          "calls": 8
+        },
+        "triangle_clipping": {
+          "cycles": 228159,
+          "calls": 785
+        },
+        "animation_step": {
+          "cycles": 218,
+          "calls": 2
+        },
+        "animation_joints": {
+          "cycles": 20113,
+          "calls": 1
+        },
+        "animation_skin": {
+          "cycles": 35542,
+          "calls": 1
+        },
+        "camera": {
+          "cycles": 76102,
+          "calls": 2
+        }
+      },
+      "fine": {
+        "command_crc": {
+          "cycles": 175019,
+          "calls": 6527
+        },
+        "command_checks": {
+          "cycles": 126198,
+          "calls": 7011
+        },
+        "command_writes": {
+          "cycles": 77121,
+          "calls": 7011
+        },
+        "clip_fraction": {
+          "cycles": 50724,
+          "calls": 290
+        },
+        "clip_intersection": {
+          "cycles": 69864,
+          "calls": 290
+        },
+        "gpu_admission": {
+          "cycles": 0,
+          "calls": 0
+        },
+        "terrain_upload": {
+          "cycles": 0,
+          "calls": 0
+        }
+      },
+      "fine_events": {
+        "gpu_admitted": 0,
+        "gpu_draw_chunks": 0,
+        "direct_draw_chunks": 8,
+        "uploaded_chunks": 0,
+        "clip_trivial_accept": 79,
+        "clip_trivial_reject": 596
+      }
+    },
+    "fine-safe": {
+      "median_fps": 19.914926527376636,
+      "fps_range": [
+        19.914926527376636,
+        19.927189116754807
+      ],
+      "positions": [
+        [
+          -1328,
+          260,
+          4664
+        ],
+        [
+          -1328,
+          260,
+          4664
+        ],
+        [
+          -1328,
+          260,
+          4664
+        ]
+      ],
+      "phases": {
+        "tick": {
+          "cycles": 53,
+          "retired": 37,
+          "memory_freezes": 0,
+          "dependency_bubbles": 8,
+          "redirects": 4,
+          "status_reads": 0,
+          "full_status_reads": 0
+        },
+        "update": {
+          "cycles": 80633,
+          "retired": 34241,
+          "memory_freezes": 35724,
+          "dependency_bubbles": 2782,
+          "redirects": 3943,
+          "status_reads": 0,
+          "full_status_reads": 0
+        },
+        "render": {
+          "cycles": 1500746,
+          "retired": 1148812,
+          "memory_freezes": 44040,
+          "dependency_bubbles": 38624,
+          "redirects": 134635,
+          "status_reads": 7011,
+          "full_status_reads": 0
+        },
+        "present": {
+          "cycles": 920173,
+          "retired": 585586,
+          "memory_freezes": 0,
+          "dependency_bubbles": 167289,
+          "redirects": 83649,
+          "status_reads": 83638,
+          "full_status_reads": 0
+        }
+      },
+      "metrics": {
+        "command_cycles": 809867,
+        "fifo_wait_span_cycles": 0,
+        "bytes": 7011,
+        "commands": 242,
+        "tick_wall_cycles": 18,
+        "update_wall_cycles": 80631,
+        "cpu_wall_cycles": 1581377,
+        "present_wall_cycles": 920042,
+        "frame_wall_cycles": 2501550,
+        "frame": 167,
+        "clock_hz": 50000000,
+        "cpu_abi": 1129316609
+      },
+      "gpu": {
+        "triangles_submitted": 444,
+        "triangles_clipped": 6,
+        "triangles_culled": 185,
+        "bounding_box_pixels": 264023,
+        "pixels_inside": 91151,
+        "depth_rejected": 6154,
+        "pixels_written": 84997,
+        "geometry_cycles": 43317,
+        "geometry_stall_cycles": 219058,
+        "raster_cycles": 274523,
+        "clear_cycles": 76800,
+        "total_cycles": 2243153,
+        "swap_wait_cycles": 754047
+      },
+      "detail": {
+        "chunk_selection": {
+          "cycles": 8819,
+          "calls": 1
+        },
+        "vertex_transform_outcodes": {
+          "cycles": 313296,
+          "calls": 8
+        },
+        "triangle_clipping": {
+          "cycles": 230062,
+          "calls": 785
+        },
+        "animation_step": {
+          "cycles": 218,
+          "calls": 2
+        },
+        "animation_joints": {
+          "cycles": 20104,
+          "calls": 1
+        },
+        "animation_skin": {
+          "cycles": 35541,
+          "calls": 1
+        },
+        "camera": {
+          "cycles": 76096,
+          "calls": 2
+        }
+      },
+      "fine": {
+        "command_crc": {
+          "cycles": 175019,
+          "calls": 6527
+        },
+        "command_checks": {
+          "cycles": 126198,
+          "calls": 7011
+        },
+        "command_writes": {
+          "cycles": 77121,
+          "calls": 7011
+        },
+        "clip_fraction": {
+          "cycles": 51014,
+          "calls": 290
+        },
+        "clip_intersection": {
+          "cycles": 70154,
+          "calls": 290
+        },
+        "gpu_admission": {
+          "cycles": 2234,
+          "calls": 8
+        },
+        "terrain_upload": {
+          "cycles": 0,
+          "calls": 0
+        }
+      },
+      "fine_events": {
+        "gpu_admitted": 0,
+        "gpu_draw_chunks": 0,
+        "direct_draw_chunks": 8,
+        "uploaded_chunks": 0,
+        "clip_trivial_accept": 79,
+        "clip_trivial_reject": 596
+      }
+    },
+    "fine-safe-moving": {
+      "median_fps": 19.914926527376636,
+      "fps_range": [
+        19.796271381973018,
+        19.914926527600766
+      ],
+      "positions": [
+        [
+          -1112,
+          260,
+          3944
+        ],
+        [
+          -1136,
+          260,
+          3920
+        ],
+        [
+          -1088,
+          260,
+          3920
+        ]
+      ],
+      "phases": {
+        "tick": {
+          "cycles": 53,
+          "retired": 37,
+          "memory_freezes": 0,
+          "dependency_bubbles": 8,
+          "redirects": 4,
+          "status_reads": 0,
+          "full_status_reads": 0
+        },
+        "update": {
+          "cycles": 82614,
+          "retired": 35383,
+          "memory_freezes": 36171,
+          "dependency_bubbles": 2890,
+          "redirects": 4085,
+          "status_reads": 0,
+          "full_status_reads": 0
+        },
+        "render": {
+          "cycles": 1781901,
+          "retired": 1370473,
+          "memory_freezes": 44225,
+          "dependency_bubbles": 47574,
+          "redirects": 159821,
+          "status_reads": 9195,
+          "full_status_reads": 0
+        },
+        "present": {
+          "cycles": 637044,
+          "retired": 405413,
+          "memory_freezes": 0,
+          "dependency_bubbles": 115811,
+          "redirects": 57910,
+          "status_reads": 57899,
+          "full_status_reads": 0
+        }
+      },
+      "metrics": {
+        "command_cycles": 1061279,
+        "fifo_wait_span_cycles": 0,
+        "bytes": 9195,
+        "commands": 326,
+        "tick_wall_cycles": 18,
+        "update_wall_cycles": 82612,
+        "cpu_wall_cycles": 1864511,
+        "present_wall_cycles": 636913,
+        "frame_wall_cycles": 2501549,
+        "frame": 167,
+        "clock_hz": 50000000,
+        "cpu_abi": 1129316609
+      },
+      "gpu": {
+        "triangles_submitted": 528,
+        "triangles_clipped": 12,
+        "triangles_culled": 209,
+        "bounding_box_pixels": 388263,
+        "pixels_inside": 110466,
+        "depth_rejected": 12049,
+        "pixels_written": 98730,
+        "geometry_cycles": 56588,
+        "geometry_stall_cycles": 306709,
+        "raster_cycles": 401295,
+        "clear_cycles": 76800,
+        "total_cycles": 2241206,
+        "swap_wait_cycles": 414864
+      },
+      "detail": {
+        "chunk_selection": {
+          "cycles": 8705,
+          "calls": 1
+        },
+        "vertex_transform_outcodes": {
+          "cycles": 313296,
+          "calls": 8
+        },
+        "triangle_clipping": {
+          "cycles": 243342,
+          "calls": 785
+        },
+        "animation_step": {
+          "cycles": 217,
+          "calls": 2
+        },
+        "animation_joints": {
+          "cycles": 20108,
+          "calls": 1
+        },
+        "animation_skin": {
+          "cycles": 35540,
+          "calls": 1
+        },
+        "camera": {
+          "cycles": 76116,
+          "calls": 2
+        }
+      },
+      "fine": {
+        "command_crc": {
+          "cycles": 229031,
+          "calls": 8543
+        },
+        "command_checks": {
+          "cycles": 165510,
+          "calls": 9195
+        },
+        "command_writes": {
+          "cycles": 101145,
+          "calls": 9195
+        },
+        "clip_fraction": {
+          "cycles": 55268,
+          "calls": 314
+        },
+        "clip_intersection": {
+          "cycles": 75992,
+          "calls": 314
+        },
+        "gpu_admission": {
+          "cycles": 2120,
+          "calls": 8
+        },
+        "terrain_upload": {
+          "cycles": 0,
+          "calls": 0
+        }
+      },
+      "fine_events": {
+        "gpu_admitted": 0,
+        "gpu_draw_chunks": 0,
+        "direct_draw_chunks": 8,
+        "uploaded_chunks": 0,
+        "clip_trivial_accept": 122,
+        "clip_trivial_reject": 532
+      }
+    },
+    "fixture-direct": {
+      "median_fps": 30.062063615444508,
+      "fps_range": [
+        29.775715390781727,
+        30.069390901944082
+      ],
+      "positions": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "phases": {
+        "tick": {
+          "cycles": 494687,
+          "retired": 247354,
+          "memory_freezes": 0,
+          "dependency_bubbles": 82447,
+          "redirects": 82443,
+          "status_reads": 0,
+          "full_status_reads": 0
+        },
+        "update": {
+          "cycles": 167,
+          "retired": 125,
+          "memory_freezes": 0,
+          "dependency_bubbles": 12,
+          "redirects": 15,
+          "status_reads": 0,
+          "full_status_reads": 0
+        },
+        "render": {
+          "cycles": 365114,
+          "retired": 275745,
+          "memory_freezes": 5634,
+          "dependency_bubbles": 16231,
+          "redirects": 33752,
+          "status_reads": 6541,
+          "full_status_reads": 1032
+        },
+        "present": {
+          "cycles": 807687,
+          "retired": 514004,
+          "memory_freezes": 0,
+          "dependency_bubbles": 146837,
+          "redirects": 73423,
+          "status_reads": 73412,
+          "full_status_reads": 0
+        }
+      },
+      "metrics": {
+        "command_cycles": 240577,
+        "fifo_wait_span_cycles": 19609,
+        "bytes": 5509,
+        "commands": 213,
+        "tick_wall_cycles": 494652,
+        "update_wall_cycles": 165,
+        "cpu_wall_cycles": 365279,
+        "present_wall_cycles": 807556,
+        "frame_wall_cycles": 1172966,
+        "frame": 250,
+        "clock_hz": 50000000,
+        "cpu_abi": 1129316609
+      },
+      "gpu": {
+        "triangles_submitted": 210,
+        "triangles_clipped": 0,
+        "triangles_culled": 0,
+        "bounding_box_pixels": 3654,
+        "pixels_inside": 2190,
+        "depth_rejected": 1063,
+        "pixels_written": 1127,
+        "geometry_cycles": 35360,
+        "geometry_stall_cycles": 1711,
+        "raster_cycles": 11949,
+        "clear_cycles": 76800,
+        "total_cycles": 1169751,
+        "swap_wait_cycles": 807692
+      },
+      "detail": {
+        "chunk_selection": {
+          "cycles": 654,
+          "calls": 1
+        },
+        "vertex_transform_outcodes": {
+          "cycles": 41494,
+          "calls": 1
+        },
+        "triangle_clipping": {
+          "cycles": 37170,
+          "calls": 210
+        },
+        "animation_step": {
+          "cycles": 0,
+          "calls": 0
+        },
+        "animation_joints": {
+          "cycles": 0,
+          "calls": 0
+        },
+        "animation_skin": {
+          "cycles": 0,
+          "calls": 0
+        },
+        "camera": {
+          "cycles": 0,
+          "calls": 0
+        }
+      }
+    },
+    "fixture-safe": {
+      "median_fps": 30.07518797006251,
+      "fps_range": [
+        29.982702287260103,
+        30.174899096456247
+      ],
+      "positions": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "phases": {
+        "tick": {
+          "cycles": 1329539,
+          "retired": 664780,
+          "memory_freezes": 0,
+          "dependency_bubbles": 221589,
+          "redirects": 221585,
+          "status_reads": 0,
+          "full_status_reads": 0
+        },
+        "update": {
+          "cycles": 167,
+          "retired": 125,
+          "memory_freezes": 0,
+          "dependency_bubbles": 12,
+          "redirects": 15,
+          "status_reads": 0,
+          "full_status_reads": 0
+        },
+        "render": {
+          "cycles": 9083,
+          "retired": 6780,
+          "memory_freezes": 277,
+          "dependency_bubbles": 314,
+          "redirects": 856,
+          "status_reads": 81,
+          "full_status_reads": 0
+        },
+        "present": {
+          "cycles": 328868,
+          "retired": 209301,
+          "memory_freezes": 0,
+          "dependency_bubbles": 59779,
+          "redirects": 29894,
+          "status_reads": 29883,
+          "full_status_reads": 0
+        }
+      },
+      "metrics": {
+        "command_cycles": 3226,
+        "fifo_wait_span_cycles": 0,
+        "bytes": 81,
+        "commands": 4,
+        "tick_wall_cycles": 1329504,
+        "update_wall_cycles": 165,
+        "cpu_wall_cycles": 9248,
+        "present_wall_cycles": 328737,
+        "frame_wall_cycles": 338116,
+        "frame": 250,
+        "clock_hz": 50000000,
+        "cpu_abi": 1129316609
+      },
+      "gpu": {
+        "triangles_submitted": 210,
+        "triangles_clipped": 0,
+        "triangles_culled": 0,
+        "bounding_box_pixels": 3654,
+        "pixels_inside": 2190,
+        "depth_rejected": 1063,
+        "pixels_written": 1127,
+        "geometry_cycles": 2480,
+        "geometry_stall_cycles": 32809,
+        "raster_cycles": 11949,
+        "clear_cycles": 76800,
+        "total_cycles": 331091,
+        "swap_wait_cycles": 218927
+      },
+      "detail": {
+        "chunk_selection": {
+          "cycles": 4261,
+          "calls": 1
+        },
+        "vertex_transform_outcodes": {
+          "cycles": 0,
+          "calls": 0
+        },
+        "triangle_clipping": {
+          "cycles": 0,
+          "calls": 0
+        },
+        "animation_step": {
+          "cycles": 0,
+          "calls": 0
+        },
+        "animation_joints": {
+          "cycles": 0,
+          "calls": 0
+        },
+        "animation_skin": {
+          "cycles": 0,
+          "calls": 0
+        },
+        "camera": {
+          "cycles": 0,
+          "calls": 0
+        }
+      }
+    },
+    "fixture-fine-safe": {
+      "median_fps": 30.07518797006251,
+      "fps_range": [
+        29.96906419202057,
+        30.174899096793823
+      ],
+      "positions": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ],
+      "phases": {
+        "tick": {
+          "cycles": 1355327,
+          "retired": 677674,
+          "memory_freezes": 0,
+          "dependency_bubbles": 225887,
+          "redirects": 225883,
+          "status_reads": 0,
+          "full_status_reads": 0
+        },
+        "update": {
+          "cycles": 167,
+          "retired": 125,
+          "memory_freezes": 0,
+          "dependency_bubbles": 12,
+          "redirects": 15,
+          "status_reads": 0,
+          "full_status_reads": 0
+        },
+        "render": {
+          "cycles": 15247,
+          "retired": 11715,
+          "memory_freezes": 277,
+          "dependency_bubbles": 435,
+          "redirects": 1410,
+          "status_reads": 81,
+          "full_status_reads": 0
+        },
+        "present": {
+          "cycles": 296660,
+          "retired": 188805,
+          "memory_freezes": 0,
+          "dependency_bubbles": 53923,
+          "redirects": 26966,
+          "status_reads": 26955,
+          "full_status_reads": 0
+        }
+      },
+      "metrics": {
+        "command_cycles": 9235,
+        "fifo_wait_span_cycles": 0,
+        "bytes": 81,
+        "commands": 4,
+        "tick_wall_cycles": 1355292,
+        "update_wall_cycles": 165,
+        "cpu_wall_cycles": 15412,
+        "present_wall_cycles": 296529,
+        "frame_wall_cycles": 312072,
+        "frame": 251,
+        "clock_hz": 50000000,
+        "cpu_abi": 1129316609
+      },
+      "gpu": {
+        "triangles_submitted": 210,
+        "triangles_clipped": 0,
+        "triangles_culled": 0,
+        "bounding_box_pixels": 3654,
+        "pixels_inside": 2190,
+        "depth_rejected": 1063,
+        "pixels_written": 1127,
+        "geometry_cycles": 2480,
+        "geometry_stall_cycles": 32809,
+        "raster_cycles": 11949,
+        "clear_cycles": 76800,
+        "total_cycles": 301866,
+        "swap_wait_cycles": 189702
+      },
+      "detail": {
+        "chunk_selection": {
+          "cycles": 4324,
+          "calls": 1
+        },
+        "vertex_transform_outcodes": {
+          "cycles": 0,
+          "calls": 0
+        },
+        "triangle_clipping": {
+          "cycles": 0,
+          "calls": 0
+        },
+        "animation_step": {
+          "cycles": 0,
+          "calls": 0
+        },
+        "animation_joints": {
+          "cycles": 0,
+          "calls": 0
+        },
+        "animation_skin": {
+          "cycles": 0,
+          "calls": 0
+        },
+        "camera": {
+          "cycles": 0,
+          "calls": 0
+        }
+      },
+      "fine": {
+        "command_crc": {
+          "cycles": 1951,
+          "calls": 73
+        },
+        "command_checks": {
+          "cycles": 1458,
+          "calls": 81
+        },
+        "command_writes": {
+          "cycles": 891,
+          "calls": 81
+        },
+        "clip_fraction": {
+          "cycles": 0,
+          "calls": 0
+        },
+        "clip_intersection": {
+          "cycles": 0,
+          "calls": 0
+        },
+        "gpu_admission": {
+          "cycles": 2743,
+          "calls": 1
+        },
+        "terrain_upload": {
+          "cycles": 0,
+          "calls": 0
+        }
+      },
+      "fine_events": {
+        "gpu_admitted": 1,
+        "gpu_draw_chunks": 1,
+        "direct_draw_chunks": 0,
+        "uploaded_chunks": 0,
+        "clip_trivial_accept": 0,
+        "clip_trivial_reject": 0
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "path": "build/mario-castle-fixed-pose-mul.package.json",
+      "bytes": 2130,
+      "sha256": "c1a98b72d18dddf7d26641d153ab0503da42efb115c3c389f1a57f3985ca5978"
+    },
+    {
+      "path": "build/mario-castle-fixed-pose-mul.symbols.json",
+      "bytes": 10622,
+      "sha256": "6afb6737060d17758bf90fb07ad0bd8b0129d0834d2e654742bee36d62308749"
+    },
+    {
+      "path": "build/mario-castle-fixed-pose-mul.isa.json",
+      "bytes": 519,
+      "sha256": "9f904ef61a0f2cfe3377b6f8df0058f7da8300dfd8216be520fffe172c011874"
+    },
+    {
+      "path": "build/mario-castle-fixed-pose-mul.bin",
+      "bytes": 27376,
+      "sha256": "fc09b6f8e5424f83343567bcbc3504a027fb3f4f8d1af3b096b8dd2035df5170"
+    },
+    {
+      "path": "build/mario-castle-fixed-pose-mul.assets.bin",
+      "bytes": 883124,
+      "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+    },
+    {
+      "path": "build/terrain-fixed-direct-mul.package.json",
+      "bytes": 2124,
+      "sha256": "bb2ab5f885236b88785363303e86998859c8259482976913fecfbb25fbd23b9f"
+    },
+    {
+      "path": "build/terrain-fixed-direct-mul.symbols.json",
+      "bytes": 10685,
+      "sha256": "204a2379f1d32bf11f5661def82607b046954ce6200bff98d790f2e70b7af405"
+    },
+    {
+      "path": "build/terrain-fixed-direct-mul.isa.json",
+      "bytes": 519,
+      "sha256": "826faaa94b1bb40cb9c4b0feb335cbcee3fb8d6775faca15d509891c76a5b0fd"
+    },
+    {
+      "path": "build/terrain-fixed-direct-mul.bin",
+      "bytes": 27080,
+      "sha256": "ab7041279368f691ab2a5b2f4be31b707931e71e777e4318838aff4f74ea6663"
+    },
+    {
+      "path": "build/terrain-fixed-direct-mul.assets.bin",
+      "bytes": 883124,
+      "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+    },
+    {
+      "path": "build/terrain-fixed-safe-mul.package.json",
+      "bytes": 2120,
+      "sha256": "7028ff90e3f35714dcf5b9fffc5b4621dbd05810ad2643c19f45a9d44ab1500b"
+    },
+    {
+      "path": "build/terrain-fixed-safe-mul.symbols.json",
+      "bytes": 10861,
+      "sha256": "a15f30aa1073f3336849da28162d9ceaef7e1483baed30f5d6dab279bf540991"
+    },
+    {
+      "path": "build/terrain-fixed-safe-mul.isa.json",
+      "bytes": 519,
+      "sha256": "826faaa94b1bb40cb9c4b0feb335cbcee3fb8d6775faca15d509891c76a5b0fd"
+    },
+    {
+      "path": "build/terrain-fixed-safe-mul.bin",
+      "bytes": 29196,
+      "sha256": "89cfa5a75473a0eb4b6714d115b35bc681af34d03a0a2a2a8450b993152f6cfb"
+    },
+    {
+      "path": "build/terrain-fixed-safe-mul.assets.bin",
+      "bytes": 883124,
+      "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+    },
+    {
+      "path": "build/terrain-fixed-direct-fine-mul.package.json",
+      "bytes": 2134,
+      "sha256": "83a8eb33fae6a9c9c76ce9cd6e5149cf21739b7c977ed2b07eb05d15a3615895"
+    },
+    {
+      "path": "build/terrain-fixed-direct-fine-mul.symbols.json",
+      "bytes": 10804,
+      "sha256": "6a47fb6f5d2341aaae86d3fb6590811b383bb12e6f86343382b854461a354a67"
+    },
+    {
+      "path": "build/terrain-fixed-direct-fine-mul.isa.json",
+      "bytes": 519,
+      "sha256": "118d56204c98bcb7385a3567a16682955d4990d5621f8f304cb3c0c3d5b25f3f"
+    },
+    {
+      "path": "build/terrain-fixed-direct-fine-mul.bin",
+      "bytes": 27920,
+      "sha256": "2a22907cc34a2b47bd1a9b3d56c6155d618086cdad35f28795d543d48c1ad06b"
+    },
+    {
+      "path": "build/terrain-fixed-direct-fine-mul.assets.bin",
+      "bytes": 883124,
+      "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+    },
+    {
+      "path": "build/terrain-fixed-safe-fine-mul.package.json",
+      "bytes": 2130,
+      "sha256": "175f3edacd7d74a1f2d8cbef9c7635b7d0ec1f7c63b042b4916fcb49c556ddda"
+    },
+    {
+      "path": "build/terrain-fixed-safe-fine-mul.symbols.json",
+      "bytes": 10980,
+      "sha256": "2d566bedb150dd31b1e3b44af82009f377b7a6222ae10a6e65d9de2fb16259d1"
+    },
+    {
+      "path": "build/terrain-fixed-safe-fine-mul.isa.json",
+      "bytes": 519,
+      "sha256": "118d56204c98bcb7385a3567a16682955d4990d5621f8f304cb3c0c3d5b25f3f"
+    },
+    {
+      "path": "build/terrain-fixed-safe-fine-mul.bin",
+      "bytes": 30128,
+      "sha256": "e02336f9c075dd8d3c2b82eaf9eed0139f9448e63b46972bed8f8f9ee66c4f4c"
+    },
+    {
+      "path": "build/terrain-fixed-safe-fine-mul.assets.bin",
+      "bytes": 883124,
+      "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+    },
+    {
+      "path": "build/terrain-fixed-safe-fine-mul.package.json",
+      "bytes": 2130,
+      "sha256": "175f3edacd7d74a1f2d8cbef9c7635b7d0ec1f7c63b042b4916fcb49c556ddda"
+    },
+    {
+      "path": "build/terrain-fixed-safe-fine-mul.symbols.json",
+      "bytes": 10980,
+      "sha256": "2d566bedb150dd31b1e3b44af82009f377b7a6222ae10a6e65d9de2fb16259d1"
+    },
+    {
+      "path": "build/terrain-fixed-safe-fine-mul.isa.json",
+      "bytes": 519,
+      "sha256": "118d56204c98bcb7385a3567a16682955d4990d5621f8f304cb3c0c3d5b25f3f"
+    },
+    {
+      "path": "build/terrain-fixed-safe-fine-mul.bin",
+      "bytes": 30128,
+      "sha256": "e02336f9c075dd8d3c2b82eaf9eed0139f9448e63b46972bed8f8f9ee66c4f4c"
+    },
+    {
+      "path": "build/terrain-fixed-safe-fine-mul.assets.bin",
+      "bytes": 883124,
+      "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+    },
+    {
+      "path": "build/gpu-admission-fixture-sdram-direct-profile-detail-mul.package.json",
+      "bytes": 2264,
+      "sha256": "d10fb08cec9dda29ad4bae6ded040dbef95b8dc19f7ed821e662e773ecedac5f"
+    },
+    {
+      "path": "build/gpu-admission-fixture-sdram-direct-profile-detail-mul.symbols.json",
+      "bytes": 3878,
+      "sha256": "8d03234ec4c2feb00ff636228bb1948ada8a1f8df3bb8a9fa23b637b76c7a870"
+    },
+    {
+      "path": "build/gpu-admission-fixture-sdram-direct-profile-detail-mul.isa.json",
+      "bytes": 519,
+      "sha256": "826faaa94b1bb40cb9c4b0feb335cbcee3fb8d6775faca15d509891c76a5b0fd"
+    },
+    {
+      "path": "build/gpu-admission-fixture-sdram-direct-profile-detail-mul.bin",
+      "bytes": 18224,
+      "sha256": "7642322d952f687ad29352ad1d4b19af0c86eeb624380b31de49ab925a32f01f"
+    },
+    {
+      "path": "build/gpu-admission-fixture-sdram-direct-profile-detail-mul.assets.bin",
+      "bytes": 2124,
+      "sha256": "578c340cbd0d3c5912b41ba9dffc0cd3b5f58e631a49df82fa5e1610d858cd12"
+    },
+    {
+      "path": "build/gpu-admission-fixture-sdram-gpu-safe-profile-detail-mul.package.json",
+      "bytes": 2038,
+      "sha256": "67cda880b52948782ecafee3b0c01899c270927a63c90311f5d4c0e859f5af67"
+    },
+    {
+      "path": "build/gpu-admission-fixture-sdram-gpu-safe-profile-detail-mul.symbols.json",
+      "bytes": 4054,
+      "sha256": "bdcdab237ec023c325bbacad6a8a814b3fb12aa18cf9de0372b786c1bd1613c4"
+    },
+    {
+      "path": "build/gpu-admission-fixture-sdram-gpu-safe-profile-detail-mul.isa.json",
+      "bytes": 519,
+      "sha256": "826faaa94b1bb40cb9c4b0feb335cbcee3fb8d6775faca15d509891c76a5b0fd"
+    },
+    {
+      "path": "build/gpu-admission-fixture-sdram-gpu-safe-profile-detail-mul.bin",
+      "bytes": 20340,
+      "sha256": "edd233e159816fc965c9b8870d219f5b776f71b9e9e37ecfea6e2f728a6147b2"
+    },
+    {
+      "path": "build/gpu-admission-fixture-sdram-gpu-safe-profile-detail-mul.assets.bin",
+      "bytes": 2124,
+      "sha256": "578c340cbd0d3c5912b41ba9dffc0cd3b5f58e631a49df82fa5e1610d858cd12"
+    },
+    {
+      "path": "build/gpu-admission-fixture-sdram-gpu-safe-profile-detail-fine-mul.package.json",
+      "bytes": 2048,
+      "sha256": "8093f4bd830ed1e04f46e715a87afc538bd2e85bbbef0474409d78edde73f8c4"
+    },
+    {
+      "path": "build/gpu-admission-fixture-sdram-gpu-safe-profile-detail-fine-mul.symbols.json",
+      "bytes": 4175,
+      "sha256": "69adae8856ff5c4d59acdc628e1490072f9df08e8fbade091b4f3a03d677d0e5"
+    },
+    {
+      "path": "build/gpu-admission-fixture-sdram-gpu-safe-profile-detail-fine-mul.isa.json",
+      "bytes": 519,
+      "sha256": "118d56204c98bcb7385a3567a16682955d4990d5621f8f304cb3c0c3d5b25f3f"
+    },
+    {
+      "path": "build/gpu-admission-fixture-sdram-gpu-safe-profile-detail-fine-mul.bin",
+      "bytes": 21272,
+      "sha256": "8d0aa399de07cf8d34c261cb488e47b0b2e56559991ed57514435f4a78a135fe"
+    },
+    {
+      "path": "build/gpu-admission-fixture-sdram-gpu-safe-profile-detail-fine-mul.assets.bin",
+      "bytes": 2124,
+      "sha256": "578c340cbd0d3c5912b41ba9dffc0cd3b5f58e631a49df82fa5e1610d858cd12"
+    }
+  ],
+  "evidence": [
+    {
+      "file": "baseline-gfx.c",
+      "sha256": "f7cae85a1603bb06528029d4bde601a2ce80da83617bf9888e14485a7f0a08f0"
+    },
+    {
+      "file": "baseline-world.c",
+      "sha256": "a621a35af5ec785b3d0aebdf7f54976d9046524e204e133c26fefe3cfb94e687"
+    },
+    {
+      "file": "before.json",
+      "sha256": "2981899e72dc9a04ef91eccfd0ed53d605d5b0d39ebdb632a806f04413bf4803"
+    },
+    {
+      "file": "castle-admission.c",
+      "sha256": "414fcbec2f3226cf5c881feb3d7cab13f03f461df4174fb14fe06fbef058577e"
+    },
+    {
+      "file": "castle-admission.json",
+      "sha256": "3733bd8c95af496ca5b5a37901393d0174e6e17b51d59f0fc59d9b197553ec2b"
+    },
+    {
+      "file": "direct.json",
+      "sha256": "5a4cde8cc5bdd9cf6f91477dba8c0a05eae7628fb4d67538d6673d9cd3c9ac2c"
+    },
+    {
+      "file": "experiment.json",
+      "sha256": "d77b03163a9dc90f665c357893aee31b2feb45750365a8f10ededa7a5d411da5"
+    },
+    {
+      "file": "experiment.log",
+      "sha256": "9dbce98e7463736aaaec9cf8aeab0add41dcb4ef0799be538cd1a257f7365d3b"
+    },
+    {
+      "file": "fine-direct.json",
+      "sha256": "33452625f1df301eca0a60c8f1487461675d046cf52f78b425281f5a86d69b42"
+    },
+    {
+      "file": "fine-safe-moving.json",
+      "sha256": "0c413ef450a180d9ccfb56f150c71b9babf28013dcdfec998e9048904ef87144"
+    },
+    {
+      "file": "fine-safe.json",
+      "sha256": "b17c60ad54cfd213d3a925f6b4cf6437d1d3b7f58a33e51dcdc184b200b9d14b"
+    },
+    {
+      "file": "fixture-direct.json",
+      "sha256": "5af8e5c5af1f7a70bfbdb4505274c1e6cd0add299d10fa66ec49d3771cd86e20"
+    },
+    {
+      "file": "fixture-fine-safe.json",
+      "sha256": "b19c3855b8fddaa912e05b397847fe6b910ef039a09cffcfc92c0c18287d35a1"
+    },
+    {
+      "file": "fixture-game.project.json",
+      "sha256": "6b81d5140f7be4838406fcf450560d34684124a1c290c5781d475455c20429ff"
+    },
+    {
+      "file": "fixture-port.c",
+      "sha256": "1ea8e861aef77594997c019f7fdc537805268f922ab54c3fc6dd266f46b8a994"
+    },
+    {
+      "file": "fixture-safe.json",
+      "sha256": "f9180d6de52d80c82a4063edd34e4c01d769c4611b7783d092df4f0a9ad4571a"
+    },
+    {
+      "file": "fixture-world.json",
+      "sha256": "19e4e68d1dfffbce2b1fcbab18330955fde98edd4a10a32fb4361bf073ba7835"
+    },
+    {
+      "file": "fixture.log",
+      "sha256": "253c84b8b769730f4db2d84d266ae14d243b7727b311335e8f4a8d65b5e33036"
+    },
+    {
+      "file": "fixture.py",
+      "sha256": "5d923a869ccef3278949e2e376153da3d73d123de647095ca234b32f377470fa"
+    },
+    {
+      "file": "gpu-admission-fixture-sdram-direct-profile-detail-mul.isa.json",
+      "sha256": "826faaa94b1bb40cb9c4b0feb335cbcee3fb8d6775faca15d509891c76a5b0fd"
+    },
+    {
+      "file": "gpu-admission-fixture-sdram-direct-profile-detail-mul.package.json",
+      "sha256": "d10fb08cec9dda29ad4bae6ded040dbef95b8dc19f7ed821e662e773ecedac5f"
+    },
+    {
+      "file": "gpu-admission-fixture-sdram-direct-profile-detail-mul.symbols.json",
+      "sha256": "8d03234ec4c2feb00ff636228bb1948ada8a1f8df3bb8a9fa23b637b76c7a870"
+    },
+    {
+      "file": "gpu-admission-fixture-sdram-gpu-safe-profile-detail-fine-mul.isa.json",
+      "sha256": "118d56204c98bcb7385a3567a16682955d4990d5621f8f304cb3c0c3d5b25f3f"
+    },
+    {
+      "file": "gpu-admission-fixture-sdram-gpu-safe-profile-detail-fine-mul.package.json",
+      "sha256": "8093f4bd830ed1e04f46e715a87afc538bd2e85bbbef0474409d78edde73f8c4"
+    },
+    {
+      "file": "gpu-admission-fixture-sdram-gpu-safe-profile-detail-fine-mul.symbols.json",
+      "sha256": "69adae8856ff5c4d59acdc628e1490072f9df08e8fbade091b4f3a03d677d0e5"
+    },
+    {
+      "file": "gpu-admission-fixture-sdram-gpu-safe-profile-detail-mul.isa.json",
+      "sha256": "826faaa94b1bb40cb9c4b0feb335cbcee3fb8d6775faca15d509891c76a5b0fd"
+    },
+    {
+      "file": "gpu-admission-fixture-sdram-gpu-safe-profile-detail-mul.package.json",
+      "sha256": "67cda880b52948782ecafee3b0c01899c270927a63c90311f5d4c0e859f5af67"
+    },
+    {
+      "file": "gpu-admission-fixture-sdram-gpu-safe-profile-detail-mul.symbols.json",
+      "sha256": "bdcdab237ec023c325bbacad6a8a814b3fb12aa18cf9de0372b786c1bd1613c4"
+    },
+    {
+      "file": "inspect_castle.py",
+      "sha256": "557139f5fe1f4054ba7eef52a9c782c4d1e3819f34a3c3b60d5ad1a7b1f789e8"
+    },
+    {
+      "file": "mario-castle-fixed-pose-mul.isa.json",
+      "sha256": "9f904ef61a0f2cfe3377b6f8df0058f7da8300dfd8216be520fffe172c011874"
+    },
+    {
+      "file": "mario-castle-fixed-pose-mul.package.json",
+      "sha256": "c1a98b72d18dddf7d26641d153ab0503da42efb115c3c389f1a57f3985ca5978"
+    },
+    {
+      "file": "mario-castle-fixed-pose-mul.symbols.json",
+      "sha256": "6afb6737060d17758bf90fb07ad0bd8b0129d0834d2e654742bee36d62308749"
+    },
+    {
+      "file": "mario-castle-sdram-gpu-safe-mul.isa.json",
+      "sha256": "9a2ef10fff51e58edb9353bbe535dee66f856f88a447cfd82f4e817474a8a15f"
+    },
+    {
+      "file": "mario-castle-sdram-gpu-safe-mul.package.json",
+      "sha256": "d23b7a5a4157bb8b3fb740bdb8772a374dd061c9bcd48f6f0b9b15433b4682a2"
+    },
+    {
+      "file": "mario-castle-sdram-gpu-safe-mul.symbols.json",
+      "sha256": "5225820ca0f131a7a3d64f3fa0b2e0a1d4009b889d5a13bc9d2dc65e3d83a9f4"
+    },
+    {
+      "file": "normal-safe-build.log",
+      "sha256": "638411e2c9398b19b6c48beca26c056ec6c6a4b884b414735ebda04978650270"
+    },
+    {
+      "file": "restored-mario.json",
+      "sha256": "078ba12398ad06dfad37f2fe3ff12d6717dc4ae4489c3dc856bd31ce8ab7ae04"
+    },
+    {
+      "file": "safe.json",
+      "sha256": "008709196a1fd96fb78e3cf0965c000dd6b3f5ff4bb20a143e3b097e6aad4ff0"
+    },
+    {
+      "file": "source-cpu_profile.c",
+      "sha256": "c17ce21eb0b28e5516035988b4ef5c93ebd519b19b4efa4a7343d04c69d54565"
+    },
+    {
+      "file": "source-cpu_profile.h",
+      "sha256": "5583fdf350727147a9b31518bcee7d2058b79f3e3642b8545a61f2aa185536b8"
+    },
+    {
+      "file": "source-gfx.c",
+      "sha256": "82a46e499b92db459becc303390216f73a1b80e8d3130c7b42427d6cbda5733b"
+    },
+    {
+      "file": "source-measure_terrain_offload.py",
+      "sha256": "4e75cdfc04e8a3a0403d19c1f892618b2671b451f504b35b93ccdfd3a550c614"
+    },
+    {
+      "file": "source-profile_cpu.py",
+      "sha256": "b1e9daada88a22789db6a22cd2b292d7a8cf39fe8a9ca52998d0c8812503cb7e"
+    },
+    {
+      "file": "source-run.ps1",
+      "sha256": "2ce95271ee833283950d927fae9b320f074506cc1f870a9c605e8e3c2d0316ef"
+    },
+    {
+      "file": "source-rv32i_subset.py",
+      "sha256": "bdd0437d4c9f5fa26c04a237f01636483b9d8c0d3ed45221cc1154f57ae36531"
+    },
+    {
+      "file": "source-soc.py",
+      "sha256": "5b0a25b84cc83e19d5723431842feabe8a31c9620fcec387ca5e2e0557aded4b"
+    },
+    {
+      "file": "source-test_terrain_offload.py",
+      "sha256": "a73d682da8339a915b217d091024bfa1f79de0807a6a0a2762eb1d7bae4f80d8"
+    },
+    {
+      "file": "source-world.c",
+      "sha256": "b9b14d7b953b71c36fa54888f37af1f592a158949561108dc15da584939e8c4b"
+    },
+    {
+      "file": "source-world.h",
+      "sha256": "7a5b079e0df2f044f62d8d3400955f8e6ef2383fafd341e4be365152df3037be"
+    },
+    {
+      "file": "source-world_assets.py",
+      "sha256": "89eb7c4b8f759a890c63ba117fabc2a5ceac8666c1a12f6abb6bcee3cd243e87"
+    },
+    {
+      "file": "summarize.py",
+      "sha256": "7962ecdcb9bc9329f61ce9fbf49fc1dbe4a7a73e0413216bb18d7b87139a2d8c"
+    },
+    {
+      "file": "terrain-fixed-direct-fine-mul.isa.json",
+      "sha256": "118d56204c98bcb7385a3567a16682955d4990d5621f8f304cb3c0c3d5b25f3f"
+    },
+    {
+      "file": "terrain-fixed-direct-fine-mul.package.json",
+      "sha256": "83a8eb33fae6a9c9c76ce9cd6e5149cf21739b7c977ed2b07eb05d15a3615895"
+    },
+    {
+      "file": "terrain-fixed-direct-fine-mul.symbols.json",
+      "sha256": "6a47fb6f5d2341aaae86d3fb6590811b383bb12e6f86343382b854461a354a67"
+    },
+    {
+      "file": "terrain-fixed-direct-mul.isa.json",
+      "sha256": "826faaa94b1bb40cb9c4b0feb335cbcee3fb8d6775faca15d509891c76a5b0fd"
+    },
+    {
+      "file": "terrain-fixed-direct-mul.package.json",
+      "sha256": "bb2ab5f885236b88785363303e86998859c8259482976913fecfbb25fbd23b9f"
+    },
+    {
+      "file": "terrain-fixed-direct-mul.symbols.json",
+      "sha256": "204a2379f1d32bf11f5661def82607b046954ce6200bff98d790f2e70b7af405"
+    },
+    {
+      "file": "terrain-fixed-safe-fine-mul.isa.json",
+      "sha256": "118d56204c98bcb7385a3567a16682955d4990d5621f8f304cb3c0c3d5b25f3f"
+    },
+    {
+      "file": "terrain-fixed-safe-fine-mul.package.json",
+      "sha256": "175f3edacd7d74a1f2d8cbef9c7635b7d0ec1f7c63b042b4916fcb49c556ddda"
+    },
+    {
+      "file": "terrain-fixed-safe-fine-mul.symbols.json",
+      "sha256": "2d566bedb150dd31b1e3b44af82009f377b7a6222ae10a6e65d9de2fb16259d1"
+    },
+    {
+      "file": "terrain-fixed-safe-mul.isa.json",
+      "sha256": "826faaa94b1bb40cb9c4b0feb335cbcee3fb8d6775faca15d509891c76a5b0fd"
+    },
+    {
+      "file": "terrain-fixed-safe-mul.package.json",
+      "sha256": "7028ff90e3f35714dcf5b9fffc5b4621dbd05810ad2643c19f45a9d44ab1500b"
+    },
+    {
+      "file": "terrain-fixed-safe-mul.symbols.json",
+      "sha256": "a15f30aa1073f3336849da28162d9ceaef7e1483baed30f5d6dab279bf540991"
+    }
+  ],
+  "castle_matched_gpu_events": {
+    "triangles_submitted": 444,
+    "triangles_clipped": 6,
+    "triangles_culled": 185,
+    "bounding_box_pixels": 264023,
+    "pixels_inside": 91151,
+    "depth_rejected": 6154,
+    "pixels_written": 84997
+  },
+  "fixture_matched_gpu_events": {
+    "triangles_submitted": 210,
+    "triangles_clipped": 0,
+    "triangles_culled": 0,
+    "bounding_box_pixels": 3654,
+    "pixels_inside": 2190,
+    "depth_rejected": 1063,
+    "pixels_written": 1127
+  },
+  "fixture_render_reduction_percent": 97.51228383463794,
+  "direct_control_render_change_percent": -1.2049148175129254,
+  "safe_vs_direct_render_change_percent": 0.3515636287359625,
+  "fine_direct_added_render_cycles": 556618,
+  "unmeasured_normal_candidate": [
+    {
+      "path": "build/mario-castle-sdram-gpu-safe-mul.package.json",
+      "bytes": 2138,
+      "sha256": "d23b7a5a4157bb8b3fb740bdb8772a374dd061c9bcd48f6f0b9b15433b4682a2"
+    },
+    {
+      "path": "build/mario-castle-sdram-gpu-safe-mul.symbols.json",
+      "bytes": 10355,
+      "sha256": "5225820ca0f131a7a3d64f3fa0b2e0a1d4009b889d5a13bc9d2dc65e3d83a9f4"
+    },
+    {
+      "path": "build/mario-castle-sdram-gpu-safe-mul.isa.json",
+      "bytes": 519,
+      "sha256": "9a2ef10fff51e58edb9353bbe535dee66f856f88a447cfd82f4e817474a8a15f"
+    },
+    {
+      "path": "build/mario-castle-sdram-gpu-safe-mul.bin",
+      "bytes": 27856,
+      "sha256": "e27d025930c1abd00268b2de7bd856d95a01b17824c2b919477683266437c2d4"
+    },
+    {
+      "path": "build/mario-castle-sdram-gpu-safe-mul.assets.bin",
+      "bytes": 883124,
+      "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+    }
+  ],
+  "existing_sof_sha256": "84de9a3059e5a40957438df348da434c05e462955e60528491f2f2ac6713484b"
+}

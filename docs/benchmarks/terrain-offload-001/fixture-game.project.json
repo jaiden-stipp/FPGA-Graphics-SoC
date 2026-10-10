@@ -1,0 +1,22 @@
+{
+  "format": "soc-game-project",
+  "version": 1,
+  "name": "gpu-admission-fixture",
+  "scene": "world.json",
+  "port": {
+    "kind": "custom",
+    "sources": [
+      "port.c",
+      "../../../firmware/src/world.c",
+      "../../../firmware/src/game_services.c"
+    ],
+    "exports": [
+      "world_areas",
+      "world_select",
+      "world_prepare",
+      "world_draw",
+      "player_bind_query",
+      "player_floor_index"
+    ]
+  }
+}

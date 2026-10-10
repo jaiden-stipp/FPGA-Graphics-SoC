@@ -1,0 +1,132 @@
+BEGIN before
+Uploading mario-castle-fixed-pose-mul.bin: 27,376 bytes at 0x00000000
+Verifying mario-castle-fixed-pose-mul.bin: 27,376 bytes at 0x00000000
+Uploading mario-castle-fixed-pose-mul.assets.bin: 883,124 bytes at 0x80000000
+  382,380/883,124 bytes
+  765,048/883,124 bytes
+Verifying mario-castle-fixed-pose-mul.assets.bin: 883,124 bytes at 0x80000000
+  381,492/883,124 bytes
+  762,228/883,124 bytes
+Readback verified; CPU released.
+trial 1 fps 29.969064191683287 position [-1328, 260, 4664] metrics {'command_cycles': 294210, 'fifo_wait_span_cycles': 0, 'bytes': 7011, 'commands': 242, 'tick_wall_cycles': 18, 'update_wall_cycles': 40365, 'cpu_wall_cycles': 986158, 'present_wall_cycles': 681309, 'frame_wall_cycles': 1667598, 'frame': 251, 'clock_hz': 50000000, 'cpu_abi': 1129316609}
+Uploading mario-castle-fixed-pose-mul.bin: 27,376 bytes at 0x00000000
+Verifying mario-castle-fixed-pose-mul.bin: 27,376 bytes at 0x00000000
+Readback verified; CPU released.
+trial 2 fps 29.77571539044662 position [-1328, 260, 4664] metrics {'command_cycles': 294210, 'fifo_wait_span_cycles': 0, 'bytes': 7011, 'commands': 242, 'tick_wall_cycles': 18, 'update_wall_cycles': 40365, 'cpu_wall_cycles': 986158, 'present_wall_cycles': 681309, 'frame_wall_cycles': 1667598, 'frame': 251, 'clock_hz': 50000000, 'cpu_abi': 1129316609}
+Uploading mario-castle-fixed-pose-mul.bin: 27,376 bytes at 0x00000000
+Verifying mario-castle-fixed-pose-mul.bin: 27,376 bytes at 0x00000000
+Readback verified; CPU released.
+trial 3 fps 30.088156381793052 position [-1328, 260, 4664] metrics {'command_cycles': 294210, 'fifo_wait_span_cycles': 0, 'bytes': 7011, 'commands': 242, 'tick_wall_cycles': 18, 'update_wall_cycles': 40365, 'cpu_wall_cycles': 986158, 'present_wall_cycles': 681309, 'frame_wall_cycles': 1667598, 'frame': 251, 'clock_hz': 50000000, 'cpu_abi': 1129316609}
+Uploading mario-castle-sdram-direct-mul.bin: 26,080 bytes at 0x00000000
+Verifying mario-castle-sdram-direct-mul.bin: 26,080 bytes at 0x00000000
+Readback verified; CPU released.
+BEGIN direct
+Uploading terrain-fixed-direct-mul.bin: 27,080 bytes at 0x00000000
+Verifying terrain-fixed-direct-mul.bin: 27,080 bytes at 0x00000000
+Uploading terrain-fixed-direct-mul.assets.bin: 883,124 bytes at 0x80000000
+  379,824/883,124 bytes
+  760,200/883,124 bytes
+Verifying terrain-fixed-direct-mul.assets.bin: 883,124 bytes at 0x80000000
+  382,872/883,124 bytes
+  767,124/883,124 bytes
+Readback verified; CPU released.
+trial 1 fps 29.868114817925512 position [-1328, 260, 4664] metrics {'command_cycles': 281882, 'fifo_wait_span_cycles': 0, 'bytes': 7011, 'commands': 242, 'tick_wall_cycles': 18, 'update_wall_cycles': 40365, 'cpu_wall_cycles': 974754, 'present_wall_cycles': 692716, 'frame_wall_cycles': 1667601, 'frame': 251, 'clock_hz': 50000000, 'cpu_abi': 1129316609}
+Uploading terrain-fixed-direct-mul.bin: 27,080 bytes at 0x00000000
+Verifying terrain-fixed-direct-mul.bin: 27,080 bytes at 0x00000000
+Readback verified; CPU released.
+trial 2 fps 30.082391262793312 position [-1328, 260, 4664] metrics {'command_cycles': 281882, 'fifo_wait_span_cycles': 0, 'bytes': 7011, 'commands': 242, 'tick_wall_cycles': 18, 'update_wall_cycles': 40362, 'cpu_wall_cycles': 974759, 'present_wall_cycles': 692705, 'frame_wall_cycles': 1667595, 'frame': 251, 'clock_hz': 50000000, 'cpu_abi': 1129316609}
+Uploading terrain-fixed-direct-mul.bin: 27,080 bytes at 0x00000000
+Verifying terrain-fixed-direct-mul.bin: 27,080 bytes at 0x00000000
+Readback verified; CPU released.
+trial 3 fps 29.969064191683287 position [-1328, 260, 4664] metrics {'command_cycles': 281882, 'fifo_wait_span_cycles': 0, 'bytes': 7011, 'commands': 242, 'tick_wall_cycles': 18, 'update_wall_cycles': 40362, 'cpu_wall_cycles': 974759, 'present_wall_cycles': 692705, 'frame_wall_cycles': 1667595, 'frame': 250, 'clock_hz': 50000000, 'cpu_abi': 1129316609}
+Uploading mario-castle-sdram-direct-mul.bin: 26,080 bytes at 0x00000000
+Verifying mario-castle-sdram-direct-mul.bin: 26,080 bytes at 0x00000000
+Readback verified; CPU released.
+BEGIN safe
+Uploading terrain-fixed-safe-mul.bin: 29,196 bytes at 0x00000000
+Verifying terrain-fixed-safe-mul.bin: 29,196 bytes at 0x00000000
+Uploading terrain-fixed-safe-mul.assets.bin: 883,124 bytes at 0x80000000
+  379,788/883,124 bytes
+  761,100/883,124 bytes
+Verifying terrain-fixed-safe-mul.assets.bin: 883,124 bytes at 0x80000000
+  379,092/883,124 bytes
+  758,856/883,124 bytes
+Readback verified; CPU released.
+trial 1 fps 30.162412993259412 position [-1328, 260, 4664] metrics {'command_cycles': 281882, 'fifo_wait_span_cycles': 0, 'bytes': 7011, 'commands': 242, 'tick_wall_cycles': 18, 'update_wall_cycles': 40354, 'cpu_wall_cycles': 978036, 'present_wall_cycles': 689427, 'frame_wall_cycles': 1667594, 'frame': 251, 'clock_hz': 50000000, 'cpu_abi': 1129316609}
+Uploading terrain-fixed-safe-mul.bin: 29,196 bytes at 0x00000000
+Verifying terrain-fixed-safe-mul.bin: 29,196 bytes at 0x00000000
+Readback verified; CPU released.
+trial 2 fps 29.982702286924678 position [-1328, 260, 4664] metrics {'command_cycles': 281882, 'fifo_wait_span_cycles': 0, 'bytes': 7011, 'commands': 242, 'tick_wall_cycles': 18, 'update_wall_cycles': 40354, 'cpu_wall_cycles': 978036, 'present_wall_cycles': 689427, 'frame_wall_cycles': 1667594, 'frame': 251, 'clock_hz': 50000000, 'cpu_abi': 1129316609}
+Uploading terrain-fixed-safe-mul.bin: 29,196 bytes at 0x00000000
+Verifying terrain-fixed-safe-mul.bin: 29,196 bytes at 0x00000000
+Readback verified; CPU released.
+trial 3 fps 30.07518797006251 position [-1328, 260, 4664] metrics {'command_cycles': 281882, 'fifo_wait_span_cycles': 0, 'bytes': 7011, 'commands': 242, 'tick_wall_cycles': 18, 'update_wall_cycles': 40354, 'cpu_wall_cycles': 978036, 'present_wall_cycles': 689438, 'frame_wall_cycles': 1667605, 'frame': 251, 'clock_hz': 50000000, 'cpu_abi': 1129316609}
+Uploading mario-castle-sdram-direct-mul.bin: 26,080 bytes at 0x00000000
+Verifying mario-castle-sdram-direct-mul.bin: 26,080 bytes at 0x00000000
+Readback verified; CPU released.
+BEGIN fine-direct
+Uploading terrain-fixed-direct-fine-mul.bin: 27,920 bytes at 0x00000000
+Verifying terrain-fixed-direct-fine-mul.bin: 27,920 bytes at 0x00000000
+Uploading terrain-fixed-direct-fine-mul.assets.bin: 883,124 bytes at 0x80000000
+  378,192/883,124 bytes
+  758,820/883,124 bytes
+Verifying terrain-fixed-direct-fine-mul.assets.bin: 883,124 bytes at 0x80000000
+  375,588/883,124 bytes
+  756,444/883,124 bytes
+Readback verified; CPU released.
+trial 1 fps 19.964768056383846 position [-1328, 260, 4664] metrics {'command_cycles': 809867, 'fifo_wait_span_cycles': 0, 'bytes': 7011, 'commands': 242, 'tick_wall_cycles': 18, 'update_wall_cycles': 80637, 'cpu_wall_cycles': 1571652, 'present_wall_cycles': 929766, 'frame_wall_cycles': 2501549, 'frame': 167, 'clock_hz': 50000000, 'cpu_abi': 1129316609}
+Uploading terrain-fixed-direct-fine-mul.bin: 27,920 bytes at 0x00000000
+Verifying terrain-fixed-direct-fine-mul.bin: 27,920 bytes at 0x00000000
+Readback verified; CPU released.
+trial 2 fps 19.927189116532556 position [-1328, 260, 4664] metrics {'command_cycles': 809867, 'fifo_wait_span_cycles': 0, 'bytes': 7011, 'commands': 242, 'tick_wall_cycles': 18, 'update_wall_cycles': 80637, 'cpu_wall_cycles': 1571652, 'present_wall_cycles': 929766, 'frame_wall_cycles': 2501549, 'frame': 167, 'clock_hz': 50000000, 'cpu_abi': 1129316609}
+Uploading terrain-fixed-direct-fine-mul.bin: 27,920 bytes at 0x00000000
+Verifying terrain-fixed-direct-fine-mul.bin: 27,920 bytes at 0x00000000
+Readback verified; CPU released.
+trial 3 fps 19.914926527376636 position [-1328, 260, 4664] metrics {'command_cycles': 809867, 'fifo_wait_span_cycles': 0, 'bytes': 7011, 'commands': 242, 'tick_wall_cycles': 18, 'update_wall_cycles': 80632, 'cpu_wall_cycles': 1571638, 'present_wall_cycles': 929788, 'frame_wall_cycles': 2501557, 'frame': 167, 'clock_hz': 50000000, 'cpu_abi': 1129316609}
+Uploading mario-castle-sdram-direct-mul.bin: 26,080 bytes at 0x00000000
+Verifying mario-castle-sdram-direct-mul.bin: 26,080 bytes at 0x00000000
+Readback verified; CPU released.
+BEGIN fine-safe
+Uploading terrain-fixed-safe-fine-mul.bin: 30,128 bytes at 0x00000000
+Verifying terrain-fixed-safe-fine-mul.bin: 30,128 bytes at 0x00000000
+Uploading terrain-fixed-safe-fine-mul.assets.bin: 883,124 bytes at 0x80000000
+  381,240/883,124 bytes
+  762,120/883,124 bytes
+Verifying terrain-fixed-safe-fine-mul.assets.bin: 883,124 bytes at 0x80000000
+  380,172/883,124 bytes
+  764,484/883,124 bytes
+Readback verified; CPU released.
+trial 1 fps 19.914926527376636 position [-1328, 260, 4664] metrics {'command_cycles': 809867, 'fifo_wait_span_cycles': 0, 'bytes': 7011, 'commands': 242, 'tick_wall_cycles': 18, 'update_wall_cycles': 80629, 'cpu_wall_cycles': 1581375, 'present_wall_cycles': 920042, 'frame_wall_cycles': 2501548, 'frame': 167, 'clock_hz': 50000000, 'cpu_abi': 1129316609}
+Uploading terrain-fixed-safe-fine-mul.bin: 30,128 bytes at 0x00000000
+Verifying terrain-fixed-safe-fine-mul.bin: 30,128 bytes at 0x00000000
+Readback verified; CPU released.
+trial 2 fps 19.927189116754807 position [-1328, 260, 4664] metrics {'command_cycles': 809867, 'fifo_wait_span_cycles': 0, 'bytes': 7011, 'commands': 242, 'tick_wall_cycles': 18, 'update_wall_cycles': 80631, 'cpu_wall_cycles': 1581377, 'present_wall_cycles': 920042, 'frame_wall_cycles': 2501550, 'frame': 167, 'clock_hz': 50000000, 'cpu_abi': 1129316609}
+Uploading terrain-fixed-safe-fine-mul.bin: 30,128 bytes at 0x00000000
+Verifying terrain-fixed-safe-fine-mul.bin: 30,128 bytes at 0x00000000
+Readback verified; CPU released.
+trial 3 fps 19.914926527376636 position [-1328, 260, 4664] metrics {'command_cycles': 809867, 'fifo_wait_span_cycles': 0, 'bytes': 7011, 'commands': 242, 'tick_wall_cycles': 18, 'update_wall_cycles': 80631, 'cpu_wall_cycles': 1581377, 'present_wall_cycles': 920042, 'frame_wall_cycles': 2501550, 'frame': 167, 'clock_hz': 50000000, 'cpu_abi': 1129316609}
+Uploading mario-castle-sdram-direct-mul.bin: 26,080 bytes at 0x00000000
+Verifying mario-castle-sdram-direct-mul.bin: 26,080 bytes at 0x00000000
+Readback verified; CPU released.
+BEGIN fine-safe-moving
+Uploading terrain-fixed-safe-fine-mul.bin: 30,128 bytes at 0x00000000
+Verifying terrain-fixed-safe-fine-mul.bin: 30,128 bytes at 0x00000000
+Uploading terrain-fixed-safe-fine-mul.assets.bin: 883,124 bytes at 0x80000000
+  376,008/883,124 bytes
+  753,312/883,124 bytes
+Verifying terrain-fixed-safe-fine-mul.assets.bin: 883,124 bytes at 0x80000000
+  377,544/883,124 bytes
+  757,392/883,124 bytes
+Readback verified; CPU released.
+trial 1 fps 19.914926527600766 position [-1112, 260, 3944] metrics {'command_cycles': 1061279, 'fifo_wait_span_cycles': 0, 'bytes': 9195, 'commands': 326, 'tick_wall_cycles': 18, 'update_wall_cycles': 82610, 'cpu_wall_cycles': 1864511, 'present_wall_cycles': 636913, 'frame_wall_cycles': 2501555, 'frame': 167, 'clock_hz': 50000000, 'cpu_abi': 1129316609}
+Uploading terrain-fixed-safe-fine-mul.bin: 30,128 bytes at 0x00000000
+Verifying terrain-fixed-safe-fine-mul.bin: 30,128 bytes at 0x00000000
+Readback verified; CPU released.
+trial 2 fps 19.796271381973018 position [-1136, 260, 3920] metrics {'command_cycles': 1061279, 'fifo_wait_span_cycles': 0, 'bytes': 9195, 'commands': 326, 'tick_wall_cycles': 18, 'update_wall_cycles': 82612, 'cpu_wall_cycles': 1864225, 'present_wall_cycles': 637188, 'frame_wall_cycles': 2501544, 'frame': 167, 'clock_hz': 50000000, 'cpu_abi': 1129316609}
+Uploading terrain-fixed-safe-fine-mul.bin: 30,128 bytes at 0x00000000
+Verifying terrain-fixed-safe-fine-mul.bin: 30,128 bytes at 0x00000000
+Readback verified; CPU released.
+trial 3 fps 19.914926527376636 position [-1088, 260, 3920] metrics {'command_cycles': 1061279, 'fifo_wait_span_cycles': 0, 'bytes': 9195, 'commands': 326, 'tick_wall_cycles': 18, 'update_wall_cycles': 82706, 'cpu_wall_cycles': 1866463, 'present_wall_cycles': 634955, 'frame_wall_cycles': 2501549, 'frame': 167, 'clock_hz': 50000000, 'cpu_abi': 1129316609}
+Uploading mario-castle-sdram-direct-mul.bin: 26,080 bytes at 0x00000000
+Verifying mario-castle-sdram-direct-mul.bin: 26,080 bytes at 0x00000000
+Readback verified; CPU released.

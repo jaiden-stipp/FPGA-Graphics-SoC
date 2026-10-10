@@ -1,0 +1,147 @@
+PASS RV32I C subset: gfx.c; report build/subset/gfx.json
+PASS RV32I C subset: gfx_scene.c; report build/subset/gfx_scene.json
+PASS RV32I C subset: player.c; report build/subset/player.json
+PASS RV32I C subset: first_person.c; report build/subset/first_person.json
+PASS RV32I C subset: game_runtime.c; report build/subset/game_runtime.json
+PASS RV32I C subset: sdram.c; report build/subset/sdram.json
+PASS RV32I C subset: portable_assets.c; report build/subset/portable_assets.json
+PASS RV32I C subset: portable_main.c; report build/subset/portable_main.json
+PASS RV32I C subset: cpu_profile.c; report build/subset/cpu_profile.json
+PASS RV32I C subset: port.c; report build/subset/port.json
+PASS RV32I C subset: world.c; report build/subset/world.json
+PASS RV32I C subset: game_services.c; report build/subset/game_services.json
++ C:\Program Files\LLVM\bin\clang.EXE --target=riscv32-unknown-elf -fuse-ld=lld -march=rv32i -mabi=ilp32 -msmall-data-limit=0 -mno-relax -O1 ... (28 more arguments)
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --remove-section=.game_assets -O binary build/gpu-admission-fixture-sdram-gpu-safe-mul.elf build/gpu-admission-fixture-sdram-gpu-safe-mul.bin
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --only-section=.game_assets -O binary build/gpu-admission-fixture-sdram-gpu-safe-mul.elf build/gpu-admission-fixture-sdram-gpu-safe-mul.assets.bin
+Built portable: build/gpu-admission-fixture-sdram-gpu-safe-mul.hex and build/gpu-admission-fixture-sdram-gpu-safe-mul.mif
++ C:\Program Files\LLVM\bin\clang.EXE --target=riscv32-unknown-elf -fuse-ld=lld -march=rv32i -mabi=ilp32 -msmall-data-limit=0 -mno-relax -O1 ... (29 more arguments)
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --remove-section=.game_assets -O binary build/gpu-admission-fixture-sdram-gpu-safe-mul-test.elf build/gpu-admission-fixture-sdram-gpu-safe-mul-test.bin
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --only-section=.game_assets -O binary build/gpu-admission-fixture-sdram-gpu-safe-mul-test.elf build/gpu-admission-fixture-sdram-gpu-safe-mul-test.assets.bin
+Built portable: build/gpu-admission-fixture-sdram-gpu-safe-mul-test.hex and build/gpu-admission-fixture-sdram-gpu-safe-mul-test.mif
+Built gpu-admission-fixture: 222 triangles via shared scene IR and direct-call game port ABI; CPU/GPU cores preserved. Use a compatible target FPGA image.
+PASS RV32I C subset: gfx.c; report build/subset/gfx.json
+PASS RV32I C subset: gfx_scene.c; report build/subset/gfx_scene.json
+PASS RV32I C subset: player.c; report build/subset/player.json
+PASS RV32I C subset: first_person.c; report build/subset/first_person.json
+PASS RV32I C subset: game_runtime.c; report build/subset/game_runtime.json
+PASS RV32I C subset: sdram.c; report build/subset/sdram.json
+PASS RV32I C subset: portable_assets.c; report build/subset/portable_assets.json
+PASS RV32I C subset: portable_main.c; report build/subset/portable_main.json
+PASS RV32I C subset: cpu_profile.c; report build/subset/cpu_profile.json
+PASS RV32I C subset: port.c; report build/subset/port.json
+PASS RV32I C subset: world.c; report build/subset/world.json
+PASS RV32I C subset: game_services.c; report build/subset/game_services.json
++ C:\Program Files\LLVM\bin\clang.EXE --target=riscv32-unknown-elf -fuse-ld=lld -march=rv32i -mabi=ilp32 -msmall-data-limit=0 -mno-relax -O1 ... (31 more arguments)
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --remove-section=.game_assets -O binary build/gpu-admission-fixture-sdram-direct-profile-detail-mul.elf build/gpu-admission-fixture-sdram-direct-profile-detail-mul.bin
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --only-section=.game_assets -O binary build/gpu-admission-fixture-sdram-direct-profile-detail-mul.elf build/gpu-admission-fixture-sdram-direct-profile-detail-mul.assets.bin
+Built portable: build/gpu-admission-fixture-sdram-direct-profile-detail-mul.hex and build/gpu-admission-fixture-sdram-direct-profile-detail-mul.mif
++ C:\Program Files\LLVM\bin\clang.EXE --target=riscv32-unknown-elf -fuse-ld=lld -march=rv32i -mabi=ilp32 -msmall-data-limit=0 -mno-relax -O1 ... (32 more arguments)
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --remove-section=.game_assets -O binary build/gpu-admission-fixture-sdram-direct-profile-detail-mul-test.elf build/gpu-admission-fixture-sdram-direct-profile-detail-mul-test.bin
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --only-section=.game_assets -O binary build/gpu-admission-fixture-sdram-direct-profile-detail-mul-test.elf build/gpu-admission-fixture-sdram-direct-profile-detail-mul-test.assets.bin
+Built portable: build/gpu-admission-fixture-sdram-direct-profile-detail-mul-test.hex and build/gpu-admission-fixture-sdram-direct-profile-detail-mul-test.mif
+Built gpu-admission-fixture: 222 triangles via shared scene IR and direct-call game port ABI; CPU/GPU cores preserved. Use a compatible target FPGA image.
+PASS RV32I C subset: gfx.c; report build/subset/gfx.json
+PASS RV32I C subset: gfx_scene.c; report build/subset/gfx_scene.json
+PASS RV32I C subset: player.c; report build/subset/player.json
+PASS RV32I C subset: first_person.c; report build/subset/first_person.json
+PASS RV32I C subset: game_runtime.c; report build/subset/game_runtime.json
+PASS RV32I C subset: sdram.c; report build/subset/sdram.json
+PASS RV32I C subset: portable_assets.c; report build/subset/portable_assets.json
+PASS RV32I C subset: portable_main.c; report build/subset/portable_main.json
+PASS RV32I C subset: cpu_profile.c; report build/subset/cpu_profile.json
+PASS RV32I C subset: port.c; report build/subset/port.json
+PASS RV32I C subset: world.c; report build/subset/world.json
+PASS RV32I C subset: game_services.c; report build/subset/game_services.json
++ C:\Program Files\LLVM\bin\clang.EXE --target=riscv32-unknown-elf -fuse-ld=lld -march=rv32i -mabi=ilp32 -msmall-data-limit=0 -mno-relax -O1 ... (30 more arguments)
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --remove-section=.game_assets -O binary build/gpu-admission-fixture-sdram-gpu-safe-profile-detail-mul.elf build/gpu-admission-fixture-sdram-gpu-safe-profile-detail-mul.bin
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --only-section=.game_assets -O binary build/gpu-admission-fixture-sdram-gpu-safe-profile-detail-mul.elf build/gpu-admission-fixture-sdram-gpu-safe-profile-detail-mul.assets.bin
+Built portable: build/gpu-admission-fixture-sdram-gpu-safe-profile-detail-mul.hex and build/gpu-admission-fixture-sdram-gpu-safe-profile-detail-mul.mif
++ C:\Program Files\LLVM\bin\clang.EXE --target=riscv32-unknown-elf -fuse-ld=lld -march=rv32i -mabi=ilp32 -msmall-data-limit=0 -mno-relax -O1 ... (31 more arguments)
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --remove-section=.game_assets -O binary build/gpu-admission-fixture-sdram-gpu-safe-profile-detail-mul-test.elf build/gpu-admission-fixture-sdram-gpu-safe-profile-detail-mul-test.bin
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --only-section=.game_assets -O binary build/gpu-admission-fixture-sdram-gpu-safe-profile-detail-mul-test.elf build/gpu-admission-fixture-sdram-gpu-safe-profile-detail-mul-test.assets.bin
+Built portable: build/gpu-admission-fixture-sdram-gpu-safe-profile-detail-mul-test.hex and build/gpu-admission-fixture-sdram-gpu-safe-profile-detail-mul-test.mif
+Built gpu-admission-fixture: 222 triangles via shared scene IR and direct-call game port ABI; CPU/GPU cores preserved. Use a compatible target FPGA image.
+PASS RV32I C subset: gfx.c; report build/subset/gfx.json
+PASS RV32I C subset: gfx_scene.c; report build/subset/gfx_scene.json
+PASS RV32I C subset: player.c; report build/subset/player.json
+PASS RV32I C subset: first_person.c; report build/subset/first_person.json
+PASS RV32I C subset: game_runtime.c; report build/subset/game_runtime.json
+PASS RV32I C subset: sdram.c; report build/subset/sdram.json
+PASS RV32I C subset: portable_assets.c; report build/subset/portable_assets.json
+PASS RV32I C subset: portable_main.c; report build/subset/portable_main.json
+PASS RV32I C subset: cpu_profile.c; report build/subset/cpu_profile.json
+PASS RV32I C subset: port.c; report build/subset/port.json
+PASS RV32I C subset: world.c; report build/subset/world.json
+PASS RV32I C subset: game_services.c; report build/subset/game_services.json
++ C:\Program Files\LLVM\bin\clang.EXE --target=riscv32-unknown-elf -fuse-ld=lld -march=rv32i -mabi=ilp32 -msmall-data-limit=0 -mno-relax -O1 ... (31 more arguments)
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --remove-section=.game_assets -O binary build/gpu-admission-fixture-sdram-gpu-safe-profile-detail-fine-mul.elf build/gpu-admission-fixture-sdram-gpu-safe-profile-detail-fine-mul.bin
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --only-section=.game_assets -O binary build/gpu-admission-fixture-sdram-gpu-safe-profile-detail-fine-mul.elf build/gpu-admission-fixture-sdram-gpu-safe-profile-detail-fine-mul.assets.bin
+Built portable: build/gpu-admission-fixture-sdram-gpu-safe-profile-detail-fine-mul.hex and build/gpu-admission-fixture-sdram-gpu-safe-profile-detail-fine-mul.mif
++ C:\Program Files\LLVM\bin\clang.EXE --target=riscv32-unknown-elf -fuse-ld=lld -march=rv32i -mabi=ilp32 -msmall-data-limit=0 -mno-relax -O1 ... (32 more arguments)
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --remove-section=.game_assets -O binary build/gpu-admission-fixture-sdram-gpu-safe-profile-detail-fine-mul-test.elf build/gpu-admission-fixture-sdram-gpu-safe-profile-detail-fine-mul-test.bin
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --only-section=.game_assets -O binary build/gpu-admission-fixture-sdram-gpu-safe-profile-detail-fine-mul-test.elf build/gpu-admission-fixture-sdram-gpu-safe-profile-detail-fine-mul-test.assets.bin
+Built portable: build/gpu-admission-fixture-sdram-gpu-safe-profile-detail-fine-mul-test.hex and build/gpu-admission-fixture-sdram-gpu-safe-profile-detail-fine-mul-test.mif
+Built gpu-admission-fixture: 222 triangles via shared scene IR and direct-call game port ABI; CPU/GPU cores preserved. Use a compatible target FPGA image.
+BEGIN fixture-direct
+Uploading gpu-admission-fixture-sdram-direct-profile-detail-mul.bin: 18,224 bytes at 0x00000000
+Verifying gpu-admission-fixture-sdram-direct-profile-detail-mul.bin: 18,224 bytes at 0x00000000
+Uploading gpu-admission-fixture-sdram-direct-profile-detail-mul.assets.bin: 2,124 bytes at 0x80000000
+Verifying gpu-admission-fixture-sdram-direct-profile-detail-mul.assets.bin: 2,124 bytes at 0x80000000
+Readback verified; CPU released.
+trial 1 fps 29.775715390781727 position [0, 0, 0] metrics {'command_cycles': 240577, 'fifo_wait_span_cycles': 19609, 'bytes': 5509, 'commands': 213, 'tick_wall_cycles': 494652, 'update_wall_cycles': 165, 'cpu_wall_cycles': 365279, 'present_wall_cycles': 807556, 'frame_wall_cycles': 1172966, 'frame': 250, 'clock_hz': 50000000, 'cpu_abi': 1129316609}
+Uploading gpu-admission-fixture-sdram-direct-profile-detail-mul.bin: 18,224 bytes at 0x00000000
+Verifying gpu-admission-fixture-sdram-direct-profile-detail-mul.bin: 18,224 bytes at 0x00000000
+Readback verified; CPU released.
+trial 2 fps 30.069390901944082 position [0, 0, 0] metrics {'command_cycles': 240577, 'fifo_wait_span_cycles': 19609, 'bytes': 5509, 'commands': 213, 'tick_wall_cycles': 494652, 'update_wall_cycles': 165, 'cpu_wall_cycles': 365279, 'present_wall_cycles': 807556, 'frame_wall_cycles': 1172966, 'frame': 250, 'clock_hz': 50000000, 'cpu_abi': 1129316609}
+Uploading gpu-admission-fixture-sdram-direct-profile-detail-mul.bin: 18,224 bytes at 0x00000000
+Verifying gpu-admission-fixture-sdram-direct-profile-detail-mul.bin: 18,224 bytes at 0x00000000
+Readback verified; CPU released.
+trial 3 fps 30.062063615444508 position [0, 0, 0] metrics {'command_cycles': 240577, 'fifo_wait_span_cycles': 19609, 'bytes': 5509, 'commands': 213, 'tick_wall_cycles': 494652, 'update_wall_cycles': 165, 'cpu_wall_cycles': 365279, 'present_wall_cycles': 807556, 'frame_wall_cycles': 1172966, 'frame': 250, 'clock_hz': 50000000, 'cpu_abi': 1129316609}
+Uploading gpu-admission-fixture-sdram-gpu-safe-mul.bin: 19,140 bytes at 0x00000000
+Verifying gpu-admission-fixture-sdram-gpu-safe-mul.bin: 19,140 bytes at 0x00000000
+Readback verified; CPU released.
+BEGIN fixture-safe
+Uploading gpu-admission-fixture-sdram-gpu-safe-profile-detail-mul.bin: 20,340 bytes at 0x00000000
+Verifying gpu-admission-fixture-sdram-gpu-safe-profile-detail-mul.bin: 20,340 bytes at 0x00000000
+Uploading gpu-admission-fixture-sdram-gpu-safe-profile-detail-mul.assets.bin: 2,124 bytes at 0x80000000
+Verifying gpu-admission-fixture-sdram-gpu-safe-profile-detail-mul.assets.bin: 2,124 bytes at 0x80000000
+Readback verified; CPU released.
+trial 1 fps 30.174899096456247 position [0, 0, 0] metrics {'command_cycles': 3226, 'fifo_wait_span_cycles': 0, 'bytes': 81, 'commands': 4, 'tick_wall_cycles': 1329504, 'update_wall_cycles': 165, 'cpu_wall_cycles': 9248, 'present_wall_cycles': 328737, 'frame_wall_cycles': 338116, 'frame': 250, 'clock_hz': 50000000, 'cpu_abi': 1129316609}
+Uploading gpu-admission-fixture-sdram-gpu-safe-profile-detail-mul.bin: 20,340 bytes at 0x00000000
+Verifying gpu-admission-fixture-sdram-gpu-safe-profile-detail-mul.bin: 20,340 bytes at 0x00000000
+Readback verified; CPU released.
+trial 2 fps 30.07518797006251 position [0, 0, 0] metrics {'command_cycles': 3226, 'fifo_wait_span_cycles': 0, 'bytes': 81, 'commands': 4, 'tick_wall_cycles': 1329516, 'update_wall_cycles': 165, 'cpu_wall_cycles': 9248, 'present_wall_cycles': 328726, 'frame_wall_cycles': 338105, 'frame': 250, 'clock_hz': 50000000, 'cpu_abi': 1129316609}
+Uploading gpu-admission-fixture-sdram-gpu-safe-profile-detail-mul.bin: 20,340 bytes at 0x00000000
+Verifying gpu-admission-fixture-sdram-gpu-safe-profile-detail-mul.bin: 20,340 bytes at 0x00000000
+Readback verified; CPU released.
+trial 3 fps 29.982702287260103 position [0, 0, 0] metrics {'command_cycles': 3226, 'fifo_wait_span_cycles': 0, 'bytes': 81, 'commands': 4, 'tick_wall_cycles': 1327752, 'update_wall_cycles': 165, 'cpu_wall_cycles': 9248, 'present_wall_cycles': 330486, 'frame_wall_cycles': 339865, 'frame': 251, 'clock_hz': 50000000, 'cpu_abi': 1129316609}
+Uploading gpu-admission-fixture-sdram-gpu-safe-mul.bin: 19,140 bytes at 0x00000000
+Verifying gpu-admission-fixture-sdram-gpu-safe-mul.bin: 19,140 bytes at 0x00000000
+Readback verified; CPU released.
+BEGIN fixture-fine-safe
+Uploading gpu-admission-fixture-sdram-gpu-safe-profile-detail-fine-mul.bin: 21,272 bytes at 0x00000000
+Verifying gpu-admission-fixture-sdram-gpu-safe-profile-detail-fine-mul.bin: 21,272 bytes at 0x00000000
+Uploading gpu-admission-fixture-sdram-gpu-safe-profile-detail-fine-mul.assets.bin: 2,124 bytes at 0x80000000
+Verifying gpu-admission-fixture-sdram-gpu-safe-profile-detail-fine-mul.assets.bin: 2,124 bytes at 0x80000000
+Readback verified; CPU released.
+trial 1 fps 29.96906419202057 position [0, 0, 0] metrics {'command_cycles': 9235, 'fifo_wait_span_cycles': 0, 'bytes': 81, 'commands': 4, 'tick_wall_cycles': 1357032, 'update_wall_cycles': 165, 'cpu_wall_cycles': 15412, 'present_wall_cycles': 294780, 'frame_wall_cycles': 310323, 'frame': 250, 'clock_hz': 50000000, 'cpu_abi': 1129316609}
+Uploading gpu-admission-fixture-sdram-gpu-safe-profile-detail-fine-mul.bin: 21,272 bytes at 0x00000000
+Verifying gpu-admission-fixture-sdram-gpu-safe-profile-detail-fine-mul.bin: 21,272 bytes at 0x00000000
+Readback verified; CPU released.
+trial 2 fps 30.174899096793823 position [0, 0, 0] metrics {'command_cycles': 9235, 'fifo_wait_span_cycles': 0, 'bytes': 81, 'commands': 4, 'tick_wall_cycles': 1355292, 'update_wall_cycles': 165, 'cpu_wall_cycles': 15412, 'present_wall_cycles': 296529, 'frame_wall_cycles': 312072, 'frame': 251, 'clock_hz': 50000000, 'cpu_abi': 1129316609}
+Uploading gpu-admission-fixture-sdram-gpu-safe-profile-detail-fine-mul.bin: 21,272 bytes at 0x00000000
+Verifying gpu-admission-fixture-sdram-gpu-safe-profile-detail-fine-mul.bin: 21,272 bytes at 0x00000000
+Readback verified; CPU released.
+trial 3 fps 30.07518797006251 position [0, 0, 0] metrics {'command_cycles': 9235, 'fifo_wait_span_cycles': 0, 'bytes': 81, 'commands': 4, 'tick_wall_cycles': 1355292, 'update_wall_cycles': 165, 'cpu_wall_cycles': 15412, 'present_wall_cycles': 296529, 'frame_wall_cycles': 312072, 'frame': 251, 'clock_hz': 50000000, 'cpu_abi': 1129316609}
+Uploading gpu-admission-fixture-sdram-gpu-safe-mul.bin: 19,140 bytes at 0x00000000
+Verifying gpu-admission-fixture-sdram-gpu-safe-mul.bin: 19,140 bytes at 0x00000000
+Readback verified; CPU released.
+Uploading mario-castle-sdram-direct-mul.bin: 26,080 bytes at 0x00000000
+Verifying mario-castle-sdram-direct-mul.bin: 26,080 bytes at 0x00000000
+Uploading mario-castle-sdram-direct-mul.assets.bin: 883,124 bytes at 0x80000000
+  379,764/883,124 bytes
+  758,472/883,124 bytes
+Verifying mario-castle-sdram-direct-mul.assets.bin: 883,124 bytes at 0x80000000
+  377,796/883,124 bytes
+  759,768/883,124 bytes
+Readback verified; CPU released.

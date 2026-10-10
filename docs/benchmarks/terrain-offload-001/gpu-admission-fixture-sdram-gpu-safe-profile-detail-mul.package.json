@@ -1,0 +1,87 @@
+{
+  "format": "soc-game-package",
+  "version": 1,
+  "app": "portable",
+  "segments": [
+    {
+      "file": "gpu-admission-fixture-sdram-gpu-safe-profile-detail-mul.bin",
+      "address": 0,
+      "bytes": 20340,
+      "sha256": "edd233e159816fc965c9b8870d219f5b776f71b9e9e37ecfea6e2f728a6147b2"
+    },
+    {
+      "file": "gpu-admission-fixture-sdram-gpu-safe-profile-detail-mul.assets.bin",
+      "address": 2147483648,
+      "bytes": 2124,
+      "sha256": "578c340cbd0d3c5912b41ba9dffc0cd3b5f58e631a49df82fa5e1610d858cd12"
+    }
+  ],
+  "required_cpu_features": {
+    "mul": true,
+    "mmio_feature_bit": 0
+  },
+  "content": {
+    "format": "soc-game-assets",
+    "version": 1,
+    "runtime_abi": 1,
+    "game": "gpu-admission-fixture",
+    "units": "gpu-q8.8",
+    "material_policy": "indexed-flat-rgb",
+    "palette_colors": 5,
+    "meshes": [
+      {
+        "vertices": 8,
+        "triangles": 12
+      }
+    ],
+    "collision": {
+      "abi": "triangle-q12-normal-v1",
+      "floors": 1,
+      "walls": 0
+    },
+    "animation": {
+      "abi": "none",
+      "clips": []
+    },
+    "configuration": {
+      "module": "world",
+      "physics": {},
+      "camera": {
+        "focal": 256,
+        "near_z": 257
+      },
+      "spawn": [
+        0,
+        0,
+        0
+      ],
+      "game": {
+        "port": "custom",
+        "implementation_status": "world-services-demo"
+      },
+      "world": {
+        "abi": "sdram-areas-v1",
+        "areas": 1,
+        "stored_chunks": 1,
+        "render_scale": 4,
+        "near_gpu": 257,
+        "far_gpu": 30000,
+        "focal_gpu": 256,
+        "resident_handles": 1,
+        "cache_policy": "uploads-between-frames; uncached-visible-triangles-software-clipped"
+      }
+    },
+    "source": {
+      "profile": "game.project.json",
+      "sha256": "6b81d5140f7be4838406fcf450560d34684124a1c290c5781d475455c20429ff"
+    }
+  },
+  "target": {
+    "id": "de2-115-fixed-v1",
+    "runtime_abi": 1,
+    "required_features": [
+      "indexed-flat-rgb",
+      "custom-rv32i-gameplay"
+    ]
+  }
+}
