@@ -1,0 +1,245 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'CLOCK_50'
+Slack : 0.749
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Setup 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'
+Slack : 1.408
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Setup 'SDRAM_CLK'
+Slack : 3.212
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Setup 'ENET0_TX_CLK'
+Slack : 3.896
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Setup 'ENET0_RX_CLK'
+Slack : 5.827
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Setup 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 11.162
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'CLOCK_50'
+Slack : 0.278
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'ENET0_RX_CLK'
+Slack : 0.331
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'ENET0_TX_CLK'
+Slack : 0.391
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 0.408
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'SDRAM_CLK'
+Slack : 10.207
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'
+Slack : 13.420
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Recovery 'CLOCK_50'
+Slack : 2.142
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Removal 'CLOCK_50'
+Slack : 7.198
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'CLOCK_50'
+Slack : 9.523
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'
+Slack : 9.800
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'SDRAM_CLK'
+Slack : 15.790
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 19.576
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'ENET0_RX_CLK'
+Slack : 19.636
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'ENET0_TX_CLK'
+Slack : 19.657
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'CLOCK_50'
+Slack : 1.522
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'
+Slack : 1.938
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'SDRAM_CLK'
+Slack : 3.618
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'ENET0_RX_CLK'
+Slack : 6.317
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'ENET0_TX_CLK'
+Slack : 6.390
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Setup 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 13.785
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'CLOCK_50'
+Slack : 0.288
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'ENET0_RX_CLK'
+Slack : 0.340
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'ENET0_TX_CLK'
+Slack : 0.350
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 0.365
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'SDRAM_CLK'
+Slack : 9.901
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'
+Slack : 12.965
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Recovery 'CLOCK_50'
+Slack : 2.758
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Removal 'CLOCK_50'
+Slack : 6.539
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'
+Slack : 9.556
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'
+Slack : 9.808
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'SDRAM_CLK'
+Slack : 15.790
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 19.572
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'ENET0_RX_CLK'
+Slack : 19.652
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'ENET0_TX_CLK'
+Slack : 19.671
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'
+Slack : 3.593
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'CLOCK_50'
+Slack : 5.033
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'SDRAM_CLK'
+Slack : 5.648
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'ENET0_RX_CLK'
+Slack : 8.585
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'ENET0_TX_CLK'
+Slack : 16.750
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Setup 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 24.850
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'CLOCK_50'
+Slack : 0.116
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'ENET0_RX_CLK'
+Slack : 0.129
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'ENET0_TX_CLK'
+Slack : 0.180
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 0.187
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'SDRAM_CLK'
+Slack : 9.282
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Hold 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'
+Slack : 11.270
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Recovery 'CLOCK_50'
+Slack : 6.343
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Removal 'CLOCK_50'
+Slack : 3.730
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'
+Slack : 9.195
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'
+Slack : 9.798
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'SDRAM_CLK'
+Slack : 16.000
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'ENET0_RX_CLK'
+Slack : 19.379
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'ENET0_TX_CLK'
+Slack : 19.385
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'
+Slack : 19.614
+TNS   : 0.000
+
+------------------------------------------------------------
