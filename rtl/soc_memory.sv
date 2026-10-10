@@ -3,7 +3,8 @@ module soc_memory #(
     parameter HEX_FILE = "build/firmware.hex",
     parameter MIF_FILE = "build/firmware.mif",
     parameter ENABLE_SDRAM = 0,
-    parameter ENABLE_CACHE = 1
+    parameter ENABLE_CACHE = 1,
+    parameter ENABLE_BURST = 1
 )(
     input logic clk, reset,
     input logic [31:0] pc, addr, wdata,
@@ -88,19 +89,19 @@ module soc_memory #(
             .request_data(req_data), .request_byte_enable(req_bytes), .request_ready(req_ready),
             .response_valid(response_valid), .response_data(response_data)
         );
-        logic mem_valid, mem_write, mem_ready, mem_response;
+        logic mem_valid, mem_write, mem_burst, mem_ready, mem_response;
         logic [24:0] mem_addr;
         logic [31:0] mem_data, mem_rdata;
         logic [3:0] mem_bytes;
         if (ENABLE_CACHE) begin : cached
             wire [31:0] hits, misses, fills, writes, busy;
             assign cache_statistics = {32'h43410101,hits,misses,fills,writes,busy};
-            sdram_cache cache (
+            sdram_cache #(.ENABLE_BURST(ENABLE_BURST)) cache (
                 .clk(clk), .reset(sdram_reset), .bypass(load_hold), .invalidate(load_hold || reset),
                 .request_valid(req_valid), .request_write(req_write), .request_address(req_addr),
                 .request_data(req_data), .request_byte_enable(req_bytes), .request_ready(req_ready),
                 .response_valid(response_valid), .response_data(response_data),
-                .memory_valid(mem_valid), .memory_write(mem_write), .memory_address(mem_addr),
+                .memory_valid(mem_valid), .memory_write(mem_write), .memory_burst(mem_burst), .memory_address(mem_addr),
                 .memory_data(mem_data), .memory_byte_enable(mem_bytes), .memory_ready(mem_ready),
                 .memory_response_valid(mem_response), .memory_response_data(mem_rdata),
                 .read_hits(hits), .read_misses(misses), .fill_words(fills),
@@ -108,13 +109,15 @@ module soc_memory #(
             );
         end else begin : uncached
             assign cache_statistics = 0;
+            assign mem_burst = 0;
             assign mem_valid=req_valid; assign mem_write=req_write; assign mem_addr=req_addr;
             assign mem_data=req_data; assign mem_bytes=req_bytes;
             assign req_ready=mem_ready; assign response_valid=mem_response; assign response_data=mem_rdata;
         end
-        sdram_controller controller (
+        sdram_controller #(.ENABLE_BURST(ENABLE_BURST && ENABLE_CACHE)) controller (
             .clk(clk), .reset(sdram_reset), .request_valid(mem_valid), .request_write(mem_write),
             .request_address(mem_addr), .request_data(mem_data), .request_byte_enable(mem_bytes),
+            .request_burst(mem_burst),
             .request_ready(mem_ready), .response_valid(mem_response), .response_data(mem_rdata),
             .initialized(sdram_initialized), .refresh_count(refresh_count),
             .DRAM_CLK(DRAM_CLK), .DRAM_CKE(DRAM_CKE), .DRAM_CS_N(DRAM_CS_N),

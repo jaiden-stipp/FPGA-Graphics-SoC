@@ -1,7 +1,7 @@
 // Blocking 4 KiB direct-mapped data cache: 128 lines, 8 words per line.
-// Write-through, no write allocation. Controller remains burst-1.
+// Write-through, no write allocation. Optional eight-beat cache-line reads.
 // Addresses are SDRAM-relative WORD addresses, not CPU byte addresses.
-module sdram_cache (
+module sdram_cache #(parameter ENABLE_BURST = 1) (
     input logic clk, reset, bypass, invalidate,
     input logic request_valid, request_write,
     input logic [24:0] request_address,
@@ -9,7 +9,7 @@ module sdram_cache (
     input logic [3:0] request_byte_enable,
     output logic request_ready, response_valid,
     output logic [31:0] response_data,
-    output logic memory_valid, memory_write,
+    output logic memory_valid, memory_write, memory_burst,
     output logic [24:0] memory_address,
     output logic [31:0] memory_data,
     output logic [3:0] memory_byte_enable,
@@ -47,7 +47,8 @@ module sdram_cache (
     assign request_ready = state == IDLE;
     assign memory_valid = state == ISSUE;
     assign memory_write = saved_write;
-    assign memory_address = filling ? {saved_address[24:3],fill_offset} : saved_address;
+    assign memory_burst = ENABLE_BURST && filling;
+    assign memory_address = filling ? {saved_address[24:3],(ENABLE_BURST ? 3'b0 : fill_offset)} : saved_address;
     assign memory_data = saved_data;
     assign memory_byte_enable = saved_bytes;
     always_ff @(posedge clk) begin
@@ -98,7 +99,10 @@ module sdram_cache (
                             end
                             response_data <= saved_address[2:0] == 7 ? memory_response_data : critical_data;
                             response_valid <= 1; state <= IDLE;
-                        end else begin fill_offset <= fill_offset + 1'b1; state <= ISSUE; end
+                        end else begin
+                            fill_offset <= fill_offset + 1'b1;
+                            state <= ENABLE_BURST ? WAIT_MEMORY : ISSUE;
+                        end
                     end else begin
                         response_data <= memory_response_data; response_valid <= 1; state <= IDLE;
                     end

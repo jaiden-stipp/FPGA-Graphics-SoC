@@ -13,6 +13,8 @@ CacheSoC.qpf
 CacheSoC.qsf
 ProjectionSoC.qpf
 ProjectionSoC.qsf
+BurstSoC.qpf
+BurstSoC.qsf
 db/
 incremental_db/
 *.qws
