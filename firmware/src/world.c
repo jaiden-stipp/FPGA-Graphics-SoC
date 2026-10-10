@@ -14,9 +14,13 @@
 // Fixed hardware; software cache uploads occur before BEGIN_FRAME only.
 static const world_area_t *selected;
 static const world_chunk_t *cache[16];
+static int16_t prepared_matrix[16][12],prepared_view[12];
+static uint8_t prepared_safe[16];
+static int32_t prepared_position[3];
 static uint16_t visible_chunks[2048];
 static uint32_t room=1;
 volatile uint32_t world_visible_chunks,world_direct_triangles,world_uploaded_chunks;
+volatile uint32_t world_gpu_chunks,world_fallback_chunks;
 typedef struct {int32_t x,y,z;} clip_point_t;
 // One reusable CPU scratch buffer. A source vertex shared by several faces
 // keeps exactly one transform/outcode per direct-drawn mesh and frame.
@@ -34,6 +38,7 @@ void world_collision(const world_area_t *a,const player_t *p) {
 }
 void world_select(const world_area_t *a,player_t *p) {
     selected=a;room=1;
+    world_visible_chunks=0;
     for(uint32_t h=0;h<16;++h)cache[h]=0;
     player_reset(p,a->physics);world_collision(a,p);
 }
@@ -99,19 +104,62 @@ static int visible(const world_chunk_t *c,const player_t *p,const int16_t *v) {
     return plane(center,2)+horizontal>=0 && plane(center,3)+horizontal>=0 &&
            plane(center,4)+vertical>=0 && plane(center,5)+vertical>=0;
 }
-static int matrix(const world_chunk_t *c,const player_t *p,const int16_t *v,int16_t *m) {
+static int safe_matrix(const world_chunk_t *c,const player_t *p,const int16_t *v,int16_t *m) {
+    // Bounds are absolute source-world coordinates, validated by the converter.
+    // Restrict arithmetic so neither the CPU proof nor GPU products overflow.
+    if(p->x<-32768 || p->x>32767 || p->y<-32768 || p->y>32767 || p->z<-32768 || p->z>32767)return 0;
+    if(!c->mesh.vertex_count || c->mesh.vertex_count>128 || c->mesh.triangle_count>256)return 0;
+    for(uint32_t row=0;row<3;++row) {
+        uint32_t b=row<<2;
+        for(uint32_t j=0;j<3;++j)if(v[b+j]<-256 || v[b+j]>256)return 0;
+        // GPU floors local dot before adding integer translation. Require the
+        // origin dot to be integral, making it exactly equal to the CPU's one
+        // combined floor, including negative coordinates.
+        int32_t x=(c->origin[0]-p->x)*4,y=(c->origin[1]-p->y)*4,z=(c->origin[2]-p->z)*4;
+        int32_t sum=fixed_mul(x,v[b])+fixed_mul(y,v[b+1])+fixed_mul(z,v[b+2]);
+        if(sum&255)return 0;
+    }
     clip_point_t q=transform(c->origin[0],c->origin[1],c->origin[2],p,v);
     if(q.x<-32764 || q.x>32764 || q.y<-32764 || q.y>32764 || q.z<-32764 || q.z>30000)return 0;
     for(uint32_t i=0;i<12;++i)m[i]=(i&3)==3?0:(int16_t)(v[i]*4);
     m[3]=(int16_t)q.x;m[7]=(int16_t)q.y;m[11]=(int16_t)q.z;
+    int32_t lo[3]={32767,32767,32767},hi[3]={-32768,-32768,-32768};
+    for(uint32_t j=0;j<3;++j)if(c->bounds[j*2]>c->bounds[j*2+1])return 0;
+    // Eight corners bound every transformed vertex; no per-vertex admission
+    // scan is needed on subsequent frames. A full camera-space box must fit.
+    for(uint32_t i=0;i<8;++i) {
+        q=transform(c->bounds[i&1],c->bounds[2+((i>>1)&1)],c->bounds[4+((i>>2)&1)],p,v);
+        int32_t value[3]={q.x,q.y,q.z};
+        for(uint32_t j=0;j<3;++j) {
+            if(value[j]<lo[j])lo[j]=value[j];
+            if(value[j]>hi[j])hi[j]=value[j];
+        }
+    }
+    if(lo[0]<-32764 || hi[0]>32764 || lo[1]<-32764 || hi[1]>32764 || lo[2]<257 || hi[2]>30000)return 0;
+    // Fully inside all CPU planes: the CPU would not change these triangles.
+    // GPU projection/screen clipping then sees exactly the same coordinates.
+    return lo[0]*256+lo[2]*160>=0 && -hi[0]*256+lo[2]*160>=0 &&
+           lo[1]*256+lo[2]*120>=0 && -hi[1]*256+lo[2]*120>=0;
+}
+static int matrix(const world_chunk_t *c,const player_t *p,const int16_t *v,int16_t *m) {
+    FINE_START(admission_start);
+    int result=safe_matrix(c,p,v,m);
+    FINE_END(PROFILE_ADMISSION,admission_start);
+    if(result)FINE_EVENT(EVENT_GPU_ADMITTED);
+    return result;
+}
+static int bounds_valid(const world_chunk_t *c) {
+    // Validate the converter's box once before residency; retain original
+    // vertices. A bad box never authorizes GPU saturation or different clipping.
     for(uint32_t i=0;i<c->mesh.vertex_count;++i) {
         const scene_vertex_t *s=c->mesh.vertices+i;
-        q=transform(s->x+c->origin[0],s->y+c->origin[1],s->z+c->origin[2],p,v);
-        if(q.x<-32764 || q.x>32764 || q.y<-32764 || q.y>32764 || q.z<-32764 || q.z>30000)return 0;
+        int32_t q[3]={s->x+c->origin[0],s->y+c->origin[1],s->z+c->origin[2]};
+        for(uint32_t j=0;j<3;++j)if(q[j]<c->bounds[2*j] || q[j]>c->bounds[2*j+1])return 0;
     }
     return 1;
 }
 static int upload(uint32_t h,const world_chunk_t *c) {
+    FINE_START(upload_start);
     const scene_mesh_t *m=&c->mesh;
     if(gfx_define_mesh((uint8_t)h,m->vertex_count,m->triangle_count) ||
        game_mesh_frame((uint8_t)h,m->vertices,m->vertex_count))return -1;
@@ -125,6 +173,8 @@ static int upload(uint32_t h,const world_chunk_t *c) {
         if(gfx_command(GFX_OP_UPLOAD_INDICES,data,(uint8_t)(4+(n<<2))))return -1;
         start+=n;
     }
+    FINE_END(PROFILE_UPLOAD,upload_start);
+    FINE_EVENT(EVENT_UPLOAD);
     return 0;
 }
 int world_prepare(const world_area_t *a,const player_t *p,const int16_t v[12],uint32_t reserved) {
@@ -133,41 +183,53 @@ int world_prepare(const world_area_t *a,const player_t *p,const int16_t v[12],ui
     int32_t fi=player_floor_index();
     if(fi>=0 && a->floor_rooms && a->floor_rooms[fi]>0 && a->floor_rooms[fi]<=32)room=a->floor_rooms[fi];
     world_visible_chunks=0;world_uploaded_chunks=0;
+    prepared_position[0]=p->x;prepared_position[1]=p->y;prepared_position[2]=p->z;
+    for(uint32_t i=0;i<12;++i)prepared_view[i]=v[i];
+    for(uint32_t h=0;h<16;++h)prepared_safe[h]=0;
     DETAIL_START(visibility_start);
     for(uint32_t h=reserved;h<16;++h) {
-        int16_t m[12];
-        if(cache[h] && (!visible(cache[h],p,v) || !matrix(cache[h],p,v,m)))cache[h]=0;
+        if(cache[h] && !visible(cache[h],p,v))cache[h]=0;
     }
     for(uint32_t i=0;i<a->chunk_count;++i) {
         const world_chunk_t *c=a->chunks+i;
         if(!visible(c,p,v))continue;
         visible_chunks[world_visible_chunks++]=(uint16_t)i;
-        uint32_t found=0,free=16;int16_t m[12];
+        uint32_t found=16,free=16;int16_t m[12];
         for(uint32_t h=reserved;h<16;++h) {
-            if(cache[h]==c)found=1;
+            if(cache[h]==c)found=h;
             if(!cache[h] && free==16)free=h;
         }
-        if(!WORLD_FORCE_DIRECT && !found && free<16 && matrix(c,p,v,m)) {
-            if(upload(free,c))return -1;
-            cache[free]=c;++world_uploaded_chunks;
+        if(!WORLD_FORCE_DIRECT && (found<16 || free<16) && matrix(c,p,v,m)) {
+            uint32_t h=found<16?found:free;
+            if(found==16) {
+                if(!bounds_valid(c))continue;
+                if(upload(h,c))return -1;
+                cache[h]=c;++world_uploaded_chunks;
+            }
+            for(uint32_t j=0;j<12;++j)prepared_matrix[h][j]=m[j];
+            prepared_safe[h]=1;
         }
     }
     DETAIL_END(PROFILE_VISIBILITY,visibility_start);
     return 0;
 }
 static uint32_t fraction(uint32_t n,uint32_t d) {
-    uint32_t q=0;if(n>=d)return 4096;
+    FINE_START(fraction_start);
+    uint32_t q=0;if(n>=d) { FINE_END(PROFILE_FRACTION,fraction_start); return 4096; }
     for(uint32_t i=0;i<12;++i) {
         q<<=1;
         if(n>=d-n) { n-=d-n;q|=1; }else n<<=1;
     }
+    FINE_END(PROFILE_FRACTION,fraction_start);
     return q;
 }
 static clip_point_t intersection(clip_point_t a,clip_point_t b,int32_t da,int32_t db) {
+    FINE_START(intersection_start);
     uint32_t na=da<0?0u-(uint32_t)da:(uint32_t)da;
     uint32_t nb=db<0?0u-(uint32_t)db:(uint32_t)db;
     int32_t t=(int32_t)fraction(na,na+nb);clip_point_t q;
     q.x=a.x+(fixed_mul(b.x-a.x,t)>>12);q.y=a.y+(fixed_mul(b.y-a.y,t)>>12);q.z=a.z+(fixed_mul(b.z-a.z,t)>>12);
+    FINE_END(PROFILE_INTERSECTION,intersection_start);
     return q;
 }
 static int direct(const scene_triangle_t *t) {
@@ -181,7 +243,8 @@ static int direct(const scene_triangle_t *t) {
         uint32_t outside=direct_outcodes[indices[i]];
         outside_all&=outside;outside_any|=outside;
     }
-    if(outside_all) { DETAIL_END(PROFILE_CLIPPING,clip_start); return 0; }
+    if(outside_all) { FINE_EVENT(EVENT_CLIP_REJECT); DETAIL_END(PROFILE_CLIPPING,clip_start); return 0; }
+    if(!outside_any)FINE_EVENT(EVENT_CLIP_ACCEPT);
     for(uint32_t k=0;k<6 && count;++k) {
         if(!(outside_any&(1u<<k)))continue;
         uint32_t n=0;
@@ -211,14 +274,19 @@ static int direct(const scene_triangle_t *t) {
 }
 int world_draw(const world_area_t *a,const player_t *p,const int16_t v[12],uint32_t reserved) {
     if(selected!=a || reserved>15)return -1;
-    world_direct_triangles=0;
+    world_direct_triangles=0;world_gpu_chunks=0;world_fallback_chunks=0;
+    uint32_t same=p->x==prepared_position[0] && p->y==prepared_position[1] && p->z==prepared_position[2];
+    for(uint32_t j=0;j<12;++j)if(v[j]!=prepared_view[j])same=0;
     for(uint32_t i=0;i<world_visible_chunks;++i) {
         const world_chunk_t *c=a->chunks+visible_chunks[i];
         uint32_t handle=16;
         for(uint32_t h=reserved;h<16;++h)if(cache[h]==c)handle=h;
-        int16_t m[12];
-        if(!WORLD_FORCE_DIRECT && handle<16 && matrix(c,p,v,m)) { if(gfx_draw_matrix((uint8_t)handle,m))return -1; }
+        if(!WORLD_FORCE_DIRECT && same && handle<16 && prepared_safe[handle]) {
+            if(gfx_draw_matrix((uint8_t)handle,prepared_matrix[handle]))return -1;
+            ++world_gpu_chunks;FINE_EVENT(EVENT_GPU_DRAW);
+        }
         else {
+            ++world_fallback_chunks;FINE_EVENT(EVENT_DIRECT_DRAW);
             if(c->mesh.vertex_count>128)return -1;
             DETAIL_START(vertex_start);
             for(uint32_t j=0;j<c->mesh.vertex_count;++j) {

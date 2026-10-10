@@ -1,6 +1,28 @@
 #ifndef CPU_PROFILE_H
 #define CPU_PROFILE_H
 #include "soc.h"
+#ifdef SOC_PROFILE_FINE
+#ifndef SOC_PROFILE_DETAIL
+#error SOC_PROFILE_FINE requires SOC_PROFILE_DETAIL
+#endif
+#define CPU_FINE_SCOPES 7u
+#define CPU_FINE_EVENTS 6u
+#define CPU_FINE_WORDS 22u
+enum { PROFILE_CRC, PROFILE_TX_CHECK, PROFILE_TX_WRITE, PROFILE_FRACTION,
+       PROFILE_INTERSECTION, PROFILE_ADMISSION, PROFILE_UPLOAD };
+enum { EVENT_GPU_ADMITTED, EVENT_GPU_DRAW, EVENT_DIRECT_DRAW, EVENT_UPLOAD,
+       EVENT_CLIP_ACCEPT, EVENT_CLIP_REJECT };
+extern volatile uint32_t game_fine_slots[2][CPU_FINE_WORDS];
+void cpu_fine_end(uint32_t scope,uint32_t start);
+void cpu_fine_event(uint32_t event);
+#define FINE_START(name) uint32_t name=SOC_CYCLES
+#define FINE_END(scope,name) cpu_fine_end(scope,name)
+#define FINE_EVENT(event) cpu_fine_event(event)
+#else
+#define FINE_START(name)
+#define FINE_END(scope,name)
+#define FINE_EVENT(event)
+#endif
 #ifdef SOC_PROFILE_DETAIL
 #ifndef SOC_PROFILE
 #error SOC_PROFILE_DETAIL requires SOC_PROFILE

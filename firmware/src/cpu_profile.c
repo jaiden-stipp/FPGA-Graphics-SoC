@@ -3,6 +3,15 @@
 volatile uint32_t game_profile_slots[2][CPU_PROFILE_WORDS];
 volatile uint32_t game_profile_slot;
 static uint32_t previous[7], records[28], gpu_start[4];
+#ifdef SOC_PROFILE_FINE
+volatile uint32_t game_fine_slots[2][CPU_FINE_WORDS];
+static uint32_t fine[CPU_FINE_SCOPES*2u], events[CPU_FINE_EVENTS];
+void cpu_fine_end(uint32_t scope,uint32_t start) {
+    uint32_t elapsed=SOC_CYCLES-start;
+    fine[scope*2u]+=elapsed; ++fine[scope*2u+1u];
+}
+void cpu_fine_event(uint32_t event) { ++events[event]; }
+#endif
 #ifdef SOC_PROFILE_DETAIL
 volatile uint32_t game_detail_slots[2][CPU_DETAIL_WORDS];
 static uint32_t details[CPU_DETAIL_SCOPES*2u];
@@ -18,6 +27,10 @@ static void snapshot(uint32_t *v) {
     v[5]=SOC_GPU_STATUS_READS; v[6]=SOC_GPU_FULL_READS;
 }
 void cpu_profile_begin(void) {
+#ifdef SOC_PROFILE_FINE
+    for(uint32_t i=0;i<CPU_FINE_SCOPES*2u;++i)fine[i]=0;
+    for(uint32_t i=0;i<CPU_FINE_EVENTS;++i)events[i]=0;
+#endif
 #ifdef SOC_PROFILE_DETAIL
     for(uint32_t i=0;i<CPU_DETAIL_SCOPES*2u;++i)details[i]=0;
 #endif
@@ -49,6 +62,12 @@ void cpu_profile_publish(uint32_t frame, uint32_t tick, uint32_t update,
     for(uint32_t i=0;i<CPU_DETAIL_SCOPES*2u;++i)game_detail_slots[slot][i]=details[i];
     game_detail_slots[slot][14]=frame;
     game_detail_slots[slot][15]=0x44540101u;
+#endif
+#ifdef SOC_PROFILE_FINE
+    for(uint32_t i=0;i<CPU_FINE_SCOPES*2u;++i)game_fine_slots[slot][i]=fine[i];
+    for(uint32_t i=0;i<CPU_FINE_EVENTS;++i)game_fine_slots[slot][14u+i]=events[i];
+    game_fine_slots[slot][20]=frame;
+    game_fine_slots[slot][21]=0x464e0101u;
 #endif
     game_profile_slot=slot;
 }

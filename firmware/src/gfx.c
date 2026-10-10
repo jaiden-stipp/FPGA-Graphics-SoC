@@ -1,11 +1,13 @@
 #include "soc.h"
 #include "gfx_protocol.h"
+#include "cpu_profile.h"
 
 #ifdef SOC_PROFILE
 volatile uint32_t gfx_profile_command_cycles, gfx_profile_fifo_cycles;
 volatile uint32_t gfx_profile_bytes, gfx_profile_commands;
 #endif
 static uint16_t crc_byte(uint16_t crc, uint8_t byte) {
+    FINE_START(crc_start);
     // Two nibble lookups preserve CCITT-FALSE exactly. A 32-byte software
     // table avoids eight bit iterations per byte on the unchanged RV32I CPU.
     static const uint16_t table[16]={0x0000,0x1021,0x2042,0x3063,
@@ -13,7 +15,9 @@ static uint16_t crc_byte(uint16_t crc, uint8_t byte) {
         0xc18c,0xd1ad,0xe1ce,0xf1ef};
     uint16_t mixed=(uint16_t)(crc^((uint16_t)byte<<8));
     mixed=(uint16_t)((mixed<<4)^table[mixed>>12]);
-    return (uint16_t)((mixed<<4)^table[mixed>>12]);
+    uint16_t result=(uint16_t)((mixed<<4)^table[mixed>>12]);
+    FINE_END(PROFILE_CRC,crc_start);
+    return result;
 }
 
 #ifdef GFX_BATCHED
@@ -24,22 +28,31 @@ static int send_byte(uint8_t byte) {
     uint32_t waiting=0, wait_start=0;
 #endif
     for (uint32_t tries = 0; tries < 20000000u; ++tries) {
+        FINE_START(check_start);
 #ifdef GFX_BATCHED
-        if (!tx_budget && GFX_ERRORS) return -1;
+        if (!tx_budget && GFX_ERRORS) { FINE_END(PROFILE_TX_CHECK,check_start); return -1; }
 #else
-        if (GFX_ERRORS) return -1;
+        if (GFX_ERRORS) { FINE_END(PROFILE_TX_CHECK,check_start); return -1; }
 #endif
 #ifdef GFX_BATCHED
         // Only this CPU produces bytes. Consumer pops can only increase free space.
         if (!tx_budget) tx_budget=GFX_FREE;
-        if (tx_budget) { --tx_budget;
+        uint32_t ready=tx_budget;
 #else
-        if (GFX_STATUS & GFX_TX_READY) {
+        uint32_t ready=GFX_STATUS & GFX_TX_READY;
+#endif
+        FINE_END(PROFILE_TX_CHECK,check_start);
+        if (ready) {
+#ifdef GFX_BATCHED
+            --tx_budget;
 #endif
 #ifdef SOC_PROFILE
             if (waiting) gfx_profile_fifo_cycles += SOC_CYCLES-wait_start;
 #endif
-            GFX_DATA = byte; return 0;
+            FINE_START(write_start);
+            GFX_DATA = byte;
+            FINE_END(PROFILE_TX_WRITE,write_start);
+            return 0;
         }
 #ifdef SOC_PROFILE
         if (!waiting) { waiting=1; wait_start=SOC_CYCLES; }

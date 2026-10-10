@@ -594,6 +594,9 @@ def game_packages(args):
 def portable_package(args):
     from portable_game import generate as generate_portable
     from rv32i_subset import check
+    if getattr(args,'profile_fine',False):args.profile_detail=True;args.cpu_profile=True
+    if getattr(args,'terrain_gpu_safe',False) and getattr(args,'terrain_direct',False):
+        raise ValueError('--terrain-gpu-safe and --terrain-direct are mutually exclusive')
     if 'clang' not in Path(args.cc).name:
         raise ValueError('Portable game builds require Clang for the mandatory specialized-C audit')
     try:
@@ -603,15 +606,18 @@ def portable_package(args):
     api=set(api)|{'portable_assets','portable_world','portable_camera','portable_meshes'}
     sources=['gfx.c','gfx_scene.c','player.c','first_person.c','game_runtime.c','sdram.c','portable_assets.c','portable_main.c','cpu_profile.c']
     for source in [ROOT/'firmware/src'/name for name in sources]+args.port_sources:
-        check(source,args.cc,additional_api=api,extra_flags=(['-DSOC_PROFILE'] if getattr(args,'cpu_profile',False) or getattr(args,'profile_detail',False) else []) + (['-DSOC_PROFILE_DETAIL'] if getattr(args,'profile_detail',False) else []) + (['-DGFX_BATCHED'] if getattr(args,'batch_gfx',False) else []) + (['-DSOC_INTEGER_MUL'] if getattr(args,'integer_mul',False) else []))
+        check(source,args.cc,additional_api=api,extra_flags=(['-DSOC_PROFILE'] if getattr(args,'cpu_profile',False) or getattr(args,'profile_detail',False) else []) + (['-DSOC_PROFILE_DETAIL'] if getattr(args,'profile_detail',False) else []) + (['-DSOC_PROFILE_FINE'] if getattr(args,'profile_fine',False) else []) + (['-DGFX_BATCHED'] if getattr(args,'batch_gfx',False) else []) + (['-DSOC_INTEGER_MUL'] if getattr(args,'integer_mul',False) else []))
     direct=getattr(args,'terrain_direct',False)
     if direct and 'world_prepare' not in api:
         raise ValueError('--terrain-direct requires a port using the shared world renderer')
+    if getattr(args,'terrain_gpu_safe',False) and 'world_prepare' not in api:
+        raise ValueError('--terrain-gpu-safe requires the shared world renderer')
     args.app='portable';args.boot=None;args.use_sdram=True
-    suffix=('-direct' if direct else '')+('-profile' if getattr(args,'cpu_profile',False) or getattr(args,'profile_detail',False) else '')+('-detail' if getattr(args,'profile_detail',False) else '')+('-batched' if getattr(args,'batch_gfx',False) else '')+('-mul' if getattr(args,'integer_mul',False) else '')
+    suffix=('-direct' if direct else '-gpu-safe' if getattr(args,'terrain_gpu_safe',False) else '')+('-profile' if getattr(args,'cpu_profile',False) or getattr(args,'profile_detail',False) else '')+('-detail' if getattr(args,'profile_detail',False) else '')+('-fine' if getattr(args,'profile_fine',False) else '')+('-batched' if getattr(args,'batch_gfx',False) else '')+('-mul' if getattr(args,'integer_mul',False) else '')
     args.image_name=spec['name']+'-sdram'+suffix
     diagnostic_flags=['-DWORLD_FORCE_DIRECT=1'] if direct else []
     diagnostic_flags += (['-DSOC_PROFILE'] if getattr(args,'cpu_profile',False) or getattr(args,'profile_detail',False) else []) + (['-DSOC_PROFILE_DETAIL'] if getattr(args,'profile_detail',False) else []) + (['-DGFX_BATCHED'] if getattr(args,'batch_gfx',False) else []) + (['-DSOC_INTEGER_MUL'] if getattr(args,'integer_mul',False) else [])
+    diagnostic_flags += ['-DSOC_PROFILE_FINE'] if getattr(args,'profile_fine',False) else []
     args.extra_flags=diagnostic_flags
     firmware(args)
     from load_game import package_segments
@@ -711,9 +717,11 @@ def main():
     p = sub.add_parser('portable-game', help='Build any compatible shared-scene project with a default or custom game port')
     p.add_argument('--project',type=Path,required=True)
     p.add_argument('--terrain-direct',action='store_true',help='Diagnostic: draw shared-world terrain without resident GPU mesh handles; preserve normal packages')
+    p.add_argument('--terrain-gpu-safe',action='store_true',help='Conservative exact-rounding, full-frustum resident terrain with direct fallback')
     p.add_argument('--cc',default='clang');p.add_argument('--objcopy')
     p.add_argument('--cpu-profile',action='store_true',help='Require CPU counter ABI and publish atomic completed-frame profiles')
     p.add_argument('--profile-detail',action='store_true',help='Optional per-function cycle/call profiles; implies --cpu-profile')
+    p.add_argument('--profile-fine',action='store_true',help='Optional CRC/check/write and clipping fraction/intersection timers; implies --profile-detail')
     p.add_argument('--integer-mul',action='store_true',help='Use MUL-only fixed_mul; requires CPU feature bit 0')
     p.add_argument('--batch-gfx',action='store_true',help='Experimental FIFO-space reservation transport; retain byte stream ABI')
     p.set_defaults(func=portable_package)
