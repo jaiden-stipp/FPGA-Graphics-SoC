@@ -1,0 +1,9 @@
+PASS RV32I C subset: castle.c; report build/subset/castle.json
++ C:\Program Files\LLVM\bin\clang.EXE --target=riscv32-unknown-elf -fuse-ld=lld -march=rv32i -mabi=ilp32 -msmall-data-limit=0 -mno-relax -O1 ... (34 more arguments)
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --remove-section=.game_assets -O binary build/mario-castle-fixed-pose-software.elf build/mario-castle-fixed-pose-software.bin
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --only-section=.game_assets -O binary build/mario-castle-fixed-pose-software.elf build/mario-castle-fixed-pose-software.assets.bin
+Built portable: build/mario-castle-fixed-pose-software.hex and build/mario-castle-fixed-pose-software.mif
++ C:\Program Files\LLVM\bin\clang.EXE --target=riscv32-unknown-elf -fuse-ld=lld -march=rv32i -mabi=ilp32 -msmall-data-limit=0 -mno-relax -O1 ... (35 more arguments)
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --remove-section=.game_assets -O binary build/mario-castle-fixed-pose-mul.elf build/mario-castle-fixed-pose-mul.bin
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --only-section=.game_assets -O binary build/mario-castle-fixed-pose-mul.elf build/mario-castle-fixed-pose-mul.assets.bin
+Built portable: build/mario-castle-fixed-pose-mul.hex and build/mario-castle-fixed-pose-mul.mif

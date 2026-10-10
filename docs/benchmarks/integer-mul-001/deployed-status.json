@@ -1,0 +1,28 @@
+{
+  "first": {
+    "initialized": true,
+    "held": false,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 5042,
+    "refresh_count": 102192315,
+    "input_abi": 1229848833
+  },
+  "second": {
+    "initialized": true,
+    "held": false,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 5049,
+    "refresh_count": 102226394,
+    "input_abi": 1229848833
+  },
+  "frame_advanced": true,
+  "game": "normal animated unprofiled MUL Mario"
+}

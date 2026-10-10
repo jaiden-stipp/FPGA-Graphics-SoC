@@ -1,0 +1,19 @@
+Reading C:/intelFPGA/18.1/modelsim_ase/tcl/vsim/pref.tcl
+
+# 10.5b
+
+# vsim -c -L altera_mf -lib C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\simlib soc_mmio_tb -do "onerror {quit -code 1}; run -all; quit -code 0" 
+# Start time: 12:37:23 on Oct 10,2026
+# Loading sv_std.std
+# Loading C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\simlib.pipeline_pkg
+# Loading C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\simlib.pipeline_pkg_sv_unit
+# Loading C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\simlib.soc_mmio_tb
+# Loading C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\simlib.soc_mmio
+# onerror {quit -code 1}
+#  Warning: onerror command for use within macro
+#  run -all
+# PASS soc_mmio_tb
+# ** Note: $finish    : C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/soc_mmio_tb.sv(111)
+#    Time: 886 ns  Iteration: 0  Instance: /soc_mmio_tb
+# End time: 12:37:24 on Oct 10,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0

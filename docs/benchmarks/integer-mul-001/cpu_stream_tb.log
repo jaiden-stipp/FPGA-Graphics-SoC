@@ -1,0 +1,70 @@
+Reading C:/intelFPGA/18.1/modelsim_ase/tcl/vsim/pref.tcl
+
+# 10.5b
+
+# vsim -c -L altera_mf -lib C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\simlib cpu_stream_tb -do "onerror {quit -code 1}; run -all; quit -code 0" 
+# Start time: 12:37:25 on Oct 10,2026
+# Loading sv_std.std
+# Loading C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\simlib.pipeline_pkg
+# Loading C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\simlib.pipeline_pkg_sv_unit
+# Loading C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\simlib.cpu_stream_tb
+# Loading C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\simlib.RV32I_SoC
+# Loading C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\simlib.soc_cpu_counters
+# Loading C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\simlib.soc_PC_IF
+# Loading C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\simlib.soc_IF_ID
+# Loading C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\simlib.soc_ControlUnit
+# Loading C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\simlib.soc_RegFile
+# Loading C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\simlib.ImmGen
+# Loading C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\simlib.HazardUnit
+# Loading C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\simlib.soc_ID_EX
+# Loading C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\simlib.ForwardMux
+# Loading C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\simlib.soc_ALU
+# Loading C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\simlib.ALU
+# Loading C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\simlib.BranchUnit
+# Loading C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\simlib.soc_EX_MEM
+# Loading C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\simlib.soc_MEM_WB
+# Loading C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\simlib.ResultMux
+# Loading C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\simlib.soc_PipelineAssertions
+# Loading C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\simlib.ForwardingUnit
+# Loading C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\simlib.Monitor
+# Loading C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\simlib.soc_memory
+# Loading C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\simlib.soc_ram
+# Loading C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\simlib.soc_mmio
+# Loading C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\simlib.graphics_command_stream_decoder
+# ** Warning: (vsim-3017) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_stream_tb.sv(16): [TFMPC] - Too few port connections. Expected 30, found 28.
+#    Time: 0 ps  Iteration: 0  Instance: /cpu_stream_tb/cpu File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/RV32I_SoC.sv
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_stream_tb.sv(16): [TFMPC] - Missing connection for port 'soc_stall'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_stream_tb.sv(16): [TFMPC] - Missing connection for port 'cpu_statistics'.
+# ** Warning: (vsim-3017) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_stream_tb.sv(26): [TFMPC] - Too few port connections. Expected 47, found 24.
+#    Time: 0 ps  Iteration: 0  Instance: /cpu_stream_tb/memory File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/soc_memory.sv
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_stream_tb.sv(26): [TFMPC] - Missing connection for port 'cpu_statistics'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_stream_tb.sv(26): [TFMPC] - Missing connection for port 'look_state'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_stream_tb.sv(26): [TFMPC] - Missing connection for port 'sdram_reset'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_stream_tb.sv(26): [TFMPC] - Missing connection for port 'load_hold'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_stream_tb.sv(26): [TFMPC] - Missing connection for port 'load_valid'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_stream_tb.sv(26): [TFMPC] - Missing connection for port 'load_write'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_stream_tb.sv(26): [TFMPC] - Missing connection for port 'load_addr'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_stream_tb.sv(26): [TFMPC] - Missing connection for port 'load_wdata'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_stream_tb.sv(26): [TFMPC] - Missing connection for port 'load_ready'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_stream_tb.sv(26): [TFMPC] - Missing connection for port 'load_rdata'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_stream_tb.sv(26): [TFMPC] - Missing connection for port 'cpu_stall'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_stream_tb.sv(26): [TFMPC] - Missing connection for port 'sdram_initialized'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_stream_tb.sv(26): [TFMPC] - Missing connection for port 'refresh_count'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_stream_tb.sv(26): [TFMPC] - Missing connection for port 'DRAM_CLK'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_stream_tb.sv(26): [TFMPC] - Missing connection for port 'DRAM_CKE'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_stream_tb.sv(26): [TFMPC] - Missing connection for port 'DRAM_CS_N'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_stream_tb.sv(26): [TFMPC] - Missing connection for port 'DRAM_RAS_N'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_stream_tb.sv(26): [TFMPC] - Missing connection for port 'DRAM_CAS_N'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_stream_tb.sv(26): [TFMPC] - Missing connection for port 'DRAM_WE_N'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_stream_tb.sv(26): [TFMPC] - Missing connection for port 'DRAM_ADDR'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_stream_tb.sv(26): [TFMPC] - Missing connection for port 'DRAM_BA'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_stream_tb.sv(26): [TFMPC] - Missing connection for port 'DRAM_DQM'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_stream_tb.sv(26): [TFMPC] - Missing connection for port 'DRAM_DQ'.
+# onerror {quit -code 1}
+#  Warning: onerror command for use within macro
+#  run -all
+# PASS cpu_stream_tb (7377 cycles)
+# ** Note: $finish    : C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_stream_tb.sv(78)
+#    Time: 147631 ns  Iteration: 0  Instance: /cpu_stream_tb
+# End time: 12:37:25 on Oct 10,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 27

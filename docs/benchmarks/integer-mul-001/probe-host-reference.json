@@ -1,0 +1,5 @@
+{
+  "pairs": 256,
+  "expected_hash": 3347174586,
+  "reference": "Python unbounded multiplication reduced modulo 2^32"
+}

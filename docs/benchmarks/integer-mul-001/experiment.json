@@ -1,0 +1,58 @@
+{
+  "baseline_revision": "af8580f",
+  "candidate_revision": "cdf0f8c",
+  "sof_sha256": "84de9a3059e5a40957438df348da434c05e462955e60528491f2f2ac6713484b",
+  "probe_sha256": "7156ba4949c53c69214939960bdaa166442379804cd78d0c9f1c46477376e55d",
+  "probe_trials": [
+    {
+      "mul_probe_done": 256,
+      "mul_probe_cycles": 2564,
+      "software_probe_cycles": 75343,
+      "mul_probe_hash": 3347174586
+    },
+    {
+      "mul_probe_done": 256,
+      "mul_probe_cycles": 2564,
+      "software_probe_cycles": 75343,
+      "mul_probe_hash": 3347174586
+    },
+    {
+      "mul_probe_done": 256,
+      "mul_probe_cycles": 2564,
+      "software_probe_cycles": 75343,
+      "mul_probe_hash": 3347174586
+    }
+  ],
+  "cases": [
+    "software-standing",
+    "mul-standing",
+    "mul-moving",
+    "mul-unprofiled-standing"
+  ],
+  "deployed_status": [
+    {
+      "initialized": true,
+      "held": false,
+      "words": [
+        0,
+        0,
+        0
+      ],
+      "scratch": 2,
+      "refresh_count": 49736222,
+      "input_abi": 1229848833
+    },
+    {
+      "initialized": true,
+      "held": false,
+      "words": [
+        0,
+        0,
+        0
+      ],
+      "scratch": 9,
+      "refresh_count": 49770246,
+      "input_abi": 1229848833
+    }
+  ]
+}

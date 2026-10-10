@@ -1,0 +1,177 @@
+{
+  "M_encodings": [
+    {
+      "address": "6bc",
+      "funct3": 0
+    },
+    {
+      "address": "890",
+      "funct3": 0
+    },
+    {
+      "address": "894",
+      "funct3": 0
+    },
+    {
+      "address": "898",
+      "funct3": 0
+    },
+    {
+      "address": "89c",
+      "funct3": 0
+    },
+    {
+      "address": "8a0",
+      "funct3": 0
+    },
+    {
+      "address": "8a4",
+      "funct3": 0
+    },
+    {
+      "address": "930",
+      "funct3": 0
+    },
+    {
+      "address": "934",
+      "funct3": 0
+    },
+    {
+      "address": "9c0",
+      "funct3": 0
+    },
+    {
+      "address": "9c4",
+      "funct3": 0
+    },
+    {
+      "address": "b2c",
+      "funct3": 0
+    },
+    {
+      "address": "1208",
+      "funct3": 0
+    },
+    {
+      "address": "1334",
+      "funct3": 0
+    },
+    {
+      "address": "1380",
+      "funct3": 0
+    },
+    {
+      "address": "138c",
+      "funct3": 0
+    },
+    {
+      "address": "13b4",
+      "funct3": 0
+    },
+    {
+      "address": "13b8",
+      "funct3": 0
+    },
+    {
+      "address": "13bc",
+      "funct3": 0
+    },
+    {
+      "address": "16a4",
+      "funct3": 0
+    },
+    {
+      "address": "16a8",
+      "funct3": 0
+    },
+    {
+      "address": "16f4",
+      "funct3": 0
+    },
+    {
+      "address": "16f8",
+      "funct3": 0
+    },
+    {
+      "address": "1738",
+      "funct3": 0
+    },
+    {
+      "address": "173c",
+      "funct3": 0
+    },
+    {
+      "address": "17ac",
+      "funct3": 0
+    },
+    {
+      "address": "17b4",
+      "funct3": 0
+    },
+    {
+      "address": "17bc",
+      "funct3": 0
+    },
+    {
+      "address": "17c0",
+      "funct3": 0
+    },
+    {
+      "address": "17c8",
+      "funct3": 0
+    },
+    {
+      "address": "17d0",
+      "funct3": 0
+    },
+    {
+      "address": "1820",
+      "funct3": 0
+    },
+    {
+      "address": "1824",
+      "funct3": 0
+    },
+    {
+      "address": "182c",
+      "funct3": 0
+    },
+    {
+      "address": "1840",
+      "funct3": 0
+    },
+    {
+      "address": "1844",
+      "funct3": 0
+    },
+    {
+      "address": "184c",
+      "funct3": 0
+    },
+    {
+      "address": "1854",
+      "funct3": 0
+    },
+    {
+      "address": "1858",
+      "funct3": 0
+    },
+    {
+      "address": "185c",
+      "funct3": 0
+    },
+    {
+      "address": "189c",
+      "funct3": 0
+    },
+    {
+      "address": "18a0",
+      "funct3": 0
+    },
+    {
+      "address": "18a8",
+      "funct3": 0
+    }
+  ],
+  "all_M_encodings_are_MUL": true
+}

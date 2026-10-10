@@ -1,5 +1,7 @@
 # CPU render function profiling: RENDER-PROFILE-001
 
+Follow-up: [MUL-001](integer-mul.md) implements integer multiplication and records physical improvement using both normal gameplay and a separate controlled original-idle-pose fixture. The assessment below is the pre-MUL profiling record.
+
 Measured on the physical DE2-115 on October 10, 2026. Terrain vertex transforms/outcodes are the largest individually measured CPU render section. Integer multiplication is the strongest general CPU hardware candidate; greater use of the existing GPU terrain path is also worth evaluating after its precision and fallback behavior are validated. Neither optimization was implemented or measured here.
 
 Baseline source is `3ac198d`; optional profiling implementation is `9ead800`. The existing counter-enabled FPGA image was reused, without RTL changes. All measurements use the configured 50 MHz clock, original castle assets and `WORLD_FORCE_DIRECT=1`. The exact original FPGA image and Mario package are restored after collection.

@@ -1,0 +1,34 @@
+{
+  "fixture_revision": "762895b",
+  "scope": "Standing spawn view; original idle start pose held for identical render work; normal physics/camera/tick scheduling",
+  "cases": [
+    "fixed-software",
+    "fixed-mul"
+  ],
+  "deployed_status": [
+    {
+      "initialized": true,
+      "held": false,
+      "words": [
+        0,
+        0,
+        0
+      ],
+      "scratch": 2,
+      "refresh_count": 79355537,
+      "input_abi": 1229848833
+    },
+    {
+      "initialized": true,
+      "held": false,
+      "words": [
+        0,
+        0,
+        0
+      ],
+      "scratch": 9,
+      "refresh_count": 79389573,
+      "input_abi": 1229848833
+    }
+  ]
+}

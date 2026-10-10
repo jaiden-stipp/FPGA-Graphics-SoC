@@ -1,0 +1,13 @@
+{
+  "_bss_end": 4648,
+  "_bss_start": 536,
+  "_stack_top": 65536,
+  "_start": 0,
+  "main": 52,
+  "mul_probe_cycles": 4632,
+  "mul_probe_done": 4644,
+  "mul_probe_hash": 4640,
+  "operands": 536,
+  "results": 2584,
+  "software_probe_cycles": 4636
+}

@@ -17,6 +17,15 @@ on its falling edge. The optional SDRAM boundary adds a full pipeline clock
 enable and completion handshake; see [sdram.md](sdram.md). Pinned upstream
 sources remain unchanged.
 
+The SoC adapter now adds integer `MUL` only: the generated `soc_ControlUnit`
+decodes the full funct7 and selects `soc_ALU` control 0xB for the low 32-bit
+product. It uses the existing EX/MEM, forwarding and writeback paths without a
+new stall. MMIO 0x4000009C feature bit 0 advertises support. Portable builds
+opt in with `--integer-mul`, retain the RV32I compiler target, audit emitted
+M-family opcodes and reject incompatible hardware before using multiplication.
+MULH and division are not implemented; this is not full RV32M or Zmmul.
+See [implementation and physical results](integer-mul.md).
+
 The original RAM is separately generated as `soc_ram`, retaining its byte/halfword
 sign extension and falling-edge Intel `altsyncram` implementation. Simulation adds
 zero initialization and `$readmemh`; its array write process uses `always` because
