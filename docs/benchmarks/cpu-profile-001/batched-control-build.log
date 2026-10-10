@@ -1,0 +1,5 @@
++ C:\Program Files\LLVM\bin\clang.EXE --target=riscv32-unknown-elf -fuse-ld=lld -march=rv32i -mabi=ilp32 -msmall-data-limit=0 -mno-relax -O1 ... (32 more arguments)
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --remove-section=.game_assets -O binary build/mario-castle-batched.elf build/mario-castle-batched.bin
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --only-section=.game_assets -O binary build/mario-castle-batched.elf build/mario-castle-batched.assets.bin
+Built portable: build/mario-castle-batched.hex and build/mario-castle-batched.mif
+PASS uninstrumented batching preserves assets

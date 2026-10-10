@@ -1,0 +1,570 @@
+{
+  "original-standing": {
+    "observed_fps_all": [
+      19.9149265274887,
+      19.988468191394926,
+      19.97672614434391
+    ],
+    "median_observed_fps": 19.97672614434391,
+    "positions_all": [
+      [
+        -1328,
+        260,
+        4664
+      ],
+      [
+        -1328,
+        260,
+        4664
+      ],
+      [
+        -1328,
+        260,
+        4664
+      ]
+    ]
+  },
+  "instrumentation-control": {
+    "observed_fps_all": [
+      19.984627209846632,
+      19.85733564678883,
+      19.931008049085843
+    ],
+    "median_observed_fps": 19.931008049085843,
+    "positions_all": [
+      [
+        -1328,
+        260,
+        4664
+      ],
+      [
+        -1328,
+        260,
+        4664
+      ],
+      [
+        -1328,
+        260,
+        4664
+      ]
+    ]
+  },
+  "profile-standing": {
+    "observed_fps_all": [
+      20.04626060140851,
+      19.914926527376636,
+      19.85733564678883
+    ],
+    "median_observed_fps": 19.914926527376636,
+    "positions_all": [
+      [
+        -1328,
+        260,
+        4664
+      ],
+      [
+        -1328,
+        260,
+        4664
+      ],
+      [
+        -1328,
+        260,
+        4664
+      ]
+    ],
+    "median_phases": {
+      "tick": {
+        "cycles": 53,
+        "retired": 37,
+        "memory_freezes": 0,
+        "dependency_bubbles": 8,
+        "redirects": 4,
+        "status_reads": 0,
+        "full_status_reads": 0
+      },
+      "update": {
+        "cycles": 89033,
+        "retired": 40995,
+        "memory_freezes": 35706,
+        "dependency_bubbles": 2782,
+        "redirects": 4775,
+        "status_reads": 0,
+        "full_status_reads": 0
+      },
+      "render": {
+        "cycles": 1655341,
+        "retired": 1276552,
+        "memory_freezes": 43886,
+        "dependency_bubbles": 27421,
+        "redirects": 153741,
+        "status_reads": 7011,
+        "full_status_reads": 0
+      },
+      "present": {
+        "cycles": 757604,
+        "retired": 482133,
+        "memory_freezes": 0,
+        "dependency_bubbles": 137731,
+        "redirects": 68870,
+        "status_reads": 68859,
+        "full_status_reads": 0
+      }
+    },
+    "median_metrics": {
+      "command_cycles": 294210,
+      "fifo_wait_span_cycles": 0,
+      "bytes": 7011,
+      "commands": 242,
+      "tick_wall_cycles": 18,
+      "update_wall_cycles": 89031,
+      "cpu_wall_cycles": 1744372,
+      "present_wall_cycles": 757473,
+      "frame_wall_cycles": 2501976,
+      "frame": 167,
+      "clock_hz": 50000000,
+      "cpu_abi": 1129316609
+    },
+    "render_derived": {
+      "memory_freeze_percent": 2.651175800031534,
+      "dependency_percent": 1.6565166935392768,
+      "retired_per_cycle": 0.7711716196239928
+    }
+  },
+  "batched-standing": {
+    "observed_fps_all": [
+      19.988468191394926,
+      19.853508095625735,
+      19.927189116754807
+    ],
+    "median_observed_fps": 19.927189116754807,
+    "positions_all": [
+      [
+        -1328,
+        260,
+        4664
+      ],
+      [
+        -1328,
+        260,
+        4664
+      ],
+      [
+        -1328,
+        260,
+        4664
+      ]
+    ],
+    "median_phases": {
+      "tick": {
+        "cycles": 53,
+        "retired": 37,
+        "memory_freezes": 0,
+        "dependency_bubbles": 8,
+        "redirects": 4,
+        "status_reads": 0,
+        "full_status_reads": 0
+      },
+      "update": {
+        "cycles": 89042,
+        "retired": 40995,
+        "memory_freezes": 35715,
+        "dependency_bubbles": 2782,
+        "redirects": 4775,
+        "status_reads": 0,
+        "full_status_reads": 0
+      },
+      "render": {
+        "cycles": 1632369,
+        "retired": 1252380,
+        "memory_freezes": 43874,
+        "dependency_bubbles": 14609,
+        "redirects": 160753,
+        "status_reads": 0,
+        "full_status_reads": 0
+      },
+      "present": {
+        "cycles": 780572,
+        "retired": 496749,
+        "memory_freezes": 0,
+        "dependency_bubbles": 141907,
+        "redirects": 70958,
+        "status_reads": 70947,
+        "full_status_reads": 0
+      }
+    },
+    "median_metrics": {
+      "command_cycles": 270282,
+      "fifo_wait_span_cycles": 0,
+      "bytes": 7011,
+      "commands": 242,
+      "tick_wall_cycles": 18,
+      "update_wall_cycles": 89040,
+      "cpu_wall_cycles": 1721409,
+      "present_wall_cycles": 780441,
+      "frame_wall_cycles": 2501981,
+      "frame": 167,
+      "clock_hz": 50000000,
+      "cpu_abi": 1129316609
+    },
+    "render_derived": {
+      "memory_freeze_percent": 2.6877501349266004,
+      "dependency_percent": 0.8949569613243085,
+      "retired_per_cycle": 0.7672162360348671
+    }
+  },
+  "profile-moving": {
+    "observed_fps_all": [
+      19.902439024390244,
+      20.11879670441591,
+      19.85733564678883
+    ],
+    "median_observed_fps": 19.902439024390244,
+    "positions_all": [
+      [
+        -1112,
+        260,
+        3944
+      ],
+      [
+        -1040,
+        260,
+        3920
+      ],
+      [
+        -1112,
+        260,
+        3944
+      ]
+    ],
+    "median_phases": {
+      "tick": {
+        "cycles": 53,
+        "retired": 37,
+        "memory_freezes": 0,
+        "dependency_bubbles": 8,
+        "redirects": 4,
+        "status_reads": 0,
+        "full_status_reads": 0
+      },
+      "update": {
+        "cycles": 96538,
+        "retired": 46627,
+        "memory_freezes": 36123,
+        "dependency_bubbles": 2890,
+        "redirects": 5449,
+        "status_reads": 0,
+        "full_status_reads": 0
+      },
+      "render": {
+        "cycles": 1779499,
+        "retired": 1372520,
+        "memory_freezes": 43805,
+        "dependency_bubbles": 33952,
+        "redirects": 164611,
+        "status_reads": 9195,
+        "full_status_reads": 0
+      },
+      "present": {
+        "cycles": 625945,
+        "retired": 398350,
+        "memory_freezes": 0,
+        "dependency_bubbles": 113793,
+        "redirects": 56901,
+        "status_reads": 56890,
+        "full_status_reads": 0
+      }
+    },
+    "median_metrics": {
+      "command_cycles": 385602,
+      "fifo_wait_span_cycles": 0,
+      "bytes": 9195,
+      "commands": 326,
+      "tick_wall_cycles": 18,
+      "update_wall_cycles": 96536,
+      "cpu_wall_cycles": 1876035,
+      "present_wall_cycles": 625814,
+      "frame_wall_cycles": 2501974,
+      "frame": 167,
+      "clock_hz": 50000000,
+      "cpu_abi": 1129316609
+    },
+    "render_derived": {
+      "memory_freeze_percent": 2.4616479132609794,
+      "dependency_percent": 1.907952744002666,
+      "retired_per_cycle": 0.7712957411046593
+    }
+  },
+  "batched-moving": {
+    "observed_fps_all": [
+      19.97672614434391,
+      19.92718911664368,
+      19.97285243356017
+    ],
+    "median_observed_fps": 19.97285243356017,
+    "positions_all": [
+      [
+        -1112,
+        260,
+        3944
+      ],
+      [
+        -1112,
+        260,
+        3944
+      ],
+      [
+        -1112,
+        260,
+        3944
+      ]
+    ],
+    "median_phases": {
+      "tick": {
+        "cycles": 53,
+        "retired": 37,
+        "memory_freezes": 0,
+        "dependency_bubbles": 8,
+        "redirects": 4,
+        "status_reads": 0,
+        "full_status_reads": 0
+      },
+      "update": {
+        "cycles": 96557,
+        "retired": 46627,
+        "memory_freezes": 36142,
+        "dependency_bubbles": 2890,
+        "redirects": 5449,
+        "status_reads": 0,
+        "full_status_reads": 0
+      },
+      "render": {
+        "cycles": 1749577,
+        "retired": 1340956,
+        "memory_freezes": 43815,
+        "dependency_bubbles": 17192,
+        "redirects": 173807,
+        "status_reads": 0,
+        "full_status_reads": 0
+      },
+      "present": {
+        "cycles": 655854,
+        "retired": 417383,
+        "memory_freezes": 0,
+        "dependency_bubbles": 119231,
+        "redirects": 59620,
+        "status_reads": 59609,
+        "full_status_reads": 0
+      }
+    },
+    "median_metrics": {
+      "command_cycles": 354366,
+      "fifo_wait_span_cycles": 0,
+      "bytes": 9195,
+      "commands": 326,
+      "tick_wall_cycles": 18,
+      "update_wall_cycles": 96555,
+      "cpu_wall_cycles": 1846132,
+      "present_wall_cycles": 655723,
+      "frame_wall_cycles": 2501986,
+      "frame": 167,
+      "clock_hz": 50000000,
+      "cpu_abi": 1129316609
+    },
+    "render_derived": {
+      "memory_freeze_percent": 2.5043196155413567,
+      "dependency_percent": 0.9826375175256647,
+      "retired_per_cycle": 0.7664458323354731
+    }
+  },
+  "uninstrumented-batched-standing": {
+    "observed_fps_all": [
+      19.97672614434391,
+      19.853508095625735,
+      19.85733564678883
+    ],
+    "median_observed_fps": 19.85733564678883,
+    "positions_all": [
+      [
+        -1328,
+        260,
+        4664
+      ],
+      [
+        -1328,
+        260,
+        4664
+      ],
+      [
+        -1328,
+        260,
+        4664
+      ]
+    ]
+  },
+  "derived_standing_command_reduction": {
+    "before_cycles": 294210,
+    "after_cycles": 270282,
+    "saved_cycles": 23928,
+    "time_reduction_percent": 8.13296624859794
+  },
+  "matched_frame_behavior": {
+    "frame": 167,
+    "baseline_trial": 1,
+    "batched_trial": 2,
+    "fields": {
+      "triangles_submitted": 444,
+      "triangles_clipped": 6,
+      "triangles_culled": 196,
+      "bounding_box_pixels": 263682,
+      "pixels_inside": 91148,
+      "depth_rejected": 6131,
+      "pixels_written": 85017
+    },
+    "scope": "Matching raster event counts; not a pixel framebuffer checksum"
+  },
+  "hardware": {
+    "board": "DE2-115 EP4CE115F29C7",
+    "configured_clock_hz": 50000000,
+    "baseline_logic_elements": 20979,
+    "instrumented_logic_elements": 21564,
+    "logic_element_delta": 585,
+    "baseline_memory_bits": 2659668,
+    "instrumented_memory_bits": 2659668,
+    "baseline_dsp_9bit_elements": 74,
+    "instrumented_dsp_9bit_elements": 74,
+    "baseline_plls": 2,
+    "instrumented_plls": 2,
+    "instrumented_clock50_setup_slack_ns": 0.76,
+    "instrumented_min_summary_slack_ns": 0.111,
+    "all_reported_timing_passed": true
+  },
+  "method": {
+    "trials_per_configuration": 3,
+    "frame_snapshot_samples_per_trial": 1,
+    "fps_samples_per_trial": [
+      21,
+      21,
+      21
+    ],
+    "fps_window": "approximately 5 seconds after 3-second warmup and startup completion",
+    "movement": "Wall-clock controlled; different endpoint positions prevent a strict movement speedup claim",
+    "no_hardware_speedup_claim": true,
+    "default_binary_and_assets_preserved": {
+      "baseline_sha256": "e366760994e8282a6c45aa00e645b8a8d490d9ca95928b2ef64adec05a2ff442",
+      "control_sha256": "e366760994e8282a6c45aa00e645b8a8d490d9ca95928b2ef64adec05a2ff442",
+      "identical_cpu_bytes": true,
+      "identical_asset_bytes": true
+    }
+  },
+  "experiment": {
+    "baseline_revision": "7280023",
+    "rtl_revision": "02d08ab",
+    "harness_revision": "b388364",
+    "baseline_sof_sha256": "b9386eb9aad671dff8313ca61a22b6e04874dc22ab1e94f42c2732790576b4ce",
+    "instrumented_sof_sha256": "6744adf087bea5139d0170b69e4ca4c1461efe275036333c3f446e65b2c15888",
+    "results": [
+      "instrumentation-control",
+      "profile-standing",
+      "batched-standing",
+      "profile-moving",
+      "batched-moving"
+    ],
+    "restored_status": {
+      "initialized": true,
+      "held": false,
+      "words": [
+        0,
+        0,
+        0
+      ],
+      "scratch": 1,
+      "refresh_count": 7057627,
+      "input_abi": 1229848833
+    }
+  },
+  "additional_control_restored_status": {
+    "initialized": true,
+    "held": false,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 1,
+    "refresh_count": 27342979,
+    "input_abi": 1229848833
+  },
+  "raw_sha256": {
+    "batched-control-build.log": "6e918bf68817b018e33261840ac8f183a678118f92c9ca484913d5d75d359a39",
+    "batched-fixture-build.log": "726ffc7e107daac15adff2d14ec3539e9beb44eeb034b1b2a56ac1efb47ca76d",
+    "batched-moving.json": "c16c8444e80a02ecd368c7c0e385196b9ff1a992807e13a5284eaf0f1458cdfd",
+    "batched-standing.json": "1c026a87f8a038d33c8146f71af99ed8178dfca99d7c10db616df1c096750f93",
+    "batched-stream.log": "8d14e65aabacafaf3b3a83e3ad834da805d8fb72d9f0f4d8344db6f21284f084",
+    "build_batched_control.py": "15090da5462fe11a347e7bb052db44350d17c4b6173ff5e5303b39bdd583d01f",
+    "build_firmware.py": "4811e556183837a06123ba7ecac448e530925ee62b6cb91a362f8bc980bb0ebb",
+    "build_fpga.py": "a6f62d694b4cc90220dad78a4f6933edf19086df4573446631bbe88ccb0dbd27",
+    "CacheLine32SoC.fit.summary": "be723dcac8de27091e578e1024f2234eef23d9d34beff0d4b47a770468a84c28",
+    "CacheLine32SoC.sta.summary": "705f218c5084ae383ffc0ddefec53b65122ddc2f1d45688b7814926c61421770",
+    "compiler-version.txt": "3f0bc9c600e6cddbb8c4cb8f76fc0c9cd3626c33514e7b16cb80b5d2bd3ad5ba",
+    "control-build.log": "ec42c0854305ffb68bc6a1f5b814dc71aacb4ea5671bf4194c0f455cf048cad9",
+    "control-preservation.json": "04b0ccb51da5f07eca94f9a60add1f3d1d19b0c8ee34917941984dc6d18c8d31",
+    "cpu-counter-pipeline.log": "6f23776a6e4d9cdcab97ae519b56f31324e8f933612f4f9659eade7c17e1e8e3",
+    "cpu-stream.log": "ab24e98328c104c143f840fe6f7f46afa9766deea7cf2a8c292a65718852714e",
+    "cpu_batch_stream_tb.log": "339209bb4ad52327c5178848edf47b241b80b1076185b03bd02d01d9a5b5c9a6",
+    "cpu_counter_pipeline_tb.log": "57c053a25eafa6eb014179256feebe7e615c275c683ae3724f70029a0867c68a",
+    "cpu_stream_tb.log": "f879410484487dea5063daf5f8fc86a41502b77f9bef27c0acdff14bea400a2f",
+    "CpuProfileSoC.fit.summary": "4a5c8b718a96149a130b113734ffb99d7ff9358a30e0da86be58f997aaa59456",
+    "CpuProfileSoC.sta.summary": "739bbe81ab962ed5af6cd673db625bfb9f49f4c19825368dcc0b4881b6bebfd6",
+    "experiment.json": "ea49c572c087eb7b2371b4ea726e15becd0928f1228d1c1fb3ba994e59dc7b2b",
+    "experiment.log": "76c3e1217a9141c54efd7fe7fd32ce793d6378ce67e5130198a701272cc2127b",
+    "firmware-build.log": "04ae8f6af4f73f1ae3952d3dbb4121bd771ede76eeaf305a95363940feaf4188",
+    "instrumentation-control.json": "08ab5ea7f22c157848fa18dab8574ef142e58fb85c904d09b31361b43e6fe6d8",
+    "instrumented-program.log": "83fed0c200bbc297af523f53d46ef680e0e7f2764a5f34a894cfd806cf6f3e4e",
+    "mario-castle-batched.bin": "9351de7a3e73a8932dcbdf89d94a92b2bd2db9ff1f35dc0461e3bbb595b71a10",
+    "mario-castle-batched.map": "dee1712ddf2132aa590dd8e05040900dbbdcd0da24b144890a950f1cf0a88e3d",
+    "mario-castle-batched.package.json": "a33a1fbca3d97a613088715a40738c2e2ad2f2b75c701d462cb4da44f6fe2e49",
+    "mario-castle-batched.symbols.json": "2339846cca8fb6ef57b37794503f806d5a3ed728ecd10af3ab07c8ba3d04b4d4",
+    "mario-castle-profile-batched.bin": "d4e74cbc5c168dc6594b99439daf5feb6b0971447893106ce45f3a16f3df9c10",
+    "mario-castle-profile-batched.map": "558e1bbee1cfa91858eeb620c04bf4eed338ebdb6fd67b441b04ab326554c1e4",
+    "mario-castle-profile-batched.package.json": "e5fdada8702f264d8cc0c13ac3196cb7aa083e7d02aeed41ce51b1d4c6cf2913",
+    "mario-castle-profile-batched.symbols.json": "2ed915d472327feaf39da89615a1b3868ecb87cb3c53ba9bdbaa6b9b8be319dc",
+    "mario-castle-profile.bin": "67fc610c4cf510661ce7431d80c2ee5ee947015d9a3d0c30b997c5682126e8b9",
+    "mario-castle-profile.map": "9f053118613b41b8e9bd0724f5b784df59a8bb80b199e71d45ce03bafb0ce6df",
+    "mario-castle-profile.package.json": "8df368445c4e22a815d58bce424afb30bab3baa9314fa63972c4c07ad918bd05",
+    "mario-castle-profile.symbols.json": "5822713ffa80329da50efc06e1133c6ce6c0dcf7ad5d41caedf64d875fd3279e",
+    "original-mario-castle-sdram-direct.bin": "e366760994e8282a6c45aa00e645b8a8d490d9ca95928b2ef64adec05a2ff442",
+    "original-mario-castle-sdram-direct.map": "8c8609d190669e6e2bc0c6f8aa75104fd8301810394e78ea5965055857213b26",
+    "original-mario-castle-sdram-direct.package.json": "c6153f5055c1845ea2af0e83cff4c14d350a89a063d8a2f49575dcccaa445dd8",
+    "original-mario-castle-sdram-direct.symbols.json": "f8e3352f7f7e938b2e3ad9f7c4861036ba059660fb98d5ac1a83d186de730e4e",
+    "original-standing-failed.json": "438e6681e667224e0b89e8cc7a66c0ba7428f5418c9668fcb52014a8bbb8c187",
+    "original-standing-failed.log": "989b43b1cc856ef28382d5ed88d47194ad7d8e68575b157320d86ffd2e692503",
+    "original-standing.json": "5872cf09fa46b18a76e712d3c017eda205b0fd45805357ac1e73e98d179c9dfd",
+    "original-standing.log": "b575d3a0a8d527e1a3e613112d429c9415c700624b2e9207c94cf2d43c9517d6",
+    "profile-moving.json": "90a3dca72728ffe073d13f85b3e3c7d5ca7e33409132425afd1de0db98cc1841",
+    "profile-standing.json": "e4d0fc472f03051d64c3d352a9c5694dee220c75b72c8ff138e51ce9282d9743",
+    "project.qsf": "c7cf8057e13e364f4051c9fcd82f0c8c8f7a3fbaee3cd7ab51f2cb2f72e2fc16",
+    "public-command-check.log": "c75c288a56aed6bc8838cb2975b7a859417d417135dd470ce53fb0514830400b",
+    "public-command-preservation.json": "a19d72eed348d2f65e5d905c30084d02cb6516ac92b13fdd870f98dd395fd644",
+    "quartus-asm.log": "d9efda4210e011e6f08fc17f3af4ca535892463f268345ecf0d6da91e348a19a",
+    "quartus-fit.log": "c64667b67b0ea4df9ca5e1a3d2d8a432601380c3dfd540065dcd097762f97bde",
+    "quartus-map.log": "e52ac80a83262b06812068316ee02cca51eb697d0e5a5eece71b025177ce8cf8",
+    "quartus-sta.log": "eab20c2e2cfb3830971d0fa70da9b82c311314b3ef54bc6d02d6b3e1c11f4064",
+    "restore-original-program.log": "5af3384606b93e0be44d392d920e13fad88f6182e01536755db17ee186b24155",
+    "run_experiment.py": "42b5c12372d86d020429017d89ab0fabd69766322c9c7698ca4c2115ef79c202",
+    "sim.log": "67c0308ef03d71c7af2c890f2dd8f19412680225cccc659043be50e4766f2077",
+    "soc_cpu_counters_tb.log": "5cfa0a4a2496c3a3f1e8f572793f832e5a622752ad4791d645c5758a28dcedfa",
+    "soc_mmio_tb.log": "b6a0008bb5df8c7ce170ec745cfaf203435c99e1b2cc59fec3c4e8f9d80b63c3",
+    "source-cpu_profile.c": "0773c9b89aa252f4f209174483adf730c804543ae11398c5a70a6305601c2a7e",
+    "source-gfx.c": "94081de45bd3c574f360f2fe4989d9016687315d4196e0721f4cf34313415289",
+    "source-portable_main.c": "c4690724ef55db8b1e114cb76437f0a206bb941ca17fc6bc730e4b896e30fa06",
+    "source-profile_cpu.py": "4a9ce192b84dba1649195a2be68b232e55020c1c68fb808b5993c8c024b0d9b6",
+    "source-RV32I_SoC.sv": "76df23f8c0fadab1f2fd7b5d7c0f8c264aca85a48c34d1e526cd47bfbf5c33be",
+    "source-soc_cpu_counters.sv": "f03a2ec07acaab146b6252889aa6a819a85a512e2a313a3b41137c99c2d3c166",
+    "source-soc_mmio.sv": "92e998c1e5fabcdd041749d86d9fc1067df44ac70f1bd57155b6375fbcda0c91",
+    "subset-audit.log": "fbdf4757225b9750e20579ee3c296a549354c724a4b619479c466127105e0745",
+    "uninstrumented-batched-standing.json": "e3ab7b11994ae878231e43b43a33772b43598e1cc169452a45776a60348947e1",
+    "uninstrumented-batched-standing.log": "525229eb538753172436b912757795d2608da9d077cda8d1cd7fcae4a806d35a"
+  },
+  "public_command_reproduces_tested_cpu_and_assets": true
+}

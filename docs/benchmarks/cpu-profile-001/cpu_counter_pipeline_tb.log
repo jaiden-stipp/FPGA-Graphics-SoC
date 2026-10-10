@@ -1,0 +1,54 @@
+Reading C:/intelFPGA/18.1/modelsim_ase/tcl/vsim/pref.tcl
+
+# 10.5b
+
+# vsim -c -L altera_mf -lib build\cpu-profile\simlib cpu_counter_pipeline_tb -do "onerror {quit -code 1}; run -all; quit -code 0" 
+# Start time: 11:50:14 on Oct 10,2026
+# Loading sv_std.std
+# Loading build\cpu-profile\simlib.pipeline_pkg
+# Loading build\cpu-profile\simlib.pipeline_pkg_sv_unit
+# Loading build\cpu-profile\simlib.cpu_counter_pipeline_tb
+# Loading build\cpu-profile\simlib.RV32I_SoC
+# Loading build\cpu-profile\simlib.soc_cpu_counters
+# Loading build\cpu-profile\simlib.soc_PC_IF
+# Loading build\cpu-profile\simlib.soc_IF_ID
+# Loading build\cpu-profile\simlib.ControlUnit
+# Loading build\cpu-profile\simlib.soc_RegFile
+# Loading build\cpu-profile\simlib.ImmGen
+# Loading build\cpu-profile\simlib.HazardUnit
+# Loading build\cpu-profile\simlib.soc_ID_EX
+# Loading build\cpu-profile\simlib.ForwardMux
+# Loading build\cpu-profile\simlib.ALU
+# Loading build\cpu-profile\simlib.BranchUnit
+# Loading build\cpu-profile\simlib.soc_EX_MEM
+# Loading build\cpu-profile\simlib.soc_MEM_WB
+# Loading build\cpu-profile\simlib.ResultMux
+# Loading build\cpu-profile\simlib.soc_PipelineAssertions
+# Loading build\cpu-profile\simlib.ForwardingUnit
+# Loading build\cpu-profile\simlib.Monitor
+# ** Warning: (vsim-3017) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_counter_pipeline_tb.sv(12): [TFMPC] - Too few port connections. Expected 30, found 14.
+#    Time: 0 ps  Iteration: 0  Instance: /cpu_counter_pipeline_tb/cpu File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/RV32I_SoC.sv
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_counter_pipeline_tb.sv(12): [TFMPC] - Missing connection for port 'trace_instruction'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_counter_pipeline_tb.sv(12): [TFMPC] - Missing connection for port 'trace_mem_read'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_counter_pipeline_tb.sv(12): [TFMPC] - Missing connection for port 'trace_mem_write'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_counter_pipeline_tb.sv(12): [TFMPC] - Missing connection for port 'trace_mem_address'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_counter_pipeline_tb.sv(12): [TFMPC] - Missing connection for port 'trace_mem_data'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_counter_pipeline_tb.sv(12): [TFMPC] - Missing connection for port 'trace_mem_funct3'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_counter_pipeline_tb.sv(12): [TFMPC] - Missing connection for port 'trace_branch'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_counter_pipeline_tb.sv(12): [TFMPC] - Missing connection for port 'trace_jump'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_counter_pipeline_tb.sv(12): [TFMPC] - Missing connection for port 'trace_jalr'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_counter_pipeline_tb.sv(12): [TFMPC] - Missing connection for port 'commit_valid'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_counter_pipeline_tb.sv(12): [TFMPC] - Missing connection for port 'soc_pc'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_counter_pipeline_tb.sv(12): [TFMPC] - Missing connection for port 'soc_addr'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_counter_pipeline_tb.sv(12): [TFMPC] - Missing connection for port 'soc_wdata'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_counter_pipeline_tb.sv(12): [TFMPC] - Missing connection for port 'soc_funct3'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_counter_pipeline_tb.sv(12): [TFMPC] - Missing connection for port 'soc_read_en'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_counter_pipeline_tb.sv(12): [TFMPC] - Missing connection for port 'soc_write_en'.
+# onerror {quit -code 1}
+#  Warning: onerror command for use within macro
+#  run -all
+# PASS cpu_counter_pipeline_tb
+# ** Note: $finish    : C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_counter_pipeline_tb.sv(49)
+#    Time: 226 ns  Iteration: 0  Instance: /cpu_counter_pipeline_tb
+# End time: 11:50:15 on Oct 10,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 17

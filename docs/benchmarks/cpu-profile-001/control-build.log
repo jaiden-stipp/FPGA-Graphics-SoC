@@ -1,0 +1,5 @@
++ C:\Program Files\LLVM\bin\clang.EXE --target=riscv32-unknown-elf -fuse-ld=lld -march=rv32i -mabi=ilp32 -msmall-data-limit=0 -mno-relax -O1 ... (31 more arguments)
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --remove-section=.game_assets -O binary build/mario-castle-profile-control.elf build/mario-castle-profile-control.bin
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --only-section=.game_assets -O binary build/mario-castle-profile-control.elf build/mario-castle-profile-control.assets.bin
+Built portable: build/mario-castle-profile-control.hex and build/mario-castle-profile-control.mif
+{'baseline_sha256': 'e366760994e8282a6c45aa00e645b8a8d490d9ca95928b2ef64adec05a2ff442', 'control_sha256': 'e366760994e8282a6c45aa00e645b8a8d490d9ca95928b2ef64adec05a2ff442', 'identical_cpu_bytes': True, 'identical_asset_bytes': True}

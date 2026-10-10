@@ -1,0 +1,27 @@
+Uploading mario-castle-sdram-direct.bin: 28,936 bytes at 0x00000000
+Verifying mario-castle-sdram-direct.bin: 28,936 bytes at 0x00000000
+Uploading mario-castle-sdram-direct.assets.bin: 883,124 bytes at 0x80000000
+  373,596/883,124 bytes
+  749,052/883,124 bytes
+Verifying mario-castle-sdram-direct.assets.bin: 883,124 bytes at 0x80000000
+  373,344/883,124 bytes
+  749,076/883,124 bytes
+Readback verified; CPU released.
+Uploading mario-castle-sdram-direct.bin: 28,936 bytes at 0x00000000
+Verifying mario-castle-sdram-direct.bin: 28,936 bytes at 0x00000000
+Uploading mario-castle-sdram-direct.assets.bin: 883,124 bytes at 0x80000000
+  373,764/883,124 bytes
+  745,692/883,124 bytes
+Verifying mario-castle-sdram-direct.assets.bin: 883,124 bytes at 0x80000000
+  374,892/883,124 bytes
+  748,524/883,124 bytes
+Readback verified; CPU released.
+Traceback (most recent call last):
+  File "C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\scripts\profile_cpu.py", line 90, in <module>
+    collect(a.package,a.symbols,a.restore,a.out,a.ip,a.port,a.trials,a.moving,not a.uninstrumented,a.reuse_immutable_assets)
+  File "C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\scripts\profile_cpu.py", line 48, in collect
+    status=loader.operation(STATUS)
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\scripts\load_game.py", line 93, in operation
+    raise TimeoutError(f'No completed-operation reply from {self.target} (op {op}, address {address:#x})')
+TimeoutError: No completed-operation reply from ('192.168.7.2', 4000) (op 5, address 0x0)

@@ -1,0 +1,3 @@
++ C:\Program Files\LLVM\bin\clang.EXE --target=riscv32-unknown-elf -fuse-ld=lld -march=rv32i -mabi=ilp32 -msmall-data-limit=0 -mno-relax -O1 ... (17 more arguments)
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE -O binary build/triangle-batched.elf build/triangle-batched.bin
+Built triangle: build/triangle-batched.hex and build/triangle-batched.mif

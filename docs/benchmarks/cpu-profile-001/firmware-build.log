@@ -1,0 +1,9 @@
++ C:\Program Files\LLVM\bin\clang.EXE --target=riscv32-unknown-elf -fuse-ld=lld -march=rv32i -mabi=ilp32 -msmall-data-limit=0 -mno-relax -O1 ... (32 more arguments)
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --remove-section=.game_assets -O binary build/mario-castle-profile.elf build/mario-castle-profile.bin
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --only-section=.game_assets -O binary build/mario-castle-profile.elf build/mario-castle-profile.assets.bin
+Built portable: build/mario-castle-profile.hex and build/mario-castle-profile.mif
++ C:\Program Files\LLVM\bin\clang.EXE --target=riscv32-unknown-elf -fuse-ld=lld -march=rv32i -mabi=ilp32 -msmall-data-limit=0 -mno-relax -O1 ... (33 more arguments)
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --remove-section=.game_assets -O binary build/mario-castle-profile-batched.elf build/mario-castle-profile-batched.bin
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --only-section=.game_assets -O binary build/mario-castle-profile-batched.elf build/mario-castle-profile-batched.assets.bin
+Built portable: build/mario-castle-profile-batched.hex and build/mario-castle-profile-batched.mif
+PASS identical game asset bytes

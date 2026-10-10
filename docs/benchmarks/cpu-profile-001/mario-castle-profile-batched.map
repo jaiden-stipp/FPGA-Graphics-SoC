@@ -1,0 +1,481 @@
+     VMA      LMA     Size Align Out     In      Symbol
+       0        0     7454     4 .text
+       0        0       34     1         C:\Users\Orb1t\AppData\Local\Temp\start-3267ae.o:(.text.start)
+       0        0        0     1                 .Lpcrel_hi0
+       0        0        0     1                 $x
+       0        0        0     1                 _start
+       8        8        0     1                 .Lpcrel_hi1
+      10       10        0     1                 .Lpcrel_hi2
+      34       34        0     4         C:\Users\Orb1t\AppData\Local\Temp\start-3267ae.o:(.text)
+      34       34      378     4         C:\Users\Orb1t\AppData\Local\Temp\gfx-e2d8b4.o:(.text)
+      34       34        0     1                 $x
+      34       34      32c     1                 gfx_command
+     360      360       4c     1                 gfx_wait_frame
+     3ac      3ac      300     4         C:\Users\Orb1t\AppData\Local\Temp\gfx_scene-07674d.o:(.text)
+     3ac      3ac        0     1                 $x
+     3ac      3ac       4c     1                 gfx_view_matrix
+     3f8      3f8       64     1                 gfx_projection
+     45c      45c       38     1                 gfx_palette
+     494      494       18     1                 gfx_identity_view
+     4ac      4ac       44     1                 gfx_begin_frame
+     4f0      4f0       14     1                 gfx_end_frame
+     504      504       44     1                 gfx_define_mesh
+     548      548       54     1                 gfx_vertex
+     59c      59c       48     1                 gfx_index
+     5e4      5e4       78     1                 gfx_draw_mesh
+     65c      65c       50     1                 gfx_draw_matrix
+     6ac      6ac     1db4     4         C:\Users\Orb1t\AppData\Local\Temp\player-113a6f.o:(.text)
+     6ac      6ac        0     1                 $x
+     6ac      6ac        c     1                 player_floor_index
+     6b8      6b8       2c     1                 player_bind_query
+     6e4      6e4       50     1                 fixed_mul
+     734      734      144     1                 player_floor
+     878      878      294     1                 floor_contains
+     b0c      b0c      234     1                 floor_height
+     d40      d40       34     1                 player_reset
+     d74      d74      52c     1                 player_step
+    12a0     12a0      288     1                 move_axis
+    1528     1528      720     1                 blocked
+    1c48     1c48      274     1                 projected_cross
+    1ebc     1ebc      5a4     1                 edge_hit
+    2460     2460      330     4         C:\Users\Orb1t\AppData\Local\Temp\first_person-977e58.o:(.text)
+    2460     2460        0     1                 $x
+    2460     2460      11c     1                 first_person_reset
+    257c     257c      214     1                 first_person_step
+    2790     2790      3d4     4         C:\Users\Orb1t\AppData\Local\Temp\game_runtime-353261.o:(.text)
+    2790     2790        0     1                 $x
+    2790     2790      344     1                 game_runtime_upload
+    2ad4     2ad4       18     1                 game_runtime_clock_reset
+    2aec     2aec       24     1                 game_runtime_wait_tick
+    2b10     2b10       40     1                 game_runtime_advance_tick
+    2b50     2b50        c     1                 game_runtime_input
+    2b5c     2b5c        8     1                 game_runtime_present
+    2b64     2b64        0     4         C:\Users\Orb1t\AppData\Local\Temp\portable_assets-6c9bcd.o:(.text)
+    2b64     2b64      27c     4         C:\Users\Orb1t\AppData\Local\Temp\portable_main-86e6c6.o:(.text)
+    2b64     2b64        0     1                 $x
+    2b64     2b64      27c     1                 main
+    2de0     2de0      21c     4         C:\Users\Orb1t\AppData\Local\Temp\cpu_profile-85043f.o:(.text)
+    2de0     2de0        0     1                 $x
+    2de0     2de0       80     1                 cpu_profile_begin
+    2e60     2e60       9c     1                 cpu_profile_mark
+    2efc     2efc      100     1                 cpu_profile_publish
+    2ffc     2ffc      844     4         C:\Users\Orb1t\AppData\Local\Temp\castle-893e6b.o:(.text)
+    2ffc     2ffc        0     1                 $x
+    2ffc     2ffc      148     1                 game_port_init
+    3144     3144      458     1                 game_port_update
+    359c     359c      2a4     1                 game_port_render
+    3840     3840       40     4         C:\Users\Orb1t\AppData\Local\Temp\castle_rules-a009ea.o:(.text)
+    3840     3840        0     1                 $x
+    3840     3840       40     1                 castle_floor_event
+    3880     3880     1258     4         C:\Users\Orb1t\AppData\Local\Temp\world-2db71c.o:(.text)
+    3880     3880        0     1                 $x
+    3880     3880       ec     1                 world_collision
+    396c     396c       78     1                 world_select
+    39e4     39e4       c0     1                 world_floor_contact
+    3aa4     3aa4       2c     1                 world_exit_find
+    3ad0     3ad0      18c     1                 world_transition_find
+    3c5c     3c5c      2f8     1                 world_prepare
+    3f54     3f54      22c     1                 visible
+    4180     4180      804     1                 world_draw
+    433c     433c        0     1                 .L0 
+    4340     4340        0     1                 .L0 
+    4370     4370        0     1                 .L0 
+    4378     4378        0     1                 .L0 
+    4380     4380        0     1                 .L0 
+    4508     4508        0     1                 .L0 
+    4510     4510        0     1                 .L0 
+    4528     4528        0     1                 .L0 
+    4540     4540        0     1                 .L0 
+    4558     4558        0     1                 .L0 
+    45b8     45b8        0     1                 .L0 
+    45c4     45c4        0     1                 .L0 
+    45e0     45e0        0     1                 .L0 
+    45fc     45fc        0     1                 .L0 
+    4618     4618        0     1                 .L0 
+    4984     4984      154     1                 transform
+    4ad8     4ad8     1138     4         C:\Users\Orb1t\AppData\Local\Temp\camera-199f5b.o:(.text)
+    4ad8     4ad8        0     1                 $x
+    4ad8     4ad8        8     1                 camera_boom
+    4ae0     4ae0      4a8     1                 sweep
+    4f88     4f88      340     1                 camera_orbit_step
+    52c8     52c8       50     1                 camera_reset
+    5318     5318      3d4     1                 frame
+    56ec     56ec      2b8     1                 camera_step
+    59a4     59a4      26c     1                 expanded_triangle
+    5c10     5c10      95c     4         C:\Users\Orb1t\AppData\Local\Temp\animation-3af3d4.o:(.text)
+    5c10     5c10        0     1                 $x
+    5c10     5c10       38     1                 animation_reset
+    5c48     5c48      150     1                 animation_step
+    5d98     5d98      7d4     1                 animation_pose
+    656c     656c      c54     4         C:\Users\Orb1t\AppData\Local\Temp\game_services-bc918a.o:(.text)
+    656c     656c        0     1                 $x
+    656c     656c       50     1                 game_input_decode
+    65bc     65bc      110     1                 game_movement_keys
+    66cc     66cc      164     1                 game_view_update
+    6830     6830       88     1                 game_object_overlap
+    68b8     68b8       2c     1                 game_door_step
+    68e4     68e4       90     1                 game_pickup_step
+    6974     6974       90     1                 game_animation_frame
+    6a04     6a04      138     1                 game_mesh_frame
+    6b3c     6b3c       98     1                 game_hud_begin
+    6bd4     6bd4      144     1                 game_hud_rect
+    6d18     6d18      2cc     1                 game_hud_number
+    6fe4     6fe4      1dc     1                 hud_point
+    71c0     71c0      294     4         C:\Users\Orb1t\AppData\Local\Temp\sdram-4eb097.o:(.text)
+    71c0     71c0        0     1                 $x
+    71c0     71c0      294     1                 sdram_self_test
+80000000 80000000    d79b4     4 .game_assets
+80000000 80000000        0     1         . = ALIGN(4)
+80000000 80000000        0     1         _assets_start = .
+80000000 80000000    d45c4     4         C:\Users\Orb1t\AppData\Local\Temp\portable_assets-6c9bcd.o:(.game_assets)
+80000000 80000000       38     1                 world_0_physics
+80000000 80000000        0     1                 $d
+80000038 80000038     827a     1                 world_0_camera
+800082b4 800082b4     3de0     1                 world_0_cells
+8000c094 8000c094     3576     1                 world_0_fi
+8000f60a 8000f60a     11a6     1                 world_0_wi
+800107b0 800107b0      ca2     1                 world_0_normals
+80011452 80011452      21b     1                 world_0_rooms
+8001166e 8001166e     10d8     1                 world_0_fs
+80012746 80012746      aa0     1                 world_0_ws
+800131e8 800131e8       38     1                 world_1_physics
+80013220 80013220    13e40     1                 world_1_camera
+80027060 80027060     1f40     1                 world_1_cells
+80028fa0 80028fa0     1e32     1                 world_1_fi
+8002add2 8002add2     32f0     1                 world_1_wi
+8002e0c2 8002e0c2     114c     1                 world_1_normals
+8002f20e 8002f20e      2e2     1                 world_1_rooms
+8002f4f0 8002f4f0     1710     1                 world_1_fs
+80030c00 80030c00     2bf0     1                 world_1_ws
+800337f0 800337f0       38     1                 world_2_physics
+80033828 80033828    12bb2     1                 world_2_camera
+800463dc 800463dc     2b20     1                 world_2_cells
+80048efc 80048efc     1db6     1                 world_2_fi
+8004acb2 8004acb2     2bea     1                 world_2_wi
+8004d89c 8004d89c      f78     1                 world_2_normals
+8004e814 8004e814      294     1                 world_2_rooms
+8004eaa8 8004eaa8     14a0     1                 world_2_fs
+8004ff48 8004ff48     2a78     1                 world_2_ws
+800529c0 800529c0       38     1                 world_3_physics
+800529f8 800529f8     cf12     1                 world_3_camera
+8005f90c 8005f90c     1d10     1                 world_3_cells
+8006161c 8006161c     10e8     1                 world_3_fi
+80062704 80062704     1dc6     1                 world_3_wi
+800644ca 800644ca      9a8     1                 world_3_normals
+80064e72 80064e72      19c     1                 world_3_rooms
+8006500e 8006500e      ce0     1                 world_3_fs
+80065cee 80065cee     1eb8     1                 world_3_ws
+80067ba8 80067ba8       38     1                 world_4_physics
+80067be0 80067be0     a724     1                 world_4_camera
+80072304 80072304     4410     1                 world_4_cells
+80076714 80076714     2eb8     1                 world_4_fi
+800795cc 800795cc     1f2e     1                 world_4_wi
+8007b4fa 8007b4fa      af2     1                 world_4_normals
+8007bfec 8007bfec      1d3     1                 world_4_rooms
+8007c1c0 8007c1c0      e98     1                 world_4_fs
+8007d058 8007d058     1498     1                 world_4_ws
+8007e4f0 8007e4f0      140     1                 world_areas
+8007e630 8007e630      300     1                 portable_v_0
+8007e930 8007e930      320     1                 portable_t_0
+8007ec50 8007ec50       30     1                 portable_v_1
+8007ec80 8007ec80       30     1                 portable_t_1
+8007ecb0 8007ecb0       18     1                 portable_meshes
+8007ecc8 8007ecc8      12f     1                 portable_palette
+8007edf8 8007edf8       1c     1                 portable_assets
+8007ee14 8007ee14      2fa     1                 world_0_v0
+8007f10e 8007f10e      208     1                 world_0_t0
+8007f316 8007f316      2fa     1                 world_0_v1
+8007f610 8007f610      184     1                 world_0_t1
+8007f794 8007f794      300     1                 world_0_v2
+8007fa94 8007fa94      124     1                 world_0_t2
+8007fbb8 8007fbb8      300     1                 world_0_v3
+8007feb8 8007feb8      13c     1                 world_0_t3
+8007fff4 8007fff4      300     1                 world_0_v4
+800802f4 800802f4      170     1                 world_0_t4
+80080464 80080464      2f4     1                 world_0_v5
+80080758 80080758      1d4     1                 world_0_t5
+8008092c 8008092c      2f4     1                 world_0_v6
+80080c20 80080c20      1ec     1                 world_0_t6
+80080e0c 80080e0c      1d4     1                 world_0_v7
+80080fe0 80080fe0      128     1                 world_0_t7
+80081108 80081108      120     1                 world_0_chunks
+80081228 80081228     3f2a     1                 world_0_floors
+80085152 80085152     3278     1                 world_0_walls
+800883ca 800883ca      300     1                 world_1_v0
+800886ca 800886ca      264     1                 world_1_t0
+8008892e 8008892e      300     1                 world_1_v1
+80088c2e 80088c2e      14c     1                 world_1_t1
+80088d7a 80088d7a      2fa     1                 world_1_v2
+80089074 80089074      1b0     1                 world_1_t2
+80089224 80089224      300     1                 world_1_v3
+80089524 80089524      1ac     1                 world_1_t3
+800896d0 800896d0      2fa     1                 world_1_v4
+800899ca 800899ca      1d4     1                 world_1_t4
+80089b9e 80089b9e      11a     1                 world_1_v5
+80089cb8 80089cb8       cc     1                 world_1_t5
+80089d84 80089d84      300     1                 world_1_v6
+8008a084 8008a084      1f8     1                 world_1_t6
+8008a27c 8008a27c      2f4     1                 world_1_v7
+8008a570 8008a570      150     1                 world_1_t7
+8008a6c0 8008a6c0      2e8     1                 world_1_v8
+8008a9a8 8008a9a8      1f4     1                 world_1_t8
+8008ab9c 8008ab9c      2ee     1                 world_1_v9
+8008ae8a 8008ae8a      258     1                 world_1_t9
+8008b0e2 8008b0e2      240     1                 world_1_v10
+8008b322 8008b322      220     1                 world_1_t10
+8008b542 8008b542      2d0     1                 world_1_v11
+8008b812 8008b812      240     1                 world_1_t11
+8008ba52 8008ba52      2f4     1                 world_1_v12
+8008bd46 8008bd46      230     1                 world_1_t12
+8008bf76 8008bf76      10e     1                 world_1_v13
+8008c084 8008c084       d0     1                 world_1_t13
+8008c154 8008c154      300     1                 world_1_v14
+8008c454 8008c454      298     1                 world_1_t14
+8008c6ec 8008c6ec      22e     1                 world_1_v15
+8008c91a 8008c91a      1f8     1                 world_1_t15
+8008cb12 8008cb12      300     1                 world_1_v16
+8008ce12 8008ce12      270     1                 world_1_t16
+8008d082 8008d082      108     1                 world_1_v17
+8008d18a 8008d18a       e8     1                 world_1_t17
+8008d272 8008d272      1bc     1                 world_1_v18
+8008d42e 8008d42e      18c     1                 world_1_t18
+8008d5bc 8008d5bc      2ac     1                 world_1_chunks
+8008d868 8008d868     567c     1                 world_1_floors
+80092ee4 80092ee4     d0b4     1                 world_1_walls
+8009ff98 8009ff98      300     1                 world_2_v0
+800a0298 800a0298      1e8     1                 world_2_t0
+800a0480 800a0480      22e     1                 world_2_v1
+800a06ae 800a06ae      18c     1                 world_2_t1
+800a083a 800a083a      300     1                 world_2_v2
+800a0b3a 800a0b3a      238     1                 world_2_t2
+800a0d72 800a0d72      2f4     1                 world_2_v3
+800a1066 800a1066      200     1                 world_2_t3
+800a1266 800a1266      300     1                 world_2_v4
+800a1566 800a1566      19c     1                 world_2_t4
+800a1702 800a1702      300     1                 world_2_v5
+800a1a02 800a1a02      1cc     1                 world_2_t5
+800a1bce 800a1bce       60     1                 world_2_v6
+800a1c2e 800a1c2e       3c     1                 world_2_t6
+800a1c6a 800a1c6a      300     1                 world_2_v7
+800a1f6a 800a1f6a      1b4     1                 world_2_t7
+800a211e 800a211e      2f4     1                 world_2_v8
+800a2412 800a2412      1e8     1                 world_2_t8
+800a25fa 800a25fa      2fa     1                 world_2_v9
+800a28f4 800a28f4      1d4     1                 world_2_t9
+800a2ac8 800a2ac8      300     1                 world_2_v10
+800a2dc8 800a2dc8      1a4     1                 world_2_t10
+800a2f6c 800a2f6c      300     1                 world_2_v11
+800a326c 800a326c      1f4     1                 world_2_t11
+800a3460 800a3460      26a     1                 world_2_v12
+800a36ca 800a36ca      138     1                 world_2_t12
+800a3802 800a3802      2ac     1                 world_2_v13
+800a3aae 800a3aae      2a8     1                 world_2_t13
+800a3d56 800a3d56      2f4     1                 world_2_v14
+800a404a 800a404a      230     1                 world_2_t14
+800a427a 800a427a      300     1                 world_2_v15
+800a457a 800a457a      2a8     1                 world_2_t15
+800a4822 800a4822      2d6     1                 world_2_v16
+800a4af8 800a4af8      1e0     1                 world_2_t16
+800a4cd8 800a4cd8      300     1                 world_2_v17
+800a4fd8 800a4fd8      228     1                 world_2_t17
+800a5200 800a5200      300     1                 world_2_v18
+800a5500 800a5500      1d0     1                 world_2_t18
+800a56d0 800a56d0      300     1                 world_2_v19
+800a59d0 800a59d0      1c4     1                 world_2_t19
+800a5b94 800a5b94      300     1                 world_2_v20
+800a5e94 800a5e94      188     1                 world_2_t20
+800a601c 800a601c      2b8     1                 world_2_v21
+800a62d4 800a62d4      194     1                 world_2_t21
+800a6468 800a6468      318     1                 world_2_chunks
+800a6780 800a6780     4d58     1                 world_2_floors
+800ab4d8 800ab4d8     c9ba     1                 world_2_walls
+800b7e92 800b7e92      300     1                 world_3_v0
+800b8192 800b8192      1ec     1                 world_3_t0
+800b837e 800b837e      2fa     1                 world_3_v1
+800b8678 800b8678      268     1                 world_3_t1
+800b88e0 800b88e0      2fa     1                 world_3_v2
+800b8bda 800b8bda      1f0     1                 world_3_t2
+800b8dca 800b8dca      1aa     1                 world_3_v3
+800b8f74 800b8f74      11c     1                 world_3_t3
+800b9090 800b9090      2fa     1                 world_3_v4
+800b938a 800b938a      208     1                 world_3_t4
+800b9592 800b9592      300     1                 world_3_v5
+800b9892 800b9892      174     1                 world_3_t5
+800b9a06 800b9a06      294     1                 world_3_v6
+800b9c9a 800b9c9a      178     1                 world_3_t6
+800b9e12 800b9e12      2fa     1                 world_3_v7
+800ba10c 800ba10c      1f8     1                 world_3_t7
+800ba304 800ba304      300     1                 world_3_v8
+800ba604 800ba604      208     1                 world_3_t8
+800ba80c 800ba80c       d8     1                 world_3_v9
+800ba8e4 800ba8e4       80     1                 world_3_t9
+800ba964 800ba964      2fa     1                 world_3_v10
+800bac5e 800bac5e      240     1                 world_3_t10
+800bae9e 800bae9e      144     1                 world_3_v11
+800bafe2 800bafe2       d8     1                 world_3_t11
+800bb0ba 800bb0ba      264     1                 world_3_v12
+800bb31e 800bb31e      240     1                 world_3_t12
+800bb560 800bb560      1d4     1                 world_3_chunks
+800bb734 800bb734     3048     1                 world_3_floors
+800be77c 800be77c     91ea     1                 world_3_walls
+800c7966 800c7966      300     1                 world_4_v0
+800c7c66 800c7c66      250     1                 world_4_t0
+800c7eb6 800c7eb6      300     1                 world_4_v1
+800c81b6 800c81b6      1b4     1                 world_4_t1
+800c836a 800c836a      300     1                 world_4_v2
+800c866a 800c866a      1e4     1                 world_4_t2
+800c884e 800c884e      300     1                 world_4_v3
+800c8b4e 800c8b4e      220     1                 world_4_t3
+800c8d6e 800c8d6e      300     1                 world_4_v4
+800c906e 800c906e      214     1                 world_4_t4
+800c9282 800c9282      2f4     1                 world_4_v5
+800c9576 800c9576      260     1                 world_4_t5
+800c97d6 800c97d6      300     1                 world_4_v6
+800c9ad6 800c9ad6      22c     1                 world_4_t6
+800c9d02 800c9d02      300     1                 world_4_v7
+800ca002 800ca002      1fc     1                 world_4_t7
+800ca1fe 800ca1fe      300     1                 world_4_v8
+800ca4fe 800ca4fe      214     1                 world_4_t8
+800ca712 800ca712      26a     1                 world_4_v9
+800ca97c 800ca97c      254     1                 world_4_t9
+800cabd0 800cabd0      168     1                 world_4_chunks
+800cad38 800cad38     36ba     1                 world_4_floors
+800ce3f2 800ce3f2     61d2     1                 world_4_walls
+800d45c4 800d45c4     33ee     4         C:\Users\Orb1t\AppData\Local\Temp\castle-893e6b.o:(.game_assets)
+800d45c4 800d45c4       28     1                 game_animation_package
+800d45c4 800d45c4        0     1                 $d
+800d45ec 800d45ec      168     1                 castle_transitions
+800d4754 800d4754      400     1                 castle_rotations
+800d4b54 800d4b54       a0     1                 game_animation_joints
+800d4bf4 800d4bf4       30     1                 game_animation_clips
+800d4c24 800d4c24     20b2     1                 game_animation_values
+800d6cd6 800d6cd6      802     1                 game_animation_sines
+800d74d8 800d74d8       88     1                 game_animation_vertex_joints
+800d7560 800d7560       fc     1                 game_animation_channels_0
+800d765c 800d765c       fc     1                 game_animation_channels_1
+800d7758 800d7758       fc     1                 game_animation_channels_2
+800d7854 800d7854       fc     1                 game_animation_channels_3
+800d7950 800d7950       62     1                 castle_exits
+800d79b2 800d79b2        2     1         . = ALIGN(4)
+800d79b4 800d79b4        0     1         _assets_end = .
+    7454     7454       ce     4 .rodata
+    7454     7454       20     2         <internal>:(.rodata.cst32)
+    7474     7474       18     1         C:\Users\Orb1t\AppData\Local\Temp\gfx_scene-07674d.o:(.rodata)
+    7474     7474       18     1                 gfx_identity_view.identity
+    7474     7474        0     1                 $d
+    748c     748c       18     1         <internal>:(.rodata.cst8)
+    74a4     74a4       38     4         C:\Users\Orb1t\AppData\Local\Temp\castle-893e6b.o:(.rodata)
+    74a4     74a4       1c     1                 indoor_camera
+    74a4     74a4        0     1                 $d
+    74c0     74c0       1c     1                 outdoor_camera
+    74dc     74dc       3c     4         C:\Users\Orb1t\AppData\Local\Temp\world-2db71c.o:(.rodata)
+    74dc     74dc        0     1                 .LJTI7_0
+    74dc     74dc        0     1                 $d
+    74f0     74f0        0     1                 .LJTI7_1
+    7504     7504        0     1                 .LJTI7_2
+    7518     7518        a     1         C:\Users\Orb1t\AppData\Local\Temp\game_services-bc918a.o:(.rodata)
+    7518     7518        a     1                 game_hud_number.segments
+    7518     7518        0     1                 $d
+    7524     7524        c     4 .data
+    7524     7524        8     4         C:\Users\Orb1t\AppData\Local\Temp\player-113a6f.o:(.data)
+    7524     7524        8     1                 .L_MergedGlobals
+    7524     7524        0     1                 $d
+    7524     7524        4     1                 floor_index
+    7528     7528        4     1                 query_bound
+    752c     752c        4     4         C:\Users\Orb1t\AppData\Local\Temp\world-2db71c.o:(.data)
+    752c     752c        4     1                 room
+    752c     752c        0     1                 $d
+    7530     7530     2014     4 .bss
+    7530     7530        0     1         . = ALIGN(4)
+    7530     7530        0     1         _bss_start = .
+    7530     7530       10     4         C:\Users\Orb1t\AppData\Local\Temp\gfx-e2d8b4.o:(.bss)
+    7530     7530       10     1                 .L_MergedGlobals
+    7530     7530        0     1                 $d
+    7530     7530        4     1                 gfx_profile_command_cycles
+    7534     7534        4     1                 gfx_profile_bytes
+    7538     7538        4     1                 gfx_profile_commands
+    753c     753c        4     1                 gfx_profile_fifo_cycles
+    7540     7540       18     4         C:\Users\Orb1t\AppData\Local\Temp\player-113a6f.o:(.bss)
+    7540     7540       18     1                 .L_MergedGlobals.1
+    7540     7540        0     1                 $d
+    7540     7540        4     1                 query_world
+    7544     7544        4     1                 query_floors
+    7548     7548        4     1                 query_floor_count
+    754c     754c        4     1                 query_walls
+    7550     7550        4     1                 query_wall_count
+    7554     7554        4     1                 query_normals
+    7558     7558       48     4         C:\Users\Orb1t\AppData\Local\Temp\portable_main-86e6c6.o:(.bss)
+    7558     7558       48     1                 .L_MergedGlobals
+    7558     7558        0     1                 $d
+    7558     7558        4     1                 game_update_cycles
+    755c     755c        4     1                 game_cpu_cycles
+    7560     7560        4     1                 game_present_cycles
+    7564     7564        4     1                 game_frame_cycles
+    7568     7568        4     1                 game_frame
+    756c     756c       34     1                 game_gpu_stats
+    75a0     75a0      248     4         C:\Users\Orb1t\AppData\Local\Temp\cpu_profile-85043f.o:(.bss)
+    75a0     75a0      248     1                 .L_MergedGlobals
+    75a0     75a0        0     1                 $d
+    75a0     75a0        4     1                 gpu_start.0
+    75a4     75a4        4     1                 gpu_start.1
+    75a8     75a8        4     1                 gpu_start.2
+    75ac     75ac        4     1                 gpu_start.3
+    75b0     75b0        4     1                 game_profile_slot
+    75b4     75b4       1c     1                 previous
+    75d0     75d0       70     1                 records
+    7640     7640      1a8     1                 game_profile_slots
+    77e8     77e8      678     4         C:\Users\Orb1t\AppData\Local\Temp\castle-893e6b.o:(.bss)
+    77e8     77e8      678     1                 .L_MergedGlobals
+    77e8     77e8        0     1                 $d
+    77e8     77e8        4     1                 transition_cooldown
+    77ec     77ec        4     1                 previous_buttons
+    77f0     77f0        4     1                 current_area
+    77f4     77f4        4     1                 castle_exit_event
+    77f8     77f8        4     1                 pending_ticks
+    77fc     77fc        4     1                 pending_event
+    7800     7800        4     1                 castle_mission_state
+    7804     7804        4     1                 castle_area
+    7808     7808        4     1                 castle_pose_upload_cycles
+    780c     780c        4     1                 castle_prepare_cycles
+    7810     7810        4     1                 castle_draw_cycles
+    7814     7814       18     1                 animation
+    782c     782c       20     1                 view
+    784c     784c       20     1                 player
+    786c     786c       20     1                 game_player
+    788c     788c       24     1                 camera
+    78b0     78b0      280     1                 joints
+    7b30     7b30      330     1                 posed
+    7e60     7e60     16d0     4         C:\Users\Orb1t\AppData\Local\Temp\world-2db71c.o:(.bss)
+    7e60     7e60     1000     1                 visible_chunks
+    7e60     7e60        0     1                 $d
+    8e60     8e60      6d0     1                 .L_MergedGlobals
+    8e60     8e60        4     1                 selected
+    8e64     8e64        4     1                 world_visible_chunks
+    8e68     8e68        4     1                 world_uploaded_chunks
+    8e6c     8e6c        4     1                 world_direct_triangles
+    8e70     8e70       40     1                 cache
+    8eb0     8eb0       80     1                 direct_outcodes
+    8f30     8f30      600     1                 direct_points
+    9530     9530       14     4         C:\Users\Orb1t\AppData\Local\Temp\game_services-bc918a.o:(.bss)
+    9530     9530       14     1                 .L_MergedGlobals
+    9530     9530        0     1                 $d
+    9530     9530        4     1                 hud_view
+    9534     9534        4     1                 hud_x
+    9538     9538        4     1                 hud_y
+    953c     953c        4     1                 hud_z
+    9540     9540        4     1                 hud_scale
+    9544     9544        0     1         . = ALIGN(4)
+    9544     9544        0     1         _bss_end = .
+    9544     9544        0     1 _stack_top = ORIGIN(RAM) + LENGTH(RAM)
+    9544     9544        0     1 
+    9544     9544        0     1 
+       0        0       1c     1 .riscv.attributes
+       0        0       1c     1         <internal>:(.riscv.attributes)
+       0        0       29     1 .comment
+       0        0       29     1         <internal>:(.comment)
+       0        0     1c20     4 .symtab
+       0        0     1c20     4         <internal>:(.symtab)
+       0        0       5c     1 .shstrtab
+       0        0       5c     1         <internal>:(.shstrtab)
+       0        0     150f     1 .strtab
+       0        0     150f     1         <internal>:(.strtab)

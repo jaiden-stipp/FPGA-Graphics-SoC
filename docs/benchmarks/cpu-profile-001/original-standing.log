@@ -1,0 +1,21 @@
+Uploading mario-castle-sdram-direct.bin: 28,936 bytes at 0x00000000
+Verifying mario-castle-sdram-direct.bin: 28,936 bytes at 0x00000000
+Uploading mario-castle-sdram-direct.assets.bin: 883,124 bytes at 0x80000000
+  368,784/883,124 bytes
+  741,972/883,124 bytes
+Verifying mario-castle-sdram-direct.assets.bin: 883,124 bytes at 0x80000000
+  373,608/883,124 bytes
+  744,720/883,124 bytes
+Readback verified; CPU released.
+trial 1 fps 19.9149265274887 position [-1328, 260, 4664] metrics {'game_frame_cycles': 2502502, 'game_cpu_cycles': 1669660, 'game_update_cycles': 44439, 'game_present_cycles': 832834}
+Uploading mario-castle-sdram-direct.bin: 28,936 bytes at 0x00000000
+Verifying mario-castle-sdram-direct.bin: 28,936 bytes at 0x00000000
+Readback verified; CPU released.
+trial 2 fps 19.988468191394926 position [-1328, 260, 4664] metrics {'game_frame_cycles': 2502502, 'game_cpu_cycles': 1625335, 'game_update_cycles': 44439, 'game_present_cycles': 832834}
+Uploading mario-castle-sdram-direct.bin: 28,936 bytes at 0x00000000
+Verifying mario-castle-sdram-direct.bin: 28,936 bytes at 0x00000000
+Readback verified; CPU released.
+trial 3 fps 19.97672614434391 position [-1328, 260, 4664] metrics {'game_frame_cycles': 2502502, 'game_cpu_cycles': 1625335, 'game_update_cycles': 44439, 'game_present_cycles': 832834}
+Uploading mario-castle-sdram-direct.bin: 28,936 bytes at 0x00000000
+Verifying mario-castle-sdram-direct.bin: 28,936 bytes at 0x00000000
+Readback verified; CPU released.

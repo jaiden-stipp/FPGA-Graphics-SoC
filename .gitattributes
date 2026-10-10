@@ -4,3 +4,5 @@
 
 # Preserve raw benchmark bytes so evidence SHA-256 values survive checkout.
 docs/benchmarks/cache-lines-001/** -text
+
+docs/benchmarks/cpu-profile-001/** -text

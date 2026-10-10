@@ -1,0 +1,12 @@
+{
+  "bin": {
+    "identical": true,
+    "tested_sha256": "d4e74cbc5c168dc6594b99439daf5feb6b0971447893106ce45f3a16f3df9c10",
+    "public_command_sha256": "d4e74cbc5c168dc6594b99439daf5feb6b0971447893106ce45f3a16f3df9c10"
+  },
+  "assets.bin": {
+    "identical": true,
+    "tested_sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6",
+    "public_command_sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+  }
+}

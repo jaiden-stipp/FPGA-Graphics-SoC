@@ -1,0 +1,35 @@
+{
+  "package": "C:\\Users\\Orb1t\\Documents\\Codex\\FPGA-Game-SoC\\build\\cpu-profile\\baseline\\mario-castle-sdram-direct.package.json",
+  "segments": [
+    {
+      "file": "mario-castle-sdram-direct.bin",
+      "address": 0,
+      "bytes": 28936,
+      "sha256": "e366760994e8282a6c45aa00e645b8a8d490d9ca95928b2ef64adec05a2ff442"
+    },
+    {
+      "file": "mario-castle-sdram-direct.assets.bin",
+      "address": 2147483648,
+      "bytes": 883124,
+      "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+    }
+  ],
+  "scope": "Standing spawn view",
+  "instrumented": false,
+  "reuse_immutable_assets": true,
+  "trials": [],
+  "restore": "C:\\Users\\Orb1t\\Documents\\Codex\\FPGA-Game-SoC\\build\\cpu-profile\\baseline\\mario-castle-sdram-direct.package.json",
+  "failure": "TimeoutError(\"No completed-operation reply from ('192.168.7.2', 4000) (op 5, address 0x0)\")",
+  "restored_status": {
+    "initialized": true,
+    "held": false,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 1,
+    "refresh_count": 1390849038,
+    "input_abi": 1229848833
+  }
+}
