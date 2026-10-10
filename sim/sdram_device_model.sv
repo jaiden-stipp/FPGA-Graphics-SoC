@@ -53,8 +53,8 @@ module sdram_device_model (
                 refreshes=refreshes+1; last_refresh=cycle;
             end
             3'b000: begin
-                if (refreshes<8 || (DRAM_ADDR!=13'h230 && DRAM_ADDR!=13'h233) || DRAM_BA!=0) $fatal(1,"Bad SDRAM mode/init sequence");
-                burst_length=DRAM_ADDR[2:0]==3 ? 8 : 1;
+                if (refreshes<8 || (DRAM_ADDR<13'h230 || DRAM_ADDR>13'h233) || DRAM_BA!=0) $fatal(1,"Bad SDRAM mode/init sequence");
+                burst_length=1 << DRAM_ADDR[2:0];
                 mode_set=1; last_refresh=cycle;
             end
             3'b011: begin // activate
@@ -73,7 +73,7 @@ module sdram_device_model (
                     // is calibrated to the numbered-word physical-board probe;
                     // the original sparse model returned it one clock too late.
                     // This model is not independent vendor timing validation.
-                    read_delay=burst_length==8 ? 2 : 3;
+                    read_delay=burst_length>1 ? 2 : 3;
                     read_base=key & ~(burst_length-1); read_column=key & (burst_length-1);
                     available[DRAM_BA]=cycle+6+burst_length-1;
                 end else begin

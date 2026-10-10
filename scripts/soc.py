@@ -443,6 +443,7 @@ def quartus(_args):
     boot=json.loads((BUILD/'boot.json').read_text()) if (BUILD/'boot.json').exists() else {'sdram':False}
     lines.append(f'set_parameter -name ENABLE_SDRAM {int(boot["sdram"])}')
     lines.append(f'set_parameter -name ENABLE_CACHE {int(not getattr(_args,"disable_cache",False))}')
+    lines.append(f'set_parameter -name CACHE_LINE_BYTES {getattr(_args,"cache_line_bytes",32)}')
     lines.append(f'set_parameter -name ENABLE_BURST {int(not getattr(_args,"disable_burst",False))}')
     for path in sources(True):
         # Monitor/assertions are excluded from synthesis by upstream translate_off.
@@ -647,7 +648,8 @@ def main():
     p.set_defaults(func=simulate)
     p = sub.add_parser("quartus-project")
     p.add_argument('--disable-cache',action='store_true',help='Generate an uncached SDRAM baseline project')
-    p.add_argument('--disable-burst',action='store_true',help='Keep the cache but fill lines with eight independent BL1 reads')
+    p.add_argument('--cache-line-bytes',type=int,choices=(8,16,32),default=32,help='Cache line size; total capacity stays 4 KiB')
+    p.add_argument('--disable-burst',action='store_true',help='Keep the cache but fill lines with independent BL1 reads')
     p.set_defaults(func=quartus)
     p = sub.add_parser("build-fpga")
     p.add_argument("--quartus-bin", type=Path, help="Edition-specific Quartus executable directory")

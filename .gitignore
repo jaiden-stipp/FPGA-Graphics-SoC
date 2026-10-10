@@ -20,3 +20,6 @@ incremental_db/
 *.qws
 *.rpt
 *.summary
+
+/CacheLine*SoC.qpf
+/CacheLine*SoC.qsf

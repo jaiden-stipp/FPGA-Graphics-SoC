@@ -1,6 +1,8 @@
 `timescale 1ns/1ps
-module sdram_cache_tb #(parameter BURST_ENABLED=1);
-    localparam FILL_TRANSACTIONS=BURST_ENABLED?1:8;
+module sdram_cache_tb #(parameter BURST_ENABLED=1, CACHE_LINE_BYTES=32);
+    localparam LINE_WORDS=CACHE_LINE_BYTES/4;
+    localparam TEST_WORD=LINE_WORDS-1;
+    localparam FILL_TRANSACTIONS=BURST_ENABLED?1:LINE_WORDS;
     logic clk=0,reset=1,bypass=0,invalidate=0;
     always #10 clk=~clk;
     logic request_valid=0,request_write=0,request_ready,response_valid;
@@ -9,7 +11,7 @@ module sdram_cache_tb #(parameter BURST_ENABLED=1);
     logic [3:0] request_byte_enable=15,memory_byte_enable;
     logic memory_valid,memory_write,memory_burst,memory_ready,memory_response_valid=0;
     logic [31:0] read_hits,read_misses,fill_words,write_requests,busy_cycles;
-    sdram_cache #(.ENABLE_BURST(BURST_ENABLED)) dut(.*);
+    sdram_cache #(.ENABLE_BURST(BURST_ENABLED),.CACHE_LINE_BYTES(CACHE_LINE_BYTES)) dut(.*);
     logic [31:0] backing [0:4095];
     logic [24:0] held_addr;
     logic [31:0] held_data;
@@ -25,7 +27,7 @@ module sdram_cache_tb #(parameter BURST_ENABLED=1);
         else if(memory_valid && memory_ready) begin
             held_addr<=memory_address; held_data<=memory_data;
             held_bytes<=memory_byte_enable; held_write<=memory_write;
-            remaining<=memory_burst?8:1;
+            remaining<=memory_burst?LINE_WORDS:1;
             countdown<=3; transactions<=transactions+1;
         end else if(countdown>1) countdown<=countdown-1;
         else if(countdown==1) begin
@@ -53,29 +55,29 @@ module sdram_cache_tb #(parameter BURST_ENABLED=1);
     initial begin
         for(integer i=0;i<4096;i=i+1) backing[i]=32'h12340000+i;
         repeat(3) @(negedge clk); reset=0;
-        access(0,3,0,15,32'h12340003); cold_cycles=last_cycles;
-        if(transactions!=FILL_TRANSACTIONS || read_misses!=1 || fill_words!=8) $fatal(1,"Cold fill counts");
-        access(0,3,0,15,32'h12340003); hit_cycles=last_cycles;
-        for(integer i=0;i<8;i=i+1) access(0,i,0,15,32'h12340000+i);
-        if(transactions!=FILL_TRANSACTIONS || read_hits!=9 || hit_cycles>=cold_cycles) $fatal(1,"Hit path");
-        access(1,3,32'h00aa0000,4'b0100,0);
-        if(backing[3]!==32'h12aa0003) $fatal(1,"Write-through byte mask");
-        access(0,3,0,15,32'h12aa0003);
+        access(0,TEST_WORD,0,15,32'h12340000+TEST_WORD); cold_cycles=last_cycles;
+        if(transactions!=FILL_TRANSACTIONS || read_misses!=1 || fill_words!=LINE_WORDS) $fatal(1,"Cold fill counts");
+        access(0,TEST_WORD,0,15,32'h12340000+TEST_WORD); hit_cycles=last_cycles;
+        for(integer i=0;i<LINE_WORDS;i=i+1) access(0,i,0,15,32'h12340000+i);
+        if(transactions!=FILL_TRANSACTIONS || read_hits!=LINE_WORDS+1 || hit_cycles>=cold_cycles) $fatal(1,"Hit path");
+        access(1,TEST_WORD,32'h00aa0000,4'b0100,0);
+        if(backing[TEST_WORD]!==32'h12aa0000+TEST_WORD) $fatal(1,"Write-through byte mask");
+        access(0,TEST_WORD,0,15,32'h12aa0000+TEST_WORD);
         access(1,200,32'h89abcdef,15,0);
         before_count=transactions;
         access(0,200,0,15,32'h89abcdef);
         if(transactions-before_count!=FILL_TRANSACTIONS) $fatal(1,"Write miss must not allocate");
-        access(0,1027,0,15,32'h12340403); // same index, different tag
+        access(0,1024+TEST_WORD,0,15,32'h12340400+TEST_WORD); // same index, different tag
         before_count=transactions;
-        access(0,3,0,15,32'h12aa0003);
+        access(0,TEST_WORD,0,15,32'h12aa0000+TEST_WORD);
         if(transactions-before_count!=FILL_TRANSACTIONS) $fatal(1,"Conflict replacement");
         @(negedge clk); bypass=1; invalidate=1;
-        access(1,3,32'hdeadbeef,15,0);
+        access(1,TEST_WORD,32'hdeadbeef,15,0);
         before_count=transactions;
-        access(0,3,0,15,32'hdeadbeef);
+        access(0,TEST_WORD,0,15,32'hdeadbeef);
         if(transactions-before_count!=1 || dut.valid!=0) $fatal(1,"Loader bypass");
         @(negedge clk); bypass=0; invalidate=0;
-        access(0,3,0,15,32'hdeadbeef);
+        access(0,TEST_WORD,0,15,32'hdeadbeef);
         // Invalidate while a fill is active; draining it must not revalidate.
         fork
             access(0,64,0,15,32'h12340040);
@@ -91,7 +93,7 @@ module sdram_cache_tb #(parameter BURST_ENABLED=1);
         fork
             access(0,80,0,15,32'h12340050);
             begin
-                wait(dut.filling && dut.fill_offset==7 && memory_response_valid);
+                wait(dut.filling && dut.fill_offset==LINE_WORDS-1 && memory_response_valid);
                 invalidate=1;
                 @(negedge clk); @(negedge clk); invalidate=0;
             end

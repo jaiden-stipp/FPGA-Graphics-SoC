@@ -4,7 +4,8 @@ module soc_memory #(
     parameter MIF_FILE = "build/firmware.mif",
     parameter ENABLE_SDRAM = 0,
     parameter ENABLE_CACHE = 1,
-    parameter ENABLE_BURST = 1
+    parameter ENABLE_BURST = 1,
+    parameter CACHE_LINE_BYTES = 32
 )(
     input logic clk, reset,
     input logic [31:0] pc, addr, wdata,
@@ -96,7 +97,7 @@ module soc_memory #(
         if (ENABLE_CACHE) begin : cached
             wire [31:0] hits, misses, fills, writes, busy;
             assign cache_statistics = {32'h43410101,hits,misses,fills,writes,busy};
-            sdram_cache #(.ENABLE_BURST(ENABLE_BURST)) cache (
+            sdram_cache #(.ENABLE_BURST(ENABLE_BURST), .CACHE_LINE_BYTES(CACHE_LINE_BYTES)) cache (
                 .clk(clk), .reset(sdram_reset), .bypass(load_hold), .invalidate(load_hold || reset),
                 .request_valid(req_valid), .request_write(req_write), .request_address(req_addr),
                 .request_data(req_data), .request_byte_enable(req_bytes), .request_ready(req_ready),
@@ -114,7 +115,7 @@ module soc_memory #(
             assign mem_data=req_data; assign mem_bytes=req_bytes;
             assign req_ready=mem_ready; assign response_valid=mem_response; assign response_data=mem_rdata;
         end
-        sdram_controller #(.ENABLE_BURST(ENABLE_BURST && ENABLE_CACHE)) controller (
+        sdram_controller #(.ENABLE_BURST(ENABLE_BURST && ENABLE_CACHE), .CACHE_LINE_BYTES(CACHE_LINE_BYTES)) controller (
             .clk(clk), .reset(sdram_reset), .request_valid(mem_valid), .request_write(mem_write),
             .request_address(mem_addr), .request_data(mem_data), .request_byte_enable(mem_bytes),
             .request_burst(mem_burst),

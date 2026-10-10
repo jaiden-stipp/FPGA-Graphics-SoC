@@ -1,5 +1,6 @@
 `timescale 1ns/1ps
-module sdram_memory_tb #(parameter CACHE_ENABLED=1, BURST_ENABLED=1);
+module sdram_memory_tb #(parameter CACHE_ENABLED=1, BURST_ENABLED=1, CACHE_LINE_BYTES=32);
+    localparam LINE_WORDS=CACHE_LINE_BYTES/4;
     logic clk=0, reset=1; always #10 clk=~clk;
     logic [31:0] addr=0,wdata=0,rdata;
     logic [2:0] funct3=2;
@@ -9,7 +10,7 @@ module sdram_memory_tb #(parameter CACHE_ENABLED=1, BURST_ENABLED=1);
     wire DRAM_CLK,DRAM_CKE,DRAM_CS_N,DRAM_RAS_N,DRAM_CAS_N,DRAM_WE_N;
     wire [12:0] DRAM_ADDR; wire [1:0] DRAM_BA; wire [3:0] DRAM_DQM; wire [31:0] DRAM_DQ;
     logic [31:0] refresh_count;
-    soc_memory #(.HEX_FILE(""),.ENABLE_SDRAM(1),.ENABLE_CACHE(CACHE_ENABLED),.ENABLE_BURST(BURST_ENABLED)) dut (
+    soc_memory #(.HEX_FILE(""),.ENABLE_SDRAM(1),.ENABLE_CACHE(CACHE_ENABLED),.ENABLE_BURST(BURST_ENABLED),.CACHE_LINE_BYTES(CACHE_LINE_BYTES)) dut (
         .clk(clk),.reset(reset),.sdram_reset(reset),.pc(32'b0),.addr(addr),.wdata(wdata),
         .funct3(funct3),.read_en(read_en),.write_en(write_en),.rdata(rdata),
         .cpu_stall(stall),.misaligned(bad),.write_performed(performed),
@@ -45,7 +46,7 @@ module sdram_memory_tb #(parameter CACHE_ENABLED=1, BURST_ENABLED=1);
         access(0,32'h80000000,0,2,32'h81238078);
         cold_cycles=last_access_cycles;
         cold_commands=chip.read_commands-read_before;
-        if(cold_commands!=(CACHE_ENABLED && !BURST_ENABLED?8:1)) $fatal(1,"Cache fill SDRAM read commands=%0d",cold_commands);
+        if(cold_commands!=(CACHE_ENABLED && !BURST_ENABLED?LINE_WORDS:1)) $fatal(1,"Cache fill SDRAM read commands=%0d",cold_commands);
         access(0,32'h80000000,0,2,32'h81238078);
         repeat_cycles=last_access_cycles;
         if(CACHE_ENABLED && repeat_cycles>=cold_cycles) $fatal(1,"Cached repeat must reduce simulated wait");
@@ -62,13 +63,13 @@ module sdram_memory_tb #(parameter CACHE_ENABLED=1, BURST_ENABLED=1);
         access(0,32'h87fffffc,0,2,32'h89abcdef);
         // Every critical-word position must return the right beat. Distinct
         // words at bank/row ends also catch duplicated, shifted or wrapped data.
-        for(integer k=0;k<8;k=k+1) begin
+        for(integer k=0;k<LINE_WORDS;k=k+1) begin
             base=32'h80000fe0+(k<<12);
-            for(integer j=0;j<8;j=j+1) access(1,base+4*j,32'ha5010000+256*k+j,2,0);
+            for(integer j=0;j<LINE_WORDS;j=j+1) access(1,base+4*j,32'ha5010000+256*k+j,2,0);
             read_before=chip.read_commands;
             access(0,base+4*k,0,2,32'ha5010000+256*k+k);
-            if(chip.read_commands-read_before!=(CACHE_ENABLED && !BURST_ENABLED?8:1)) $fatal(1,"Offset fill count");
-            for(integer j=0;j<8;j=j+1) access(0,base+4*j,0,2,32'ha5010000+256*k+j);
+            if(chip.read_commands-read_before!=(CACHE_ENABLED && !BURST_ENABLED?LINE_WORDS:1)) $fatal(1,"Offset fill count");
+            for(integer j=0;j<LINE_WORDS;j=j+1) access(0,base+4*j,0,2,32'ha5010000+256*k+j);
         end
         @(posedge clk); #1; addr=32'h80000001; funct3=2; write_en=1;
         #1; if (!bad || stall || performed) $fatal(1,"Misaligned access");

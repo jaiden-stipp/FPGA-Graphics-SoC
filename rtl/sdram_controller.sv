@@ -1,11 +1,12 @@
 // DE2-115: two x16 SDR SDRAMs as a 32Mx32 bank, 50 MHz, CL3.
-// Burst mode uses sequential BL8 reads and single-location writes (M9=1).
+// Burst mode uses sequential BL2/4/8 reads and single-location writes (M9=1).
 // Single-word readers receive only the first word, after the burst drains.
 // Closed-page access. All command/data outputs precede DRAM_CLK by 10 ns.
 module sdram_controller #(
     parameter logic [13:0] POWERUP_CYCLES = 14'd10000,
     parameter integer REFRESH_CYCLES = 375,
-    parameter ENABLE_BURST = 1
+    parameter ENABLE_BURST = 1,
+    parameter CACHE_LINE_BYTES = 32
 )(
     input logic clk, reset,
     input logic request_valid, request_write,
@@ -23,6 +24,10 @@ module sdram_controller #(
     output logic [3:0] DRAM_DQM,
     inout wire [31:0] DRAM_DQ
 );
+    localparam LINE_WORDS = CACHE_LINE_BYTES / 4;
+    localparam BURST_CODE = $clog2(LINE_WORDS);
+    initial if (CACHE_LINE_BYTES != 8 && CACHE_LINE_BYTES != 16 && CACHE_LINE_BYTES != 32)
+        $fatal(1,"CACHE_LINE_BYTES must be 8, 16 or 32");
     typedef enum logic [3:0] {POWERUP, INIT_PRE, INIT_REF, INIT_MODE,
         IDLE, ACCESS, READ_WAIT, READ_STREAM, RECOVER, REF_WAIT} state_t;
     state_t state;
@@ -43,7 +48,7 @@ module sdram_controller #(
     logic burst_access;
     logic [2:0] read_beat;
     // Reserve the additional burst drain clocks before starting another access.
-    localparam integer REFRESH_LIMIT = REFRESH_CYCLES - (ENABLE_BURST ? 8 : 0);
+    localparam integer REFRESH_LIMIT = REFRESH_CYCLES - (ENABLE_BURST ? LINE_WORDS : 0);
     assign DRAM_CLK = ~clk;
     assign DRAM_DQ = dq_drive ? dq_out : 32'bz;
     assign request_ready = state == IDLE && initialized && refresh_age < REFRESH_LIMIT;
@@ -72,7 +77,7 @@ module sdram_controller #(
                         init_refreshes <= init_refreshes+1'b1; timer <= 3; state <= INIT_REF;
                     end else begin
                         {DRAM_CS_N,DRAM_RAS_N,DRAM_CAS_N,DRAM_WE_N} <= 4'b0000;
-                        DRAM_ADDR <= ENABLE_BURST ? 13'h233 : 13'h230;
+                        DRAM_ADDR <= ENABLE_BURST ? (13'h230 | BURST_CODE) : 13'h230;
                         DRAM_BA <= 0; timer <= 2; state <= INIT_MODE;
                     end
                 end
@@ -120,11 +125,11 @@ module sdram_controller #(
                     if (burst_access) begin
                         response_data <= dq_sample; response_valid <= 1;
                     end
-                    if (read_beat == 7) begin timer <= 2; state <= RECOVER; end
+                    if (read_beat == LINE_WORDS-1) begin timer <= 2; state <= RECOVER; end
                     else read_beat <= read_beat + 1'b1;
                 end
                 RECOVER: if (timer != 0) timer <= timer-1'b1; else begin
-                    // Streaming reads already returned all eight beats.
+                    // Streaming reads already returned all selected beats.
                     response_valid <= !burst_access; state <= IDLE;
                 end
                 REF_WAIT: if (timer != 0) timer <= timer-1'b1; else state <= IDLE;

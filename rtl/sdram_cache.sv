@@ -1,7 +1,7 @@
-// Blocking 4 KiB direct-mapped data cache: 128 lines, 8 words per line.
-// Write-through, no write allocation. Optional eight-beat cache-line reads.
+// Blocking 4 KiB direct-mapped data cache; selectable 8/16/32-byte lines.
+// Write-through, no write allocation. Burst length matches the selected line.
 // Addresses are SDRAM-relative WORD addresses, not CPU byte addresses.
-module sdram_cache #(parameter ENABLE_BURST = 1) (
+module sdram_cache #(parameter ENABLE_BURST = 1, parameter CACHE_LINE_BYTES = 32) (
     input logic clk, reset, bypass, invalidate,
     input logic request_valid, request_write,
     input logic [24:0] request_address,
@@ -18,17 +18,22 @@ module sdram_cache #(parameter ENABLE_BURST = 1) (
     output logic [31:0] read_hits, read_misses, fill_words, write_requests,
     output logic [31:0] busy_cycles
 );
+    localparam LINE_WORDS = CACHE_LINE_BYTES / 4;
+    localparam OFFSET_BITS = $clog2(LINE_WORDS);
+    localparam LINE_COUNT = 1024 / LINE_WORDS;
+    initial if (CACHE_LINE_BYTES != 8 && CACHE_LINE_BYTES != 16 && CACHE_LINE_BYTES != 32)
+        $fatal(1,"CACHE_LINE_BYTES must be 8, 16 or 32");
     typedef enum logic [2:0] {IDLE, LOOKUP, ISSUE, WAIT_MEMORY} state_t;
     state_t state;
     (* ramstyle = "M9K" *) logic [31:0] words [0:1023];
-    logic [14:0] tags [0:127];
-    logic [127:0] valid;
+    logic [14:0] tags [0:LINE_COUNT-1];
+    logic [LINE_COUNT-1:0] valid;
     logic [24:0] saved_address;
     logic [31:0] saved_data, lookup_data, critical_data;
     logic [3:0] saved_bytes;
     logic saved_write, saved_bypass, filling, discard_fill;
-    logic [2:0] fill_offset;
-    wire [6:0] line_index = saved_address[9:3];
+    logic [OFFSET_BITS-1:0] fill_offset;
+    wire [9-OFFSET_BITS:0] line_index = saved_address[9:OFFSET_BITS];
     wire [14:0] tag = saved_address[24:10];
     wire hit = valid[line_index] && tags[line_index] == tag;
     wire filling_word = state == WAIT_MEMORY && memory_response_valid && filling;
@@ -48,7 +53,7 @@ module sdram_cache #(parameter ENABLE_BURST = 1) (
     assign memory_valid = state == ISSUE;
     assign memory_write = saved_write;
     assign memory_burst = ENABLE_BURST && filling;
-    assign memory_address = filling ? {saved_address[24:3],(ENABLE_BURST ? 3'b0 : fill_offset)} : saved_address;
+    assign memory_address = filling ? {saved_address[24:OFFSET_BITS],(ENABLE_BURST ? {OFFSET_BITS{1'b0}} : fill_offset)} : saved_address;
     assign memory_data = saved_data;
     assign memory_byte_enable = saved_bytes;
     always_ff @(posedge clk) begin
@@ -92,12 +97,12 @@ module sdram_cache #(parameter ENABLE_BURST = 1) (
                 WAIT_MEMORY: if (memory_response_valid) begin
                     if (filling) begin
                         fill_words <= fill_words + 1'b1;
-                        if (fill_offset == saved_address[2:0]) critical_data <= memory_response_data;
-                        if (fill_offset == 7) begin
+                        if (fill_offset == saved_address[OFFSET_BITS-1:0]) critical_data <= memory_response_data;
+                        if (fill_offset == LINE_WORDS-1) begin
                             if (!discard_fill && !invalidate) begin
                                 valid[line_index] <= 1; tags[line_index] <= tag;
                             end
-                            response_data <= saved_address[2:0] == 7 ? memory_response_data : critical_data;
+                            response_data <= saved_address[OFFSET_BITS-1:0] == LINE_WORDS-1 ? memory_response_data : critical_data;
                             response_valid <= 1; state <= IDLE;
                         end else begin
                             fill_offset <= fill_offset + 1'b1;

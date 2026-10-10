@@ -1,5 +1,5 @@
 `timescale 1ns/1ps
-module sdram_cpu_tb;
+module sdram_cpu_tb #(parameter CACHE_LINE_BYTES=32);
     logic clk=0,reset=1; always #10 clk=~clk;
     logic [31:0] pc,addr,wdata,instruction,rdata,scratch;
     logic [2:0] funct3;
@@ -14,7 +14,7 @@ module sdram_cpu_tb;
         .soc_addr(addr),.soc_wdata(wdata),.soc_funct3(funct3),.soc_read_en(read_en),.soc_write_en(write_en),
         .trace_valid(trace_valid),.commit_valid(commit_valid)
     );
-    soc_memory #(.HEX_FILE("build/sdram-test-sdram.hex"),.ENABLE_SDRAM(1)) memory (
+    soc_memory #(.HEX_FILE("build/sdram-test-sdram.hex"),.ENABLE_SDRAM(1),.CACHE_LINE_BYTES(CACHE_LINE_BYTES)) memory (
         .clk(clk),.reset(cpu_reset),.sdram_reset(reset),.pc(pc),.addr(addr),.wdata(wdata),
         .funct3(funct3),.read_en(read_en),.write_en(write_en),.instruction(instruction),.rdata(rdata),
         .cpu_stall(stall),.misaligned(bad),.write_performed(performed),.sdram_initialized(initialized),

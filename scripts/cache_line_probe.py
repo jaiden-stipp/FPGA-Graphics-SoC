@@ -1,0 +1,49 @@
+"""Build one castle-data RV32I probe and independent host checksums."""
+import hashlib,json,re,struct,subprocess
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1]
+def build():
+ out=ROOT/'build/cache-lines';out.mkdir(exist_ok=True)
+ symbols=json.loads((ROOT/'build/mario-castle-sdram-direct.symbols.json').read_text())
+ assets=(ROOT/'build/mario-castle-sdram-direct.assets.bin').read_bytes()
+ count=int(re.search(r'#define WORLD_AREA_COUNT (\d+)u',(ROOT/'firmware/generated/world_data.h').read_text())[1]);address=symbols['world_areas']
+ def unpack(fmt,p):return struct.unpack_from('<'+fmt,assets,p-0x80000000)
+ def fold(h,v):return (31*h+v)&0xffffffff
+ collision=geometry=sparse=0;queries=vertices=triangles=0
+ for a in range(count):
+  chunks,n,physics,_,_,cells,indices,_,gx,gz,width,depth,normals,_,_,_=unpack('8I2i6I',address+64*a)
+  floors,_,floor_count=unpack('3I',physics)
+  for z in range(8):
+   for x in range(8):
+    px=gx+((width*x>>3)<<9)+256;pz=gz+((depth*z>>3)<<9)+256
+    fs,fc,_,_=unpack('4I',cells+16*((depth*z>>3)*width+(width*x>>3)))
+    best=-32768;fi=-1
+    for q in range(fc):
+     i=unpack('H',indices+2*(fs+q))[0]
+     ax,ay,az,bx,by,bz,cx,cy,cz,minx,maxx,minz,maxz,_,_=unpack('15h',floors+30*i)
+     if not(minx<=px<=maxx and minz<=pz<=maxz):continue
+     edges=((bx-ax)*(pz-az)-(bz-az)*(px-ax),(cx-bx)*(pz-bz)-(cz-bz)*(px-bx),(ax-cx)*(pz-cz)-(az-cz)*(px-cx))
+     if not(all(e>=0 for e in edges) or all(e<=0 for e in edges)):continue
+     nx,ny,nz=unpack('3h',normals+6*i);numerator=nx*(px-ax)+nz*(pz-az)
+     # C divide is unsigned magnitude followed by sign, truncating toward zero.
+     y=ay-((-1 if numerator<0 else 1)*(abs(numerator)//ny))
+     if y<=16000 and y>best:best=y;fi=i
+    collision=fold(fold(collision,best),fi);queries+=1
+  for c in range(n):
+   vp,tp,nv,nt=unpack('2I2H',chunks+36*c)
+   for i in range(nv):
+    for v in unpack('3h',vp+6*i):geometry=fold(geometry,v)
+   for i in range(nt):
+    for v in unpack('4B',tp+4*i):geometry=fold(geometry,v)
+   vertices+=nv;triangles+=nt
+ for i in range(64):sparse=fold(sparse,unpack('I',0x80000000+32*i)[0])
+ (out/'cache_line_probe_config.h').write_text(f'#define PROBE_AREAS 0x{address:08x}u\n#define PROBE_AREA_COUNT {count}u\n')
+ flags=['--target=riscv32-unknown-elf','-fuse-ld=lld','-march=rv32i','-mabi=ilp32','-msmall-data-limit=0','-mno-relax','-O1','-ffreestanding','-fno-builtin','-nostdlib','-Wall','-Wextra','-Werror','-ffunction-sections','-fdata-sections','-Ifirmware/include','-Ifirmware/generated','-Ibuild/cache-lines','-Wl,-T,firmware/link.ld','-Wl,--no-relax','-Wl,--gc-sections','-Wl,-Map,build/cache-lines/probe.map']
+ cmd=['C:/Program Files/LLVM/bin/clang.exe',*flags,'firmware/start.S','firmware/tests/cache_line_probe.c','firmware/src/player.c','firmware/src/world.c','-o','build/cache-lines/probe.elf']
+ subprocess.run(cmd,cwd=ROOT,check=True)
+ subprocess.run(['C:/Program Files/LLVM/bin/llvm-objcopy.exe','-O','binary','build/cache-lines/probe.elf','build/cache-lines/probe.bin'],cwd=ROOT,check=True)
+ nm=subprocess.check_output(['C:/Program Files/LLVM/bin/llvm-nm.exe','--defined-only','build/cache-lines/probe.elf'],cwd=ROOT,text=True)
+ syms={m[3]:int(m[1],16) for line in nm.splitlines() if (m:=re.fullmatch(r'([0-9a-fA-F]+)\s+(\w)\s+(\S+)',line))}
+ report={'assets_sha256':hashlib.sha256(assets).hexdigest(),'probe_sha256':hashlib.sha256((out/'probe.bin').read_bytes()).hexdigest(),'area_address':address,'areas':count,'queries_per_pass':queries,'vertices_per_pass':vertices,'triangles_per_pass':triangles,'checksums':[collision]*2+[geometry]*2+[sparse]*2,'symbols':syms,'compile_command':cmd}
+ (out/'probe.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2))
+if __name__=='__main__':build()
