@@ -1,0 +1,19 @@
+{
+  "candidate_sof_sha256": "8326b76009f681087f3615256ff45f7f7bb5922dc43dfebca2d77387f499105b",
+  "rollback_sof_sha256": "bc0948f73f1ff97f71d36411eb62e376d485d9559d8d6aa46d0f9d84cd596927",
+  "package": "build\\mario-castle-sdram-direct.package.json",
+  "minimum_reported_slack_ns": 0.104,
+  "running": {
+    "initialized": true,
+    "held": false,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 1,
+    "refresh_count": 9104056,
+    "input_abi": 1229848833
+  },
+  "left_running": "projection correction with direct-terrain Mario diagnostic"
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "Name": "Wi-Fi",
+    "Status": "Up",
+    "LinkSpeed": "206 Mbps"
+  },
+  {
+    "Name": "Ethernet",
+    "Status": "Up",
+    "LinkSpeed": "100 Mbps"
+  },
+  {
+    "Name": "Ethernet 2",
+    "Status": "Disconnected",
+    "LinkSpeed": "0 bps"
+  },
+  {
+    "Name": "Ethernet 4",
+    "Status": "Not Present",
+    "LinkSpeed": "0 bps"
+  },
+  {
+    "Name": "Bluetooth Network Connection",
+    "Status": "Disconnected",
+    "LinkSpeed": "3 Mbps"
+  },
+  {
+    "Name": "vEthernet (WSL (Hyper-V firewall))",
+    "Status": "Up",
+    "LinkSpeed": "10 Gbps"
+  }
+]

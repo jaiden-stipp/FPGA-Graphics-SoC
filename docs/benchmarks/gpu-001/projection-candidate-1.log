@@ -1,0 +1,16 @@
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+Start time: 21:04:49 on Oct 09,2026
+vlog -work build\projection-candidate-sim -sv -mfcu "+incdir+external/renderer/rtl/common" external/renderer/rtl/common/iterative_signed_divider.sv rtl/generated/transform_3d_pipeline.sv sim/projection_precision_tb.sv external/renderer/sim/transform_3d_tb.sv external/renderer/sim/transform_clipping_tb.sv 
+-- Compiling module iterative_signed_divider
+-- Compiling package iterative_signed_divider_sv_unit
+-- Compiling module transform_3d_pipeline
+-- Compiling module projection_precision_tb
+-- Compiling module transform_3d_tb
+-- Compiling module transform_clipping_tb
+
+Top level modules:
+	projection_precision_tb
+	transform_3d_tb
+	transform_clipping_tb
+End time: 21:04:50 on Oct 09,2026, Elapsed time: 0:00:01
+Errors: 0, Warnings: 0

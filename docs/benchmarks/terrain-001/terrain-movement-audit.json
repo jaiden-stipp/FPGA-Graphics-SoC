@@ -1,0 +1,35 @@
+{
+  "method": "Production player_step: indexed padded cell candidates versus all surfaces, identical plane normals; 8 headings, 12 ticks from each floor centroid",
+  "areas": [
+    {
+      "id": "castle_geo_ground",
+      "ticks": 51744,
+      "cell_crossings": 2639,
+      "first_mismatches": []
+    },
+    {
+      "id": "castle_ground_floor",
+      "ticks": 70848,
+      "cell_crossings": 1622,
+      "first_mismatches": []
+    },
+    {
+      "id": "castle_upper_floor",
+      "ticks": 63360,
+      "cell_crossings": 1323,
+      "first_mismatches": []
+    },
+    {
+      "id": "castle_basement",
+      "ticks": 39552,
+      "cell_crossings": 1188,
+      "first_mismatches": []
+    },
+    {
+      "id": "secret_slide",
+      "ticks": 44832,
+      "cell_crossings": 1938,
+      "first_mismatches": []
+    }
+  ]
+}

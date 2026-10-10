@@ -1,0 +1,67 @@
+{
+  "package": "build\\mario-castle-sdram.package.json",
+  "method": "loader READ while CPU held; no WRITE operations",
+  "status_before": {
+    "initialized": true,
+    "held": false,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 256041,
+    "refresh_count": 1144844720,
+    "input_abi": 1229848833
+  },
+  "checks": [
+    {
+      "label": "CPU .text identity",
+      "address": 0,
+      "bytes": 28388,
+      "expected_sha256": "7be37032a0295e05ff52ff1dad1926c6ab8f961e76e59748560c44519aea953e",
+      "readback_sha256": "7be37032a0295e05ff52ff1dad1926c6ab8f961e76e59748560c44519aea953e",
+      "match": true,
+      "first_mismatches": []
+    },
+    {
+      "label": "SDRAM mario-castle-sdram.assets.bin",
+      "address": 2147483648,
+      "bytes": 883124,
+      "expected_sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6",
+      "readback_sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6",
+      "match": true,
+      "first_mismatches": []
+    }
+  ],
+  "game_player": [
+    4294965968,
+    260,
+    4664,
+    0,
+    1,
+    16,
+    0,
+    3
+  ],
+  "castle_area": [
+    0
+  ],
+  "world_visible_chunks": [
+    2
+  ],
+  "world_direct_triangles": [
+    13
+  ],
+  "released_status": {
+    "initialized": true,
+    "held": false,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 0,
+    "refresh_count": 1148071169,
+    "input_abi": 1229848833
+  }
+}

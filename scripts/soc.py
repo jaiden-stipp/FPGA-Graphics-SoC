@@ -142,6 +142,87 @@ def generate():
                             "    input  logic        CLOCK_50,\n    input  logic        reference_clk,")
     pipeline = replace_once(pipeline, ".inclk0(CLOCK_50)", ".inclk0(reference_clk)")
     write(ROOT / "rtl/generated/graphics_pipeline.sv", pipeline)
+    # Keep eight extra reciprocal fraction bits for screen positions. The
+    # pinned GPU rounds 65536/z before projection, causing visible vertex jumps
+    # at distant reciprocal thresholds. Retain its external 8-bit depth ABI.
+    transform = (renderer_root / "pipeline/transform_3d_pipeline.sv").read_text()
+    for before, after in (
+        ('input logic signed [15:0] reciprocal_q8_8', 'input logic signed [31:0] reciprocal_q16_16'),
+        ('logic signed [31:0] product;\n        logic signed [47:0] scaled;\n        logic signed [48:0] screen_value;',
+         'logic signed [47:0] product;\n        logic signed [63:0] scaled;\n        logic signed [64:0] screen_value;'),
+        ('value_q8_8 * reciprocal_q8_8', 'value_q8_8 * reciprocal_q16_16'),
+        ('(scaled >>> 16)', '(scaled >>> 24)'),
+        ('divider_quotient[15:0]);', 'divider_quotient);'),
+    ):
+        if transform.count(before) != 2:
+            raise RuntimeError(f'Projection adaptation anchor changed: {before!r}')
+        transform = transform.replace(before, after)
+    transform = replace_once(transform, "divider_numerator = 32'sd65536;", "divider_numerator = 32'sd16777216;")
+    transform = replace_once(transform, 'polygon_z[project_index] <= divider_quotient[15:0];',
+        'polygon_z[project_index] <= divider_quotient[23:8];')
+    # The wider pair of multiplications failed 50 MHz timing as one path.
+    # Register each product separately; retain the divider and output handshake.
+    start = transform.index('    function automatic logic signed [15:0] project_x(')
+    end = transform.index('    function automatic logic signed [15:0] interpolate_value(', start)
+    transform = transform[:start] + '''    function automatic logic signed [15:0] project_x(
+        input logic signed [63:0] scaled
+    );
+        logic signed [64:0] screen_value;
+        begin
+            screen_value = $signed(projection.center_x) + (scaled >>> 24);
+            project_x = screen_value[15:0];
+        end
+    endfunction
+
+    function automatic logic signed [15:0] project_y(
+        input logic signed [63:0] scaled
+    );
+        logic signed [64:0] screen_value;
+        begin
+            screen_value = $signed(projection.center_y) - (scaled >>> 24);
+            project_y = screen_value[15:0];
+        end
+    endfunction
+
+''' + transform[end:]
+    transform = replace_once(transform, '        PROJECT_WAIT,',
+        '        PROJECT_WAIT,\n        PROJECT_SCALE,\n        PROJECT_STORE,')
+    transform = replace_once(transform, '    logic signed [33:0] fan_area;', '''    logic signed [47:0] project_product_x, project_product_y;
+    logic signed [63:0] project_scaled_x, project_scaled_y;
+    logic [15:0] project_depth;
+    logic signed [33:0] fan_area;''')
+    transform = replace_once(transform, "            project_index <= '0;\n            fan_index <= '0;", '''            project_index <= '0;
+            project_product_x <= '0; project_product_y <= '0;
+            project_scaled_x <= '0; project_scaled_y <= '0;
+            project_depth <= '0;
+            fan_index <= '0;''')
+    start = transform.index('                PROJECT_WAIT: begin')
+    end = transform.index('                TRIANGLE_BUILD: begin', start)
+    transform = transform[:start] + '''                PROJECT_WAIT: begin
+                    if (divider_done) begin
+                        project_product_x <= $signed(polygon_x[project_index]) * $signed(divider_quotient);
+                        project_product_y <= $signed(polygon_y[project_index]) * $signed(divider_quotient);
+                        project_depth <= divider_quotient[23:8];
+                        state <= PROJECT_SCALE;
+                    end
+                end
+
+                PROJECT_SCALE: begin
+                    project_scaled_x <= project_product_x * $signed(projection.focal_x);
+                    project_scaled_y <= project_product_y * $signed(projection.focal_y);
+                    state <= PROJECT_STORE;
+                end
+
+                PROJECT_STORE: begin
+                    polygon_x[project_index] <= project_x(project_scaled_x);
+                    polygon_y[project_index] <= project_y(project_scaled_y);
+                    polygon_z[project_index] <= project_depth;
+                    project_index <= project_index + 1'b1;
+                    state <= PROJECT_START;
+                end
+
+''' + transform[end:]
+    write(ROOT / "rtl/generated/transform_3d_pipeline.sv", transform)
     protocol = json.loads((ROOT / "external/renderer/protocol/protocol.json").read_text())
     header = ["// Generated from pinned renderer protocol/protocol.json.",
               "#ifndef GFX_PROTOCOL_H", "#define GFX_PROTOCOL_H",
@@ -281,7 +362,7 @@ def sources(full=False):
     files += [ROOT / "rtl/udp_controls.sv"]
     if full:
         files += [ROOT / "rtl/generated/palette_ip.v"]
-        replaced = {"graphics_stream_renderer.sv", "graphics_renderer_core.sv", "graphics_pipeline.sv"}
+        replaced = {"graphics_stream_renderer.sv", "graphics_renderer_core.sv", "graphics_pipeline.sv", "transform_3d_pipeline.sv"}
         files += [ROOT / "rtl/generated" / name for name in sorted(replaced)]
         for directory in ("common", "command", "system", "pipeline", "memory", "video"):
             files += sorted(p for p in (renderer / directory).iterdir()
@@ -302,7 +383,7 @@ def simulate(args):
     available = tests + ['sdram_cache_tb','sdram_memory_tb','sdram_cpu_tb','udp_loader_tb','udp_extended_input_tb']
     if args.full:
         tests += ["soc_top_tb", "soc_game_top_tb", "soc_scene_top_tb", "soc_mario_top_tb", "soc_mario_bridge_top_tb"]
-        available += ['sdram_mario_top_tb','beacon_sdram_top_tb','quake_sdram_top_tb','portable_scene_top_tb','quake_interactive_top_tb','castle_world_top_tb']
+        available += ['sdram_mario_top_tb','beacon_sdram_top_tb','quake_sdram_top_tb','portable_scene_top_tb','quake_interactive_top_tb','castle_world_top_tb','projection_precision_tb']
     if getattr(args, "tests", None):
         requested = args.tests.split(",")
         if set(requested) - set(available + tests):
@@ -495,14 +576,27 @@ def portable_package(args):
     sources=['gfx.c','gfx_scene.c','player.c','first_person.c','game_runtime.c','sdram.c','portable_assets.c','portable_main.c']
     for source in [ROOT/'firmware/src'/name for name in sources]+args.port_sources:
         check(source,args.cc,additional_api=api)
+    direct=getattr(args,'terrain_direct',False)
+    if direct and 'world_prepare' not in api:
+        raise ValueError('--terrain-direct requires a port using the shared world renderer')
     args.app='portable';args.boot=None;args.use_sdram=True
-    args.image_name=spec['name']+'-sdram';args.extra_flags=[]
+    args.image_name=spec['name']+'-sdram'+('-direct' if direct else '')
+    diagnostic_flags=['-DWORLD_FORCE_DIRECT=1'] if direct else []
+    args.extra_flags=diagnostic_flags
     firmware(args)
     from load_game import package_segments
     package_segments(BUILD/(args.image_name+'.package.json'))
-    args.image_name=spec['name']+'-sdram-test';args.extra_flags=['-DSDRAM_RETENTION_CYCLES=1000u']
+    args.image_name=spec['name']+'-sdram'+('-direct' if direct else '')+'-test'
+    args.extra_flags=diagnostic_flags+['-DSDRAM_RETENTION_CYCLES=1000u']
     firmware(args)
     package_segments(BUILD/(args.image_name+'.package.json'))
+    if direct:
+        for stem in (spec['name']+'-sdram-direct',spec['name']+'-sdram-direct-test'):
+            path=BUILD/(stem+'.package.json')
+            package=json.loads(path.read_text())
+            package['diagnostic']={'terrain_submission':'CPU-clipped direct triangles; GPU resident terrain cache bypassed',
+                'purpose':'isolate terrain mesh uploads and cached-versus-direct clipping; not a performance optimization'}
+            write(path,json.dumps(package,indent=2)+'\n')
     print(f'Built {spec["name"]}: {report["source_triangles"]} triangles via shared scene IR and direct-call game port ABI; CPU/GPU cores preserved. Use a compatible target FPGA image.')
 
 
@@ -584,6 +678,7 @@ def main():
     p.set_defaults(func=game_packages)
     p = sub.add_parser('portable-game', help='Build any compatible shared-scene project with a default or custom game port')
     p.add_argument('--project',type=Path,required=True)
+    p.add_argument('--terrain-direct',action='store_true',help='Diagnostic: draw shared-world terrain without resident GPU mesh handles; preserve normal packages')
     p.add_argument('--cc',default='clang');p.add_argument('--objcopy')
     p.set_defaults(func=portable_package)
     args = parser.parse_args()

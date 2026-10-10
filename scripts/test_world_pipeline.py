@@ -32,6 +32,9 @@ STUB=r'''
 #include "gfx.h"
 #include "gfx_protocol.h"
 static uint32_t active,errors,drawn,cached;
+#ifndef WORLD_FORCE_DIRECT
+#define WORLD_FORCE_DIRECT 0
+#endif
 void *memcpy(void *d,const void *s,size_t n) { unsigned char *a=d;const unsigned char *b=s;for(size_t i=0;i<n;++i)a[i]=b[i];return d; }
 int gfx_command(uint8_t op,const uint8_t *p,uint8_t n) {
     if(op==GFX_OP_UPLOAD_VERTICES || op==GFX_OP_UPLOAD_INDICES) { if(active)++errors; }
@@ -61,11 +64,11 @@ int cache_fixture(void) {
     // Only one cache handle remains. Every other visible face must still draw.
     if(world_prepare(&area,&p,v,15))return -1;
     active=1;if(world_draw(&area,&p,v,15))return -2;active=0;
-    if(errors || cached!=1 || drawn!=2)return -3;
+    if(errors || cached!=(WORLD_FORCE_DIRECT?0u:1u) || drawn!=(WORLD_FORCE_DIRECT?3u:2u))return -3;
     cached=drawn=0;
     if(world_prepare(&area,&p,v,15))return -4;
     active=1;if(world_draw(&area,&p,v,15))return -5;active=0;
-    return errors || cached!=1 || drawn!=2?-6:0;
+    return errors || cached!=(WORLD_FORCE_DIRECT?0u:1u) || drawn!=(WORLD_FORCE_DIRECT?3u:2u)?-6:0;
 }
 int clip_fixture(void) {
     player_t p={0};int16_t v[12]={256,0,0,0,0,256,0,0,0,0,256,0};
@@ -104,6 +107,11 @@ class WorldTests(unittest.TestCase):
         subprocess.run([shutil.which('clang'),*flags,'firmware/src/world.c','firmware/src/player.c',
             'firmware/src/game_services.c','firmware/ports/castle_rules.c',str(stub),'-o',str(dll)],cwd=ROOT,check=True)
         cls.lib=c.CDLL(str(dll))
+        direct_dll=out/('world-direct.dll' if os.name=='nt' else 'world-direct.so')
+        subprocess.run([shutil.which('clang'),*flags,'-DWORLD_FORCE_DIRECT=1',
+            'firmware/src/world.c','firmware/src/player.c','firmware/src/game_services.c',
+            'firmware/ports/castle_rules.c',str(stub),'-o',str(direct_dll)],cwd=ROOT,check=True)
+        cls.direct=c.CDLL(str(direct_dll))
         cls.lib.player_bind_query.argtypes=[c.POINTER(World),c.POINTER(c.c_uint16),c.c_uint32,
             c.POINTER(c.c_uint16),c.c_uint32,c.c_int32,c.POINTER(c.c_int16*3)]
         cls.lib.player_floor.argtypes=[c.POINTER(World),c.c_int32,c.c_int32,c.c_int32]
@@ -200,6 +208,10 @@ int castle_return_fixture(void) {
     def test_cache_overflow_keeps_all_visible_faces_and_uploads_between_frames(self):
         self.assertEqual(self.lib.cache_fixture(),0)
 
+    def test_direct_diagnostic_keeps_all_visible_faces_without_terrain_mesh_draws(self):
+        self.assertEqual(self.direct.cache_fixture(),0)
+        self.assertEqual(self.direct.clip_fixture(),0)
+
     def test_large_visible_face_clips_instead_of_wrapping_or_dropping(self):
         self.assertEqual(self.lib.clip_fixture(),0)
 
@@ -226,6 +238,53 @@ int castle_return_fixture(void) {
         w=fixture(slope=True);normals=((c.c_int16*3)*2)(*((c.c_int16*3)(-1024,4096,0) for _ in range(2)))
         self.lib.player_bind_query(c.byref(w),None,0,None,0,16000,normals)
         self.assertEqual(self.lib.player_floor(c.byref(w),400,0,1000),100)
+
+    def test_horizontal_motion_cannot_enter_rising_floor_plane(self):
+        vertices=[(-1000,-2000,-1000),(-1000,-2000,1000),
+                  (1000,2000,1000),(1000,2000,-1000)]
+        fs=(Floor*2)(*(Floor(*(Point(*vertices[i]) for i in tri),
+                            -1000,1000,-1000,1000,8192,0)
+                       for tri in ((0,1,2),(0,2,3))))
+        w=World(fs,None,2,0,0,0,0,24,60,180,32,4,42,-16000)
+        normals=((c.c_int16*3)*2)(*((c.c_int16*3)(-3664,1832,0) for _ in range(2)))
+        try:
+            self.lib.player_bind_query(c.byref(w),None,0,None,0,16000,normals)
+            p=Player(0,0,0,0,1,0,0,0)
+            for _ in range(20):self.lib.player_step(c.byref(p),c.byref(w),2)
+            self.assertEqual((p.x,p.y,p.grounded,p.respawns),(0,0,1,0))
+            # An airborne character must not enter the same ramp horizontally.
+            p=Player(0,10,0,-1,0,0,0,0)
+            self.lib.player_step(c.byref(p),c.byref(w),2)
+            self.assertEqual((p.x,p.y,p.grounded),(0,9,0))
+            # A smaller allowed step still follows the unchanged surface.
+            w.speed=8;p=Player(0,0,0,0,1,0,0,0)
+            self.lib.player_step(c.byref(p),c.byref(w),2)
+            self.assertEqual((p.x,p.y,p.grounded),(8,16,1))
+        finally:self.lib.player_bind_query(None,None,0,None,0,4096,None)
+
+    def test_original_castle_interior_slope_rejects_33_unit_step(self):
+        pts=[(102,1024,-1637),(-511,1415,-1302),(-511,1024,-1023)]
+        fs=(Floor*1)(Floor(*(Point(*p) for p in pts),-511,102,-1637,-1023,0,0))
+        w=World(fs,None,1,0,-307,1155,-1321,24,60,180,32,4,42,-16000)
+        normals=((c.c_int16*3)*1)((c.c_int16*3)(2588,1844,2584))
+        try:
+            self.lib.player_bind_query(c.byref(w),None,0,None,0,16000,normals)
+            self.assertEqual(self.lib.player_floor(c.byref(w),-331,-1321,16000),1188)
+            p=Player(-307,1155,-1321,0,1,0,0,0)
+            self.lib.player_step(c.byref(p),c.byref(w),1)
+            self.assertEqual((p.x,p.y,p.z,p.grounded),(-307,1155,-1321,1))
+        finally:self.lib.player_bind_query(None,None,0,None,0,4096,None)
+
+    def test_horizontal_motion_below_overhead_floor_remains_allowed(self):
+        w=fixture()
+        fs=(Floor*4)(w.floors[0],w.floors[1],w.floors[0],w.floors[1])
+        for f in fs[2:]:
+            f.a.y=f.b.y=f.c.y=200
+        w.floors=fs;w.floor_count=4
+        self.lib.player_bind_query(None,None,0,None,0,4096,None)
+        p=Player(0,0,0,0,1,0,0,0)
+        for _ in range(10):self.lib.player_step(c.byref(p),c.byref(w),2)
+        self.assertEqual((p.x,p.y,p.grounded),(80,0,1))
 
     def test_partition_preserves_triangle_ids_and_room_membership(self):
         v=[[-100,0,0],[0,100,0],[100,0,0]];t=[[0,1,2,1]]*300;m=[1]*150+[2]*150

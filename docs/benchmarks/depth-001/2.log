@@ -1,0 +1,19 @@
+Reading C:/intelFPGA/18.1/modelsim_ase/tcl/vsim/pref.tcl
+
+# 10.5b
+
+# vsim -c work.depth_banding_tb -do "run -all; quit -f" 
+# Start time: 23:09:35 on Oct 09,2026
+# Loading sv_std.std
+# Loading work.depth_banding_tb_sv_unit
+# Loading work.depth_banding_tb
+# Loading work.renderer_sv_unit
+# Loading work.renderer
+# Loading work.iterative_signed_divider
+# Loading work.depth_test_stage
+# run -all
+# Identical coplanar triangle, cyclic vertex order: first writes=27831 second writes=8690
+# ** Note: $finish    : C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/build/depth_banding_tb.sv(53)
+#    Time: 2260920 ns  Iteration: 1  Instance: /depth_banding_tb
+# End time: 23:09:36 on Oct 09,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0

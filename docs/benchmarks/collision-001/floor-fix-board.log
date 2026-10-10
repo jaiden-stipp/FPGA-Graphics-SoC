@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\load_floor_fix.py", line 14, in <module>
+    require_hardware(l,spec);report['before']=l.operation(STATUS);attempt=True
+    ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\scripts\load_game.py", line 118, in require_hardware
+    if loader.operation(STATUS,retries=max(loader.retries,40))['input_abi']!=0x494e0101:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\scripts\load_game.py", line 93, in operation
+    raise TimeoutError(f'No completed-operation reply from {self.target} (op {op}, address {address:#x})')
+TimeoutError: No completed-operation reply from ('192.168.7.2', 4000) (op 5, address 0x0)

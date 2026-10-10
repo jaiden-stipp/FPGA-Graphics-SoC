@@ -9,6 +9,7 @@ module soc_top_tb;
     logic [7:0] VGA_R, VGA_G, VGA_B;
     logic VGA_CLK, VGA_BLANK_N, VGA_SYNC_N, VGA_HS, VGA_VS;
     soc_top #(.HEX_FILE("build/triangle.hex")) dut (
+        .look_state(24'b0),
         .sdram_reset(1'b0),.load_hold(1'b0),.load_valid(1'b0),.load_write(1'b0),
         .load_addr(32'b0),.load_wdata(32'b0),.load_ready(),.load_rdata(),.sdram_initialized(),.refresh_count(),
         .DRAM_CLK(),.DRAM_CKE(),.DRAM_CS_N(),.DRAM_RAS_N(),.DRAM_CAS_N(),.DRAM_WE_N(),

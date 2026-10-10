@@ -1,0 +1,70 @@
+{
+  "experiment": "COLLISION-001",
+  "date": "2026-10-09",
+  "git_base": "2ed2f7f5b0cb1dd521c2ca90f3cc27e59a094a27",
+  "working_tree_dirty": true,
+  "method": "Native bounded continuous-support floor-penetration audit, using Python cross products and quantized imported normals; not physical gameplay or performance",
+  "baseline_ticks": 247311,
+  "candidate_ticks": 250453,
+  "baseline_penetration_detections": 207,
+  "candidate_penetration_detections": 0,
+  "world_tests_passed": 29,
+  "legacy_player_tests_passed": 11,
+  "packages": {
+    "mario-castle-sdram": [
+      {
+        "file": "mario-castle-sdram.bin",
+        "address": 0,
+        "bytes": 29712,
+        "sha256": "93b54e601d06e19c04e4b991aac9bad8d937f65f2e87a93811e06877172a25d7"
+      },
+      {
+        "file": "mario-castle-sdram.assets.bin",
+        "address": 2147483648,
+        "bytes": 883124,
+        "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+      }
+    ],
+    "mario-castle-sdram-direct": [
+      {
+        "file": "mario-castle-sdram-direct.bin",
+        "address": 0,
+        "bytes": 28936,
+        "sha256": "e366760994e8282a6c45aa00e645b8a8d490d9ca95928b2ef64adec05a2ff442"
+      },
+      {
+        "file": "mario-castle-sdram-direct.assets.bin",
+        "address": 2147483648,
+        "bytes": 883124,
+        "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+      }
+    ]
+  },
+  "board_upload_completed": false,
+  "board_load_error": "Initial STATUS request timed out before BEGIN or uploading; board state unchanged by loader",
+  "hardware_changes": false,
+  "performance_measurements": null,
+  "evidence_sha256": {
+    "audit_floor_penetration.py": "63eab50aabc5f89653017c8d9c6a0aba18ceaad6e65c990b8e8292650d24f7c8",
+    "floor-fix-board.json": "b7dc420307bbd417e57e6df3fadaafdeb905d65de2787e65e619789f4ab37c84",
+    "floor-fix-board.log": "cb4b4dffe77448260cdc0c900be300257e34b09e65fd4f9015371dfec02d4268",
+    "floor-fix-build.log": "a773d366340e7cb3f23062c2dd9316526887354a2672a2cd8304895dfb70ba71",
+    "floor-fix-network.json": "c07d697f7f61720927b066afbc77c6c9cb72ece7a3667b04c1553ca25a968de2",
+    "floor-fix-normal-build.log": "791e446aefe0679f0106ade0173edf136e627c4fe7f86c7909be676d87eb7df0",
+    "floor-fix-package-tests.log": "b6aed115567bb62e74f3978098d06de77c7047d922222199e212499e5b690aed",
+    "floor-fix-player-tests.log": "69dafff69f67a7f73bef4d6c8cf9997cc876fe1efdd2d19118b4ac746d056305",
+    "floor-fix-status-retry.log": "feeb3307973265985d6298509483bd9f7b914f336e78d503ffdac06b2b6a3dab",
+    "floor-fix-world-tests-initial-failed.log": "14bad2cde3129f73138281f8fd29d216af237761e5b86569ceedaed01bd7805a",
+    "floor-fix-world-tests.log": "c927a6fa47d1032f277ff6edfc007ce4278c6ec739cd4f82f2258af2a1164ca4",
+    "floor-penetration-baseline.json": "6d7de48066a2a035d5b3b03d2b55dce886e20f10404e3f4c1a750c5fd1dc8109",
+    "floor-penetration-baseline.log": "a4c8250315b3c6340b2e07ea80e3dc96c22b38cc18093d30dca3ce9f53a9c7b6",
+    "floor-penetration-candidate.json": "e4137bf4285d3087efc315f18cb497c022b31d92d7e21e1b696fa4550326ce0c",
+    "floor-penetration-candidate.log": "75688ee6b38008a7c0279336fb5837f741226138fccaecb7cbdb9792e43d6ef7",
+    "load_floor_fix.py": "14be6887a908395b38a804ce3a51657b6f87caddfc5cc16bea5ae2410f51fae0",
+    "player-before-floor-fix.c": "8d947b297832501b8ef6376597d0f6a6f6fe4ba8adf6fa816bcb9a13a28f6521",
+    "player.c.txt": "8a761f6d5ca1a879043fa50ec7f5b65162cad190c6aa9fb77ef6b0f0b41ca91b",
+    "test_world_pipeline.py.txt": "823275f02ea121a14e8484da95ca29ad6ad059b28b1f5043f80e5419d9be1602"
+  },
+  "host_package_validation_tests_passed": 3,
+  "second_status_check": "Timed out; Ethernet link up at 100 Mbps and host IPv4 192.168.7.1/24"
+}

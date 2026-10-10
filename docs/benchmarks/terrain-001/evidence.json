@@ -1,0 +1,24 @@
+{
+  "revision": "2ed2f7f",
+  "board_bitstream_sha256": "unknown; cache ABI observed as 0x43410101",
+  "files": {
+    "load_terrain_direct.py": "89e0bbf97564abeda77abb67e6eda062e3a879ca2d64095a0b3e1e6a358fc431",
+    "run_sdram_read_probe.py": "e4566f1bcd99ba1696b049d3b77953b86e8767045a63e5f352ad9d9f3a90f0d7",
+    "sdram-cpu-read-probe.json": "3b28daab5fa45270d4593adcc8c4f3f885f18ed69f0102e862d363355d8453e5",
+    "sdram-read-probe.bin": "3e49b61d481953dbf9db62e3afea34f9e6f32308c75d63b4e1c1bf08f2279c6f",
+    "sdram_read_probe.c": "8ca30926687a3beab6ec49f40bf0355b8370e54969b07961ec2932396189ded4",
+    "terrain-audit.json": "e8a4b26fb38c213acc5f8fcd5579db984b900dd0481f07b31f2a2f5aaf852679",
+    "terrain-board-readback.json": "0c49e48b4c74b3d137a7dd11b1cddec1669094bff7643ea0d5e6e40f123c2f7c",
+    "terrain-direct-board.json": "d1fc3b7acef01435738f2d52ec1d518b17dfdae7a93b87c55d8a35104fff04d9",
+    "terrain-direct-build.log": "a773d366340e7cb3f23062c2dd9316526887354a2672a2cd8304895dfb70ba71",
+    "terrain-movement-audit.json": "42cee17a33273891e1fd3791dcfdf48aeb70f29cebfb1b664abc780e8be5c1ee",
+    "terrain-world-tests.log": "f19940fb8f151a7d395ab16badbc58cad8f1c15d7f1122c0e47937a9f607a328",
+    "terrain_audit.py": "f1f98ce15e605134851dd99b6b39b61f4bf03e8a58663d45d71d913a3bc45328",
+    "terrain_movement_audit.py": "736252c03cdc2738087e273a6befc05613209ae524f3d5f7a0e4ea9ee9327fa8"
+  },
+  "diagnostic_sources": {
+    "firmware/src/world.c": "57f23d4aa050897c879fe42d2b7210307ff6f35732577a52a5b26c00a3fdd0a7",
+    "scripts/soc.py": "8db2c53e68aed0c31d6f702dfcaa3cfa732d72e891de3b09e517b6db15d1f347",
+    "scripts/test_world_pipeline.py": "e0a28fa7dc9ad094eeb5a7ea18d96e20b1ed2cc1e6bd005fa8323d2b46107992"
+  }
+}

@@ -174,6 +174,17 @@ hit rate and physical performance remain unmeasured.
 
 ## Resume claim status
 
+[GPU-001](projection-precision.md) records a confirmed simulated projection
+precision defect and its correction. Its measured pixel error is a correctness
+metric; no game performance improvement or physical gameplay acceptance is
+implied.
+
+Movement-dependent terrain correctness investigation is recorded separately in
+[TERRAIN-001](terrain-loading-diagnosis.md). Physical CPU reads passed the
+recorded cache integrity workload, but gameplay correctness and the direct
+terrain comparison remain unresolved. This is diagnostic evidence, not a
+measured cache performance improvement.
+
 No quantified hardware-performance claim is supported yet. After a validated
 comparison, wording should name the change, FPGA platform, tested workload,
 before/after result and method. Example structure, with no invented values:
@@ -182,6 +193,18 @@ before/after result and method. Example structure, with no invented values:
 > to [measured candidate] on [workload], verified using [method].
 
 Keep the experiment ID and evidence links with the claim for interview review.
+
+[DEPTH-001](depth-banding-diagnosis.md) reproduces camera-dependent striping in
+the actual rasterizer: an identical triangle with cyclic vertex order wrongly
+overwrites 8,690 pixels due to rounded depth slopes and anchor-dependent depth.
+This is diagnostic simulation evidence. No hardware correction or performance
+improvement is claimed.
+
+[COLLISION-001](floor-penetration-correction.md) records a software correctness
+fix for horizontal movement through rising floor planes. Its native castle-data
+fixture detects 207 penetrations before the correction and zero afterward.
+This is a bounded correctness result, not hardware performance evidence.
+The attempted board load failed before uploading; traversal acceptance is pending.
 
 Currently supported implementation wording:
 

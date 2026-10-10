@@ -1,0 +1,21 @@
+{
+  "experiment": "DEPTH-001",
+  "date": "2026-10-09",
+  "method": "Actual rasterizer RTL, identical triangle drawn with cyclic vertex order; one-cycle behavioral depth memory",
+  "first_draw_pixels_written": 27831,
+  "second_draw_pixels_written": 8690,
+  "expected_second_draw_pixels_written": 0,
+  "simulation_only": true,
+  "hardware_modified": false,
+  "exact_user_game_triangle_pair_identified": false,
+  "evidence_sha256": {
+    "1.log": "d1385ad0d0e48a46e4f531c5f56d67e9dfe603990bc323a3b111a4c7a857be1e",
+    "2.log": "da9c0891fd6e3579159ee6f8b54666de63081cd7a47994514b9a525133b58e46",
+    "depth-banding.png": "8031af373758787cc4d2d8a0ac5a85159d19f6533203c27858623e34c70df5af",
+    "depth_banding_tb.sv": "3776b43a0e50df727e06a5c3f1d36803392bbfb458543fa95b5f20d9b7c9d544",
+    "depth_test_stage.sv.txt": "b4e15cce285a7b34ff2406c0538e0f7f3289f7777925a6f8f5190cde09ae55ad",
+    "iterative_signed_divider.sv.txt": "6d333292789539502521972e735dc2888d589fddb0372ad2bd1afe9e0c1639b4",
+    "renderer.sv.txt": "1aebfae7d7e672456d18d92e6ef5084d4f338bd8a1781eba204d1898766d4441",
+    "run_depth_banding.py": "92d925b7b0718aa3f9e0f563690f54f768ad03ee8a9bffc73a70000502a26a53"
+  }
+}

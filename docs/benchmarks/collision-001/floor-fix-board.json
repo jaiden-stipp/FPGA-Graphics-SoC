@@ -1,0 +1,7 @@
+{
+  "method": "CPU-only verified UDP load; same asset hash as previous package",
+  "baseline_cpu_sha256": "d76f27705096ecce4c612b0d95ef5bead00a483d2667ebc05a70b61d8ab28362",
+  "candidate_cpu_sha256": "e366760994e8282a6c45aa00e645b8a8d490d9ca95928b2ef64adec05a2ff442",
+  "cpu_bytes": 28936,
+  "assets_sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+}

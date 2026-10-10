@@ -1,0 +1,34 @@
+{
+  "expected_crc16": 17615,
+  "bytes": 883124,
+  "before": {
+    "initialized": true,
+    "held": false,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 8288,
+    "refresh_count": 1203180128,
+    "input_abi": 1229848833
+  },
+  "completed": true,
+  "cache_abi": 1128333569,
+  "errors": 0,
+  "words": 220781,
+  "crc16": 17615,
+  "pass": true,
+  "restored": {
+    "initialized": true,
+    "held": false,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 0,
+    "refresh_count": 1203595119,
+    "input_abi": 1229848833
+  }
+}

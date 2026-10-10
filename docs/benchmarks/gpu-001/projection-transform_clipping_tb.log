@@ -1,0 +1,19 @@
+Reading C:/intelFPGA/18.1/modelsim_ase/tcl/vsim/pref.tcl
+
+# 10.5b
+
+# vsim -c -lib build\projection-candidate-sim transform_clipping_tb -do "onerror {quit -code 1}; run -all; quit -code 0" 
+# Start time: 21:04:53 on Oct 09,2026
+# Loading sv_std.std
+# Loading build\projection-candidate-sim.iterative_signed_divider_sv_unit
+# Loading build\projection-candidate-sim.transform_clipping_tb
+# Loading build\projection-candidate-sim.transform_3d_pipeline
+# Loading build\projection-candidate-sim.iterative_signed_divider
+# onerror {quit -code 1}
+#  Warning: onerror command for use within macro
+#  run -all
+# transform_clipping_tb PASS: near and viewport clipping work
+# ** Note: $finish    : external/renderer/sim/transform_clipping_tb.sv(119)
+#    Time: 1527 ns  Iteration: 1  Instance: /transform_clipping_tb
+# End time: 21:04:54 on Oct 09,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0

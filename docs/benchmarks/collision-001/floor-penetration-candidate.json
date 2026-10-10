@@ -1,0 +1,32 @@
+[
+  {
+    "area": "castle_geo_ground",
+    "ticks": 44165,
+    "penetrations": 0,
+    "examples": []
+  },
+  {
+    "area": "castle_ground_floor",
+    "ticks": 66985,
+    "penetrations": 0,
+    "examples": []
+  },
+  {
+    "area": "castle_upper_floor",
+    "ticks": 60445,
+    "penetrations": 0,
+    "examples": []
+  },
+  {
+    "area": "castle_basement",
+    "ticks": 36820,
+    "penetrations": 0,
+    "examples": []
+  },
+  {
+    "area": "secret_slide",
+    "ticks": 42038,
+    "penetrations": 0,
+    "examples": []
+  }
+]

@@ -1,0 +1,31 @@
+{
+  "method": "CPU-only diagnostic load; backing assets unchanged",
+  "baseline_cpu_sha256": "032fa3f739c5c66bcf92304e935807b02d75f37564e386796d8b93d1f4417dfa",
+  "trial_cpu_sha256": "d76f27705096ecce4c612b0d95ef5bead00a483d2667ebc05a70b61d8ab28362",
+  "assets_sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6",
+  "before": {
+    "initialized": true,
+    "held": false,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 8085,
+    "refresh_count": 1257355643,
+    "input_abi": 1229848833
+  },
+  "running": {
+    "initialized": true,
+    "held": false,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 1,
+    "refresh_count": 1257581418,
+    "input_abi": 1229848833
+  },
+  "left_running": "mario-castle-sdram-direct"
+}

@@ -11,6 +11,8 @@ SoC.qpf
 SoC.qsf
 CacheSoC.qpf
 CacheSoC.qsf
+ProjectionSoC.qpf
+ProjectionSoC.qsf
 db/
 incremental_db/
 *.qws

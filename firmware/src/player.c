@@ -47,6 +47,22 @@ static int32_t cross(int32_t ax, int32_t az, int32_t bx, int32_t bz) {
 static int inside(int32_t e0, int32_t e1, int32_t e2) {
     return (e0 >= 0 && e1 >= 0 && e2 >= 0) || (e0 <= 0 && e1 <= 0 && e2 <= 0);
 }
+static int floor_contains(const collision_floor_t *f,int32_t x,int32_t z) {
+    return x>=f->min_x && x<=f->max_x && z>=f->min_z && z<=f->max_z &&
+        inside(cross(f->b.x-f->a.x,f->b.z-f->a.z,x-f->a.x,z-f->a.z),
+               cross(f->c.x-f->b.x,f->c.z-f->b.z,x-f->b.x,z-f->b.z),
+               cross(f->a.x-f->c.x,f->a.z-f->c.z,x-f->c.x,z-f->c.z));
+}
+static int32_t floor_height(const player_world_t *w,uint32_t i,int32_t x,int32_t z) {
+    const collision_floor_t *f=w->floors+i;
+    if (w==query_world && query_normals) {
+        const int16_t *n=query_normals[i];
+        int32_t numerator=fixed_mul(n[0],x-f->a.x)+fixed_mul(n[2],z-f->a.z);
+        uint32_t height=divide(numerator<0?0u-(uint32_t)numerator:(uint32_t)numerator,(uint32_t)n[1]);
+        return f->a.y-(numerator<0?-(int32_t)height:(int32_t)height);
+    }
+    return f->a.y+((fixed_mul(f->slope_x,x-f->a.x)+fixed_mul(f->slope_z,z-f->a.z)) >> 12);
+}
 int32_t player_floor(const player_world_t *w, int32_t x, int32_t z, int32_t ceiling) {
     int32_t best=NO_FLOOR;
     floor_index=-1;
@@ -54,17 +70,8 @@ int32_t player_floor(const player_world_t *w, int32_t x, int32_t z, int32_t ceil
     for (uint32_t q=0; q<count; ++q) {
         uint32_t i=w==query_world && query_floors?query_floors[q]:q;
         const collision_floor_t *f=w->floors+i;
-        if (x<f->min_x || x>f->max_x || z<f->min_z || z>f->max_z) continue;
-        if (!inside(cross(f->b.x-f->a.x,f->b.z-f->a.z,x-f->a.x,z-f->a.z),
-                    cross(f->c.x-f->b.x,f->c.z-f->b.z,x-f->b.x,z-f->b.z),
-                    cross(f->a.x-f->c.x,f->a.z-f->c.z,x-f->c.x,z-f->c.z))) continue;
-        int32_t y=f->a.y+((fixed_mul(f->slope_x,x-f->a.x)+fixed_mul(f->slope_z,z-f->a.z)) >> 12);
-        if (w==query_world && query_normals) {
-            const int16_t *n=query_normals[i];
-            int32_t numerator=fixed_mul(n[0],x-f->a.x)+fixed_mul(n[2],z-f->a.z);
-            uint32_t height=divide(numerator<0?0u-(uint32_t)numerator:(uint32_t)numerator,(uint32_t)n[1]);
-            y=f->a.y-(numerator<0?-(int32_t)height:(int32_t)height);
-        }
+        if (!floor_contains(f,x,z)) continue;
+        int32_t y=floor_height(w,i,x,z);
         if (y<=ceiling && y>best) { best=y;floor_index=(int32_t)i; }
     }
     return best;
@@ -123,7 +130,19 @@ void player_reset(player_t *p, const player_world_t *w) {
     p->grounded=1; p->facing=16; p->previous_keys=0;
 }
 static void move_axis(player_t *p, const player_world_t *w, int32_t dx, int32_t dz) {
+    if (!dx && !dz) return;
     int32_t x=p->x+dx, z=p->z+dz, y=p->y;
+    // A downward floor query deliberately excludes surfaces above its ceiling.
+    // That exclusion must not permit a horizontal step through a rising plane.
+    // Use the same conservative local candidates; overhead floors remain clear
+    // when their plane is already above the starting feet/step allowance.
+    int32_t ceiling=p->y+(p->grounded?w->step_height:0);
+    uint32_t count=w==query_world && query_floors?query_floor_count:w->floor_count;
+    for (uint32_t q=0;q<count;++q) {
+        uint32_t i=w==query_world && query_floors?query_floors[q]:q;
+        if (floor_contains(w->floors+i,x,z) && floor_height(w,i,x,z)>ceiling &&
+            floor_height(w,i,p->x,p->z)<=ceiling) return;
+    }
     int32_t floor=player_floor(w,x,z,p->y+w->step_height);
     if (p->grounded && floor!=NO_FLOOR && floor>=p->y-w->step_height) y=floor;
     if (!blocked(w,x,y,z)) { p->x=x; p->z=z; p->y=y; }

@@ -1,0 +1,14 @@
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+Start time: 23:09:35 on Oct 09,2026
+vlog -sv "+incdir+C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\renderer\rtl\common" "+incdir+C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\renderer\rtl\generated" C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\renderer\rtl\common\iterative_signed_divider.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\renderer\rtl\pipeline\depth_test_stage.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\renderer\rtl\pipeline\renderer.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\depth_banding_tb.sv 
+-- Compiling module iterative_signed_divider
+-- Compiling module depth_test_stage
+-- Compiling package renderer_sv_unit
+-- Compiling module renderer
+-- Compiling package depth_banding_tb_sv_unit
+-- Compiling module depth_banding_tb
+
+Top level modules:
+	depth_banding_tb
+End time: 23:09:35 on Oct 09,2026, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0

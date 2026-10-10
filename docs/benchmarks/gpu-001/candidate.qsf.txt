@@ -1,0 +1,312 @@
+set_global_assignment -name FAMILY "Cyclone IV E"
+set_global_assignment -name DEVICE EP4CE115F29C7
+set_global_assignment -name TOP_LEVEL_ENTITY de2_115_soc_top
+set_global_assignment -name NUM_PARALLEL_PROCESSORS 4
+set_global_assignment -name FITTER_EFFORT "STANDARD FIT"
+set_global_assignment -name SEARCH_PATH external/renderer/rtl/common
+set_global_assignment -name PROJECT_OUTPUT_DIRECTORY build/quartus-projection
+set_global_assignment -name SDC_FILE fpga/soc.sdc
+set_parameter -name ENABLE_SDRAM 1
+set_global_assignment -name SYSTEMVERILOG_FILE "external/rv32i/5-Stage-Pipeline/pipeline_pkg.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "external/rv32i/5-Stage-Pipeline/ALU.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "external/rv32i/5-Stage-Pipeline/BranchUnit.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "external/rv32i/5-Stage-Pipeline/ControlUnit.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "external/rv32i/5-Stage-Pipeline/EX_MEM.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "external/rv32i/5-Stage-Pipeline/ForwardingUnit.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "external/rv32i/5-Stage-Pipeline/ForwardMux.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "external/rv32i/5-Stage-Pipeline/HazardUnit.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "external/rv32i/5-Stage-Pipeline/ID_EX.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "external/rv32i/5-Stage-Pipeline/IF_ID.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "external/rv32i/5-Stage-Pipeline/ImmGen.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "external/rv32i/5-Stage-Pipeline/MEM_WB.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "external/rv32i/5-Stage-Pipeline/Monitor.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "external/rv32i/5-Stage-Pipeline/PC_IF.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "external/rv32i/5-Stage-Pipeline/RegFile.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "external/rv32i/5-Stage-Pipeline/ResultMux.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "external/rv32i/5-Stage-Pipeline/verification/PipelineAssertions.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "rtl/generated/RV32I_SoC.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "rtl/generated/soc_ram.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "rtl/generated/soc_PC_IF.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "rtl/generated/soc_IF_ID.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "rtl/generated/soc_ID_EX.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "rtl/generated/soc_EX_MEM.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "rtl/generated/soc_MEM_WB.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "rtl/generated/soc_RegFile.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "rtl/generated/soc_PipelineAssertions.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "rtl/sdram_capture_clock.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "rtl/sdram_controller.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "rtl/sdram_bridge.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "rtl/udp_memory_loader.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "rtl/soc_mmio.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "rtl/soc_memory.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "external/renderer/rtl/command/graphics_command_stream_decoder.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "external/renderer/rtl/network/async_byte_fifo.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "external/renderer/rtl/network/async_fifo.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "external/renderer/rtl/network/ethernet_command_receiver.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "external/renderer/rtl/network/mii_arp_responder.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "external/renderer/rtl/network/mii_response_transmitter.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "external/renderer/rtl/network/mii_udp_receiver.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "rtl/udp_controls.sv"
+set_global_assignment -name VERILOG_FILE "rtl/generated/palette_ip.v"
+set_global_assignment -name SYSTEMVERILOG_FILE "rtl/generated/graphics_pipeline.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "rtl/generated/graphics_renderer_core.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "rtl/generated/graphics_stream_renderer.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "external/renderer/rtl/common/iterative_signed_divider.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "external/renderer/rtl/command/graphics_command_processor.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "external/renderer/rtl/pipeline/depth_test_stage.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "external/renderer/rtl/pipeline/indexed_mesh_store.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "external/renderer/rtl/pipeline/render_performance_counters.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "external/renderer/rtl/pipeline/renderer.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "rtl/generated/transform_3d_pipeline.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "external/renderer/rtl/pipeline/triangle_fifo.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "external/renderer/rtl/pipeline/view_transform_stage.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "external/renderer/rtl/memory/framebuffer.sv"
+set_global_assignment -name VERILOG_FILE "external/renderer/rtl/memory/framebuffer_ip.v"
+set_global_assignment -name SYSTEMVERILOG_FILE "external/renderer/rtl/memory/zbuffer.sv"
+set_global_assignment -name VERILOG_FILE "external/renderer/rtl/memory/zbuffer_ip.v"
+set_global_assignment -name SYSTEMVERILOG_FILE "external/renderer/rtl/video/vga_controller.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "external/renderer/rtl/video/vga_page_swap_controller.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "external/renderer/rtl/video/vga_pll.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "external/renderer/rtl/video/vga_timing.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "rtl/soc_top.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "rtl/boards/de2_115_soc_top.sv"
+set_location_assignment PIN_Y2 -to CLOCK_50
+set_location_assignment PIN_M23 -to KEY[0]
+set_location_assignment PIN_M21 -to KEY[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to CLOCK_50
+set_instance_assignment -name IO_STANDARD "2.5 V" -to KEY[0]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to KEY[1]
+set_location_assignment PIN_E21 -to LEDG[0]
+set_location_assignment PIN_E22 -to LEDG[1]
+set_location_assignment PIN_E25 -to LEDG[2]
+set_location_assignment PIN_E24 -to LEDG[3]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to LEDG[0]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to LEDG[1]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to LEDG[2]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to LEDG[3]
+set_location_assignment PIN_A15 -to ENET0_RX_CLK
+set_location_assignment PIN_C16 -to ENET0_RX_DATA[0]
+set_location_assignment PIN_D16 -to ENET0_RX_DATA[1]
+set_location_assignment PIN_D17 -to ENET0_RX_DATA[2]
+set_location_assignment PIN_C15 -to ENET0_RX_DATA[3]
+set_location_assignment PIN_C17 -to ENET0_RX_DV
+set_location_assignment PIN_D18 -to ENET0_RX_ER
+set_location_assignment PIN_B17 -to ENET0_TX_CLK
+set_location_assignment PIN_C18 -to ENET0_TX_DATA[0]
+set_location_assignment PIN_D19 -to ENET0_TX_DATA[1]
+set_location_assignment PIN_A19 -to ENET0_TX_DATA[2]
+set_location_assignment PIN_B19 -to ENET0_TX_DATA[3]
+set_location_assignment PIN_A18 -to ENET0_TX_EN
+set_location_assignment PIN_B18 -to ENET0_TX_ER
+set_location_assignment PIN_C19 -to ENET0_RST_N
+set_instance_assignment -name IO_STANDARD "2.5 V" -to ENET0_RX_CLK
+set_instance_assignment -name IO_STANDARD "2.5 V" -to ENET0_RX_DATA[0]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to ENET0_RX_DATA[1]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to ENET0_RX_DATA[2]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to ENET0_RX_DATA[3]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to ENET0_RX_DV
+set_instance_assignment -name IO_STANDARD "2.5 V" -to ENET0_RX_ER
+set_instance_assignment -name IO_STANDARD "2.5 V" -to ENET0_TX_CLK
+set_instance_assignment -name IO_STANDARD "2.5 V" -to ENET0_TX_DATA[0]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to ENET0_TX_DATA[1]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to ENET0_TX_DATA[2]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to ENET0_TX_DATA[3]
+set_instance_assignment -name IO_STANDARD "2.5 V" -to ENET0_TX_EN
+set_instance_assignment -name IO_STANDARD "2.5 V" -to ENET0_TX_ER
+set_instance_assignment -name IO_STANDARD "2.5 V" -to ENET0_RST_N
+set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to ENET0_TX_DATA[*]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to ENET0_TX_EN
+set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to ENET0_TX_ER
+set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to ENET0_RST_N
+set_instance_assignment -name SLEW_RATE 1 -to ENET0_TX_DATA[*]
+set_instance_assignment -name SLEW_RATE 1 -to ENET0_TX_EN
+set_instance_assignment -name SLEW_RATE 1 -to ENET0_TX_ER
+set_instance_assignment -name SLEW_RATE 1 -to ENET0_RST_N
+set_location_assignment PIN_E12 -to VGA_R[0]
+set_location_assignment PIN_E11 -to VGA_R[1]
+set_location_assignment PIN_D10 -to VGA_R[2]
+set_location_assignment PIN_F12 -to VGA_R[3]
+set_location_assignment PIN_G10 -to VGA_R[4]
+set_location_assignment PIN_J12 -to VGA_R[5]
+set_location_assignment PIN_H8 -to VGA_R[6]
+set_location_assignment PIN_H10 -to VGA_R[7]
+set_location_assignment PIN_G8 -to VGA_G[0]
+set_location_assignment PIN_G11 -to VGA_G[1]
+set_location_assignment PIN_F8 -to VGA_G[2]
+set_location_assignment PIN_H12 -to VGA_G[3]
+set_location_assignment PIN_C8 -to VGA_G[4]
+set_location_assignment PIN_B8 -to VGA_G[5]
+set_location_assignment PIN_F10 -to VGA_G[6]
+set_location_assignment PIN_C9 -to VGA_G[7]
+set_location_assignment PIN_B10 -to VGA_B[0]
+set_location_assignment PIN_A10 -to VGA_B[1]
+set_location_assignment PIN_C11 -to VGA_B[2]
+set_location_assignment PIN_B11 -to VGA_B[3]
+set_location_assignment PIN_A11 -to VGA_B[4]
+set_location_assignment PIN_C12 -to VGA_B[5]
+set_location_assignment PIN_D11 -to VGA_B[6]
+set_location_assignment PIN_D12 -to VGA_B[7]
+set_location_assignment PIN_A12 -to VGA_CLK
+set_location_assignment PIN_F11 -to VGA_BLANK_N
+set_location_assignment PIN_C10 -to VGA_SYNC_N
+set_location_assignment PIN_G13 -to VGA_HS
+set_location_assignment PIN_C13 -to VGA_VS
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_R[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_R[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_R[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_R[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_R[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_R[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_R[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_R[7]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_G[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_G[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_G[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_G[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_G[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_G[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_G[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_G[7]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_B[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_B[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_B[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_B[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_B[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_B[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_B[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_B[7]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_CLK
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_BLANK_N
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_SYNC_N
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_HS
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to VGA_VS
+set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to VGA_R[*]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to VGA_G[*]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to VGA_B[*]
+set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to VGA_CLK
+set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to VGA_BLANK_N
+set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to VGA_SYNC_N
+set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to VGA_HS
+set_instance_assignment -name CURRENT_STRENGTH_NEW 8MA -to VGA_VS
+set_location_assignment PIN_R24 -to KEY3
+set_instance_assignment -name IO_STANDARD "2.5 V" -to KEY3
+# Terasic DE2-115 User Manual, Table 4-28 (PDF pages 69-70).
+set_instance_assignment -name FAST_INPUT_REGISTER ON -to DRAM_DQ[*]
+set_location_assignment PIN_R6 -to DRAM_ADDR[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_ADDR[0]
+set_location_assignment PIN_V8 -to DRAM_ADDR[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_ADDR[1]
+set_location_assignment PIN_U8 -to DRAM_ADDR[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_ADDR[2]
+set_location_assignment PIN_P1 -to DRAM_ADDR[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_ADDR[3]
+set_location_assignment PIN_V5 -to DRAM_ADDR[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_ADDR[4]
+set_location_assignment PIN_W8 -to DRAM_ADDR[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_ADDR[5]
+set_location_assignment PIN_W7 -to DRAM_ADDR[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_ADDR[6]
+set_location_assignment PIN_AA7 -to DRAM_ADDR[7]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_ADDR[7]
+set_location_assignment PIN_Y5 -to DRAM_ADDR[8]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_ADDR[8]
+set_location_assignment PIN_Y6 -to DRAM_ADDR[9]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_ADDR[9]
+set_location_assignment PIN_R5 -to DRAM_ADDR[10]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_ADDR[10]
+set_location_assignment PIN_AA5 -to DRAM_ADDR[11]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_ADDR[11]
+set_location_assignment PIN_Y7 -to DRAM_ADDR[12]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_ADDR[12]
+set_location_assignment PIN_W3 -to DRAM_DQ[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[0]
+set_location_assignment PIN_W2 -to DRAM_DQ[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[1]
+set_location_assignment PIN_V4 -to DRAM_DQ[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[2]
+set_location_assignment PIN_W1 -to DRAM_DQ[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[3]
+set_location_assignment PIN_V3 -to DRAM_DQ[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[4]
+set_location_assignment PIN_V2 -to DRAM_DQ[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[5]
+set_location_assignment PIN_V1 -to DRAM_DQ[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[6]
+set_location_assignment PIN_U3 -to DRAM_DQ[7]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[7]
+set_location_assignment PIN_Y3 -to DRAM_DQ[8]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[8]
+set_location_assignment PIN_Y4 -to DRAM_DQ[9]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[9]
+set_location_assignment PIN_AB1 -to DRAM_DQ[10]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[10]
+set_location_assignment PIN_AA3 -to DRAM_DQ[11]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[11]
+set_location_assignment PIN_AB2 -to DRAM_DQ[12]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[12]
+set_location_assignment PIN_AC1 -to DRAM_DQ[13]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[13]
+set_location_assignment PIN_AB3 -to DRAM_DQ[14]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[14]
+set_location_assignment PIN_AC2 -to DRAM_DQ[15]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[15]
+set_location_assignment PIN_M8 -to DRAM_DQ[16]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[16]
+set_location_assignment PIN_L8 -to DRAM_DQ[17]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[17]
+set_location_assignment PIN_P2 -to DRAM_DQ[18]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[18]
+set_location_assignment PIN_N3 -to DRAM_DQ[19]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[19]
+set_location_assignment PIN_N4 -to DRAM_DQ[20]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[20]
+set_location_assignment PIN_M4 -to DRAM_DQ[21]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[21]
+set_location_assignment PIN_M7 -to DRAM_DQ[22]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[22]
+set_location_assignment PIN_L7 -to DRAM_DQ[23]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[23]
+set_location_assignment PIN_U5 -to DRAM_DQ[24]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[24]
+set_location_assignment PIN_R7 -to DRAM_DQ[25]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[25]
+set_location_assignment PIN_R1 -to DRAM_DQ[26]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[26]
+set_location_assignment PIN_R2 -to DRAM_DQ[27]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[27]
+set_location_assignment PIN_R3 -to DRAM_DQ[28]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[28]
+set_location_assignment PIN_T3 -to DRAM_DQ[29]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[29]
+set_location_assignment PIN_U4 -to DRAM_DQ[30]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[30]
+set_location_assignment PIN_U1 -to DRAM_DQ[31]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQ[31]
+set_location_assignment PIN_U7 -to DRAM_BA[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_BA[0]
+set_location_assignment PIN_R4 -to DRAM_BA[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_BA[1]
+set_location_assignment PIN_U2 -to DRAM_DQM[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQM[0]
+set_location_assignment PIN_W4 -to DRAM_DQM[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQM[1]
+set_location_assignment PIN_K8 -to DRAM_DQM[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQM[2]
+set_location_assignment PIN_N8 -to DRAM_DQM[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_DQM[3]
+set_location_assignment PIN_U6 -to DRAM_RAS_N
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_RAS_N
+set_location_assignment PIN_V7 -to DRAM_CAS_N
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_CAS_N
+set_location_assignment PIN_AA6 -to DRAM_CKE
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_CKE
+set_location_assignment PIN_AE5 -to DRAM_CLK
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_CLK
+set_location_assignment PIN_V6 -to DRAM_WE_N
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_WE_N
+set_location_assignment PIN_T4 -to DRAM_CS_N
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to DRAM_CS_N
+
+set_global_assignment -name SYSTEMVERILOG_FILE rtl/sdram_cache.sv
+set_parameter -name ENABLE_CACHE 1
+

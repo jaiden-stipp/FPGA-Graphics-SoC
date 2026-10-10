@@ -4,6 +4,12 @@
 #include "gfx_protocol.h"
 #include "game_services.h"
 
+// Diagnostic comparison only: preserve source meshes and physics while
+// bypassing resident GPU handles for terrain. Actors still use mesh draws.
+#ifndef WORLD_FORCE_DIRECT
+#define WORLD_FORCE_DIRECT 0
+#endif
+
 // Fixed hardware; software cache uploads occur before BEGIN_FRAME only.
 static const world_area_t *selected;
 static const world_chunk_t *cache[16];
@@ -139,7 +145,7 @@ int world_prepare(const world_area_t *a,const player_t *p,const int16_t v[12],ui
             if(cache[h]==c)found=1;
             if(!cache[h] && free==16)free=h;
         }
-        if(!found && free<16 && matrix(c,p,v,m)) {
+        if(!WORLD_FORCE_DIRECT && !found && free<16 && matrix(c,p,v,m)) {
             if(upload(free,c))return -1;
             cache[free]=c;++world_uploaded_chunks;
         }
@@ -206,7 +212,7 @@ int world_draw(const world_area_t *a,const player_t *p,const int16_t v[12],uint3
         uint32_t handle=16;
         for(uint32_t h=reserved;h<16;++h)if(cache[h]==c)handle=h;
         int16_t m[12];
-        if(handle<16 && matrix(c,p,v,m)) { if(gfx_draw_matrix((uint8_t)handle,m))return -1; }
+        if(!WORLD_FORCE_DIRECT && handle<16 && matrix(c,p,v,m)) { if(gfx_draw_matrix((uint8_t)handle,m))return -1; }
         else {
             if(c->mesh.vertex_count>128)return -1;
             for(uint32_t j=0;j<c->mesh.vertex_count;++j) {

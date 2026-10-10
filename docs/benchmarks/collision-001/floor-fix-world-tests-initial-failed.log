@@ -1,0 +1,20 @@
+Restoring baseline software package.
+........E....................
+======================================================================
+ERROR: test_horizontal_motion_cannot_enter_rising_floor_plane (__main__.WorldTests.test_horizontal_motion_cannot_enter_rising_floor_plane)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\scripts\test_world_pipeline.py", line 246, in test_horizontal_motion_cannot_enter_rising_floor_plane
+    w=world_for([(vertices,[(0,1,2,1),(0,2,3,1)])])
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\scripts\test_player.py", line 59, in world_for
+    floors,walls=game_assets.collision(chunks)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\scripts\game_assets.py", line 90, in collision
+    raise ValueError("World has no outward-wound walkable surfaces")
+ValueError: World has no outward-wound walkable surfaces
+
+----------------------------------------------------------------------
+Ran 29 tests in 6.682s
+
+FAILED (errors=1)

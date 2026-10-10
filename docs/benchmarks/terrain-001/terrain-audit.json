@@ -1,0 +1,35 @@
+{
+  "method": "native production player_floor, every compiled floor centroid; indexed versus exhaustive queries",
+  "areas": [
+    {
+      "id": "castle_geo_ground",
+      "samples": 539,
+      "no_floor": [],
+      "grid_mismatches": []
+    },
+    {
+      "id": "castle_ground_floor",
+      "samples": 738,
+      "no_floor": [],
+      "grid_mismatches": []
+    },
+    {
+      "id": "castle_upper_floor",
+      "samples": 660,
+      "no_floor": [],
+      "grid_mismatches": []
+    },
+    {
+      "id": "castle_basement",
+      "samples": 412,
+      "no_floor": [],
+      "grid_mismatches": []
+    },
+    {
+      "id": "secret_slide",
+      "samples": 467,
+      "no_floor": [],
+      "grid_mismatches": []
+    }
+  ]
+}

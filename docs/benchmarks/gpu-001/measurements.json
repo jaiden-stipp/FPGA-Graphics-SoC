@@ -1,0 +1,100 @@
+{
+  "date": "2026-10-09",
+  "base_revision": "2ed2f7f",
+  "dirty_sources": [
+    "scripts/soc.py",
+    "sim/projection_precision_tb.sv"
+  ],
+  "video": {
+    "file": "IMG_6537.mov",
+    "bytes": 2252465,
+    "sha256": "a78e1dac709a1c88ba4a21eac28597492ba7c036d048efae7c7629b581f5d90a",
+    "duration_seconds_from_decoder": 9.23
+  },
+  "workload": {
+    "samples": 26,
+    "measured_vertex": "first output vertex; x and y",
+    "baseline_max_error_pixels": 16,
+    "candidate_max_error_pixels": 1,
+    "baseline_fixture_ns": 86420,
+    "candidate_fixture_ns": 89540
+  },
+  "source_hashes": {
+    "scripts/soc.py": "f830b5642f6ca9ed8dc4d45b4b4053797bda1b8de8945dee743446b2da690dad",
+    "sim/projection_precision_tb.sv": "a4e4b18c2a19d4f947820243a897f6fbf53124f2b85acfb4daca4c42eac9bd1c",
+    "external/renderer/rtl/pipeline/transform_3d_pipeline.sv": "96d2b86352ebef8302d5b4a0a7881819b8453ac2c9cc515e547d98f0dac4a129",
+    "rtl/generated/transform_3d_pipeline.sv": "8b90afabe74fc762e237574bd8412867cd91bf4a19e9afdfe15fd55e156d42cc",
+    "upstream.lock.json": "fba7b84d51c10cc547f1364edba571911e38467be37885caf29cfd19f3e2f9b4",
+    "fpga/soc.sdc": "8bab502639ba541613e3cfaa35303f2869d321c5e1a3ad7741fb2ad25f8f4d7c",
+    "build/firmware.mif": "f70ee691343753ca316bec2aa5d0d4f84b7a8f9a193f9b662d9a4ff1d188c36a",
+    "sim/soc_top_tb.sv": "765962e2c7060dd028c8de2e99a954d25ec0dc217da16aebcd4c4ba438900f51"
+  },
+  "files": {
+    "build_projection_fpga.py": "7b86bbdaa0b3c06422943befeed9d4d0e8c322752333093f7eb3dfe76f998ec8",
+    "candidate-transform.sv.txt": "8b90afabe74fc762e237574bd8412867cd91bf4a19e9afdfe15fd55e156d42cc",
+    "candidate.qsf.txt": "2c83c988295d32194a8ba6f657444db5d18a5551db17306b2c41a2b52cbb8963",
+    "program_projection.py": "fd7de3c6d11c0760b827efb345a7ff07d7b3eef2e3100955264fd4a99ae726d2",
+    "projection-baseline-0.log": "ae266544703b0e415a30f54a7f19b40d47ef6dca81e67777fc1fc65613ceff22",
+    "projection-baseline-1.log": "4c74cbba6f5537c0119e25b631a59cb71c3ce9f8cb4eb9f3deb4386fe606a8af",
+    "projection-baseline-2.log": "a8f3a4acfac1d9fac668855e7613b234a71f3dba700b50e912a0aa93dadf0d94",
+    "projection-board.json": "c442a22545bc1ef4afed3577aa82c7edca608f90d973d870b8c93b602c6c8027",
+    "projection-candidate-0.log": "756dd59b1d3230d0c4f7b8221510a0207e8799ec3e117a0b3ba1c80588310a87",
+    "projection-candidate-1.log": "0c20e9a4c61c38529e4bd58c618d72e7220834a24007f67659461670dd8c48a4",
+    "projection-final-integration.log": "27ef19bf8d3b9dca99b5463648177bdbdd0084fc91c6837a0d5fd4d212a3af4d",
+    "projection-integration.log": "631213bc0a804426836334564657f0e8ef811e241720b81e31dfc265605232b8",
+    "projection-program-candidate.log": "f8b6939c55a45c5c04e18338b59d950fec2d82311d7e228706149f442baf4bfc",
+    "projection-projection_precision_tb.log": "32e6427c48a43bc3375712c61b0a07d658080d96ea11f4cc0f86a6a5699f1716",
+    "projection-soc-smoke-retry.log": "738204fd72ff3a40fa38fefa86c48fa0afbabb7e6189265f2b09ae5ed8973d09",
+    "projection-soc-smoke.log": "29f8931776608143acfcf7e3364992c7666cebd23abc742f790b36bb135f780b",
+    "projection-source-tests.log": "d2e3874a15d74211e3bf7832c13b4cbf9adc76c2f7c3f2870b0e09672df96a3a",
+    "projection-transform_3d_tb.log": "ed06f20ae6f22bf3e1c6ba339292d5d53753f64d141a616b56c69476fc59bc95",
+    "projection-transform_clipping_tb.log": "3b4793897dafe85a02090741b51f1aefaac1b04f7dfa49d3d8de5d7a0963f022",
+    "ProjectionSoC.fit.summary": "b692e3eb8981f8e278229903d7fa34f7b1b8cbf3d429b9f2d64cdb73796548c4",
+    "ProjectionSoC.map.summary": "f0b54284e6d292f5ef9eea01cec0198dd045fc3c96aae74bad2e67de8519bbff",
+    "ProjectionSoC.sta.summary": "dc5a541099ea62d37b567b102c8c375bfa7b61566ac70a02a810b55f7c523502",
+    "quartus-asm.log": "7f7fdb1acdbed599c779e768e5161e12e4b72dc941f7d92dd60ded0f94a8d614",
+    "quartus-fit.log": "9c1ddfbf05f4b0db8cf5130316b1c9fe5999b9ce21111e3784f12e26cb0d2d04",
+    "quartus-map.log": "434e93de74deffcd44a91e1026886c9a620631785c87ffbb5fa8c9032ac7ec23",
+    "quartus-sta.log": "f7ab828f18fe354ac5c4831da4734887fd5196b550a716d8adabfda4bb7234f7",
+    "run_projection_baseline.py": "59c67e9290a571ea3d675bc0fa485b014c3b572b1a118466642e4090bc0564e6",
+    "run_projection_candidate.py": "635fb51939a707f75b946253819281d2e482f99666f9dfc520942d80f6646f17",
+    "soc_top_tb.log": "3cd18568f5baf12dce7193be151320978a278330474e340363bb79df60c1349d",
+    "rejected-unpipelined/precision.log": "4a4613784bcdde19912d044241b93fc4303b0915a4de16a267f05698184856ee",
+    "rejected-unpipelined/ProjectionSoC.fit.summary": "29e1ae9f8f308ae3b838343d4ec261ce8a3eb5da76749cbc367348faf47b5c63",
+    "rejected-unpipelined/ProjectionSoC.map.summary": "81f139b07fac4d1236a36ee395102b2bf9b10a3055bde377095f2f2845d5dc0a",
+    "rejected-unpipelined/ProjectionSoC.sta.summary": "fcf93dcbc11c3f38b3466bfbafab8844507f3e0da940260c6608ca35168fee86",
+    "rejected-unpipelined/quartus-fit.log": "582927f12fe4ad419f9484ce35f1e1491d5fb27d10b76ca89a3cd4ad8e904686",
+    "rejected-unpipelined/quartus-map.log": "ab01d9ca7e57905b9fe5fec4fd2c5bf50a592960869875160d47299a7926c246",
+    "rejected-unpipelined/quartus-sta.log": "84de7d00fd2ba9bfbdc81e72ef607cb0095dcdf6d43b9168fdd6926865443072",
+    "rejected-unpipelined/setup-paths.txt": "15a0fbe7bfefd47e178744c287bfa0063cbf65efb3d1a3ef425f746d84bc5900",
+    "rejected-unpipelined/transform.sv.txt": "5b6b315a388d735095112a38b603fa9b390f1961f2dfc1279094d88074f65bf1"
+  },
+  "candidate": {
+    "whole_soc_logic_elements": 20918,
+    "whole_soc_memory_bits": 2659668,
+    "embedded_9bit_multiplier_elements": 74,
+    "clock50_setup_slack_ns": 0.199,
+    "minimum_reported_slack_ns": 0.104,
+    "board": {
+      "candidate_sof_sha256": "8326b76009f681087f3615256ff45f7f7bb5922dc43dfebca2d77387f499105b",
+      "rollback_sof_sha256": "bc0948f73f1ff97f71d36411eb62e376d485d9559d8d6aa46d0f9d84cd596927",
+      "package": "build\\mario-castle-sdram-direct.package.json",
+      "minimum_reported_slack_ns": 0.104,
+      "running": {
+        "initialized": true,
+        "held": false,
+        "words": [
+          0,
+          0,
+          0
+        ],
+        "scratch": 1,
+        "refresh_count": 9104056,
+        "input_abi": 1229848833
+      },
+      "left_running": "projection correction with direct-terrain Mario diagnostic"
+    },
+    "physical_visual_acceptance": "pending",
+    "physical_fps_result": null
+  }
+}
