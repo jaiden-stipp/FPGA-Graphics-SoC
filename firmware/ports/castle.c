@@ -88,6 +88,11 @@ void game_port_update(uint32_t word) {
     DETAIL_START(animation_start);
     animation_step(&animation,&player,&game_animation_package);
     DETAIL_END(PROFILE_ANIMATION_STEP,animation_start);
+#ifdef CASTLE_PROFILE_FIXED_POSE
+    // Benchmark fixture only: original idle start pose, independent of FPS.
+    animation.clip=ANIMATION_IDLE;
+    animation.phase=(uint32_t)game_animation_package.clips[ANIMATION_IDLE].start<<8;
+#endif
     camera_update();
     game_player.x=player.x;game_player.y=player.y;game_player.z=player.z;
     game_player.grounded=player.grounded;game_player.velocity_y=player.velocity_y;
