@@ -223,3 +223,9 @@ Currently supported implementation wording:
 A latency claim must explicitly say simulation and name the repeated-read
 fixture; it must also retain the cold-miss limitation. No game FPS claim is
 supported by CACHE-001.
+
+## CACHE-LINES-001: equal-capacity line-size comparison
+
+Measured October 10, 2026: tested 8-, 16- and 32-byte lines at 4 KiB data capacity on the physical DE2-115, with one identical RV32I probe and castle asset package, three trials per image. Retained 32-byte lines: 16-byte lines slightly improve floor-query time but slow mesh-data traversal; 8-byte lines lose both castle kernels while improving a sparse control. All data checksums/readback and timing checks pass. Standing Mario remains approximately 20 FPS; no traversal-FPS gain is established.
+
+See [full comparison and evidence](cache-line-comparison.md) for absolute cycles, miss/fill traffic, every trial, resource/timing reports, source/artifact hashes, workload coverage and limitations. The source baseline and experimental implementation are separate commits.

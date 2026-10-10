@@ -1,0 +1,67 @@
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+Start time: 23:54:34 on Oct 09,2026
+vlog -work build\line-simlib -sv -mfcu "+incdir+external/renderer/rtl/common+sim/generated+sim" C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\pipeline_pkg.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\ALU.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\BranchUnit.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\ControlUnit.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\EX_MEM.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\ForwardingUnit.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\ForwardMux.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\HazardUnit.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\ID_EX.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\IF_ID.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\ImmGen.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\MEM_WB.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\Monitor.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\PC_IF.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\RegFile.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\ResultMux.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\verification\PipelineAssertions.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated\RV32I_SoC.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated\soc_ram.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated\soc_PC_IF.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated\soc_IF_ID.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated\soc_ID_EX.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated\soc_EX_MEM.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated\soc_MEM_WB.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated\soc_RegFile.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated\soc_PipelineAssertions.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\sdram_capture_clock.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\sdram_controller.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\sdram_bridge.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\sdram_cache.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\udp_memory_loader.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\soc_mmio.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\soc_memory.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\renderer\rtl\command\graphics_command_stream_decoder.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\renderer\rtl\network\async_byte_fifo.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\renderer\rtl\network\async_fifo.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\renderer\rtl\network\ethernet_command_receiver.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\renderer\rtl\network\mii_arp_responder.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\renderer\rtl\network\mii_response_transmitter.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\renderer\rtl\network\mii_udp_receiver.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\udp_controls.sv sim\sdram_device_model.sv sim\sdram_memory_tb.sv sim\sdram_cache_tb.sv sim\sdram_cpu_tb.sv sim\udp_loader_tb.sv 
+-- Compiling package pipeline_pkg
+-- Compiling package pipeline_pkg_sv_unit
+-- Importing package pipeline_pkg
+-- Compiling module ALU
+-- Compiling module BranchUnit
+-- Compiling module ControlUnit
+-- Compiling module EX_MEM
+-- Compiling module ForwardingUnit
+-- Compiling module ForwardMux
+-- Compiling module HazardUnit
+-- Compiling module ID_EX
+-- Compiling module IF_ID
+-- Compiling module ImmGen
+-- Compiling module MEM_WB
+-- Compiling module Monitor
+-- Compiling module PC_IF
+-- Compiling module RegFile
+-- Compiling module ResultMux
+-- Compiling module PipelineAssertions
+-- Compiling module RV32I_SoC
+-- Compiling module soc_ram
+-- Compiling module soc_PC_IF
+-- Compiling module soc_IF_ID
+-- Compiling module soc_ID_EX
+-- Compiling module soc_EX_MEM
+-- Compiling module soc_MEM_WB
+-- Compiling module soc_RegFile
+-- Compiling module soc_PipelineAssertions
+-- Compiling module sdram_capture_clock
+-- Compiling module sdram_controller
+-- Compiling module sdram_bridge
+-- Compiling module sdram_cache
+-- Compiling module udp_memory_loader
+-- Compiling module soc_mmio
+-- Compiling module soc_memory
+-- Compiling module graphics_command_stream_decoder
+-- Compiling module async_byte_fifo
+-- Compiling module async_fifo
+-- Compiling module ethernet_command_receiver
+-- Compiling module mii_arp_responder
+-- Compiling module mii_response_transmitter
+-- Compiling module mii_udp_receiver
+-- Compiling module udp_controls
+-- Compiling module sdram_device_model
+-- Compiling module sdram_memory_tb
+-- Compiling module sdram_cache_tb
+-- Compiling module sdram_cpu_tb
+-- Compiling module udp_loader_tb
+
+Top level modules:
+	EX_MEM
+	ID_EX
+	IF_ID
+	MEM_WB
+	PC_IF
+	RegFile
+	PipelineAssertions
+	mii_arp_responder
+	sdram_memory_tb
+	sdram_cache_tb
+	sdram_cpu_tb
+	udp_loader_tb
+End time: 23:54:34 on Oct 09,2026, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0

@@ -9,7 +9,7 @@ def build():
  count=int(re.search(r'#define WORLD_AREA_COUNT (\d+)u',(ROOT/'firmware/generated/world_data.h').read_text())[1]);address=symbols['world_areas']
  def unpack(fmt,p):return struct.unpack_from('<'+fmt,assets,p-0x80000000)
  def fold(h,v):return (31*h+v)&0xffffffff
- collision=geometry=sparse=0;queries=vertices=triangles=0
+ collision=geometry=sparse=0;queries=vertices=triangles=contacts=candidates=0
  for a in range(count):
   chunks,n,physics,_,_,cells,indices,_,gx,gz,width,depth,normals,_,_,_=unpack('8I2i6I',address+64*a)
   floors,_,floor_count=unpack('3I',physics)
@@ -18,6 +18,7 @@ def build():
     px=gx+((width*x>>3)<<9)+256;pz=gz+((depth*z>>3)<<9)+256
     fs,fc,_,_=unpack('4I',cells+16*((depth*z>>3)*width+(width*x>>3)))
     best=-32768;fi=-1
+    candidates+=fc
     for q in range(fc):
      i=unpack('H',indices+2*(fs+q))[0]
      ax,ay,az,bx,by,bz,cx,cy,cz,minx,maxx,minz,maxz,_,_=unpack('15h',floors+30*i)
@@ -28,7 +29,7 @@ def build():
      # C divide is unsigned magnitude followed by sign, truncating toward zero.
      y=ay-((-1 if numerator<0 else 1)*(abs(numerator)//ny))
      if y<=16000 and y>best:best=y;fi=i
-    collision=fold(fold(collision,best),fi);queries+=1
+    collision=fold(fold(collision,best),fi);queries+=1;contacts+=fi>=0
   for c in range(n):
    vp,tp,nv,nt=unpack('2I2H',chunks+36*c)
    for i in range(nv):
@@ -44,6 +45,6 @@ def build():
  subprocess.run(['C:/Program Files/LLVM/bin/llvm-objcopy.exe','-O','binary','build/cache-lines/probe.elf','build/cache-lines/probe.bin'],cwd=ROOT,check=True)
  nm=subprocess.check_output(['C:/Program Files/LLVM/bin/llvm-nm.exe','--defined-only','build/cache-lines/probe.elf'],cwd=ROOT,text=True)
  syms={m[3]:int(m[1],16) for line in nm.splitlines() if (m:=re.fullmatch(r'([0-9a-fA-F]+)\s+(\w)\s+(\S+)',line))}
- report={'assets_sha256':hashlib.sha256(assets).hexdigest(),'probe_sha256':hashlib.sha256((out/'probe.bin').read_bytes()).hexdigest(),'area_address':address,'areas':count,'queries_per_pass':queries,'vertices_per_pass':vertices,'triangles_per_pass':triangles,'checksums':[collision]*2+[geometry]*2+[sparse]*2,'symbols':syms,'compile_command':cmd}
+ report={'assets_sha256':hashlib.sha256(assets).hexdigest(),'probe_sha256':hashlib.sha256((out/'probe.bin').read_bytes()).hexdigest(),'area_address':address,'areas':count,'queries_per_pass':queries,'floor_candidates_per_pass':candidates,'floor_contacts_per_pass':contacts,'vertices_per_pass':vertices,'triangles_per_pass':triangles,'checksums':[collision]*2+[geometry]*2+[sparse]*2,'symbols':syms,'compile_command':cmd}
  (out/'probe.json').write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report,indent=2))
 if __name__=='__main__':build()

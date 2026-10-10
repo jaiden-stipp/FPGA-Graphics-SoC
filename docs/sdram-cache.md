@@ -4,7 +4,7 @@ The cache sits between `sdram_bridge` and `sdram_controller`. It caches only
 CPU SDRAM data accesses. Instructions, local RAM and MMIO retain their paths.
 The upstream CPU and GPU sources and game models are unchanged.
 
-Configuration: 4 KiB data, 128 direct-mapped lines, 32 bytes per line, one
+Default configuration: 4 KiB data, 128 direct-mapped lines, 32 bytes per line, one
 outstanding request, write-through and no write allocation. Addresses entering
 the cache are 25-bit word offsets within SDRAM; bits 2:0 select a word, 9:3 a
 line, and 24:10 its tag. Byte/halfword alignment and sign extension stay in the
@@ -15,9 +15,9 @@ The data array uses a synchronous read intended for Cyclone IV M9K inference.
 Valid bits and tags are separate. Synthesis/fitting reports, rather than the
 array declaration alone, determine actual resource consumption.
 
-A miss now fetches all eight words with one aligned BL8 SDRAM READ. The CPU
+A default-size miss fetches all eight words with one aligned BL8 SDRAM READ. The CPU
 resumes only after the complete line arrives. `ENABLE_BURST=0` retains the
-original eight independent single-word transactions for comparisons. No
+independent single-word transactions for comparisons. No
 prefetching, early restart, write buffer or nonblocking misses are implemented.
 The [burst-fill record](burst-cache-fills.md) separates the original baseline
 from the new simulation and physical-board measurements.
@@ -40,8 +40,18 @@ does not compile or program it.
 `ENABLE_BURST=1` is propagated through the same three modules. Use
 `soc.py quartus-project --disable-burst` to keep the cache with BL1 fills.
 When the cache is disabled, the controller also uses BL1. With burst mode
-enabled, loader bypass reads drain a BL8 read before returning its first word;
+enabled, loader bypass reads drain the selected burst before returning its first word;
 single-word writes retain byte masks and the SDRAM single-write mode.
+
+`CACHE_LINE_BYTES` supports 8, 16 and 32 (default) through the board wrapper,
+SoC, memory, cache and controller. Total data capacity stays 4 KiB: these sizes
+use 512, 256 and 128 lines respectively, with BL2, BL4 and BL8 SDRAM reads.
+Tags remain address bits 24:10; the word-offset and line-index widths change.
+Smaller lines require more tag/valid storage. Use
+`soc.py quartus-project --cache-line-bytes 16` to select a comparison build.
+The [line-size experiment](cache-line-comparison.md) records physical workload
+results and explains the retained default. The cache ABI is unchanged; use the
+bitstream hash/QSF parameter to identify the tested size.
 
 ## Diagnostics
 

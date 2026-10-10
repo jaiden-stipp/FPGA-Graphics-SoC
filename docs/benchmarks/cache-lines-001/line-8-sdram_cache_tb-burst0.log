@@ -1,0 +1,20 @@
+Reading C:/intelFPGA/18.1/modelsim_ase/tcl/vsim/pref.tcl
+
+# 10.5b
+
+# vsim -c -L altera_mf -lib build\line-simlib sdram_cache_tb -do "onerror {quit -code 1}; run -all; quit -code 0" -gCACHE_LINE_BYTES=8 -gBURST_ENABLED=0 
+# Start time: 23:54:48 on Oct 09,2026
+# Loading sv_std.std
+# Loading build\line-simlib.pipeline_pkg
+# Loading build\line-simlib.pipeline_pkg_sv_unit
+# Loading build\line-simlib.sdram_cache_tb
+# Loading build\line-simlib.sdram_cache
+# onerror {quit -code 1}
+#  Warning: onerror command for use within macro
+#  run -all
+# CACHE_MODEL cold_request_wait_cycles=11 hit_request_wait_cycles=1 (synthetic backing memory, not board performance)
+# PASS sdram_cache_tb (line fills, hits, conflict replacement, byte stores, no allocation, loader bypass, in-flight invalidation, mixed requests)
+# ** Note: $finish    : sim/sdram_cache_tb.sv(109)
+#    Time: 51311 ns  Iteration: 0  Instance: /sdram_cache_tb
+# End time: 23:54:48 on Oct 09,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0

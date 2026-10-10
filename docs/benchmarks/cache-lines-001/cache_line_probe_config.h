@@ -1,0 +1,2 @@
+#define PROBE_AREAS 0x8007e4f0u
+#define PROBE_AREA_COUNT 5u

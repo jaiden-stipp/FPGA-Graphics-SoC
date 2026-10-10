@@ -64,7 +64,7 @@ module sdram_memory_tb #(parameter CACHE_ENABLED=1, BURST_ENABLED=1, CACHE_LINE_
         // Every critical-word position must return the right beat. Distinct
         // words at bank/row ends also catch duplicated, shifted or wrapped data.
         for(integer k=0;k<LINE_WORDS;k=k+1) begin
-            base=32'h80000fe0+(k<<12);
+            base=32'h80001000-CACHE_LINE_BYTES+(k<<12);
             for(integer j=0;j<LINE_WORDS;j=j+1) access(1,base+4*j,32'ha5010000+256*k+j,2,0);
             read_before=chip.read_commands;
             access(0,base+4*k,0,2,32'ha5010000+256*k+k);

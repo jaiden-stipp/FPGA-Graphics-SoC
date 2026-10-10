@@ -1,0 +1,593 @@
+{
+  "experiment": "CACHE-LINES-001",
+  "date": "2026-10-10",
+  "board": "DE2-115 EP4CE115F29C7",
+  "clock_hz": 50000000,
+  "baseline_source_commit": "b4616a3370484ada1dc5597da195fa9820376600",
+  "candidate_rtl_commit": "a75c02b4e8bc099231aaf4514daa2cb57574d480",
+  "selected_line_bytes": 32,
+  "selected_sof_sha256": "b9386eb9aad671dff8313ca61a22b6e04874dc22ab1e94f42c2732790576b4ce",
+  "method": "Three sequential physical trials per bitstream; identical 3088-byte RV32I binary and castle assets, excluded eviction before each workload, immediate repeat passes. Three supplementary stationary Mario windows per candidate. No traversal-FPS or whole-game speedup claim.",
+  "probe": {
+    "assets_sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6",
+    "probe_sha256": "abd76a715481d3376fcbef7098601a1325b54669b106dad7e91136b25c9e29d2",
+    "area_address": 2148001008,
+    "areas": 5,
+    "queries_per_pass": 320,
+    "floor_candidates_per_pass": 2104,
+    "floor_contacts_per_pass": 182,
+    "vertices_per_pass": 8259,
+    "triangles_per_pass": 8278,
+    "checksums": [
+      3551654802,
+      3551654802,
+      397834848,
+      397834848,
+      3549989069,
+      3549989069
+    ],
+    "symbols": {
+      "_bss_end": 3252,
+      "_bss_start": 3088,
+      "_stack_top": 65536,
+      "_start": 0,
+      "bc": 3104,
+      "bf": 3100,
+      "bh": 3092,
+      "bm": 3096,
+      "fixed_mul": 1216,
+      "floor_contains": 1620,
+      "floor_height": 2280,
+      "floor_index": 3080,
+      "line_clock": 3088,
+      "line_results": 3108,
+      "main": 52,
+      "player_bind_query": 1172,
+      "player_floor": 1296,
+      "player_floor_index": 1160,
+      "query_bound": 3084,
+      "query_floor_count": 3236,
+      "query_floors": 3232,
+      "query_normals": 3248,
+      "query_wall_count": 3244,
+      "query_walls": 3240,
+      "query_world": 3228,
+      "world_collision": 2844
+    },
+    "compile_command": [
+      "C:/Program Files/LLVM/bin/clang.exe",
+      "--target=riscv32-unknown-elf",
+      "-fuse-ld=lld",
+      "-march=rv32i",
+      "-mabi=ilp32",
+      "-msmall-data-limit=0",
+      "-mno-relax",
+      "-O1",
+      "-ffreestanding",
+      "-fno-builtin",
+      "-nostdlib",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-ffunction-sections",
+      "-fdata-sections",
+      "-Ifirmware/include",
+      "-Ifirmware/generated",
+      "-Ibuild/cache-lines",
+      "-Wl,-T,firmware/link.ld",
+      "-Wl,--no-relax",
+      "-Wl,--gc-sections",
+      "-Wl,-Map,build/cache-lines/probe.map",
+      "firmware/start.S",
+      "firmware/tests/cache_line_probe.c",
+      "firmware/src/player.c",
+      "firmware/src/world.c",
+      "-o",
+      "build/cache-lines/probe.elf"
+    ]
+  },
+  "metrics": {
+    "baseline32": [
+      {
+        "cycles": 683981,
+        "hits": 15748,
+        "misses": 2828,
+        "fill_words": 22624,
+        "name": "collision_cold",
+        "all_cycles": [
+          683969,
+          683981,
+          683989
+        ],
+        "fill_bytes": 90496,
+        "hit_percent": 84.77605512489234,
+        "cycle_change_percent": 0.0
+      },
+      {
+        "cycles": 683991,
+        "hits": 15748,
+        "misses": 2828,
+        "fill_words": 22624,
+        "name": "collision_repeat",
+        "all_cycles": [
+          683991,
+          683991,
+          683991
+        ],
+        "fill_bytes": 90496,
+        "hit_percent": 84.77605512489234,
+        "cycle_change_percent": 0.0
+      },
+      {
+        "cycles": 491988,
+        "hits": 55495,
+        "misses": 2692,
+        "fill_words": 21536,
+        "name": "geometry_cold",
+        "all_cycles": [
+          491988,
+          491988,
+          491988
+        ],
+        "fill_bytes": 86144,
+        "hit_percent": 95.373537044357,
+        "cycle_change_percent": 0.0
+      },
+      {
+        "cycles": 491992,
+        "hits": 55495,
+        "misses": 2692,
+        "fill_words": 21536,
+        "name": "geometry_repeat",
+        "all_cycles": [
+          491992,
+          491992,
+          491992
+        ],
+        "fill_bytes": 86144,
+        "hit_percent": 95.373537044357,
+        "cycle_change_percent": 0.0
+      },
+      {
+        "cycles": 1675,
+        "hits": 0,
+        "misses": 64,
+        "fill_words": 512,
+        "name": "sparse_cold",
+        "all_cycles": [
+          1675,
+          1675,
+          1675
+        ],
+        "fill_bytes": 2048,
+        "hit_percent": 0.0,
+        "cycle_change_percent": 0.0
+      },
+      {
+        "cycles": 642,
+        "hits": 64,
+        "misses": 0,
+        "fill_words": 0,
+        "name": "sparse_repeat",
+        "all_cycles": [
+          642,
+          642,
+          642
+        ],
+        "fill_bytes": 0,
+        "hit_percent": 100.0,
+        "cycle_change_percent": 0.0
+      }
+    ],
+    "candidate16": [
+      {
+        "cycles": 683074,
+        "hits": 14882,
+        "misses": 3694,
+        "fill_words": 14776,
+        "name": "collision_cold",
+        "all_cycles": [
+          683074,
+          683083,
+          683070
+        ],
+        "fill_bytes": 59104,
+        "hit_percent": 80.11412575366063,
+        "cycle_change_percent": -0.1326060226819166
+      },
+      {
+        "cycles": 683057,
+        "hits": 14882,
+        "misses": 3694,
+        "fill_words": 14776,
+        "name": "collision_repeat",
+        "all_cycles": [
+          683057,
+          683079,
+          683057
+        ],
+        "fill_bytes": 59104,
+        "hit_percent": 80.11412575366063,
+        "cycle_change_percent": -0.13655150433265933
+      },
+      {
+        "cycles": 512638,
+        "hits": 52886,
+        "misses": 5301,
+        "fill_words": 21204,
+        "name": "geometry_cold",
+        "all_cycles": [
+          512638,
+          512638,
+          512638
+        ],
+        "fill_bytes": 84816,
+        "hit_percent": 90.88971763452318,
+        "cycle_change_percent": 4.197256843662854
+      },
+      {
+        "cycles": 512614,
+        "hits": 52886,
+        "misses": 5301,
+        "fill_words": 21204,
+        "name": "geometry_repeat",
+        "all_cycles": [
+          512614,
+          512614,
+          512614
+        ],
+        "fill_bytes": 84816,
+        "hit_percent": 90.88971763452318,
+        "cycle_change_percent": 4.191531569619018
+      },
+      {
+        "cycles": 1410,
+        "hits": 0,
+        "misses": 64,
+        "fill_words": 256,
+        "name": "sparse_cold",
+        "all_cycles": [
+          1410,
+          1410,
+          1410
+        ],
+        "fill_bytes": 1024,
+        "hit_percent": 0.0,
+        "cycle_change_percent": -15.82089552238806
+      },
+      {
+        "cycles": 642,
+        "hits": 64,
+        "misses": 0,
+        "fill_words": 0,
+        "name": "sparse_repeat",
+        "all_cycles": [
+          642,
+          642,
+          642
+        ],
+        "fill_bytes": 0,
+        "hit_percent": 100.0,
+        "cycle_change_percent": 0.0
+      }
+    ],
+    "candidate8": [
+      {
+        "cycles": 690294,
+        "hits": 13431,
+        "misses": 5145,
+        "fill_words": 10290,
+        "name": "collision_cold",
+        "all_cycles": [
+          690292,
+          690321,
+          690294
+        ],
+        "fill_bytes": 41160,
+        "hit_percent": 72.30297157622739,
+        "cycle_change_percent": 0.9229788546757878
+      },
+      {
+        "cycles": 690302,
+        "hits": 13432,
+        "misses": 5144,
+        "fill_words": 10288,
+        "name": "collision_repeat",
+        "all_cycles": [
+          690302,
+          690271,
+          690302
+        ],
+        "fill_bytes": 41152,
+        "hit_percent": 72.3083548664944,
+        "cycle_change_percent": 0.9226729591471233
+      },
+      {
+        "cycles": 554482,
+        "hits": 47682,
+        "misses": 10505,
+        "fill_words": 21010,
+        "name": "geometry_cold",
+        "all_cycles": [
+          554482,
+          554478,
+          554482
+        ],
+        "fill_bytes": 84040,
+        "hit_percent": 81.94613917198,
+        "cycle_change_percent": 12.702342333552851
+      },
+      {
+        "cycles": 554476,
+        "hits": 47682,
+        "misses": 10505,
+        "fill_words": 21010,
+        "name": "geometry_repeat",
+        "all_cycles": [
+          554476,
+          554482,
+          554476
+        ],
+        "fill_bytes": 84040,
+        "hit_percent": 81.94613917198,
+        "cycle_change_percent": 12.700206507422886
+      },
+      {
+        "cycles": 1282,
+        "hits": 0,
+        "misses": 64,
+        "fill_words": 128,
+        "name": "sparse_cold",
+        "all_cycles": [
+          1282,
+          1282,
+          1282
+        ],
+        "fill_bytes": 512,
+        "hit_percent": 0.0,
+        "cycle_change_percent": -23.46268656716418
+      },
+      {
+        "cycles": 642,
+        "hits": 64,
+        "misses": 0,
+        "fill_words": 0,
+        "name": "sparse_repeat",
+        "all_cycles": [
+          642,
+          642,
+          642
+        ],
+        "fill_bytes": 0,
+        "hit_percent": 100.0,
+        "cycle_change_percent": 0.0
+      }
+    ],
+    "candidate32": [
+      {
+        "cycles": 683957,
+        "hits": 15748,
+        "misses": 2828,
+        "fill_words": 22624,
+        "name": "collision_cold",
+        "all_cycles": [
+          683954,
+          683957,
+          683986
+        ],
+        "fill_bytes": 90496,
+        "hit_percent": 84.77605512489234,
+        "cycle_change_percent": -0.003508869398418962
+      },
+      {
+        "cycles": 683991,
+        "hits": 15748,
+        "misses": 2828,
+        "fill_words": 22624,
+        "name": "collision_repeat",
+        "all_cycles": [
+          683991,
+          683991,
+          683981
+        ],
+        "fill_bytes": 90496,
+        "hit_percent": 84.77605512489234,
+        "cycle_change_percent": 0.0
+      },
+      {
+        "cycles": 491988,
+        "hits": 55495,
+        "misses": 2692,
+        "fill_words": 21536,
+        "name": "geometry_cold",
+        "all_cycles": [
+          491988,
+          491988,
+          491988
+        ],
+        "fill_bytes": 86144,
+        "hit_percent": 95.373537044357,
+        "cycle_change_percent": 0.0
+      },
+      {
+        "cycles": 491992,
+        "hits": 55495,
+        "misses": 2692,
+        "fill_words": 21536,
+        "name": "geometry_repeat",
+        "all_cycles": [
+          491992,
+          491992,
+          491992
+        ],
+        "fill_bytes": 86144,
+        "hit_percent": 95.373537044357,
+        "cycle_change_percent": 0.0
+      },
+      {
+        "cycles": 1675,
+        "hits": 0,
+        "misses": 64,
+        "fill_words": 512,
+        "name": "sparse_cold",
+        "all_cycles": [
+          1675,
+          1675,
+          1675
+        ],
+        "fill_bytes": 2048,
+        "hit_percent": 0.0,
+        "cycle_change_percent": 0.0
+      },
+      {
+        "cycles": 642,
+        "hits": 64,
+        "misses": 0,
+        "fill_words": 0,
+        "name": "sparse_repeat",
+        "all_cycles": [
+          642,
+          642,
+          642
+        ],
+        "fill_bytes": 0,
+        "hit_percent": 100.0,
+        "cycle_change_percent": 0.0
+      }
+    ]
+  },
+  "resources": {
+    "baseline32": {
+      "logic_elements": 20979,
+      "memory_bits": 2659668,
+      "dsp_9bit_elements": 74,
+      "plls": 2,
+      "clock50_setup_slack_ns": 0.749,
+      "minimum_reported_slack_ns": 0.116
+    },
+    "candidate16": {
+      "logic_elements": 21467,
+      "memory_bits": 2661588,
+      "dsp_9bit_elements": 74,
+      "plls": 2,
+      "clock50_setup_slack_ns": 0.761,
+      "minimum_reported_slack_ns": 0.11
+    },
+    "candidate8": {
+      "logic_elements": 22790,
+      "memory_bits": 2665428,
+      "dsp_9bit_elements": 74,
+      "plls": 2,
+      "clock50_setup_slack_ns": 0.653,
+      "minimum_reported_slack_ns": 0.103
+    },
+    "candidate32": {
+      "logic_elements": 20979,
+      "memory_bits": 2659668,
+      "dsp_9bit_elements": 74,
+      "plls": 2,
+      "clock50_setup_slack_ns": 0.749,
+      "minimum_reported_slack_ns": 0.116
+    }
+  },
+  "restored_package_segments": [
+    {
+      "file": "mario-castle-sdram-direct.bin",
+      "address": 0,
+      "bytes": 28936,
+      "sha256": "e366760994e8282a6c45aa00e645b8a8d490d9ca95928b2ef64adec05a2ff442"
+    },
+    {
+      "file": "mario-castle-sdram-direct.assets.bin",
+      "address": 2147483648,
+      "bytes": 883124,
+      "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+    }
+  ],
+  "model_limitation": "Sparse SDRAM model burst first-beat alignment was calibrated during BURST-001; BL2/4/8 have physical loader and probe verification, not an independent vendor timing-model qualification.",
+  "evidence_sha256": {
+    "archive_cache_lines.py": "d160c50db138e208d41e6a919d04879e48b1d67609b97720e0cca6a7ef795dfb",
+    "baseline-source.txt": "6afd7ad00d9b29a2f2b7da2dba6a246a4e133d468d338f341cc27727a175b9d6",
+    "baseline32-program.log": "893d7bb05c470a2cd8ffb6ee72e618a5adbf76e29fcc1b42d877edc8c568ee0e",
+    "baseline32.fit.summary.txt": "42a02d394a5fe58f56e418fd1017651f4c038eb2dc7bfb967c555d4efae29f08",
+    "baseline32.json": "64e481e38e4749cdbb92409f79ff37c18f58919e4ba129c4bfd489077daee525",
+    "baseline32.map.summary.txt": "9ff69aeb84b0c6dbf8f645dee7077577c8eebe144b01b855f2f74f87843eedfd",
+    "baseline32.sta.summary.txt": "705f218c5084ae383ffc0ddefec53b65122ddc2f1d45688b7814926c61421770",
+    "build_cache_lines.py": "bdf383e96fd0b7211e73c1042e12347dfa1bbf8653832d8584ca81f76ab87ee7",
+    "cache_line_game_sample.py.txt": "8610ddb931f50768eca7f447e9da80b0adf61d60d3f3ae277c1bf9df8872e8bd",
+    "cache_line_measure.py.txt": "e49d2e39c9ce27409d8ab05f771edaedf4411a4c2362ae1a8fe4ae8a6fc7686c",
+    "cache_line_probe.c.txt": "c523491206e89153f24423e9e95f67bd899a6316b1df214314e9c5f84679d67e",
+    "cache_line_probe.py.txt": "22cad16c55d69a8d97abc2f8af7cec7dc805f676fbc022183f315e2f4bbf31e9",
+    "cache_line_probe_config.h": "82c6f367a7a60ddeb28c26319413427887c51442ea050d65c884e739aa436664",
+    "CacheLine16SoC.qsf.snapshot": "59b0ce929abcd0fb407626028ecc67b54bf52a8020174957359298098c578881",
+    "CacheLine32SoC.qsf.snapshot": "5fc387e024dc9c28c16f111bbc25da84503363324cd608ba1378f776c73ae8dd",
+    "CacheLine8SoC.qsf.snapshot": "1b0dde30b7fc4c4b53ad0c3ab0e377666fc259875438aa5dc155adf56b140458",
+    "candidate16-game.json": "826a31364363352d97d079c23203ac6f79103082c0a08c651253ae9985e47c6c",
+    "candidate16-program.log": "566b575447686966fa898d2df070251ad64106c4ae7662bce717a488269cf438",
+    "candidate16.json": "c34a371682da6e7e03503267049706543a9b9cc046f044008943ad6788e980e3",
+    "candidate32-game.json": "f45e09c19c5aeed2fd30246316913198686b34c1f84c681f6e59261d7a5b9f32",
+    "candidate32-program.log": "e5148ca7e71b47e38534badedc3e3b2001a096bc25189788997dd0688855ddf5",
+    "candidate32.json": "73564b7b993e4c5bd07f6cc1289f84a4f3f3d909f3e5377bcb5e54149f7a28d9",
+    "candidate8-game.json": "8b3cabd2eb43870635a2dbbb739892bdeb06ce78dd7d5c0839890064bfd84490",
+    "candidate8-program.log": "60bc1703e697e1121adc81540b362ff913f323688d528bd3606330ee6062c202",
+    "candidate8.json": "9ce0922342199d0d4877b34e62e7a7b3ff12e12b7bdaac1a10ffc632f1b6517e",
+    "compiler-version.txt": "3f0bc9c600e6cddbb8c4cb8f76fc0c9cd3626c33514e7b16cb80b5d2bd3ad5ba",
+    "de2_115_soc_top.sv.txt": "b28f0e66797f8b7914b7e30a565fe6cc45685e1d36f722f36c63820b25cac466",
+    "line-16-sdram_cache_tb-burst0.log": "2a051d10f4a1037c577df5e24f1fff275bce6110448ae38e7035aa1576f33304",
+    "line-16-sdram_cache_tb-burst1.log": "09bbb0f6b93c4f8bbd08ead78d5ec14d98582e6e671c2cc04936f627ea62dff6",
+    "line-16-sdram_cpu_tb.log": "39fb81d45841d5f1dd9308676256837de0afae61c3ce7620b73bd96f12e74cb5",
+    "line-16-sdram_memory_tb-burst0.log": "cba7f0525eddb9306ee6582a7e112fbf29f1138a846122c7a72336ad25575464",
+    "line-16-sdram_memory_tb-burst1.log": "f6a658d1477657fde557d192fd3b11b7f5ae00dae6109e16878e8be0bddbd3ec",
+    "line-32-sdram_cache_tb-burst0.log": "7673874ddfb4902be0a8b9967eb68a68c508bac0ab5ee53fbef08a323a5914cf",
+    "line-32-sdram_cache_tb-burst1.log": "4eeded29b274d418fe5660f060ed42b538c5b92d85f54598674695f646787a44",
+    "line-32-sdram_memory_tb-burst0.log": "7d401c1db3b1cd4b40d586a6e0b6cc053b8ee84d4f709ebc1d075f2b8f623763",
+    "line-32-sdram_memory_tb-burst1.log": "d20978899b91960f7782bc8ef1fb2bfb0897b63aba6e4646b3811dde134a46d9",
+    "line-8-sdram_cache_tb-burst0.log": "3ded0582e94e1266a9efbf697270ce8dd3c958ee1f64e93342f37b20fbd1442b",
+    "line-8-sdram_cache_tb-burst1.log": "d610e68757ba14664fb928f2647af0e68bd52f850957b53bf1d86de6ab8f1064",
+    "line-8-sdram_cpu_tb.log": "0a2b214c26bb448556d8a2e620eef478bb5fce23545e96263810c1a4aa77d058",
+    "line-8-sdram_memory_tb-burst0.log": "5d6bf366663d70e6e4a8c811dcd6705a9cf9b611773d9132285bfd69823ab5e9",
+    "line-8-sdram_memory_tb-burst1.log": "fcf858a4c1f3c65097096de5ad9712e245f1df385d1eb3b39267e2853761c876",
+    "line-8-uncached.log": "a7f6fa416ac27d6cf0ad037973d2d09a5ea6b6a2d941513b5efe6cc87b8c610f",
+    "line-compile.log": "eeaca5fb946f5729227320a428ceb4c42fe96909cd699e61a4627571165556af",
+    "line-sdram_cpu_tb.log": "640cf76014e0cc3fbdb5bc98d057799590966a42777901266975142a0f92cf29",
+    "line-udp_loader_tb.log": "e89eb3ce8514b803a75babda9cd77d3ab26f7a8a7925318153b7ac7a68af10fe",
+    "line16-quartus-asm.log": "0e72c4806c65a23fb5d2259a240fb8aaec5ec8855de51fe78baafc272612b729",
+    "line16-quartus-fit.log": "baab3445d24744f49761115ae7614a7897ee07215275d4dc4e425a88a2712e8d",
+    "line16-quartus-map.log": "0c94879dc01a1c39f5a99f18c5bd9b4828c8da54db5eece55554d08d8f394af6",
+    "line16-quartus-sta.log": "d56e83752788d776ab3ad2ad537f527b5ec09e0543a9de1708520c5a25b01aeb",
+    "line16.fit.summary.txt": "f0506095fe5d42d1406a6dab42de45cb1fd2d1e6186370ac2c024a1c2d756515",
+    "line16.map.summary.txt": "2c14714a0d6a016a330f0a158ffe46f053d8f4cd6bfeb7f8b0209b89a682a67b",
+    "line16.sta.summary.txt": "df17c1da025ab305d8642cc36f8c3385abc0a9536f1631debf5e9783c4169961",
+    "line32-quartus-asm.log": "42a3d1fe67f33d716f7dd767a59da9985fc91d0c087a0db1388936a7304ff4c9",
+    "line32-quartus-fit.log": "7a2ec27e8284cca837e121974f07d95740e9ce7a5d883fe05ce3e4a12e9f892d",
+    "line32-quartus-map.log": "471277ffa016f1dd11d5694461cd10403a0bc120c005c64f92b35dedb963b909",
+    "line32-quartus-sta.log": "5602a352b26429a3add584b2c598e2c84796c35b475c6c13fdeac144746ceec1",
+    "line32.fit.summary.txt": "be723dcac8de27091e578e1024f2234eef23d9d34beff0d4b47a770468a84c28",
+    "line32.map.summary.txt": "420a1d7b91290ed9ca62690e8df60287a1c5b0fb098842fbea10cef5d790f2d4",
+    "line32.sta.summary.txt": "705f218c5084ae383ffc0ddefec53b65122ddc2f1d45688b7814926c61421770",
+    "line8-quartus-asm.log": "5d1ae23dfc15135e1fafa3f7715c38d3814c9bd227c525522d413ce872c7de4e",
+    "line8-quartus-fit.log": "cb12edaef9acaacce6989ca54a52435d86815b46011826b41daed6e8ddfb7fc0",
+    "line8-quartus-map.log": "1ee5670a470013aa0a1bed9f55f1c13c7a8d25cfaeb72e48058f75051021ceb8",
+    "line8-quartus-sta.log": "680d00e695ce2bd32e67c7dc080bae68ba1e71b4ae6c54e046d02180ba78c87d",
+    "line8.fit.summary.txt": "9b332400dfb606e556bb9229e846bfb5e8b3fe9403e47cd81bc151a69570f709",
+    "line8.map.summary.txt": "68e9ce17d8af834b662486ac3a836191d3e311181ea2a049e25207ddfa36d06e",
+    "line8.sta.summary.txt": "54c366e39c69570f125acba0e011ff9a6557422e90452a859970ed71028c9afa",
+    "player.c.txt": "8a761f6d5ca1a879043fa50ec7f5b65162cad190c6aa9fb77ef6b0f0b41ca91b",
+    "probe.bin": "abd76a715481d3376fcbef7098601a1325b54669b106dad7e91136b25c9e29d2",
+    "probe.json": "382e2747b59e3edfc1e59144aca3aa63826f5bdb419d656678e341a10ee8c37d",
+    "probe.map": "f8d8a0bb065ad95b6e8335bc7ed0733a364243d119f45606e536cd1855b99cff",
+    "run_line_boundary_tests.py": "d3088bcfa2f51f7c2600595dc4f9d6c99f88e71e65f50a20055f97b937ff8f6e",
+    "run_line_cpu_sizes.py": "f3e52288cecbe87f76b53146478976498c2058d560d00131c697acd857823f20",
+    "run_line_tests.py": "acccf3d31bdf1a5ce998d92d7368069e8104d81a1120a372671d4be5c29cbfc8",
+    "sdram_cache.sv.txt": "433f43139bc0a562edc4e722cbc2893b69c3d86c58734ce293eb3bc6b626d92b",
+    "sdram_cache_tb.sv.txt": "5a09125fbdb03d0b959c85cc187782f016dd1698d8644c0cb6efc5ffd608d16f",
+    "sdram_controller.sv.txt": "cb8fd223b7720aaf69b14d0e5dd4ee3e640c2036f2d35e014ca57a52db4a800e",
+    "sdram_cpu_tb.sv.txt": "4363b3cdc0e638d3b48f42a1dd51823f268a412226ab391253c09f2ece264853",
+    "sdram_device_model.sv.txt": "330cf5333f8a45a18990e29b8bdda50b149a5d3a33a38f7d30710f1a15eae0f1",
+    "sdram_memory_tb.sv.txt": "2016f1b94c583158c7f87eb29f16a6435903e6432b3748ec9186b66825d7150e",
+    "soc_memory.sv.txt": "fd7556af7a7d63c06fc628f5f28e5f93b7efe7eca816a714a9400db2cddbd856",
+    "soc_top.sv.txt": "05296a62b14d9d5909e2d78286fad1f6ff38f79e4cae1d3c64adfdeca254d977",
+    "template.qsf": "542c14c2d918eab90f928cffffac2098ab4a194add159c7472a584f70573ca95",
+    "world.c.txt": "57f23d4aa050897c879fe42d2b7210307ff6f35732577a52a5b26c00a3fdd0a7"
+  }
+}

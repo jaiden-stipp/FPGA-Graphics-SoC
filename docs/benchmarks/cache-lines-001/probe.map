@@ -1,0 +1,73 @@
+     VMA      LMA     Size Align Out     In      Symbol
+       0        0      c08     4 .text
+       0        0       34     1         C:\Users\Orb1t\AppData\Local\Temp\start-c81f70.o:(.text.start)
+       0        0        0     1                 .Lpcrel_hi0
+       0        0        0     1                 $x
+       0        0        0     1                 _start
+       8        8        0     1                 .Lpcrel_hi1
+      10       10        0     1                 .Lpcrel_hi2
+      34       34      454     4         C:\Users\Orb1t\AppData\Local\Temp\cache_line_probe-678db7.o:(.text.main)
+      34       34        0     1                 $x
+      34       34      454     1                 main
+     488      488        c     4         C:\Users\Orb1t\AppData\Local\Temp\player-3029d1.o:(.text.player_floor_index)
+     488      488        0     1                 $x
+     488      488        c     1                 player_floor_index
+     494      494       2c     4         C:\Users\Orb1t\AppData\Local\Temp\player-3029d1.o:(.text.player_bind_query)
+     494      494        0     1                 $x
+     494      494       2c     1                 player_bind_query
+     4c0      4c0       50     4         C:\Users\Orb1t\AppData\Local\Temp\player-3029d1.o:(.text.fixed_mul)
+     4c0      4c0        0     1                 $x
+     4c0      4c0       50     1                 fixed_mul
+     510      510      144     4         C:\Users\Orb1t\AppData\Local\Temp\player-3029d1.o:(.text.player_floor)
+     510      510        0     1                 $x
+     510      510      144     1                 player_floor
+     654      654      294     4         C:\Users\Orb1t\AppData\Local\Temp\player-3029d1.o:(.text.floor_contains)
+     654      654      294     1                 floor_contains
+     654      654        0     1                 $x
+     8e8      8e8      234     4         C:\Users\Orb1t\AppData\Local\Temp\player-3029d1.o:(.text.floor_height)
+     8e8      8e8      234     1                 floor_height
+     8e8      8e8        0     1                 $x
+     b1c      b1c       ec     4         C:\Users\Orb1t\AppData\Local\Temp\world-54a25e.o:(.text.world_collision)
+     b1c      b1c        0     1                 $x
+     b1c      b1c       ec     1                 world_collision
+     c08      c08        8     4 .data
+     c08      c08        8     4         C:\Users\Orb1t\AppData\Local\Temp\player-3029d1.o:(.data..L_MergedGlobals)
+     c08      c08        8     1                 .L_MergedGlobals
+     c08      c08        0     1                 $d
+     c08      c08        4     1                 floor_index
+     c0c      c0c        4     1                 query_bound
+     c10      c10       a4     4 .bss
+     c10      c10        0     1         . = ALIGN(4)
+     c10      c10        0     1         _bss_start = .
+     c10      c10       8c     4         C:\Users\Orb1t\AppData\Local\Temp\cache_line_probe-678db7.o:(.bss..L_MergedGlobals)
+     c10      c10       8c     1                 .L_MergedGlobals
+     c10      c10        0     1                 $d
+     c10      c10        4     1                 line_clock
+     c14      c14        4     1                 bh
+     c18      c18        4     1                 bm
+     c1c      c1c        4     1                 bf
+     c20      c20        4     1                 bc
+     c24      c24       78     1                 line_results
+     c9c      c9c       18     4         C:\Users\Orb1t\AppData\Local\Temp\player-3029d1.o:(.bss..L_MergedGlobals.1)
+     c9c      c9c       18     1                 .L_MergedGlobals.1
+     c9c      c9c        0     1                 $d
+     c9c      c9c        4     1                 query_world
+     ca0      ca0        4     1                 query_floors
+     ca4      ca4        4     1                 query_floor_count
+     ca8      ca8        4     1                 query_walls
+     cac      cac        4     1                 query_wall_count
+     cb0      cb0        4     1                 query_normals
+     cb4      cb4        0     1         . = ALIGN(4)
+     cb4      cb4        0     1         _bss_end = .
+     cb4      cb4        0     1 _stack_top = ORIGIN(RAM) + LENGTH(RAM)
+     cb4      cb4        0     1 
+       0        0       1c     1 .riscv.attributes
+       0        0       1c     1         <internal>:(.riscv.attributes)
+       0        0       29     1 .comment
+       0        0       29     1         <internal>:(.comment)
+       0        0      310     4 .symtab
+       0        0      310     4         <internal>:(.symtab)
+       0        0       47     1 .shstrtab
+       0        0       47     1         <internal>:(.shstrtab)
+       0        0      183     1 .strtab
+       0        0      183     1         <internal>:(.strtab)

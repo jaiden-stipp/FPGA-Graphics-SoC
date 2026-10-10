@@ -1,0 +1,229 @@
+{
+  "label": "candidate32",
+  "line_bytes": 32,
+  "scope": "Unscripted standing spawn view; only comparable if player coordinates remain identical. Not traversal FPS. Published frame counters and stage globals may refer to different frames.",
+  "windows": [
+    {
+      "trial": 1,
+      "records": [
+        {
+          "t": 215384.937,
+          "frame": 70
+        },
+        {
+          "t": 215385.187,
+          "frame": 75
+        },
+        {
+          "t": 215385.437,
+          "frame": 80
+        },
+        {
+          "t": 215385.687,
+          "frame": 85
+        },
+        {
+          "t": 215385.937,
+          "frame": 90
+        },
+        {
+          "t": 215386.187,
+          "frame": 95
+        },
+        {
+          "t": 215386.437,
+          "frame": 100
+        },
+        {
+          "t": 215386.687,
+          "frame": 105
+        },
+        {
+          "t": 215386.937,
+          "frame": 111
+        },
+        {
+          "t": 215387.203,
+          "frame": 116
+        },
+        {
+          "t": 215387.453,
+          "frame": 121
+        },
+        {
+          "t": 215387.703,
+          "frame": 126
+        }
+      ],
+      "frames": 56,
+      "elapsed_s": 2.7660000000032596,
+      "observed_fps": 20.245842371631962,
+      "position_u32": [
+        4294965968,
+        260,
+        4664
+      ],
+      "metrics": {
+        "game_cpu_cycles": 1669615,
+        "game_update_cycles": 44434,
+        "game_present_cycles": 832878,
+        "game_frame_cycles": 2502501,
+        "castle_prepare_cycles": 13598,
+        "castle_draw_cycles": 1264283,
+        "castle_pose_upload_cycles": 302525
+      }
+    },
+    {
+      "trial": 2,
+      "records": [
+        {
+          "t": 215390.703,
+          "frame": 57
+        },
+        {
+          "t": 215390.953,
+          "frame": 62
+        },
+        {
+          "t": 215391.203,
+          "frame": 67
+        },
+        {
+          "t": 215391.453,
+          "frame": 72
+        },
+        {
+          "t": 215391.703,
+          "frame": 77
+        },
+        {
+          "t": 215391.953,
+          "frame": 82
+        },
+        {
+          "t": 215392.203,
+          "frame": 87
+        },
+        {
+          "t": 215392.453,
+          "frame": 92
+        },
+        {
+          "t": 215392.703,
+          "frame": 97
+        },
+        {
+          "t": 215392.953,
+          "frame": 102
+        },
+        {
+          "t": 215393.203,
+          "frame": 107
+        },
+        {
+          "t": 215393.453,
+          "frame": 112
+        }
+      ],
+      "frames": 55,
+      "elapsed_s": 2.75,
+      "observed_fps": 20.0,
+      "position_u32": [
+        4294965968,
+        260,
+        4664
+      ],
+      "metrics": {
+        "game_cpu_cycles": 1669508,
+        "game_update_cycles": 44431,
+        "game_present_cycles": 832988,
+        "game_frame_cycles": 2502504,
+        "castle_prepare_cycles": 13595,
+        "castle_draw_cycles": 1264284,
+        "castle_pose_upload_cycles": 302500
+      }
+    },
+    {
+      "trial": 3,
+      "records": [
+        {
+          "t": 215396.468,
+          "frame": 57
+        },
+        {
+          "t": 215396.718,
+          "frame": 62
+        },
+        {
+          "t": 215396.968,
+          "frame": 67
+        },
+        {
+          "t": 215397.218,
+          "frame": 72
+        },
+        {
+          "t": 215397.468,
+          "frame": 77
+        },
+        {
+          "t": 215397.718,
+          "frame": 82
+        },
+        {
+          "t": 215397.968,
+          "frame": 87
+        },
+        {
+          "t": 215398.218,
+          "frame": 92
+        },
+        {
+          "t": 215398.468,
+          "frame": 97
+        },
+        {
+          "t": 215398.718,
+          "frame": 102
+        },
+        {
+          "t": 215398.968,
+          "frame": 107
+        },
+        {
+          "t": 215399.218,
+          "frame": 112
+        }
+      ],
+      "frames": 55,
+      "elapsed_s": 2.75,
+      "observed_fps": 20.0,
+      "position_u32": [
+        4294965968,
+        260,
+        4664
+      ],
+      "metrics": {
+        "game_cpu_cycles": 1669508,
+        "game_update_cycles": 44431,
+        "game_present_cycles": 832988,
+        "game_frame_cycles": 2502504,
+        "castle_prepare_cycles": 13595,
+        "castle_draw_cycles": 1264284,
+        "castle_pose_upload_cycles": 302500
+      }
+    }
+  ],
+  "restored_status": {
+    "initialized": true,
+    "held": false,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 57,
+    "refresh_count": 16692786,
+    "input_abi": 1229848833
+  }
+}

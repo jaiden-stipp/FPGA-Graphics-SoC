@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Fri Oct 09 23:58:28 2026
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+Revision Name : CacheLine8SoC
+Top-level Entity Name : de2_115_soc_top
+Family : Cyclone IV E
+Total logic elements : 25,358
+    Total combinational functions : 19,444
+    Dedicated logic registers : 11,859
+Total registers : 11859
+Total pins : 109
+Total virtual pins : 0
+Total memory bits : 2,665,428
+Embedded Multiplier 9-bit elements : 74
+Total PLLs : 2

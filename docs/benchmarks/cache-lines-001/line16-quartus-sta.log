@@ -1,0 +1,175 @@
+Info: *******************************************************************
+Info: Running Quartus Prime Timing Analyzer
+    Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+    Info: Copyright (C) 2018  Intel Corporation. All rights reserved.
+    Info: Your use of Intel Corporation's design tools, logic functions 
+    Info: and other software and tools, and its AMPP partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Intel Program License 
+    Info: Subscription Agreement, the Intel Quartus Prime License Agreement,
+    Info: the Intel FPGA IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Intel and sold by Intel or its authorized distributors.  Please
+    Info: refer to the applicable agreement for further details.
+    Info: Processing started: Sat Oct 10 00:09:36 2026
+Info: Command: quartus_sta CacheLine16SoC
+Info: qsta_default_script.tcl version: #1
+Info (20032): Parallel compilation is enabled and will use up to 4 processors
+Info (21076): High junction temperature operating condition is not set. Assuming a default value of '85'.
+Info (21076): Low junction temperature operating condition is not set. Assuming a default value of '0'.
+Info (332104): Reading SDC File: 'fpga/soc.sdc'
+Info (332110): Deriving PLL clocks
+    Info (332110): create_generated_clock -source {soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|inclk[0]} -phase 81.00 -duty_cycle 50.00 -name {soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]} {soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]}
+    Info (332110): create_generated_clock -source {soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|inclk[0]} -divide_by 288 -multiply_by 145 -duty_cycle 50.00 -name {soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]} {soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]}
+Info (332151): Clock uncertainty is not calculated until you update the timing netlist.
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
+Info: Found TIMING_ANALYZER_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
+Info: Analyzing Slow 1200mV 85C Model
+Info (332146): Worst-case setup slack is 0.761
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.761               0.000 CLOCK_50 
+    Info (332119):     1.407               0.000 soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0] 
+    Info (332119):     3.597               0.000 SDRAM_CLK 
+    Info (332119):     3.993               0.000 ENET0_TX_CLK 
+    Info (332119):     5.655               0.000 ENET0_RX_CLK 
+    Info (332119):    11.222               0.000 soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0] 
+Info (332146): Worst-case hold slack is 0.275
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.275               0.000 CLOCK_50 
+    Info (332119):     0.336               0.000 ENET0_RX_CLK 
+    Info (332119):     0.384               0.000 ENET0_TX_CLK 
+    Info (332119):     0.409               0.000 soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0] 
+    Info (332119):    10.489               0.000 SDRAM_CLK 
+    Info (332119):    13.420               0.000 soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0] 
+Info (332146): Worst-case recovery slack is 3.249
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     3.249               0.000 CLOCK_50 
+Info (332146): Worst-case removal slack is 7.535
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     7.535               0.000 CLOCK_50 
+Info (332146): Worst-case minimum pulse width slack is 9.526
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     9.526               0.000 CLOCK_50 
+    Info (332119):     9.798               0.000 soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0] 
+    Info (332119):    15.790               0.000 SDRAM_CLK 
+    Info (332119):    19.572               0.000 soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0] 
+    Info (332119):    19.630               0.000 ENET0_RX_CLK 
+    Info (332119):    19.651               0.000 ENET0_TX_CLK 
+Info (332114): Report Metastability: Found 149 synchronizer chains.
+    Info (332114): Typical MTBF of Design is 1e+09 years or 3.15e+16 seconds.
+
+    Info (332114): Number of Synchronizer Chains Found: 149
+    Info (332114): Shortest Synchronizer Chain: 2 Registers
+    Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 0.718
+    Info (332114): Worst Case Available Settling Time: 20.660 ns
+    Info (332114): Typical MTBF values are calculated based on the nominal silicon characteristics, at nominal operating conditions.
+    Info (332114):   - Under typical conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 10.8
+Info: Analyzing Slow 1200mV 0C Model
+Info (334003): Started post-fitting delay annotation
+Info (334004): Delay annotation completed successfully
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
+Info (332146): Worst-case setup slack is 1.474
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     1.474               0.000 CLOCK_50 
+    Info (332119):     1.938               0.000 soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0] 
+    Info (332119):     3.940               0.000 SDRAM_CLK 
+    Info (332119):     6.103               0.000 ENET0_RX_CLK 
+    Info (332119):     6.469               0.000 ENET0_TX_CLK 
+    Info (332119):    13.753               0.000 soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0] 
+Info (332146): Worst-case hold slack is 0.287
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.287               0.000 CLOCK_50 
+    Info (332119):     0.337               0.000 ENET0_TX_CLK 
+    Info (332119):     0.340               0.000 ENET0_RX_CLK 
+    Info (332119):     0.363               0.000 soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0] 
+    Info (332119):    10.213               0.000 SDRAM_CLK 
+    Info (332119):    12.965               0.000 soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0] 
+Info (332146): Worst-case recovery slack is 3.773
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     3.773               0.000 CLOCK_50 
+Info (332146): Worst-case removal slack is 6.848
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     6.848               0.000 CLOCK_50 
+Info (332146): Worst-case minimum pulse width slack is 9.556
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     9.556               0.000 CLOCK_50 
+    Info (332119):     9.808               0.000 soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0] 
+    Info (332119):    15.790               0.000 SDRAM_CLK 
+    Info (332119):    19.574               0.000 soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0] 
+    Info (332119):    19.651               0.000 ENET0_RX_CLK 
+    Info (332119):    19.669               0.000 ENET0_TX_CLK 
+Info (332114): Report Metastability: Found 149 synchronizer chains.
+    Info (332114): Typical MTBF of Design is 1e+09 years or 3.15e+16 seconds.
+
+    Info (332114): Number of Synchronizer Chains Found: 149
+    Info (332114): Shortest Synchronizer Chain: 2 Registers
+    Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 0.718
+    Info (332114): Worst Case Available Settling Time: 21.432 ns
+    Info (332114): Typical MTBF values are calculated based on the nominal silicon characteristics, at nominal operating conditions.
+    Info (332114):   - Under typical conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 10.8
+Info: Analyzing Fast 1200mV 0C Model
+Info (332123): Deriving Clock Uncertainty. Please refer to report_sdc in the Timing Analyzer to see clock uncertainties.
+Info (332146): Worst-case setup slack is 3.593
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     3.593               0.000 soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0] 
+    Info (332119):     5.068               0.000 CLOCK_50 
+    Info (332119):     5.865               0.000 SDRAM_CLK 
+    Info (332119):     8.470               0.000 ENET0_RX_CLK 
+    Info (332119):    16.828               0.000 ENET0_TX_CLK 
+    Info (332119):    24.638               0.000 soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0] 
+Info (332146): Worst-case hold slack is 0.110
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     0.110               0.000 CLOCK_50 
+    Info (332119):     0.134               0.000 ENET0_RX_CLK 
+    Info (332119):     0.173               0.000 ENET0_TX_CLK 
+    Info (332119):     0.188               0.000 soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0] 
+    Info (332119):     9.414               0.000 SDRAM_CLK 
+    Info (332119):    11.270               0.000 soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0] 
+Info (332146): Worst-case recovery slack is 6.881
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     6.881               0.000 CLOCK_50 
+Info (332146): Worst-case removal slack is 3.951
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     3.951               0.000 CLOCK_50 
+Info (332146): Worst-case minimum pulse width slack is 9.194
+    Info (332119):     Slack       End Point TNS Clock 
+    Info (332119): ========= =================== =====================
+    Info (332119):     9.194               0.000 CLOCK_50 
+    Info (332119):     9.798               0.000 soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0] 
+    Info (332119):    16.000               0.000 SDRAM_CLK 
+    Info (332119):    19.377               0.000 ENET0_RX_CLK 
+    Info (332119):    19.384               0.000 ENET0_TX_CLK 
+    Info (332119):    19.614               0.000 soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0] 
+Info (332114): Report Metastability: Found 149 synchronizer chains.
+    Info (332114): Typical MTBF of Design is 1e+09 years or 3.15e+16 seconds.
+
+    Info (332114): Number of Synchronizer Chains Found: 149
+    Info (332114): Shortest Synchronizer Chain: 2 Registers
+    Info (332114): Fraction of Chains for which MTBFs Could Not be Calculated: 0.718
+    Info (332114): Worst Case Available Settling Time: 25.769 ns
+    Info (332114): Typical MTBF values are calculated based on the nominal silicon characteristics, at nominal operating conditions.
+    Info (332114):   - Under typical conditions, an increase of 100ps in available settling time will increase MTBF values by a factor of 10.8
+Info (332101): Design is fully constrained for setup requirements
+Info (332101): Design is fully constrained for hold requirements
+Info: Quartus Prime Timing Analyzer was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 5095 megabytes
+    Info: Processing ended: Sat Oct 10 00:09:54 2026
+    Info: Elapsed time: 00:00:18
+    Info: Total CPU time (on all processors): 00:00:24

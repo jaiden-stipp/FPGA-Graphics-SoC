@@ -1,0 +1,257 @@
+{
+  "label": "candidate8",
+  "line_bytes": 8,
+  "capacity_bytes": 4096,
+  "clock_hz": 50000000,
+  "sof_path": "C:\\Users\\Orb1t\\Documents\\Codex\\FPGA-Game-SoC\\build\\quartus-line8\\CacheLine8SoC.sof",
+  "sof_sha256": "b04568b1098115a0acfb41ce76537d5f98619fff6fdc16730e3da20ca1188bdd",
+  "probe": {
+    "assets_sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6",
+    "probe_sha256": "abd76a715481d3376fcbef7098601a1325b54669b106dad7e91136b25c9e29d2",
+    "area_address": 2148001008,
+    "areas": 5,
+    "queries_per_pass": 320,
+    "vertices_per_pass": 8259,
+    "triangles_per_pass": 8278,
+    "checksums": [
+      3551654802,
+      3551654802,
+      397834848,
+      397834848,
+      3549989069,
+      3549989069
+    ],
+    "symbols": {
+      "_bss_end": 3252,
+      "_bss_start": 3088,
+      "_stack_top": 65536,
+      "_start": 0,
+      "bc": 3104,
+      "bf": 3100,
+      "bh": 3092,
+      "bm": 3096,
+      "fixed_mul": 1216,
+      "floor_contains": 1620,
+      "floor_height": 2280,
+      "floor_index": 3080,
+      "line_clock": 3088,
+      "line_results": 3108,
+      "main": 52,
+      "player_bind_query": 1172,
+      "player_floor": 1296,
+      "player_floor_index": 1160,
+      "query_bound": 3084,
+      "query_floor_count": 3236,
+      "query_floors": 3232,
+      "query_normals": 3248,
+      "query_wall_count": 3244,
+      "query_walls": 3240,
+      "query_world": 3228,
+      "world_collision": 2844
+    },
+    "compile_command": [
+      "C:/Program Files/LLVM/bin/clang.exe",
+      "--target=riscv32-unknown-elf",
+      "-fuse-ld=lld",
+      "-march=rv32i",
+      "-mabi=ilp32",
+      "-msmall-data-limit=0",
+      "-mno-relax",
+      "-O1",
+      "-ffreestanding",
+      "-fno-builtin",
+      "-nostdlib",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-ffunction-sections",
+      "-fdata-sections",
+      "-Ifirmware/include",
+      "-Ifirmware/generated",
+      "-Ibuild/cache-lines",
+      "-Wl,-T,firmware/link.ld",
+      "-Wl,--no-relax",
+      "-Wl,--gc-sections",
+      "-Wl,-Map,build/cache-lines/probe.map",
+      "firmware/start.S",
+      "firmware/tests/cache_line_probe.c",
+      "firmware/src/player.c",
+      "firmware/src/world.c",
+      "-o",
+      "build/cache-lines/probe.elf"
+    ]
+  },
+  "samples": [
+    {
+      "trial": 1,
+      "phases": [
+        {
+          "cycles": 690292,
+          "hits": 13431,
+          "misses": 5145,
+          "fill_words": 10290,
+          "sum": 3551654802,
+          "name": "collision_cold"
+        },
+        {
+          "cycles": 690302,
+          "hits": 13432,
+          "misses": 5144,
+          "fill_words": 10288,
+          "sum": 3551654802,
+          "name": "collision_repeat"
+        },
+        {
+          "cycles": 554482,
+          "hits": 47682,
+          "misses": 10505,
+          "fill_words": 21010,
+          "sum": 397834848,
+          "name": "geometry_cold"
+        },
+        {
+          "cycles": 554476,
+          "hits": 47682,
+          "misses": 10505,
+          "fill_words": 21010,
+          "sum": 397834848,
+          "name": "geometry_repeat"
+        },
+        {
+          "cycles": 1282,
+          "hits": 0,
+          "misses": 64,
+          "fill_words": 128,
+          "sum": 3549989069,
+          "name": "sparse_cold"
+        },
+        {
+          "cycles": 642,
+          "hits": 64,
+          "misses": 0,
+          "fill_words": 0,
+          "sum": 3549989069,
+          "name": "sparse_repeat"
+        }
+      ]
+    },
+    {
+      "trial": 2,
+      "phases": [
+        {
+          "cycles": 690321,
+          "hits": 13431,
+          "misses": 5145,
+          "fill_words": 10290,
+          "sum": 3551654802,
+          "name": "collision_cold"
+        },
+        {
+          "cycles": 690271,
+          "hits": 13432,
+          "misses": 5144,
+          "fill_words": 10288,
+          "sum": 3551654802,
+          "name": "collision_repeat"
+        },
+        {
+          "cycles": 554478,
+          "hits": 47682,
+          "misses": 10505,
+          "fill_words": 21010,
+          "sum": 397834848,
+          "name": "geometry_cold"
+        },
+        {
+          "cycles": 554482,
+          "hits": 47682,
+          "misses": 10505,
+          "fill_words": 21010,
+          "sum": 397834848,
+          "name": "geometry_repeat"
+        },
+        {
+          "cycles": 1282,
+          "hits": 0,
+          "misses": 64,
+          "fill_words": 128,
+          "sum": 3549989069,
+          "name": "sparse_cold"
+        },
+        {
+          "cycles": 642,
+          "hits": 64,
+          "misses": 0,
+          "fill_words": 0,
+          "sum": 3549989069,
+          "name": "sparse_repeat"
+        }
+      ]
+    },
+    {
+      "trial": 3,
+      "phases": [
+        {
+          "cycles": 690294,
+          "hits": 13431,
+          "misses": 5145,
+          "fill_words": 10290,
+          "sum": 3551654802,
+          "name": "collision_cold"
+        },
+        {
+          "cycles": 690302,
+          "hits": 13432,
+          "misses": 5144,
+          "fill_words": 10288,
+          "sum": 3551654802,
+          "name": "collision_repeat"
+        },
+        {
+          "cycles": 554482,
+          "hits": 47682,
+          "misses": 10505,
+          "fill_words": 21010,
+          "sum": 397834848,
+          "name": "geometry_cold"
+        },
+        {
+          "cycles": 554476,
+          "hits": 47682,
+          "misses": 10505,
+          "fill_words": 21010,
+          "sum": 397834848,
+          "name": "geometry_repeat"
+        },
+        {
+          "cycles": 1282,
+          "hits": 0,
+          "misses": 64,
+          "fill_words": 128,
+          "sum": 3549989069,
+          "name": "sparse_cold"
+        },
+        {
+          "cycles": 642,
+          "hits": 64,
+          "misses": 0,
+          "fill_words": 0,
+          "sum": 3549989069,
+          "name": "sparse_repeat"
+        }
+      ]
+    }
+  ],
+  "restored_status": {
+    "initialized": true,
+    "held": false,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 1,
+    "refresh_count": 13867626,
+    "input_abi": 1229848833
+  }
+}

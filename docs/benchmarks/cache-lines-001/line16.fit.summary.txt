@@ -1,0 +1,16 @@
+Fitter Status : Successful - Sat Oct 10 00:09:31 2026
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+Revision Name : CacheLine16SoC
+Top-level Entity Name : de2_115_soc_top
+Family : Cyclone IV E
+Device : EP4CE115F29C7
+Timing Models : Final
+Total logic elements : 21,467 / 114,480 ( 19 % )
+    Total combinational functions : 18,293 / 114,480 ( 16 % )
+    Dedicated logic registers : 11,474 / 114,480 ( 10 % )
+Total registers : 11506
+Total pins : 109 / 529 ( 21 % )
+Total virtual pins : 0
+Total memory bits : 2,661,588 / 3,981,312 ( 67 % )
+Embedded Multiplier 9-bit elements : 74 / 532 ( 14 % )
+Total PLLs : 2 / 4 ( 50 % )

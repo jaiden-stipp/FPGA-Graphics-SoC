@@ -1,0 +1,70 @@
+"""Physical cache-line probe; verify data and always restore a validated game package."""
+import argparse,hashlib,json,re,struct,subprocess,time
+from pathlib import Path
+from load_game import Loader,BEGIN,READ,STATUS,package_segments
+ROOT=Path(__file__).resolve().parents[1]
+PHASES=('collision_cold','collision_repeat','geometry_cold','geometry_repeat','sparse_cold','sparse_repeat')
+def measure(size,sof,label,restore):
+ sof=sof.resolve();restore_segments=package_segments(restore)
+ if label=='baseline32':
+  assert size==32 and hashlib.sha256(sof.read_bytes()).hexdigest()=='983263303982699ded6ecf1a04777f476e6d6e4d5f4c68d676afaee608fec8e1'
+ else:
+  slacks=[float(v) for v in re.findall(r'Slack\s*:\s*([-+\d.]+)',sof.with_suffix('.sta.summary').read_text())]
+  assert slacks and min(slacks)>=0,'Candidate does not pass timing'
+  qsf=(ROOT/'build'/f'CacheLine{size}SoC.qsf.snapshot').read_text()
+  assert f'set_parameter -name CACHE_LINE_BYTES {size}' in qsf
+ out=ROOT/'build/cache-lines';spec=json.loads((out/'probe.json').read_text());probe=(out/'probe.bin').read_bytes();probe=probe.ljust((len(probe)+3)//4*4,b'\0')
+ assert hashlib.sha256(probe).hexdigest()==spec['probe_sha256']
+ assets=next((s for s in restore_segments if s[0]==0x80000000),None)
+ assert assets and hashlib.sha256(assets[1]).hexdigest()==spec['assets_sha256']
+ report={'label':label,'line_bytes':size,'capacity_bytes':4096,'clock_hz':50000000,'sof_path':str(sof),'sof_sha256':hashlib.sha256(sof.read_bytes()).hexdigest(),'probe':spec,'samples':[]}
+ path=out/(label+'.json');path.write_text(json.dumps(report,indent=2)+'\n')
+ pgm='C:/intelFPGA_lite/18.1/quartus/bin64/quartus_pgm.exe'
+ programmed=False;l=Loader()
+ try:
+  programmed=True
+  with (out/(label+'-program.log')).open('w') as f:subprocess.run([pgm,'-c','USB-Blaster [USB-0]','-m','JTAG','-o','p;'+str(sof)+'@1'],stdout=f,stderr=subprocess.STDOUT,check=True)
+  # Use the original complete assets, not reordered or tailored benchmark data.
+  evict=struct.pack('<1024I',*range(1024))
+  l.transfer([(0,probe,'identical cache-line probe'),assets,(0x87ffe000,evict,'cache eviction buffer')])
+  for trial in range(3):
+   if trial:l.transfer([(0,probe,'identical cache-line probe')])
+   deadline=time.monotonic()+90
+   while time.monotonic()<deadline:
+    status=l.operation(STATUS)
+    if status['scratch']==0x11ce600d:break
+    if status['scratch']&0xffff0000==0xdead0000:raise RuntimeError('CPU probe reported an error')
+    time.sleep(.05)
+   else:raise TimeoutError('CPU probe did not complete')
+   l.operation(BEGIN)
+   clock=l.operation(READ,spec['symbols']['line_clock'],count=1)['words'][0];assert clock==50000000
+   values=[]
+   for address in range(spec['symbols']['line_results'],spec['symbols']['line_results']+120,12):values.extend(l.operation(READ,address,count=3)['words'])
+   phases=[]
+   for i,name in enumerate(PHASES):
+    phase=dict(zip(('cycles','hits','misses','fill_words','sum'),values[5*i:5*i+5]));phase['name']=name
+    assert phase['sum']==spec['checksums'][i],(name,phase,spec['checksums'][i])
+    assert phase['fill_words']==phase['misses']*(size//4),phase
+    phases.append(phase)
+   report['samples'].append({'trial':trial+1,'phases':phases});path.write_text(json.dumps(report,indent=2)+'\n');print(json.dumps(report['samples'][-1]),flush=True)
+ except Exception as exc:
+  report['failure']=repr(exc);raise
+ finally:
+  try:
+   if programmed:
+    # Restore original proven hardware on any failure, before releasing game CPU.
+    if 'failure' in report:
+     subprocess.run([pgm,'-c','USB-Blaster [USB-0]','-m','JTAG','-o','p;'+str(ROOT/'build/quartus-burst/BurstSoC.sof')+'@1'],check=True)
+     report['rollback_sof_sha256']=hashlib.sha256((ROOT/'build/quartus-burst/BurstSoC.sof').read_bytes()).hexdigest()
+    print('Restoring complete Mario package',flush=True);l.transfer(restore_segments)
+    deadline=time.monotonic()+30
+    while time.monotonic()<deadline:
+     status=l.operation(STATUS)
+     if status['initialized'] and not status['held'] and 0<status['scratch']<0x10000000:break
+     time.sleep(.05)
+    else:raise RuntimeError('Mario restore did not complete a frame')
+    report['restored_status']=status
+  finally:l.close();path.write_text(json.dumps(report,indent=2)+'\n')
+ return report
+if __name__=='__main__':
+ p=argparse.ArgumentParser(description=__doc__);p.add_argument('--size',type=int,choices=(8,16,32),required=True);p.add_argument('--sof',type=Path,required=True);p.add_argument('--label',required=True);p.add_argument('--restore',type=Path,default=ROOT/'build/mario-castle-sdram-direct.package.json');a=p.parse_args();measure(a.size,a.sof,a.label,a.restore)
