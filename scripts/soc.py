@@ -320,9 +320,23 @@ def firmware(args):
                 path=BUILD/f'{stem}.{label}'; payload=path.read_bytes()
                 segments.append({'file':path.name,'address':address,'bytes':len(payload),'sha256':hashlib.sha256(payload).hexdigest()})
             package={'format':'soc-game-package','version':1,'app':app,'segments':segments}
+            if '-DSOC_INTEGER_MUL' in app_flags:package['required_cpu_features']={'mul':True,'mmio_feature_bit':0}
             if getattr(args,'content',None): package['content']=args.content
             if getattr(args,'target',None): package['target']=args.target
             write(BUILD/f'{stem}.package.json',json.dumps(package,indent=2)+'\n')
+        if '-DSOC_INTEGER_MUL' in app_flags:
+            # Compiler stays RV32I. Validate every M-family opcode in executable text.
+            disassembly=subprocess.check_output([tool('llvm-objdump'),'-d',BUILD/f'{stem}.elf'],text=True)
+            encoded=[]
+            for line in disassembly.splitlines():
+                match=re.match(r'\s*([0-9a-f]+):\s+([0-9a-f]{8})\s',line)
+                if match:
+                    instruction=int(match[2],16)
+                    if instruction&127==0x33 and instruction>>25==1:
+                        if (instruction>>12)&7:raise RuntimeError('Unsupported M instruction emitted at '+match[1])
+                        encoded.append(int(match[1],16))
+            if not encoded:raise RuntimeError('MUL-enabled firmware has no MUL instructions')
+            write(BUILD/f'{stem}.isa.json',json.dumps({'compiler_isa':'rv32i','required_feature':'MUL only','mul_addresses':encoded},indent=2)+'\n')
         data = (BUILD / f"{stem}.bin").read_bytes()
         if len(data) > 65536:
             raise RuntimeError("Firmware exceeds RAM")
