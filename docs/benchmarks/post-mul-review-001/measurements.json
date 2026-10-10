@@ -1,0 +1,374 @@
+{
+  "date": "2026-10-10",
+  "source_revision": "3f5543574c68d23ee9b03a15f6ecc10103551b8d",
+  "clock_hz_configured": 50000000,
+  "cases": {
+    "standing": {
+      "fps_median": 29.86811481758832,
+      "fps_range": [
+        29.77571539044662,
+        30.062063615105128
+      ],
+      "frames": [
+        251,
+        251,
+        251
+      ],
+      "positions": [
+        [
+          -1328,
+          260,
+          4664
+        ],
+        [
+          -1328,
+          260,
+          4664
+        ],
+        [
+          -1328,
+          260,
+          4664
+        ]
+      ],
+      "metrics": {
+        "command_cycles": 294210,
+        "fifo_wait_span_cycles": 0,
+        "bytes": 7011,
+        "commands": 242,
+        "tick_wall_cycles": 18,
+        "update_wall_cycles": 40350,
+        "cpu_wall_cycles": 986223,
+        "present_wall_cycles": 681243,
+        "frame_wall_cycles": 1667597,
+        "frame": 251,
+        "clock_hz": 50000000,
+        "cpu_abi": 1129316609
+      },
+      "gpu": {
+        "triangles_submitted": 444,
+        "triangles_clipped": 6,
+        "triangles_culled": 198,
+        "bounding_box_pixels": 263653,
+        "pixels_inside": 91138,
+        "depth_rejected": 6130,
+        "pixels_written": 85008,
+        "geometry_cycles": 41702,
+        "geometry_stall_cycles": 235959,
+        "raster_cycles": 273637,
+        "clear_cycles": 76800,
+        "total_cycles": 1522587,
+        "swap_wait_cycles": 500665
+      },
+      "phases": {
+        "tick": {
+          "cycles": 53,
+          "retired": 37,
+          "memory_freezes": 0,
+          "dependency_bubbles": 8,
+          "redirects": 4,
+          "status_reads": 0,
+          "full_status_reads": 0
+        },
+        "update": {
+          "cycles": 40352,
+          "retired": 17168,
+          "memory_freezes": 17837,
+          "dependency_bubbles": 1397,
+          "redirects": 1975,
+          "status_reads": 0,
+          "full_status_reads": 0
+        },
+        "render": {
+          "cycles": 945873,
+          "retired": 704519,
+          "memory_freezes": 44775,
+          "dependency_bubbles": 29455,
+          "redirects": 83562,
+          "status_reads": 7011,
+          "full_status_reads": 0
+        },
+        "present": {
+          "cycles": 681374,
+          "retired": 433623,
+          "memory_freezes": 0,
+          "dependency_bubbles": 123871,
+          "redirects": 61940,
+          "status_reads": 61929,
+          "full_status_reads": 0
+        }
+      },
+      "detail": {
+        "chunk_selection": {
+          "cycles": 4443,
+          "calls": 1
+        },
+        "vertex_transform_outcodes": {
+          "cycles": 317180,
+          "calls": 8
+        },
+        "triangle_clipping": {
+          "cycles": 202331,
+          "calls": 785
+        },
+        "animation_step": {
+          "cycles": 109,
+          "calls": 1
+        },
+        "animation_joints": {
+          "cycles": 20179,
+          "calls": 1
+        },
+        "animation_skin": {
+          "cycles": 35549,
+          "calls": 1
+        },
+        "camera": {
+          "cycles": 38031,
+          "calls": 1
+        }
+      },
+      "render_memory_freeze_percent": 4.733722180461859,
+      "render_dependency_bubble_percent": 3.114054423796852,
+      "render_ipc": 0.7448346659646696,
+      "command_percent_of_render": 31.104598608904155,
+      "gpu_pre_swap_cycles": 1021922
+    },
+    "moving": {
+      "fps_median": 29.882398303420086,
+      "fps_range": [
+        29.87663839632999,
+        30.069390902112765
+      ],
+      "frames": [
+        251,
+        251,
+        251
+      ],
+      "positions": [
+        [
+          -1136,
+          260,
+          3968
+        ],
+        [
+          -1088,
+          260,
+          3944
+        ],
+        [
+          -1112,
+          260,
+          3920
+        ]
+      ],
+      "metrics": {
+        "command_cycles": 385602,
+        "fifo_wait_span_cycles": 0,
+        "bytes": 9195,
+        "commands": 326,
+        "tick_wall_cycles": 18,
+        "update_wall_cycles": 41362,
+        "cpu_wall_cycles": 1104641,
+        "present_wall_cycles": 562828,
+        "frame_wall_cycles": 1667600,
+        "frame": 251,
+        "clock_hz": 50000000,
+        "cpu_abi": 1129316609
+      },
+      "gpu": {
+        "triangles_submitted": 528,
+        "triangles_clipped": 11,
+        "triangles_culled": 209,
+        "bounding_box_pixels": 391698,
+        "pixels_inside": 110555,
+        "depth_rejected": 10973,
+        "pixels_written": 98219,
+        "geometry_cycles": 55612,
+        "geometry_stall_cycles": 332311,
+        "raster_cycles": 404746,
+        "clear_cycles": 76800,
+        "total_cycles": 1521850,
+        "swap_wait_cycles": 323290
+      },
+      "phases": {
+        "tick": {
+          "cycles": 53,
+          "retired": 37,
+          "memory_freezes": 0,
+          "dependency_bubbles": 8,
+          "redirects": 4,
+          "status_reads": 0,
+          "full_status_reads": 0
+        },
+        "update": {
+          "cycles": 41364,
+          "retired": 17744,
+          "memory_freezes": 18078,
+          "dependency_bubbles": 1450,
+          "redirects": 2046,
+          "status_reads": 0,
+          "full_status_reads": 0
+        },
+        "render": {
+          "cycles": 1063163,
+          "retired": 794466,
+          "memory_freezes": 44607,
+          "dependency_bubbles": 36490,
+          "redirects": 93800,
+          "status_reads": 9195,
+          "full_status_reads": 0
+        },
+        "present": {
+          "cycles": 562959,
+          "retired": 358268,
+          "memory_freezes": 0,
+          "dependency_bubbles": 102341,
+          "redirects": 51175,
+          "status_reads": 51164,
+          "full_status_reads": 0
+        }
+      },
+      "detail": {
+        "chunk_selection": {
+          "cycles": 4443,
+          "calls": 1
+        },
+        "vertex_transform_outcodes": {
+          "cycles": 317174,
+          "calls": 8
+        },
+        "triangle_clipping": {
+          "cycles": 213796,
+          "calls": 785
+        },
+        "animation_step": {
+          "cycles": 112,
+          "calls": 1
+        },
+        "animation_joints": {
+          "cycles": 19853,
+          "calls": 1
+        },
+        "animation_skin": {
+          "cycles": 35539,
+          "calls": 1
+        },
+        "camera": {
+          "cycles": 38059,
+          "calls": 1
+        }
+      },
+      "render_memory_freeze_percent": 4.195687773182475,
+      "render_dependency_bubble_percent": 3.432211241361861,
+      "render_ipc": 0.7472664116414887,
+      "command_percent_of_render": 36.269320884944264,
+      "gpu_pre_swap_cycles": 1198569
+    }
+  },
+  "evidence": [
+    {
+      "file": "mario-castle-sdram-direct-mul.package.json",
+      "sha256": "71f621879c92971a19ae33e186d94d9c7aae2976666be4a5e3c84524687c334a"
+    },
+    {
+      "file": "mario-castle-sdram-direct-mul.symbols.json",
+      "sha256": "9c776bb7d3240df287a33935d0d0f3282b3821912a3f70b497b082d5e37bce2d"
+    },
+    {
+      "file": "mario-castle-sdram-direct-profile-detail-mul.package.json",
+      "sha256": "80aaa8535bf0ff7195415928b5a564a638f4ae9081881b8aa6637da86477b51f"
+    },
+    {
+      "file": "mario-castle-sdram-direct-profile-detail-mul.symbols.json",
+      "sha256": "8c3b58d89e866908af820dd0e7372e72f0b3a3a44a0f19d28da9ec500ffd9608"
+    },
+    {
+      "file": "moving.json",
+      "sha256": "6623a9936607a4db8f11bbd100ed0972d676ab3c1531e049002d6928e5b11e72"
+    },
+    {
+      "file": "restored-game-status.json",
+      "sha256": "c31c87627c825c0aae323b1e01c0d973e4a60478393ca96748bde1b5c7a44e17"
+    },
+    {
+      "file": "source-game_runtime.c",
+      "sha256": "2ea95274c3a61f84ea56ec1cf90332bbcd86ceee9768ac9d9a14f242aeb5a6f4"
+    },
+    {
+      "file": "source-gfx.c",
+      "sha256": "94081de45bd3c574f360f2fe4989d9016687315d4196e0721f4cf34313415289"
+    },
+    {
+      "file": "source-graphics_pipeline.sv",
+      "sha256": "fcf8b481705caa9d1753d9bd1e001ac4b921ac5821a472152ffa026994b77f95"
+    },
+    {
+      "file": "source-load_game.py",
+      "sha256": "be2ad538a84b1875a5002249cab45c1e74bee6f9205a0cd8c0dd7025394b14d6"
+    },
+    {
+      "file": "source-portable_main.c",
+      "sha256": "31542e52f777187973bb928c95847d2cf646da89b974e7fec1e01ee246579c97"
+    },
+    {
+      "file": "source-profile_cpu.py",
+      "sha256": "e1572e132c4cac585e8405ab89aad48f27b42ffde8755f06515c8deb61f7f174"
+    },
+    {
+      "file": "source-render_performance_counters.sv",
+      "sha256": "c6dad6d56a7d20fb09fb4f5eecbd86b9a282c56f9da76cf89304e4ac20f2825d"
+    },
+    {
+      "file": "source-summarize.py",
+      "sha256": "75f0b5dfec774db242031aea49fbd7d40063182af8e2e0b1e8b094fa3162872a"
+    },
+    {
+      "file": "source-vga_page_swap_controller.sv",
+      "sha256": "43f457ad4ed53565b18b121a301512dea98039d109943c81773aa6b878aab6fa"
+    },
+    {
+      "file": "source-world.c",
+      "sha256": "a621a35af5ec785b3d0aebdf7f54976d9046524e204e133c26fefe3cfb94e687"
+    },
+    {
+      "file": "standing.json",
+      "sha256": "6e12d1419800f3290b44debeb1f2d514884421b88da43179a4bf6aa3db4a129c"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "build\\mario-castle-sdram-direct-profile-detail-mul.package.json",
+      "sha256": "80aaa8535bf0ff7195415928b5a564a638f4ae9081881b8aa6637da86477b51f"
+    },
+    {
+      "path": "build\\mario-castle-sdram-direct-profile-detail-mul.symbols.json",
+      "sha256": "8c3b58d89e866908af820dd0e7372e72f0b3a3a44a0f19d28da9ec500ffd9608"
+    },
+    {
+      "path": "build\\mario-castle-sdram-direct-profile-detail-mul.bin",
+      "sha256": "a62962434badeba1c3d31a7a82a063bc46c0b7f8e84a267ae4e296c7ff491e45"
+    },
+    {
+      "path": "build\\mario-castle-sdram-direct-profile-detail-mul.assets.bin",
+      "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+    },
+    {
+      "path": "build\\mario-castle-sdram-direct-mul.package.json",
+      "sha256": "71f621879c92971a19ae33e186d94d9c7aae2976666be4a5e3c84524687c334a"
+    },
+    {
+      "path": "build\\mario-castle-sdram-direct-mul.symbols.json",
+      "sha256": "9c776bb7d3240df287a33935d0d0f3282b3821912a3f70b497b082d5e37bce2d"
+    },
+    {
+      "path": "build\\mario-castle-sdram-direct-mul.bin",
+      "sha256": "1b7e530117bad460d6c04dd59b510adc461e6ed5ed57da71fd704a6c8fec7203"
+    },
+    {
+      "path": "build\\mario-castle-sdram-direct-mul.assets.bin",
+      "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+    }
+  ],
+  "sof_sha256": "84de9a3059e5a40957438df348da434c05e462955e60528491f2f2ac6713484b"
+}
