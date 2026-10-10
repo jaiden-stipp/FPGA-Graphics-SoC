@@ -1,0 +1,23 @@
+[
+  {
+    "candidate": "build/mario-castle-sdram-direct.bin",
+    "baseline": "build/cpu-profile/baseline/mario-castle-sdram-direct.bin",
+    "bytes": 28936,
+    "sha256": "e366760994e8282a6c45aa00e645b8a8d490d9ca95928b2ef64adec05a2ff442",
+    "identical": true
+  },
+  {
+    "candidate": "build/mario-castle-sdram-direct.assets.bin",
+    "baseline": "build/cpu-profile/baseline/mario-castle-sdram-direct.assets.bin",
+    "bytes": 883124,
+    "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6",
+    "identical": true
+  },
+  {
+    "candidate": "build/mario-castle-sdram-direct-profile-detail.assets.bin",
+    "baseline": "build/cpu-profile/baseline/mario-castle-sdram-direct.assets.bin",
+    "bytes": 883124,
+    "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6",
+    "identical": true
+  }
+]

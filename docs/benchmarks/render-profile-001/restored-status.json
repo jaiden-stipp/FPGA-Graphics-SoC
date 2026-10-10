@@ -1,0 +1,27 @@
+{
+  "first": {
+    "initialized": true,
+    "held": false,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 2500,
+    "refresh_count": 24015345,
+    "input_abi": 1229848833
+  },
+  "second": {
+    "initialized": true,
+    "held": false,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 2505,
+    "refresh_count": 24049441,
+    "input_abi": 1229848833
+  },
+  "frame_advanced": true
+}

@@ -1,0 +1,23 @@
+{
+  "baseline_revision": "3ac198d",
+  "profile_revision": "9ead800",
+  "baseline_sof_sha256": "b9386eb9aad671dff8313ca61a22b6e04874dc22ab1e94f42c2732790576b4ce",
+  "profile_sof_sha256": "6744adf087bea5139d0170b69e4ca4c1461efe275036333c3f446e65b2c15888",
+  "cases": [
+    "control-standing",
+    "detail-standing",
+    "detail-moving"
+  ],
+  "restored_status": {
+    "initialized": true,
+    "held": false,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 1,
+    "refresh_count": 7026292,
+    "input_abi": 1229848833
+  }
+}

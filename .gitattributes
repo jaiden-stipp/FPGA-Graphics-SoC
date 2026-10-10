@@ -6,3 +6,4 @@
 docs/benchmarks/cache-lines-001/** -text
 
 docs/benchmarks/cpu-profile-001/** -text
+docs/benchmarks/render-profile-001/** -text

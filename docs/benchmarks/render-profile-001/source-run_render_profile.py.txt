@@ -1,0 +1,35 @@
+import sys,subprocess,hashlib,json,time
+from pathlib import Path
+sys.path.insert(0,'scripts')
+from profile_cpu import collect
+from load_game import Loader,STATUS,package_segments
+out=Path('build/render-profile');out.mkdir(parents=True,exist_ok=True)
+old=Path('build/quartus-line32/CacheLine32SoC.sof').resolve();new=Path('build/quartus-cpu-profile/CpuProfileSoC.sof').resolve()
+assert hashlib.sha256(old.read_bytes()).hexdigest()=='b9386eb9aad671dff8313ca61a22b6e04874dc22ab1e94f42c2732790576b4ce'
+assert hashlib.sha256(new.read_bytes()).hexdigest()=='6744adf087bea5139d0170b69e4ca4c1461efe275036333c3f446e65b2c15888'
+baseline=Path('build/cpu-profile/baseline/mario-castle-sdram-direct.package.json')
+package_segments(baseline)
+pgm='C:/intelFPGA_lite/18.1/quartus/bin64/quartus_pgm.exe'
+def program(sof,label):
+    with (out/(label+'-program.log')).open('w') as f:subprocess.run([pgm,'-c','USB-Blaster [USB-0]','-m','JTAG','-o','p;'+str(sof)+'@1'],stdout=f,stderr=subprocess.STDOUT,check=True)
+report={'baseline_revision':'3ac198d','profile_revision':'9ead800','baseline_sof_sha256':hashlib.sha256(old.read_bytes()).hexdigest(),'profile_sof_sha256':hashlib.sha256(new.read_bytes()).hexdigest(),'cases':[]}
+try:
+    program(new,'profile')
+    for label,stem,moving in [('control-standing','mario-castle-profile',False),('detail-standing','mario-castle-sdram-direct-profile-detail',False),('detail-moving','mario-castle-sdram-direct-profile-detail',True)]:
+        print('BEGIN',label,flush=True)
+        collect(Path('build/'+stem+'.package.json'),Path('build/'+stem+'.symbols.json'),baseline,out/(label+'.json'),trials=3,moving=moving,reuse_immutable_assets=True)
+        report['cases'].append(label)
+except Exception as exc:report['failure']=repr(exc);raise
+finally:
+    print('Restoring original FPGA and Mario',flush=True)
+    program(old,'restore')
+    loader=Loader()
+    try:
+        loader.transfer(package_segments(baseline));deadline=time.monotonic()+30
+        while time.monotonic()<deadline:
+            status=loader.operation(STATUS)
+            if status['initialized'] and not status['held'] and 0<status['scratch']<0x10000000:break
+            time.sleep(.05)
+        else:raise RuntimeError('Baseline did not resume')
+        report['restored_status']=status
+    finally:loader.close();(out/'experiment.json').write_text(json.dumps(report,indent=2)+'\n')
