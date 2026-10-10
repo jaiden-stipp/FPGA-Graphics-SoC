@@ -102,6 +102,16 @@ def generate():
     cpu = replace_once(cpu, 'PipelineAssertions assertions (', 'soc_PipelineAssertions assertions (\n        .enable(soc_advance),')
     write(ROOT/'rtl/generated/soc_PipelineAssertions.sv', assertions)
     cpu = cpu.replace('    logic pc_src, stall;', '    logic pc_src, stall;\n    soc_cpu_counters performance (\n        .clk(clk), .reset(rst), .memory_freeze(soc_stall),\n        .retired(trace_valid), .dependency(stall), .redirect(pc_src),\n        .statistics(cpu_statistics)\n    );', 1)
+    # Decode the complete M funct7: support MUL only, suppress all other M writes.
+    control = (cpu_path / 'ControlUnit.sv').read_text()
+    control = replace_once(control, 'module ControlUnit(', 'module soc_ControlUnit(')
+    control = replace_once(control, '    input logic funct7b5,', '    input logic [6:0] funct7,')
+    control = control.replace('funct7b5 ?', 'funct7[5] ?')
+    control = replace_once(control, "                imm_sel = 3'b000;\n                case (funct3)", "                imm_sel = 3'b000;\n                if (funct7 == 7'b0000001) begin\n                    reg_write = (funct3 == 3'b000);\n                    ALU_Sel = 4'b1011;\n                end else case (funct3)")
+    write(ROOT/'rtl/generated/soc_ControlUnit.sv',control)
+    cpu = replace_once(cpu, '    ControlUnit CU (', '    soc_ControlUnit CU (')
+    cpu = replace_once(cpu, '.funct7b5(funct7[5]),', '.funct7(funct7),')
+    cpu = replace_once(cpu, '    ALU alu (', '    soc_ALU alu (')
     write(ROOT / "rtl/generated/RV32I_SoC.sv", cpu)
     ram = (cpu_path / "UnifiedMem.sv").read_text()
     ram = replace_once(ram, "module UnifiedMem #(", "module soc_ram #(")
@@ -357,7 +367,7 @@ def sources(full=False):
     files += [ROOT / ('rtl/generated/soc_'+name+'.sv') for name in
               ('PC_IF','IF_ID','ID_EX','EX_MEM','MEM_WB','RegFile','PipelineAssertions')]
     files += [ROOT/'rtl/sdram_capture_clock.sv', ROOT/'rtl/sdram_controller.sv', ROOT/'rtl/sdram_bridge.sv', ROOT/'rtl/sdram_cache.sv', ROOT/'rtl/udp_memory_loader.sv']
-    files += [ROOT / "rtl/soc_cpu_counters.sv", ROOT / "rtl/soc_mmio.sv", ROOT / "rtl/soc_memory.sv"]
+    files += [ROOT / "rtl/soc_alu.sv", ROOT / "rtl/generated/soc_ControlUnit.sv", ROOT / "rtl/soc_cpu_counters.sv", ROOT / "rtl/soc_mmio.sv", ROOT / "rtl/soc_memory.sv"]
     renderer = ROOT / "external/renderer/rtl"
     files += [renderer / "command/graphics_command_stream_decoder.sv"]
     files += sorted((renderer / "network").glob("*.sv"))
@@ -382,7 +392,7 @@ def simulate(args):
     if args.full and simulator != "modelsim":
         raise RuntimeError("Full VGA test requires ModelSim with the altera_mf library")
     tests = ["soc_mmio_tb", "soc_memory_tb", "cpu_stream_tb", "game_stream_tb", "udp_controls_tb", "scene_stream_tb", "mario_stream_tb"]
-    available = tests + ['sdram_cache_tb','sdram_memory_tb','sdram_cpu_tb','udp_loader_tb','udp_extended_input_tb','soc_cpu_counters_tb','cpu_counter_pipeline_tb','cpu_batch_stream_tb']
+    available = tests + ['sdram_cache_tb','sdram_memory_tb','sdram_cpu_tb','udp_loader_tb','udp_extended_input_tb','soc_cpu_counters_tb','cpu_counter_pipeline_tb','cpu_batch_stream_tb','cpu_mul_tb']
     if args.full:
         tests += ["soc_top_tb", "soc_game_top_tb", "soc_scene_top_tb", "soc_mario_top_tb", "soc_mario_bridge_top_tb"]
         available += ['sdram_mario_top_tb','beacon_sdram_top_tb','quake_sdram_top_tb','portable_scene_top_tb','quake_interactive_top_tb','castle_world_top_tb','projection_precision_tb']
@@ -579,15 +589,15 @@ def portable_package(args):
     api=set(api)|{'portable_assets','portable_world','portable_camera','portable_meshes'}
     sources=['gfx.c','gfx_scene.c','player.c','first_person.c','game_runtime.c','sdram.c','portable_assets.c','portable_main.c','cpu_profile.c']
     for source in [ROOT/'firmware/src'/name for name in sources]+args.port_sources:
-        check(source,args.cc,additional_api=api,extra_flags=(['-DSOC_PROFILE'] if getattr(args,'cpu_profile',False) or getattr(args,'profile_detail',False) else []) + (['-DSOC_PROFILE_DETAIL'] if getattr(args,'profile_detail',False) else []) + (['-DGFX_BATCHED'] if getattr(args,'batch_gfx',False) else []))
+        check(source,args.cc,additional_api=api,extra_flags=(['-DSOC_PROFILE'] if getattr(args,'cpu_profile',False) or getattr(args,'profile_detail',False) else []) + (['-DSOC_PROFILE_DETAIL'] if getattr(args,'profile_detail',False) else []) + (['-DGFX_BATCHED'] if getattr(args,'batch_gfx',False) else []) + (['-DSOC_INTEGER_MUL'] if getattr(args,'integer_mul',False) else []))
     direct=getattr(args,'terrain_direct',False)
     if direct and 'world_prepare' not in api:
         raise ValueError('--terrain-direct requires a port using the shared world renderer')
     args.app='portable';args.boot=None;args.use_sdram=True
-    suffix=('-direct' if direct else '')+('-profile' if getattr(args,'cpu_profile',False) or getattr(args,'profile_detail',False) else '')+('-detail' if getattr(args,'profile_detail',False) else '')+('-batched' if getattr(args,'batch_gfx',False) else '')
+    suffix=('-direct' if direct else '')+('-profile' if getattr(args,'cpu_profile',False) or getattr(args,'profile_detail',False) else '')+('-detail' if getattr(args,'profile_detail',False) else '')+('-batched' if getattr(args,'batch_gfx',False) else '')+('-mul' if getattr(args,'integer_mul',False) else '')
     args.image_name=spec['name']+'-sdram'+suffix
     diagnostic_flags=['-DWORLD_FORCE_DIRECT=1'] if direct else []
-    diagnostic_flags += (['-DSOC_PROFILE'] if getattr(args,'cpu_profile',False) or getattr(args,'profile_detail',False) else []) + (['-DSOC_PROFILE_DETAIL'] if getattr(args,'profile_detail',False) else []) + (['-DGFX_BATCHED'] if getattr(args,'batch_gfx',False) else [])
+    diagnostic_flags += (['-DSOC_PROFILE'] if getattr(args,'cpu_profile',False) or getattr(args,'profile_detail',False) else []) + (['-DSOC_PROFILE_DETAIL'] if getattr(args,'profile_detail',False) else []) + (['-DGFX_BATCHED'] if getattr(args,'batch_gfx',False) else []) + (['-DSOC_INTEGER_MUL'] if getattr(args,'integer_mul',False) else [])
     args.extra_flags=diagnostic_flags
     firmware(args)
     from load_game import package_segments
@@ -690,6 +700,7 @@ def main():
     p.add_argument('--cc',default='clang');p.add_argument('--objcopy')
     p.add_argument('--cpu-profile',action='store_true',help='Require CPU counter ABI and publish atomic completed-frame profiles')
     p.add_argument('--profile-detail',action='store_true',help='Optional per-function cycle/call profiles; implies --cpu-profile')
+    p.add_argument('--integer-mul',action='store_true',help='Use MUL-only fixed_mul; requires CPU feature bit 0')
     p.add_argument('--batch-gfx',action='store_true',help='Experimental FIFO-space reservation transport; retain byte stream ABI')
     p.set_defaults(func=portable_package)
     args = parser.parse_args()

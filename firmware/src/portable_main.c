@@ -11,6 +11,9 @@
 volatile uint32_t game_frame, game_cpu_cycles,game_frame_cycles,game_present_cycles;
 volatile uint32_t game_update_cycles,game_gpu_stats[13];
 int main(void) {
+#ifdef SOC_INTEGER_MUL
+    if(!(SOC_CPU_FEATURES&SOC_FEATURE_MUL)) { SOC_SCRATCH=0xdead00c2u; for(;;) {} }
+#endif
 #ifdef SOC_PROFILE
     if(SOC_CPU_ABI!=0x43500101u) { SOC_SCRATCH=0xdead00c1u; for(;;) {} }
 #endif

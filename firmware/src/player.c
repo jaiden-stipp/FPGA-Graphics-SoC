@@ -18,11 +18,18 @@ void player_bind_query(const player_world_t *w,const uint16_t *floors,uint32_t f
 // RV32I has no multiply/divide instruction. Explicit bounded integer routines
 // keep the controller portable without compiler runtime libraries.
 int32_t fixed_mul(int32_t a, int32_t b) {
+#ifdef SOC_INTEGER_MUL
+    // Keep compiler target RV32I: emit exactly MUL, no MULH or DIV operations.
+    int32_t result;
+    __asm__(".insn r 0x33, 0, 1, %0, %1, %2" : "=r"(result) : "r"(a), "r"(b));
+    return result;
+#else
     uint32_t x = a < 0 ? 0u-(uint32_t)a : (uint32_t)a;
     uint32_t y = b < 0 ? 0u-(uint32_t)b : (uint32_t)b;
     uint32_t result = 0;
     while (y) { if (y & 1u) result += x; x <<= 1; y >>= 1; }
     return (a < 0) != (b < 0) ? (int32_t)(0u-result) : (int32_t)result;
+#endif
 }
 static uint32_t divide(uint32_t a, uint32_t b) {
     uint32_t q=0, bit=1;

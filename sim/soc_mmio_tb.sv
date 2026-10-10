@@ -69,6 +69,7 @@ module soc_mmio_tb;
         get('h14, 8); put('h14, 8, 1);
         get('h60, 0); get('h14, 8); put('h14, 8, 1);
         get('h5c, 50000000);
+        get('h9c, 1);
         get('h68,32'h43410101); get('h6c,11); get('h70,12);
         get('h74,13); get('h78,14); get('h7c,15);
         @(negedge clk); buttons = 2'b10;
