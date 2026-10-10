@@ -8,6 +8,7 @@ module soc_memory #(
     parameter CACHE_LINE_BYTES = 32
 )(
     input logic clk, reset,
+    input tri0 [159:0] cpu_statistics,
     input logic [31:0] pc, addr, wdata,
     input logic [2:0] funct3,
     input logic read_en, write_en,
@@ -69,7 +70,7 @@ module soc_memory #(
         .frame_done(frame_done), .frame_done_id(frame_done_id),
         .frame_statistics(frame_statistics), .frame_pending(frame_pending),
         .buttons(buttons), .look_state(look_state),
-        .cache_statistics(cache_statistics),
+        .cache_statistics(cache_statistics), .cpu_statistics(cpu_statistics),
         .error_flags(error_flags), .scratch(scratch)
     );
     assign rdata = ram_selected ? ram_rdata : sdram_selected ? ext_rdata : mmio_rdata;

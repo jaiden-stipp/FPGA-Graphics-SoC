@@ -13,6 +13,7 @@ module soc_mmio_tb;
     logic [7:0] buttons = 0;
     logic [23:0] look_state=0;
     logic [191:0] cache_statistics={32'h43410101,32'd11,32'd12,32'd13,32'd14,32'd15};
+    logic [159:0] cpu_statistics={32'd101,32'd70,32'd20,32'd4,32'd8};
     logic frame_pending;
     logic [3:0] error_flags;
     soc_mmio #(.FIFO_DEPTH(3)) dut (.*);
@@ -43,6 +44,12 @@ module soc_mmio_tb;
         get('h04, 3);
         put(0, 'haa, 1); put(0, 'hbb, 1); put(0, 'hcc, 1);
         get('h08, 0);
+        get('h04, 0); // FIFO full; no readiness bit (no previous errors).
+        put('h98,1,1); get('h80,32'h43500101);
+        get('h84,101); get('h88,70); get('h8c,20); get('h90,4); get('h94,8);
+        get('ha0,2); get('ha4,1);
+        cpu_statistics=0; get('h84,101); // Snapshot holds through live changes.
+
         // Hold downstream stalled: head must remain unchanged.
         repeat (4) begin
             @(negedge clk);

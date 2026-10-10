@@ -13,7 +13,7 @@ import shutil
 import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
-API = {"gfx_palette", "gfx_identity_view", "gfx_view_matrix", "gfx_projection",
+API = {"gfx_profile_bytes", "gfx_profile_commands", "gfx_profile_command_cycles", "gfx_profile_fifo_cycles", "cpu_profile_begin", "cpu_profile_mark", "cpu_profile_publish", "gfx_palette", "gfx_identity_view", "gfx_view_matrix", "gfx_projection",
        "gfx_begin_frame", "gfx_end_frame", "gfx_define_mesh", "gfx_vertex",
        "gfx_index", "gfx_draw_mesh", "gfx_draw_matrix", "gfx_command", "gfx_wait_frame",
        "fixed_mul", "player_reset", "player_step", "player_floor", "camera_reset", "camera_step",
@@ -32,7 +32,7 @@ def children(node):
         yield from children(child)
 
 
-def check(source, cc="clang", additional_api=()):
+def check(source, cc="clang", additional_api=(), extra_flags=()):
     compiler = shutil.which(cc)
     nm = shutil.which("llvm-nm")
     if compiler is None or nm is None or "clang" not in Path(compiler).name:
@@ -43,6 +43,7 @@ def check(source, cc="clang", additional_api=()):
              "-msmall-data-limit=0", "-mno-relax", "-ffreestanding", "-fno-builtin",
              "-O1", "-Wall", "-Wextra", "-Werror", "-I" + str(ROOT / "firmware/include"),
              "-I" + str(ROOT / "firmware/generated")]
+    flags += list(extra_flags)
     result = subprocess.run([compiler, *flags, "-Xclang", "-ast-dump=json", "-fsyntax-only", str(source)],
                             capture_output=True, text=True)
     if result.returncode:

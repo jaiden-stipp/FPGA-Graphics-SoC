@@ -23,3 +23,6 @@ incremental_db/
 
 /CacheLine*SoC.qpf
 /CacheLine*SoC.qsf
+
+/CpuProfileSoC.qpf
+/CpuProfileSoC.qsf

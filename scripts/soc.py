@@ -65,7 +65,8 @@ def generate():
     input tri0 soc_stall,
     output logic [31:0] soc_pc, soc_addr, soc_wdata,
     output logic [2:0] soc_funct3,
-    output logic soc_read_en, soc_write_en
+    output logic soc_read_en, soc_write_en,
+    output wire [159:0] cpu_statistics
 """)
     start = cpu.index("    UnifiedMem UM (")
     end = cpu.index("    // MEM/WB register", start)
@@ -100,6 +101,7 @@ def generate():
     assertions = assertions[:end_at]+'        end\n'+assertions[end_at:]
     cpu = replace_once(cpu, 'PipelineAssertions assertions (', 'soc_PipelineAssertions assertions (\n        .enable(soc_advance),')
     write(ROOT/'rtl/generated/soc_PipelineAssertions.sv', assertions)
+    cpu = cpu.replace('    logic pc_src, stall;', '    logic pc_src, stall;\n    soc_cpu_counters performance (\n        .clk(clk), .reset(rst), .memory_freeze(soc_stall),\n        .retired(trace_valid), .dependency(stall), .redirect(pc_src),\n        .statistics(cpu_statistics)\n    );', 1)
     write(ROOT / "rtl/generated/RV32I_SoC.sv", cpu)
     ram = (cpu_path / "UnifiedMem.sv").read_text()
     ram = replace_once(ram, "module UnifiedMem #(", "module soc_ram #(")
@@ -280,7 +282,7 @@ def firmware(args):
                             'firmware/src/game_runtime.c','firmware/src/first_person.c','firmware/src/quake_scene.c']
         elif app == 'portable':
             app_sources += ['firmware/src/gfx_scene.c','firmware/src/player.c','firmware/src/first_person.c',
-                            'firmware/src/game_runtime.c','firmware/src/portable_assets.c','firmware/src/portable_main.c']
+                            'firmware/src/game_runtime.c','firmware/src/portable_assets.c','firmware/src/portable_main.c','firmware/src/cpu_profile.c']
             app_sources += [str(p) for p in args.port_sources]
         elif app.startswith("scene"):
             app_sources += ["firmware/src/gfx_scene.c", "firmware/src/scene.c"]
@@ -355,7 +357,7 @@ def sources(full=False):
     files += [ROOT / ('rtl/generated/soc_'+name+'.sv') for name in
               ('PC_IF','IF_ID','ID_EX','EX_MEM','MEM_WB','RegFile','PipelineAssertions')]
     files += [ROOT/'rtl/sdram_capture_clock.sv', ROOT/'rtl/sdram_controller.sv', ROOT/'rtl/sdram_bridge.sv', ROOT/'rtl/sdram_cache.sv', ROOT/'rtl/udp_memory_loader.sv']
-    files += [ROOT / "rtl/soc_mmio.sv", ROOT / "rtl/soc_memory.sv"]
+    files += [ROOT / "rtl/soc_cpu_counters.sv", ROOT / "rtl/soc_mmio.sv", ROOT / "rtl/soc_memory.sv"]
     renderer = ROOT / "external/renderer/rtl"
     files += [renderer / "command/graphics_command_stream_decoder.sv"]
     files += sorted((renderer / "network").glob("*.sv"))
@@ -380,7 +382,7 @@ def simulate(args):
     if args.full and simulator != "modelsim":
         raise RuntimeError("Full VGA test requires ModelSim with the altera_mf library")
     tests = ["soc_mmio_tb", "soc_memory_tb", "cpu_stream_tb", "game_stream_tb", "udp_controls_tb", "scene_stream_tb", "mario_stream_tb"]
-    available = tests + ['sdram_cache_tb','sdram_memory_tb','sdram_cpu_tb','udp_loader_tb','udp_extended_input_tb']
+    available = tests + ['sdram_cache_tb','sdram_memory_tb','sdram_cpu_tb','udp_loader_tb','udp_extended_input_tb','soc_cpu_counters_tb','cpu_counter_pipeline_tb','cpu_batch_stream_tb']
     if args.full:
         tests += ["soc_top_tb", "soc_game_top_tb", "soc_scene_top_tb", "soc_mario_top_tb", "soc_mario_bridge_top_tb"]
         available += ['sdram_mario_top_tb','beacon_sdram_top_tb','quake_sdram_top_tb','portable_scene_top_tb','quake_interactive_top_tb','castle_world_top_tb','projection_precision_tb']
@@ -575,25 +577,27 @@ def portable_package(args):
     except (KeyError,TypeError) as exc:
         raise ValueError('Invalid portable project/scene: '+str(exc)) from exc
     api=set(api)|{'portable_assets','portable_world','portable_camera','portable_meshes'}
-    sources=['gfx.c','gfx_scene.c','player.c','first_person.c','game_runtime.c','sdram.c','portable_assets.c','portable_main.c']
+    sources=['gfx.c','gfx_scene.c','player.c','first_person.c','game_runtime.c','sdram.c','portable_assets.c','portable_main.c','cpu_profile.c']
     for source in [ROOT/'firmware/src'/name for name in sources]+args.port_sources:
-        check(source,args.cc,additional_api=api)
+        check(source,args.cc,additional_api=api,extra_flags=(['-DSOC_PROFILE'] if getattr(args,'cpu_profile',False) else []) + (['-DGFX_BATCHED'] if getattr(args,'batch_gfx',False) else []))
     direct=getattr(args,'terrain_direct',False)
     if direct and 'world_prepare' not in api:
         raise ValueError('--terrain-direct requires a port using the shared world renderer')
     args.app='portable';args.boot=None;args.use_sdram=True
-    args.image_name=spec['name']+'-sdram'+('-direct' if direct else '')
+    suffix=('-direct' if direct else '')+('-profile' if getattr(args,'cpu_profile',False) else '')+('-batched' if getattr(args,'batch_gfx',False) else '')
+    args.image_name=spec['name']+'-sdram'+suffix
     diagnostic_flags=['-DWORLD_FORCE_DIRECT=1'] if direct else []
+    diagnostic_flags += (['-DSOC_PROFILE'] if getattr(args,'cpu_profile',False) else []) + (['-DGFX_BATCHED'] if getattr(args,'batch_gfx',False) else [])
     args.extra_flags=diagnostic_flags
     firmware(args)
     from load_game import package_segments
     package_segments(BUILD/(args.image_name+'.package.json'))
-    args.image_name=spec['name']+'-sdram'+('-direct' if direct else '')+'-test'
+    args.image_name=spec['name']+'-sdram'+suffix+'-test'
     args.extra_flags=diagnostic_flags+['-DSDRAM_RETENTION_CYCLES=1000u']
     firmware(args)
     package_segments(BUILD/(args.image_name+'.package.json'))
     if direct:
-        for stem in (spec['name']+'-sdram-direct',spec['name']+'-sdram-direct-test'):
+        for stem in (spec['name']+'-sdram'+suffix,spec['name']+'-sdram'+suffix+'-test'):
             path=BUILD/(stem+'.package.json')
             package=json.loads(path.read_text())
             package['diagnostic']={'terrain_submission':'CPU-clipped direct triangles; GPU resident terrain cache bypassed',
@@ -684,6 +688,8 @@ def main():
     p.add_argument('--project',type=Path,required=True)
     p.add_argument('--terrain-direct',action='store_true',help='Diagnostic: draw shared-world terrain without resident GPU mesh handles; preserve normal packages')
     p.add_argument('--cc',default='clang');p.add_argument('--objcopy')
+    p.add_argument('--cpu-profile',action='store_true',help='Require CPU counter ABI and publish atomic completed-frame profiles')
+    p.add_argument('--batch-gfx',action='store_true',help='Experimental FIFO-space reservation transport; retain byte stream ABI')
     p.set_defaults(func=portable_package)
     args = parser.parse_args()
     try:
