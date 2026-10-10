@@ -99,7 +99,12 @@ module sdram_controller #(
                     if (write_access) begin
                         dq_out <= data; dq_drive <= 1; DRAM_DQM <= ~byte_enable;
                         timer <= 3; state <= RECOVER;
-                    end else begin timer <= 4; state <= READ_WAIT; end
+                    end else begin
+                        // Numbered-word board probe showed the BL1 forwarding
+                        // delay consumes beat 1 under BL8. Forward the first
+                        // phase-shifted input sample one core clock earlier.
+                        timer <= ENABLE_BURST ? 3 : 4; state <= READ_WAIT;
+                    end
                 end
                 READ_WAIT: if (timer != 0) timer <= timer-1'b1; else begin
                     response_data <= dq_sample;

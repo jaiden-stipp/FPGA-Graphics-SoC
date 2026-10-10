@@ -68,7 +68,12 @@ module sdram_device_model (
                 if (DRAM_WE_N) begin
                     if(read_delay || burst_left) $fatal(1,"Read burst interrupted");
                     read_commands=read_commands+1;
-                    pending_data=memory.exists(key) ? memory[key] : 0; read_delay=3;
+                    pending_data=memory.exists(key) ? memory[key] : 0;
+                    // Preserve the legacy BL1 fixture. BL8 first-beat alignment
+                    // is calibrated to the numbered-word physical-board probe;
+                    // the original sparse model returned it one clock too late.
+                    // This model is not independent vendor timing validation.
+                    read_delay=burst_length==8 ? 2 : 3;
                     read_base=key & ~(burst_length-1); read_column=key & (burst_length-1);
                     available[DRAM_BA]=cycle+6+burst_length-1;
                 end else begin
