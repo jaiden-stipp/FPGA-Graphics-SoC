@@ -1,6 +1,7 @@
 // Castle traversal foundation. Original actor/terrain/collision data; scoped
 // walking controller. Original SM64 slide actions and mission are not yet ported.
 #include "soc.h"
+#include "cpu_profile.h"
 #include "gfx.h"
 #include "game_port.h"
 #include "game_services.h"
@@ -26,11 +27,13 @@ volatile uint32_t castle_area,castle_mission_state;
 volatile uint32_t castle_exit_event;
 volatile uint32_t castle_pose_upload_cycles,castle_prepare_cycles,castle_draw_cycles;
 static void camera_update(void) {
+    DETAIL_START(camera_start);
     player_t origin={0};
     game_view_update(&view,&origin,0,castle_rotations);
     camera_world_t cw={world_areas[current_area].camera_surfaces,world_areas[current_area].camera_count};
     const camera_orbit_config_t *cfg=current_area>=1 && current_area<=3?&indoor_camera:&outdoor_camera;
     camera_orbit_step(&camera,&player,cfg,&cw,view.view,4);
+    DETAIL_END(PROFILE_CAMERA,camera_start);
 }
 static void enter_area(uint32_t area,const int16_t arrival[3],uint8_t yaw) {
     current_area=area;world_select(world_areas+area,&player);
@@ -82,7 +85,9 @@ void game_port_update(uint32_t word) {
         }
     }
     previous_buttons=input.buttons;
+    DETAIL_START(animation_start);
     animation_step(&animation,&player,&game_animation_package);
+    DETAIL_END(PROFILE_ANIMATION_STEP,animation_start);
     camera_update();
     game_player.x=player.x;game_player.y=player.y;game_player.z=player.z;
     game_player.grounded=player.grounded;game_player.velocity_y=player.velocity_y;

@@ -7,6 +7,7 @@ FIELDS=('cycles','retired','memory_freezes','dependency_bubbles','redirects','st
 PHASES=('tick','update','render','present')
 EXTRA=('command_cycles','fifo_wait_span_cycles','bytes','commands','tick_wall_cycles','update_wall_cycles','cpu_wall_cycles','present_wall_cycles','frame_wall_cycles','frame','clock_hz','cpu_abi')
 GPU=('triangles_submitted','triangles_clipped','triangles_culled','bounding_box_pixels','pixels_inside','depth_rejected','pixels_written','geometry_cycles','geometry_stall_cycles','raster_cycles','clear_cycles','total_cycles','swap_wait_cycles')
+DETAIL=('chunk_selection','vertex_transform_outcodes','triangle_clipping','animation_step','animation_joints','animation_skin','camera')
 def window(loader,duration,moving,events,collect_samples=False):
     # The board uses the latest received UDP source port for replies. A single
     # socket avoids a concurrent controls sender redirecting loader responses.
@@ -38,6 +39,7 @@ def collect(package,symbols,restore,output,ip='192.168.7.2',port=4000,trials=3,m
     for name in needed:
         if name not in syms or syms[name]%4 or not 0<=syms[name]<65536:raise ValueError('Bad/missing symbol: '+name)
     if instrumented and syms['game_profile_slots']+2*53*4>65536:raise ValueError('Snapshot outside RAM')
+    if instrumented and 'game_detail_slots' in syms and (syms['game_detail_slots']%4 or not 0<=syms['game_detail_slots']<=65536-2*16*4):raise ValueError('Detail snapshot outside RAM')
     report={'package':str(package.resolve()),'segments':json.loads(package.read_text())['segments'],
             'scope':'Wall-clock controlled movement diagnostic; not a cycle-identical route' if moving else 'Standing spawn view',
             'instrumented':instrumented,'reuse_immutable_assets':reuse_immutable_assets,'trials':[],'restore':str(restore.resolve())}
@@ -69,6 +71,11 @@ def collect(package,symbols,restore,output,ip='192.168.7.2',port=4000,trials=3,m
                 entry['phases']={name:dict(zip(FIELDS,values[7*i:7*i+7])) for i,name in enumerate(PHASES)}
                 entry['metrics']=dict(zip(EXTRA,values[28:40]));entry['gpu']=dict(zip(GPU,values[40:53]))
                 if values[39]!=0x43500101 or values[38]!=50000000 or not values[37]:raise RuntimeError('Wrong profile ABI/clock/empty snapshot')
+                if 'game_detail_slots' in syms:
+                    detail=read_words(loader,syms['game_detail_slots']+slot*16*4,16)
+                    if detail[14]!=values[37] or detail[15]!=0x44540101:raise RuntimeError('Mismatched detail frame/ABI')
+                    entry['detail_raw_words']=detail
+                    entry['detail']={name:{'cycles':detail[2*i],'calls':detail[2*i+1]} for i,name in enumerate(DETAIL)}
                 for phase in entry['phases'].values():
                     if phase['memory_freezes']+phase['dependency_bubbles']>phase['cycles'] or phase['retired']>phase['cycles']-phase['memory_freezes']:raise RuntimeError('Inconsistent CPU counters')
             else:entry['metrics']={name:read_words(loader,syms[name],1)[0] for name in needed if name!='game_player'}

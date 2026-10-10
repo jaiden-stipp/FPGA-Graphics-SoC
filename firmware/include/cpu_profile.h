@@ -1,6 +1,24 @@
 #ifndef CPU_PROFILE_H
 #define CPU_PROFILE_H
 #include "soc.h"
+#ifdef SOC_PROFILE_DETAIL
+#ifndef SOC_PROFILE
+#error SOC_PROFILE_DETAIL requires SOC_PROFILE
+#endif
+// Separate optional ABI, committed with the original completed-frame slot.
+// Each scope stores elapsed cycles and invocation count. Timers are inclusive.
+#define CPU_DETAIL_SCOPES 7u
+#define CPU_DETAIL_WORDS 16u
+enum { PROFILE_VISIBILITY, PROFILE_VERTICES, PROFILE_CLIPPING,
+       PROFILE_ANIMATION_STEP, PROFILE_JOINTS, PROFILE_SKIN, PROFILE_CAMERA };
+extern volatile uint32_t game_detail_slots[2][CPU_DETAIL_WORDS];
+void cpu_detail_end(uint32_t scope,uint32_t start);
+#define DETAIL_START(name) uint32_t name=SOC_CYCLES
+#define DETAIL_END(scope,name) cpu_detail_end(scope,name)
+#else
+#define DETAIL_START(name)
+#define DETAIL_END(scope,name)
+#endif
 #ifdef SOC_PROFILE
 // Fixed ABI: 4 phase records (cycles,retired,freezes,bubbles,redirects,status,full).
 // Then command cycles,FIFO wait span,bytes,commands,tick wall,update wall,

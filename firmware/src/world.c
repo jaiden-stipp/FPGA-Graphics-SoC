@@ -3,6 +3,7 @@
 #include "gfx.h"
 #include "gfx_protocol.h"
 #include "game_services.h"
+#include "cpu_profile.h"
 
 // Diagnostic comparison only: preserve source meshes and physics while
 // bypassing resident GPU handles for terrain. Actors still use mesh draws.
@@ -132,6 +133,7 @@ int world_prepare(const world_area_t *a,const player_t *p,const int16_t v[12],ui
     int32_t fi=player_floor_index();
     if(fi>=0 && a->floor_rooms && a->floor_rooms[fi]>0 && a->floor_rooms[fi]<=32)room=a->floor_rooms[fi];
     world_visible_chunks=0;world_uploaded_chunks=0;
+    DETAIL_START(visibility_start);
     for(uint32_t h=reserved;h<16;++h) {
         int16_t m[12];
         if(cache[h] && (!visible(cache[h],p,v) || !matrix(cache[h],p,v,m)))cache[h]=0;
@@ -150,6 +152,7 @@ int world_prepare(const world_area_t *a,const player_t *p,const int16_t v[12],ui
             cache[free]=c;++world_uploaded_chunks;
         }
     }
+    DETAIL_END(PROFILE_VISIBILITY,visibility_start);
     return 0;
 }
 static uint32_t fraction(uint32_t n,uint32_t d) {
@@ -168,6 +171,7 @@ static clip_point_t intersection(clip_point_t a,clip_point_t b,int32_t da,int32_
     return q;
 }
 static int direct(const scene_triangle_t *t) {
+    DETAIL_START(clip_start);
     clip_point_t polygon[12],out[12];uint32_t count=3;uint8_t indices[3]={t->a,t->b,t->c};
     for(uint32_t i=0;i<3;++i) {
         polygon[i]=direct_points[indices[i]];
@@ -177,7 +181,7 @@ static int direct(const scene_triangle_t *t) {
         uint32_t outside=direct_outcodes[indices[i]];
         outside_all&=outside;outside_any|=outside;
     }
-    if(outside_all)return 0;
+    if(outside_all) { DETAIL_END(PROFILE_CLIPPING,clip_start); return 0; }
     for(uint32_t k=0;k<6 && count;++k) {
         if(!(outside_any&(1u<<k)))continue;
         uint32_t n=0;
@@ -192,6 +196,7 @@ static int direct(const scene_triangle_t *t) {
         }
         count=n;for(uint32_t i=0;i<n;++i)polygon[i]=out[i];
     }
+    DETAIL_END(PROFILE_CLIPPING,clip_start);
     for(uint32_t i=1;i+1<count;++i) {
         clip_point_t tri[3]={polygon[0],polygon[i],polygon[i+1]};uint8_t data[19];
         for(uint32_t j=0;j<3;++j) {
@@ -215,6 +220,7 @@ int world_draw(const world_area_t *a,const player_t *p,const int16_t v[12],uint3
         if(!WORLD_FORCE_DIRECT && handle<16 && matrix(c,p,v,m)) { if(gfx_draw_matrix((uint8_t)handle,m))return -1; }
         else {
             if(c->mesh.vertex_count>128)return -1;
+            DETAIL_START(vertex_start);
             for(uint32_t j=0;j<c->mesh.vertex_count;++j) {
                 const scene_vertex_t *s=c->mesh.vertices+j;
                 direct_points[j]=transform(s->x+c->origin[0],s->y+c->origin[1],s->z+c->origin[2],p,v);
@@ -222,6 +228,7 @@ int world_draw(const world_area_t *a,const player_t *p,const int16_t v[12],uint3
                 for(uint32_t k=0;k<6;++k)if(plane(direct_points[j],k)<0)code|=(uint8_t)(1u<<k);
                 direct_outcodes[j]=code;
             }
+            DETAIL_END(PROFILE_VERTICES,vertex_start);
             for(uint32_t j=0;j<c->mesh.triangle_count;++j)if(direct(c->mesh.triangles+j))return -1;
         }
     }

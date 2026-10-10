@@ -13,7 +13,7 @@ import shutil
 import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
-API = {"gfx_profile_bytes", "gfx_profile_commands", "gfx_profile_command_cycles", "gfx_profile_fifo_cycles", "cpu_profile_begin", "cpu_profile_mark", "cpu_profile_publish", "gfx_palette", "gfx_identity_view", "gfx_view_matrix", "gfx_projection",
+API = {"cpu_detail_end","gfx_profile_bytes", "gfx_profile_commands", "gfx_profile_command_cycles", "gfx_profile_fifo_cycles", "cpu_profile_begin", "cpu_profile_mark", "cpu_profile_publish", "gfx_palette", "gfx_identity_view", "gfx_view_matrix", "gfx_projection",
        "gfx_begin_frame", "gfx_end_frame", "gfx_define_mesh", "gfx_vertex",
        "gfx_index", "gfx_draw_mesh", "gfx_draw_matrix", "gfx_command", "gfx_wait_frame",
        "fixed_mul", "player_reset", "player_step", "player_floor", "camera_reset", "camera_step",

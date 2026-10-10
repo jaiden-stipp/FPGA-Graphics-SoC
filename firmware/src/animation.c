@@ -1,4 +1,5 @@
 #include "animation.h"
+#include "cpu_profile.h"
 
 // Q14 rotations use the original 4096 angular samples. Translation retains
 // four fractional source-coordinate bits until the final GPU quantization.
@@ -58,6 +59,7 @@ void animation_step(animation_t *s,const player_t *player,const animation_packag
 }
 void animation_pose(const animation_t *s,const animation_package_t *p,
                     animation_matrix_t *matrices,scene_vertex_t *vertices) {
+    DETAIL_START(joints_start);
     for (uint32_t i=0;i<p->joint_count;++i) {
         const animation_joint_t *joint=p->joints+i;
         animation_matrix_t local; rotate(&local,s,p,i);
@@ -78,6 +80,8 @@ void animation_pose(const animation_t *s,const animation_package_t *p,
             }
         }
     }
+    DETAIL_END(PROFILE_JOINTS,joints_start);
+    DETAIL_START(skin_start);
     uint32_t index=0; int32_t sole=32767;
     for (uint32_t mesh=0;mesh<p->mesh_count;++mesh) {
         const scene_mesh_t *m=p->meshes+mesh;
@@ -99,4 +103,5 @@ void animation_pose(const animation_t *s,const animation_package_t *p,
     // floor. It does not deform parts or feed root motion into player physics.
     if (s->grounded && sole!=32767)
         for (uint32_t i=0;i<index;++i) vertices[i].y=(int16_t)(vertices[i].y-sole);
+    DETAIL_END(PROFILE_SKIN,skin_start);
 }

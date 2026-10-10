@@ -3,6 +3,14 @@
 volatile uint32_t game_profile_slots[2][CPU_PROFILE_WORDS];
 volatile uint32_t game_profile_slot;
 static uint32_t previous[7], records[28], gpu_start[4];
+#ifdef SOC_PROFILE_DETAIL
+volatile uint32_t game_detail_slots[2][CPU_DETAIL_WORDS];
+static uint32_t details[CPU_DETAIL_SCOPES*2u];
+void cpu_detail_end(uint32_t scope,uint32_t start) {
+    uint32_t elapsed=SOC_CYCLES-start;
+    details[scope*2u]+=elapsed; ++details[scope*2u+1u];
+}
+#endif
 static void snapshot(uint32_t *v) {
     SOC_CPU_SNAPSHOT=1u;
     v[0]=SOC_CPU_CYCLES; v[1]=SOC_CPU_RETIRED; v[2]=SOC_CPU_FREEZES;
@@ -10,6 +18,9 @@ static void snapshot(uint32_t *v) {
     v[5]=SOC_GPU_STATUS_READS; v[6]=SOC_GPU_FULL_READS;
 }
 void cpu_profile_begin(void) {
+#ifdef SOC_PROFILE_DETAIL
+    for(uint32_t i=0;i<CPU_DETAIL_SCOPES*2u;++i)details[i]=0;
+#endif
     gpu_start[0]=gfx_profile_command_cycles; gpu_start[1]=gfx_profile_fifo_cycles;
     gpu_start[2]=gfx_profile_bytes; gpu_start[3]=gfx_profile_commands;
     snapshot(previous);
@@ -34,6 +45,11 @@ void cpu_profile_publish(uint32_t frame, uint32_t tick, uint32_t update,
     game_profile_slots[slot][38]=SOC_CLOCK_HZ; game_profile_slots[slot][39]=SOC_CPU_ABI;
     for(uint32_t i=0;i<13u;++i)game_profile_slots[slot][40u+i]=GFX_STAT(i);
     // Commit last: interrupted next-frame publication cannot corrupt this slot.
+#ifdef SOC_PROFILE_DETAIL
+    for(uint32_t i=0;i<CPU_DETAIL_SCOPES*2u;++i)game_detail_slots[slot][i]=details[i];
+    game_detail_slots[slot][14]=frame;
+    game_detail_slots[slot][15]=0x44540101u;
+#endif
     game_profile_slot=slot;
 }
 #endif
