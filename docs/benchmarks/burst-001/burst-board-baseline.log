@@ -1,0 +1,22 @@
+Uploading temporary burst-fill benchmark: 648 bytes at 0x00000000
+Verifying temporary burst-fill benchmark: 648 bytes at 0x00000000
+Readback verified; CPU released.
+{"errors": 0, "clock_hz": 50000000, "phases": [{"cycles": 7239, "hits": 0, "misses": 64, "fill_words": 512, "sum": 2365603584, "name": "cold_lines"}, {"cycles": 4098, "hits": 512, "misses": 0, "fill_words": 0, "sum": 1744961280, "name": "warm_words"}, {"cycles": 57330, "hits": 0, "misses": 512, "fill_words": 4096, "sum": 16906240, "name": "conflict_lines"}]}
+Uploading temporary burst-fill benchmark: 648 bytes at 0x00000000
+Verifying temporary burst-fill benchmark: 648 bytes at 0x00000000
+Readback verified; CPU released.
+{"errors": 0, "clock_hz": 50000000, "phases": [{"cycles": 7235, "hits": 0, "misses": 64, "fill_words": 512, "sum": 2365603584, "name": "cold_lines"}, {"cycles": 4098, "hits": 512, "misses": 0, "fill_words": 0, "sum": 1744961280, "name": "warm_words"}, {"cycles": 57335, "hits": 0, "misses": 512, "fill_words": 4096, "sum": 16906240, "name": "conflict_lines"}]}
+Uploading temporary burst-fill benchmark: 648 bytes at 0x00000000
+Verifying temporary burst-fill benchmark: 648 bytes at 0x00000000
+Readback verified; CPU released.
+{"errors": 0, "clock_hz": 50000000, "phases": [{"cycles": 7240, "hits": 0, "misses": 64, "fill_words": 512, "sum": 2365603584, "name": "cold_lines"}, {"cycles": 4098, "hits": 512, "misses": 0, "fill_words": 0, "sum": 1744961280, "name": "warm_words"}, {"cycles": 57335, "hits": 0, "misses": 512, "fill_words": 4096, "sum": 16906240, "name": "conflict_lines"}]}
+Restoring full Mario CPU and SDRAM assets
+Uploading mario-castle-sdram-direct.bin: 28,936 bytes at 0x00000000
+Verifying mario-castle-sdram-direct.bin: 28,936 bytes at 0x00000000
+Uploading mario-castle-sdram-direct.assets.bin: 883,124 bytes at 0x80000000
+  356,100/883,124 bytes
+  714,672/883,124 bytes
+Verifying mario-castle-sdram-direct.assets.bin: 883,124 bytes at 0x80000000
+  361,272/883,124 bytes
+  722,040/883,124 bytes
+Readback verified; CPU released.

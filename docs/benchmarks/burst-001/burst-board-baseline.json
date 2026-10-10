@@ -1,0 +1,110 @@
+{
+  "mode": "baseline",
+  "sof_sha256": "8326b76009f681087f3615256ff45f7f7bb5922dc43dfebca2d77387f499105b",
+  "probe_sha256": "9c0b4e90a69d4e41c0bece401d7a3437a923ab1f3740d84a9b9a6ea7cd53acf4",
+  "method": "Physical CPU cycle counter; same benchmark binary, 64 cold lines, 512 warm words, 512 deliberate conflict misses; not game FPS",
+  "samples": [
+    {
+      "errors": 0,
+      "clock_hz": 50000000,
+      "phases": [
+        {
+          "cycles": 7239,
+          "hits": 0,
+          "misses": 64,
+          "fill_words": 512,
+          "sum": 2365603584,
+          "name": "cold_lines"
+        },
+        {
+          "cycles": 4098,
+          "hits": 512,
+          "misses": 0,
+          "fill_words": 0,
+          "sum": 1744961280,
+          "name": "warm_words"
+        },
+        {
+          "cycles": 57330,
+          "hits": 0,
+          "misses": 512,
+          "fill_words": 4096,
+          "sum": 16906240,
+          "name": "conflict_lines"
+        }
+      ]
+    },
+    {
+      "errors": 0,
+      "clock_hz": 50000000,
+      "phases": [
+        {
+          "cycles": 7235,
+          "hits": 0,
+          "misses": 64,
+          "fill_words": 512,
+          "sum": 2365603584,
+          "name": "cold_lines"
+        },
+        {
+          "cycles": 4098,
+          "hits": 512,
+          "misses": 0,
+          "fill_words": 0,
+          "sum": 1744961280,
+          "name": "warm_words"
+        },
+        {
+          "cycles": 57335,
+          "hits": 0,
+          "misses": 512,
+          "fill_words": 4096,
+          "sum": 16906240,
+          "name": "conflict_lines"
+        }
+      ]
+    },
+    {
+      "errors": 0,
+      "clock_hz": 50000000,
+      "phases": [
+        {
+          "cycles": 7240,
+          "hits": 0,
+          "misses": 64,
+          "fill_words": 512,
+          "sum": 2365603584,
+          "name": "cold_lines"
+        },
+        {
+          "cycles": 4098,
+          "hits": 512,
+          "misses": 0,
+          "fill_words": 0,
+          "sum": 1744961280,
+          "name": "warm_words"
+        },
+        {
+          "cycles": 57335,
+          "hits": 0,
+          "misses": 512,
+          "fill_words": 4096,
+          "sum": 16906240,
+          "name": "conflict_lines"
+        }
+      ]
+    }
+  ],
+  "restored": {
+    "initialized": true,
+    "held": false,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 0,
+    "refresh_count": 7214552,
+    "input_abi": 1229848833
+  }
+}

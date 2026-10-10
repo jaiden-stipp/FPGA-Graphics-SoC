@@ -1,0 +1,74 @@
+Reading C:/intelFPGA/18.1/modelsim_ase/tcl/vsim/pref.tcl
+
+# 10.5b
+
+# vsim -c -L altera_mf -lib build\burst-aligned-cpu sdram_cpu_tb -do "onerror {quit -code 1}; run -all; quit -code 0" 
+# Start time: 23:35:38 on Oct 09,2026
+# Loading sv_std.std
+# Loading build\burst-aligned-cpu.pipeline_pkg
+# Loading build\burst-aligned-cpu.pipeline_pkg_sv_unit
+# Loading build\burst-aligned-cpu.sdram_cpu_tb
+# Loading build\burst-aligned-cpu.RV32I_SoC
+# Loading build\burst-aligned-cpu.soc_PC_IF
+# Loading build\burst-aligned-cpu.soc_IF_ID
+# Loading build\burst-aligned-cpu.ControlUnit
+# Loading build\burst-aligned-cpu.soc_RegFile
+# Loading build\burst-aligned-cpu.ImmGen
+# Loading build\burst-aligned-cpu.HazardUnit
+# Loading build\burst-aligned-cpu.soc_ID_EX
+# Loading build\burst-aligned-cpu.ForwardMux
+# Loading build\burst-aligned-cpu.ALU
+# Loading build\burst-aligned-cpu.BranchUnit
+# Loading build\burst-aligned-cpu.soc_EX_MEM
+# Loading build\burst-aligned-cpu.soc_MEM_WB
+# Loading build\burst-aligned-cpu.ResultMux
+# Loading build\burst-aligned-cpu.soc_PipelineAssertions
+# Loading build\burst-aligned-cpu.ForwardingUnit
+# Loading build\burst-aligned-cpu.Monitor
+# Loading build\burst-aligned-cpu.soc_memory
+# Loading build\burst-aligned-cpu.soc_ram
+# Loading build\burst-aligned-cpu.soc_mmio
+# Loading build\burst-aligned-cpu.sdram_device_model
+# Loading build\burst-aligned-cpu.sdram_bridge
+# Loading build\burst-aligned-cpu.sdram_cache
+# Loading build\burst-aligned-cpu.sdram_controller
+# Loading build\burst-aligned-cpu.sdram_capture_clock
+# ** Warning: (vsim-3017) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_cpu_tb.sv(11): [TFMPC] - Too few port connections. Expected 29, found 15.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_cpu_tb/cpu File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/RV32I_SoC.sv
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_cpu_tb.sv(11): [TFMPC] - Missing connection for port 'trace_pc'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_cpu_tb.sv(11): [TFMPC] - Missing connection for port 'trace_instruction'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_cpu_tb.sv(11): [TFMPC] - Missing connection for port 'trace_reg_write'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_cpu_tb.sv(11): [TFMPC] - Missing connection for port 'trace_rd'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_cpu_tb.sv(11): [TFMPC] - Missing connection for port 'trace_rd_data'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_cpu_tb.sv(11): [TFMPC] - Missing connection for port 'trace_mem_read'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_cpu_tb.sv(11): [TFMPC] - Missing connection for port 'trace_mem_write'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_cpu_tb.sv(11): [TFMPC] - Missing connection for port 'trace_mem_address'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_cpu_tb.sv(11): [TFMPC] - Missing connection for port 'trace_mem_data'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_cpu_tb.sv(11): [TFMPC] - Missing connection for port 'trace_mem_funct3'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_cpu_tb.sv(11): [TFMPC] - Missing connection for port 'trace_branch'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_cpu_tb.sv(11): [TFMPC] - Missing connection for port 'trace_jump'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_cpu_tb.sv(11): [TFMPC] - Missing connection for port 'trace_jalr'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_cpu_tb.sv(11): [TFMPC] - Missing connection for port 'soc_pc'.
+# ** Warning: (vsim-3017) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_cpu_tb.sv(17): [TFMPC] - Too few port connections. Expected 46, found 33.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_cpu_tb/memory File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/soc_memory.sv
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_cpu_tb.sv(17): [TFMPC] - Missing connection for port 'byte_data'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_cpu_tb.sv(17): [TFMPC] - Missing connection for port 'byte_valid'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_cpu_tb.sv(17): [TFMPC] - Missing connection for port 'look_state'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_cpu_tb.sv(17): [TFMPC] - Missing connection for port 'frame_pending'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_cpu_tb.sv(17): [TFMPC] - Missing connection for port 'error_flags'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_cpu_tb.sv(17): [TFMPC] - Missing connection for port 'load_hold'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_cpu_tb.sv(17): [TFMPC] - Missing connection for port 'load_valid'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_cpu_tb.sv(17): [TFMPC] - Missing connection for port 'load_write'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_cpu_tb.sv(17): [TFMPC] - Missing connection for port 'load_addr'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_cpu_tb.sv(17): [TFMPC] - Missing connection for port 'load_wdata'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_cpu_tb.sv(17): [TFMPC] - Missing connection for port 'load_ready'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_cpu_tb.sv(17): [TFMPC] - Missing connection for port 'load_rdata'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_cpu_tb.sv(17): [TFMPC] - Missing connection for port 'refresh_count'.
+# onerror {quit -code 1}
+#  Warning: onerror command for use within macro
+#  run -all
+# PASS sdram_cpu_tb (real RV32I self-test, all pipeline registers held, 2325 wait cycles)
+# ** Note: $finish    : C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_cpu_tb.sv(41)
+#    Time: 100282740 ns  Iteration: 2  Instance: /sdram_cpu_tb
+# End time: 23:41:27 on Oct 09,2026, Elapsed time: 0:05:49
+# Errors: 0, Warnings: 29

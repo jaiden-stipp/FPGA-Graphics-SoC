@@ -1,0 +1,122 @@
+{
+  "mode": "candidate",
+  "sof_sha256": "983263303982699ded6ecf1a04777f476e6d6e4d5f4c68d676afaee608fec8e1",
+  "probe_sha256": "9c0b4e90a69d4e41c0bece401d7a3437a923ab1f3740d84a9b9a6ea7cd53acf4",
+  "method": "Physical CPU cycle counter; same benchmark binary, 64 cold lines, 512 warm words, 512 deliberate conflict misses; not game FPS",
+  "samples": [
+    {
+      "errors": 0,
+      "clock_hz": 50000000,
+      "phases": [
+        {
+          "cycles": 1539,
+          "hits": 0,
+          "misses": 64,
+          "fill_words": 512,
+          "sum": 2365603584,
+          "name": "cold_lines"
+        },
+        {
+          "cycles": 4098,
+          "hits": 512,
+          "misses": 0,
+          "fill_words": 0,
+          "sum": 1744961280,
+          "name": "warm_words"
+        },
+        {
+          "cycles": 11794,
+          "hits": 0,
+          "misses": 512,
+          "fill_words": 4096,
+          "sum": 16906240,
+          "name": "conflict_lines"
+        }
+      ]
+    },
+    {
+      "errors": 0,
+      "clock_hz": 50000000,
+      "phases": [
+        {
+          "cycles": 1539,
+          "hits": 0,
+          "misses": 64,
+          "fill_words": 512,
+          "sum": 2365603584,
+          "name": "cold_lines"
+        },
+        {
+          "cycles": 4098,
+          "hits": 512,
+          "misses": 0,
+          "fill_words": 0,
+          "sum": 1744961280,
+          "name": "warm_words"
+        },
+        {
+          "cycles": 11794,
+          "hits": 0,
+          "misses": 512,
+          "fill_words": 4096,
+          "sum": 16906240,
+          "name": "conflict_lines"
+        }
+      ]
+    },
+    {
+      "errors": 0,
+      "clock_hz": 50000000,
+      "phases": [
+        {
+          "cycles": 1539,
+          "hits": 0,
+          "misses": 64,
+          "fill_words": 512,
+          "sum": 2365603584,
+          "name": "cold_lines"
+        },
+        {
+          "cycles": 4098,
+          "hits": 512,
+          "misses": 0,
+          "fill_words": 0,
+          "sum": 1744961280,
+          "name": "warm_words"
+        },
+        {
+          "cycles": 11799,
+          "hits": 0,
+          "misses": 512,
+          "fill_words": 4096,
+          "sum": 16906240,
+          "name": "conflict_lines"
+        }
+      ]
+    }
+  ],
+  "restored": {
+    "initialized": true,
+    "held": false,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 0,
+    "refresh_count": 7234631,
+    "input_abi": 1229848833
+  },
+  "restored_first_frame": {
+    "initialized": true,
+    "held": false,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 1,
+    "refresh_count": 7262303,
+    "input_abi": 1229848833
+  }
+}

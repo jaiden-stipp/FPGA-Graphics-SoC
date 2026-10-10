@@ -1,0 +1,43 @@
+: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_memory_tb.sv(12): [TFMPC] - Missing connection for port 'error_flags'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_memory_tb.sv(12): [TFMPC] - Missing connection for port 'scratch'.
+# onerror {quit -code 1}
+#  Warning: onerror command for use within macro
+#  run -all
+# SDRAM_ACCESS cache_enabled=1 burst_enabled=0 cold_read_cycles=107 repeated_read_cycles=3 cold_read_commands=8 (real controller/device simulation, not physical board)
+# SDRAM_LOADER cache_enabled=1 burst_enabled=0 bypass_read_cycles=16
+# PASS sdram_memory_tb (init, 32-bit map, all address lines, byte masks, signed loads, refresh)
+# ** Note: $finish    : C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_memory_tb.sv(87)
+#    Time: 383631 ns  Iteration: 0  Instance: /sdram_memory_tb
+# End time: 23:36:32 on Oct 09,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 8
+
+: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_memory_tb.sv(12): [TFMPC] - Missing connection for port 'error_flags'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_memory_tb.sv(12): [TFMPC] - Missing connection for port 'scratch'.
+# onerror {quit -code 1}
+#  Warning: onerror command for use within macro
+#  run -all
+# SDRAM_ACCESS cache_enabled=0 burst_enabled=1 cold_read_cycles=13 repeated_read_cycles=13 cold_read_commands=1 (real controller/device simulation, not physical board)
+# SDRAM_LOADER cache_enabled=0 burst_enabled=1 bypass_read_cycles=13
+# PASS sdram_memory_tb (init, 32-bit map, all address lines, byte masks, signed loads, refresh)
+# ** Note: $finish    : C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_memory_tb.sv(87)
+#    Time: 330071 ns  Iteration: 0  Instance: /sdram_memory_tb
+# End time: 23:36:33 on Oct 09,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 8
+
+ra_mf -lib build/burst-aligned sdram_cache_tb -do "onerror {quit -code 1}; run -all; quit -code 0" -gBURST_ENABLED=0 
+# Start time: 23:36:34 on Oct 09,2026
+# Loading sv_std.std
+# Loading build/burst-aligned.pipeline_pkg
+# Loading build/burst-aligned.pipeline_pkg_sv_unit
+# Loading build/burst-aligned.sdram_cache_tb
+# Loading build/burst-aligned.sdram_cache
+# onerror {quit -code 1}
+#  Warning: onerror command for use within macro
+#  run -all
+# CACHE_MODEL cold_request_wait_cycles=41 hit_request_wait_cycles=1 (synthetic backing memory, not board performance)
+# PASS sdram_cache_tb (line fills, hits, conflict replacement, byte stores, no allocation, loader bypass, in-flight invalidation, mixed requests)
+# ** Note: $finish    : C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_cache_tb.sv(107)
+#    Time: 132551 ns  Iteration: 0  Instance: /sdram_cache_tb
+# End time: 23:36:35 on Oct 09,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+

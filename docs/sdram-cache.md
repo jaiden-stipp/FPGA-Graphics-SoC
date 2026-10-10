@@ -15,11 +15,12 @@ The data array uses a synchronous read intended for Cyclone IV M9K inference.
 Valid bits and tags are separate. Synthesis/fitting reports, rather than the
 array declaration alone, determine actual resource consumption.
 
-A miss fetches all eight words using the existing single-word controller. The
-CPU resumes only after the complete line arrives. This deliberately avoids a
-controller burst redesign in the first change, but cold and conflicting reads
-can cost substantially more than uncached reads. No prefetching, early restart,
-write buffer or nonblocking misses are implemented.
+A miss now fetches all eight words with one aligned BL8 SDRAM READ. The CPU
+resumes only after the complete line arrives. `ENABLE_BURST=0` retains the
+original eight independent single-word transactions for comparisons. No
+prefetching, early restart, write buffer or nonblocking misses are implemented.
+The [burst-fill record](burst-cache-fills.md) separates the original baseline
+from the new simulation and physical-board measurements.
 
 `load_hold` bypasses and invalidates the cache. CPU reset also invalidates it.
 An in-flight fill drains without installing a valid entry after invalidation;
@@ -35,6 +36,12 @@ project through `soc.py quartus-project` includes the new cache source.
 Use `soc.py quartus-project --disable-cache` to generate an uncached baseline;
 regenerate without that flag to select the cache again. Generating a project
 does not compile or program it.
+
+`ENABLE_BURST=1` is propagated through the same three modules. Use
+`soc.py quartus-project --disable-burst` to keep the cache with BL1 fills.
+When the cache is disabled, the controller also uses BL1. With burst mode
+enabled, loader bypass reads drain a BL8 read before returning its first word;
+single-word writes retain byte masks and the SDRAM single-write mode.
 
 ## Diagnostics
 
@@ -76,7 +83,7 @@ controller and device model. These are not physical-board benchmarks.
 See the [hardware improvement record](hardware-improvement-record.md) for raw
 evidence, measured limitations, synthesis status and permitted resume claims.
 
-## Build status and separate candidate
+## Original CACHE-001 build status and separate candidate
 
 The first candidate passed Quartus synthesis, fit, reported timing constraints
 and assembly. Its file is `build/quartus-cache/CacheSoC.sof`. The board has not

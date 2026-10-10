@@ -1,0 +1,133 @@
+{
+  "reads": [
+    {
+      "word": 0,
+      "expected": "0xa1230000",
+      "observed": "0xa1230001"
+    },
+    {
+      "word": 1,
+      "expected": "0xa1230001",
+      "observed": "0xa1230002"
+    },
+    {
+      "word": 2,
+      "expected": "0xa1230002",
+      "observed": "0xa1230003"
+    },
+    {
+      "word": 3,
+      "expected": "0xa1230003",
+      "observed": "0xa1230004"
+    },
+    {
+      "word": 4,
+      "expected": "0xa1230004",
+      "observed": "0xa1230005"
+    },
+    {
+      "word": 5,
+      "expected": "0xa1230005",
+      "observed": "0xa1230006"
+    },
+    {
+      "word": 6,
+      "expected": "0xa1230006",
+      "observed": "0xa1230007"
+    },
+    {
+      "word": 7,
+      "expected": "0xa1230007",
+      "observed": "0xa1230000"
+    },
+    {
+      "word": 8,
+      "expected": "0xa1230008",
+      "observed": "0xa1230009"
+    },
+    {
+      "word": 9,
+      "expected": "0xa1230009",
+      "observed": "0xa123000a"
+    },
+    {
+      "word": 10,
+      "expected": "0xa123000a",
+      "observed": "0xa123000b"
+    },
+    {
+      "word": 11,
+      "expected": "0xa123000b",
+      "observed": "0xa123000c"
+    },
+    {
+      "word": 12,
+      "expected": "0xa123000c",
+      "observed": "0xa123000d"
+    },
+    {
+      "word": 13,
+      "expected": "0xa123000d",
+      "observed": "0xa123000e"
+    },
+    {
+      "word": 14,
+      "expected": "0xa123000e",
+      "observed": "0xa123000f"
+    },
+    {
+      "word": 15,
+      "expected": "0xa123000f",
+      "observed": "0xa1230008"
+    },
+    {
+      "word": 16,
+      "expected": "0xa1230010",
+      "observed": "0xa1230011"
+    },
+    {
+      "word": 17,
+      "expected": "0xa1230011",
+      "observed": "0xa1230012"
+    },
+    {
+      "word": 18,
+      "expected": "0xa1230012",
+      "observed": "0xa1230013"
+    },
+    {
+      "word": 19,
+      "expected": "0xa1230013",
+      "observed": "0xa1230014"
+    },
+    {
+      "word": 20,
+      "expected": "0xa1230014",
+      "observed": "0xa1230015"
+    },
+    {
+      "word": 21,
+      "expected": "0xa1230015",
+      "observed": "0xa1230016"
+    },
+    {
+      "word": 22,
+      "expected": "0xa1230016",
+      "observed": "0xa1230017"
+    },
+    {
+      "word": 23,
+      "expected": "0xa1230017",
+      "observed": "0xa1230010"
+    }
+  ]
+}
+Uploading mario-castle-sdram-direct.bin: 28,936 bytes at 0x00000000
+Verifying mario-castle-sdram-direct.bin: 28,936 bytes at 0x00000000
+Uploading mario-castle-sdram-direct.assets.bin: 883,124 bytes at 0x80000000
+  361,800/883,124 bytes
+  730,500/883,124 bytes
+Verifying mario-castle-sdram-direct.assets.bin: 883,124 bytes at 0x80000000
+  365,592/883,124 bytes
+  734,964/883,124 bytes
+Readback verified; CPU released.

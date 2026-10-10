@@ -1,0 +1,7 @@
+{
+  "source_commit": "a90844e63dc0ccba1853a0317cf1c4bacb175c57",
+  "accepted": false,
+  "failure": "CPU probe integrity failure; loader mismatch; all 24 numbered-word reads shifted by one modulo eight",
+  "sof_sha256": "b91b2b2e18335caa6870e4b264b84348277fe86eb7f71c131276e3e754b199f6",
+  "sof_preserved_at": "build\\burst-rejected-stream\\BurstSoC.sof"
+}

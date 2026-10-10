@@ -1,0 +1,37 @@
+Reading C:/intelFPGA/18.1/modelsim_ase/tcl/vsim/pref.tcl
+
+# 10.5b
+
+# vsim -c -L altera_mf -lib build/burst-aligned sdram_memory_tb -do "onerror {quit -code 1}; run -all; quit -code 0" -gBURST_ENABLED=0 
+# Start time: 23:36:32 on Oct 09,2026
+# Loading sv_std.std
+# Loading build/burst-aligned.pipeline_pkg
+# Loading build/burst-aligned.pipeline_pkg_sv_unit
+# Loading build/burst-aligned.sdram_memory_tb
+# Loading build/burst-aligned.soc_memory
+# Loading build/burst-aligned.soc_ram
+# Loading build/burst-aligned.soc_mmio
+# Loading build/burst-aligned.sdram_device_model
+# Loading build/burst-aligned.sdram_bridge
+# Loading build/burst-aligned.sdram_cache
+# Loading build/burst-aligned.sdram_controller
+# Loading build/burst-aligned.sdram_capture_clock
+# ** Warning: (vsim-3017) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_memory_tb.sv(12): [TFMPC] - Too few port connections. Expected 46, found 39.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_memory_tb/dut File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/soc_memory.sv
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_memory_tb.sv(12): [TFMPC] - Missing connection for port 'instruction'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_memory_tb.sv(12): [TFMPC] - Missing connection for port 'byte_data'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_memory_tb.sv(12): [TFMPC] - Missing connection for port 'byte_valid'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_memory_tb.sv(12): [TFMPC] - Missing connection for port 'look_state'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_memory_tb.sv(12): [TFMPC] - Missing connection for port 'frame_pending'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_memory_tb.sv(12): [TFMPC] - Missing connection for port 'error_flags'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_memory_tb.sv(12): [TFMPC] - Missing connection for port 'scratch'.
+# onerror {quit -code 1}
+#  Warning: onerror command for use within macro
+#  run -all
+# SDRAM_ACCESS cache_enabled=1 burst_enabled=0 cold_read_cycles=107 repeated_read_cycles=3 cold_read_commands=8 (real controller/device simulation, not physical board)
+# SDRAM_LOADER cache_enabled=1 burst_enabled=0 bypass_read_cycles=16
+# PASS sdram_memory_tb (init, 32-bit map, all address lines, byte masks, signed loads, refresh)
+# ** Note: $finish    : C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_memory_tb.sv(87)
+#    Time: 383631 ns  Iteration: 0  Instance: /sdram_memory_tb
+# End time: 23:36:32 on Oct 09,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 8

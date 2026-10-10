@@ -1,0 +1,16 @@
+Uploading mario-castle-sdram-direct.bin: 28,936 bytes at 0x00000000
+Verifying mario-castle-sdram-direct.bin: 28,936 bytes at 0x00000000
+Uploading mario-castle-sdram-direct.assets.bin: 883,124 bytes at 0x80000000
+  365,172/883,124 bytes
+  731,184/883,124 bytes
+Verifying mario-castle-sdram-direct.assets.bin: 883,124 bytes at 0x80000000
+  365,184/883,124 bytes
+  729,204/883,124 bytes
+Readback verified; CPU released.
+Traceback (most recent call last):
+  File "C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\diagnose_burst_words.py", line 8, in <module>
+    l.operation(BEGIN,retries=40)
+    ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\scripts\load_game.py", line 93, in operation
+    raise TimeoutError(f'No completed-operation reply from {self.target} (op {op}, address {address:#x})')
+TimeoutError: No completed-operation reply from ('192.168.7.2', 4000) (op 1, address 0x0)

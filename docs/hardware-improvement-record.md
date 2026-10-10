@@ -185,9 +185,17 @@ recorded cache integrity workload, but gameplay correctness and the direct
 terrain comparison remain unresolved. This is diagnostic evidence, not a
 measured cache performance improvement.
 
-No quantified hardware-performance claim is supported yet. After a validated
-comparison, wording should name the change, FPGA platform, tested workload,
-before/after result and method. Example structure, with no invented values:
+[BURST-001](burst-cache-fills.md) now supports a physical memory-microbenchmark
+claim: median cycles for 64 cold-line reads fell from 7,239 to 1,539 (78.74%)
+across three runs per image on the 50 MHz DE2-115. The conflict workload fell
+from 57,335 to 11,794 cycles (79.43%); warm reads stayed at 4,098 cycles.
+Integrity checks passed. The accepted build adds 61 logic elements with unchanged
+RAM/DSP/PLL counts and passes reported timing constraints. The first candidate
+failed physical data integrity and was corrected; its evidence is retained.
+Gameplay rendering/collision acceptance and FPS comparison remain separate.
+
+Claims should name the FPGA platform, tested workload, before/after result and
+method. Example structure, with no invented values:
 
 > Implemented [change] on [platform], reducing [metric] from [measured baseline]
 > to [measured candidate] on [workload], verified using [method].

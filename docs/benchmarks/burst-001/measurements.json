@@ -1,0 +1,171 @@
+{
+  "experiment": "BURST-001",
+  "date": "2026-10-09",
+  "baseline_source_revision": "1f3fbf3d1da6162a36359c1b8dcc7e0a0bb0dd71",
+  "rejected_source_revision": "a90844e63dc0ccba1853a0317cf1c4bacb175c57",
+  "candidate_hardware_source_revision": "9588de07f491c01a302dad729ab9ed24f331f375",
+  "physical_accepted": true,
+  "clock_hz": 50000000,
+  "samples_per_image": 3,
+  "physical_metrics": [
+    {
+      "workload": "cold_lines",
+      "baseline_cycles": [
+        7239,
+        7235,
+        7240
+      ],
+      "candidate_cycles": [
+        1539,
+        1539,
+        1539
+      ],
+      "baseline_median": 7239,
+      "candidate_median": 1539,
+      "calculated_median_cycle_reduction_percent": 78.74015748031496
+    },
+    {
+      "workload": "warm_words",
+      "baseline_cycles": [
+        4098,
+        4098,
+        4098
+      ],
+      "candidate_cycles": [
+        4098,
+        4098,
+        4098
+      ],
+      "baseline_median": 4098,
+      "candidate_median": 4098,
+      "calculated_median_cycle_reduction_percent": 0.0
+    },
+    {
+      "workload": "conflict_lines",
+      "baseline_cycles": [
+        57330,
+        57335,
+        57335
+      ],
+      "candidate_cycles": [
+        11794,
+        11794,
+        11799
+      ],
+      "baseline_median": 57335,
+      "candidate_median": 11794,
+      "calculated_median_cycle_reduction_percent": 79.4296677422168
+    }
+  ],
+  "baseline_sof_sha256": "8326b76009f681087f3615256ff45f7f7bb5922dc43dfebca2d77387f499105b",
+  "candidate_sof_sha256": "983263303982699ded6ecf1a04777f476e6d6e4d5f4c68d676afaee608fec8e1",
+  "firmware_probe_sha256": "9c0b4e90a69d4e41c0bece401d7a3437a923ab1f3740d84a9b9a6ea7cd53acf4",
+  "candidate_logic_elements": 20979,
+  "baseline_logic_elements": 20918,
+  "logic_element_delta": 61,
+  "memory_bits": 2659668,
+  "multiplier_9bit_elements": 74,
+  "plls": 2,
+  "candidate_clock50_setup_slack_ns": 0.749,
+  "candidate_minimum_reported_slack_ns": 0.116,
+  "baseline_clock50_setup_slack_ns": 0.199,
+  "baseline_minimum_reported_slack_ns": 0.104,
+  "simulation": {
+    "cold_read_cycles_baseline": 107,
+    "cold_read_cycles_candidate": 19,
+    "hit_read_cycles_baseline": 3,
+    "hit_read_cycles_candidate": 3,
+    "cold_fill_read_commands_baseline": 8,
+    "cold_fill_read_commands_candidate": 1,
+    "loader_bypass_read_cycles_baseline": 16,
+    "loader_bypass_read_cycles_candidate": 22,
+    "uncached_read_cycles": 13,
+    "cpu_held_cycles_baseline": 5892,
+    "cpu_held_cycles_candidate": 2325,
+    "model_limit": "BL8 return alignment calibrated to physical numbered-word probe; not independent vendor validation"
+  },
+  "game_package": [
+    {
+      "file": "mario-castle-sdram-direct.bin",
+      "address": 0,
+      "bytes": 28936,
+      "sha256": "e366760994e8282a6c45aa00e645b8a8d490d9ca95928b2ef64adec05a2ff442"
+    },
+    {
+      "file": "mario-castle-sdram-direct.assets.bin",
+      "address": 2147483648,
+      "bytes": 883124,
+      "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+    }
+  ],
+  "game_first_completed_frame_observed": true,
+  "gameplay_visual_collision_acceptance": "pending",
+  "game_fps_improvement_measured": false,
+  "evidence_sha256": {
+    "accepted-sdram_cpu_tb.log": "ac19b60e145e3fdb04ea7c33c9200889b9a45ad396d506effffbc7c6cd339ec3",
+    "baseline-ProjectionSoC.fit.summary": "b692e3eb8981f8e278229903d7fa34f7b1b8cbf3d429b9f2d64cdb73796548c4",
+    "baseline-ProjectionSoC.sta.summary": "dc5a541099ea62d37b567b102c8c375bfa7b61566ac70a02a810b55f7c523502",
+    "baseline-sdram_cache_tb.log": "0da3e1283836beb983c2233ceb43720fdc692d985575ae1d11fd058a21564810",
+    "baseline-sdram_cpu_tb.log": "35eb9d343f1f7d2d8bdcd666e142023a468306a95141a605119d57e8abb17b63",
+    "baseline-sdram_memory_tb.log": "53809dca2078a03a106b9626011480a3adee97b614c715cf8b4fb69284bdff5f",
+    "baseline-udp_loader_tb.log": "d1fd0221734232345e9ceb39e1ca7c3e7b84c885767765124bb79d0c94d0a37b",
+    "baseline.qsf.txt": "2c83c988295d32194a8ba6f657444db5d18a5551db17306b2c41a2b52cbb8963",
+    "build_burst_fpga.py": "d13c78b1b2a32eda6ba7fa9f13803dbd2cd96c98d99f508316ee8637ccf5abb6",
+    "burst-aligned-cpu-tests.log": "df5a81183d3c6cf6f9739297bcf096313b10a8b305465790fd7ef40be69a10cc",
+    "burst-aligned-memory.log": "1f71d7aacc0ff60e78d4d6faa379f07b56b2c9020d84799cd7ab170fe09139a3",
+    "burst-aligned-tests.log": "59f1eb5604f4ed14e22a602e1b0ba7e07aeb03d85319e5cf6f1c69bbf99d77af",
+    "burst-baseline.log": "23bdf3de24cdc5242852939df1ca8324061ae21d22ed275a37f865e80686f3a0",
+    "burst-benchmark.bin": "9c0b4e90a69d4e41c0bece401d7a3437a923ab1f3740d84a9b9a6ea7cd53acf4",
+    "burst-board-baseline.json": "f8bfa9b63a5f39c319833adb99458df4771c5c9ab0153e09ff25fa48a0776002",
+    "burst-board-baseline.log": "ddcf73edb4e4d4c72837b1406eeb8b389a422bd51f8c80beb697db2371ca4769",
+    "burst-board-candidate.json": "da1973c29be25bce118ce6ca47c5cf6d578b1204addf06361c26f34ab6c71188",
+    "burst-board-candidate.log": "0e86ff5ae1fb370aef2324a946a2cfdea46f3f54a14a7e1e68aa779a494159ca",
+    "burst-cache-single.log": "4967a45827ef13416d659240d92cce1a6e19f89dbeaa11bb814c8358e0e0e0ee",
+    "burst-compiler-version.txt": "3f0bc9c600e6cddbb8c4cb8f76fc0c9cd3626c33514e7b16cb80b5d2bd3ad5ba",
+    "burst-final-mode-tests.log": "a5e957ddab59c36c12c84525d3ec6efd915f23f3f941ff44d04054258ec3615f",
+    "burst-final-tests.log": "b0b5dae5edec89533dda6c75209e9c6864ef51fad5191f6c9bf5205f3c7a28f9",
+    "burst-loader-fixture-failed.log": "171085c48aef575d6ba4dff2cbb79c27bca820446d7e5da3b1485c08378e9c76",
+    "burst-memory-single.log": "ffc1e9c1dbd81b92888a97def0802eab91882953d9c2c965f86ae317e6b899f5",
+    "burst-memory-uncached.log": "545b4d6e5a0f74579b7de94003a49916e7d2bcd574d82ea5ca7de35d1574af3c",
+    "burst-program-baseline.log": "ce3998a17e6a6f6cb68728c491eb8f934ae4434b680dfd3ce3936a1ef0ef183c",
+    "burst-program-candidate.log": "81f620c55597a6b0136b55f518e8ae71580fb3eb322934f53e9a548f82f5ad1e",
+    "burst-quartus-asm.log": "6b7e5dc498e9cf0b21b4de7fdc03480f6feceac703641e5efab0a887da2506ac",
+    "burst-quartus-fit.log": "b05b9478ccfa6a181b7657ef1d68f3430cdf38bc82eb89d2ee500586e2c190a9",
+    "burst-quartus-map.log": "306e5735cf2b2964e5ed0ea53e21bfae7c39dbfb20651b55c5a5411d92482ca2",
+    "burst-quartus-sta.log": "ba3959cb56780e5983e20810d183ce2305ed79704f896cdca0e4aab8a959c3d4",
+    "burst-word-diagnosis.log": "c08708db7d82d5eb394101d8d2e8d3191292d0e6b903909d1c3280af3e25cde1",
+    "burst_benchmark.c": "75bf5068001a96ce3cc9e76704ebd2415c132ccc79d2c2268e81541dc0072e1a",
+    "BurstSoC.fit.summary": "42a02d394a5fe58f56e418fd1017651f4c038eb2dc7bfb967c555d4efae29f08",
+    "BurstSoC.map.summary": "9ff69aeb84b0c6dbf8f645dee7077577c8eebe144b01b855f2f74f87843eedfd",
+    "BurstSoC.sta.summary": "705f218c5084ae383ffc0ddefec53b65122ddc2f1d45688b7814926c61421770",
+    "candidate.qsf.txt": "542c14c2d918eab90f928cffffac2098ab4a194add159c7472a584f70573ca95",
+    "de2_115_soc_top.sv.txt": "450f056466f42abfdf2c0c2afef41358d239d679151e37f13d9f4673bc8dc69b",
+    "diagnose_burst_words.py": "fb4996dedf52d50df4768ace74c10fc2e4eb33d22200ffb0134eb8eeb9721df9",
+    "measure_burst_board.py": "d8bcfd1ced92343d2527164bf019b7f12214ad822596c50aca529fe96a6be4cf",
+    "rejected-stream/artifact.json": "e5d04525e96e0981e83fb40f9718fe8df0f2840a6727aed319a7c8b520987081",
+    "rejected-stream/burst-board-candidate.log": "2ca69a016420038174bbd84b9ef0ee60e695c0cf06e5ab73f8141b2fa23eb33a",
+    "rejected-stream/burst-program-candidate.log": "e3254b9f7cfe9b0e63447d8f13820365077ecca85b634fe50dd961bb896c3206",
+    "rejected-stream/burst-quartus-asm.log": "0498acb802bf5b4313adf3b6072a3b73c7769f8167d0d69dd36dc62139b38df8",
+    "rejected-stream/burst-quartus-fit.log": "1ce510ef3777105bcc7ef8a006ae2422e46e9c1a4787bdcd8e5e9fd8f63417ba",
+    "rejected-stream/burst-quartus-map.log": "8d7bb2868c5cb29192634768f12b14bdb864f77ef6fc9966c511bbab34e7a50f",
+    "rejected-stream/burst-quartus-sta.log": "a29981a281e840613b7b192724966995d1cc94f456c14d519f4e1480de8bdb74",
+    "rejected-stream/BurstSoC.fit.summary": "2e93869884bda96d201aba3b1c025ea0d345b5e220c6e594d54badf860a3e4c0",
+    "rejected-stream/BurstSoC.sta.summary": "e1049b800878667a6f7e4f301e08d14ce327f5d3d223c9f0df28cffdb521ecf4",
+    "rejected-stream/diagnostic-link-timeout.log": "5141c484b7039d30e7dc6add79f7e456c43dcfc8c7a16ec034c8bbd9ae5bb143",
+    "rejected-stream/physical-failure-and-rollback.log": "2ca69a016420038174bbd84b9ef0ee60e695c0cf06e5ab73f8141b2fa23eb33a",
+    "rejected-stream/sdram_controller.sv.txt": "750316e2c21f1cde3eb63041e138cbfd09a9da81ba538e13c816548986a2258c",
+    "rejected-stream/simulation-memory.log": "cec5b47fd985d6afcf2e8a43915867a90e1e6e4c87a5bd99c5729290ff030ad2",
+    "rejected-stream/word-readback.json": "0fef48e58d19096f7f8d50d8b95b3b51f734c80234a31b7b4739bd65bea7af3a",
+    "run_burst_final_modes.py": "abd8f26f6dee05f7e97c95afa987ab113d0500e30b3e4a09f0f8b98e47afa0c9",
+    "sdram_cache.sv.txt": "8315a6e579d5be09a86a36372d5f186cb5f8276d923cc077691899d69a4387a9",
+    "sdram_cache_tb.sv.txt": "aae567acea57163bd4f37af0d0191249c2906fb57858f6e03c1a3e8476bde13b",
+    "sdram_controller.sv.txt": "a8fd916a90fff08b2e41df3a428119544dc6d1379eff72155d5a53ba6cfaef2c",
+    "sdram_device_model.sv.txt": "f4d291d5cb00f2ad2e7185f2bfcdea8b572771b158ff332cf07b4cba4e5fb216",
+    "sdram_memory_tb.sv.txt": "2867a45d6dfd9431d2e09bbf98f2232beb6b46f8408d0f52b118e20e79835c20",
+    "soc_memory.sv.txt": "720e8ccd7c0c36e5b66adba3ed47fc326df5a9b3ad66ae5a4f44ebe7f6d820c8",
+    "soc_top.sv.txt": "4391d97170f2cbecf4e5f33be8c2a075c7e9a3168f07ce737dc83923ce835367",
+    "validate_and_measure_burst.py": "06a81df643c5ee92b8d3b1351ea2ff170cc6a2f9d30839a8bc2155f71f57d81f",
+    "running-mario-status.json": "3c0e35afb12af6e90ae4c54a8a1a6bab4b1d1328149790a151581fc35f1fa7ff"
+  },
+  "later_completed_frame_counter": 4208
+}

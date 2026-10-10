@@ -1,0 +1,66 @@
+Uploading temporary burst-fill benchmark: 648 bytes at 0x00000000
+Verifying temporary burst-fill benchmark: 648 bytes at 0x00000000
+Readback verified; CPU released.
+Restoring full Mario CPU and SDRAM assets
+Uploading mario-castle-sdram-direct.bin: 28,936 bytes at 0x00000000
+Verifying mario-castle-sdram-direct.bin: 28,936 bytes at 0x00000000
+Uploading mario-castle-sdram-direct.assets.bin: 883,124 bytes at 0x80000000
+  364,788/883,124 bytes
+  732,996/883,124 bytes
+Verifying mario-castle-sdram-direct.assets.bin: 883,124 bytes at 0x80000000
+Traceback (most recent call last):
+  File "C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\measure_burst_board.py", line 23, in <module>
+    if status['scratch']==0xdeadb017:raise RuntimeError('Probe integrity failure')
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Probe integrity failure
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\measure_burst_board.py", line 43, in <module>
+    print('Restoring full Mario CPU and SDRAM assets',flush=True);l.transfer(restore);report['restored']=l.operation(STATUS)
+                                                                  ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\scripts\load_game.py", line 109, in transfer
+    raise RuntimeError(f'Readback mismatch at {base+4*i:#x}')
+RuntimeError: Readback mismatch at 0x80000000
+Candidate measurement failed; restoring preserved baseline FPGA image and Mario
+Info: *******************************************************************
+Info: Running Quartus Prime Programmer
+    Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+    Info: Copyright (C) 2018  Intel Corporation. All rights reserved.
+    Info: Your use of Intel Corporation's design tools, logic functions 
+    Info: and other software and tools, and its AMPP partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Intel Program License 
+    Info: Subscription Agreement, the Intel Quartus Prime License Agreement,
+    Info: the Intel FPGA IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Intel and sold by Intel or its authorized distributors.  Please
+    Info: refer to the applicable agreement for further details.
+    Info: Processing started: Fri Oct 09 23:26:40 2026
+Info: Command: quartus_pgm -c "USB-Blaster [USB-0]" -m JTAG -o p;build/quartus-projection/ProjectionSoC.sof@1
+Info (213045): Using programming cable "USB-Blaster [USB-0]"
+Info (213011): Using programming file build/quartus-projection/ProjectionSoC.sof with checksum 0x01570989 for device EP4CE115F29@1
+Info (209060): Started Programmer operation at Fri Oct 09 23:26:41 2026
+Info (209016): Configuring device index 1
+Info (209017): Device 1 contains JTAG ID code 0x020F70DD
+Info (209007): Configuration succeeded -- 1 device(s) configured
+Info (209011): Successfully performed operation(s)
+Info (209061): Ended Programmer operation at Fri Oct 09 23:26:48 2026
+Info: Quartus Prime Programmer was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 4435 megabytes
+    Info: Processing ended: Fri Oct 09 23:26:48 2026
+    Info: Elapsed time: 00:00:08
+    Info: Total CPU time (on all processors): 00:00:01
+Uploading mario-castle-sdram-direct.bin: 28,936 bytes at 0x00000000
+Verifying mario-castle-sdram-direct.bin: 28,936 bytes at 0x00000000
+Uploading mario-castle-sdram-direct.assets.bin: 883,124 bytes at 0x80000000
+  363,168/883,124 bytes
+  731,676/883,124 bytes
+Verifying mario-castle-sdram-direct.assets.bin: 883,124 bytes at 0x80000000
+  371,244/883,124 bytes
+  741,204/883,124 bytes
+Readback verified; CPU released.
