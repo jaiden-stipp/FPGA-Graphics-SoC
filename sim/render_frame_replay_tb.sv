@@ -1,0 +1,71 @@
+`timescale 1ns/1ps
+`include "renderer_types.svh"
+`define RP dut.renderer.pipeline
+module render_frame_replay_tb;
+ logic clk=0,reset=1,valid=0,ready,de,ce,done;logic [7:0] data=0;logic [31:0] done_id;renderer_stats_t stats;
+ always #10 clk=~clk;
+ graphics_stream_renderer dut(.clk(clk),.reference_clk(clk),.reset(reset),.restart(1'b0),.byte_data(data),.byte_valid(valid),.byte_ready(ready),
+ .decoder_error(de),.command_error(ce),.frame_done(done),.frame_done_id(done_id),.frame_statistics(stats),
+ .VGA_R(),.VGA_G(),.VGA_B(),.VGA_CLK(),.VGA_BLANK_N(),.VGA_SYNC_N(),.VGA_HS(),.VGA_VS());
+ reg [7:0] bytes[0:1999999],page0[0:76799],page1[0:76799],depth[0:76799];reg[23:0] palette[0:255];
+ integer cycle=0,frame=0,captured=0,expected,length,fd,commands,triangles,timeline,first_byte,last_byte,last_setup,last_raster;
+ integer occupancy=0,max_occupancy=0,queue_empty=0,queue_full=0,geometry_stalls=0;
+ always @(posedge clk)begin
+  cycle=cycle+1;
+  if(!reset)begin
+   if(de || ce)$fatal(1,"replay decoder/command error");
+   if(valid && ready)begin if(first_byte<0)first_byte=cycle;last_byte=cycle;end
+   if(`RP.display.framebuffer0.ram_write_enable)page0[`RP.display.framebuffer0.ram_write_address]=`RP.display.framebuffer0.ram_write_data;
+   if(`RP.display.framebuffer1.ram_write_enable)page1[`RP.display.framebuffer1.ram_write_address]=`RP.display.framebuffer1.ram_write_data;
+   if(`RP.depth_memory.ram_write_enable)depth[`RP.depth_memory.ram_write_address]=`RP.depth_memory.ram_write_depth;
+   if(`RP.palette_write)palette[`RP.palette_address]=`RP.palette_write_rgb;
+   if(dut.command_valid && dut.command_ready)begin
+    $fdisplay(commands,"%0d %0d %h %h",cycle,frame,dut.command_data.opcode,dut.command_data.payload);
+    if(dut.command_data.opcode==GFX_CMD_BEGIN_FRAME)begin
+     frame=`GFX_ARGUMENT(dut.command_data);first_byte=-1;last_byte=-1;last_setup=-1;last_raster=-1;
+     occupancy=0;max_occupancy=0;queue_empty=0;queue_full=0;geometry_stalls=0;
+     $fdisplay(timeline,"%0d begin %0d",frame,cycle);
+    end
+   end
+   if(`RP.triangle_in_valid && `RP.triangle_in_ready) $fdisplay(triangles,"%0d %h",frame,`RP.triangle_in_data);
+   case ({`RP.triangle_in_valid && `RP.triangle_in_ready,`RP.transform_in_valid && `RP.transform_in_ready && !`RP.clear_request && !`RP.clear_busy && !`RP.swap_busy})
+    2'b10:occupancy=occupancy+1;2'b01:occupancy=occupancy-1;default:begin end
+   endcase
+   if(occupancy>max_occupancy)max_occupancy=occupancy;
+   if(`RP.triangle_fifo_empty)queue_empty=queue_empty+1;
+   if(`RP.triangle_fifo_full)queue_full=queue_full+1;
+   if(`RP.transform_out_valid && !`RP.transform_out_ready)geometry_stalls=geometry_stalls+1;
+   if(`RP.rasterizer.state==6)last_setup=cycle;
+   if(`RP.raster_write)last_raster=cycle;
+   if(`RP.swap_request)$fdisplay(timeline,"%0d swap_request %0d first_byte=%0d last_byte=%0d setup_or_raster=%0d last_raster=%0d max_queue=%0d empty=%0d full=%0d geometry_stall=%0d",frame,cycle,first_byte,last_byte,last_setup,last_raster,max_occupancy,queue_empty,queue_full,geometry_stalls);
+   if(done)begin
+    if(done_id!=captured+1)$fatal(1,"out of order frame completion");
+    $fdisplay(timeline,"%0d swap_ack %0d stats=%h",done_id,cycle,stats);
+    fd=$fopen($sformatf("build/render-replay/frame-%0d.color.hex",done_id),"w");
+    for(integer i=0;i<76800;i++)$fdisplay(fd,"%02h",`RP.display.front_page_pixel ? page1[i] : page0[i]);$fclose(fd);
+    fd=$fopen($sformatf("build/render-replay/frame-%0d.depth.hex",done_id),"w");
+    for(integer i=0;i<76800;i++)$fdisplay(fd,"%02h",depth[i]);$fclose(fd);
+    fd=$fopen($sformatf("build/render-replay/frame-%0d.palette.hex",done_id),"w");
+    for(integer i=0;i<256;i++)$fdisplay(fd,"%06h",palette[i]);$fclose(fd);
+    captured=captured+1;$display("REPLAY frame=%0d cycle=%0d",done_id,cycle);
+   end
+  end
+ end
+ initial begin
+  first_byte=-1;last_byte=-1;for(integer i=0;i<76800;i++)begin page0[i]=0;page1[i]=0;depth[i]=0;end
+  for(integer i=0;i<256;i++)palette[i]=0;
+  fd=$fopen("build/render-replay/input.meta","r");if(!fd)$fatal(1,"missing replay input");
+  if($fscanf(fd,"%d %d",length,expected)!=2 || length>2000000 || length<=0 || expected<=0)$fatal(1,"invalid replay input");$fclose(fd);
+  $readmemh("build/render-replay/input.hex",bytes,0,length-1);
+  commands=$fopen("build/render-replay/frame-commands.log","w");triangles=$fopen("build/render-replay/frame-triangles.log","w");timeline=$fopen("build/render-replay/frame-timeline.log","w");
+  repeat(12)@(negedge clk);reset=0;repeat(12)@(negedge clk);
+  for(integer i=0;i<length;i++)begin
+   // Deterministic producer gaps exercise ready/valid backpressure.
+   if(i%17==0)begin valid=0;repeat(2)@(negedge clk);end
+   data=bytes[i];valid=1;do @(posedge clk);while(!ready);@(negedge clk);valid=0;
+  end
+  wait(captured==expected);@(negedge clk);$fclose(commands);$fclose(triangles);$fclose(timeline);
+  $display("PASS render_frame_replay_tb");$finish;
+ end
+ initial begin #1000000000;$fatal(1,"render replay timeout");end
+endmodule

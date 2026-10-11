@@ -1,6 +1,6 @@
 # FPGA parallel architecture upgrade plan
 
-Plan ID: **ARCH-UPGRADE-001**. Created October 10, 2026. Status: **planned; no upgrade RTL or firmware implemented by this document**.
+Plan ID: **ARCH-UPGRADE-001**. Created October 10, 2026. Status: **Stage 0 implementation started; later stages pending verification**.
 
 This is the reference plan for future architecture work. Read this file, `hardware-improvement-record.md`, and the latest accepted benchmark before implementing an upgrade. Update the execution ledger when work is measured and accepted. A stage number in this document refers specifically to ARCH-UPGRADE-001, not earlier game-port milestones.
 
@@ -172,7 +172,7 @@ Raw evidence naming: `docs/benchmarks/arch-upgrade-001-stage-N/`, with substage 
 
 | Stage | State | Accepted commit / evidence | Next decision |
 | --- | --- | --- | --- |
-| 0: replay / baseline | Not started | Starting source 60782c8; SCREEN-EDGES-001 | Establish deterministic route and frame comparison |
+| 0: replay / baseline | In progress: deterministic command replay/capture implemented; game-engine route acceptance pending | Starting source 60782c8; SCREEN-EDGES-001 | Establish deterministic route and frame comparison |
 | 1: usable terrain offload | Not started | Existing safe-offload implementation is a prerequisite, not completion | Precision contract and tighter chunk fixture |
 | 2A: packed enqueue | Not started | None | Audit MMIO map and atomic capacity semantics |
 | 2B: command DMA | Not started | None | Decide from 2A profile; design arbiter/ownership first |

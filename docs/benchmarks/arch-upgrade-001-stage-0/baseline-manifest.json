@@ -1,0 +1,27 @@
+{
+  "accepted_source": "60782c8",
+  "documentation_source": "f6a5a41",
+  "scope": "Stage 0 simulation instrumentation; physical image unchanged",
+  "artifacts": [
+    {
+      "path": "build/quartus-screen-edges/ScreenEdgesSoC.sof",
+      "bytes": 3541781,
+      "sha256": "e7c7f04ce0678457493b185c47f8417968ceb5ef2bf0b475ab41e12aa04a450b"
+    },
+    {
+      "path": "build/mario-castle-sdram-direct-mul.bin",
+      "bytes": 25876,
+      "sha256": "049e5fad1bbbac68e71cc2df6619efb8fd9737efff5b839b2155f0da7bbc439c"
+    },
+    {
+      "path": "build/mario-castle-sdram-direct-mul.assets.bin",
+      "bytes": 883124,
+      "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+    },
+    {
+      "path": "build/castle/world.json",
+      "bytes": 3094035,
+      "sha256": "355bd2324a41b3ca820727c6abb50ccc7a5f939ba3e58ce596e9c34b249b1ae9"
+    }
+  ]
+}

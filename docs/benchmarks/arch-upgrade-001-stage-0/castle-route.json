@@ -1,0 +1,136 @@
+{
+  "version": 1,
+  "scope": "supplied camera; original controller; scripted area resets, not source-game transitions",
+  "frames": [
+    {
+      "area": 0,
+      "label": "grounds-spawn",
+      "view": [
+        256,
+        0,
+        0,
+        0,
+        0,
+        237,
+        98,
+        -463,
+        0,
+        -98,
+        237,
+        4207
+      ]
+    },
+    {
+      "area": 0,
+      "label": "grounds-walk-30",
+      "keys": 4,
+      "ticks": 30,
+      "view": [
+        256,
+        0,
+        0,
+        0,
+        0,
+        237,
+        98,
+        -463,
+        0,
+        -98,
+        237,
+        4207
+      ]
+    },
+    {
+      "area": 0,
+      "label": "grounds-jump",
+      "keys": 16,
+      "ticks": 10,
+      "view": [
+        256,
+        0,
+        0,
+        0,
+        0,
+        237,
+        98,
+        -463,
+        0,
+        -98,
+        237,
+        4207
+      ]
+    },
+    {
+      "area": 1,
+      "label": "area-1-spawn",
+      "view": [
+        256,
+        0,
+        0,
+        0,
+        0,
+        237,
+        98,
+        -463,
+        0,
+        -98,
+        237,
+        4207
+      ]
+    },
+    {
+      "area": 2,
+      "label": "area-2-spawn",
+      "view": [
+        256,
+        0,
+        0,
+        0,
+        0,
+        237,
+        98,
+        -463,
+        0,
+        -98,
+        237,
+        4207
+      ]
+    },
+    {
+      "area": 3,
+      "label": "area-3-spawn",
+      "view": [
+        256,
+        0,
+        0,
+        0,
+        0,
+        237,
+        98,
+        -463,
+        0,
+        -98,
+        237,
+        4207
+      ]
+    },
+    {
+      "area": 4,
+      "label": "area-4-spawn",
+      "view": [
+        256,
+        0,
+        0,
+        0,
+        0,
+        237,
+        98,
+        -463,
+        0,
+        -98,
+        237,
+        4207
+      ]
+    }
+  ]
+}
