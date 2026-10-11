@@ -67,7 +67,9 @@ def probe(mode):
             rows=[]
             for mesh in range(3):
                 row=dict(zip(GPU,values[mesh*14:mesh*14+13]));row['frame']=values[mesh*14+13]
-                if row['frame']!=mesh+1 or row['triangles_submitted']!=128:raise RuntimeError('Fixture count/frame mismatch')
+                if (row['frame']!=mesh+1 or row['triangles_submitted']!=128 or
+                    row['triangles_culled'] or not row['bounding_box_pixels'] or not row['pixels_written']):
+                    raise RuntimeError('Fixture count/frame/coverage mismatch')
                 rows.append(row)
             report['trials'].append({'trial':trial+1,'raw_words':values,'meshes':rows,'status':status})
             print(mode,'probe',trial+1,[(r['raster_cycles'],r['total_cycles']-r['swap_wait_cycles']) for r in rows],flush=True)

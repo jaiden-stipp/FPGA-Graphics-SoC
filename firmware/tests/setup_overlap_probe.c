@@ -17,7 +17,7 @@ int main(void) {
         check(gfx_vertex((uint8_t)mesh,1,half,-half,512));
         check(gfx_vertex((uint8_t)mesh,2,-half,half,512));
         for(uint32_t i=0;i<128u;++i)
-            check(gfx_index((uint8_t)mesh,(uint16_t)i,0,1,2,(uint8_t)(i+1u)));
+            check(gfx_index((uint8_t)mesh,(uint16_t)i,0,2,1,(uint8_t)(i+1u)));
     }
     for(uint32_t mesh=0;mesh<3u;++mesh){
         check(gfx_begin_frame(mesh+1u));
