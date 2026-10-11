@@ -286,3 +286,8 @@ Measured October 10, 2026 against source baseline `c3df05d`. Reproduced a CPU cl
 Three physical standing animated trials per image at 50 MHz: median CPU render rises from 18.91756 to 19.14806 ms (+1.218%), clipping scope rises 14.204%, and FPS remains approximately 30. Combined correctness change costs +114 fitted logic elements with unchanged RAM, multipliers and PLLs. Worst setup slack is +0.365 ns; worst hold slack is +0.091 ns. These are bounded correctness results and measured cost, not a performance improvement or complete-game rendering claim. Explicitly programmed baseline and candidate bitstream hashes, all trials, failed unknown-image attempt and final running-game check are preserved. Normal unprofiled corrected Mario is loaded.
 
 [Implementation, scope, reproduction and remaining acceptance](screen-edge-rendering.md) and [raw evidence](benchmarks/screen-edges-001/measurements.json).
+
+
+## ARCH-UPGRADE-001: planned parallel architecture work
+
+[Concrete upgrade plan](architecture-upgrade-plan.md) records the proposed geometry, command transport, setup-overlap and two-pixel-lane upgrades. All stages remain planned or deferred. This entry records no new implementation, measurement or performance claim. Read the plan and latest accepted benchmark before starting a stage; update its execution ledger and this record only after verification and measured acceptance.

@@ -1,5 +1,7 @@
 # Integration architecture
 
+For future parallel hardware work, follow [ARCH-UPGRADE-001: concrete architecture upgrade plan](architecture-upgrade-plan.md). It defines staged interfaces, acceptance gates, benchmark requirements and the execution ledger.
+
 ## Why this boundary
 
 At the pinned RV32I revision, `RV32I_Pipeline.sv` directly instantiates
