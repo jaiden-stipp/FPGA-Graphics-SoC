@@ -11,3 +11,5 @@ docs/benchmarks/integer-mul-001/** -text
 docs/benchmarks/post-mul-review-001/** -text
 docs/benchmarks/terrain-offload-001/** -text
 docs/benchmarks/static-timing-001/** -text
+
+docs/benchmarks/screen-edges-001/** -text

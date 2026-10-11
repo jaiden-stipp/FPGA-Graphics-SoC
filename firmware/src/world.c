@@ -215,20 +215,28 @@ int world_prepare(const world_area_t *a,const player_t *p,const int16_t v[12],ui
 }
 static uint32_t fraction(uint32_t n,uint32_t d) {
     FINE_START(fraction_start);
-    uint32_t q=0;if(n>=d) { FINE_END(PROFILE_FRACTION,fraction_start); return 4096; }
-    for(uint32_t i=0;i<12;++i) {
+    uint32_t q=0;if(n>=d) { FINE_END(PROFILE_FRACTION,fraction_start); return 65536; }
+    for(uint32_t i=0;i<16;++i) {
         q<<=1;
         if(n>=d-n) { n-=d-n;q|=1; }else n<<=1;
     }
     FINE_END(PROFILE_FRACTION,fraction_start);
     return q;
 }
+// Exact floor(delta*t/65536), without requiring MULH, 64-bit helpers or a
+// potentially overflowing delta*t. fixed_mul supplies the low product bits.
+static int32_t interpolate(int32_t a,int32_t b,int32_t t) {
+    int32_t delta=b-a;
+    if(t==65536)return b;
+    return a+fixed_mul(delta>>16,t)+
+        (int32_t)((uint32_t)fixed_mul((int32_t)((uint32_t)delta&65535u),t)>>16);
+}
 static clip_point_t intersection(clip_point_t a,clip_point_t b,int32_t da,int32_t db) {
     FINE_START(intersection_start);
     uint32_t na=da<0?0u-(uint32_t)da:(uint32_t)da;
     uint32_t nb=db<0?0u-(uint32_t)db:(uint32_t)db;
     int32_t t=(int32_t)fraction(na,na+nb);clip_point_t q;
-    q.x=a.x+(fixed_mul(b.x-a.x,t)>>12);q.y=a.y+(fixed_mul(b.y-a.y,t)>>12);q.z=a.z+(fixed_mul(b.z-a.z,t)>>12);
+    q.x=interpolate(a.x,b.x,t);q.y=interpolate(a.y,b.y,t);q.z=interpolate(a.z,b.z,t);
     FINE_END(PROFILE_INTERSECTION,intersection_start);
     return q;
 }

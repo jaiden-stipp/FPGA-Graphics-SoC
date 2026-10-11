@@ -1,0 +1,23 @@
+{
+  "package": "C:\\Users\\Orb1t\\Documents\\Codex\\FPGA-Game-SoC\\build\\screen-edges\\baseline\\mario-castle-sdram-direct-profile-detail-mul.package.json",
+  "segments": [
+    {
+      "file": "mario-castle-sdram-direct-profile-detail-mul.bin",
+      "address": 0,
+      "bytes": 27368,
+      "sha256": "a62962434badeba1c3d31a7a82a063bc46c0b7f8e84a267ae4e296c7ff491e45"
+    },
+    {
+      "file": "mario-castle-sdram-direct-profile-detail-mul.assets.bin",
+      "address": 2147483648,
+      "bytes": 883124,
+      "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+    }
+  ],
+  "scope": "Standing spawn view",
+  "instrumented": true,
+  "reuse_immutable_assets": true,
+  "trials": [],
+  "restore": "C:\\Users\\Orb1t\\Documents\\Codex\\FPGA-Game-SoC\\build\\screen-edges\\baseline\\mario-castle-sdram-direct-mul.package.json",
+  "failure": "RuntimeError(\"Startup failure: {'initialized': True, 'held': False, 'words': (0, 0, 0), 'scratch': 3735879874, 'refresh_count': 195535819, 'input_abi': 1229848833}\")"
+}

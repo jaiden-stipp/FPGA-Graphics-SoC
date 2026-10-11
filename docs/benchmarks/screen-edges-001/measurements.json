@@ -1,0 +1,381 @@
+{
+  "source_baseline": "c3df05d",
+  "scope": "Combined CPU clipping precision and GPU depth bounds correctness correction; standing animated spawn, not traversal acceptance",
+  "artifacts": [
+    {
+      "path": "build\\quartus-integer-mul\\IntegerMulSoC.sof",
+      "bytes": 3541776,
+      "sha256": "84de9a3059e5a40957438df348da434c05e462955e60528491f2f2ac6713484b"
+    },
+    {
+      "path": "build\\quartus-screen-edges\\ScreenEdgesSoC.sof",
+      "bytes": 3541781,
+      "sha256": "e7c7f04ce0678457493b185c47f8417968ceb5ef2bf0b475ab41e12aa04a450b"
+    },
+    {
+      "path": "build\\screen-edges\\baseline\\mario-castle-sdram-direct-mul.bin",
+      "bytes": 26080,
+      "sha256": "1b7e530117bad460d6c04dd59b510adc461e6ed5ed57da71fd704a6c8fec7203"
+    },
+    {
+      "path": "build\\screen-edges\\baseline\\mario-castle-sdram-direct-profile-detail-mul.bin",
+      "bytes": 27368,
+      "sha256": "a62962434badeba1c3d31a7a82a063bc46c0b7f8e84a267ae4e296c7ff491e45"
+    },
+    {
+      "path": "build\\mario-castle-sdram-direct-mul.bin",
+      "bytes": 25876,
+      "sha256": "049e5fad1bbbac68e71cc2df6619efb8fd9737efff5b839b2155f0da7bbc439c"
+    },
+    {
+      "path": "build\\mario-castle-sdram-direct-profile-detail-mul.bin",
+      "bytes": 27220,
+      "sha256": "4204d952a286fdde0e1fcc6b82eb80cbf46c4030d14609c4e3e6eb4cfedc7495"
+    },
+    {
+      "path": "build\\mario-castle-sdram-direct-mul.assets.bin",
+      "bytes": 883124,
+      "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+    },
+    {
+      "path": "build\\castle\\world.json",
+      "bytes": 3094035,
+      "sha256": "355bd2324a41b3ca820727c6abb50ccc7a5f939ba3e58ce596e9c34b249b1ae9"
+    }
+  ],
+  "measurements": [
+    {
+      "metric": "CPU render ms",
+      "before_trials": [
+        18.91746,
+        18.91756,
+        18.91756
+      ],
+      "after_trials": [
+        19.14806,
+        19.14806,
+        19.14806
+      ],
+      "before_median": 18.91756,
+      "after_median": 19.14806,
+      "percent_change": 1.218444661996565
+    },
+    {
+      "metric": "Command cycles",
+      "before_trials": [
+        294210.0,
+        294210.0,
+        294210.0
+      ],
+      "after_trials": [
+        281882.0,
+        281882.0,
+        281882.0
+      ],
+      "before_median": 294210.0,
+      "after_median": 281882.0,
+      "percent_change": -4.190204275857379
+    },
+    {
+      "metric": "Clipping cycles",
+      "before_trials": [
+        202331.0,
+        202336.0,
+        202336.0
+      ],
+      "after_trials": [
+        231076.0,
+        231076.0,
+        231076.0
+      ],
+      "before_median": 202336.0,
+      "after_median": 231076.0,
+      "percent_change": 14.204096156887559
+    },
+    {
+      "metric": "Observed FPS",
+      "before_trials": [
+        29.9769408146023,
+        29.876638396497594,
+        29.790505477726384
+      ],
+      "after_trials": [
+        30.062063615444508,
+        29.961089494081993,
+        30.069390901944082
+      ],
+      "before_median": 29.876638396497594,
+      "after_median": 30.062063615444508,
+      "percent_change": 0.6206361521872372
+    }
+  ],
+  "matched_frames": [
+    {
+      "before": 251,
+      "after": 251,
+      "positions_equal": true,
+      "gpu_events_before": {
+        "triangles_submitted": 444,
+        "triangles_clipped": 6,
+        "triangles_culled": 198,
+        "bounding_box_pixels": 263653,
+        "pixels_inside": 91138,
+        "depth_rejected": 6130,
+        "pixels_written": 85008,
+        "geometry_cycles": 41702,
+        "geometry_stall_cycles": 235959,
+        "raster_cycles": 273637,
+        "clear_cycles": 76800,
+        "total_cycles": 1522585,
+        "swap_wait_cycles": 500663
+      },
+      "gpu_events_after": {
+        "triangles_submitted": 444,
+        "triangles_clipped": 4,
+        "triangles_culled": 195,
+        "bounding_box_pixels": 263013,
+        "pixels_inside": 90955,
+        "depth_rejected": 5999,
+        "pixels_written": 84956,
+        "geometry_cycles": 41463,
+        "geometry_stall_cycles": 235677,
+        "raster_cycles": 272997,
+        "clear_cycles": 76800,
+        "total_cycles": 1524394,
+        "swap_wait_cycles": 490424
+      }
+    },
+    {
+      "before": 251,
+      "after": 251,
+      "positions_equal": true,
+      "gpu_events_before": {
+        "triangles_submitted": 444,
+        "triangles_clipped": 6,
+        "triangles_culled": 198,
+        "bounding_box_pixels": 263653,
+        "pixels_inside": 91138,
+        "depth_rejected": 6130,
+        "pixels_written": 85008,
+        "geometry_cycles": 41702,
+        "geometry_stall_cycles": 235954,
+        "raster_cycles": 273637,
+        "clear_cycles": 76800,
+        "total_cycles": 1522572,
+        "swap_wait_cycles": 500646
+      },
+      "gpu_events_after": {
+        "triangles_submitted": 444,
+        "triangles_clipped": 4,
+        "triangles_culled": 195,
+        "bounding_box_pixels": 263013,
+        "pixels_inside": 90955,
+        "depth_rejected": 5999,
+        "pixels_written": 84956,
+        "geometry_cycles": 41463,
+        "geometry_stall_cycles": 235677,
+        "raster_cycles": 272997,
+        "clear_cycles": 76800,
+        "total_cycles": 1524394,
+        "swap_wait_cycles": 490424
+      }
+    },
+    {
+      "before": 251,
+      "after": 251,
+      "positions_equal": true,
+      "gpu_events_before": {
+        "triangles_submitted": 444,
+        "triangles_clipped": 6,
+        "triangles_culled": 198,
+        "bounding_box_pixels": 263653,
+        "pixels_inside": 91138,
+        "depth_rejected": 6130,
+        "pixels_written": 85008,
+        "geometry_cycles": 41702,
+        "geometry_stall_cycles": 235954,
+        "raster_cycles": 273637,
+        "clear_cycles": 76800,
+        "total_cycles": 1522572,
+        "swap_wait_cycles": 500646
+      },
+      "gpu_events_after": {
+        "triangles_submitted": 444,
+        "triangles_clipped": 4,
+        "triangles_culled": 195,
+        "bounding_box_pixels": 263013,
+        "pixels_inside": 90955,
+        "depth_rejected": 5999,
+        "pixels_written": 84956,
+        "geometry_cycles": 41463,
+        "geometry_stall_cycles": 235677,
+        "raster_cycles": 272997,
+        "clear_cycles": 76800,
+        "total_cycles": 1524393,
+        "swap_wait_cycles": 490423
+      }
+    }
+  ],
+  "evidence": [
+    {
+      "path": "docs\\benchmarks\\screen-edges-001\\after-board.json",
+      "bytes": 99182,
+      "sha256": "cb442e881ea6d554cc6da45193e0bdc78ac52473c6cb2bee39bcb042e29ecc20"
+    },
+    {
+      "path": "docs\\benchmarks\\screen-edges-001\\after-cpu-coverage.json",
+      "bytes": 59,
+      "sha256": "87d06a50ace7fc6a88194f1d916a1e457defe9284718ff7881c7c31adba88f1f"
+    },
+    {
+      "path": "docs\\benchmarks\\screen-edges-001\\after-depth-edge.log",
+      "bytes": 997,
+      "sha256": "73430fd0152ad4e3955bac2ede31e6a034e83805f32277e6d7ea921bd31f414b"
+    },
+    {
+      "path": "docs\\benchmarks\\screen-edges-001\\after-renderer.sv",
+      "bytes": 16122,
+      "sha256": "f3382af57de3584385736fd9d0c87f31b03baf4516d577eca0cec15dc3374ed5"
+    },
+    {
+      "path": "docs\\benchmarks\\screen-edges-001\\after-world.c",
+      "bytes": 15107,
+      "sha256": "0b01c5fc75037ed491489986f3cdd4cc44bd7342e1886cf74034a2cc7779965c"
+    },
+    {
+      "path": "docs\\benchmarks\\screen-edges-001\\baseline-fit.summary",
+      "bytes": 657,
+      "sha256": "feba4b8389ed04de6a6b696879c14d261353c8d3efac3d575e5bef16076b12f9"
+    },
+    {
+      "path": "docs\\benchmarks\\screen-edges-001\\baseline-project.qsf",
+      "bytes": 20801,
+      "sha256": "a19e67dfaa39f30826ab24918de20ae0d9564425e182517765d64f54b53f0350"
+    },
+    {
+      "path": "docs\\benchmarks\\screen-edges-001\\baseline-sta.summary",
+      "bytes": 6700,
+      "sha256": "c50c9feb3eb544615614eef7a52c5e8a4530b889b7989d7f977f7d925a8dd678"
+    },
+    {
+      "path": "docs\\benchmarks\\screen-edges-001\\before-board.json",
+      "bytes": 99508,
+      "sha256": "7c4da66df09ac3db14891dbd7f10e656fbc16093a3093c759b7fa22b613540b6"
+    },
+    {
+      "path": "docs\\benchmarks\\screen-edges-001\\before-cpu-coverage.json",
+      "bytes": 1446,
+      "sha256": "b6d29b4b643b622947c029ba9e5a143493d4f1147cd38c5acde66014427fcb76"
+    },
+    {
+      "path": "docs\\benchmarks\\screen-edges-001\\before-depth-edge.log",
+      "bytes": 1062,
+      "sha256": "c2d4461fa137eb4d284b79c9c8593a91f23f641e76f751ad02c3f184602dfdea"
+    },
+    {
+      "path": "docs\\benchmarks\\screen-edges-001\\before-renderer.sv",
+      "bytes": 16155,
+      "sha256": "1aebfae7d7e672456d18d92e6ef5084d4f338bd8a1781eba204d1898766d4441"
+    },
+    {
+      "path": "docs\\benchmarks\\screen-edges-001\\before-world.c",
+      "bytes": 14749,
+      "sha256": "b9b14d7b953b71c36fa54888f37af1f592a158949561108dc15da584939e8c4b"
+    },
+    {
+      "path": "docs\\benchmarks\\screen-edges-001\\before.package.json",
+      "bytes": 2364,
+      "sha256": "71f621879c92971a19ae33e186d94d9c7aae2976666be4a5e3c84524687c334a"
+    },
+    {
+      "path": "docs\\benchmarks\\screen-edges-001\\build-candidate.py",
+      "bytes": 1714,
+      "sha256": "a88d7800e17c6fb817c437871a0ec3ef24607eb588bf0feb074e663bcb18075d"
+    },
+    {
+      "path": "docs\\benchmarks\\screen-edges-001\\candidate-fit.summary",
+      "bytes": 658,
+      "sha256": "b440d54dcb803121b2ef13be43d8eeb00547068c0f510bac1e08bfc0d1deacc0"
+    },
+    {
+      "path": "docs\\benchmarks\\screen-edges-001\\candidate-project.qsf",
+      "bytes": 20785,
+      "sha256": "d4c642873dfb7ca16a8c7827f84d5969f13f87a84110a70f94bb40d16406ada7"
+    },
+    {
+      "path": "docs\\benchmarks\\screen-edges-001\\candidate-sta.summary",
+      "bytes": 6700,
+      "sha256": "3eca9ae6e8eb7603879082a89a8470c98fdd0cb9f03c383f93eb0829394fc1e6"
+    },
+    {
+      "path": "docs\\benchmarks\\screen-edges-001\\castle-coverage.json",
+      "bytes": 338372,
+      "sha256": "29aa250e093ce1563a9ad9126f8a534bdc6b61f0e44ebadddd68353747cf972a"
+    },
+    {
+      "path": "docs\\benchmarks\\screen-edges-001\\final-running-status.json",
+      "bytes": 408,
+      "sha256": "a9d97e7ff54a01f8128854015252922321a2b74a967af50829d024f1bfdf3bfc"
+    },
+    {
+      "path": "docs\\benchmarks\\screen-edges-001\\firmware-normal.log",
+      "bytes": 2440,
+      "sha256": "ef7a90ae96411f2ab887c635b7495f8c00c59d1b90d3a915c12201392fdf0666"
+    },
+    {
+      "path": "docs\\benchmarks\\screen-edges-001\\firmware-profile.log",
+      "bytes": 2620,
+      "sha256": "4fe77af5e668aed2709494351f672983958d1a23ed5328194319bf54daacf20c"
+    },
+    {
+      "path": "docs\\benchmarks\\screen-edges-001\\host-tests.log",
+      "bytes": 448,
+      "sha256": "bff8d98f2a44713e73bb5cbe0f5d58c49fc7660c409d9bfdddc1289885a84ef1"
+    },
+    {
+      "path": "docs\\benchmarks\\screen-edges-001\\program-baseline.log",
+      "bytes": 2105,
+      "sha256": "29f280b385fe6edff561057e04608d07d1f2d5af6cbebc11d91dd0f88617d5a6"
+    },
+    {
+      "path": "docs\\benchmarks\\screen-edges-001\\program-candidate.log",
+      "bytes": 2109,
+      "sha256": "69805b1e345fc974cfc9348cc37e9f5d8349c814443acff3c92614602094a40d"
+    },
+    {
+      "path": "docs\\benchmarks\\screen-edges-001\\projection-precision.log",
+      "bytes": 3012,
+      "sha256": "5d54254da4dba1f9a2fc767d7d74a75830887e2fc10be3c41508d0e6b58a1c6f"
+    },
+    {
+      "path": "docs\\benchmarks\\screen-edges-001\\quartus-asm.log",
+      "bytes": 1611,
+      "sha256": "546aef0f0381d9f255701b71cffb1c045b14628d69bbfbb6084b82dda5d76023"
+    },
+    {
+      "path": "docs\\benchmarks\\screen-edges-001\\quartus-fit.log",
+      "bytes": 23661,
+      "sha256": "bb5ed049a6bdacd06f0a70eebec16e8c8036d4a5633d7aee583d4d54e0261e6a"
+    },
+    {
+      "path": "docs\\benchmarks\\screen-edges-001\\quartus-map.log",
+      "bytes": 120665,
+      "sha256": "56f3f5be5a89625f41ebc6005a24e4a973761a47a595c0164333823b4b561e45"
+    },
+    {
+      "path": "docs\\benchmarks\\screen-edges-001\\quartus-sta.log",
+      "bytes": 13390,
+      "sha256": "51fbff7bf23d8a7b616849bd628476522b0b9d9ae9afebf60b3dd1ee0dafe232"
+    },
+    {
+      "path": "docs\\benchmarks\\screen-edges-001\\unknown-image-board-failure.json",
+      "bytes": 1060,
+      "sha256": "fb50d0151e1b86c1efe07ded9f40cafd71624974804f22b7bb116ce5603ec942"
+    },
+    {
+      "path": "docs\\benchmarks\\screen-edges-001\\viewport-coverage.log",
+      "bytes": 1168,
+      "sha256": "0658ef799916bf9fc086ea21e7772a2b685a52ca902c8e885069634f9f7e997d"
+    }
+  ]
+}

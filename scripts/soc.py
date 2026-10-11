@@ -235,6 +235,25 @@ def generate():
 
 ''' + transform[end:]
     write(ROOT / "rtl/generated/transform_3d_pipeline.sv", transform)
+    # An affine depth inside a triangle lies within its vertex extrema.
+    # Truncated gradient steps can violate that invariant at a distant edge,
+    # including rounding a valid nonzero depth to zero (background).
+    raster = (renderer_root / 'pipeline/renderer.sv').read_text()
+    raster = replace_once(raster, '    logic [7:0] active_color;',
+        '    logic [7:0] active_color;\n    logic [7:0] minimum_depth, maximum_depth;')
+    raster = replace_once(raster, '        depth_f0 =', '''        minimum_depth = v0_depth < v1_depth ? v0_depth : v1_depth;
+        minimum_depth = minimum_depth < v2_depth ? minimum_depth : v2_depth;
+        maximum_depth = v0_depth > v1_depth ? v0_depth : v1_depth;
+        maximum_depth = maximum_depth > v2_depth ? maximum_depth : v2_depth;
+        depth_f0 =''')
+    raster = replace_once(raster, '''        if (current_depth < 0)
+            current_depth_byte = 8'h00;
+        else if (current_depth > 36'sd65280)
+            current_depth_byte = 8'hff;''', '''        if (current_depth < $signed({1'b0, minimum_depth, 8'b0}))
+            current_depth_byte = minimum_depth;
+        else if (current_depth > $signed({1'b0, maximum_depth, 8'b0}))
+            current_depth_byte = maximum_depth;''')
+    write(ROOT / 'rtl/generated/renderer.sv', raster)
     protocol = json.loads((ROOT / "external/renderer/protocol/protocol.json").read_text())
     header = ["// Generated from pinned renderer protocol/protocol.json.",
               "#ifndef GFX_PROTOCOL_H", "#define GFX_PROTOCOL_H",
@@ -388,7 +407,7 @@ def sources(full=False):
     files += [ROOT / "rtl/udp_controls.sv"]
     if full:
         files += [ROOT / "rtl/generated/palette_ip.v"]
-        replaced = {"graphics_stream_renderer.sv", "graphics_renderer_core.sv", "graphics_pipeline.sv", "transform_3d_pipeline.sv"}
+        replaced = {"graphics_stream_renderer.sv", "graphics_renderer_core.sv", "graphics_pipeline.sv", "transform_3d_pipeline.sv", "renderer.sv"}
         files += [ROOT / "rtl/generated" / name for name in sorted(replaced)]
         for directory in ("common", "command", "system", "pipeline", "memory", "video"):
             files += sorted(p for p in (renderer / directory).iterdir()
@@ -409,7 +428,7 @@ def simulate(args):
     available = tests + ['sdram_cache_tb','sdram_memory_tb','sdram_cpu_tb','udp_loader_tb','udp_extended_input_tb','soc_cpu_counters_tb','cpu_counter_pipeline_tb','cpu_batch_stream_tb','cpu_mul_tb']
     if args.full:
         tests += ["soc_top_tb", "soc_game_top_tb", "soc_scene_top_tb", "soc_mario_top_tb", "soc_mario_bridge_top_tb"]
-        available += ['sdram_mario_top_tb','beacon_sdram_top_tb','quake_sdram_top_tb','portable_scene_top_tb','quake_interactive_top_tb','castle_world_top_tb','projection_precision_tb']
+        available += ['sdram_mario_top_tb','beacon_sdram_top_tb','quake_sdram_top_tb','portable_scene_top_tb','quake_interactive_top_tb','castle_world_top_tb','projection_precision_tb','screen_edge_coverage_tb','depth_edge_coverage_tb']
     if getattr(args, "tests", None):
         requested = args.tests.split(",")
         if set(requested) - set(available + tests):

@@ -6,6 +6,7 @@ $runnerAllowed += @('quake_demo.py','mouse_udp.py','test_interactive_demo.py')
 $runnerAllowed += @('sm64_castle.py','test_world_pipeline.py','profile_game.py','profile_cpu.py')
 $runnerAllowed += @('test_terrain_offload.py')
 $runnerAllowed += @('measure_terrain_offload.py')
+$runnerAllowed += @('test_screen_edges.py','diagnose_screen_edges.py')
 if ($runnerScript -notin $runnerAllowed) { throw "Unknown project command: $runnerScript" }
 $runnerPython = Get-Command python.exe -ErrorAction SilentlyContinue | Where-Object Source -NotLike '*WindowsApps*' | Select-Object -First 1 -ExpandProperty Source
 if (-not $runnerPython) {
