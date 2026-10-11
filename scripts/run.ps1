@@ -5,6 +5,7 @@ $runnerAllowed = @('soc.py', 'load_game.py', 'portable_game.py', 'test_portable_
 $runnerAllowed += @('quake_demo.py','mouse_udp.py','test_interactive_demo.py')
 $runnerAllowed += @('sm64_castle.py','test_world_pipeline.py','profile_game.py','profile_cpu.py')
 $runnerAllowed += @('test_terrain_offload.py')
+$runnerAllowed += @('build_setup_overlap.py','measure_setup_overlap.py')
 $runnerAllowed += @('measure_terrain_offload.py')
 $runnerAllowed += @('test_screen_edges.py','diagnose_screen_edges.py','replay_render_route.py','compare_render_frames.py','test_gpu_fractional.py','test_render_replay.py','test_packed_gfx.py','measure_gfx_staging.py','test_gfx_staging.py','test_dma_gfx.py')
 if ($runnerScript -notin $runnerAllowed) { throw "Unknown project command: $runnerScript" }

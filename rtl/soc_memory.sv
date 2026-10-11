@@ -38,7 +38,11 @@ module soc_memory #(
     output wire [3:0] DRAM_DQM,
     inout wire [31:0] DRAM_DQ
 );
+`ifdef SOC_DISABLE_COMMAND_DMA
+    localparam DMA_SUPPORTED=0;
+`else
     localparam DMA_SUPPORTED=ENABLE_SDRAM && ENABLE_CACHE && ENABLE_BURST && CACHE_LINE_BYTES==32;
+`endif
     wire dma_start,dma_busy,dma_valid,dma_accepted,dma_mem_valid,dma_mem_ready,dma_mem_response;
     wire[7:0]dma_byte,dma_error;
     wire[31:0]dma_source,dma_length,dma_id,dma_completed,dma_sent,dma_reads,dma_reqwait,dma_fifowait,dma_mem_data;
@@ -136,12 +140,20 @@ module soc_memory #(
         end
         wire ctl_valid,ctl_write,ctl_burst,ctl_ready,ctl_response;
         wire[24:0]ctl_addr;wire[31:0]ctl_wdata,ctl_rdata;wire[3:0]ctl_bytes;
+`ifdef SOC_DISABLE_COMMAND_DMA
+        // Accepted Stage 2A topology: cache connects directly to the controller.
+        assign ctl_valid=mem_valid;assign ctl_write=mem_write;assign ctl_burst=mem_burst;
+        assign ctl_addr=mem_addr;assign ctl_wdata=mem_data;assign ctl_bytes=mem_bytes;
+        assign mem_ready=ctl_ready;assign mem_response=ctl_response;assign mem_rdata=ctl_rdata;
+        assign {dma_mem_ready,dma_mem_response,dma_mem_data}=0;
+`else
         sdram_command_arbiter #(.BURST_WORDS(CACHE_LINE_BYTES/4)) command_arbiter(
           .clk(clk),.reset(sdram_reset),.cpu_valid(mem_valid),.cpu_write(mem_write),.cpu_burst(mem_burst),.cpu_address(mem_addr),.cpu_data(mem_data),.cpu_bytes(mem_bytes),
           .cpu_ready(mem_ready),.cpu_response(mem_response),.cpu_rdata(mem_rdata),
           .dma_valid(dma_mem_valid),.dma_address(dma_mem_addr),.dma_ready(dma_mem_ready),.dma_response(dma_mem_response),.dma_rdata(dma_mem_data),
           .memory_valid(ctl_valid),.memory_write(ctl_write),.memory_burst(ctl_burst),.memory_address(ctl_addr),.memory_data(ctl_wdata),.memory_bytes(ctl_bytes),
           .memory_ready(ctl_ready),.memory_response(ctl_response),.memory_rdata(ctl_rdata));
+`endif
         sdram_controller #(.ENABLE_BURST(ENABLE_BURST && ENABLE_CACHE), .CACHE_LINE_BYTES(CACHE_LINE_BYTES)) controller (
             .clk(clk), .reset(sdram_reset), .request_valid(ctl_valid), .request_write(ctl_write),
             .request_address(ctl_addr), .request_data(ctl_wdata), .request_byte_enable(ctl_bytes),

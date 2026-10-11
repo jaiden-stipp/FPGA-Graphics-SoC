@@ -8,13 +8,19 @@ module render_frame_replay_tb #(parameter integer PACKED_INPUT=0, DMA_INPUT=0);
  logic[31:0]mmio_addr=0,mmio_word=0;wire[31:0]mmio_read,mmio_scratch;
  logic mmio_re=0,mmio_we=0;wire mmio_written,mmio_pending;wire[3:0]mmio_errors;
  reg [7:0] bytes[0:1999999];
+ // Keep stimulus controls outside the optional generate scope so ModelSim can
+ // elaborate packed and legacy modes without resolving an absent DMA instance.
+ logic dma_input_start=0;
+ logic[31:0]dma_input_source=32'h80000000,dma_input_length=0,dma_input_id=0;
+ wire dma_input_busy;wire[31:0]dma_input_completed;
  generate if(DMA_INPUT)begin : dma_source
   wire busy,bvalid,accepted,mvalid,mready;wire[7:0]bdata,error;wire[24:0]maddr;
-  wire[31:0]completed,sent,reads,request_wait,fifo_wait;logic start=0;
-  logic[31:0]source=32'h80000000,amount=0,id=0,mdata=0;logic response=0;
+  wire[31:0]completed,sent,reads,request_wait,fifo_wait;
+  logic[31:0]mdata=0;logic response=0;
+  assign dma_input_busy=busy;assign dma_input_completed=completed;
   integer pending=0,base=0,beat=0,ticks=0;
   assign mready=pending==0;
-  gfx_command_dma transfer(.clk(~clk),.reset(reset),.cancel(1'b0),.start(start),.source(source),.length(amount),.submission_id(id),
+  gfx_command_dma transfer(.clk(~clk),.reset(reset),.cancel(1'b0),.start(dma_input_start),.source(dma_input_source),.length(dma_input_length),.submission_id(dma_input_id),
    .busy(busy),.error_code(error),.completed_id(completed),.bytes_sent(sent),.read_words(reads),.request_wait(request_wait),.fifo_wait(fifo_wait),
    .memory_valid(mvalid),.memory_address(maddr),.memory_ready(mready),.memory_response_valid(response),.memory_response_data(mdata),
    .byte_valid(bvalid),.byte_data(bdata),.byte_accepted(accepted));
@@ -52,6 +58,7 @@ module render_frame_replay_tb #(parameter integer PACKED_INPUT=0, DMA_INPUT=0);
  integer cycle=0,frame=0,captured=0,expected,length,fd,commands,triangles,timeline,first_byte,last_byte,last_setup,last_raster;
  integer occupancy=0,max_occupancy=0,queue_empty=0,queue_full=0,geometry_stalls=0;
  integer previous_raster_state=0;
+ integer setup_cycles=0,setup_blocked_cycles=0,raster_wait_cycles=0,overlap_cycles=0,max_setup_queue=0;
  always @(posedge clk)begin
   cycle=cycle+1;
   if(!reset)begin
@@ -66,6 +73,7 @@ module render_frame_replay_tb #(parameter integer PACKED_INPUT=0, DMA_INPUT=0);
     if(dut.command_data.opcode==GFX_CMD_BEGIN_FRAME)begin
      frame=`GFX_ARGUMENT(dut.command_data);first_byte=-1;last_byte=-1;last_setup=-1;last_raster=-1;
      occupancy=0;max_occupancy=0;queue_empty=0;queue_full=0;geometry_stalls=0;
+     setup_cycles=0;setup_blocked_cycles=0;raster_wait_cycles=0;overlap_cycles=0;max_setup_queue=0;
      $fdisplay(timeline,"%0d begin %0d",frame,cycle);
     end
    end
@@ -77,10 +85,16 @@ module render_frame_replay_tb #(parameter integer PACKED_INPUT=0, DMA_INPUT=0);
    if(`RP.triangle_fifo_empty)queue_empty=queue_empty+1;
    if(`RP.triangle_fifo_full)queue_full=queue_full+1;
    if(`RP.transform_out_valid && !`RP.transform_out_ready)geometry_stalls=geometry_stalls+1;
+   if(`RP.rasterizer.setup_work)setup_cycles++;
+   if(`RP.rasterizer.setup_blocked)setup_blocked_cycles++;
+   if(`RP.rasterizer.raster_wait)raster_wait_cycles++;
+   if(`RP.rasterizer.setup_raster_overlap)overlap_cycles++;
+   if(`RP.rasterizer.setup_queue_count>max_setup_queue)max_setup_queue=`RP.rasterizer.setup_queue_count;
    if(`RP.rasterizer.state==6 && previous_raster_state!=6)last_setup=cycle;
    previous_raster_state=`RP.rasterizer.state;
    if(`RP.raster_write)last_raster=cycle;
    if(`RP.swap_request)$fdisplay(timeline,"%0d swap_request %0d first_byte=%0d last_byte=%0d last_setup=%0d last_raster=%0d max_queue=%0d empty=%0d full=%0d geometry_stall=%0d",frame,cycle,first_byte,last_byte,last_setup,last_raster,max_occupancy,queue_empty,queue_full,geometry_stalls);
+   if(`RP.swap_request)$fdisplay(timeline,"%0d setup_metrics %0d setup_work=%0d setup_blocked=%0d raster_wait=%0d overlap=%0d max_setup_queue=%0d",frame,cycle,setup_cycles,setup_blocked_cycles,raster_wait_cycles,overlap_cycles,max_setup_queue);
    if(done)begin
     if(done_id!=captured+1)$fatal(1,"out of order frame completion");
     $fdisplay(timeline,"%0d swap_ack %0d stats=%h",done_id,cycle,stats);
@@ -104,10 +118,10 @@ module render_frame_replay_tb #(parameter integer PACKED_INPUT=0, DMA_INPUT=0);
   repeat(12)@(negedge clk);reset=0;repeat(12)@(negedge clk);
   if(DMA_INPUT)begin
    for(integer i=0;i<length;i=i+1024)begin
-    @(posedge clk);#1;dma_source.source=32'h80000000+i;dma_source.amount=length-i<1024?length-i:1024;dma_source.id=dma_source.id+1;dma_source.start=1;
-    @(negedge clk);@(posedge clk);#1;dma_source.start=0;
-    wait(dma_source.busy);wait(!dma_source.busy);
-    if(dma_source.completed!=dma_source.id)$fatal(1,"DMA replay completion mismatch");
+    @(posedge clk);#1;dma_input_source=32'h80000000+i;dma_input_length=length-i<1024?length-i:1024;dma_input_id=dma_input_id+1;dma_input_start=1;
+    @(negedge clk);@(posedge clk);#1;dma_input_start=0;
+    wait(dma_input_busy);wait(!dma_input_busy);
+    if(dma_input_completed!=dma_input_id)$fatal(1,"DMA replay completion mismatch");
    end
   end else if(PACKED_INPUT)begin
    for(integer i=0;i<length;i=i+4)begin

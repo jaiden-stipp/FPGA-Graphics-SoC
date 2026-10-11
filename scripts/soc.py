@@ -256,6 +256,8 @@ def generate():
     write(ROOT / 'rtl/generated/renderer.sv', raster)
     from gpu_fractional import generate as generate_fractional
     generate_fractional(replace_once,write)
+    from gpu_setup import generate as generate_setup
+    generate_setup(raster, replace_once, write)
     protocol = json.loads((ROOT / "external/renderer/protocol/protocol.json").read_text())
     header = ["// Generated from pinned renderer protocol/protocol.json.",
               "#ifndef GFX_PROTOCOL_H", "#define GFX_PROTOCOL_H",
@@ -412,6 +414,7 @@ def sources(full=False):
         files += [ROOT / "rtl/generated/palette_ip.v"]
         replaced = {"graphics_stream_renderer.sv", "graphics_renderer_core.sv", "graphics_pipeline.sv", "transform_3d_pipeline.sv", "renderer.sv", "graphics_command_stream_decoder.sv", "graphics_command_processor.sv", "indexed_mesh_store.sv"}
         files += [ROOT / "rtl/generated" / name for name in sorted(replaced)]
+        files += [ROOT / 'rtl/generated' / name for name in ('renderer_serial.sv','triangle_setup_engine.sv','renderer_overlap.sv')]
         for directory in ("common", "command", "system", "pipeline", "memory", "video"):
             files += sorted(p for p in (renderer / directory).iterdir()
                             if p.suffix in {".sv", ".v"} and p.name not in {"palette_ip.v", "graphics_command_stream_decoder.sv"} and p.name not in replaced)
@@ -431,6 +434,7 @@ def simulate(args):
     available = tests + ['gfx_dma_tb','sdram_arbiter_tb','gfx_dma_memory_tb','packed_mmio_tb','sdram_cache_tb','sdram_memory_tb','sdram_cpu_tb','udp_loader_tb','udp_extended_input_tb','soc_cpu_counters_tb','cpu_counter_pipeline_tb','cpu_batch_stream_tb','cpu_mul_tb']
     if args.full:
         tests += ["soc_top_tb", "soc_game_top_tb", "soc_scene_top_tb", "soc_mario_top_tb", "soc_mario_bridge_top_tb"]
+        available += ['setup_overlap_tb']
         available += ['sdram_mario_top_tb','beacon_sdram_top_tb','quake_sdram_top_tb','portable_scene_top_tb','quake_interactive_top_tb','castle_world_top_tb','projection_precision_tb','screen_edge_coverage_tb','depth_edge_coverage_tb','render_frame_replay_tb','packed_render_replay_tb','dma_render_replay_tb','gpu_fractional_decoder_tb','gpu_fractional_mesh_tb']
     if getattr(args, "tests", None):
         requested = args.tests.split(",")
@@ -451,7 +455,9 @@ def simulate(args):
         lib.parent.mkdir(parents=True,exist_ok=True)
         if not lib.exists():
             run([tool("vlib"), lib])
-        run([tool("vlog"), "-work", lib, "-sv", "-mfcu", include] + src)
+        run([tool("vlog"), "-work", lib, "-sv", "-mfcu", include] +
+            (['+define+SOC_GPU_SETUP_OVERLAP'] if getattr(args,'setup_overlap',False) else []) +
+            (['+define+SOC_DISABLE_COMMAND_DMA'] if getattr(args,'disable_command_dma',False) else []) + src)
         for name in tests:
             try:
                 result = run([tool("vsim"), "-c", "-L", "altera_mf", "-lib", lib, name,
@@ -730,6 +736,8 @@ def main():
     p.add_argument("--full", action="store_true")
     p.add_argument("--tests", help="Comma-separated tests; permits selecting the Mario milestone tests")
     p.add_argument('--work-dir',type=Path,help='Independent ModelSim library for concurrent verification')
+    p.add_argument('--setup-overlap',action='store_true',help='Experimental Stage 3 setup/raster overlap; default retains serial renderer')
+    p.add_argument('--disable-command-dma',action='store_true',help='Use accepted direct cache/controller topology without experimental DMA')
     p.set_defaults(func=simulate)
     p = sub.add_parser("quartus-project")
     p.add_argument('--disable-cache',action='store_true',help='Generate an uncached SDRAM baseline project')
