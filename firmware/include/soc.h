@@ -30,6 +30,18 @@
 #define SOC_GPU_FEATURES SOC_REG(0xa8)
 #define SOC_GPU_FEATURE_FRACTION 1u
 #define SOC_GPU_FEATURE_PACKED 2u
+#define SOC_GPU_FEATURE_DMA 4u
+#define GFX_DMA_ABI SOC_REG(0xc0)
+#define GFX_DMA_SOURCE SOC_REG(0xc4)
+#define GFX_DMA_LENGTH SOC_REG(0xc8)
+#define GFX_DMA_ID SOC_REG(0xcc)
+#define GFX_DMA_START SOC_REG(0xd0)
+#define GFX_DMA_STATUS SOC_REG(0xd4)
+#define GFX_DMA_COMPLETED SOC_REG(0xd8)
+#define GFX_DMA_BYTES SOC_REG(0xe0)
+#define GFX_DMA_READ_WORDS SOC_REG(0xe4)
+#define GFX_DMA_REQUEST_WAIT SOC_REG(0xe8)
+#define GFX_DMA_FIFO_WAIT SOC_REG(0xec)
 // count 1..4; earliest stream byte is wdata[7:0]. Caller reserves space.
 #define GFX_PACKED_DATA(count) SOC_REG(0xacu + ((count) << 2))
 #define SOC_CPU_CYCLES SOC_REG(0x84)

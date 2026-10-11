@@ -3,6 +3,10 @@
 volatile uint32_t game_profile_slots[2][CPU_PROFILE_WORDS];
 volatile uint32_t game_profile_slot;
 static uint32_t previous[7], records[28], gpu_start[4];
+#ifdef GFX_DMA
+volatile uint32_t game_dma_slots[2][6];
+static uint32_t dma_begin[4];
+#endif
 #ifdef SOC_PROFILE_FINE
 volatile uint32_t game_fine_slots[2][CPU_FINE_WORDS];
 static uint32_t fine[CPU_FINE_SCOPES*2u], events[CPU_FINE_EVENTS];
@@ -36,6 +40,10 @@ void cpu_profile_begin(void) {
 #endif
     gpu_start[0]=gfx_profile_command_cycles; gpu_start[1]=gfx_profile_fifo_cycles;
     gpu_start[2]=gfx_profile_bytes; gpu_start[3]=gfx_profile_commands;
+#ifdef GFX_DMA
+    dma_begin[0]=GFX_DMA_BYTES;dma_begin[1]=GFX_DMA_READ_WORDS;
+    dma_begin[2]=GFX_DMA_REQUEST_WAIT;dma_begin[3]=GFX_DMA_FIFO_WAIT;
+#endif
     snapshot(previous);
 }
 void cpu_profile_mark(uint32_t phase) {
@@ -68,6 +76,13 @@ void cpu_profile_publish(uint32_t frame, uint32_t tick, uint32_t update,
     for(uint32_t i=0;i<CPU_FINE_EVENTS;++i)game_fine_slots[slot][14u+i]=events[i];
     game_fine_slots[slot][20]=frame;
     game_fine_slots[slot][21]=0x464e0101u;
+#endif
+#ifdef GFX_DMA
+    game_dma_slots[slot][0]=GFX_DMA_BYTES-dma_begin[0];
+    game_dma_slots[slot][1]=GFX_DMA_READ_WORDS-dma_begin[1];
+    game_dma_slots[slot][2]=GFX_DMA_REQUEST_WAIT-dma_begin[2];
+    game_dma_slots[slot][3]=GFX_DMA_FIFO_WAIT-dma_begin[3];
+    game_dma_slots[slot][4]=frame;game_dma_slots[slot][5]=0x444d0101u;
 #endif
     game_profile_slot=slot;
 }

@@ -1,13 +1,40 @@
 `timescale 1ns/1ps
 `include "renderer_types.svh"
 `define RP dut.renderer.pipeline
-module render_frame_replay_tb #(parameter integer PACKED_INPUT=0);
+module render_frame_replay_tb #(parameter integer PACKED_INPUT=0, DMA_INPUT=0);
  logic clk=0,reset=1,valid=0,ready,de,ce,done;logic [7:0] data=0;logic [31:0] done_id;renderer_stats_t stats;
  always #10 clk=~clk;
  wire[7:0]stream_data;wire stream_valid,stream_ready;
  logic[31:0]mmio_addr=0,mmio_word=0;wire[31:0]mmio_read,mmio_scratch;
  logic mmio_re=0,mmio_we=0;wire mmio_written,mmio_pending;wire[3:0]mmio_errors;
- generate if(PACKED_INPUT)begin : packed_source
+ reg [7:0] bytes[0:1999999];
+ generate if(DMA_INPUT)begin : dma_source
+  wire busy,bvalid,accepted,mvalid,mready;wire[7:0]bdata,error;wire[24:0]maddr;
+  wire[31:0]completed,sent,reads,request_wait,fifo_wait;logic start=0;
+  logic[31:0]source=32'h80000000,amount=0,id=0,mdata=0;logic response=0;
+  integer pending=0,base=0,beat=0,ticks=0;
+  assign mready=pending==0;
+  gfx_command_dma transfer(.clk(~clk),.reset(reset),.cancel(1'b0),.start(start),.source(source),.length(amount),.submission_id(id),
+   .busy(busy),.error_code(error),.completed_id(completed),.bytes_sent(sent),.read_words(reads),.request_wait(request_wait),.fifo_wait(fifo_wait),
+   .memory_valid(mvalid),.memory_address(maddr),.memory_ready(mready),.memory_response_valid(response),.memory_response_data(mdata),
+   .byte_valid(bvalid),.byte_data(bdata),.byte_accepted(accepted));
+  soc_mmio #(.DMA_SUPPORTED(1)) input_fifo(.clk(clk),.reset(reset),.addr(32'b0),.wdata(32'b0),.funct3(3'b010),
+   .read_en(1'b0),.write_en(1'b0),.rdata(),.write_performed(),.byte_data(stream_data),.byte_valid(stream_valid),.byte_ready(stream_ready),
+   .decoder_error(de),.command_error(ce),.frame_done(done),.frame_done_id(done_id),.frame_statistics(stats),.buttons(8'b0),
+   .frame_pending(),.error_flags(mmio_errors),.scratch(),.dma_busy(busy),.dma_byte_valid(bvalid),.dma_byte_data(bdata),.dma_byte_accepted(accepted),
+   .dma_error_code(error),.dma_completed_id(completed),.dma_bytes_sent(sent),.dma_read_words(reads),.dma_request_wait(request_wait),.dma_fifo_wait(fifo_wait),
+   .dma_start(),.dma_source(),.dma_length(),.dma_submission_id());
+  // Deterministic variable burst latency; data comes from the exact saved wire.
+  always @(negedge clk)begin
+   response<=0;ticks=ticks+1;
+   if(!reset && mvalid && mready)begin pending=1;base=maddr*4;beat=0;end
+   else if(pending && ticks%3!=0)begin
+    mdata<= {bytes[base+beat*4+3],bytes[base+beat*4+2],bytes[base+beat*4+1],bytes[base+beat*4]};response<=1;
+    if(beat==7)pending=0;else beat=beat+1;
+   end
+  end
+  always @(posedge clk)if(!reset && (error || mmio_errors))$fatal(1,"DMA replay error");
+ end else if(PACKED_INPUT)begin : packed_source
   soc_mmio input_fifo(.clk(clk),.reset(reset),.addr(mmio_addr),.wdata(mmio_word),.funct3(3'b010),
    .read_en(mmio_re),.write_en(mmio_we),.rdata(mmio_read),.write_performed(mmio_written),
    .byte_data(stream_data),.byte_valid(stream_valid),.byte_ready(stream_ready),.decoder_error(de),.command_error(ce),
@@ -21,7 +48,7 @@ module render_frame_replay_tb #(parameter integer PACKED_INPUT=0);
  graphics_stream_renderer dut(.clk(clk),.reference_clk(clk),.reset(reset),.restart(1'b0),.byte_data(stream_data),.byte_valid(stream_valid),.byte_ready(stream_ready),
  .decoder_error(de),.command_error(ce),.frame_done(done),.frame_done_id(done_id),.frame_statistics(stats),
  .VGA_R(),.VGA_G(),.VGA_B(),.VGA_CLK(),.VGA_BLANK_N(),.VGA_SYNC_N(),.VGA_HS(),.VGA_VS());
- reg [7:0] bytes[0:1999999],page0[0:76799],page1[0:76799],depth[0:76799];reg[23:0] palette[0:255];
+ reg [7:0] page0[0:76799],page1[0:76799],depth[0:76799];reg[23:0] palette[0:255];
  integer cycle=0,frame=0,captured=0,expected,length,fd,commands,triangles,timeline,first_byte,last_byte,last_setup,last_raster;
  integer occupancy=0,max_occupancy=0,queue_empty=0,queue_full=0,geometry_stalls=0;
  integer previous_raster_state=0;
@@ -75,7 +102,14 @@ module render_frame_replay_tb #(parameter integer PACKED_INPUT=0);
   $readmemh("build/render-replay/input.hex",bytes,0,length-1);
   commands=$fopen("build/render-replay/frame-commands.log","w");triangles=$fopen("build/render-replay/frame-triangles.log","w");timeline=$fopen("build/render-replay/frame-timeline.log","w");
   repeat(12)@(negedge clk);reset=0;repeat(12)@(negedge clk);
-  if(PACKED_INPUT)begin
+  if(DMA_INPUT)begin
+   for(integer i=0;i<length;i=i+1024)begin
+    @(posedge clk);#1;dma_source.source=32'h80000000+i;dma_source.amount=length-i<1024?length-i:1024;dma_source.id=dma_source.id+1;dma_source.start=1;
+    @(negedge clk);@(posedge clk);#1;dma_source.start=0;
+    wait(dma_source.busy);wait(!dma_source.busy);
+    if(dma_source.completed!=dma_source.id)$fatal(1,"DMA replay completion mismatch");
+   end
+  end else if(PACKED_INPUT)begin
    for(integer i=0;i<length;i=i+4)begin
     integer n;n=length-i<4?length-i:4;
     @(negedge clk);mmio_addr=32'h40000008;mmio_re=1;
@@ -91,7 +125,7 @@ module render_frame_replay_tb #(parameter integer PACKED_INPUT=0);
    data=bytes[i];valid=1;do @(posedge clk);while(!ready);@(negedge clk);valid=0;
   end
   wait(captured==expected);@(negedge clk);$fclose(commands);$fclose(triangles);$fclose(timeline);
-  if(PACKED_INPUT)$display("PASS packed_render_replay_tb");else $display("PASS render_frame_replay_tb");$finish;
+  if(DMA_INPUT)$display("PASS dma_render_replay_tb");else if(PACKED_INPUT)$display("PASS packed_render_replay_tb");else $display("PASS render_frame_replay_tb");$finish;
  end
  initial begin #1000000000;$fatal(1,"render replay timeout");end
 endmodule

@@ -16,7 +16,7 @@ module soc_mmio_tb;
     logic [159:0] cpu_statistics={32'd101,32'd70,32'd20,32'd4,32'd8};
     logic frame_pending;
     logic [3:0] error_flags;
-    soc_mmio #(.FIFO_DEPTH(3)) dut (.*);
+    soc_mmio #(.FIFO_DEPTH(3)) dut (.dma_busy(1'b0),.dma_byte_valid(1'b0),.dma_byte_data(8'b0),.dma_error_code(8'b0),.dma_completed_id(32'b0),.dma_bytes_sent(32'b0),.dma_read_words(32'b0),.dma_request_wait(32'b0),.dma_fifo_wait(32'b0),.dma_byte_accepted(),.dma_start(),.dma_source(),.dma_length(),.dma_submission_id(),.*);
 
     task automatic put(input logic [7:0] offset, input logic [31:0] data,
                        input logic accepted);

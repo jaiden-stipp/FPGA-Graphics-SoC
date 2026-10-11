@@ -2,7 +2,8 @@
 // A request occupies one MEM stage cycle; there is no wait-state interface.
 module soc_mmio #(
     parameter integer FIFO_DEPTH = 256,
-    parameter integer CLOCK_HZ = 50000000
+    parameter integer CLOCK_HZ = 50000000,
+    parameter integer DMA_SUPPORTED = 0
 )(
     input logic clk, reset,
     input logic [31:0] addr, wdata,
@@ -22,7 +23,12 @@ module soc_mmio #(
     input tri0 [159:0] cpu_statistics,
     output logic frame_pending,
     output logic [3:0] error_flags,
-    output logic [31:0] scratch
+    output logic [31:0] scratch,
+    input tri0 dma_busy, dma_byte_valid,
+    input tri0 [7:0] dma_byte_data, dma_error_code,
+    input tri0 [31:0] dma_completed_id,dma_bytes_sent,dma_read_words,dma_request_wait,dma_fifo_wait,
+    output logic dma_byte_accepted,dma_start,
+    output logic [31:0] dma_source,dma_length,dma_submission_id
 );
     localparam integer PTR_BITS = $clog2(FIFO_DEPTH);
     localparam integer COUNT_BITS = $clog2(FIFO_DEPTH + 1);
@@ -31,7 +37,8 @@ module soc_mmio #(
     logic [31:0] last_frame_id;
     logic [415:0] stats_snapshot;
     logic selected, word_access, known_read, known_write, push, pop;
-    logic packed_address, enqueue_address;
+    logic packed_address, enqueue_address,cpu_push,dma_push;
+    wire[31:0] fifo_word=dma_push?{24'b0,dma_byte_data}:wdata;
     logic [2:0] requested_bytes, push_bytes;
     logic [3:0] new_errors;
     logic [3:0] clear_errors;
@@ -49,12 +56,12 @@ module soc_mmio #(
     assign selected = addr[31:8] == 24'h400000;
     assign word_access = funct3 == 3'b010 && addr[1:0] == 0;
     assign known_write = addr[7:0] == 8'h00 || addr[7:0] == 8'h10 ||
-                         addr[7:0] == 8'h14 || addr[7:0] == 8'h18 || addr[7:0] == 8'h98 || packed_address;
+                         addr[7:0] == 8'h14 || addr[7:0] == 8'h18 || addr[7:0] == 8'h98 || packed_address || (DMA_SUPPORTED && (addr[7:0]==8'hc4 || addr[7:0]==8'hc8 || addr[7:0]==8'hcc || addr[7:0]==8'hd0));
     assign known_read = addr[7:0] == 8'h04 || addr[7:0] == 8'h08 ||
                         addr[7:0] == 8'h0c || addr[7:0] == 8'h14 ||
                         addr[7:0] == 8'h18 || addr[7:0] == 8'h1c ||
                         (addr[7:0] >= 8'h20 && addr[7:0] <= 8'h5c) || addr[7:0] == 8'h64 ||
-                        (addr[7:0] >= 8'h68 && addr[7:0] <= 8'h94) || addr[7:0] == 8'h9c || addr[7:0] == 8'ha0 || addr[7:0] == 8'ha4 || addr[7:0] == 8'ha8;
+                        (addr[7:0] >= 8'h68 && addr[7:0] <= 8'h94) || addr[7:0] == 8'h9c || addr[7:0] == 8'ha0 || addr[7:0] == 8'ha4 || addr[7:0] == 8'ha8 || (DMA_SUPPORTED && addr[7:0]>=8'hc0 && addr[7:0]<=8'hec && addr[7:0]!=8'hd0);
     // Packed offsets b0/b4/b8/bc enqueue 1/2/3/4 bytes, low byte first.
     // Availability is conservative: a concurrent pop grants no reservation.
     assign packed_address = addr[7:4] == 4'hb;
@@ -63,11 +70,14 @@ module soc_mmio #(
     assign byte_valid = !reset && count != 0;
     assign pop = byte_valid && byte_ready;
     // Conservative full handling: a simultaneous pop does not authorize a full write.
-    assign push = !reset && selected && word_access && write_en &&
-                  enqueue_address && FIFO_DEPTH-count >= requested_bytes;
-    assign push_bytes = push ? requested_bytes : 3'd0;
+    assign cpu_push = !reset && selected && word_access && write_en &&
+                  enqueue_address && !dma_busy && FIFO_DEPTH-count >= requested_bytes;
+    assign dma_push=DMA_SUPPORTED && !reset && dma_busy && dma_byte_valid && count<FIFO_DEPTH;
+    assign push=cpu_push || dma_push;
+    assign push_bytes=cpu_push?requested_bytes:dma_push?3'd1:3'd0;
     assign write_performed = !reset && selected && word_access && write_en &&
-                             known_write && (!enqueue_address || FIFO_DEPTH-count >= requested_bytes);
+                             known_write && (!enqueue_address || (!dma_busy && FIFO_DEPTH-count >= requested_bytes)) &&
+                             (addr[7:0]!=8'hd0 || (!dma_busy && wdata==1));
     assign clear_errors = write_performed && addr[7:0] == 8'h14 ? wdata[3:0] : 4'b0;
 
     always_comb begin
@@ -100,25 +110,37 @@ module soc_mmio #(
                 8'h9c: rdata = 32'h80000001; // MUL and GPU capability-register presence
                 8'ha0: rdata = cpu_snapshot[63:32];
                 8'ha4: rdata = cpu_snapshot[31:0];
-                8'ha8: rdata = 32'h00000003; // fractional mesh and packed-enqueue-v1
+                8'ha8: rdata = DMA_SUPPORTED ? 32'h00000007 : 32'h00000003; // fractional mesh and packed-enqueue-v1
+                8'hc0: rdata=32'h444d0101;
+                8'hc4: rdata=dma_source;
+                8'hc8: rdata=dma_length;
+                8'hcc: rdata=dma_submission_id;
+                8'hd4: rdata={16'b0,dma_error_code,6'b0,(|dma_error_code),dma_busy};
+                8'hd8: rdata=dma_completed_id;
+                8'hdc: rdata=0; // reserved read-only
+                8'he0: rdata=dma_bytes_sent;
+                8'he4: rdata=dma_read_words;
+                8'he8: rdata=dma_request_wait;
+                8'hec: rdata=dma_fifo_wait;
                 default: rdata = stats_snapshot[415 - ((addr[7:0]-8'h20)/4)*32 -: 32];
             endcase
         end
         new_errors = 0;
         if (!reset) begin
             new_errors[0] = selected && word_access && write_en &&
-                            enqueue_address && FIFO_DEPTH-count < requested_bytes;
+                            enqueue_address && (dma_busy || FIFO_DEPTH-count < requested_bytes);
             new_errors[1] = decoder_error;
             new_errors[2] = command_error;
             new_errors[3] = (read_en || write_en) &&
                 (!selected || !word_access || (read_en && !known_read) ||
-                 (write_en && !known_write));
+                 (write_en && (!known_write || (addr[7:0]==8'hd0 && (dma_busy || wdata!=1)))));
         end
     end
 
     always_ff @(posedge clk or posedge reset) begin
         if (reset) begin
             wr_ptr <= 0;
+            dma_byte_accepted<=0;dma_start<=0;dma_source<=0;dma_length<=0;dma_submission_id<=0;
             rd_ptr <= 0;
             count <= 0;
             error_flags <= 0;
@@ -131,6 +153,11 @@ module soc_mmio #(
             look_meta <= 0; look_sync <= 0;
             cycles <= 0; status_reads <= 0; full_status_reads <= 0; cpu_snapshot <= 0;
         end else begin
+            dma_byte_accepted<=dma_push;dma_start<=0;
+            if(write_performed)case(addr[7:0])
+                8'hc4:dma_source<=wdata;8'hc8:dma_length<=wdata;8'hcc:dma_submission_id<=wdata;8'hd0:dma_start<=1;
+                default:begin end
+            endcase
             buttons_meta <= buttons;
             buttons_sync <= buttons_meta;
             look_meta <= look_state; look_sync <= look_meta;
@@ -192,7 +219,7 @@ module soc_mmio #(
             assign bank_read[b] = storage[rd_ptr >> 2];
             always_ff @(posedge clk) begin
                 if(!reset && push && {1'b0,offset} < push_bytes)
-                    storage[write_row] <= wdata[offset*8+:8];
+                    storage[write_row] <= fifo_word[offset*8+:8];
             end
         end
         assign byte_data = bank_read[rd_ptr[1:0]];
@@ -206,7 +233,7 @@ module soc_mmio #(
                 for(integer j=0;j<4;j=j+1) begin
                     position = wr_ptr + j;
                     if(position >= FIFO_DEPTH) position = position - FIFO_DEPTH;
-                    if(j < push_bytes) storage[position] <= wdata >> (j*8);
+                    if(j < push_bytes) storage[position] <= fifo_word >> (j*8);
                 end
         end
     end endgenerate

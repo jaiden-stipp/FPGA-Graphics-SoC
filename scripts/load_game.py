@@ -61,6 +61,11 @@ def package_segments(path):
     for i,(base,data,_) in enumerate(segments):
         for other,other_data,_ in segments[:i]:
             if max(base,other)<min(base+len(data),other+len(other_data)): raise ValueError('Overlapping package segments')
+    if spec.get('required_gpu_features',{}).get('command-dma-v1'):
+        if spec.get('command_buffers')!={'address':0x87fe0000,'bytes':2048,'buffer_bytes':1024,'count':2}:
+            raise ValueError('Invalid command DMA buffer reservation')
+        if any(max(base,0x87fe0000)<min(base+len(data),0x87fe0800) for base,data,_ in segments):
+            raise ValueError('Package overlaps command DMA buffers')
     return segments
 
 
@@ -115,9 +120,9 @@ class Loader:
 
 def require_hardware(loader,spec):
     required=spec.get('required_gpu_features',{})
-    if required.get('packed-enqueue-v1') or required.get('draw-mesh-fraction-v1'):
+    if required.get('packed-enqueue-v1') or required.get('draw-mesh-fraction-v1') or required.get('command-dma-v1'):
         status=loader.operation(STATUS,retries=max(loader.retries,40))
-        bits=(2 if required.get('packed-enqueue-v1') else 0)|(1 if required.get('draw-mesh-fraction-v1') else 0)
+        bits=(4 if required.get('command-dma-v1') else 0)|(2 if required.get('packed-enqueue-v1') else 0)|(1 if required.get('draw-mesh-fraction-v1') else 0)
         if not status.get('cpu_features',0)&0x80000000 or status.get('gpu_features',0)&bits!=bits:
             raise RuntimeError('Package requires GPU features '+str(required)+'; current status does not advertise them (CPU left running)')
     if 'mouse-look-v1' in spec.get('target',{}).get('required_features',[]):

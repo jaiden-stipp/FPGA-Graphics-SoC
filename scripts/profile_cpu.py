@@ -90,6 +90,14 @@ def collect(package,symbols,restore,output,ip='192.168.7.2',port=4000,trials=3,m
                     entry['fine_raw_words']=fine
                     entry['fine']={name:{'cycles':fine[2*i],'calls':fine[2*i+1]} for i,name in enumerate(FINE)}
                     entry['fine_events']=dict(zip(FINE_EVENTS,fine[14:20]))
+                if 'game_dma_slots' in syms:
+                    address=syms['game_dma_slots']
+                    if address%4 or not 0<=address<=65536-48:raise ValueError('DMA snapshot outside RAM')
+                    dma=read_words(loader,address+slot*24,6)
+                    if dma[4]!=values[37] or dma[5]!=0x444d0101:raise RuntimeError('Mismatched DMA snapshot')
+                    entry['dma_raw_words']=dma
+                    entry['dma']=dict(zip(('bytes','read_words','request_wait_cycles','fifo_wait_cycles'),dma[:4]))
+                    if dma[0]!=entry['metrics']['bytes']:raise RuntimeError('DMA and serialized byte counts disagree')
                 for phase in entry['phases'].values():
                     if phase['memory_freezes']+phase['dependency_bubbles']>phase['cycles'] or phase['retired']>phase['cycles']-phase['memory_freezes']:raise RuntimeError('Inconsistent CPU counters')
             else:entry['metrics']={name:read_words(loader,syms[name],1)[0] for name in needed if name!='game_player'}

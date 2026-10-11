@@ -43,7 +43,7 @@ module de2_115_soc_top #(
         else if (!(&phy_reset_counter)) phy_reset_counter <= phy_reset_counter + 1'b1;
     end
     assign ENET0_RST_N = &phy_reset_counter;
-    udp_controls #(.TIMEOUT_CYCLES(INPUT_TIMEOUT_CYCLES), .REQUIRE_LOAD(ENABLE_SDRAM)) controls (
+    udp_controls #(.TIMEOUT_CYCLES(INPUT_TIMEOUT_CYCLES), .REQUIRE_LOAD(ENABLE_SDRAM),.GPU_FEATURES((ENABLE_SDRAM && ENABLE_CACHE && ENABLE_BURST && CACHE_LINE_BYTES==32)?7:3)) controls (
         .clk(CLOCK_50), .reset(!reset_sync[1] || !ENET0_RST_N),
         .rx_clk(ENET0_RX_CLK), .tx_clk(ENET0_TX_CLK),
         .rx_data(ENET0_RX_DATA), .rx_dv(ENET0_RX_DV), .rx_er(ENET0_RX_ER),

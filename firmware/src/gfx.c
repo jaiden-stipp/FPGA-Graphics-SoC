@@ -20,6 +20,58 @@ static uint16_t crc_byte(uint16_t crc, uint8_t byte) {
     return result;
 }
 
+#ifdef GFX_DMA
+#if defined(GFX_PACKED) || defined(GFX_BATCHED)
+#error Choose one graphics transport
+#endif
+#ifndef GFX_DMA_BUFFER_BYTES
+#define GFX_DMA_BUFFER_BYTES 1024u
+#endif
+#ifndef GFX_DMA_BUFFER
+#define GFX_DMA_BUFFER(index) ((volatile uint32_t *)(uintptr_t)(0x87fe0000u+(index)*GFX_DMA_BUFFER_BYTES))
+#endif
+static uint32_t dma_checked,dma_buffer,dma_size,dma_word,dma_count,dma_words,dma_sequence,dma_active;
+static int dma_check(void) {
+    if(dma_checked)return 0;
+    if(!(SOC_CPU_FEATURES&SOC_FEATURE_GPU_REGS) || !(SOC_GPU_FEATURES&SOC_GPU_FEATURE_DMA) || GFX_DMA_ABI!=0x444d0101u)return -1;
+    dma_checked=1;return 0;
+}
+static int dma_wait(void) {
+#ifdef SOC_PROFILE
+    uint32_t wait_start=SOC_CYCLES;
+#endif
+    for(uint32_t tries=0;tries<20000000u;++tries) {
+        uint32_t status=GFX_DMA_STATUS;
+        if(((status&2u) && dma_active) || GFX_ERRORS)return -1;
+        if(!(status&1u)) {
+            // Loader reset can leave a previous descriptor error/completion.
+            // Only our active descriptor owns these fields; valid START clears it.
+            if(dma_active && GFX_DMA_COMPLETED!=dma_sequence)return -1;
+            dma_active=0;
+#ifdef SOC_PROFILE
+            gfx_profile_fifo_cycles+=SOC_CYCLES-wait_start;
+#endif
+            return 0;
+        }
+    }
+    return -1;
+}
+static int dma_publish(void) {
+    if(!dma_size)return 0;
+    if(dma_count)GFX_DMA_BUFFER(dma_buffer)[dma_words++]=dma_word;
+    // CPU stores complete at the write-through SDRAM acknowledgement. Publish
+    // only after every staged word is committed and the old descriptor finishes.
+    if(dma_wait())return -1;
+    GFX_DMA_SOURCE=0x87fe0000u+dma_buffer*GFX_DMA_BUFFER_BYTES;
+    GFX_DMA_LENGTH=dma_size;
+    ++dma_sequence;
+    GFX_DMA_ID=dma_sequence;
+    GFX_DMA_START=1u;
+    dma_active=1;
+    dma_buffer^=1u;dma_size=0;dma_word=0;dma_count=0;dma_words=0;
+    return 0;
+}
+#endif
 #if defined(GFX_BATCHED) || defined(GFX_PACKED)
 static uint32_t tx_budget;
 #endif
@@ -55,7 +107,16 @@ static int send_packed(uint32_t word,uint32_t count) {
 }
 #endif
 static int send_byte(uint8_t byte) {
-#ifdef GFX_PACKED
+#ifdef GFX_DMA
+    dma_word|=(uint32_t)byte<<(dma_count<<3);
+    ++dma_count;++dma_size;
+    if(dma_count==4) {
+        GFX_DMA_BUFFER(dma_buffer)[dma_words++]=dma_word;
+        dma_word=0;dma_count=0;
+    }
+    if(dma_size==GFX_DMA_BUFFER_BYTES)return dma_publish();
+    return 0;
+#elif defined(GFX_PACKED)
     tx_word|=(uint32_t)byte<<(tx_count<<3);
     ++tx_count;
     if(tx_count==4) {
@@ -107,6 +168,9 @@ int gfx_command(uint8_t opcode, const uint8_t *payload, uint8_t length) {
 #ifdef SOC_PROFILE
     uint32_t start=SOC_CYCLES;
 #endif
+#ifdef GFX_DMA
+    if(dma_check())return -1;
+#endif
 #ifdef GFX_PACKED
     if(!packed_checked) {
         if(!(SOC_CPU_FEATURES&SOC_FEATURE_GPU_REGS) || !(SOC_GPU_FEATURES&SOC_GPU_FEATURE_PACKED))return -1;
@@ -135,6 +199,10 @@ int gfx_command(uint8_t opcode, const uint8_t *payload, uint8_t length) {
 #if defined(GFX_BATCHED) || defined(GFX_PACKED)
     if (GFX_ERRORS) result=-1;
 #endif
+#ifdef GFX_DMA
+    // Frame boundary publishes the exact tail; commands may span buffers.
+    if(!result && opcode==GFX_OP_END_FRAME)result=dma_publish();
+#endif
 #ifdef SOC_PROFILE
     gfx_profile_command_cycles += SOC_CYCLES-start;
     gfx_profile_bytes += (uint32_t)length+7u;
@@ -144,6 +212,9 @@ int gfx_command(uint8_t opcode, const uint8_t *payload, uint8_t length) {
 }
 
 int gfx_wait_frame(uint32_t frame_id) {
+#ifdef GFX_DMA
+    if(dma_check() || dma_publish() || dma_wait())return -1;
+#endif
     for (uint32_t tries = 0; tries < 20000000u; ++tries) {
         if (GFX_ERRORS) return -1;
         if ((GFX_STATUS & GFX_FRAME_DONE) && GFX_FRAME_ID == frame_id) {

@@ -38,6 +38,11 @@ module soc_memory #(
     output wire [3:0] DRAM_DQM,
     inout wire [31:0] DRAM_DQ
 );
+    localparam DMA_SUPPORTED=ENABLE_SDRAM && ENABLE_CACHE && ENABLE_BURST && CACHE_LINE_BYTES==32;
+    wire dma_start,dma_busy,dma_valid,dma_accepted,dma_mem_valid,dma_mem_ready,dma_mem_response;
+    wire[7:0]dma_byte,dma_error;
+    wire[31:0]dma_source,dma_length,dma_id,dma_completed,dma_sent,dma_reads,dma_reqwait,dma_fifowait,dma_mem_data;
+    wire[24:0]dma_mem_addr;
     logic ram_selected, ram_misaligned, ram_write, mmio_write;
     logic [31:0] ram_rdata, mmio_rdata;
     wire [191:0] cache_statistics;
@@ -60,7 +65,7 @@ module soc_memory #(
         .Instruction(instruction), .d_rdata(ram_rdata),
         .misaligned(ram_misaligned), .write_performed(ram_write)
     );
-    soc_mmio mmio (
+    soc_mmio #(.DMA_SUPPORTED(DMA_SUPPORTED)) mmio (
         .clk(~clk), .reset(reset), .addr(addr), .wdata(wdata), .funct3(funct3),
         .read_en(read_en && !ram_selected && !sdram_selected && !load_hold),
         .write_en(write_en && !ram_selected && !sdram_selected && !load_hold),
@@ -71,12 +76,25 @@ module soc_memory #(
         .frame_statistics(frame_statistics), .frame_pending(frame_pending),
         .buttons(buttons), .look_state(look_state),
         .cache_statistics(cache_statistics), .cpu_statistics(cpu_statistics),
-        .error_flags(error_flags), .scratch(scratch)
+        .error_flags(error_flags), .scratch(scratch),
+        .dma_busy(dma_busy),.dma_byte_valid(dma_valid),.dma_byte_data(dma_byte),.dma_byte_accepted(dma_accepted),
+        .dma_error_code(dma_error),.dma_completed_id(dma_completed),.dma_bytes_sent(dma_sent),.dma_read_words(dma_reads),.dma_request_wait(dma_reqwait),.dma_fifo_wait(dma_fifowait),
+        .dma_start(dma_start),.dma_source(dma_source),.dma_length(dma_length),.dma_submission_id(dma_id)
     );
     assign rdata = ram_selected ? ram_rdata : sdram_selected ? ext_rdata : mmio_rdata;
     assign misaligned = ram_selected ? ram_misaligned : sdram_selected ? ext_bad :
                         ((read_en || write_en) && |addr[1:0]);
     assign write_performed = !load_hold && (ram_write || mmio_write || ext_write);
+    generate if(DMA_SUPPORTED)begin : command_transfer
+        gfx_command_dma dma(.clk(clk),.reset(sdram_reset),.cancel(load_hold || reset),.start(dma_start),
+          .source(dma_source),.length(dma_length),.submission_id(dma_id),.busy(dma_busy),.error_code(dma_error),.completed_id(dma_completed),
+          .bytes_sent(dma_sent),.read_words(dma_reads),.request_wait(dma_reqwait),.fifo_wait(dma_fifowait),
+          .memory_valid(dma_mem_valid),.memory_address(dma_mem_addr),.memory_ready(dma_mem_ready),.memory_response_valid(dma_mem_response),.memory_response_data(dma_mem_data),
+          .byte_valid(dma_valid),.byte_data(dma_byte),.byte_accepted(dma_accepted));
+    end else begin
+        assign {dma_busy,dma_valid,dma_mem_valid}=0;
+        assign {dma_error,dma_completed,dma_sent,dma_reads,dma_reqwait,dma_fifowait,dma_byte,dma_mem_addr}=0;
+    end endgenerate
     generate if (ENABLE_SDRAM) begin : external_memory
         logic req_valid, req_write, req_ready, response_valid;
         logic [24:0] req_addr;
@@ -116,17 +134,26 @@ module soc_memory #(
             assign mem_data=req_data; assign mem_bytes=req_bytes;
             assign req_ready=mem_ready; assign response_valid=mem_response; assign response_data=mem_rdata;
         end
+        wire ctl_valid,ctl_write,ctl_burst,ctl_ready,ctl_response;
+        wire[24:0]ctl_addr;wire[31:0]ctl_wdata,ctl_rdata;wire[3:0]ctl_bytes;
+        sdram_command_arbiter #(.BURST_WORDS(CACHE_LINE_BYTES/4)) command_arbiter(
+          .clk(clk),.reset(sdram_reset),.cpu_valid(mem_valid),.cpu_write(mem_write),.cpu_burst(mem_burst),.cpu_address(mem_addr),.cpu_data(mem_data),.cpu_bytes(mem_bytes),
+          .cpu_ready(mem_ready),.cpu_response(mem_response),.cpu_rdata(mem_rdata),
+          .dma_valid(dma_mem_valid),.dma_address(dma_mem_addr),.dma_ready(dma_mem_ready),.dma_response(dma_mem_response),.dma_rdata(dma_mem_data),
+          .memory_valid(ctl_valid),.memory_write(ctl_write),.memory_burst(ctl_burst),.memory_address(ctl_addr),.memory_data(ctl_wdata),.memory_bytes(ctl_bytes),
+          .memory_ready(ctl_ready),.memory_response(ctl_response),.memory_rdata(ctl_rdata));
         sdram_controller #(.ENABLE_BURST(ENABLE_BURST && ENABLE_CACHE), .CACHE_LINE_BYTES(CACHE_LINE_BYTES)) controller (
-            .clk(clk), .reset(sdram_reset), .request_valid(mem_valid), .request_write(mem_write),
-            .request_address(mem_addr), .request_data(mem_data), .request_byte_enable(mem_bytes),
-            .request_burst(mem_burst),
-            .request_ready(mem_ready), .response_valid(mem_response), .response_data(mem_rdata),
+            .clk(clk), .reset(sdram_reset), .request_valid(ctl_valid), .request_write(ctl_write),
+            .request_address(ctl_addr), .request_data(ctl_wdata), .request_byte_enable(ctl_bytes),
+            .request_burst(ctl_burst),
+            .request_ready(ctl_ready), .response_valid(ctl_response), .response_data(ctl_rdata),
             .initialized(sdram_initialized), .refresh_count(refresh_count),
             .DRAM_CLK(DRAM_CLK), .DRAM_CKE(DRAM_CKE), .DRAM_CS_N(DRAM_CS_N),
             .DRAM_RAS_N(DRAM_RAS_N), .DRAM_CAS_N(DRAM_CAS_N), .DRAM_WE_N(DRAM_WE_N),
             .DRAM_ADDR(DRAM_ADDR), .DRAM_BA(DRAM_BA), .DRAM_DQM(DRAM_DQM), .DRAM_DQ(DRAM_DQ)
         );
     end else begin : no_external_memory
+        assign {dma_mem_ready,dma_mem_response,dma_mem_data}=0;
         assign cache_statistics = 0;
         assign {ext_stall,ext_bad,ext_write,sdram_initialized} = 4'b0001;
         assign ext_rdata = 0; assign refresh_count = 0;
