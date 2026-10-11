@@ -1,0 +1,60 @@
+     VMA      LMA     Size Align Out     In      Symbol
+       0        0      a94     4 .text
+       0        0       34     1         C:\Users\Orb1t\AppData\Local\Temp\start-e440ce.o:(.text.start)
+       0        0        0     1                 .Lpcrel_hi0
+       0        0        0     1                 $x
+       0        0        0     1                 _start
+       8        8        0     1                 .Lpcrel_hi1
+      10       10        0     1                 .Lpcrel_hi2
+      34       34      3a0     4         C:\Users\Orb1t\AppData\Local\Temp\gfx_staging_probe-ff658d.o:(.text.gfx_command)
+      34       34        0     1                 $x
+      34       34      3a0     1                 gfx_command
+     3d4      3d4      6c0     4         C:\Users\Orb1t\AppData\Local\Temp\gfx_staging_probe-ff658d.o:(.text.main)
+     3d4      3d4        0     1                 $x
+     3d4      3d4      6c0     1                 main
+     a94      a94     a557     4 .rodata
+     a94      a94       1c     4         C:\Users\Orb1t\AppData\Local\Temp\gfx_staging_probe-ff658d.o:(.rodata.frame_offsets)
+     a94      a94       1c     1                 frame_offsets
+     a94      a94        0     1                 $d
+     ab0      ab0       1c     4         C:\Users\Orb1t\AppData\Local\Temp\gfx_staging_probe-ff658d.o:(.rodata.frame_lengths)
+     ab0      ab0       1c     1                 frame_lengths
+     ab0      ab0        0     1                 $d
+     acc      acc       1c     4         C:\Users\Orb1t\AppData\Local\Temp\gfx_staging_probe-ff658d.o:(.rodata.frame_hashes)
+     acc      acc       1c     1                 frame_hashes
+     acc      acc        0     1                 $d
+     ae8      ae8       1c     4         C:\Users\Orb1t\AppData\Local\Temp\gfx_staging_probe-ff658d.o:(.rodata.frame_ids)
+     ae8      ae8       1c     1                 frame_ids
+     ae8      ae8        0     1                 $d
+     b04      b04       20     2         <internal>:(.rodata.cst32)
+     b24      b24     a4c7     1         C:\Users\Orb1t\AppData\Local\Temp\gfx_staging_probe-ff658d.o:(.rodata.replay_input)
+     b24      b24     a4c7     1                 replay_input
+     b24      b24        0     1                 $d
+    afec     afec     2974     4 .bss
+    afec     afec        0     1         . = ALIGN(4)
+    afec     afec        0     1         _bss_start = .
+    afec     afec     2420     4         C:\Users\Orb1t\AppData\Local\Temp\gfx_staging_probe-ff658d.o:(.bss.ram_buffer)
+    afec     afec     2420     1                 ram_buffer
+    afec     afec        0     1                 $d
+    d40c     d40c      554     4         C:\Users\Orb1t\AppData\Local\Temp\gfx_staging_probe-ff658d.o:(.bss..L_MergedGlobals)
+    d40c     d40c      554     1                 .L_MergedGlobals
+    d40c     d40c        0     1                 $d
+    d40c     d40c        1     1                 packed_checked
+    d410     d410        4     1                 tx_budget
+    d414     d414        4     1                 staging_clock
+    d418     d418        4     1                 staged_bytes
+    d41c     d41c        4     1                 staging_done
+    d420     d420      540     1                 staging_results
+    d960     d960        0     1         . = ALIGN(4)
+    d960     d960        0     1         _bss_end = .
+    d960     d960        0     1 _stack_top = ORIGIN(RAM) + LENGTH(RAM)
+    d960     d960        0     1 
+       0        0       1c     1 .riscv.attributes
+       0        0       1c     1         <internal>:(.riscv.attributes)
+       0        0       29     1 .comment
+       0        0       29     1         <internal>:(.comment)
+       0        0      230     4 .symtab
+       0        0      230     4         <internal>:(.symtab)
+       0        0       49     1 .shstrtab
+       0        0       49     1         <internal>:(.shstrtab)
+       0        0      121     1 .strtab
+       0        0      121     1         <internal>:(.strtab)

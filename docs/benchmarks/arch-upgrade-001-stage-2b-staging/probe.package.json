@@ -1,0 +1,15 @@
+{
+  "format": "soc-game-package",
+  "version": 1,
+  "required_gpu_features": {
+    "packed-enqueue-v1": true
+  },
+  "segments": [
+    {
+      "file": "probe.bin",
+      "address": 0,
+      "bytes": 45035,
+      "sha256": "e2f482e422f746d316f65bb92d3e007204bf93dc2abc776c326425790b11213b"
+    }
+  ]
+}

@@ -1,0 +1,147 @@
+{
+  "baseline_commit": "8488ff0",
+  "clock_hz": 50000000,
+  "frames": [
+    {
+      "frame": 1,
+      "bytes": 6050,
+      "packed": {
+        "cycles": 267233,
+        "freezes": 0,
+        "writes": 0
+      },
+      "ram_staging": {
+        "cycles": 177007,
+        "freezes": 0,
+        "writes": 0
+      },
+      "sdram_staging": {
+        "cycles": 193692,
+        "freezes": 16685,
+        "writes": 1513
+      },
+      "staging_reduction_percent": 27.51943060924362
+    },
+    {
+      "frame": 2,
+      "bytes": 8208,
+      "packed": {
+        "cycles": 338447,
+        "freezes": 0,
+        "writes": 0
+      },
+      "ram_staging": {
+        "cycles": 240122,
+        "freezes": 0,
+        "writes": 0
+      },
+      "sdram_staging": {
+        "cycles": 262749,
+        "freezes": 22627,
+        "writes": 2052
+      },
+      "staging_reduction_percent": 22.366278915162496
+    },
+    {
+      "frame": 3,
+      "bytes": 8208,
+      "packed": {
+        "cycles": 338447,
+        "freezes": 0,
+        "writes": 0
+      },
+      "ram_staging": {
+        "cycles": 240122,
+        "freezes": 0,
+        "writes": 0
+      },
+      "sdram_staging": {
+        "cycles": 262753,
+        "freezes": 22631,
+        "writes": 2052
+      },
+      "staging_reduction_percent": 22.365097046214032
+    },
+    {
+      "frame": 4,
+      "bytes": 9248,
+      "packed": {
+        "cycles": 372767,
+        "freezes": 0,
+        "writes": 0
+      },
+      "ram_staging": {
+        "cycles": 270542,
+        "freezes": 0,
+        "writes": 0
+      },
+      "sdram_staging": {
+        "cycles": 296044,
+        "freezes": 25502,
+        "writes": 2312
+      },
+      "staging_reduction_percent": 20.582025769448475
+    },
+    {
+      "frame": 5,
+      "bytes": 4776,
+      "packed": {
+        "cycles": 225191,
+        "freezes": 0,
+        "writes": 0
+      },
+      "ram_staging": {
+        "cycles": 139736,
+        "freezes": 0,
+        "writes": 0
+      },
+      "sdram_staging": {
+        "cycles": 152904,
+        "freezes": 13168,
+        "writes": 1194
+      },
+      "staging_reduction_percent": 32.100305962494055
+    },
+    {
+      "frame": 6,
+      "bytes": 4256,
+      "packed": {
+        "cycles": 208031,
+        "freezes": 0,
+        "writes": 0
+      },
+      "ram_staging": {
+        "cycles": 124526,
+        "freezes": 0,
+        "writes": 0
+      },
+      "sdram_staging": {
+        "cycles": 136259,
+        "freezes": 11733,
+        "writes": 1064
+      },
+      "staging_reduction_percent": 34.50062731035278
+    },
+    {
+      "frame": 7,
+      "bytes": 278,
+      "packed": {
+        "cycles": 9313,
+        "freezes": 0,
+        "writes": 0
+      },
+      "ram_staging": {
+        "cycles": 8176,
+        "freezes": 0,
+        "writes": 0
+      },
+      "sdram_staging": {
+        "cycles": 8950,
+        "freezes": 774,
+        "writes": 70
+      },
+      "staging_reduction_percent": 3.8977773005476224
+    }
+  ],
+  "decision": "Experimental DMA justified for larger streams; no game speedup claimed. Preserve overlap through chunked double buffering and validate actual game cost before promotion."
+}

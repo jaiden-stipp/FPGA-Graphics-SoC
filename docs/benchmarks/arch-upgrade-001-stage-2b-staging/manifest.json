@@ -1,0 +1,28 @@
+{
+  "baseline_commit": "8488ff0",
+  "date": "2026-10-11",
+  "hardware_changed": false,
+  "artifacts": {
+    "build/quartus-arch-stage2a/ArchStage2ASoC.sof": "917ed067296ef2405c7d4706dea4224da261add9a9a481ff1e5c4b45d94c9a32",
+    "firmware/src/gfx.c": "746bc74d308b2f02dd61b78fdb341d30c92a93983b7cbd15177bf959776cda39",
+    "rtl/sdram_cache.sv": "433f43139bc0a562edc4e722cbc2893b69c3d86c58734ce293eb3bc6b626d92b",
+    "rtl/soc_memory.sv": "68e68134b93099dc62c41bdb5903186f623f57a6666607e74fa187b9b6b6ce11"
+  },
+  "raw_evidence": {
+    "build.json": "5d8c7112f61d9d039a752e88cb793357d12b10b3e4d9ea408283ed4b7030c4bf",
+    "gfx_staging_input.h": "75ba2c12c16938d82e00e76aefc44cc5bc8216faccd0614fe8518fa2a13bfaca",
+    "native-tests.log": "7db905688fbb5a86913eff634926c3c3c6379a1cd5e70696af4bbae3c8400110",
+    "physical.json": "08818d7a12c22464ce014a6b7f11988a79149bfebc6adf25e536eef39a291121",
+    "physical.log": "698dba4394143cde8db8450a1c893848c52fd2749ba70988e067584927409c1f",
+    "probe-disassembly.txt": "3e0919ab4c6f495b16ba0268916106b50f642e32bfd8ab30fa52cf8ed8208843",
+    "probe.bin": "e2f482e422f746d316f65bb92d3e007204bf93dc2abc776c326425790b11213b",
+    "probe.elf": "ad647ce630c263fdde96efd66d2848b9a2b2b4cff60ebd2a7fcb515591d10a5b",
+    "probe.map": "16b88822be1c709ca990017f49d31c8e138935ec9990adf0bec2e6b197035394",
+    "probe.package.json": "7fc23c831643965d51cf9711c57067ce1fab55ffb509932d5e9b47ad7f1b1265",
+    "probe.symbols.json": "b2ddf1ef8abf6949b89f99c3e990048766fcbaa5c0885571982db4c27ab6a151",
+    "source-gfx_staging_probe.c": "59f22258e9980b3dd6a0d4f8cc21d72431d14628b7833dc4a21362e4de9a247e",
+    "source-measure_gfx_staging.py": "cb1b7e5ac49e2bc1d1ed88bfe9678423cfe9b5a9ceeb4f1aee24f4e9639b87fe",
+    "source-test_gfx_staging.py": "b48521f895357700f3c9bc6b51acc1cde879850365763ac0a7a210fcec07b551",
+    "summary.json": "c639f9fb9889f86226ee5280f7acc283ea3787c39c36ee6d161536b42f0d63c8"
+  }
+}

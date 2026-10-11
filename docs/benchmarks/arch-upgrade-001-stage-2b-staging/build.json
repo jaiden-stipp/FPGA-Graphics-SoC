@@ -1,0 +1,104 @@
+{
+  "scope": "Recorded terrain command serialization; no transforms/actors/game update; packed enqueue excludes GPU drain, staging excludes verification and hypothetical DMA transfer. Same CRC, continuous buffer without per-command padding. RAM input isolates destination stores.",
+  "source": "C:\\Users\\Orb1t\\Documents\\Codex\\FPGA-Game-SoC\\build\\arch-stage2a\\castle-packed",
+  "source_sha256": "36a2738dd0ae599231d56655defec3f4d9e40014bceb42d6d0fda3347d01421e",
+  "frames": [
+    {
+      "offset": 1159,
+      "id": 1,
+      "length": 6050,
+      "hash": 3396221366
+    },
+    {
+      "offset": 7209,
+      "id": 2,
+      "length": 8208,
+      "hash": 359665657
+    },
+    {
+      "offset": 15417,
+      "id": 3,
+      "length": 8208,
+      "hash": 3788895175
+    },
+    {
+      "offset": 23625,
+      "id": 4,
+      "length": 9248,
+      "hash": 2996055156
+    },
+    {
+      "offset": 32873,
+      "id": 5,
+      "length": 4776,
+      "hash": 3507710288
+    },
+    {
+      "offset": 37649,
+      "id": 6,
+      "length": 4256,
+      "hash": 1611146865
+    },
+    {
+      "offset": 41905,
+      "id": 7,
+      "length": 278,
+      "hash": 565894909
+    }
+  ],
+  "prefix_bytes": 1159,
+  "max_bytes": 9248,
+  "symbols": {
+    "_bss_end": 55648,
+    "_bss_start": 45036,
+    "_stack_top": 65536,
+    "_start": 0,
+    "crc_byte.table": 2820,
+    "frame_hashes": 2764,
+    "frame_ids": 2792,
+    "frame_lengths": 2736,
+    "frame_offsets": 2708,
+    "gfx_command": 52,
+    "main": 980,
+    "packed_checked": 54284,
+    "ram_buffer": 45036,
+    "replay_input": 2852,
+    "staged_bytes": 54296,
+    "staging_clock": 54292,
+    "staging_done": 54300,
+    "staging_results": 54304,
+    "tx_budget": 54288
+  },
+  "compile_command": [
+    "C:\\Program Files\\LLVM\\bin\\clang.exe",
+    "--target=riscv32-unknown-elf",
+    "-fuse-ld=lld",
+    "-march=rv32i",
+    "-mabi=ilp32",
+    "-msmall-data-limit=0",
+    "-mno-relax",
+    "-O1",
+    "-ffreestanding",
+    "-fno-builtin",
+    "-nostdlib",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-ffunction-sections",
+    "-fdata-sections",
+    "-Ifirmware/include",
+    "-Ifirmware/generated",
+    "-IC:\\Users\\Orb1t\\Documents\\Codex\\FPGA-Game-SoC\\build\\arch-stage2b-staging",
+    "-Wl,-T,firmware/link.ld",
+    "-Wl,--no-relax",
+    "-Wl,--gc-sections",
+    "-Wl,-Map,C:\\Users\\Orb1t\\Documents\\Codex\\FPGA-Game-SoC\\build\\arch-stage2b-staging\\probe.map",
+    "firmware/start.S",
+    "firmware/tests/gfx_staging_probe.c",
+    "-o",
+    "C:\\Users\\Orb1t\\Documents\\Codex\\FPGA-Game-SoC\\build\\arch-stage2b-staging\\probe.elf"
+  ],
+  "probe_sha256": "e2f482e422f746d316f65bb92d3e007204bf93dc2abc776c326425790b11213b",
+  "staging_address": 2281635840,
+  "clock_hz": 50000000
+}
