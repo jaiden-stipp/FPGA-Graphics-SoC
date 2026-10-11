@@ -64,9 +64,18 @@ module render_frame_replay_tb #(parameter integer PACKED_INPUT=0, DMA_INPUT=0);
   if(!reset)begin
    if(de || ce)$fatal(1,"replay decoder/command error");
    if(stream_valid && stream_ready)begin if(first_byte<0)first_byte=cycle;last_byte=cycle;end
+`ifdef SOC_GPU_TWO_PIXEL_LANES
+   if(`RP.display.framebuffer0.banks[0].ram_write_enable)page0[(`RP.display.framebuffer0.banks[0].ram_write_address<<1)+0]=`RP.display.framebuffer0.banks[0].ram_write_data;
+   if(`RP.display.framebuffer1.banks[0].ram_write_enable)page1[(`RP.display.framebuffer1.banks[0].ram_write_address<<1)+0]=`RP.display.framebuffer1.banks[0].ram_write_data;
+   if(`RP.depth_memory.banks[0].ram_write_enable)depth[(`RP.depth_memory.banks[0].ram_write_address<<1)+0]=`RP.depth_memory.banks[0].ram_write_depth;
+   if(`RP.display.framebuffer0.banks[1].ram_write_enable)page0[(`RP.display.framebuffer0.banks[1].ram_write_address<<1)+1]=`RP.display.framebuffer0.banks[1].ram_write_data;
+   if(`RP.display.framebuffer1.banks[1].ram_write_enable)page1[(`RP.display.framebuffer1.banks[1].ram_write_address<<1)+1]=`RP.display.framebuffer1.banks[1].ram_write_data;
+   if(`RP.depth_memory.banks[1].ram_write_enable)depth[(`RP.depth_memory.banks[1].ram_write_address<<1)+1]=`RP.depth_memory.banks[1].ram_write_depth;
+`else
    if(`RP.display.framebuffer0.ram_write_enable)page0[`RP.display.framebuffer0.ram_write_address]=`RP.display.framebuffer0.ram_write_data;
    if(`RP.display.framebuffer1.ram_write_enable)page1[`RP.display.framebuffer1.ram_write_address]=`RP.display.framebuffer1.ram_write_data;
    if(`RP.depth_memory.ram_write_enable)depth[`RP.depth_memory.ram_write_address]=`RP.depth_memory.ram_write_depth;
+`endif
    if(`RP.palette_write)palette[`RP.palette_address]=`RP.palette_write_rgb;
    if(dut.command_valid && dut.command_ready)begin
     $fdisplay(commands,"%0d %0d %h %h",cycle,frame,dut.command_data.opcode,dut.command_data.payload);
