@@ -1,0 +1,71 @@
+{
+  "symbols": {
+    "_bss_end": 2556,
+    "_bss_start": 2376,
+    "_stack_top": 65536,
+    "_start": 0,
+    "crc_byte.table": 2320,
+    "gfx_begin_frame": 1888,
+    "gfx_command": 760,
+    "gfx_define_mesh": 1976,
+    "gfx_draw_mesh": 2200,
+    "gfx_end_frame": 1956,
+    "gfx_identity_view": 1864,
+    "gfx_identity_view.identity": 2352,
+    "gfx_index": 2128,
+    "gfx_projection": 1764,
+    "gfx_vertex": 2044,
+    "gfx_wait_frame": 1688,
+    "main": 52,
+    "packed_checked": 2548,
+    "setup_clock": 2376,
+    "setup_results": 2380,
+    "tx_budget": 2552
+  },
+  "compile_command": [
+    "C:\\Program Files\\LLVM\\bin\\clang.exe",
+    "--target=riscv32-unknown-elf",
+    "-fuse-ld=lld",
+    "-march=rv32i",
+    "-mabi=ilp32",
+    "-msmall-data-limit=0",
+    "-mno-relax",
+    "-O1",
+    "-ffreestanding",
+    "-fno-builtin",
+    "-nostdlib",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-DGFX_PACKED",
+    "-ffunction-sections",
+    "-fdata-sections",
+    "-Ifirmware/include",
+    "-Ifirmware/generated",
+    "-Wl,-T,firmware/link.ld",
+    "-Wl,--no-relax",
+    "-Wl,--gc-sections",
+    "-Wl,-Map,C:\\Users\\Orb1t\\Documents\\Codex\\FPGA-Game-SoC\\build\\arch-stage4\\probe\\probe.map",
+    "firmware/start.S",
+    "firmware/tests/setup_overlap_probe.c",
+    "firmware/src/gfx.c",
+    "firmware/src/gfx_scene.c",
+    "-o",
+    "C:\\Users\\Orb1t\\Documents\\Codex\\FPGA-Game-SoC\\build\\arch-stage4\\probe\\probe.elf"
+  ],
+  "package": {
+    "format": "soc-game-package",
+    "version": 1,
+    "required_gpu_features": {
+      "packed-enqueue-v1": true
+    },
+    "segments": [
+      {
+        "file": "probe.bin",
+        "address": 0,
+        "bytes": 2376,
+        "sha256": "dba6924a32f52c94797f1a08e7b10064d5fb658d117404ee1082460a38e3ed5d"
+      }
+    ]
+  }
+}

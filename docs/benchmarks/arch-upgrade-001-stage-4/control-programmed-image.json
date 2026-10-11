@@ -1,0 +1,18 @@
+{
+  "sof": "C:\\Users\\Orb1t\\Documents\\Codex\\FPGA-Game-SoC\\build\\quartus-arch-stage4-control\\ArchStage4ControlSoC.sof",
+  "sha256": "125a87d27c7654cc6ce51a4015916f218fa77bd5703a0c66722e62d6c18d4b3c",
+  "status": {
+    "initialized": true,
+    "held": true,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 0,
+    "refresh_count": 476342,
+    "input_abi": 1229848833,
+    "cpu_features": 2147483649,
+    "gpu_features": 3
+  }
+}

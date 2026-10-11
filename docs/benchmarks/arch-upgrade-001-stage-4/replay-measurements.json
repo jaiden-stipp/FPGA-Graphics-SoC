@@ -1,0 +1,715 @@
+{
+  "scope": "Deterministic terrain/fixture streams; excludes actors and physical VGA capture",
+  "replays": {
+    "castle": {
+      "exact": true,
+      "triangles": 1573,
+      "variants": {
+        "stage3": {
+          "1": {
+            "begin": 1300,
+            "swap_request": 343989,
+            "gpu": {
+              "triangles_submitted": 232,
+              "triangles_clipped": 4,
+              "triangles_culled": 75,
+              "bounding_box_pixels": 258920,
+              "pixels_inside": 89489,
+              "depth_rejected": 5337,
+              "pixels_written": 84152,
+              "geometry_cycles": 2883,
+              "geometry_stall_cycles": 152985,
+              "raster_cycles": 261054,
+              "clear_cycles": 76800,
+              "total_cycles": 766720,
+              "swap_wait_cycles": 424032
+            },
+            "begin_to_swap_request": 342689
+          },
+          "2": {
+            "begin": 768022,
+            "swap_request": 1226586,
+            "gpu": {
+              "triangles_submitted": 315,
+              "triangles_clipped": 12,
+              "triangles_culled": 97,
+              "bounding_box_pixels": 372310,
+              "pixels_inside": 106922,
+              "depth_rejected": 11486,
+              "pixels_written": 95436,
+              "geometry_cycles": 3785,
+              "geometry_stall_cycles": 285864,
+              "raster_cycles": 374616,
+              "clear_cycles": 76800,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 381435
+            },
+            "begin_to_swap_request": 458564
+          },
+          "3": {
+            "begin": 1608022,
+            "swap_request": 2021446,
+            "gpu": {
+              "triangles_submitted": 315,
+              "triangles_clipped": 13,
+              "triangles_culled": 95,
+              "bounding_box_pixels": 328268,
+              "pixels_inside": 108379,
+              "depth_rejected": 13686,
+              "pixels_written": 94693,
+              "geometry_cycles": 3785,
+              "geometry_stall_cycles": 250334,
+              "raster_cycles": 330455,
+              "clear_cycles": 76800,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 426575
+            },
+            "begin_to_swap_request": 413424
+          },
+          "4": {
+            "begin": 2448022,
+            "swap_request": 2798304,
+            "gpu": {
+              "triangles_submitted": 355,
+              "triangles_clipped": 11,
+              "triangles_culled": 119,
+              "bounding_box_pixels": 254958,
+              "pixels_inside": 92093,
+              "depth_rejected": 11124,
+              "pixels_written": 80969,
+              "geometry_cycles": 4087,
+              "geometry_stall_cycles": 250601,
+              "raster_cycles": 257605,
+              "clear_cycles": 76800,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 489717
+            },
+            "begin_to_swap_request": 350282
+          },
+          "5": {
+            "begin": 3288022,
+            "swap_request": 3591716,
+            "gpu": {
+              "triangles_submitted": 183,
+              "triangles_clipped": 13,
+              "triangles_culled": 71,
+              "bounding_box_pixels": 224931,
+              "pixels_inside": 74737,
+              "depth_rejected": 1810,
+              "pixels_written": 72927,
+              "geometry_cycles": 2333,
+              "geometry_stall_cycles": 199095,
+              "raster_cycles": 225392,
+              "clear_cycles": 76800,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 536305
+            },
+            "begin_to_swap_request": 303694
+          },
+          "6": {
+            "begin": 4128022,
+            "swap_request": 4533333,
+            "gpu": {
+              "triangles_submitted": 163,
+              "triangles_clipped": 13,
+              "triangles_culled": 44,
+              "bounding_box_pixels": 327396,
+              "pixels_inside": 114474,
+              "depth_rejected": 10971,
+              "pixels_written": 103503,
+              "geometry_cycles": 2044,
+              "geometry_stall_cycles": 276718,
+              "raster_cycles": 327861,
+              "clear_cycles": 76800,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 434688
+            },
+            "begin_to_swap_request": 405311
+          },
+          "7": {
+            "begin": 4968022,
+            "swap_request": 5234617,
+            "gpu": {
+              "triangles_submitted": 10,
+              "triangles_clipped": 5,
+              "triangles_culled": 2,
+              "bounding_box_pixels": 189441,
+              "pixels_inside": 76713,
+              "depth_rejected": 231,
+              "pixels_written": 76482,
+              "geometry_cycles": 361,
+              "geometry_stall_cycles": 81782,
+              "raster_cycles": 189547,
+              "clear_cycles": 76800,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 573404
+            },
+            "begin_to_swap_request": 266595
+          }
+        },
+        "dual": {
+          "1": {
+            "begin": 1300,
+            "swap_request": 185441,
+            "gpu": {
+              "triangles_submitted": 232,
+              "triangles_clipped": 4,
+              "triangles_culled": 75,
+              "bounding_box_pixels": 258920,
+              "pixels_inside": 89489,
+              "depth_rejected": 5337,
+              "pixels_written": 84152,
+              "geometry_cycles": 2883,
+              "geometry_stall_cycles": 87799,
+              "raster_cycles": 134157,
+              "clear_cycles": 38400,
+              "total_cycles": 766720,
+              "swap_wait_cycles": 582580
+            },
+            "begin_to_swap_request": 184141
+          },
+          "2": {
+            "begin": 768022,
+            "swap_request": 1010208,
+            "gpu": {
+              "triangles_submitted": 315,
+              "triangles_clipped": 12,
+              "triangles_culled": 97,
+              "bounding_box_pixels": 372310,
+              "pixels_inside": 106922,
+              "depth_rejected": 11486,
+              "pixels_written": 95436,
+              "geometry_cycles": 3785,
+              "geometry_stall_cycles": 153803,
+              "raster_cycles": 191972,
+              "clear_cycles": 38400,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 597813
+            },
+            "begin_to_swap_request": 242186
+          },
+          "3": {
+            "begin": 1608022,
+            "swap_request": 1826678,
+            "gpu": {
+              "triangles_submitted": 315,
+              "triangles_clipped": 13,
+              "triangles_culled": 95,
+              "bounding_box_pixels": 328268,
+              "pixels_inside": 108379,
+              "depth_rejected": 13686,
+              "pixels_written": 94693,
+              "geometry_cycles": 3785,
+              "geometry_stall_cycles": 135148,
+              "raster_cycles": 169753,
+              "clear_cycles": 38400,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 621343
+            },
+            "begin_to_swap_request": 218656
+          },
+          "4": {
+            "begin": 2448022,
+            "swap_request": 2640152,
+            "gpu": {
+              "triangles_submitted": 355,
+              "triangles_clipped": 11,
+              "triangles_culled": 119,
+              "bounding_box_pixels": 254958,
+              "pixels_inside": 92093,
+              "depth_rejected": 11124,
+              "pixels_written": 80969,
+              "geometry_cycles": 4087,
+              "geometry_stall_cycles": 140217,
+              "raster_cycles": 133834,
+              "clear_cycles": 38400,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 647869
+            },
+            "begin_to_swap_request": 192130
+          },
+          "5": {
+            "begin": 3288022,
+            "swap_request": 3448240,
+            "gpu": {
+              "triangles_submitted": 183,
+              "triangles_clipped": 13,
+              "triangles_culled": 71,
+              "bounding_box_pixels": 224931,
+              "pixels_inside": 74737,
+              "depth_rejected": 1810,
+              "pixels_written": 72927,
+              "geometry_cycles": 2333,
+              "geometry_stall_cycles": 106651,
+              "raster_cycles": 116580,
+              "clear_cycles": 38400,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 679781
+            },
+            "begin_to_swap_request": 160218
+          },
+          "6": {
+            "begin": 4128022,
+            "swap_request": 4335274,
+            "gpu": {
+              "triangles_submitted": 163,
+              "triangles_clipped": 13,
+              "triangles_culled": 44,
+              "bounding_box_pixels": 327396,
+              "pixels_inside": 114474,
+              "depth_rejected": 10971,
+              "pixels_written": 103503,
+              "geometry_cycles": 2044,
+              "geometry_stall_cycles": 141693,
+              "raster_cycles": 166413,
+              "clear_cycles": 38400,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 632747
+            },
+            "begin_to_swap_request": 207252
+          },
+          "7": {
+            "begin": 4968022,
+            "swap_request": 5101830,
+            "gpu": {
+              "triangles_submitted": 10,
+              "triangles_clipped": 5,
+              "triangles_culled": 2,
+              "bounding_box_pixels": 189441,
+              "pixels_inside": 76713,
+              "depth_rejected": 231,
+              "pixels_written": 76482,
+              "geometry_cycles": 361,
+              "geometry_stall_cycles": 41047,
+              "raster_cycles": 95130,
+              "clear_cycles": 38400,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 706191
+            },
+            "begin_to_swap_request": 133808
+          }
+        }
+      }
+    },
+    "quake": {
+      "exact": true,
+      "triangles": 1572,
+      "variants": {
+        "stage3": {
+          "1": {
+            "begin": 24663,
+            "swap_request": 322917,
+            "gpu": {
+              "triangles_submitted": 786,
+              "triangles_clipped": 220,
+              "triangles_culled": 282,
+              "bounding_box_pixels": 174981,
+              "pixels_inside": 48364,
+              "depth_rejected": 3316,
+              "pixels_written": 45048,
+              "geometry_cycles": 8666,
+              "geometry_stall_cycles": 212758,
+              "raster_cycles": 177741,
+              "clear_cycles": 76800,
+              "total_cycles": 743357,
+              "swap_wait_cycles": 445104
+            },
+            "begin_to_swap_request": 298254
+          },
+          "2": {
+            "begin": 768022,
+            "swap_request": 1078314,
+            "gpu": {
+              "triangles_submitted": 786,
+              "triangles_clipped": 235,
+              "triangles_culled": 330,
+              "bounding_box_pixels": 176343,
+              "pixels_inside": 54912,
+              "depth_rejected": 7006,
+              "pixels_written": 47906,
+              "geometry_cycles": 8797,
+              "geometry_stall_cycles": 224665,
+              "raster_cycles": 180032,
+              "clear_cycles": 76800,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 529707
+            },
+            "begin_to_swap_request": 310292
+          }
+        },
+        "dual": {
+          "1": {
+            "begin": 24663,
+            "swap_request": 215162,
+            "gpu": {
+              "triangles_submitted": 786,
+              "triangles_clipped": 220,
+              "triangles_culled": 282,
+              "bounding_box_pixels": 174981,
+              "pixels_inside": 48364,
+              "depth_rejected": 3316,
+              "pixels_written": 45048,
+              "geometry_cycles": 8666,
+              "geometry_stall_cycles": 143403,
+              "raster_cycles": 96617,
+              "clear_cycles": 38400,
+              "total_cycles": 743357,
+              "swap_wait_cycles": 552859
+            },
+            "begin_to_swap_request": 190499
+          },
+          "2": {
+            "begin": 768022,
+            "swap_request": 974698,
+            "gpu": {
+              "triangles_submitted": 786,
+              "triangles_clipped": 235,
+              "triangles_culled": 330,
+              "bounding_box_pixels": 176343,
+              "pixels_inside": 54912,
+              "depth_rejected": 7006,
+              "pixels_written": 47906,
+              "geometry_cycles": 8797,
+              "geometry_stall_cycles": 159449,
+              "raster_cycles": 98048,
+              "clear_cycles": 38400,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 633323
+            },
+            "begin_to_swap_request": 206676
+          }
+        }
+      }
+    },
+    "fixtures": {
+      "exact": true,
+      "triangles": 79,
+      "variants": {
+        "stage3": {
+          "1": {
+            "begin": 74,
+            "swap_request": 76879,
+            "gpu": {
+              "triangles_submitted": 0,
+              "triangles_clipped": 0,
+              "triangles_culled": 0,
+              "bounding_box_pixels": 0,
+              "pixels_inside": 0,
+              "depth_rejected": 0,
+              "pixels_written": 0,
+              "geometry_cycles": 0,
+              "geometry_stall_cycles": 0,
+              "raster_cycles": 0,
+              "clear_cycles": 76800,
+              "total_cycles": 767946,
+              "swap_wait_cycles": 691142
+            },
+            "begin_to_swap_request": 76805
+          },
+          "2": {
+            "begin": 768022,
+            "swap_request": 999042,
+            "gpu": {
+              "triangles_submitted": 1,
+              "triangles_clipped": 1,
+              "triangles_culled": 0,
+              "bounding_box_pixels": 153600,
+              "pixels_inside": 76802,
+              "depth_rejected": 2,
+              "pixels_written": 76800,
+              "geometry_cycles": 573,
+              "geometry_stall_cycles": 38,
+              "raster_cycles": 153644,
+              "clear_cycles": 76800,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 608979
+            },
+            "begin_to_swap_request": 231020
+          },
+          "3": {
+            "begin": 1608022,
+            "swap_request": 1686105,
+            "gpu": {
+              "triangles_submitted": 2,
+              "triangles_clipped": 0,
+              "triangles_culled": 0,
+              "bounding_box_pixels": 1056,
+              "pixels_inside": 512,
+              "depth_rejected": 256,
+              "pixels_written": 256,
+              "geometry_cycles": 204,
+              "geometry_stall_cycles": 141,
+              "raster_cycles": 1101,
+              "clear_cycles": 76800,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 761916
+            },
+            "begin_to_swap_request": 78083
+          },
+          "4": {
+            "begin": 2448022,
+            "swap_request": 2526387,
+            "gpu": {
+              "triangles_submitted": 2,
+              "triangles_clipped": 0,
+              "triangles_culled": 0,
+              "bounding_box_pixels": 1338,
+              "pixels_inside": 650,
+              "depth_rejected": 0,
+              "pixels_written": 650,
+              "geometry_cycles": 204,
+              "geometry_stall_cycles": 141,
+              "raster_cycles": 1383,
+              "clear_cycles": 76800,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 761634
+            },
+            "begin_to_swap_request": 78365
+          },
+          "5": {
+            "begin": 3288022,
+            "swap_request": 3365004,
+            "gpu": {
+              "triangles_submitted": 1,
+              "triangles_clipped": 0,
+              "triangles_culled": 1,
+              "bounding_box_pixels": 0,
+              "pixels_inside": 0,
+              "depth_rejected": 0,
+              "pixels_written": 0,
+              "geometry_cycles": 176,
+              "geometry_stall_cycles": 0,
+              "raster_cycles": 0,
+              "clear_cycles": 76800,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 763017
+            },
+            "begin_to_swap_request": 76982
+          },
+          "6": {
+            "begin": 4128022,
+            "swap_request": 4206875,
+            "gpu": {
+              "triangles_submitted": 2,
+              "triangles_clipped": 0,
+              "triangles_culled": 0,
+              "bounding_box_pixels": 1827,
+              "pixels_inside": 875,
+              "depth_rejected": 3,
+              "pixels_written": 872,
+              "geometry_cycles": 204,
+              "geometry_stall_cycles": 141,
+              "raster_cycles": 1871,
+              "clear_cycles": 76800,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 761146
+            },
+            "begin_to_swap_request": 78853
+          },
+          "7": {
+            "begin": 4968022,
+            "swap_request": 5045283,
+            "gpu": {
+              "triangles_submitted": 1,
+              "triangles_clipped": 1,
+              "triangles_culled": 1,
+              "bounding_box_pixels": 0,
+              "pixels_inside": 0,
+              "depth_rejected": 0,
+              "pixels_written": 0,
+              "geometry_cycles": 455,
+              "geometry_stall_cycles": 0,
+              "raster_cycles": 0,
+              "clear_cycles": 76800,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 762738
+            },
+            "begin_to_swap_request": 77261
+          },
+          "8": {
+            "begin": 5808022,
+            "swap_request": 5895407,
+            "gpu": {
+              "triangles_submitted": 70,
+              "triangles_clipped": 70,
+              "triangles_culled": 0,
+              "bounding_box_pixels": 0,
+              "pixels_inside": 0,
+              "depth_rejected": 0,
+              "pixels_written": 0,
+              "geometry_cycles": 935,
+              "geometry_stall_cycles": 9644,
+              "raster_cycles": 0,
+              "clear_cycles": 76800,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 752614
+            },
+            "begin_to_swap_request": 87385
+          }
+        },
+        "dual": {
+          "1": {
+            "begin": 74,
+            "swap_request": 38479,
+            "gpu": {
+              "triangles_submitted": 0,
+              "triangles_clipped": 0,
+              "triangles_culled": 0,
+              "bounding_box_pixels": 0,
+              "pixels_inside": 0,
+              "depth_rejected": 0,
+              "pixels_written": 0,
+              "geometry_cycles": 0,
+              "geometry_stall_cycles": 0,
+              "raster_cycles": 0,
+              "clear_cycles": 38400,
+              "total_cycles": 767946,
+              "swap_wait_cycles": 729542
+            },
+            "begin_to_swap_request": 38405
+          },
+          "2": {
+            "begin": 768022,
+            "swap_request": 883842,
+            "gpu": {
+              "triangles_submitted": 1,
+              "triangles_clipped": 1,
+              "triangles_culled": 0,
+              "bounding_box_pixels": 153600,
+              "pixels_inside": 76802,
+              "depth_rejected": 2,
+              "pixels_written": 76800,
+              "geometry_cycles": 573,
+              "geometry_stall_cycles": 38,
+              "raster_cycles": 76844,
+              "clear_cycles": 38400,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 724179
+            },
+            "begin_to_swap_request": 115820
+          },
+          "3": {
+            "begin": 1608022,
+            "swap_request": 1647177,
+            "gpu": {
+              "triangles_submitted": 2,
+              "triangles_clipped": 0,
+              "triangles_culled": 0,
+              "bounding_box_pixels": 1056,
+              "pixels_inside": 512,
+              "depth_rejected": 256,
+              "pixels_written": 256,
+              "geometry_cycles": 204,
+              "geometry_stall_cycles": 141,
+              "raster_cycles": 573,
+              "clear_cycles": 38400,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 800844
+            },
+            "begin_to_swap_request": 39155
+          },
+          "4": {
+            "begin": 2448022,
+            "swap_request": 2487345,
+            "gpu": {
+              "triangles_submitted": 2,
+              "triangles_clipped": 0,
+              "triangles_culled": 0,
+              "bounding_box_pixels": 1338,
+              "pixels_inside": 650,
+              "depth_rejected": 0,
+              "pixels_written": 650,
+              "geometry_cycles": 204,
+              "geometry_stall_cycles": 141,
+              "raster_cycles": 741,
+              "clear_cycles": 38400,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 800676
+            },
+            "begin_to_swap_request": 39323
+          },
+          "5": {
+            "begin": 3288022,
+            "swap_request": 3326604,
+            "gpu": {
+              "triangles_submitted": 1,
+              "triangles_clipped": 0,
+              "triangles_culled": 1,
+              "bounding_box_pixels": 0,
+              "pixels_inside": 0,
+              "depth_rejected": 0,
+              "pixels_written": 0,
+              "geometry_cycles": 176,
+              "geometry_stall_cycles": 0,
+              "raster_cycles": 0,
+              "clear_cycles": 38400,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 801417
+            },
+            "begin_to_swap_request": 38582
+          },
+          "6": {
+            "begin": 4128022,
+            "swap_request": 4167577,
+            "gpu": {
+              "triangles_submitted": 2,
+              "triangles_clipped": 0,
+              "triangles_culled": 0,
+              "bounding_box_pixels": 1827,
+              "pixels_inside": 875,
+              "depth_rejected": 3,
+              "pixels_written": 872,
+              "geometry_cycles": 204,
+              "geometry_stall_cycles": 141,
+              "raster_cycles": 973,
+              "clear_cycles": 38400,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 800444
+            },
+            "begin_to_swap_request": 39555
+          },
+          "7": {
+            "begin": 4968022,
+            "swap_request": 5006883,
+            "gpu": {
+              "triangles_submitted": 1,
+              "triangles_clipped": 1,
+              "triangles_culled": 1,
+              "bounding_box_pixels": 0,
+              "pixels_inside": 0,
+              "depth_rejected": 0,
+              "pixels_written": 0,
+              "geometry_cycles": 455,
+              "geometry_stall_cycles": 0,
+              "raster_cycles": 0,
+              "clear_cycles": 38400,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 801138
+            },
+            "begin_to_swap_request": 38861
+          },
+          "8": {
+            "begin": 5808022,
+            "swap_request": 5857007,
+            "gpu": {
+              "triangles_submitted": 70,
+              "triangles_clipped": 70,
+              "triangles_culled": 0,
+              "bounding_box_pixels": 0,
+              "pixels_inside": 0,
+              "depth_rejected": 0,
+              "pixels_written": 0,
+              "geometry_cycles": 935,
+              "geometry_stall_cycles": 9644,
+              "raster_cycles": 0,
+              "clear_cycles": 38400,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 791014
+            },
+            "begin_to_swap_request": 48985
+          }
+        }
+      }
+    }
+  }
+}

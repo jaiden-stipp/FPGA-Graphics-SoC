@@ -1,0 +1,57 @@
+Uploading mario-castle-sdram-direct-packed-mul.bin: 26,332 bytes at 0x00000000
+Verifying mario-castle-sdram-direct-packed-mul.bin: 26,332 bytes at 0x00000000
+Uploading mario-castle-sdram-direct-packed-mul.assets.bin: 883,124 bytes at 0x80000000
+  311,916/883,124 bytes
+  624,840/883,124 bytes
+Verifying mario-castle-sdram-direct-packed-mul.assets.bin: 883,124 bytes at 0x80000000
+  318,420/883,124 bytes
+  641,844/883,124 bytes
+Readback verified; CPU released.
+{
+  "decision": "Stage 4 accepted as optional reusable two-lane/banked-memory upgrade; normal packed Mario selected; single-lane fallback retained. Synthetic GPU gain and shorter representative GPU activity; ordinary standing CPU/FPS unchanged within animation sampling spread.",
+  "sof": "build\\quartus-arch-stage4-dual\\ArchStage4SoC.sof",
+  "sof_sha256": "52f7f8e3baf5d827a9dd18b3dc54f177aef666fce2ba361463830dfe8a0a8235",
+  "package": "build\\mario-castle-sdram-direct-packed-mul.package.json",
+  "segments": [
+    {
+      "file": "mario-castle-sdram-direct-packed-mul.bin",
+      "address": 0,
+      "bytes": 26332,
+      "sha256": "4cfe0c4811c35df0f14b1269f5d6eed628d8c97a19483ac1cd224d9b06cf8eda"
+    },
+    {
+      "file": "mario-castle-sdram-direct-packed-mul.assets.bin",
+      "address": 2147483648,
+      "bytes": 883124,
+      "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+    }
+  ],
+  "first_status": {
+    "initialized": true,
+    "held": false,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 2,
+    "refresh_count": 8363097,
+    "input_abi": 1229848833,
+    "cpu_features": 2147483649,
+    "gpu_features": 3
+  },
+  "last_status": {
+    "initialized": true,
+    "held": false,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 32,
+    "refresh_count": 8499131,
+    "input_abi": 1229848833,
+    "cpu_features": 2147483649,
+    "gpu_features": 3
+  }
+}

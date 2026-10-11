@@ -1,0 +1,5 @@
+{
+  "status": "accepted_optional",
+  "rationale": "Exact 17-frame replay equality and event counts, differential ordered raster/RAM tests, timing/constraint gates pass. All three synthetic pre-swap workloads improve; representative GPU activity decreases. Ordinary CPU median unchanged and FPS near 30. Extra fitted cost 396 LEs and 12 M9Ks. Retain single-lane fallback and exact Stage 3 rollback; DMA remains disabled.",
+  "scope": "Synthetic resident meshes and standing/shared-terrain replays; not complete-game FPS or physical framebuffer acceptance"
+}

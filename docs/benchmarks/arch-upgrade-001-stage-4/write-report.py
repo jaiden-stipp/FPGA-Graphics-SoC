@@ -1,0 +1,39 @@
+from pathlib import Path
+import json
+out=Path('build/arch-stage4');r=json.loads((out/'measurements.json').read_text())
+a=r['hardware']['control'];b=r['hardware']['dual'];pa=r['physical']['control'];pb=r['physical']['dual']
+selected=json.loads((out/'accepted-running-check.json').read_text())
+doc=Path('docs/architecture-stage-4.md');s=doc.read_text()
+s=s.replace('Measurements and selection: pending. No Stage 4 speedup or FPGA acceptance is\nclaimed by this baseline document.', 'Stage 4 is accepted as an optional upgrade after the validation and measurements\nbelow. The global single-lane fallback remains available; the selected board image\nuses two lanes with normal packed Mario. DMA remains disabled.')
+s=s.replace('# ARCH-UPGRADE-001 Stage 4: two adjacent pixel lanes\n', '# ARCH-UPGRADE-001 Stage 4: two adjacent pixel lanes\n\nImplemented, verified and selected on the FPGA. GPU throughput improves in the\nmeasured workloads; ordinary standing Mario CPU time and FPS do not improve.\n')
+text='\n## Measured results and selection\n\n'
+text+='Fifteen distinct affected RTL tests pass, plus six packed/replay host tests.\nThe differential raster test compares exact ordered writes, final color/depth\nmemories and pixel-event totals across 180 saturated and 180 deterministic random\nfaces, with full-queue backpressure and reset. Real RAM tests cover asynchronous\ndisplay parity, stored depth, explicit read/write forwarding, invalid requests,\nparallel clear ownership and reset. The updated edge/depth tests also pass with\nthe Stage 3 fallback. Full-pipeline replays cover 7 castle, 2 Quake and 8 edge\nfixture frames: exact color, depth, palette, submitted triangle order and all\nseven triangle/pixel event counts match the accepted Stage 3 captures. These\nreplays exclude full actor/transition behavior and physical framebuffer readback.\n\n'
+text+='### Fitted hardware at unchanged clocks\n\n| Metric | Matched Stage 3 control | Stage 4 | Difference |\n| --- | ---: | ---: | ---: |\n'
+for label,key in [('Logic elements','logic_elements'),('Logical memory bits','memory_bits'),('Physical M9Ks','m9k'),('Physical block-memory bits','physical_memory_bits'),('9-bit multiplier elements','multipliers_9bit'),('PLLs','plls')]:
+ text+=f'| {label} | {a[key]:,} | {b[key]:,} | {b[key]-a[key]:+,} |\n'
+for label,key in [('Worst setup slack (ns)','setup_min_ns'),('Worst hold slack (ns)','hold_min_ns')]:
+ text+=f'| {label} | +{a[key]:.3f} | +{b[key]:.3f} | Both pass |\n'
+text+='\nBoth images report zero unconstrained setup/hold clocks and input/output paths.\nAll reported timing checks pass. Banking consumes 12 additional M9Ks despite\nunchanged logical capacity; the candidate uses 366/432 and leaves 66 blocks.\nNo clock increase, maximum-frequency gain or power reduction is claimed.\n\n'
+text+='### Physical synthetic resident-mesh probes\n\nThe byte-identical 2,376-byte RV32I probe runs 128 repeated indexed triangles at\nthree projected sizes. Its 580 emitted instructions pass the ISA audit. Each\nimage has three reset trials; every value in the table repeats identically in\nall three trials, with equal triangle/pixel events. Times are cycles at 50 MHz.\n`raster_cycles` is the busy union, not exclusive pixel traversal.\n\n| Projected bounding box | Raster busy: control | Raster busy: Stage 4 | Before swap wait: control | Before swap wait: Stage 4 | Reduction before swap wait |\n| --- | ---: | ---: | ---: | ---: | ---: |\n'
+for i,size in enumerate(('5x5','33x33','65x65')):
+ x=pa['probe'][i];y=pb['probe'][i];before=x['before_swap_wait']['median'];after=y['before_swap_wait']['median']
+ text+=f"| {size} | {x['raster_cycles']['median']:,} | {y['raster_cycles']['median']:,} | {before:,} | {after:,} | {(1-after/before)*100:.3f}% |\n"
+text+='\nClear is 76,800 cycles in control and 38,400 in Stage 4 in every trial.\nThe largest probe saves 304,640 cycles before swap wait: 38,400 from parallel\nclear and 266,240 additional cycles, matching its raster-busy reduction. The\ntiny probe saves 38,410 cycles; almost all of that comes from clear, so it does\nnot demonstrate a comparable geometry/raster throughput improvement. The total\nGPU counter includes VGA wait; shorter useful work can increase that wait.\nThese synthetic percentages are not game FPS improvements.\n\n'
+text+='### Ordinary and detailed standing Mario\n\nSame unprofiled firmware and assets, three reset trials per image:\n\n| Metric | Control trials | Stage 4 trials |\n| --- | --- | --- |\n'
+for label,key in [('CPU update/render cycles','game_cpu_cycles'),('Observed FPS','observed_fps')]:
+ fmt=lambda v: ', '.join(f'{x:.3f}' if key=='observed_fps' else f'{int(x):,}' for x in v)
+ text+=f"| {label} | {fmt(pa['normal'][key]['trials'])} | {fmt(pb['normal'][key]['trials'])} |\n"
+text+=f"\nBoth ordinary CPU medians are {pa['normal']['game_cpu_cycles']['median']:,} cycles\n({pa['normal']['game_cpu_cycles']['median']/50000:.5f} ms). The candidate's one\n62-cycle variation lies within the previously observed accepted Stage 3 range.\nOrdinary timers are not atomic profile snapshots. No ordinary CPU/FPS gain is\nsupported.\n\n"
+text+='Separate instrumented completed-frame snapshots retain unchanged command\ntraffic and triangle/pixel events for matched frame 251. Raw frame IDs and\nall trials are archived; instrumented time is not substituted for ordinary time.\n\n| Instrumented metric | Control trials | Stage 4 trials |\n| --- | --- | --- |\n'
+for label,key in [('Frame IDs','frame_ids'),('Raster busy cycles','raster_cycles'),('Geometry stall cycles','geometry_stall_cycles'),('Clear cycles','clear_cycles'),('CPU render cycles','render_cpu_cycles')]:
+ x=pa['detail'][key];y=pb['detail'][key]
+ if isinstance(x,dict):x=x['trials'];y=y['trials']
+ text+=f"| {label} | {', '.join(str(v) for v in x)} | {', '.join(str(v) for v in y)} |\n"
+text+='\nThe representative GPU spans decrease substantially while CPU render work\nremains unchanged. Geometry activity/stall counters and raster busy are\noverlapping spans and cannot be added into serial frame time. Faster GPU work\ndoes not remove the CPU work or change the existing presentation cadence.\n\n'
+text+='### Accepted artifacts and limits\n\n'
+text+=f"Selected SOF: `{selected['sof']}`. SHA256:\n`{selected['sof_sha256']}`.\n"
+text+=f"Matched control SOF SHA256: `{a['sof_sha256']}`.\n"
+text+=f"Normal firmware/assets hashes remain those in the baseline contract. Full CPU\nand asset upload/readback passed. Final CPU is initialized and released, GPU\nfeatures are 3, and frames advance {selected['first_status']['scratch']} to {selected['last_status']['scratch']} in the one-second\nrunning check. Rollback to the exact accepted Stage 3 image was verified after\nboth measurement runs. The selected upgrade remains volatile FPGA programming;\nthis does not establish physical framebuffer or complete-level traversal\nacceptance.\n\n"
+text+='Accepted as a reusable GPU-throughput upgrade with modest additional fitted\nlogic and explicit bank forwarding, while retaining old packages and single-lane\nfallback. Further lane duplication should wait for measured demand: this\nstanding workload shows no ordinary CPU/FPS gain. Preserve the CPU, game assets\nand cadence controls when reassessing the remaining bottlenecks.\n\n'
+text+='[Raw measurements](benchmarks/arch-upgrade-001-stage-4/measurements.json),\n[hash manifest and raw evidence](benchmarks/arch-upgrade-001-stage-4/manifest.json),\nand [source provenance](benchmarks/arch-upgrade-001-stage-4/provenance.json).\nPhysical order was candidate then control, with three resets per workload per\nimage (18 trials total); these are standing/probe trials, not route-time or\ncomplete-game frame-time distributions.\n'
+s=s.split('\n## Measured results and selection\n')[0];s+=text;doc.write_text(s)

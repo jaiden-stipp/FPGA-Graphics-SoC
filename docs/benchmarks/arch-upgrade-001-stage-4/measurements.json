@@ -1,0 +1,2602 @@
+{
+  "experiment": "ARCH-UPGRADE-001 Stage 4",
+  "baseline_commit": "8082afd",
+  "accepted_stage3_commit": "0a6434b",
+  "implementation_commit": "721fadae314960f17562379eba9b95862f6e7201",
+  "clock_hz": 50000000,
+  "hardware": {
+    "control": {
+      "logic_elements": 23789,
+      "memory_bits": 2659684,
+      "multipliers_9bit": 80,
+      "plls": 2,
+      "m9k": 354,
+      "physical_memory_bits": 3262464,
+      "setup_min_ns": 0.533,
+      "hold_min_ns": 0.087,
+      "timings": [
+        {
+          "type": "Slow 1200mV 85C Model Setup 'CLOCK_50'",
+          "slack_ns": 0.533
+        },
+        {
+          "type": "Slow 1200mV 85C Model Setup 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 1.407
+        },
+        {
+          "type": "Slow 1200mV 85C Model Setup 'SDRAM_CLK'",
+          "slack_ns": 3.158
+        },
+        {
+          "type": "Slow 1200mV 85C Model Setup 'ENET0_TX_CLK'",
+          "slack_ns": 4.013
+        },
+        {
+          "type": "Slow 1200mV 85C Model Setup 'ENET0_RX_CLK'",
+          "slack_ns": 5.585
+        },
+        {
+          "type": "Slow 1200mV 85C Model Setup 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 12.318
+        },
+        {
+          "type": "Slow 1200mV 85C Model Hold 'ENET0_RX_CLK'",
+          "slack_ns": 0.267
+        },
+        {
+          "type": "Slow 1200mV 85C Model Hold 'CLOCK_50'",
+          "slack_ns": 0.307
+        },
+        {
+          "type": "Slow 1200mV 85C Model Hold 'ENET0_TX_CLK'",
+          "slack_ns": 0.386
+        },
+        {
+          "type": "Slow 1200mV 85C Model Hold 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 0.409
+        },
+        {
+          "type": "Slow 1200mV 85C Model Hold 'SDRAM_CLK'",
+          "slack_ns": 10.418
+        },
+        {
+          "type": "Slow 1200mV 85C Model Hold 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 13.421
+        },
+        {
+          "type": "Slow 1200mV 85C Model Recovery 'CLOCK_50'",
+          "slack_ns": 3.127
+        },
+        {
+          "type": "Slow 1200mV 85C Model Removal 'CLOCK_50'",
+          "slack_ns": 7.262
+        },
+        {
+          "type": "Slow 1200mV 85C Model Minimum Pulse Width 'CLOCK_50'",
+          "slack_ns": 9.523
+        },
+        {
+          "type": "Slow 1200mV 85C Model Minimum Pulse Width 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 9.799
+        },
+        {
+          "type": "Slow 1200mV 85C Model Minimum Pulse Width 'SDRAM_CLK'",
+          "slack_ns": 15.79
+        },
+        {
+          "type": "Slow 1200mV 85C Model Minimum Pulse Width 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 19.57
+        },
+        {
+          "type": "Slow 1200mV 85C Model Minimum Pulse Width 'ENET0_RX_CLK'",
+          "slack_ns": 19.628
+        },
+        {
+          "type": "Slow 1200mV 85C Model Minimum Pulse Width 'ENET0_TX_CLK'",
+          "slack_ns": 19.653
+        },
+        {
+          "type": "Slow 1200mV 0C Model Setup 'CLOCK_50'",
+          "slack_ns": 1.384
+        },
+        {
+          "type": "Slow 1200mV 0C Model Setup 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 1.937
+        },
+        {
+          "type": "Slow 1200mV 0C Model Setup 'SDRAM_CLK'",
+          "slack_ns": 3.559
+        },
+        {
+          "type": "Slow 1200mV 0C Model Setup 'ENET0_RX_CLK'",
+          "slack_ns": 6.081
+        },
+        {
+          "type": "Slow 1200mV 0C Model Setup 'ENET0_TX_CLK'",
+          "slack_ns": 6.507
+        },
+        {
+          "type": "Slow 1200mV 0C Model Setup 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 14.75
+        },
+        {
+          "type": "Slow 1200mV 0C Model Hold 'ENET0_RX_CLK'",
+          "slack_ns": 0.272
+        },
+        {
+          "type": "Slow 1200mV 0C Model Hold 'CLOCK_50'",
+          "slack_ns": 0.308
+        },
+        {
+          "type": "Slow 1200mV 0C Model Hold 'ENET0_TX_CLK'",
+          "slack_ns": 0.339
+        },
+        {
+          "type": "Slow 1200mV 0C Model Hold 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 0.366
+        },
+        {
+          "type": "Slow 1200mV 0C Model Hold 'SDRAM_CLK'",
+          "slack_ns": 10.094
+        },
+        {
+          "type": "Slow 1200mV 0C Model Hold 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 12.965
+        },
+        {
+          "type": "Slow 1200mV 0C Model Recovery 'CLOCK_50'",
+          "slack_ns": 3.801
+        },
+        {
+          "type": "Slow 1200mV 0C Model Removal 'CLOCK_50'",
+          "slack_ns": 6.556
+        },
+        {
+          "type": "Slow 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'",
+          "slack_ns": 9.555
+        },
+        {
+          "type": "Slow 1200mV 0C Model Minimum Pulse Width 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 9.808
+        },
+        {
+          "type": "Slow 1200mV 0C Model Minimum Pulse Width 'SDRAM_CLK'",
+          "slack_ns": 15.79
+        },
+        {
+          "type": "Slow 1200mV 0C Model Minimum Pulse Width 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 19.573
+        },
+        {
+          "type": "Slow 1200mV 0C Model Minimum Pulse Width 'ENET0_RX_CLK'",
+          "slack_ns": 19.649
+        },
+        {
+          "type": "Slow 1200mV 0C Model Minimum Pulse Width 'ENET0_TX_CLK'",
+          "slack_ns": 19.669
+        },
+        {
+          "type": "Fast 1200mV 0C Model Setup 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 3.593
+        },
+        {
+          "type": "Fast 1200mV 0C Model Setup 'CLOCK_50'",
+          "slack_ns": 4.895
+        },
+        {
+          "type": "Fast 1200mV 0C Model Setup 'SDRAM_CLK'",
+          "slack_ns": 5.598
+        },
+        {
+          "type": "Fast 1200mV 0C Model Setup 'ENET0_RX_CLK'",
+          "slack_ns": 8.418
+        },
+        {
+          "type": "Fast 1200mV 0C Model Setup 'ENET0_TX_CLK'",
+          "slack_ns": 16.826
+        },
+        {
+          "type": "Fast 1200mV 0C Model Setup 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 25.153
+        },
+        {
+          "type": "Fast 1200mV 0C Model Hold 'ENET0_RX_CLK'",
+          "slack_ns": 0.087
+        },
+        {
+          "type": "Fast 1200mV 0C Model Hold 'CLOCK_50'",
+          "slack_ns": 0.13
+        },
+        {
+          "type": "Fast 1200mV 0C Model Hold 'ENET0_TX_CLK'",
+          "slack_ns": 0.174
+        },
+        {
+          "type": "Fast 1200mV 0C Model Hold 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 0.188
+        },
+        {
+          "type": "Fast 1200mV 0C Model Hold 'SDRAM_CLK'",
+          "slack_ns": 9.381
+        },
+        {
+          "type": "Fast 1200mV 0C Model Hold 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 11.271
+        },
+        {
+          "type": "Fast 1200mV 0C Model Recovery 'CLOCK_50'",
+          "slack_ns": 6.818
+        },
+        {
+          "type": "Fast 1200mV 0C Model Removal 'CLOCK_50'",
+          "slack_ns": 3.853
+        },
+        {
+          "type": "Fast 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'",
+          "slack_ns": 9.193
+        },
+        {
+          "type": "Fast 1200mV 0C Model Minimum Pulse Width 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 9.798
+        },
+        {
+          "type": "Fast 1200mV 0C Model Minimum Pulse Width 'SDRAM_CLK'",
+          "slack_ns": 16.0
+        },
+        {
+          "type": "Fast 1200mV 0C Model Minimum Pulse Width 'ENET0_RX_CLK'",
+          "slack_ns": 19.377
+        },
+        {
+          "type": "Fast 1200mV 0C Model Minimum Pulse Width 'ENET0_TX_CLK'",
+          "slack_ns": 19.384
+        },
+        {
+          "type": "Fast 1200mV 0C Model Minimum Pulse Width 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 19.614
+        }
+      ],
+      "sof_sha256": "125a87d27c7654cc6ce51a4015916f218fa77bd5703a0c66722e62d6c18d4b3c",
+      "unconstrained_clocks": {
+        "setup": 0,
+        "hold": 0
+      },
+      "unconstrained_input_ports": {
+        "setup": 0,
+        "hold": 0
+      },
+      "unconstrained_input_port_paths": {
+        "setup": 0,
+        "hold": 0
+      },
+      "unconstrained_output_ports": {
+        "setup": 0,
+        "hold": 0
+      },
+      "unconstrained_output_port_paths": {
+        "setup": 0,
+        "hold": 0
+      }
+    },
+    "dual": {
+      "logic_elements": 24185,
+      "memory_bits": 2659684,
+      "multipliers_9bit": 80,
+      "plls": 2,
+      "m9k": 366,
+      "physical_memory_bits": 3373056,
+      "setup_min_ns": 0.623,
+      "hold_min_ns": 0.105,
+      "timings": [
+        {
+          "type": "Slow 1200mV 85C Model Setup 'CLOCK_50'",
+          "slack_ns": 0.623
+        },
+        {
+          "type": "Slow 1200mV 85C Model Setup 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 1.409
+        },
+        {
+          "type": "Slow 1200mV 85C Model Setup 'SDRAM_CLK'",
+          "slack_ns": 2.74
+        },
+        {
+          "type": "Slow 1200mV 85C Model Setup 'ENET0_TX_CLK'",
+          "slack_ns": 4.167
+        },
+        {
+          "type": "Slow 1200mV 85C Model Setup 'ENET0_RX_CLK'",
+          "slack_ns": 6.26
+        },
+        {
+          "type": "Slow 1200mV 85C Model Setup 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 12.567
+        },
+        {
+          "type": "Slow 1200mV 85C Model Hold 'ENET0_RX_CLK'",
+          "slack_ns": 0.287
+        },
+        {
+          "type": "Slow 1200mV 85C Model Hold 'CLOCK_50'",
+          "slack_ns": 0.341
+        },
+        {
+          "type": "Slow 1200mV 85C Model Hold 'ENET0_TX_CLK'",
+          "slack_ns": 0.392
+        },
+        {
+          "type": "Slow 1200mV 85C Model Hold 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 0.409
+        },
+        {
+          "type": "Slow 1200mV 85C Model Hold 'SDRAM_CLK'",
+          "slack_ns": 11.207
+        },
+        {
+          "type": "Slow 1200mV 85C Model Hold 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 13.419
+        },
+        {
+          "type": "Slow 1200mV 85C Model Recovery 'CLOCK_50'",
+          "slack_ns": 3.078
+        },
+        {
+          "type": "Slow 1200mV 85C Model Removal 'CLOCK_50'",
+          "slack_ns": 6.026
+        },
+        {
+          "type": "Slow 1200mV 85C Model Minimum Pulse Width 'CLOCK_50'",
+          "slack_ns": 9.524
+        },
+        {
+          "type": "Slow 1200mV 85C Model Minimum Pulse Width 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 9.799
+        },
+        {
+          "type": "Slow 1200mV 85C Model Minimum Pulse Width 'SDRAM_CLK'",
+          "slack_ns": 15.79
+        },
+        {
+          "type": "Slow 1200mV 85C Model Minimum Pulse Width 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 19.57
+        },
+        {
+          "type": "Slow 1200mV 85C Model Minimum Pulse Width 'ENET0_RX_CLK'",
+          "slack_ns": 19.635
+        },
+        {
+          "type": "Slow 1200mV 85C Model Minimum Pulse Width 'ENET0_TX_CLK'",
+          "slack_ns": 19.658
+        },
+        {
+          "type": "Slow 1200mV 0C Model Setup 'CLOCK_50'",
+          "slack_ns": 1.364
+        },
+        {
+          "type": "Slow 1200mV 0C Model Setup 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 1.938
+        },
+        {
+          "type": "Slow 1200mV 0C Model Setup 'SDRAM_CLK'",
+          "slack_ns": 3.203
+        },
+        {
+          "type": "Slow 1200mV 0C Model Setup 'ENET0_TX_CLK'",
+          "slack_ns": 6.608
+        },
+        {
+          "type": "Slow 1200mV 0C Model Setup 'ENET0_RX_CLK'",
+          "slack_ns": 6.717
+        },
+        {
+          "type": "Slow 1200mV 0C Model Setup 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 15.041
+        },
+        {
+          "type": "Slow 1200mV 0C Model Hold 'ENET0_RX_CLK'",
+          "slack_ns": 0.292
+        },
+        {
+          "type": "Slow 1200mV 0C Model Hold 'CLOCK_50'",
+          "slack_ns": 0.338
+        },
+        {
+          "type": "Slow 1200mV 0C Model Hold 'ENET0_TX_CLK'",
+          "slack_ns": 0.351
+        },
+        {
+          "type": "Slow 1200mV 0C Model Hold 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 0.364
+        },
+        {
+          "type": "Slow 1200mV 0C Model Hold 'SDRAM_CLK'",
+          "slack_ns": 10.821
+        },
+        {
+          "type": "Slow 1200mV 0C Model Hold 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 12.964
+        },
+        {
+          "type": "Slow 1200mV 0C Model Recovery 'CLOCK_50'",
+          "slack_ns": 3.768
+        },
+        {
+          "type": "Slow 1200mV 0C Model Removal 'CLOCK_50'",
+          "slack_ns": 5.482
+        },
+        {
+          "type": "Slow 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'",
+          "slack_ns": 9.555
+        },
+        {
+          "type": "Slow 1200mV 0C Model Minimum Pulse Width 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 9.807
+        },
+        {
+          "type": "Slow 1200mV 0C Model Minimum Pulse Width 'SDRAM_CLK'",
+          "slack_ns": 15.79
+        },
+        {
+          "type": "Slow 1200mV 0C Model Minimum Pulse Width 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 19.572
+        },
+        {
+          "type": "Slow 1200mV 0C Model Minimum Pulse Width 'ENET0_RX_CLK'",
+          "slack_ns": 19.651
+        },
+        {
+          "type": "Slow 1200mV 0C Model Minimum Pulse Width 'ENET0_TX_CLK'",
+          "slack_ns": 19.671
+        },
+        {
+          "type": "Fast 1200mV 0C Model Setup 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 3.593
+        },
+        {
+          "type": "Fast 1200mV 0C Model Setup 'CLOCK_50'",
+          "slack_ns": 5.017
+        },
+        {
+          "type": "Fast 1200mV 0C Model Setup 'SDRAM_CLK'",
+          "slack_ns": 5.37
+        },
+        {
+          "type": "Fast 1200mV 0C Model Setup 'ENET0_RX_CLK'",
+          "slack_ns": 8.898
+        },
+        {
+          "type": "Fast 1200mV 0C Model Setup 'ENET0_TX_CLK'",
+          "slack_ns": 17.121
+        },
+        {
+          "type": "Fast 1200mV 0C Model Setup 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 25.509
+        },
+        {
+          "type": "Fast 1200mV 0C Model Hold 'ENET0_RX_CLK'",
+          "slack_ns": 0.105
+        },
+        {
+          "type": "Fast 1200mV 0C Model Hold 'CLOCK_50'",
+          "slack_ns": 0.139
+        },
+        {
+          "type": "Fast 1200mV 0C Model Hold 'ENET0_TX_CLK'",
+          "slack_ns": 0.181
+        },
+        {
+          "type": "Fast 1200mV 0C Model Hold 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 0.187
+        },
+        {
+          "type": "Fast 1200mV 0C Model Hold 'SDRAM_CLK'",
+          "slack_ns": 9.758
+        },
+        {
+          "type": "Fast 1200mV 0C Model Hold 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 11.269
+        },
+        {
+          "type": "Fast 1200mV 0C Model Recovery 'CLOCK_50'",
+          "slack_ns": 6.785
+        },
+        {
+          "type": "Fast 1200mV 0C Model Removal 'CLOCK_50'",
+          "slack_ns": 3.154
+        },
+        {
+          "type": "Fast 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'",
+          "slack_ns": 9.194
+        },
+        {
+          "type": "Fast 1200mV 0C Model Minimum Pulse Width 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 9.798
+        },
+        {
+          "type": "Fast 1200mV 0C Model Minimum Pulse Width 'SDRAM_CLK'",
+          "slack_ns": 16.0
+        },
+        {
+          "type": "Fast 1200mV 0C Model Minimum Pulse Width 'ENET0_RX_CLK'",
+          "slack_ns": 19.378
+        },
+        {
+          "type": "Fast 1200mV 0C Model Minimum Pulse Width 'ENET0_TX_CLK'",
+          "slack_ns": 19.385
+        },
+        {
+          "type": "Fast 1200mV 0C Model Minimum Pulse Width 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 19.613
+        }
+      ],
+      "sof_sha256": "52f7f8e3baf5d827a9dd18b3dc54f177aef666fce2ba361463830dfe8a0a8235",
+      "unconstrained_clocks": {
+        "setup": 0,
+        "hold": 0
+      },
+      "unconstrained_input_ports": {
+        "setup": 0,
+        "hold": 0
+      },
+      "unconstrained_input_port_paths": {
+        "setup": 0,
+        "hold": 0
+      },
+      "unconstrained_output_ports": {
+        "setup": 0,
+        "hold": 0
+      },
+      "unconstrained_output_port_paths": {
+        "setup": 0,
+        "hold": 0
+      }
+    }
+  },
+  "physical": {
+    "control": {
+      "normal": {
+        "game_frame_cycles": {
+          "trials": [
+            1668299,
+            1668299,
+            1668299
+          ],
+          "median": 1668299,
+          "minimum": 1668299,
+          "maximum": 1668299
+        },
+        "game_cpu_cycles": {
+          "trials": [
+            905274,
+            905274,
+            905274
+          ],
+          "median": 905274,
+          "minimum": 905274,
+          "maximum": 905274
+        },
+        "game_update_cycles": {
+          "trials": [
+            40182,
+            40182,
+            40182
+          ],
+          "median": 40182,
+          "minimum": 40182,
+          "maximum": 40182
+        },
+        "game_present_cycles": {
+          "trials": [
+            763017,
+            763017,
+            763017
+          ],
+          "median": 763017,
+          "minimum": 763017,
+          "maximum": 763017
+        },
+        "observed_fps": {
+          "trials": [
+            29.882398303587753,
+            30.062063615105128,
+            29.78147360294031
+          ],
+          "median": 29.882398303587753,
+          "minimum": 29.78147360294031,
+          "maximum": 30.062063615105128
+        }
+      },
+      "detail": {
+        "triangles_submitted": {
+          "trials": [
+            444,
+            444,
+            444
+          ],
+          "median": 444,
+          "minimum": 444,
+          "maximum": 444
+        },
+        "triangles_clipped": {
+          "trials": [
+            4,
+            4,
+            4
+          ],
+          "median": 4,
+          "minimum": 4,
+          "maximum": 4
+        },
+        "triangles_culled": {
+          "trials": [
+            195,
+            195,
+            195
+          ],
+          "median": 195,
+          "minimum": 195,
+          "maximum": 195
+        },
+        "bounding_box_pixels": {
+          "trials": [
+            263013,
+            263013,
+            263013
+          ],
+          "median": 263013,
+          "minimum": 263013,
+          "maximum": 263013
+        },
+        "pixels_inside": {
+          "trials": [
+            90955,
+            90955,
+            90955
+          ],
+          "median": 90955,
+          "minimum": 90955,
+          "maximum": 90955
+        },
+        "depth_rejected": {
+          "trials": [
+            5999,
+            5999,
+            5999
+          ],
+          "median": 5999,
+          "minimum": 5999,
+          "maximum": 5999
+        },
+        "pixels_written": {
+          "trials": [
+            84956,
+            84956,
+            84956
+          ],
+          "median": 84956,
+          "minimum": 84956,
+          "maximum": 84956
+        },
+        "geometry_cycles": {
+          "trials": [
+            42366,
+            42366,
+            42366
+          ],
+          "median": 42366,
+          "minimum": 42366,
+          "maximum": 42366
+        },
+        "geometry_stall_cycles": {
+          "trials": [
+            209639,
+            209639,
+            209639
+          ],
+          "median": 209639,
+          "minimum": 209639,
+          "maximum": 209639
+        },
+        "raster_cycles": {
+          "trials": [
+            272307,
+            272307,
+            272307
+          ],
+          "median": 272307,
+          "minimum": 272307,
+          "maximum": 272307
+        },
+        "clear_cycles": {
+          "trials": [
+            76800,
+            76800,
+            76800
+          ],
+          "median": 76800,
+          "minimum": 76800,
+          "maximum": 76800
+        },
+        "total_cycles": {
+          "trials": [
+            1532574,
+            1532574,
+            1532573
+          ],
+          "median": 1532574,
+          "minimum": 1532573,
+          "maximum": 1532574
+        },
+        "swap_wait_cycles": {
+          "trials": [
+            541640,
+            541640,
+            541639
+          ],
+          "median": 541640,
+          "minimum": 541639,
+          "maximum": 541640
+        },
+        "render_cpu_cycles": {
+          "trials": [
+            905765,
+            905765,
+            905765
+          ],
+          "median": 905765,
+          "minimum": 905765,
+          "maximum": 905765
+        },
+        "frame_ids": [
+          251,
+          251,
+          251
+        ]
+      },
+      "probe": [
+        {
+          "triangles_submitted": {
+            "trials": [
+              128,
+              128,
+              128
+            ],
+            "median": 128,
+            "minimum": 128,
+            "maximum": 128
+          },
+          "triangles_clipped": {
+            "trials": [
+              0,
+              0,
+              0
+            ],
+            "median": 0,
+            "minimum": 0,
+            "maximum": 0
+          },
+          "triangles_culled": {
+            "trials": [
+              0,
+              0,
+              0
+            ],
+            "median": 0,
+            "minimum": 0,
+            "maximum": 0
+          },
+          "bounding_box_pixels": {
+            "trials": [
+              3200,
+              3200,
+              3200
+            ],
+            "median": 3200,
+            "minimum": 3200,
+            "maximum": 3200
+          },
+          "pixels_inside": {
+            "trials": [
+              1920,
+              1920,
+              1920
+            ],
+            "median": 1920,
+            "minimum": 1920,
+            "maximum": 1920
+          },
+          "depth_rejected": {
+            "trials": [
+              1905,
+              1905,
+              1905
+            ],
+            "median": 1905,
+            "minimum": 1905,
+            "maximum": 1905
+          },
+          "pixels_written": {
+            "trials": [
+              15,
+              15,
+              15
+            ],
+            "median": 15,
+            "minimum": 15,
+            "maximum": 15
+          },
+          "geometry_cycles": {
+            "trials": [
+              1587,
+              1587,
+              1587
+            ],
+            "median": 1587,
+            "minimum": 1587,
+            "maximum": 1587
+          },
+          "geometry_stall_cycles": {
+            "trials": [
+              19926,
+              19926,
+              19926
+            ],
+            "median": 19926,
+            "minimum": 19926,
+            "maximum": 19926
+          },
+          "raster_cycles": {
+            "trials": [
+              8576,
+              8576,
+              8576
+            ],
+            "median": 8576,
+            "minimum": 8576,
+            "maximum": 8576
+          },
+          "clear_cycles": {
+            "trials": [
+              76800,
+              76800,
+              76800
+            ],
+            "median": 76800,
+            "minimum": 76800,
+            "maximum": 76800
+          },
+          "total_cycles": {
+            "trials": [
+              560022,
+              560022,
+              560028
+            ],
+            "median": 560022,
+            "minimum": 560022,
+            "maximum": 560028
+          },
+          "swap_wait_cycles": {
+            "trials": [
+              461614,
+              461614,
+              461620
+            ],
+            "median": 461614,
+            "minimum": 461614,
+            "maximum": 461620
+          },
+          "frame": {
+            "trials": [
+              1,
+              1,
+              1
+            ],
+            "median": 1,
+            "minimum": 1,
+            "maximum": 1
+          },
+          "before_swap_wait": {
+            "trials": [
+              98408,
+              98408,
+              98408
+            ],
+            "median": 98408,
+            "minimum": 98408,
+            "maximum": 98408
+          }
+        },
+        {
+          "triangles_submitted": {
+            "trials": [
+              128,
+              128,
+              128
+            ],
+            "median": 128,
+            "minimum": 128,
+            "maximum": 128
+          },
+          "triangles_clipped": {
+            "trials": [
+              0,
+              0,
+              0
+            ],
+            "median": 0,
+            "minimum": 0,
+            "maximum": 0
+          },
+          "triangles_culled": {
+            "trials": [
+              0,
+              0,
+              0
+            ],
+            "median": 0,
+            "minimum": 0,
+            "maximum": 0
+          },
+          "bounding_box_pixels": {
+            "trials": [
+              139392,
+              139392,
+              139392
+            ],
+            "median": 139392,
+            "minimum": 139392,
+            "maximum": 139392
+          },
+          "pixels_inside": {
+            "trials": [
+              71808,
+              71808,
+              71808
+            ],
+            "median": 71808,
+            "minimum": 71808,
+            "maximum": 71808
+          },
+          "depth_rejected": {
+            "trials": [
+              71247,
+              71247,
+              71247
+            ],
+            "median": 71247,
+            "minimum": 71247,
+            "maximum": 71247
+          },
+          "pixels_written": {
+            "trials": [
+              561,
+              561,
+              561
+            ],
+            "median": 561,
+            "minimum": 561,
+            "maximum": 561
+          },
+          "geometry_cycles": {
+            "trials": [
+              1587,
+              1587,
+              1587
+            ],
+            "median": 1587,
+            "minimum": 1587,
+            "maximum": 1587
+          },
+          "geometry_stall_cycles": {
+            "trials": [
+              134040,
+              134040,
+              134040
+            ],
+            "median": 134040,
+            "minimum": 134040,
+            "maximum": 134040
+          },
+          "raster_cycles": {
+            "trials": [
+              139815,
+              139815,
+              139815
+            ],
+            "median": 139815,
+            "minimum": 139815,
+            "maximum": 139815
+          },
+          "clear_cycles": {
+            "trials": [
+              76800,
+              76800,
+              76800
+            ],
+            "median": 76800,
+            "minimum": 76800,
+            "maximum": 76800
+          },
+          "total_cycles": {
+            "trials": [
+              833700,
+              833700,
+              833695
+            ],
+            "median": 833700,
+            "minimum": 833695,
+            "maximum": 833700
+          },
+          "swap_wait_cycles": {
+            "trials": [
+              616880,
+              616880,
+              616875
+            ],
+            "median": 616880,
+            "minimum": 616875,
+            "maximum": 616880
+          },
+          "frame": {
+            "trials": [
+              2,
+              2,
+              2
+            ],
+            "median": 2,
+            "minimum": 2,
+            "maximum": 2
+          },
+          "before_swap_wait": {
+            "trials": [
+              216820,
+              216820,
+              216820
+            ],
+            "median": 216820,
+            "minimum": 216820,
+            "maximum": 216820
+          }
+        },
+        {
+          "triangles_submitted": {
+            "trials": [
+              128,
+              128,
+              128
+            ],
+            "median": 128,
+            "minimum": 128,
+            "maximum": 128
+          },
+          "triangles_clipped": {
+            "trials": [
+              0,
+              0,
+              0
+            ],
+            "median": 0,
+            "minimum": 0,
+            "maximum": 0
+          },
+          "triangles_culled": {
+            "trials": [
+              0,
+              0,
+              0
+            ],
+            "median": 0,
+            "minimum": 0,
+            "maximum": 0
+          },
+          "bounding_box_pixels": {
+            "trials": [
+              540800,
+              540800,
+              540800
+            ],
+            "median": 540800,
+            "minimum": 540800,
+            "maximum": 540800
+          },
+          "pixels_inside": {
+            "trials": [
+              274560,
+              274560,
+              274560
+            ],
+            "median": 274560,
+            "minimum": 274560,
+            "maximum": 274560
+          },
+          "depth_rejected": {
+            "trials": [
+              272415,
+              272415,
+              272415
+            ],
+            "median": 272415,
+            "minimum": 272415,
+            "maximum": 272415
+          },
+          "pixels_written": {
+            "trials": [
+              2145,
+              2145,
+              2145
+            ],
+            "median": 2145,
+            "minimum": 2145,
+            "maximum": 2145
+          },
+          "geometry_cycles": {
+            "trials": [
+              1587,
+              1587,
+              1587
+            ],
+            "median": 1587,
+            "minimum": 1587,
+            "maximum": 1587
+          },
+          "geometry_stall_cycles": {
+            "trials": [
+              522904,
+              522904,
+              522904
+            ],
+            "median": 522904,
+            "minimum": 522904,
+            "maximum": 522904
+          },
+          "raster_cycles": {
+            "trials": [
+              541223,
+              541223,
+              541223
+            ],
+            "median": 541223,
+            "minimum": 541223,
+            "maximum": 541223
+          },
+          "clear_cycles": {
+            "trials": [
+              76800,
+              76800,
+              76800
+            ],
+            "median": 76800,
+            "minimum": 76800,
+            "maximum": 76800
+          },
+          "total_cycles": {
+            "trials": [
+              833698,
+              833698,
+              833693
+            ],
+            "median": 833698,
+            "minimum": 833693,
+            "maximum": 833698
+          },
+          "swap_wait_cycles": {
+            "trials": [
+              215470,
+              215470,
+              215465
+            ],
+            "median": 215470,
+            "minimum": 215465,
+            "maximum": 215470
+          },
+          "frame": {
+            "trials": [
+              3,
+              3,
+              3
+            ],
+            "median": 3,
+            "minimum": 3,
+            "maximum": 3
+          },
+          "before_swap_wait": {
+            "trials": [
+              618228,
+              618228,
+              618228
+            ],
+            "median": 618228,
+            "minimum": 618228,
+            "maximum": 618228
+          }
+        }
+      ]
+    },
+    "dual": {
+      "normal": {
+        "game_frame_cycles": {
+          "trials": [
+            1668287,
+            1668299,
+            1668299
+          ],
+          "median": 1668299,
+          "minimum": 1668287,
+          "maximum": 1668299
+        },
+        "game_cpu_cycles": {
+          "trials": [
+            905336,
+            905274,
+            905274
+          ],
+          "median": 905274,
+          "minimum": 905274,
+          "maximum": 905336
+        },
+        "game_update_cycles": {
+          "trials": [
+            40182,
+            40182,
+            40182
+          ],
+          "median": 40182,
+          "minimum": 40182,
+          "maximum": 40182
+        },
+        "game_present_cycles": {
+          "trials": [
+            763006,
+            763017,
+            763017
+          ],
+          "median": 763017,
+          "minimum": 763006,
+          "maximum": 763017
+        },
+        "observed_fps": {
+          "trials": [
+            29.86811481758832,
+            29.882398303587753,
+            29.969064191683287
+          ],
+          "median": 29.882398303587753,
+          "minimum": 29.86811481758832,
+          "maximum": 29.969064191683287
+        }
+      },
+      "detail": {
+        "triangles_submitted": {
+          "trials": [
+            444,
+            444,
+            444
+          ],
+          "median": 444,
+          "minimum": 444,
+          "maximum": 444
+        },
+        "triangles_clipped": {
+          "trials": [
+            4,
+            4,
+            4
+          ],
+          "median": 4,
+          "minimum": 4,
+          "maximum": 4
+        },
+        "triangles_culled": {
+          "trials": [
+            195,
+            195,
+            195
+          ],
+          "median": 195,
+          "minimum": 195,
+          "maximum": 195
+        },
+        "bounding_box_pixels": {
+          "trials": [
+            263013,
+            263013,
+            263013
+          ],
+          "median": 263013,
+          "minimum": 263013,
+          "maximum": 263013
+        },
+        "pixels_inside": {
+          "trials": [
+            90955,
+            90955,
+            90955
+          ],
+          "median": 90955,
+          "minimum": 90955,
+          "maximum": 90955
+        },
+        "depth_rejected": {
+          "trials": [
+            5999,
+            5999,
+            5999
+          ],
+          "median": 5999,
+          "minimum": 5999,
+          "maximum": 5999
+        },
+        "pixels_written": {
+          "trials": [
+            84956,
+            84956,
+            84956
+          ],
+          "median": 84956,
+          "minimum": 84956,
+          "maximum": 84956
+        },
+        "geometry_cycles": {
+          "trials": [
+            43842,
+            43842,
+            43842
+          ],
+          "median": 43842,
+          "minimum": 43842,
+          "maximum": 43842
+        },
+        "geometry_stall_cycles": {
+          "trials": [
+            103099,
+            103099,
+            103099
+          ],
+          "median": 103099,
+          "minimum": 103099,
+          "maximum": 103099
+        },
+        "raster_cycles": {
+          "trials": [
+            142504,
+            142504,
+            142504
+          ],
+          "median": 142504,
+          "minimum": 142504,
+          "maximum": 142504
+        },
+        "clear_cycles": {
+          "trials": [
+            38400,
+            38400,
+            38400
+          ],
+          "median": 38400,
+          "minimum": 38400,
+          "maximum": 38400
+        },
+        "total_cycles": {
+          "trials": [
+            1532591,
+            1532577,
+            1532591
+          ],
+          "median": 1532591,
+          "minimum": 1532577,
+          "maximum": 1532591
+        },
+        "swap_wait_cycles": {
+          "trials": [
+            624464,
+            624445,
+            624464
+          ],
+          "median": 624464,
+          "minimum": 624445,
+          "maximum": 624464
+        },
+        "render_cpu_cycles": {
+          "trials": [
+            905755,
+            905765,
+            905755
+          ],
+          "median": 905755,
+          "minimum": 905755,
+          "maximum": 905765
+        },
+        "frame_ids": [
+          251,
+          251,
+          251
+        ]
+      },
+      "probe": [
+        {
+          "triangles_submitted": {
+            "trials": [
+              128,
+              128,
+              128
+            ],
+            "median": 128,
+            "minimum": 128,
+            "maximum": 128
+          },
+          "triangles_clipped": {
+            "trials": [
+              0,
+              0,
+              0
+            ],
+            "median": 0,
+            "minimum": 0,
+            "maximum": 0
+          },
+          "triangles_culled": {
+            "trials": [
+              0,
+              0,
+              0
+            ],
+            "median": 0,
+            "minimum": 0,
+            "maximum": 0
+          },
+          "bounding_box_pixels": {
+            "trials": [
+              3200,
+              3200,
+              3200
+            ],
+            "median": 3200,
+            "minimum": 3200,
+            "maximum": 3200
+          },
+          "pixels_inside": {
+            "trials": [
+              1920,
+              1920,
+              1920
+            ],
+            "median": 1920,
+            "minimum": 1920,
+            "maximum": 1920
+          },
+          "depth_rejected": {
+            "trials": [
+              1905,
+              1905,
+              1905
+            ],
+            "median": 1905,
+            "minimum": 1905,
+            "maximum": 1905
+          },
+          "pixels_written": {
+            "trials": [
+              15,
+              15,
+              15
+            ],
+            "median": 15,
+            "minimum": 15,
+            "maximum": 15
+          },
+          "geometry_cycles": {
+            "trials": [
+              1587,
+              1587,
+              1587
+            ],
+            "median": 1587,
+            "minimum": 1587,
+            "maximum": 1587
+          },
+          "geometry_stall_cycles": {
+            "trials": [
+              19926,
+              19926,
+              19926
+            ],
+            "median": 19926,
+            "minimum": 19926,
+            "maximum": 19926
+          },
+          "raster_cycles": {
+            "trials": [
+              7296,
+              7296,
+              7296
+            ],
+            "median": 7296,
+            "minimum": 7296,
+            "maximum": 7296
+          },
+          "clear_cycles": {
+            "trials": [
+              38400,
+              38400,
+              38400
+            ],
+            "median": 38400,
+            "minimum": 38400,
+            "maximum": 38400
+          },
+          "total_cycles": {
+            "trials": [
+              560022,
+              560022,
+              560022
+            ],
+            "median": 560022,
+            "minimum": 560022,
+            "maximum": 560022
+          },
+          "swap_wait_cycles": {
+            "trials": [
+              500024,
+              500024,
+              500024
+            ],
+            "median": 500024,
+            "minimum": 500024,
+            "maximum": 500024
+          },
+          "frame": {
+            "trials": [
+              1,
+              1,
+              1
+            ],
+            "median": 1,
+            "minimum": 1,
+            "maximum": 1
+          },
+          "before_swap_wait": {
+            "trials": [
+              59998,
+              59998,
+              59998
+            ],
+            "median": 59998,
+            "minimum": 59998,
+            "maximum": 59998
+          }
+        },
+        {
+          "triangles_submitted": {
+            "trials": [
+              128,
+              128,
+              128
+            ],
+            "median": 128,
+            "minimum": 128,
+            "maximum": 128
+          },
+          "triangles_clipped": {
+            "trials": [
+              0,
+              0,
+              0
+            ],
+            "median": 0,
+            "minimum": 0,
+            "maximum": 0
+          },
+          "triangles_culled": {
+            "trials": [
+              0,
+              0,
+              0
+            ],
+            "median": 0,
+            "minimum": 0,
+            "maximum": 0
+          },
+          "bounding_box_pixels": {
+            "trials": [
+              139392,
+              139392,
+              139392
+            ],
+            "median": 139392,
+            "minimum": 139392,
+            "maximum": 139392
+          },
+          "pixels_inside": {
+            "trials": [
+              71808,
+              71808,
+              71808
+            ],
+            "median": 71808,
+            "minimum": 71808,
+            "maximum": 71808
+          },
+          "depth_rejected": {
+            "trials": [
+              71247,
+              71247,
+              71247
+            ],
+            "median": 71247,
+            "minimum": 71247,
+            "maximum": 71247
+          },
+          "pixels_written": {
+            "trials": [
+              561,
+              561,
+              561
+            ],
+            "median": 561,
+            "minimum": 561,
+            "maximum": 561
+          },
+          "geometry_cycles": {
+            "trials": [
+              1587,
+              1587,
+              1587
+            ],
+            "median": 1587,
+            "minimum": 1587,
+            "maximum": 1587
+          },
+          "geometry_stall_cycles": {
+            "trials": [
+              68568,
+              68568,
+              68568
+            ],
+            "median": 68568,
+            "minimum": 68568,
+            "maximum": 68568
+          },
+          "raster_cycles": {
+            "trials": [
+              72231,
+              72231,
+              72231
+            ],
+            "median": 72231,
+            "minimum": 72231,
+            "maximum": 72231
+          },
+          "clear_cycles": {
+            "trials": [
+              38400,
+              38400,
+              38400
+            ],
+            "median": 38400,
+            "minimum": 38400,
+            "maximum": 38400
+          },
+          "total_cycles": {
+            "trials": [
+              833700,
+              833700,
+              833700
+            ],
+            "median": 833700,
+            "minimum": 833700,
+            "maximum": 833700
+          },
+          "swap_wait_cycles": {
+            "trials": [
+              722864,
+              722864,
+              722864
+            ],
+            "median": 722864,
+            "minimum": 722864,
+            "maximum": 722864
+          },
+          "frame": {
+            "trials": [
+              2,
+              2,
+              2
+            ],
+            "median": 2,
+            "minimum": 2,
+            "maximum": 2
+          },
+          "before_swap_wait": {
+            "trials": [
+              110836,
+              110836,
+              110836
+            ],
+            "median": 110836,
+            "minimum": 110836,
+            "maximum": 110836
+          }
+        },
+        {
+          "triangles_submitted": {
+            "trials": [
+              128,
+              128,
+              128
+            ],
+            "median": 128,
+            "minimum": 128,
+            "maximum": 128
+          },
+          "triangles_clipped": {
+            "trials": [
+              0,
+              0,
+              0
+            ],
+            "median": 0,
+            "minimum": 0,
+            "maximum": 0
+          },
+          "triangles_culled": {
+            "trials": [
+              0,
+              0,
+              0
+            ],
+            "median": 0,
+            "minimum": 0,
+            "maximum": 0
+          },
+          "bounding_box_pixels": {
+            "trials": [
+              540800,
+              540800,
+              540800
+            ],
+            "median": 540800,
+            "minimum": 540800,
+            "maximum": 540800
+          },
+          "pixels_inside": {
+            "trials": [
+              274560,
+              274560,
+              274560
+            ],
+            "median": 274560,
+            "minimum": 274560,
+            "maximum": 274560
+          },
+          "depth_rejected": {
+            "trials": [
+              272415,
+              272415,
+              272415
+            ],
+            "median": 272415,
+            "minimum": 272415,
+            "maximum": 272415
+          },
+          "pixels_written": {
+            "trials": [
+              2145,
+              2145,
+              2145
+            ],
+            "median": 2145,
+            "minimum": 2145,
+            "maximum": 2145
+          },
+          "geometry_cycles": {
+            "trials": [
+              1587,
+              1587,
+              1587
+            ],
+            "median": 1587,
+            "minimum": 1587,
+            "maximum": 1587
+          },
+          "geometry_stall_cycles": {
+            "trials": [
+              264984,
+              264984,
+              264984
+            ],
+            "median": 264984,
+            "minimum": 264984,
+            "maximum": 264984
+          },
+          "raster_cycles": {
+            "trials": [
+              274983,
+              274983,
+              274983
+            ],
+            "median": 274983,
+            "minimum": 274983,
+            "maximum": 274983
+          },
+          "clear_cycles": {
+            "trials": [
+              38400,
+              38400,
+              38400
+            ],
+            "median": 38400,
+            "minimum": 38400,
+            "maximum": 38400
+          },
+          "total_cycles": {
+            "trials": [
+              833698,
+              833698,
+              833698
+            ],
+            "median": 833698,
+            "minimum": 833698,
+            "maximum": 833698
+          },
+          "swap_wait_cycles": {
+            "trials": [
+              520110,
+              520110,
+              520110
+            ],
+            "median": 520110,
+            "minimum": 520110,
+            "maximum": 520110
+          },
+          "frame": {
+            "trials": [
+              3,
+              3,
+              3
+            ],
+            "median": 3,
+            "minimum": 3,
+            "maximum": 3
+          },
+          "before_swap_wait": {
+            "trials": [
+              313588,
+              313588,
+              313588
+            ],
+            "median": 313588,
+            "minimum": 313588,
+            "maximum": 313588
+          }
+        }
+      ]
+    }
+  },
+  "replays": {
+    "castle": {
+      "exact": true,
+      "triangles": 1573,
+      "variants": {
+        "stage3": {
+          "1": {
+            "begin": 1300,
+            "swap_request": 343989,
+            "gpu": {
+              "triangles_submitted": 232,
+              "triangles_clipped": 4,
+              "triangles_culled": 75,
+              "bounding_box_pixels": 258920,
+              "pixels_inside": 89489,
+              "depth_rejected": 5337,
+              "pixels_written": 84152,
+              "geometry_cycles": 2883,
+              "geometry_stall_cycles": 152985,
+              "raster_cycles": 261054,
+              "clear_cycles": 76800,
+              "total_cycles": 766720,
+              "swap_wait_cycles": 424032
+            },
+            "begin_to_swap_request": 342689
+          },
+          "2": {
+            "begin": 768022,
+            "swap_request": 1226586,
+            "gpu": {
+              "triangles_submitted": 315,
+              "triangles_clipped": 12,
+              "triangles_culled": 97,
+              "bounding_box_pixels": 372310,
+              "pixels_inside": 106922,
+              "depth_rejected": 11486,
+              "pixels_written": 95436,
+              "geometry_cycles": 3785,
+              "geometry_stall_cycles": 285864,
+              "raster_cycles": 374616,
+              "clear_cycles": 76800,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 381435
+            },
+            "begin_to_swap_request": 458564
+          },
+          "3": {
+            "begin": 1608022,
+            "swap_request": 2021446,
+            "gpu": {
+              "triangles_submitted": 315,
+              "triangles_clipped": 13,
+              "triangles_culled": 95,
+              "bounding_box_pixels": 328268,
+              "pixels_inside": 108379,
+              "depth_rejected": 13686,
+              "pixels_written": 94693,
+              "geometry_cycles": 3785,
+              "geometry_stall_cycles": 250334,
+              "raster_cycles": 330455,
+              "clear_cycles": 76800,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 426575
+            },
+            "begin_to_swap_request": 413424
+          },
+          "4": {
+            "begin": 2448022,
+            "swap_request": 2798304,
+            "gpu": {
+              "triangles_submitted": 355,
+              "triangles_clipped": 11,
+              "triangles_culled": 119,
+              "bounding_box_pixels": 254958,
+              "pixels_inside": 92093,
+              "depth_rejected": 11124,
+              "pixels_written": 80969,
+              "geometry_cycles": 4087,
+              "geometry_stall_cycles": 250601,
+              "raster_cycles": 257605,
+              "clear_cycles": 76800,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 489717
+            },
+            "begin_to_swap_request": 350282
+          },
+          "5": {
+            "begin": 3288022,
+            "swap_request": 3591716,
+            "gpu": {
+              "triangles_submitted": 183,
+              "triangles_clipped": 13,
+              "triangles_culled": 71,
+              "bounding_box_pixels": 224931,
+              "pixels_inside": 74737,
+              "depth_rejected": 1810,
+              "pixels_written": 72927,
+              "geometry_cycles": 2333,
+              "geometry_stall_cycles": 199095,
+              "raster_cycles": 225392,
+              "clear_cycles": 76800,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 536305
+            },
+            "begin_to_swap_request": 303694
+          },
+          "6": {
+            "begin": 4128022,
+            "swap_request": 4533333,
+            "gpu": {
+              "triangles_submitted": 163,
+              "triangles_clipped": 13,
+              "triangles_culled": 44,
+              "bounding_box_pixels": 327396,
+              "pixels_inside": 114474,
+              "depth_rejected": 10971,
+              "pixels_written": 103503,
+              "geometry_cycles": 2044,
+              "geometry_stall_cycles": 276718,
+              "raster_cycles": 327861,
+              "clear_cycles": 76800,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 434688
+            },
+            "begin_to_swap_request": 405311
+          },
+          "7": {
+            "begin": 4968022,
+            "swap_request": 5234617,
+            "gpu": {
+              "triangles_submitted": 10,
+              "triangles_clipped": 5,
+              "triangles_culled": 2,
+              "bounding_box_pixels": 189441,
+              "pixels_inside": 76713,
+              "depth_rejected": 231,
+              "pixels_written": 76482,
+              "geometry_cycles": 361,
+              "geometry_stall_cycles": 81782,
+              "raster_cycles": 189547,
+              "clear_cycles": 76800,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 573404
+            },
+            "begin_to_swap_request": 266595
+          }
+        },
+        "dual": {
+          "1": {
+            "begin": 1300,
+            "swap_request": 185441,
+            "gpu": {
+              "triangles_submitted": 232,
+              "triangles_clipped": 4,
+              "triangles_culled": 75,
+              "bounding_box_pixels": 258920,
+              "pixels_inside": 89489,
+              "depth_rejected": 5337,
+              "pixels_written": 84152,
+              "geometry_cycles": 2883,
+              "geometry_stall_cycles": 87799,
+              "raster_cycles": 134157,
+              "clear_cycles": 38400,
+              "total_cycles": 766720,
+              "swap_wait_cycles": 582580
+            },
+            "begin_to_swap_request": 184141
+          },
+          "2": {
+            "begin": 768022,
+            "swap_request": 1010208,
+            "gpu": {
+              "triangles_submitted": 315,
+              "triangles_clipped": 12,
+              "triangles_culled": 97,
+              "bounding_box_pixels": 372310,
+              "pixels_inside": 106922,
+              "depth_rejected": 11486,
+              "pixels_written": 95436,
+              "geometry_cycles": 3785,
+              "geometry_stall_cycles": 153803,
+              "raster_cycles": 191972,
+              "clear_cycles": 38400,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 597813
+            },
+            "begin_to_swap_request": 242186
+          },
+          "3": {
+            "begin": 1608022,
+            "swap_request": 1826678,
+            "gpu": {
+              "triangles_submitted": 315,
+              "triangles_clipped": 13,
+              "triangles_culled": 95,
+              "bounding_box_pixels": 328268,
+              "pixels_inside": 108379,
+              "depth_rejected": 13686,
+              "pixels_written": 94693,
+              "geometry_cycles": 3785,
+              "geometry_stall_cycles": 135148,
+              "raster_cycles": 169753,
+              "clear_cycles": 38400,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 621343
+            },
+            "begin_to_swap_request": 218656
+          },
+          "4": {
+            "begin": 2448022,
+            "swap_request": 2640152,
+            "gpu": {
+              "triangles_submitted": 355,
+              "triangles_clipped": 11,
+              "triangles_culled": 119,
+              "bounding_box_pixels": 254958,
+              "pixels_inside": 92093,
+              "depth_rejected": 11124,
+              "pixels_written": 80969,
+              "geometry_cycles": 4087,
+              "geometry_stall_cycles": 140217,
+              "raster_cycles": 133834,
+              "clear_cycles": 38400,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 647869
+            },
+            "begin_to_swap_request": 192130
+          },
+          "5": {
+            "begin": 3288022,
+            "swap_request": 3448240,
+            "gpu": {
+              "triangles_submitted": 183,
+              "triangles_clipped": 13,
+              "triangles_culled": 71,
+              "bounding_box_pixels": 224931,
+              "pixels_inside": 74737,
+              "depth_rejected": 1810,
+              "pixels_written": 72927,
+              "geometry_cycles": 2333,
+              "geometry_stall_cycles": 106651,
+              "raster_cycles": 116580,
+              "clear_cycles": 38400,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 679781
+            },
+            "begin_to_swap_request": 160218
+          },
+          "6": {
+            "begin": 4128022,
+            "swap_request": 4335274,
+            "gpu": {
+              "triangles_submitted": 163,
+              "triangles_clipped": 13,
+              "triangles_culled": 44,
+              "bounding_box_pixels": 327396,
+              "pixels_inside": 114474,
+              "depth_rejected": 10971,
+              "pixels_written": 103503,
+              "geometry_cycles": 2044,
+              "geometry_stall_cycles": 141693,
+              "raster_cycles": 166413,
+              "clear_cycles": 38400,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 632747
+            },
+            "begin_to_swap_request": 207252
+          },
+          "7": {
+            "begin": 4968022,
+            "swap_request": 5101830,
+            "gpu": {
+              "triangles_submitted": 10,
+              "triangles_clipped": 5,
+              "triangles_culled": 2,
+              "bounding_box_pixels": 189441,
+              "pixels_inside": 76713,
+              "depth_rejected": 231,
+              "pixels_written": 76482,
+              "geometry_cycles": 361,
+              "geometry_stall_cycles": 41047,
+              "raster_cycles": 95130,
+              "clear_cycles": 38400,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 706191
+            },
+            "begin_to_swap_request": 133808
+          }
+        }
+      }
+    },
+    "quake": {
+      "exact": true,
+      "triangles": 1572,
+      "variants": {
+        "stage3": {
+          "1": {
+            "begin": 24663,
+            "swap_request": 322917,
+            "gpu": {
+              "triangles_submitted": 786,
+              "triangles_clipped": 220,
+              "triangles_culled": 282,
+              "bounding_box_pixels": 174981,
+              "pixels_inside": 48364,
+              "depth_rejected": 3316,
+              "pixels_written": 45048,
+              "geometry_cycles": 8666,
+              "geometry_stall_cycles": 212758,
+              "raster_cycles": 177741,
+              "clear_cycles": 76800,
+              "total_cycles": 743357,
+              "swap_wait_cycles": 445104
+            },
+            "begin_to_swap_request": 298254
+          },
+          "2": {
+            "begin": 768022,
+            "swap_request": 1078314,
+            "gpu": {
+              "triangles_submitted": 786,
+              "triangles_clipped": 235,
+              "triangles_culled": 330,
+              "bounding_box_pixels": 176343,
+              "pixels_inside": 54912,
+              "depth_rejected": 7006,
+              "pixels_written": 47906,
+              "geometry_cycles": 8797,
+              "geometry_stall_cycles": 224665,
+              "raster_cycles": 180032,
+              "clear_cycles": 76800,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 529707
+            },
+            "begin_to_swap_request": 310292
+          }
+        },
+        "dual": {
+          "1": {
+            "begin": 24663,
+            "swap_request": 215162,
+            "gpu": {
+              "triangles_submitted": 786,
+              "triangles_clipped": 220,
+              "triangles_culled": 282,
+              "bounding_box_pixels": 174981,
+              "pixels_inside": 48364,
+              "depth_rejected": 3316,
+              "pixels_written": 45048,
+              "geometry_cycles": 8666,
+              "geometry_stall_cycles": 143403,
+              "raster_cycles": 96617,
+              "clear_cycles": 38400,
+              "total_cycles": 743357,
+              "swap_wait_cycles": 552859
+            },
+            "begin_to_swap_request": 190499
+          },
+          "2": {
+            "begin": 768022,
+            "swap_request": 974698,
+            "gpu": {
+              "triangles_submitted": 786,
+              "triangles_clipped": 235,
+              "triangles_culled": 330,
+              "bounding_box_pixels": 176343,
+              "pixels_inside": 54912,
+              "depth_rejected": 7006,
+              "pixels_written": 47906,
+              "geometry_cycles": 8797,
+              "geometry_stall_cycles": 159449,
+              "raster_cycles": 98048,
+              "clear_cycles": 38400,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 633323
+            },
+            "begin_to_swap_request": 206676
+          }
+        }
+      }
+    },
+    "fixtures": {
+      "exact": true,
+      "triangles": 79,
+      "variants": {
+        "stage3": {
+          "1": {
+            "begin": 74,
+            "swap_request": 76879,
+            "gpu": {
+              "triangles_submitted": 0,
+              "triangles_clipped": 0,
+              "triangles_culled": 0,
+              "bounding_box_pixels": 0,
+              "pixels_inside": 0,
+              "depth_rejected": 0,
+              "pixels_written": 0,
+              "geometry_cycles": 0,
+              "geometry_stall_cycles": 0,
+              "raster_cycles": 0,
+              "clear_cycles": 76800,
+              "total_cycles": 767946,
+              "swap_wait_cycles": 691142
+            },
+            "begin_to_swap_request": 76805
+          },
+          "2": {
+            "begin": 768022,
+            "swap_request": 999042,
+            "gpu": {
+              "triangles_submitted": 1,
+              "triangles_clipped": 1,
+              "triangles_culled": 0,
+              "bounding_box_pixels": 153600,
+              "pixels_inside": 76802,
+              "depth_rejected": 2,
+              "pixels_written": 76800,
+              "geometry_cycles": 573,
+              "geometry_stall_cycles": 38,
+              "raster_cycles": 153644,
+              "clear_cycles": 76800,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 608979
+            },
+            "begin_to_swap_request": 231020
+          },
+          "3": {
+            "begin": 1608022,
+            "swap_request": 1686105,
+            "gpu": {
+              "triangles_submitted": 2,
+              "triangles_clipped": 0,
+              "triangles_culled": 0,
+              "bounding_box_pixels": 1056,
+              "pixels_inside": 512,
+              "depth_rejected": 256,
+              "pixels_written": 256,
+              "geometry_cycles": 204,
+              "geometry_stall_cycles": 141,
+              "raster_cycles": 1101,
+              "clear_cycles": 76800,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 761916
+            },
+            "begin_to_swap_request": 78083
+          },
+          "4": {
+            "begin": 2448022,
+            "swap_request": 2526387,
+            "gpu": {
+              "triangles_submitted": 2,
+              "triangles_clipped": 0,
+              "triangles_culled": 0,
+              "bounding_box_pixels": 1338,
+              "pixels_inside": 650,
+              "depth_rejected": 0,
+              "pixels_written": 650,
+              "geometry_cycles": 204,
+              "geometry_stall_cycles": 141,
+              "raster_cycles": 1383,
+              "clear_cycles": 76800,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 761634
+            },
+            "begin_to_swap_request": 78365
+          },
+          "5": {
+            "begin": 3288022,
+            "swap_request": 3365004,
+            "gpu": {
+              "triangles_submitted": 1,
+              "triangles_clipped": 0,
+              "triangles_culled": 1,
+              "bounding_box_pixels": 0,
+              "pixels_inside": 0,
+              "depth_rejected": 0,
+              "pixels_written": 0,
+              "geometry_cycles": 176,
+              "geometry_stall_cycles": 0,
+              "raster_cycles": 0,
+              "clear_cycles": 76800,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 763017
+            },
+            "begin_to_swap_request": 76982
+          },
+          "6": {
+            "begin": 4128022,
+            "swap_request": 4206875,
+            "gpu": {
+              "triangles_submitted": 2,
+              "triangles_clipped": 0,
+              "triangles_culled": 0,
+              "bounding_box_pixels": 1827,
+              "pixels_inside": 875,
+              "depth_rejected": 3,
+              "pixels_written": 872,
+              "geometry_cycles": 204,
+              "geometry_stall_cycles": 141,
+              "raster_cycles": 1871,
+              "clear_cycles": 76800,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 761146
+            },
+            "begin_to_swap_request": 78853
+          },
+          "7": {
+            "begin": 4968022,
+            "swap_request": 5045283,
+            "gpu": {
+              "triangles_submitted": 1,
+              "triangles_clipped": 1,
+              "triangles_culled": 1,
+              "bounding_box_pixels": 0,
+              "pixels_inside": 0,
+              "depth_rejected": 0,
+              "pixels_written": 0,
+              "geometry_cycles": 455,
+              "geometry_stall_cycles": 0,
+              "raster_cycles": 0,
+              "clear_cycles": 76800,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 762738
+            },
+            "begin_to_swap_request": 77261
+          },
+          "8": {
+            "begin": 5808022,
+            "swap_request": 5895407,
+            "gpu": {
+              "triangles_submitted": 70,
+              "triangles_clipped": 70,
+              "triangles_culled": 0,
+              "bounding_box_pixels": 0,
+              "pixels_inside": 0,
+              "depth_rejected": 0,
+              "pixels_written": 0,
+              "geometry_cycles": 935,
+              "geometry_stall_cycles": 9644,
+              "raster_cycles": 0,
+              "clear_cycles": 76800,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 752614
+            },
+            "begin_to_swap_request": 87385
+          }
+        },
+        "dual": {
+          "1": {
+            "begin": 74,
+            "swap_request": 38479,
+            "gpu": {
+              "triangles_submitted": 0,
+              "triangles_clipped": 0,
+              "triangles_culled": 0,
+              "bounding_box_pixels": 0,
+              "pixels_inside": 0,
+              "depth_rejected": 0,
+              "pixels_written": 0,
+              "geometry_cycles": 0,
+              "geometry_stall_cycles": 0,
+              "raster_cycles": 0,
+              "clear_cycles": 38400,
+              "total_cycles": 767946,
+              "swap_wait_cycles": 729542
+            },
+            "begin_to_swap_request": 38405
+          },
+          "2": {
+            "begin": 768022,
+            "swap_request": 883842,
+            "gpu": {
+              "triangles_submitted": 1,
+              "triangles_clipped": 1,
+              "triangles_culled": 0,
+              "bounding_box_pixels": 153600,
+              "pixels_inside": 76802,
+              "depth_rejected": 2,
+              "pixels_written": 76800,
+              "geometry_cycles": 573,
+              "geometry_stall_cycles": 38,
+              "raster_cycles": 76844,
+              "clear_cycles": 38400,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 724179
+            },
+            "begin_to_swap_request": 115820
+          },
+          "3": {
+            "begin": 1608022,
+            "swap_request": 1647177,
+            "gpu": {
+              "triangles_submitted": 2,
+              "triangles_clipped": 0,
+              "triangles_culled": 0,
+              "bounding_box_pixels": 1056,
+              "pixels_inside": 512,
+              "depth_rejected": 256,
+              "pixels_written": 256,
+              "geometry_cycles": 204,
+              "geometry_stall_cycles": 141,
+              "raster_cycles": 573,
+              "clear_cycles": 38400,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 800844
+            },
+            "begin_to_swap_request": 39155
+          },
+          "4": {
+            "begin": 2448022,
+            "swap_request": 2487345,
+            "gpu": {
+              "triangles_submitted": 2,
+              "triangles_clipped": 0,
+              "triangles_culled": 0,
+              "bounding_box_pixels": 1338,
+              "pixels_inside": 650,
+              "depth_rejected": 0,
+              "pixels_written": 650,
+              "geometry_cycles": 204,
+              "geometry_stall_cycles": 141,
+              "raster_cycles": 741,
+              "clear_cycles": 38400,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 800676
+            },
+            "begin_to_swap_request": 39323
+          },
+          "5": {
+            "begin": 3288022,
+            "swap_request": 3326604,
+            "gpu": {
+              "triangles_submitted": 1,
+              "triangles_clipped": 0,
+              "triangles_culled": 1,
+              "bounding_box_pixels": 0,
+              "pixels_inside": 0,
+              "depth_rejected": 0,
+              "pixels_written": 0,
+              "geometry_cycles": 176,
+              "geometry_stall_cycles": 0,
+              "raster_cycles": 0,
+              "clear_cycles": 38400,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 801417
+            },
+            "begin_to_swap_request": 38582
+          },
+          "6": {
+            "begin": 4128022,
+            "swap_request": 4167577,
+            "gpu": {
+              "triangles_submitted": 2,
+              "triangles_clipped": 0,
+              "triangles_culled": 0,
+              "bounding_box_pixels": 1827,
+              "pixels_inside": 875,
+              "depth_rejected": 3,
+              "pixels_written": 872,
+              "geometry_cycles": 204,
+              "geometry_stall_cycles": 141,
+              "raster_cycles": 973,
+              "clear_cycles": 38400,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 800444
+            },
+            "begin_to_swap_request": 39555
+          },
+          "7": {
+            "begin": 4968022,
+            "swap_request": 5006883,
+            "gpu": {
+              "triangles_submitted": 1,
+              "triangles_clipped": 1,
+              "triangles_culled": 1,
+              "bounding_box_pixels": 0,
+              "pixels_inside": 0,
+              "depth_rejected": 0,
+              "pixels_written": 0,
+              "geometry_cycles": 455,
+              "geometry_stall_cycles": 0,
+              "raster_cycles": 0,
+              "clear_cycles": 38400,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 801138
+            },
+            "begin_to_swap_request": 38861
+          },
+          "8": {
+            "begin": 5808022,
+            "swap_request": 5857007,
+            "gpu": {
+              "triangles_submitted": 70,
+              "triangles_clipped": 70,
+              "triangles_culled": 0,
+              "bounding_box_pixels": 0,
+              "pixels_inside": 0,
+              "depth_rejected": 0,
+              "pixels_written": 0,
+              "geometry_cycles": 935,
+              "geometry_stall_cycles": 9644,
+              "raster_cycles": 0,
+              "clear_cycles": 38400,
+              "total_cycles": 839998,
+              "swap_wait_cycles": 791014
+            },
+            "begin_to_swap_request": 48985
+          }
+        }
+      }
+    }
+  },
+  "hardware_delta": {
+    "logic_elements": 396,
+    "memory_bits": 0,
+    "multipliers_9bit": 0,
+    "plls": 0,
+    "m9k": 12,
+    "physical_memory_bits": 110592
+  },
+  "ordinary_cpu_change": {
+    "control_cycles": 905274,
+    "dual_cycles": 905274,
+    "delta_cycles": 0,
+    "change_percent": 0.0
+  },
+  "scope": "Two-lane raster plus parity banking/parallel clear as one architecture change. Clocks, command ABI, firmware and game assets unchanged. Three physical resets per image for each synthetic probe, ordinary standing game and instrumented standing game. Exact replay geometry excludes actors; physical game progress is not physical framebuffer readback. No power or Fmax claim."
+}
