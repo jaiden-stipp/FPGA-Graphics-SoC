@@ -1,10 +1,24 @@
 `timescale 1ns/1ps
 `include "renderer_types.svh"
 `define RP dut.renderer.pipeline
-module render_frame_replay_tb;
+module render_frame_replay_tb #(parameter integer PACKED_INPUT=0);
  logic clk=0,reset=1,valid=0,ready,de,ce,done;logic [7:0] data=0;logic [31:0] done_id;renderer_stats_t stats;
  always #10 clk=~clk;
- graphics_stream_renderer dut(.clk(clk),.reference_clk(clk),.reset(reset),.restart(1'b0),.byte_data(data),.byte_valid(valid),.byte_ready(ready),
+ wire[7:0]stream_data;wire stream_valid,stream_ready;
+ logic[31:0]mmio_addr=0,mmio_word=0;wire[31:0]mmio_read,mmio_scratch;
+ logic mmio_re=0,mmio_we=0;wire mmio_written,mmio_pending;wire[3:0]mmio_errors;
+ generate if(PACKED_INPUT)begin : packed_source
+  soc_mmio input_fifo(.clk(clk),.reset(reset),.addr(mmio_addr),.wdata(mmio_word),.funct3(3'b010),
+   .read_en(mmio_re),.write_en(mmio_we),.rdata(mmio_read),.write_performed(mmio_written),
+   .byte_data(stream_data),.byte_valid(stream_valid),.byte_ready(stream_ready),.decoder_error(de),.command_error(ce),
+   .frame_done(done),.frame_done_id(done_id),.frame_statistics(stats),.buttons(8'b0),.look_state(24'b0),
+   .cache_statistics(192'b0),.cpu_statistics(160'b0),.frame_pending(mmio_pending),.error_flags(mmio_errors),.scratch(mmio_scratch));
+  always @(posedge clk)if(!reset && |mmio_errors)$fatal(1,"packed replay MMIO error");
+ end else begin
+  assign stream_data=data;assign stream_valid=valid;
+ end endgenerate
+ assign ready=stream_ready;
+ graphics_stream_renderer dut(.clk(clk),.reference_clk(clk),.reset(reset),.restart(1'b0),.byte_data(stream_data),.byte_valid(stream_valid),.byte_ready(stream_ready),
  .decoder_error(de),.command_error(ce),.frame_done(done),.frame_done_id(done_id),.frame_statistics(stats),
  .VGA_R(),.VGA_G(),.VGA_B(),.VGA_CLK(),.VGA_BLANK_N(),.VGA_SYNC_N(),.VGA_HS(),.VGA_VS());
  reg [7:0] bytes[0:1999999],page0[0:76799],page1[0:76799],depth[0:76799];reg[23:0] palette[0:255];
@@ -15,7 +29,7 @@ module render_frame_replay_tb;
   cycle=cycle+1;
   if(!reset)begin
    if(de || ce)$fatal(1,"replay decoder/command error");
-   if(valid && ready)begin if(first_byte<0)first_byte=cycle;last_byte=cycle;end
+   if(stream_valid && stream_ready)begin if(first_byte<0)first_byte=cycle;last_byte=cycle;end
    if(`RP.display.framebuffer0.ram_write_enable)page0[`RP.display.framebuffer0.ram_write_address]=`RP.display.framebuffer0.ram_write_data;
    if(`RP.display.framebuffer1.ram_write_enable)page1[`RP.display.framebuffer1.ram_write_address]=`RP.display.framebuffer1.ram_write_data;
    if(`RP.depth_memory.ram_write_enable)depth[`RP.depth_memory.ram_write_address]=`RP.depth_memory.ram_write_depth;
@@ -61,13 +75,23 @@ module render_frame_replay_tb;
   $readmemh("build/render-replay/input.hex",bytes,0,length-1);
   commands=$fopen("build/render-replay/frame-commands.log","w");triangles=$fopen("build/render-replay/frame-triangles.log","w");timeline=$fopen("build/render-replay/frame-timeline.log","w");
   repeat(12)@(negedge clk);reset=0;repeat(12)@(negedge clk);
-  for(integer i=0;i<length;i++)begin
+  if(PACKED_INPUT)begin
+   for(integer i=0;i<length;i=i+4)begin
+    integer n;n=length-i<4?length-i:4;
+    @(negedge clk);mmio_addr=32'h40000008;mmio_re=1;
+    #1;while(mmio_read<n)begin @(negedge clk);#1;end
+    mmio_re=0;mmio_addr=32'h400000ac+4*n;mmio_word=0;
+    for(integer j=0;j<n;j=j+1)mmio_word=mmio_word|({24'b0,bytes[i+j]}<<(8*j));
+    mmio_we=1;#1;if(!mmio_written)$fatal(1,"packed reservation lost");
+    @(posedge clk);@(negedge clk);mmio_we=0;
+   end
+  end else for(integer i=0;i<length;i++)begin
    // Deterministic producer gaps exercise ready/valid backpressure.
    if(i%17==0)begin valid=0;repeat(2)@(negedge clk);end
    data=bytes[i];valid=1;do @(posedge clk);while(!ready);@(negedge clk);valid=0;
   end
   wait(captured==expected);@(negedge clk);$fclose(commands);$fclose(triangles);$fclose(timeline);
-  $display("PASS render_frame_replay_tb");$finish;
+  if(PACKED_INPUT)$display("PASS packed_render_replay_tb");else $display("PASS render_frame_replay_tb");$finish;
  end
  initial begin #1000000000;$fatal(1,"render replay timeout");end
 endmodule

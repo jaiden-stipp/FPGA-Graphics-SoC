@@ -43,8 +43,10 @@ module udp_memory_loader #(
     assign bus_addr = base + ({30'b0,index} << 2);
     assign bus_wdata = words[index];
     // First word is a signature, second result/status. Next three are read data.
+    // Final two reserved words now mirror soc_mmio CPU/GPU features for
+    // read-only package preflight while the CPU runs; older images report zero.
     assign reply_statistics = {32'h53440100,status,results[0],results[1],results[2],
-        {30'b0,initialized,hold_cpu},scratch,refresh_count,base,{28'b0,count},32'h494e0101,64'b0};
+        {30'b0,initialized,hold_cpu},scratch,refresh_count,base,{28'b0,count},32'h494e0101,32'h80000001,32'h00000003};
     always_ff @(posedge clk or posedge reset) begin
         if (reset) begin
             state <= IDLE; hold_cpu <= REQUIRE_LOAD; reply_valid <= 0;

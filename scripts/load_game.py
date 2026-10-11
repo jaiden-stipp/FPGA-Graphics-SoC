@@ -32,7 +32,7 @@ def decode_reply(data, transaction):
     if values[0] != 0x53440100: return None
     if values[1]: raise RuntimeError(f'FPGA rejected loader operation, code {values[1]}')
     return {'initialized':bool(values[5]&2),'held':bool(values[5]&1),
-            'words':values[2:5],'scratch':values[6],'refresh_count':values[7], 'input_abi':values[10]}
+            'words':values[2:5],'scratch':values[6],'refresh_count':values[7], 'input_abi':values[10], 'cpu_features':values[11], 'gpu_features':values[12]}
 
 
 def package_segments(path):
@@ -114,9 +114,12 @@ class Loader:
 
 
 def require_hardware(loader,spec):
-    if spec.get('required_gpu_features',{}).get('draw-mesh-fraction-v1'):
-        if not loader.operation(READ,0x4000009c,count=1)['words'][0]&0x80000000 or not loader.operation(READ,0x400000a8,count=1)['words'][0]&1:
-            raise RuntimeError('Package requires draw-mesh-fraction-v1 hardware (CPU left running)')
+    required=spec.get('required_gpu_features',{})
+    if required.get('packed-enqueue-v1') or required.get('draw-mesh-fraction-v1'):
+        status=loader.operation(STATUS,retries=max(loader.retries,40))
+        bits=(2 if required.get('packed-enqueue-v1') else 0)|(1 if required.get('draw-mesh-fraction-v1') else 0)
+        if not status.get('cpu_features',0)&0x80000000 or status.get('gpu_features',0)&bits!=bits:
+            raise RuntimeError('Package requires GPU features '+str(required)+'; current status does not advertise them (CPU left running)')
     if 'mouse-look-v1' in spec.get('target',{}).get('required_features',[]):
         if loader.operation(STATUS,retries=max(loader.retries,40))['input_abi']!=0x494e0101:
             raise RuntimeError('Package needs the IN v1 FPGA image; current board is incompatible (CPU left running)')

@@ -44,10 +44,10 @@ class FractionalTests(unittest.TestCase):
    self.assertTrue(all(len(ch['vertices'])<=128 and len(ch['triangles'])<=256 for ch in after))
  def test_old_hardware_rejected_without_reading_unsupported_address(self):
   class Fake:
-   def __init__(self,features):self.calls=[];self.features=features
-   def operation(self,op,address=0,**kw):self.calls.append(address);return {'words':[self.features if address==0x4000009c else 1]}
+   def __init__(self,features):self.calls=[];self.features=features;self.retries=8
+   def operation(self,op,address=0,**kw):self.calls.append(op);return {'cpu_features':self.features,'gpu_features':1}
   package={'required_gpu_features':{'draw-mesh-fraction-v1':True}}
   old=Fake(1)
   with self.assertRaises(RuntimeError):load_game.require_hardware(old,package)
-  self.assertEqual(old.calls,[0x4000009c]);new=Fake(0x80000001);load_game.require_hardware(new,package);self.assertEqual(new.calls,[0x4000009c,0x400000a8])
+  self.assertEqual(old.calls,[load_game.STATUS]);new=Fake(0x80000001);load_game.require_hardware(new,package);self.assertEqual(new.calls,[load_game.STATUS])
 if __name__=='__main__':unittest.main()

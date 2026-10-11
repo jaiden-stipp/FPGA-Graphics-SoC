@@ -63,6 +63,7 @@ module udp_loader_tb;
         send_load(11,2,1,32'h80,1,0,0);check(11,1);
         send_control(1,18,0,0);if(buttons!=18 || !active) $fatal(1,"Controls after load");
         send_load(12,5,0,0,0,0,0);check(12,0);
+        if(response[95:0]!={32'h494e0101,32'h80000001,32'h00000003}) $fatal(1,"Loader feature advertisement");
         if(network_replies<12 || tx_er || memory.ram.mem[32]!=32'habcdef01) $fatal(1,"Loader TX/no-write guard");
         $display("PASS udp_loader_tb (MII/CRC/CDC, CPU and SDRAM readback, range/hold guards, keyboard preserved)");$finish;
     end

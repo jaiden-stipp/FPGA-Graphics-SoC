@@ -131,7 +131,7 @@ def prepare_scene(path,dest):
  write_input(commands,frames,dest,{'scope':'static original scene terrain snapshots; actors, animation, input/controller and game behavior excluded','source_sha256':hashlib.sha256(path.read_bytes()).hexdigest(),'report':report})
 
 def main():
- p=argparse.ArgumentParser(description=__doc__);p.add_argument('--world',type=Path);p.add_argument('--route',type=Path);p.add_argument('--world-source',type=Path);p.add_argument('--legacy-packing',action='store_true');p.add_argument('--scene',type=Path);p.add_argument('--fixtures',action='store_true');p.add_argument('--gpu',action='store_true');p.add_argument('--fractional',action='store_true');p.add_argument('--out',type=Path,required=True);p.add_argument('--simulate',action='store_true');p.add_argument('--capture-only',action='store_true');p.add_argument('--min-chunk-faces',type=int,default=0);a=p.parse_args()
+ p=argparse.ArgumentParser(description=__doc__);p.add_argument('--world',type=Path);p.add_argument('--route',type=Path);p.add_argument('--world-source',type=Path);p.add_argument('--legacy-packing',action='store_true');p.add_argument('--scene',type=Path);p.add_argument('--fixtures',action='store_true');p.add_argument('--gpu',action='store_true');p.add_argument('--fractional',action='store_true');p.add_argument('--out',type=Path,required=True);p.add_argument('--simulate',action='store_true');p.add_argument('--capture-only',action='store_true');p.add_argument('--min-chunk-faces',type=int,default=0);p.add_argument('--packed-mmio',action='store_true');a=p.parse_args()
  if a.capture_only:
   if not (a.out/'input.meta').is_file():p.error('--capture-only requires prepared input in --out')
  elif a.fixtures:fixtures(a.out)
@@ -144,7 +144,7 @@ def main():
    if stale.resolve().parent==active.resolve() and stale.is_file():stale.unlink()
   for name in ('input.hex','input.meta'):shutil.copyfile(a.out/name,active/name)
   env=os.environ.copy();env['PATH']=r'C:\intelFPGA\18.1\modelsim_ase\win32aloem'+os.pathsep+env['PATH']
-  subprocess.run([__import__('sys').executable,'scripts/soc.py','sim','--full','--simulator','modelsim','--tests','render_frame_replay_tb','--work-dir','build/render-replay/simlib'],cwd=ROOT,env=env,check=True)
+  subprocess.run([__import__('sys').executable,'scripts/soc.py','sim','--full','--simulator','modelsim','--tests','packed_render_replay_tb' if a.packed_mmio else 'render_frame_replay_tb','--work-dir','build/render-replay/simlib'],cwd=ROOT,env=env,check=True)
   capture=a.out/'capture';capture.mkdir(exist_ok=True)
   for f in active.glob('frame-*'):shutil.copyfile(f,capture/f.name)
   shutil.copyfile(ROOT/'build/render_frame_replay_tb.log',capture/'simulation.log')

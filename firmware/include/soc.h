@@ -1,7 +1,9 @@
 #ifndef SOC_H
 #define SOC_H
 #include <stdint.h>
+#ifndef SOC_REG
 #define SOC_REG(offset) (*(volatile uint32_t *)(uintptr_t)(0x40000000u + (offset)))
+#endif
 #define GFX_DATA       SOC_REG(0x00)
 #define GFX_STATUS     SOC_REG(0x04)
 #define GFX_FREE       SOC_REG(0x08)
@@ -27,6 +29,9 @@
 #define SOC_FEATURE_GPU_REGS 0x80000000u
 #define SOC_GPU_FEATURES SOC_REG(0xa8)
 #define SOC_GPU_FEATURE_FRACTION 1u
+#define SOC_GPU_FEATURE_PACKED 2u
+// count 1..4; earliest stream byte is wdata[7:0]. Caller reserves space.
+#define GFX_PACKED_DATA(count) SOC_REG(0xacu + ((count) << 2))
 #define SOC_CPU_CYCLES SOC_REG(0x84)
 #define SOC_CPU_RETIRED SOC_REG(0x88)
 #define SOC_CPU_FREEZES SOC_REG(0x8c)

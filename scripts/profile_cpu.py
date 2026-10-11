@@ -1,7 +1,7 @@
 """Collect atomic completed-frame CPU/GPU profiles; restore baseline software."""
 import argparse, json, time
 from pathlib import Path
-from load_game import Loader,BEGIN,READ,STATUS,package_segments
+from load_game import Loader,BEGIN,READ,STATUS,package_segments,require_hardware
 from keyboard_udp import packet
 FIELDS=('cycles','retired','memory_freezes','dependency_bubbles','redirects','status_reads','full_status_reads')
 PHASES=('tick','update','render','present')
@@ -47,6 +47,11 @@ def collect(package,symbols,restore,output,ip='192.168.7.2',port=4000,trials=3,m
             'scope':'Wall-clock controlled movement diagnostic; not a cycle-identical route' if moving else 'Standing spawn view',
             'instrumented':instrumented,'reuse_immutable_assets':reuse_immutable_assets,'trials':[],'restore':str(restore.resolve())}
     loader=Loader(ip,port)
+    # A profiling run must enforce the same capability gate as normal loading.
+    # Reject before BEGIN; do not replace a running game on incompatible hardware.
+    try:require_hardware(loader,json.loads(package.read_text()))
+    except Exception:
+        loader.close();raise
     try:
         for trial in range(trials):
             loader.transfer(candidate if trial==0 or not reuse_immutable_assets else [segment for segment in candidate if segment[0]<65536])

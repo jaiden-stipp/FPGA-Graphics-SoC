@@ -428,10 +428,10 @@ def simulate(args):
     if args.full and simulator != "modelsim":
         raise RuntimeError("Full VGA test requires ModelSim with the altera_mf library")
     tests = ["soc_mmio_tb", "soc_memory_tb", "cpu_stream_tb", "game_stream_tb", "udp_controls_tb", "scene_stream_tb", "mario_stream_tb"]
-    available = tests + ['sdram_cache_tb','sdram_memory_tb','sdram_cpu_tb','udp_loader_tb','udp_extended_input_tb','soc_cpu_counters_tb','cpu_counter_pipeline_tb','cpu_batch_stream_tb','cpu_mul_tb']
+    available = tests + ['packed_mmio_tb','sdram_cache_tb','sdram_memory_tb','sdram_cpu_tb','udp_loader_tb','udp_extended_input_tb','soc_cpu_counters_tb','cpu_counter_pipeline_tb','cpu_batch_stream_tb','cpu_mul_tb']
     if args.full:
         tests += ["soc_top_tb", "soc_game_top_tb", "soc_scene_top_tb", "soc_mario_top_tb", "soc_mario_bridge_top_tb"]
-        available += ['sdram_mario_top_tb','beacon_sdram_top_tb','quake_sdram_top_tb','portable_scene_top_tb','quake_interactive_top_tb','castle_world_top_tb','projection_precision_tb','screen_edge_coverage_tb','depth_edge_coverage_tb','render_frame_replay_tb','gpu_fractional_decoder_tb','gpu_fractional_mesh_tb']
+        available += ['sdram_mario_top_tb','beacon_sdram_top_tb','quake_sdram_top_tb','portable_scene_top_tb','quake_interactive_top_tb','castle_world_top_tb','projection_precision_tb','screen_edge_coverage_tb','depth_edge_coverage_tb','render_frame_replay_tb','packed_render_replay_tb','gpu_fractional_decoder_tb','gpu_fractional_mesh_tb']
     if getattr(args, "tests", None):
         requested = args.tests.split(",")
         if set(requested) - set(available + tests):
@@ -441,6 +441,8 @@ def simulate(args):
         raise RuntimeError("Run sm64-mario or build-fw --app all to generate the bridge fixture")
     include = "+incdir+" + str(ROOT / "rtl/generated") + "+" + str(ROOT / "external/renderer/rtl/common") + "+" + str(ROOT / "sim/generated") + "+" + str(ROOT / "sim")
     src = sources(args.full) + ([ROOT/'sim/sdram_device_model.sv'] if args.full or any('sdram' in name or name=='udp_loader_tb' for name in tests) else []) + [ROOT / f"sim/{name}.sv" for name in tests]
+    if 'packed_render_replay_tb' in tests and 'render_frame_replay_tb' not in tests:
+        src.insert(-1,ROOT/'sim/render_frame_replay_tb.sv')
     if any(name in tests for name in ('portable_scene_top_tb','quake_interactive_top_tb','castle_world_top_tb')) and 'quake_sdram_top_tb' not in tests:
         src.insert(-1,ROOT/'sim/quake_sdram_top_tb.sv')
     BUILD.mkdir(exist_ok=True)
@@ -618,6 +620,7 @@ def portable_package(args):
     from portable_game import generate as generate_portable
     from rv32i_subset import check
     if getattr(args,'terrain_gpu_fractional',False):args.terrain_gpu_safe=True
+    if getattr(args,'packed_gfx',False) and getattr(args,'batch_gfx',False):raise ValueError('Choose --packed-gfx or --batch-gfx, not both')
     if not 0<=getattr(args,'terrain_min_chunk_faces',0)<=256:
         raise ValueError('--terrain-min-chunk-faces requires 0..256')
     if getattr(args,'terrain_min_chunk_faces',0) and not (getattr(args,'terrain_tight_chunks',False) or getattr(args,'terrain_gpu_fractional',False)):
@@ -634,19 +637,19 @@ def portable_package(args):
     api=set(api)|{'portable_assets','portable_world','portable_camera','portable_meshes'}
     sources=['gfx.c','gfx_scene.c','player.c','first_person.c','game_runtime.c','sdram.c','portable_assets.c','portable_main.c','cpu_profile.c']
     for source in [ROOT/'firmware/src'/name for name in sources]+args.port_sources:
-        check(source,args.cc,additional_api=api,extra_flags=(['-DSOC_PROFILE'] if getattr(args,'cpu_profile',False) or getattr(args,'profile_detail',False) else []) + (['-DSOC_PROFILE_DETAIL'] if getattr(args,'profile_detail',False) else []) + (['-DSOC_PROFILE_FINE'] if getattr(args,'profile_fine',False) else []) + (['-DGFX_BATCHED'] if getattr(args,'batch_gfx',False) else []) + (['-DSOC_INTEGER_MUL'] if getattr(args,'integer_mul',False) else []) + (['-DWORLD_GPU_FRACTIONAL=1'] if getattr(args,'terrain_gpu_fractional',False) else []))
+        check(source,args.cc,additional_api=api,extra_flags=(['-DSOC_PROFILE'] if getattr(args,'cpu_profile',False) or getattr(args,'profile_detail',False) else []) + (['-DSOC_PROFILE_DETAIL'] if getattr(args,'profile_detail',False) else []) + (['-DSOC_PROFILE_FINE'] if getattr(args,'profile_fine',False) else []) + (['-DGFX_BATCHED'] if getattr(args,'batch_gfx',False) else []) + (['-DGFX_PACKED'] if getattr(args,'packed_gfx',False) else []) + (['-DSOC_INTEGER_MUL'] if getattr(args,'integer_mul',False) else []) + (['-DWORLD_GPU_FRACTIONAL=1'] if getattr(args,'terrain_gpu_fractional',False) else []))
     direct=getattr(args,'terrain_direct',False)
     if direct and 'world_prepare' not in api:
         raise ValueError('--terrain-direct requires a port using the shared world renderer')
     if getattr(args,'terrain_gpu_safe',False) and 'world_prepare' not in api:
         raise ValueError('--terrain-gpu-safe requires the shared world renderer')
     args.app='portable';args.boot=None;args.use_sdram=True
-    suffix=('-direct' if direct else '-gpu-q8' if getattr(args,'terrain_gpu_fractional',False) else '-gpu-safe' if getattr(args,'terrain_gpu_safe',False) else '')+('-profile' if getattr(args,'cpu_profile',False) or getattr(args,'profile_detail',False) else '')+('-detail' if getattr(args,'profile_detail',False) else '')+('-fine' if getattr(args,'profile_fine',False) else '')+('-batched' if getattr(args,'batch_gfx',False) else '')+('-mul' if getattr(args,'integer_mul',False) else '')
+    suffix=('-direct' if direct else '-gpu-q8' if getattr(args,'terrain_gpu_fractional',False) else '-gpu-safe' if getattr(args,'terrain_gpu_safe',False) else '')+('-profile' if getattr(args,'cpu_profile',False) or getattr(args,'profile_detail',False) else '')+('-detail' if getattr(args,'profile_detail',False) else '')+('-fine' if getattr(args,'profile_fine',False) else '')+('-batched' if getattr(args,'batch_gfx',False) else '')+('-packed' if getattr(args,'packed_gfx',False) else '')+('-mul' if getattr(args,'integer_mul',False) else '')
     if getattr(args,'terrain_tight_chunks',False):suffix+='-tight'
     if getattr(args,'terrain_min_chunk_faces',0):suffix+='-min'+str(args.terrain_min_chunk_faces)
     args.image_name=spec['name']+'-sdram'+suffix
     diagnostic_flags=['-DWORLD_FORCE_DIRECT=1'] if direct else []
-    diagnostic_flags += (['-DSOC_PROFILE'] if getattr(args,'cpu_profile',False) or getattr(args,'profile_detail',False) else []) + (['-DSOC_PROFILE_DETAIL'] if getattr(args,'profile_detail',False) else []) + (['-DGFX_BATCHED'] if getattr(args,'batch_gfx',False) else []) + (['-DSOC_INTEGER_MUL'] if getattr(args,'integer_mul',False) else [])
+    diagnostic_flags += (['-DSOC_PROFILE'] if getattr(args,'cpu_profile',False) or getattr(args,'profile_detail',False) else []) + (['-DSOC_PROFILE_DETAIL'] if getattr(args,'profile_detail',False) else []) + (['-DGFX_BATCHED'] if getattr(args,'batch_gfx',False) else []) + (['-DGFX_PACKED'] if getattr(args,'packed_gfx',False) else []) + (['-DSOC_INTEGER_MUL'] if getattr(args,'integer_mul',False) else [])
     diagnostic_flags += ['-DSOC_PROFILE_FINE'] if getattr(args,'profile_fine',False) else []
     diagnostic_flags += ['-DWORLD_GPU_FRACTIONAL=1'] if getattr(args,'terrain_gpu_fractional',False) else []
     args.extra_flags=diagnostic_flags
@@ -661,6 +664,11 @@ def portable_package(args):
         for stem in (spec['name']+'-sdram'+suffix,spec['name']+'-sdram'+suffix+'-test'):
             path=BUILD/(stem+'.package.json');package=json.loads(path.read_text())
             package['required_gpu_features']={'draw-mesh-fraction-v1':True,'mmio_address':0x400000a8,'bit':0}
+            write(path,json.dumps(package,indent=2)+'\n')
+    if getattr(args,'packed_gfx',False):
+        for stem in (spec['name']+'-sdram'+suffix,spec['name']+'-sdram'+suffix+'-test'):
+            path=BUILD/(stem+'.package.json');package=json.loads(path.read_text())
+            package.setdefault('required_gpu_features',{})['packed-enqueue-v1']=True
             write(path,json.dumps(package,indent=2)+'\n')
     if direct:
         for stem in (spec['name']+'-sdram'+suffix,spec['name']+'-sdram'+suffix+'-test'):
@@ -763,6 +771,7 @@ def main():
     p.add_argument('--profile-fine',action='store_true',help='Optional CRC/check/write and clipping fraction/intersection timers; implies --profile-detail')
     p.add_argument('--integer-mul',action='store_true',help='Use MUL-only fixed_mul; requires CPU feature bit 0')
     p.add_argument('--batch-gfx',action='store_true',help='Experimental FIFO-space reservation transport; retain byte stream ABI')
+    p.add_argument('--packed-gfx',action='store_true',help='Optional atomic 1..4-byte MMIO transport; requires packed-enqueue-v1 hardware')
     p.set_defaults(func=portable_package)
     args = parser.parse_args()
     try:
