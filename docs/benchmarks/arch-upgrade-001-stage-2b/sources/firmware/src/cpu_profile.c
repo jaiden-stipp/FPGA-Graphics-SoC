@@ -1,0 +1,89 @@
+#include "cpu_profile.h"
+#ifdef SOC_PROFILE
+volatile uint32_t game_profile_slots[2][CPU_PROFILE_WORDS];
+volatile uint32_t game_profile_slot;
+static uint32_t previous[7], records[28], gpu_start[4];
+#ifdef GFX_DMA
+volatile uint32_t game_dma_slots[2][6];
+static uint32_t dma_begin[4];
+#endif
+#ifdef SOC_PROFILE_FINE
+volatile uint32_t game_fine_slots[2][CPU_FINE_WORDS];
+static uint32_t fine[CPU_FINE_SCOPES*2u], events[CPU_FINE_EVENTS];
+void cpu_fine_end(uint32_t scope,uint32_t start) {
+    uint32_t elapsed=SOC_CYCLES-start;
+    fine[scope*2u]+=elapsed; ++fine[scope*2u+1u];
+}
+void cpu_fine_event(uint32_t event) { ++events[event]; }
+#endif
+#ifdef SOC_PROFILE_DETAIL
+volatile uint32_t game_detail_slots[2][CPU_DETAIL_WORDS];
+static uint32_t details[CPU_DETAIL_SCOPES*2u];
+void cpu_detail_end(uint32_t scope,uint32_t start) {
+    uint32_t elapsed=SOC_CYCLES-start;
+    details[scope*2u]+=elapsed; ++details[scope*2u+1u];
+}
+#endif
+static void snapshot(uint32_t *v) {
+    SOC_CPU_SNAPSHOT=1u;
+    v[0]=SOC_CPU_CYCLES; v[1]=SOC_CPU_RETIRED; v[2]=SOC_CPU_FREEZES;
+    v[3]=SOC_CPU_BUBBLES; v[4]=SOC_CPU_REDIRECTS;
+    v[5]=SOC_GPU_STATUS_READS; v[6]=SOC_GPU_FULL_READS;
+}
+void cpu_profile_begin(void) {
+#ifdef SOC_PROFILE_FINE
+    for(uint32_t i=0;i<CPU_FINE_SCOPES*2u;++i)fine[i]=0;
+    for(uint32_t i=0;i<CPU_FINE_EVENTS;++i)events[i]=0;
+#endif
+#ifdef SOC_PROFILE_DETAIL
+    for(uint32_t i=0;i<CPU_DETAIL_SCOPES*2u;++i)details[i]=0;
+#endif
+    gpu_start[0]=gfx_profile_command_cycles; gpu_start[1]=gfx_profile_fifo_cycles;
+    gpu_start[2]=gfx_profile_bytes; gpu_start[3]=gfx_profile_commands;
+#ifdef GFX_DMA
+    dma_begin[0]=GFX_DMA_BYTES;dma_begin[1]=GFX_DMA_READ_WORDS;
+    dma_begin[2]=GFX_DMA_REQUEST_WAIT;dma_begin[3]=GFX_DMA_FIFO_WAIT;
+#endif
+    snapshot(previous);
+}
+void cpu_profile_mark(uint32_t phase) {
+    uint32_t current[7]; snapshot(current);
+    for (uint32_t i=0;i<7u;++i) {
+        records[phase*7u+i]=current[i]-previous[i]; previous[i]=current[i];
+    }
+}
+void cpu_profile_publish(uint32_t frame, uint32_t tick, uint32_t update,
+                         uint32_t cpu, uint32_t present, uint32_t total) {
+    uint32_t slot=game_profile_slot^1u;
+    for(uint32_t i=0;i<28u;++i)game_profile_slots[slot][i]=records[i];
+    game_profile_slots[slot][28]=gfx_profile_command_cycles-gpu_start[0];
+    game_profile_slots[slot][29]=gfx_profile_fifo_cycles-gpu_start[1];
+    game_profile_slots[slot][30]=gfx_profile_bytes-gpu_start[2];
+    game_profile_slots[slot][31]=gfx_profile_commands-gpu_start[3];
+    game_profile_slots[slot][32]=tick; game_profile_slots[slot][33]=update;
+    game_profile_slots[slot][34]=cpu; game_profile_slots[slot][35]=present;
+    game_profile_slots[slot][36]=total; game_profile_slots[slot][37]=frame;
+    game_profile_slots[slot][38]=SOC_CLOCK_HZ; game_profile_slots[slot][39]=SOC_CPU_ABI;
+    for(uint32_t i=0;i<13u;++i)game_profile_slots[slot][40u+i]=GFX_STAT(i);
+    // Commit last: interrupted next-frame publication cannot corrupt this slot.
+#ifdef SOC_PROFILE_DETAIL
+    for(uint32_t i=0;i<CPU_DETAIL_SCOPES*2u;++i)game_detail_slots[slot][i]=details[i];
+    game_detail_slots[slot][14]=frame;
+    game_detail_slots[slot][15]=0x44540101u;
+#endif
+#ifdef SOC_PROFILE_FINE
+    for(uint32_t i=0;i<CPU_FINE_SCOPES*2u;++i)game_fine_slots[slot][i]=fine[i];
+    for(uint32_t i=0;i<CPU_FINE_EVENTS;++i)game_fine_slots[slot][14u+i]=events[i];
+    game_fine_slots[slot][20]=frame;
+    game_fine_slots[slot][21]=0x464e0101u;
+#endif
+#ifdef GFX_DMA
+    game_dma_slots[slot][0]=GFX_DMA_BYTES-dma_begin[0];
+    game_dma_slots[slot][1]=GFX_DMA_READ_WORDS-dma_begin[1];
+    game_dma_slots[slot][2]=GFX_DMA_REQUEST_WAIT-dma_begin[2];
+    game_dma_slots[slot][3]=GFX_DMA_FIFO_WAIT-dma_begin[3];
+    game_dma_slots[slot][4]=frame;game_dma_slots[slot][5]=0x444d0101u;
+#endif
+    game_profile_slot=slot;
+}
+#endif

@@ -1,0 +1,18 @@
+{
+  "sof": "build\\quartus-arch-stage2b\\ArchStage2BSoC.sof",
+  "sha256": "bbd6de457af231bef65b77771b5310dd2d2363a7b3aa2d7d6bb89329f90a4140",
+  "status": {
+    "initialized": true,
+    "held": true,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 0,
+    "refresh_count": 479041,
+    "input_abi": 1229848833,
+    "cpu_features": 2147483649,
+    "gpu_features": 7
+  }
+}

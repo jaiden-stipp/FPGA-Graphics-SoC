@@ -1,0 +1,1235 @@
+{
+  "date": "2026-10-11",
+  "baseline_commit": "df9c539",
+  "hardware_implementation_commit": "59a4d3a",
+  "local_staging_commit": "40e4ee1",
+  "tools": {
+    "quartus": "18.1.0 Build 625 Lite",
+    "modelsim": "10.5b",
+    "llvm": "Configured local LLVM, exact ISA/subset logs retained"
+  },
+  "clocks": "50 MHz SoC; SDRAM and VGA clocks unchanged",
+  "decision": "DMA not promoted; accepted Stage 2A image and packed Mario restored",
+  "source_hash_scope": "Exact compiler-read workspace bytes archived in sources; normal Git source newline normalization can differ. Raw evidence -text preserves these bytes.",
+  "artifacts": {
+    "external/rv32i/5-Stage-Pipeline/Monitor.sv": "bfd4b3700afcc99f4afca2d355bc028072593fd3c81e9e89fa70a4b6e19d8e3e",
+    "firmware/src/camera.c": "ab6402fe3b9e2cc4a43767178aaa61528a6ba5cb896febfcc0c12226c3003c58",
+    "scripts/replay_render_route.py": "5b297721e39ed5bf3856dfb5eef5ec91f8981d9e8fd3db3c9fa9c976be2485af",
+    "scripts/test_gfx_staging.py": "b48521f895357700f3c9bc6b51acc1cde879850365763ac0a7a210fcec07b551",
+    "external/renderer/rtl/video/vga_pll.sv": "25c5e5a8c92a729d5e59620e05a4b72e81f118fa6f92d725c51df47c1fe50c8a",
+    "external/renderer/rtl/memory/zbuffer_ip.v": "ba8fc8671a787368e1f5db8d1dfdf8ae027be96d35732c134b56a46484b62aee",
+    "external/renderer/rtl/pipeline/render_performance_counters.sv": "c6dad6d56a7d20fb09fb4f5eecbd86b9a282c56f9da76cf89304e4ac20f2825d",
+    "external/rv32i/5-Stage-Pipeline/IF_ID.sv": "37d8914889eb1e1c1458ec6b8583c1e12213bccf08ee24f8711ae8274ad2e13d",
+    "external/renderer/rtl/video/vga_controller.sv": "44be5fb84939c0aa333106238435e2748425212980b1d6b66701ce138d61ce0a",
+    "rtl/sdram_bridge.sv": "b58bd47a0b71f179df8acb3855e935fb8b6def5b04fad0221caf7864b59974ed",
+    "external/renderer/rtl/common/iterative_signed_divider.sv": "6d333292789539502521972e735dc2888d589fddb0372ad2bd1afe9e0c1639b4",
+    "sim/sdram_device_model.sv": "330cf5333f8a45a18990e29b8bdda50b149a5d3a33a38f7d30710f1a15eae0f1",
+    "external/renderer/rtl/video/vga_page_swap_controller.sv": "43f457ad4ed53565b18b121a301512dea98039d109943c81773aa6b878aab6fa",
+    "rtl/soc_cpu_counters.sv": "f03a2ec07acaab146b6252889aa6a819a85a512e2a313a3b41137c99c2d3c166",
+    "rtl/generated/graphics_command_processor.sv": "05923b5253ec4e94a237ebc1bac6c33aec6b8a568633ba89167df3dfeb90a7dd",
+    "sim/gfx_dma_tb.sv": "558c8f4c322c8c37e7eec5aea73cbf49b7d36700ddbc24284b984099427356d9",
+    "rtl/generated/graphics_renderer_core.sv": "e245d4943cf9b4bf9a5577e58f562e098dcf720f75213b0a456786266cd9b999",
+    "external/rv32i/5-Stage-Pipeline/RegFile.sv": "1573d5df4511e12de4bc75cac6eeb63c1ce7ec21fe1f0b2ea73cce75f17a8817",
+    "firmware/src/gfx.c": "b72c16e266c6349aeb8d394f55e69fa4844a20d0438456f5201f569e48adfb3e",
+    "firmware/src/portable_main.c": "31542e52f777187973bb928c95847d2cf646da89b974e7fec1e01ee246579c97",
+    "external/renderer/rtl/network/mii_arp_responder.sv": "b5b92a03e9dcebb2baf9b2eed4de02494a5a91b8aa3af80505fcf82c8a43a0f1",
+    "external/rv32i/5-Stage-Pipeline/HazardUnit.sv": "5a577cf7afd3db2e63b4eaf286d3735dd11bef68dd0c089bd3be8525bf9b7460",
+    "external/renderer/rtl/network/mii_response_transmitter.sv": "ebe3b396842c314ab66a886c03fa086a8c2dfdf55f47aa9cf821cc2b8d96cfa5",
+    "sim/gfx_dma_memory_tb.sv": "b5e90abd4288190501ed068458640b25233098a6abb8fb173311bddee839e092",
+    "firmware/src/game_runtime.c": "2ea95274c3a61f84ea56ec1cf90332bbcd86ceee9768ac9d9a14f242aeb5a6f4",
+    "firmware/src/world.c": "8846e2e156b102977d3c59a626d65d29066eae711b3e3fd45b58895216a137b1",
+    "fpga/soc.sdc": "8bab502639ba541613e3cfaa35303f2869d321c5e1a3ad7741fb2ad25f8f4d7c",
+    "external/rv32i/5-Stage-Pipeline/ForwardingUnit.sv": "f0c04fe012cf7ea47fd6398816b05b9d37d2cd65602cb7295be1d8efef7a5510",
+    "rtl/sdram_cache.sv": "433f43139bc0a562edc4e722cbc2893b69c3d86c58734ce293eb3bc6b626d92b",
+    "rtl/sdram_controller.sv": "cb8fd223b7720aaf69b14d0e5dd4ee3e640c2036f2d35e014ca57a52db4a800e",
+    "external/rv32i/5-Stage-Pipeline/pipeline_pkg.sv": "5ec5ee2408d699d71f6784afa2af14be7da0744119d76911a0aef7a133cf0a33",
+    "rtl/generated/transform_3d_pipeline.sv": "8b90afabe74fc762e237574bd8412867cd91bf4a19e9afdfe15fd55e156d42cc",
+    "scripts/measure_gfx_staging.py": "cb1b7e5ac49e2bc1d1ed88bfe9678423cfe9b5a9ceeb4f1aee24f4e9639b87fe",
+    "scripts/profile_cpu.py": "8852d9cdd367b07c9c97289a1492f12090c1ca87748abf1b87c41baeab2c1b72",
+    "external/rv32i/5-Stage-Pipeline/ForwardMux.sv": "ca0a6ab6f3ac13c6797012675e11910113d353a0d8ecf273a7b0f4b4f1c04a9e",
+    "external/rv32i/5-Stage-Pipeline/ImmGen.sv": "9525ee73320dfc38036f4b9cbff88aa1573414a5f9cf2ee5db5b73204075895b",
+    "rtl/generated/renderer.sv": "f3382af57de3584385736fd9d0c87f31b03baf4516d577eca0cec15dc3374ed5",
+    "sim/sdram_arbiter_tb.sv": "ea0032216da298aee462623253057a641b92e82b5be8a8d52d171059e929896a",
+    "external/rv32i/5-Stage-Pipeline/EX_MEM.sv": "aef496f4217b6a5d3a465f758e06c8f1f6288129b6433e6c4eaf55869aaf739e",
+    "firmware/include/soc.h": "ee3d84d5a029ffc0d636b19232025021f43c988d4c6b53aca0afa7f661d2d1b4",
+    "scripts/soc.py": "79d2cbadbe0e0c78192932f02704837b04572c389cef84b1479e39f5cefff9da",
+    "rtl/generated/soc_EX_MEM.sv": "0988aa26a575d5b49fdc4ca1e7501684e75ab9a10bd81e0569fe24a2f14100d1",
+    "external/renderer/rtl/memory/framebuffer_ip.v": "d11c8f215225ccea4b65d059ffcd2711ad66ddb9dc73b3687d7262bf8da80127",
+    "rtl/generated/soc_IF_ID.sv": "ae0dd0847cb48d7a19a547543f0e9cfb38c4c5d9eea0adfaaa7128956b82dccd",
+    "rtl/boards/de2_115_soc_top.sv": "9e39b170e0357bef8d728bf14c1bb666c4d79701a37335bd1c6ea82dcbf50865",
+    "rtl/soc_top.sv": "835c329c44219d0521ea7645b7f8cf22d8dde2e8efe50e473b999c3672862ea8",
+    "external/renderer/rtl/network/async_byte_fifo.sv": "70e751124f649dda17f4d145854cf2746d882f04738df3a450fa1ca6cd8c3ee5",
+    "rtl/udp_controls.sv": "eddabdecaf25fb98d847c214db158acb396e46b59797f5d4fc394c14560d1bf0",
+    "rtl/generated/graphics_stream_renderer.sv": "fc9ff8c6396a768d3cd4ae5eaf2590d48530b9f405270f73ee72f635630fc53f",
+    "external/renderer/rtl/memory/zbuffer.sv": "2bef8538e55d02102b8865ae879b8b26611ca7052d139aad4013eb0978867a59",
+    "external/rv32i/5-Stage-Pipeline/ControlUnit.sv": "0d614c2a50e4391768ee738e41dcf6da57e868aeb82f5013b2dd6af8e79d4ae6",
+    "rtl/generated/soc_ControlUnit.sv": "39cbee4843c35f8bc5b206d1a76d7e02104152abb7bda16a32b942b9a420e06f",
+    "external/rv32i/5-Stage-Pipeline/PC_IF.sv": "8f9739949099a860d623388459d586ddc534bf875ff413855cd5ba9f496ffe69",
+    "external/renderer/rtl/memory/framebuffer.sv": "22dfa6111685a3c7e8ac3aa16bdd1697696681c76fe6ebe232a355d8d1957575",
+    "rtl/soc_alu.sv": "f8c9c56634bc527431ebb37b541ad1416a10e389ba072551abc52c80e4afc5e0",
+    "external/renderer/rtl/pipeline/view_transform_stage.sv": "882e0ba7c5f1cbf2b1979216c5c87f6409685e7fae76ceb2869b1f8b41f7829a",
+    "rtl/generated/soc_ID_EX.sv": "4b8a8bea79f603e1751d176a490743111043776b8d6c8aa0aefefbd717e6b762",
+    "external/renderer/rtl/network/async_fifo.sv": "a0a284f9b5d7b8fc5d19d0d183497ed1bcf015e1af611dc9404601ed1e535926",
+    "rtl/sdram_command_arbiter.sv": "6abd1cc03b5bd7b68ebed28adbd3650b03ec13e623372b0d88c0f4cf95505e3c",
+    "firmware/src/cpu_profile.c": "43c27cb9ade862a3102516354189c6723aa9c23074f247dc33ccffdce024454a",
+    "external/rv32i/5-Stage-Pipeline/ID_EX.sv": "c3e4e900e4097b50151714b4dda93793f21a76a2a768f2a75b455cfc67829482",
+    "firmware/ports/castle.c": "fddc856ddc8ee45dffc759b8dfe48f4729c7d725cab73d1664ddf936e3959aa4",
+    "external/renderer/rtl/pipeline/triangle_fifo.sv": "0f4b5bf21f6545f1435419fcac45afa7413869c26cc21958baf325f808f88e88",
+    "rtl/generated/graphics_command_stream_decoder.sv": "402b175b9a49f494d2000a24626123dae19cc411cce86256db56aa14202b18f8",
+    "rtl/generated/soc_RegFile.sv": "0edae9416aaacb1bef7feb21f269488323d5c79b705e5056bc2ab6e0a0cc9837",
+    "external/rv32i/5-Stage-Pipeline/MEM_WB.sv": "726ea44be89bdcf9a128c8e5a93b7bda002939a48d6082bcb15b1d7bde5638ab",
+    "rtl/generated/soc_ram.sv": "965aecf84c1c77e96eb41486ebd358745b97aaa2e5e3be46292e5bdcfbbdc758",
+    "sim/dma_render_replay_tb.sv": "c29e026638c13fff9553d70410f577223cd495e9dc88941361a2308c04e53753",
+    "scripts/load_game.py": "32fb18d22c1c1a772c7cfea1204ce3a5bffc6eb1427d1405fafaf9b016783224",
+    "rtl/generated/soc_PC_IF.sv": "40f4ba9537bc9856ff8bc13b289f79adf54b6877bc33f4aa00c7d2a91cebb3c5",
+    "rtl/gfx_command_dma.sv": "3ab02142603634f2e6bbb0d3e12cbf8663995eab3c3b5c0c52f9020bfd0c8269",
+    "external/rv32i/5-Stage-Pipeline/ALU.sv": "dee4181f13544a3742986b7c451667afa0f809a15783420918fa5693ad9c3edf",
+    "external/renderer/rtl/pipeline/depth_test_stage.sv": "b4e15cce285a7b34ff2406c0538e0f7f3289f7777925a6f8f5190cde09ae55ad",
+    "firmware/ports/castle_rules.c": "842a46771b30802d3857a8f85bd48bf09b4ca8dc2cd0191e1774ad8dcd636016",
+    "rtl/udp_memory_loader.sv": "db6173abd2fe02186c6db0de564b42dfa9ff915c2dc4a2c2a4d6b284fa8f0a00",
+    "rtl/soc_mmio.sv": "b1d8f7af7213279587feb0be911c4b125ff5f80e80a1f8bd5ac278b0cf360c1c",
+    "external/rv32i/5-Stage-Pipeline/ResultMux.sv": "677c2dbcee01b906e1dc86c2e1a8b20a88e29ceee3bd7ab90d5089f5b34ab638",
+    "rtl/soc_memory.sv": "2a48cfec987280062991bc7ebe235baf73c2435c593ea8659e36de48438b4af0",
+    "rtl/sdram_capture_clock.sv": "9d20b840ed55776d25aaf34915b044d7d4b023f5fea6923bddf419bf81374ce0",
+    "external/rv32i/5-Stage-Pipeline/BranchUnit.sv": "bf62d909a35d5bb0e2a68db96f0c01f74fa02cf18683745696db3f873b4d5d75",
+    "external/renderer/rtl/network/mii_udp_receiver.sv": "959db588c98d21de3eaf027faf81afa64bea17ecd67264f75fc5bc32927e334f",
+    "firmware/src/animation.c": "be670beaf8e2137c984316af1188fddd0b1343b13a0bff8b110f0e2497f0fafc",
+    "external/renderer/rtl/network/ethernet_command_receiver.sv": "4b696e6070fa1f6bccd9cd842d86b6492d9d14f1f99ba18829975a29a9d5463e",
+    "sim/render_frame_replay_tb.sv": "814766ad8d4fcb05048e586c5cc59eca1dd14f6747a112868f23afaaf59f0a8e",
+    "rtl/generated/graphics_pipeline.sv": "fcf8b481705caa9d1753d9bd1e001ac4b921ac5821a472152ffa026994b77f95",
+    "scripts/test_dma_gfx.py": "bf9fd7ee9cd5a6e30b90158091ecd92e01cbe8abf4dae3786abfc63fb95363ab",
+    "external/renderer/rtl/video/vga_timing.sv": "9af825e7bcf96e59e53b197f89534d525d43a85098a84d5d0da7f016b60636af",
+    "rtl/generated/soc_PipelineAssertions.sv": "abbdc1bbdfdbccd9ba124d6fa2281acfa6b12699fbaa0f55fd7d67d7ecc012e7",
+    "rtl/generated/RV32I_SoC.sv": "5e8aa778a2f592e2c5e652c5e79a8d9fa32e3ad33b50adfc90055164f5102f83",
+    "external/rv32i/5-Stage-Pipeline/verification/PipelineAssertions.sv": "42fe77bf4f324a6022c3cb6927a6efbe1888ec244470d002f7b80625df7c46fc",
+    "rtl/generated/palette_ip.v": "53f971debd4c8f5bba38caf8782a08de919dcbef37b0b7c342849bfe773658bc",
+    "firmware/src/game_services.c": "12c8781a6a08f46968700558b15bc9272659fcac406c062faec0ab417ea959b8",
+    "rtl/generated/indexed_mesh_store.sv": "5f69d0116f11f06988d74bbeb16dc00ca42ea3b22d40ed0fe47eeae761cb317a",
+    "rtl/generated/soc_MEM_WB.sv": "2654fe037b68c41fe7dc6f6f67dd5bcf7da7aff5d9b06f5f190c62e33b13613b",
+    "build/quartus-arch-stage2a/ArchStage2ASoC.sof": "917ed067296ef2405c7d4706dea4224da261add9a9a481ff1e5c4b45d94c9a32",
+    "build/quartus-arch-stage2b/ArchStage2BSoC.sof": "bbd6de457af231bef65b77771b5310dd2d2363a7b3aa2d7d6bb89329f90a4140",
+    "build/mario-castle-sdram-direct-packed-mul.elf": "fa6f3c5ee60de20d1a7bbb7e40734deab2aaf4eccd47c8ef8bab27737c54d930",
+    "build/mario-castle-sdram-direct-packed-mul.assets.bin": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6",
+    "build/mario-castle-sdram-direct-profile-detail-packed-mul.elf": "5fc492639e6653128126d2222d8461cce305372bfed67bc3243c4aa83f643b95",
+    "build/mario-castle-sdram-direct-profile-detail-packed-mul.assets.bin": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6",
+    "build/mario-castle-sdram-direct-dma-mul.elf": "5f1763cb473f4c03a62a12f9faabe7e454e280d2fb5f6150e8887f3f96482f8a",
+    "build/mario-castle-sdram-direct-dma-mul.assets.bin": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6",
+    "build/mario-castle-sdram-direct-profile-detail-dma-mul.elf": "57bb5e1598366b7ad27146570c98ad6564024a1dcbe3514480f09b499a14832c",
+    "build/mario-castle-sdram-direct-profile-detail-dma-mul.assets.bin": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6",
+    "build/arch-stage2b/attempt-2-global-staging/mario-castle-sdram-direct-dma-mul.elf": "c76b8366b9ddd6cebbf22e0dd014ec5f75ba0e73f060ad4289b835e14e9f596a",
+    "build/arch-stage2b/attempt-2-global-staging/mario-castle-sdram-direct-profile-detail-dma-mul.elf": "ee1513d203d9b01a66c9fbe7b56c3dcf03ef75b0b28d82bc2d6a5cff5a849b26"
+  },
+  "generated_provenance_hashes": {
+    "firmware/generated/beacon_data.h": "8b5015aa99a9d2c4e98a70399ab9b5f97a90e61b17422f4518e5c85e222a36a2",
+    "firmware/generated/castle_actor_data.h": "f673c60ee9fa597c77cc1fcbb4f12b1f0029327a67633f8196fa99344951edf2",
+    "firmware/generated/castle_surface_types.h": "ddfb7cfc766f995dbce7b107575790ea2bc7e4f4de23203ffc3156fce5c4c8cc",
+    "firmware/generated/castle_transitions.h": "f93046bdf22da6305516c2f686a8cebb5c09cb368998b90a71073b8bcbf9160b",
+    "firmware/generated/game_data.h": "c3d25d2b86d1651c4fe8ed31848ecb00bcde060f17e6b8fd98918bdd7da50f2e",
+    "firmware/generated/gfx_protocol.h": "36c7265ffe8f6031a246ce6c8f52f90c2735354703e61795db6f0a905efcecf3",
+    "firmware/generated/portable_data.h": "da845c46243c0300fcfefc0e87f87b22591a64b25c89b77547778afcd5524431",
+    "firmware/generated/quake_data.h": "39b46b01e708ef5379718f26f271e6903bc8550011adb07b4f43975f12eb0030",
+    "firmware/generated/quake_demo_data.h": "78e837c1f445615a7631dd961888f27987164e71730714724226bd834f1276bf",
+    "firmware/generated/scene_data.h": "b7a0fc1390c4f3730a30d7573de910692d78a7db54542ee802794e6e959c66db",
+    "firmware/generated/world_data.h": "0dbb956c91b77b30fa057a8bfc8b16078265aedba93394e13df00b600088aa51",
+    "build/castle/color-validation.json": "5068f270c3dcb191870068964704c00006e6fc5b299e03d61c35013ee193e47c",
+    "build/castle/game.project.json": "a4da0e61a05d55be5e5f0a5e842156d20fcf47f93fb4f17b364534ce49a2e439",
+    "build/castle/physical-foundation.json": "7211bdc0ed2207f2cb93c038e697b784dc02f4e06ecd18679c2d07892fce37ac",
+    "build/castle/physical-optimized.json": "c8caf185953f54e32b79bca7d8b891150dd7063281c940750fac241e3d8187a6",
+    "build/castle/physical-profile.json": "8e0569db4e6f7be86818709291ffad6f5ff7b7ada3c6529e9fce228ec95c9986",
+    "build/castle/physical-vertex-reuse.json": "040d5a57940f6bfc24af244653c303451056aeb8626f4b68da586af39ff561c4",
+    "build/castle/world-before-colors.json": "8c114a996f62463eb62165d630cea7c3fe1cf2b4dff15d339f5168d7ce77c6dc",
+    "build/castle/world.json": "355bd2324a41b3ca820727c6abb50ccc7a5f939ba3e58ce596e9c34b249b1ae9"
+  },
+  "local_only_artifacts": [
+    "build/quartus-arch-stage2a/ArchStage2ASoC.sof",
+    "build/quartus-arch-stage2b/ArchStage2BSoC.sof",
+    "build/mario-castle-sdram-direct-packed-mul.elf",
+    "build/mario-castle-sdram-direct-packed-mul.assets.bin",
+    "build/mario-castle-sdram-direct-profile-detail-packed-mul.elf",
+    "build/mario-castle-sdram-direct-profile-detail-packed-mul.assets.bin",
+    "build/mario-castle-sdram-direct-dma-mul.elf",
+    "build/mario-castle-sdram-direct-dma-mul.assets.bin",
+    "build/mario-castle-sdram-direct-profile-detail-dma-mul.elf",
+    "build/mario-castle-sdram-direct-profile-detail-dma-mul.assets.bin",
+    "build/arch-stage2b/attempt-2-global-staging/mario-castle-sdram-direct-dma-mul.elf",
+    "build/arch-stage2b/attempt-2-global-staging/mario-castle-sdram-direct-profile-detail-dma-mul.elf"
+  ],
+  "raw_files": {
+    "castle-comparison.json": {
+      "bytes": 6581,
+      "sha256": "4a27af1d5b97bc461e4f90217622793e302423d159af686451405b470bafb33a"
+    },
+    "castle-replay.log": {
+      "bytes": 11303,
+      "sha256": "1671b56f8d2801c206d50ab4de692ccc19baafb1d0e6d6dcb927806e3d6c1303"
+    },
+    "dma-local-normal-disassembly.txt": {
+      "bytes": 283849,
+      "sha256": "879d1bae3c59ff0a65d371ecfabe5a4860816d32c8a059b75b97eb7f36fd5f13"
+    },
+    "dma-normal-disassembly.txt": {
+      "bytes": 281349,
+      "sha256": "f2c872e5fd9f1fae9642a9fb73c734d165b288b1db78f7a375be43ed237e3738"
+    },
+    "final-running-check.json": {
+      "bytes": 1267,
+      "sha256": "674d7d4b51d553738d6c4b8c0d919a9da65b7a4067d97c990ec1a24434384802"
+    },
+    "fixtures-comparison.json": {
+      "bytes": 7325,
+      "sha256": "2afd9a1ccd3a367c2a0101ccd5fb9263dfaaabc09208498c5c4f1f5f9bb8fc79"
+    },
+    "fixtures-replay.log": {
+      "bytes": 11305,
+      "sha256": "03585543684839f07f523f535b1df274fbe0ee1edd3bbd671a1301edaa611651"
+    },
+    "host-regression.log": {
+      "bytes": 127,
+      "sha256": "8bed9f96841393ba8f65bbdbae733106d3d4d6b919b0fb21564f0285415988f3"
+    },
+    "max-tail-regression.log": {
+      "bytes": 7992,
+      "sha256": "ac1890c28bfbe86146bb6a59a542dde932a261e41217d7acad61b9baa8c847f0"
+    },
+    "measurements.json": {
+      "bytes": 16923,
+      "sha256": "95fd4ca82449f6f8158740ddd256a4e822d06f6c10d48dd2df45f99ede271bdf"
+    },
+    "packed-normal-disassembly.txt": {
+      "bytes": 274440,
+      "sha256": "b8b7b83d40b5ffe5dbf0a40324642097f4eddffc65c1ee34c08b82a413b9511e"
+    },
+    "physical-comparison.log": {
+      "bytes": 7876,
+      "sha256": "e22b804905d2df12f765a03bc816c7e7ef03922b7a7ad792a9d21704fc364e81"
+    },
+    "physical-dma-detail.json": {
+      "bytes": 100059,
+      "sha256": "50023d04b5dcf470736cc1b1b5467427d4da07160a65d3be03bb8a2d1b177aae"
+    },
+    "physical-dma-local-detail.json": {
+      "bytes": 100337,
+      "sha256": "04a0aa8c2fbaf2ea546e22359e6542931f41fe118b9a214c46d336b1fdaa9e58"
+    },
+    "physical-dma-local-normal.json": {
+      "bytes": 88735,
+      "sha256": "dcbf6ff1fa50254df8fbc92c327809244eabd86fac0a0a81f61b1451ec0a1792"
+    },
+    "physical-dma-normal.json": {
+      "bytes": 88442,
+      "sha256": "2120fb06b97606d456132e9c707ec94051077c7831cbb8d7d06dda97e78885f9"
+    },
+    "physical-local-comparison.log": {
+      "bytes": 3908,
+      "sha256": "f74ac63a5d47a2cdebd24eb562aae0aa15266612a3b92fa9c356d0de3703a06c"
+    },
+    "physical-packed-detail.json": {
+      "bytes": 99491,
+      "sha256": "2580eb738287503c4682b8e7ea6e537d3c968665b8466eae289c7eefa2f8553a"
+    },
+    "physical-packed-normal.json": {
+      "bytes": 88754,
+      "sha256": "ee3585f628d19a4a947dcbea4a8457f2dd601bfa70019283dfefea62da4ce2ca"
+    },
+    "programmed-image.json": {
+      "bytes": 401,
+      "sha256": "10e30db376d930323eb98d0585e14aaa56eb4f8260f7f5c1f3aae25fd97180d0"
+    },
+    "programming.log": {
+      "bytes": 2109,
+      "sha256": "39bb7052c436da0886f3c13736fbc2a59b9be917671b7e0123d042797d63020b"
+    },
+    "project.qsf": {
+      "bytes": 20939,
+      "sha256": "f6b29f314552a556c73495bc33297122411b164f9921b1a8fc91b45c72941cbd"
+    },
+    "quake-comparison.json": {
+      "bytes": 2114,
+      "sha256": "d13bea66b3efd4111477417a968022e835f70f0d9467258012602e6254fc121c"
+    },
+    "quake-replay.log": {
+      "bytes": 11302,
+      "sha256": "87116f197ec6ad914074ad55842e56899e2059f3f42ffb17a32a732980ec7745"
+    },
+    "quartus-asm.log": {
+      "bytes": 1611,
+      "sha256": "af2fac7a4d0b3dfe37ac136734ebaa88d0ffd4f727df465c482c2870abe21fbd"
+    },
+    "quartus-fit.log": {
+      "bytes": 23795,
+      "sha256": "2b3f2462af22b170585e604b0cd08761c8ed285102764fd1141be13aa2783df5"
+    },
+    "quartus-map.log": {
+      "bytes": 117123,
+      "sha256": "ba507ff4f2e21d9db7d0ef209eef1b4c05b4855af5c81d3b5daedf1709a263f5"
+    },
+    "quartus-sta.log": {
+      "bytes": 13390,
+      "sha256": "9f13c68ac3ba65072cd3b3e6337f68f3bd4cbb9930c0fae2f722e0aa3e81f89d"
+    },
+    "rollback-deployment.log": {
+      "bytes": 1737,
+      "sha256": "57989624ac1faf47664799e2d75af65e8683e02e46f6c6368b4ecab6788520f7"
+    },
+    "rollback-programming.log": {
+      "bytes": 2109,
+      "sha256": "359677d7aec8928f4200671fa3db34bd695a46313d858657bb87ac6eb9692f6c"
+    },
+    "attempt-1-timing/ArchStage2BSoC.fit.rpt": {
+      "bytes": 2133532,
+      "sha256": "c818df132ca458012124293f144c6868865d5607aa3b02489793ceb3e05c7e57"
+    },
+    "attempt-1-timing/ArchStage2BSoC.fit.summary": {
+      "bytes": 658,
+      "sha256": "e73d7c0178fdd3f737f4b1230fc71ce369028755e229af973cfb632ed4dc72f8"
+    },
+    "attempt-1-timing/ArchStage2BSoC.flow.rpt": {
+      "bytes": 7004,
+      "sha256": "2ea5e81ec87f8e527927e7fec153abe702a880424e6225064b7de4b718cfadac"
+    },
+    "attempt-1-timing/ArchStage2BSoC.map.rpt": {
+      "bytes": 1599139,
+      "sha256": "13656b14f014a2bad93bc0a9b5bfb00dab7148c77c62af8a14c2a477d887b5d7"
+    },
+    "attempt-1-timing/ArchStage2BSoC.map.summary": {
+      "bytes": 504,
+      "sha256": "b75dbfcef5f6f4b8de51baeb5aefccefdb1ecdad8e4d92b44f86143ecd2f2a5c"
+    },
+    "attempt-1-timing/ArchStage2BSoC.sta.rpt": {
+      "bytes": 1608568,
+      "sha256": "23911bcf99bcac59877461a6537fa3d18f95fb68880c02bfe23fb9a9aef2e480"
+    },
+    "attempt-1-timing/ArchStage2BSoC.sta.summary": {
+      "bytes": 6703,
+      "sha256": "22617ba0a5e97adb14ad1a6dc1918eb61c4d7f9a9f6ec263f832b3d5c431351b"
+    },
+    "attempt-1-timing/build.log": {
+      "bytes": 52,
+      "sha256": "aa5cb066d306d9ee7ce0c74b05519f0b3939b68cc881a6ab51fada3ea691b543"
+    },
+    "attempt-1-timing/gfx_command_dma.sv": {
+      "bytes": 2764,
+      "sha256": "d9a2005d20995ff046a9ac0f5aeb7c2e617a7c9394d93c7754553e9a540f2726"
+    },
+    "attempt-1-timing/project.qsf": {
+      "bytes": 20939,
+      "sha256": "f6b29f314552a556c73495bc33297122411b164f9921b1a8fc91b45c72941cbd"
+    },
+    "attempt-1-timing/quartus-fit.log": {
+      "bytes": 23811,
+      "sha256": "3f43592aaaf7c3f4bc35a0fcade35891f600aec7b64ac7681bb1f984bf997c2c"
+    },
+    "attempt-1-timing/quartus-map.log": {
+      "bytes": 126978,
+      "sha256": "708837dd0882b407a461e0d5360ac1eb4ceea605eaa0263a01d0196e7aebe976"
+    },
+    "attempt-1-timing/quartus-sta.log": {
+      "bytes": 13570,
+      "sha256": "47e4212442c369d7472761be1b68724d29d8338fe451b0ab8bef4bc5d9df1aca"
+    },
+    "attempt-2-global-staging/disassembly.txt": {
+      "bytes": 281349,
+      "sha256": "f2c872e5fd9f1fae9642a9fb73c734d165b288b1db78f7a375be43ed237e3738"
+    },
+    "attempt-2-global-staging/dma-detail-fw.log": {
+      "bytes": 2643,
+      "sha256": "2f1dae4a778088464a233f69ce9b5e82ea37b0c3cc741c3355a71ad914affd8a"
+    },
+    "attempt-2-global-staging/dma-fw.log": {
+      "bytes": 2463,
+      "sha256": "4819fe6e12c015067688c95b21693caeda7ce0790056f2a4b7fb274de74df2fe"
+    },
+    "attempt-2-global-staging/dma-native.log": {
+      "bytes": 109,
+      "sha256": "eea944fe616e3c0854f4af187a49c779be569beabeb2614a8cb43c6f852e1b66"
+    },
+    "attempt-2-global-staging/gfx.c": {
+      "bytes": 7523,
+      "sha256": "3c747d7fd0e0b5b197912fd0ad6c5dea75c21d8e1086b78f62655e9cb9441893"
+    },
+    "attempt-2-global-staging/mario-castle-sdram-direct-dma-mul.bin": {
+      "bytes": 26972,
+      "sha256": "5a23a1536cc8558974b6e1d75e3536c45986e8fb9ceb26f7b865e3a7ea646534"
+    },
+    "attempt-2-global-staging/mario-castle-sdram-direct-dma-mul.isa.json": {
+      "bytes": 519,
+      "sha256": "a8d02448df5ee041ef4ac7311ae4e89a0c0cfd25efd6e6a9c75f53b498b238d2"
+    },
+    "attempt-2-global-staging/mario-castle-sdram-direct-dma-mul.map": {
+      "bytes": 30022,
+      "sha256": "fb85f34136771db9c84a6ebec9ec0f14532ff6fae6c9e4c6381fa6ef904b6f32"
+    },
+    "attempt-2-global-staging/mario-castle-sdram-direct-dma-mul.package.json": {
+      "bytes": 2548,
+      "sha256": "2d37204342d925f2cebb8c81668bec5872da988cb3195fb302ef0084dc2e1b1a"
+    },
+    "attempt-2-global-staging/mario-castle-sdram-direct-dma-mul.symbols.json": {
+      "bytes": 10392,
+      "sha256": "959a3d0c383cb362a9a66b4f0713cef00d67cc7aa906954b762a50b00aa8dd0a"
+    },
+    "attempt-2-global-staging/mario-castle-sdram-direct-profile-detail-dma-mul.bin": {
+      "bytes": 28240,
+      "sha256": "0d936f3dd21a6dcbb4a5d19f01cfabd8d65f00ca5bb15d1817a0d761c8effbe0"
+    },
+    "attempt-2-global-staging/mario-castle-sdram-direct-profile-detail-dma-mul.isa.json": {
+      "bytes": 519,
+      "sha256": "7e74e25929a23de6c4c9eee08a2497b6d983271b0793accf7d9fa31e6a049585"
+    },
+    "attempt-2-global-staging/mario-castle-sdram-direct-profile-detail-dma-mul.map": {
+      "bytes": 31773,
+      "sha256": "60e584a21decb07281015ead5f09e4317d1a9863685bf7fe0af6c44643c1f406"
+    },
+    "attempt-2-global-staging/mario-castle-sdram-direct-profile-detail-dma-mul.package.json": {
+      "bytes": 2578,
+      "sha256": "ad72156aa7a5aba2280af4f0baaae80c218bdb8c12a2e3d4f414afcb87615940"
+    },
+    "attempt-2-global-staging/mario-castle-sdram-direct-profile-detail-dma-mul.symbols.json": {
+      "bytes": 11018,
+      "sha256": "4e3553e32a73e3f2b4dd802d7fbac9f16f36813e3270d9bfc20bde4738f762ff"
+    },
+    "attempt-2-global-staging/physical-dma-detail.json": {
+      "bytes": 100059,
+      "sha256": "50023d04b5dcf470736cc1b1b5467427d4da07160a65d3be03bb8a2d1b177aae"
+    },
+    "attempt-2-global-staging/physical-dma-normal.json": {
+      "bytes": 88442,
+      "sha256": "2120fb06b97606d456132e9c707ec94051077c7831cbb8d7d06dda97e78885f9"
+    },
+    "castle-dma/input.hex": {
+      "bytes": 168732,
+      "sha256": "95e02cf377f33f1fa685f37a9b8421b31bb423f7e633631cac246d611e78b023"
+    },
+    "castle-dma/input.json": {
+      "bytes": 45103,
+      "sha256": "50aeb69876233aa4d6b7685a4cf3b58dfda23f662b7b471edaae9eddab742161"
+    },
+    "castle-dma/input.meta": {
+      "bytes": 9,
+      "sha256": "b263decffd315fa51fc098d2dfcc80928dac7b580ca051f663dd748484873f51"
+    },
+    "final-fit/ArchStage2BSoC.asm.rpt": {
+      "bytes": 8962,
+      "sha256": "5989d90e3eb9d223ca252946eff592f9c544af0c5fd8f9f82b106290296dd06e"
+    },
+    "final-fit/ArchStage2BSoC.fit.rpt": {
+      "bytes": 2137329,
+      "sha256": "44461139c2db9c91f74d9fa1e2311e6a30a8765bc5ca05bbc41bd735d78b0d20"
+    },
+    "final-fit/ArchStage2BSoC.fit.summary": {
+      "bytes": 658,
+      "sha256": "18c0e7fa87eea6d5986b0595243600c52c55256aa1399624fc1b6f535f0b58a6"
+    },
+    "final-fit/ArchStage2BSoC.flow.rpt": {
+      "bytes": 7246,
+      "sha256": "2a35b7bcabb047722cdab6878d7753d8709439e6e4dd0ddd3b256594fcd5a733"
+    },
+    "final-fit/ArchStage2BSoC.map.rpt": {
+      "bytes": 1564936,
+      "sha256": "9e516d639ebf3c1c546de1c28e4261336ecdc7a56f03f15954abe4910b5325e4"
+    },
+    "final-fit/ArchStage2BSoC.map.summary": {
+      "bytes": 504,
+      "sha256": "07cd664f7b77ef9f29c24bfbad7b8f078b2ce61f68410489000999b59de910c8"
+    },
+    "final-fit/ArchStage2BSoC.sta.rpt": {
+      "bytes": 1632536,
+      "sha256": "0bdcd73dda152e4c34a3a86c6d447baacc81ccbfcf1aeae303c99fcb29af38df"
+    },
+    "final-fit/ArchStage2BSoC.sta.summary": {
+      "bytes": 6701,
+      "sha256": "db57b86e5499f926d6ade9eb18329fea9a1fee76841d8473e0ad65e758bbd5a6"
+    },
+    "firmware/mario-castle-sdram-direct-dma-mul.bin": {
+      "bytes": 27224,
+      "sha256": "b10278352839f08cd9db7406ec66be91e313c0012673e206a78a710f5d4bf3c6"
+    },
+    "firmware/mario-castle-sdram-direct-dma-mul.isa.json": {
+      "bytes": 519,
+      "sha256": "73b88726c594ba89c46d4dac26c8e546d1fab4849ac58ce4dd4926066dfd3792"
+    },
+    "firmware/mario-castle-sdram-direct-dma-mul.map": {
+      "bytes": 30022,
+      "sha256": "c7e455cf9577c6ac927abe028af48f9b6aca8f1ad92e79258ad24f5ce62ed78a"
+    },
+    "firmware/mario-castle-sdram-direct-dma-mul.package.json": {
+      "bytes": 2548,
+      "sha256": "64e5e42e314b4cc5e7168b9d1c139083be1e91d0d2aa0c0333e9b800d6d0287b"
+    },
+    "firmware/mario-castle-sdram-direct-dma-mul.symbols.json": {
+      "bytes": 10393,
+      "sha256": "83ee28f6a8efa71c7f279a41a73c833b57091e2f56957547b673ee68c120ab5a"
+    },
+    "firmware/mario-castle-sdram-direct-packed-mul.bin": {
+      "bytes": 26332,
+      "sha256": "4cfe0c4811c35df0f14b1269f5d6eed628d8c97a19483ac1cd224d9b06cf8eda"
+    },
+    "firmware/mario-castle-sdram-direct-packed-mul.isa.json": {
+      "bytes": 519,
+      "sha256": "ef4cbada6c1f5052282ee7515d643b9ac638042e1506e9ab443c8fe35e1e36be"
+    },
+    "firmware/mario-castle-sdram-direct-packed-mul.map": {
+      "bytes": 29607,
+      "sha256": "d0e05d860ab792093da1ad4e0ab37a67bf8310d7e6e31c8d8ec14982d8aa2b71"
+    },
+    "firmware/mario-castle-sdram-direct-packed-mul.package.json": {
+      "bytes": 2442,
+      "sha256": "6a5a72f450adb163ebce299b652dd28ce13deb1589e45b8edca3bae7d55ab4e2"
+    },
+    "firmware/mario-castle-sdram-direct-packed-mul.symbols.json": {
+      "bytes": 10236,
+      "sha256": "3a62e8e9b100b26393e8d26982ac53ada37458e9153595eb4f22ee5e4fae2bae"
+    },
+    "firmware/mario-castle-sdram-direct-profile-detail-dma-mul.bin": {
+      "bytes": 28480,
+      "sha256": "c19666e4f251257fef9b0f509240872d81f4c727fd600645908a5423d3528807"
+    },
+    "firmware/mario-castle-sdram-direct-profile-detail-dma-mul.isa.json": {
+      "bytes": 519,
+      "sha256": "ea487a9b0f3adc8ba8b357da43167a7441a6ae91940be8e1cdb3343554b05901"
+    },
+    "firmware/mario-castle-sdram-direct-profile-detail-dma-mul.map": {
+      "bytes": 31773,
+      "sha256": "11a1f3d9ac91caf989024b4abe24983eda92d54984dae99ab091e719c3280b40"
+    },
+    "firmware/mario-castle-sdram-direct-profile-detail-dma-mul.package.json": {
+      "bytes": 2578,
+      "sha256": "4da7134c5b75198d4189764f0067f37358db384bc51c1b51b70f78a2f959465b"
+    },
+    "firmware/mario-castle-sdram-direct-profile-detail-dma-mul.symbols.json": {
+      "bytes": 11019,
+      "sha256": "5b4b8f1dd0e173d8aa13fabbcff19bbc998b3c55f67d03a368972d7fcd835e8f"
+    },
+    "firmware/mario-castle-sdram-direct-profile-detail-packed-mul.bin": {
+      "bytes": 27704,
+      "sha256": "ca33309535bce4653d0eba9dc2933e1ae2dc1f54e876d5fba00e72115e83656c"
+    },
+    "firmware/mario-castle-sdram-direct-profile-detail-packed-mul.isa.json": {
+      "bytes": 519,
+      "sha256": "8529afe8b3b9570b0f66e65669aa5b87ece5b99170853613d9a45c017bbf5d15"
+    },
+    "firmware/mario-castle-sdram-direct-profile-detail-packed-mul.map": {
+      "bytes": 31050,
+      "sha256": "abba80558bd3990c7f21057869a297b874dec5f850c253c35b1709f806bf508e"
+    },
+    "firmware/mario-castle-sdram-direct-profile-detail-packed-mul.package.json": {
+      "bytes": 2472,
+      "sha256": "be218c020cd2280d7f78aea429e115adbb6fbdbd81b40bb1c3497ebdcdecdd01"
+    },
+    "firmware/mario-castle-sdram-direct-profile-detail-packed-mul.symbols.json": {
+      "bytes": 10738,
+      "sha256": "1cb8a249d18a5c63e2d99191252268aa06e37f7f2cbcf37c98cb745d2fa39083"
+    },
+    "fixtures-dma/input.hex": {
+      "bytes": 8924,
+      "sha256": "e2ed06d519028b25b5663136e09ee696df458b5f190ac58b466a83bee34bc02e"
+    },
+    "fixtures-dma/input.json": {
+      "bytes": 708,
+      "sha256": "6f22a5b30dae99e7afeb96cbc668a2336eb93ab48e0ac5c5fa15c63d86b09437"
+    },
+    "fixtures-dma/input.meta": {
+      "bytes": 8,
+      "sha256": "6296035533f7f85edcd40c2791beeb35d9d898dfb1e4b990a17b97617fa73be7"
+    },
+    "helpers/archive_arch_stage2b.py": {
+      "bytes": 5672,
+      "sha256": "7f029d2aee14ada36bcf6795dc96a1279b5e4cf94d914abe1b2a41a48cc22697"
+    },
+    "helpers/build_arch_stage2b.py": {
+      "bytes": 1685,
+      "sha256": "726f079951726c1fb4cb71264daab6b9dedf8ee4791589ec2c736fc93e46d333"
+    },
+    "helpers/measure_arch_stage2b.py": {
+      "bytes": 1744,
+      "sha256": "a1342683dd3a29e9cb09f4d8d3847e6ca567286b30b4e2e57a91db8034ac0512"
+    },
+    "helpers/measure_arch_stage2b_local.py": {
+      "bytes": 644,
+      "sha256": "cc848fff2efa1d62a5f75793497cb607cfbb8f41f7d030dbb7a752caf77d27bb"
+    },
+    "helpers/replay_arch_stage2b.py": {
+      "bytes": 626,
+      "sha256": "904dd19638dcdea1327f315be467e995885e7cc044b91061d1cb440ef3219905"
+    },
+    "helpers/restore_arch_stage2b.py": {
+      "bytes": 1707,
+      "sha256": "ca854a73f4690e6dd2098947d7a8b4cda13d27346006bae28c88eee07a407f76"
+    },
+    "helpers/summarize_arch_stage2b.py": {
+      "bytes": 13888,
+      "sha256": "7aa36dd1a984d65f7f1058499ad511911edbf474ed5a74aac6ca84d45d4f8627"
+    },
+    "logs/dma-detail-fw.log": {
+      "bytes": 2643,
+      "sha256": "2f1dae4a778088464a233f69ce9b5e82ea37b0c3cc741c3355a71ad914affd8a"
+    },
+    "logs/dma-final-replays.log": {
+      "bytes": 160,
+      "sha256": "82f3ec08b34e533921729d783f6e497003d75252516a850d27c3921f0a8c2ba8"
+    },
+    "logs/dma-fw.log": {
+      "bytes": 2463,
+      "sha256": "4819fe6e12c015067688c95b21693caeda7ce0790056f2a4b7fb274de74df2fe"
+    },
+    "logs/dma-native.log": {
+      "bytes": 109,
+      "sha256": "72fcbd48fdf33f25fd261f5a4bd2904d1517ec56c6fedfa09d9c4db38268aa96"
+    },
+    "logs/dma-quartus.log": {
+      "bytes": 49,
+      "sha256": "d8eddb4e78803c5e9db64d85abb37675666af5d03955c8701ba2cbc46feedb0e"
+    },
+    "logs/dma-regression.log": {
+      "bytes": 10539,
+      "sha256": "feebea3f3285cbd2f1188264c46f74e00b78a701c13c3eeb44a57c6f4e8d746c"
+    },
+    "native/harness.c": {
+      "bytes": 1376,
+      "sha256": "f8fb697f0d0c911fd47f4f5d3f0a89213c7e6bcb256bd0d64f00f4c62c4affac"
+    },
+    "provenance/game.project.json": {
+      "bytes": 786,
+      "sha256": "a4da0e61a05d55be5e5f0a5e842156d20fcf47f93fb4f17b364534ce49a2e439"
+    },
+    "quake-dma/input.hex": {
+      "bytes": 93312,
+      "sha256": "626703cf9d7867a9f50407eb854accd05e344cea9b080e5f149cc66feb320a22"
+    },
+    "quake-dma/input.json": {
+      "bytes": 219920,
+      "sha256": "e736f574cb3032e1ec7390b5ae0e97d78646143809c4bb72b4b9a5b81952b149"
+    },
+    "quake-dma/input.meta": {
+      "bytes": 9,
+      "sha256": "c83c34656a861eed46c859f93d1d3b812bd1142cae67f384c7b094a8c36cfc94"
+    },
+    "castle-dma/capture/frame-1.color.hex": {
+      "bytes": 307200,
+      "sha256": "3c0eb25eca1e257ae1371f0c10440670637915189a57c2925e6c709496c91908"
+    },
+    "castle-dma/capture/frame-1.depth.hex": {
+      "bytes": 307200,
+      "sha256": "149252b02871cc1ad70767b49ce93045d523a9e6e6990780f904f76d99b2d79d"
+    },
+    "castle-dma/capture/frame-1.palette.hex": {
+      "bytes": 2048,
+      "sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907"
+    },
+    "castle-dma/capture/frame-2.color.hex": {
+      "bytes": 307200,
+      "sha256": "d6d5965fea24e569303a2afb0ad52d9c8ff39a45b8699331e251448c4e993812"
+    },
+    "castle-dma/capture/frame-2.depth.hex": {
+      "bytes": 307200,
+      "sha256": "f388f7a91250680be4066960160b0a2710996958327b8cbceb8d8e0e2fc0c072"
+    },
+    "castle-dma/capture/frame-2.palette.hex": {
+      "bytes": 2048,
+      "sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907"
+    },
+    "castle-dma/capture/frame-3.color.hex": {
+      "bytes": 307200,
+      "sha256": "aeb385e24da1880a33719c22c0540f7ff896f8bc83e1e529f3f8c1c78cc68dfc"
+    },
+    "castle-dma/capture/frame-3.depth.hex": {
+      "bytes": 307200,
+      "sha256": "9f0dd7ffdd09ba9e57d4fdbd4f540bd2bcd55d4b5dfcb395364f925ee975e2ff"
+    },
+    "castle-dma/capture/frame-3.palette.hex": {
+      "bytes": 2048,
+      "sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907"
+    },
+    "castle-dma/capture/frame-4.color.hex": {
+      "bytes": 307200,
+      "sha256": "99721f3a2e98de2b0c8835a6a9761367ecab9dd0fa15597ad977bf35a05a1e28"
+    },
+    "castle-dma/capture/frame-4.depth.hex": {
+      "bytes": 307200,
+      "sha256": "662ee9c2468d2391da511b4d0493a9efdf929d33d77cfb8d087a63a363d0bf61"
+    },
+    "castle-dma/capture/frame-4.palette.hex": {
+      "bytes": 2048,
+      "sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907"
+    },
+    "castle-dma/capture/frame-5.color.hex": {
+      "bytes": 307200,
+      "sha256": "8fac48e3e627dfbbf9dae2499776ddba959df3378d82eba66d4eca73392b58b1"
+    },
+    "castle-dma/capture/frame-5.depth.hex": {
+      "bytes": 307200,
+      "sha256": "a64263ab2bb35b6daf242e7b6768427f0cad33e6c87c6cf9519ef993585ce0ba"
+    },
+    "castle-dma/capture/frame-5.palette.hex": {
+      "bytes": 2048,
+      "sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907"
+    },
+    "castle-dma/capture/frame-6.color.hex": {
+      "bytes": 307200,
+      "sha256": "92a00441809fdaef929fec46429399a90670f42f9e3b61806b59d83c831cb594"
+    },
+    "castle-dma/capture/frame-6.depth.hex": {
+      "bytes": 307200,
+      "sha256": "987098518063727d1b3345a0a5b7d6b23dc2fd6f1072f88dfec9b6c91b3b446e"
+    },
+    "castle-dma/capture/frame-6.palette.hex": {
+      "bytes": 2048,
+      "sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907"
+    },
+    "castle-dma/capture/frame-7.color.hex": {
+      "bytes": 307200,
+      "sha256": "73cabaf3d528be256bcfe2ee68305c1aeb5394f7e76feacc01886b79bf3f4418"
+    },
+    "castle-dma/capture/frame-7.depth.hex": {
+      "bytes": 307200,
+      "sha256": "8773d761494ac1059413b37afb1f2dd60290a23d40b92d5070f077bfbf45a962"
+    },
+    "castle-dma/capture/frame-7.palette.hex": {
+      "bytes": 2048,
+      "sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907"
+    },
+    "castle-dma/capture/frame-commands.log": {
+      "bytes": 117225,
+      "sha256": "6c7d726adcd247acb478deddeba87dad970a9d8a2b411268b31ed0ca04f4a768"
+    },
+    "castle-dma/capture/frame-timeline.log": {
+      "bytes": 2131,
+      "sha256": "af926a52a106b66a1ff1a600f696dca810a33cba4103d7362ccca00ddcefbce5"
+    },
+    "castle-dma/capture/frame-triangles.log": {
+      "bytes": 66066,
+      "sha256": "b78e19f041d05b78f4bc9e44a2e026e634d6eed99de65a6cca0b05298dc01cba"
+    },
+    "castle-dma/capture/simulation.log": {
+      "bytes": 25821,
+      "sha256": "a82f578b36126cde823575d03b2ff8894276efe0ed58c522a7dd52d8a1efd35c"
+    },
+    "fixtures-dma/capture/frame-1.color.hex": {
+      "bytes": 307200,
+      "sha256": "a9e74a0511b823d3a6b643757c8a4aa69c50443ff371c9c17335556c1b7385b9"
+    },
+    "fixtures-dma/capture/frame-1.depth.hex": {
+      "bytes": 307200,
+      "sha256": "a9e74a0511b823d3a6b643757c8a4aa69c50443ff371c9c17335556c1b7385b9"
+    },
+    "fixtures-dma/capture/frame-1.palette.hex": {
+      "bytes": 2048,
+      "sha256": "32e3a2f0cfe8f3b5c318fb3ed732b19ed31a3328eeeed2ca2f0f6a414b62789f"
+    },
+    "fixtures-dma/capture/frame-2.color.hex": {
+      "bytes": 307200,
+      "sha256": "0c5253ae507a8b7b9cf0b08280b0e61adad8fe4135895587cad23ab0a3d6827e"
+    },
+    "fixtures-dma/capture/frame-2.depth.hex": {
+      "bytes": 307200,
+      "sha256": "995c0d9ba0cea70771efa4b8e3734f349d708a202d8b1c37be7a0aa67b53983f"
+    },
+    "fixtures-dma/capture/frame-2.palette.hex": {
+      "bytes": 2048,
+      "sha256": "32e3a2f0cfe8f3b5c318fb3ed732b19ed31a3328eeeed2ca2f0f6a414b62789f"
+    },
+    "fixtures-dma/capture/frame-3.color.hex": {
+      "bytes": 307200,
+      "sha256": "168b4eb5e7f01bd435d484b6721298e9e3c4cf279db86f8b93e79b11a520bf94"
+    },
+    "fixtures-dma/capture/frame-3.depth.hex": {
+      "bytes": 307200,
+      "sha256": "251b9bcc9b9759be08cee06fcd918eab91b295ace877059aebec8189e892990e"
+    },
+    "fixtures-dma/capture/frame-3.palette.hex": {
+      "bytes": 2048,
+      "sha256": "32e3a2f0cfe8f3b5c318fb3ed732b19ed31a3328eeeed2ca2f0f6a414b62789f"
+    },
+    "fixtures-dma/capture/frame-4.color.hex": {
+      "bytes": 307200,
+      "sha256": "f460bde632a2f54bb85e6854bfb8c68daa5a9b95ac32c5dfc51d7b4cb849df23"
+    },
+    "fixtures-dma/capture/frame-4.depth.hex": {
+      "bytes": 307200,
+      "sha256": "f11a7177dcafe6038d2813b1b9e29cce4fbe8aa07fc53047e3aa63326e1aeb74"
+    },
+    "fixtures-dma/capture/frame-4.palette.hex": {
+      "bytes": 2048,
+      "sha256": "32e3a2f0cfe8f3b5c318fb3ed732b19ed31a3328eeeed2ca2f0f6a414b62789f"
+    },
+    "fixtures-dma/capture/frame-5.color.hex": {
+      "bytes": 307200,
+      "sha256": "a9e74a0511b823d3a6b643757c8a4aa69c50443ff371c9c17335556c1b7385b9"
+    },
+    "fixtures-dma/capture/frame-5.depth.hex": {
+      "bytes": 307200,
+      "sha256": "a9e74a0511b823d3a6b643757c8a4aa69c50443ff371c9c17335556c1b7385b9"
+    },
+    "fixtures-dma/capture/frame-5.palette.hex": {
+      "bytes": 2048,
+      "sha256": "32e3a2f0cfe8f3b5c318fb3ed732b19ed31a3328eeeed2ca2f0f6a414b62789f"
+    },
+    "fixtures-dma/capture/frame-6.color.hex": {
+      "bytes": 307200,
+      "sha256": "0936a8b94238c634c3cb7a102cd6a88fb5e76957154342e20bc3e695c0ebdb90"
+    },
+    "fixtures-dma/capture/frame-6.depth.hex": {
+      "bytes": 307200,
+      "sha256": "520bcbec275ef914778db4af73e5782e2bc51a554107788f6fab8079bb2dd7b4"
+    },
+    "fixtures-dma/capture/frame-6.palette.hex": {
+      "bytes": 2048,
+      "sha256": "32e3a2f0cfe8f3b5c318fb3ed732b19ed31a3328eeeed2ca2f0f6a414b62789f"
+    },
+    "fixtures-dma/capture/frame-7.color.hex": {
+      "bytes": 307200,
+      "sha256": "a9e74a0511b823d3a6b643757c8a4aa69c50443ff371c9c17335556c1b7385b9"
+    },
+    "fixtures-dma/capture/frame-7.depth.hex": {
+      "bytes": 307200,
+      "sha256": "a9e74a0511b823d3a6b643757c8a4aa69c50443ff371c9c17335556c1b7385b9"
+    },
+    "fixtures-dma/capture/frame-7.palette.hex": {
+      "bytes": 2048,
+      "sha256": "32e3a2f0cfe8f3b5c318fb3ed732b19ed31a3328eeeed2ca2f0f6a414b62789f"
+    },
+    "fixtures-dma/capture/frame-8.color.hex": {
+      "bytes": 307200,
+      "sha256": "a9e74a0511b823d3a6b643757c8a4aa69c50443ff371c9c17335556c1b7385b9"
+    },
+    "fixtures-dma/capture/frame-8.depth.hex": {
+      "bytes": 307200,
+      "sha256": "a9e74a0511b823d3a6b643757c8a4aa69c50443ff371c9c17335556c1b7385b9"
+    },
+    "fixtures-dma/capture/frame-8.palette.hex": {
+      "bytes": 2048,
+      "sha256": "32e3a2f0cfe8f3b5c318fb3ed732b19ed31a3328eeeed2ca2f0f6a414b62789f"
+    },
+    "fixtures-dma/capture/frame-commands.log": {
+      "bytes": 6835,
+      "sha256": "9429fc496ace6dbed14cb236cda258206f6dad4743ce50c9e992974f3e076cb4"
+    },
+    "fixtures-dma/capture/frame-timeline.log": {
+      "bytes": 2320,
+      "sha256": "35340a277ab70e74b01e2b3e771140389caa7cb0d0e4362c16f7bfb07596c3ed"
+    },
+    "fixtures-dma/capture/frame-triangles.log": {
+      "bytes": 3318,
+      "sha256": "16b5fd0540651ec03bb69aa05cf6fe6543f556da8198e1ab633bbc859265ebfb"
+    },
+    "fixtures-dma/capture/simulation.log": {
+      "bytes": 25852,
+      "sha256": "bf28104509606b444a7cbf76cf7865fe9fb6a1e1d408c7a03637a61bd83524fc"
+    },
+    "quake-dma/capture/frame-1.color.hex": {
+      "bytes": 307200,
+      "sha256": "642c842639415226e7c5fe28c8619e9f6dfdc536a2a0aa9c2f9f275c4ee71cfa"
+    },
+    "quake-dma/capture/frame-1.depth.hex": {
+      "bytes": 307200,
+      "sha256": "812b601d72067e5580d2454c258073612c6a493fb11db3ebcfcad5ea6a0641f8"
+    },
+    "quake-dma/capture/frame-1.palette.hex": {
+      "bytes": 2048,
+      "sha256": "ebe2b525a93a72303217c1efb462e135d01da9445e51d5e9ce3969fd10e43112"
+    },
+    "quake-dma/capture/frame-2.color.hex": {
+      "bytes": 307200,
+      "sha256": "b891a975799b4abb761064d47d2e200f43845b36e962c8121d0059da0189511d"
+    },
+    "quake-dma/capture/frame-2.depth.hex": {
+      "bytes": 307200,
+      "sha256": "0a32c90d3da13f0278c3060ab63eca7e3a9dd35d5e783744f61c010fed8e3baa"
+    },
+    "quake-dma/capture/frame-2.palette.hex": {
+      "bytes": 2048,
+      "sha256": "ebe2b525a93a72303217c1efb462e135d01da9445e51d5e9ce3969fd10e43112"
+    },
+    "quake-dma/capture/frame-commands.log": {
+      "bytes": 112755,
+      "sha256": "b03d8ae2e6e0e7edcbc79add755fffbd4b5adb12f6ee9795b3e2ab2c9a95322c"
+    },
+    "quake-dma/capture/frame-timeline.log": {
+      "bytes": 603,
+      "sha256": "e58ba21106a0c030fcf4be2e802a71cd7c3231c0c29a6ebd71cc2c1b295bf42c"
+    },
+    "quake-dma/capture/frame-triangles.log": {
+      "bytes": 66024,
+      "sha256": "0a5c5ca242578277b1bd4d4c7a0d1c9b98b3c6d50ce2f5952b1f390bfa9de31f"
+    },
+    "quake-dma/capture/simulation.log": {
+      "bytes": 25665,
+      "sha256": "4c228047b7fde6a018014e95dc2ce5c0cc20d6313466d4fc8ec66b9c3666f157"
+    },
+    "sources/fpga/soc.sdc": {
+      "bytes": 2445,
+      "sha256": "8bab502639ba541613e3cfaa35303f2869d321c5e1a3ad7741fb2ad25f8f4d7c"
+    },
+    "sources/rtl/gfx_command_dma.sv": {
+      "bytes": 3135,
+      "sha256": "3ab02142603634f2e6bbb0d3e12cbf8663995eab3c3b5c0c52f9020bfd0c8269"
+    },
+    "sources/rtl/sdram_bridge.sv": {
+      "bytes": 2848,
+      "sha256": "b58bd47a0b71f179df8acb3855e935fb8b6def5b04fad0221caf7864b59974ed"
+    },
+    "sources/rtl/sdram_cache.sv": {
+      "bytes": 6526,
+      "sha256": "433f43139bc0a562edc4e722cbc2893b69c3d86c58734ce293eb3bc6b626d92b"
+    },
+    "sources/rtl/sdram_capture_clock.sv": {
+      "bytes": 1366,
+      "sha256": "9d20b840ed55776d25aaf34915b044d7d4b023f5fea6923bddf419bf81374ce0"
+    },
+    "sources/rtl/sdram_command_arbiter.sv": {
+      "bytes": 1924,
+      "sha256": "6abd1cc03b5bd7b68ebed28adbd3650b03ec13e623372b0d88c0f4cf95505e3c"
+    },
+    "sources/rtl/sdram_controller.sv": {
+      "bytes": 7553,
+      "sha256": "cb8fd223b7720aaf69b14d0e5dd4ee3e640c2036f2d35e014ca57a52db4a800e"
+    },
+    "sources/rtl/soc_alu.sv": {
+      "bytes": 619,
+      "sha256": "f8c9c56634bc527431ebb37b541ad1416a10e389ba072551abc52c80e4afc5e0"
+    },
+    "sources/rtl/soc_cpu_counters.sv": {
+      "bytes": 1007,
+      "sha256": "f03a2ec07acaab146b6252889aa6a819a85a512e2a313a3b41137c99c2d3c166"
+    },
+    "sources/rtl/soc_memory.sv": {
+      "bytes": 10309,
+      "sha256": "2a48cfec987280062991bc7ebe235baf73c2435c593ea8659e36de48438b4af0"
+    },
+    "sources/rtl/soc_mmio.sv": {
+      "bytes": 11951,
+      "sha256": "b1d8f7af7213279587feb0be911c4b125ff5f80e80a1f8bd5ac278b0cf360c1c"
+    },
+    "sources/rtl/soc_top.sv": {
+      "bytes": 4362,
+      "sha256": "835c329c44219d0521ea7645b7f8cf22d8dde2e8efe50e473b999c3672862ea8"
+    },
+    "sources/rtl/udp_controls.sv": {
+      "bytes": 4635,
+      "sha256": "eddabdecaf25fb98d847c214db158acb396e46b59797f5d4fc394c14560d1bf0"
+    },
+    "sources/rtl/udp_memory_loader.sv": {
+      "bytes": 4741,
+      "sha256": "db6173abd2fe02186c6db0de564b42dfa9ff915c2dc4a2c2a4d6b284fa8f0a00"
+    },
+    "sources/scripts/load_game.py": {
+      "bytes": 8979,
+      "sha256": "32fb18d22c1c1a772c7cfea1204ce3a5bffc6eb1427d1405fafaf9b016783224"
+    },
+    "sources/scripts/measure_gfx_staging.py": {
+      "bytes": 7544,
+      "sha256": "cb1b7e5ac49e2bc1d1ed88bfe9678423cfe9b5a9ceeb4f1aee24f4e9639b87fe"
+    },
+    "sources/scripts/profile_cpu.py": {
+      "bytes": 10223,
+      "sha256": "8852d9cdd367b07c9c97289a1492f12090c1ca87748abf1b87c41baeab2c1b72"
+    },
+    "sources/scripts/replay_render_route.py": {
+      "bytes": 12565,
+      "sha256": "5b297721e39ed5bf3856dfb5eef5ec91f8981d9e8fd3db3c9fa9c976be2485af"
+    },
+    "sources/scripts/soc.py": {
+      "bytes": 53032,
+      "sha256": "79d2cbadbe0e0c78192932f02704837b04572c389cef84b1479e39f5cefff9da"
+    },
+    "sources/scripts/test_dma_gfx.py": {
+      "bytes": 4540,
+      "sha256": "bf9fd7ee9cd5a6e30b90158091ecd92e01cbe8abf4dae3786abfc63fb95363ab"
+    },
+    "sources/scripts/test_gfx_staging.py": {
+      "bytes": 2629,
+      "sha256": "b48521f895357700f3c9bc6b51acc1cde879850365763ac0a7a210fcec07b551"
+    },
+    "sources/sim/dma_render_replay_tb.sv": {
+      "bytes": 113,
+      "sha256": "c29e026638c13fff9553d70410f577223cd495e9dc88941361a2308c04e53753"
+    },
+    "sources/sim/gfx_dma_memory_tb.sv": {
+      "bytes": 4978,
+      "sha256": "b5e90abd4288190501ed068458640b25233098a6abb8fb173311bddee839e092"
+    },
+    "sources/sim/gfx_dma_tb.sv": {
+      "bytes": 3621,
+      "sha256": "558c8f4c322c8c37e7eec5aea73cbf49b7d36700ddbc24284b984099427356d9"
+    },
+    "sources/sim/render_frame_replay_tb.sv": {
+      "bytes": 9398,
+      "sha256": "814766ad8d4fcb05048e586c5cc59eca1dd14f6747a112868f23afaaf59f0a8e"
+    },
+    "sources/sim/sdram_arbiter_tb.sv": {
+      "bytes": 2052,
+      "sha256": "ea0032216da298aee462623253057a641b92e82b5be8a8d52d171059e929896a"
+    },
+    "sources/sim/sdram_device_model.sv": {
+      "bytes": 4889,
+      "sha256": "330cf5333f8a45a18990e29b8bdda50b149a5d3a33a38f7d30710f1a15eae0f1"
+    },
+    "sources/external/renderer/rtl/common/iterative_signed_divider.sv": {
+      "bytes": 3427,
+      "sha256": "6d333292789539502521972e735dc2888d589fddb0372ad2bd1afe9e0c1639b4"
+    },
+    "sources/external/renderer/rtl/memory/framebuffer.sv": {
+      "bytes": 3430,
+      "sha256": "22dfa6111685a3c7e8ac3aa16bdd1697696681c76fe6ebe232a355d8d1957575"
+    },
+    "sources/external/renderer/rtl/memory/framebuffer_ip.v": {
+      "bytes": 1118,
+      "sha256": "d11c8f215225ccea4b65d059ffcd2711ad66ddb9dc73b3687d7262bf8da80127"
+    },
+    "sources/external/renderer/rtl/memory/zbuffer.sv": {
+      "bytes": 3055,
+      "sha256": "2bef8538e55d02102b8865ae879b8b26611ca7052d139aad4013eb0978867a59"
+    },
+    "sources/external/renderer/rtl/memory/zbuffer_ip.v": {
+      "bytes": 1110,
+      "sha256": "ba8fc8671a787368e1f5db8d1dfdf8ae027be96d35732c134b56a46484b62aee"
+    },
+    "sources/external/renderer/rtl/network/async_byte_fifo.sv": {
+      "bytes": 911,
+      "sha256": "70e751124f649dda17f4d145854cf2746d882f04738df3a450fa1ca6cd8c3ee5"
+    },
+    "sources/external/renderer/rtl/network/async_fifo.sv": {
+      "bytes": 4537,
+      "sha256": "a0a284f9b5d7b8fc5d19d0d183497ed1bcf015e1af611dc9404601ed1e535926"
+    },
+    "sources/external/renderer/rtl/network/ethernet_command_receiver.sv": {
+      "bytes": 9745,
+      "sha256": "4b696e6070fa1f6bccd9cd842d86b6492d9d14f1f99ba18829975a29a9d5463e"
+    },
+    "sources/external/renderer/rtl/network/mii_arp_responder.sv": {
+      "bytes": 5861,
+      "sha256": "b5b92a03e9dcebb2baf9b2eed4de02494a5a91b8aa3af80505fcf82c8a43a0f1"
+    },
+    "sources/external/renderer/rtl/network/mii_response_transmitter.sv": {
+      "bytes": 17621,
+      "sha256": "ebe3b396842c314ab66a886c03fa086a8c2dfdf55f47aa9cf821cc2b8d96cfa5"
+    },
+    "sources/external/renderer/rtl/network/mii_udp_receiver.sv": {
+      "bytes": 16195,
+      "sha256": "959db588c98d21de3eaf027faf81afa64bea17ecd67264f75fc5bc32927e334f"
+    },
+    "sources/external/renderer/rtl/pipeline/depth_test_stage.sv": {
+      "bytes": 2265,
+      "sha256": "b4e15cce285a7b34ff2406c0538e0f7f3289f7777925a6f8f5190cde09ae55ad"
+    },
+    "sources/external/renderer/rtl/pipeline/render_performance_counters.sv": {
+      "bytes": 4645,
+      "sha256": "c6dad6d56a7d20fb09fb4f5eecbd86b9a282c56f9da76cf89304e4ac20f2825d"
+    },
+    "sources/external/renderer/rtl/pipeline/triangle_fifo.sv": {
+      "bytes": 2653,
+      "sha256": "0f4b5bf21f6545f1435419fcac45afa7413869c26cc21958baf325f808f88e88"
+    },
+    "sources/external/renderer/rtl/pipeline/view_transform_stage.sv": {
+      "bytes": 5513,
+      "sha256": "882e0ba7c5f1cbf2b1979216c5c87f6409685e7fae76ceb2869b1f8b41f7829a"
+    },
+    "sources/external/renderer/rtl/video/vga_controller.sv": {
+      "bytes": 15612,
+      "sha256": "44be5fb84939c0aa333106238435e2748425212980b1d6b66701ce138d61ce0a"
+    },
+    "sources/external/renderer/rtl/video/vga_page_swap_controller.sv": {
+      "bytes": 2526,
+      "sha256": "43f457ad4ed53565b18b121a301512dea98039d109943c81773aa6b878aab6fa"
+    },
+    "sources/external/renderer/rtl/video/vga_pll.sv": {
+      "bytes": 2198,
+      "sha256": "25c5e5a8c92a729d5e59620e05a4b72e81f118fa6f92d725c51df47c1fe50c8a"
+    },
+    "sources/external/renderer/rtl/video/vga_timing.sv": {
+      "bytes": 1764,
+      "sha256": "9af825e7bcf96e59e53b197f89534d525d43a85098a84d5d0da7f016b60636af"
+    },
+    "sources/external/rv32i/5-Stage-Pipeline/ALU.sv": {
+      "bytes": 821,
+      "sha256": "dee4181f13544a3742986b7c451667afa0f809a15783420918fa5693ad9c3edf"
+    },
+    "sources/external/rv32i/5-Stage-Pipeline/BranchUnit.sv": {
+      "bytes": 967,
+      "sha256": "bf62d909a35d5bb0e2a68db96f0c01f74fa02cf18683745696db3f873b4d5d75"
+    },
+    "sources/external/rv32i/5-Stage-Pipeline/ControlUnit.sv": {
+      "bytes": 3857,
+      "sha256": "0d614c2a50e4391768ee738e41dcf6da57e868aeb82f5013b2dd6af8e79d4ae6"
+    },
+    "sources/external/rv32i/5-Stage-Pipeline/EX_MEM.sv": {
+      "bytes": 1092,
+      "sha256": "aef496f4217b6a5d3a465f758e06c8f1f6288129b6433e6c4eaf55869aaf739e"
+    },
+    "sources/external/rv32i/5-Stage-Pipeline/ForwardingUnit.sv": {
+      "bytes": 1396,
+      "sha256": "f0c04fe012cf7ea47fd6398816b05b9d37d2cd65602cb7295be1d8efef7a5510"
+    },
+    "sources/external/rv32i/5-Stage-Pipeline/ForwardMux.sv": {
+      "bytes": 459,
+      "sha256": "ca0a6ab6f3ac13c6797012675e11910113d353a0d8ecf273a7b0f4b4f1c04a9e"
+    },
+    "sources/external/rv32i/5-Stage-Pipeline/HazardUnit.sv": {
+      "bytes": 567,
+      "sha256": "5a577cf7afd3db2e63b4eaf286d3735dd11bef68dd0c089bd3be8525bf9b7460"
+    },
+    "sources/external/rv32i/5-Stage-Pipeline/ID_EX.sv": {
+      "bytes": 1491,
+      "sha256": "c3e4e900e4097b50151714b4dda93793f21a76a2a768f2a75b455cfc67829482"
+    },
+    "sources/external/rv32i/5-Stage-Pipeline/IF_ID.sv": {
+      "bytes": 589,
+      "sha256": "37d8914889eb1e1c1458ec6b8583c1e12213bccf08ee24f8711ae8274ad2e13d"
+    },
+    "sources/external/rv32i/5-Stage-Pipeline/ImmGen.sv": {
+      "bytes": 739,
+      "sha256": "9525ee73320dfc38036f4b9cbff88aa1573414a5f9cf2ee5db5b73204075895b"
+    },
+    "sources/external/rv32i/5-Stage-Pipeline/MEM_WB.sv": {
+      "bytes": 989,
+      "sha256": "726ea44be89bdcf9a128c8e5a93b7bda002939a48d6082bcb15b1d7bde5638ab"
+    },
+    "sources/external/rv32i/5-Stage-Pipeline/Monitor.sv": {
+      "bytes": 830,
+      "sha256": "bfd4b3700afcc99f4afca2d355bc028072593fd3c81e9e89fa70a4b6e19d8e3e"
+    },
+    "sources/external/rv32i/5-Stage-Pipeline/PC_IF.sv": {
+      "bytes": 425,
+      "sha256": "8f9739949099a860d623388459d586ddc534bf875ff413855cd5ba9f496ffe69"
+    },
+    "sources/external/rv32i/5-Stage-Pipeline/pipeline_pkg.sv": {
+      "bytes": 1497,
+      "sha256": "5ec5ee2408d699d71f6784afa2af14be7da0744119d76911a0aef7a133cf0a33"
+    },
+    "sources/external/rv32i/5-Stage-Pipeline/RegFile.sv": {
+      "bytes": 1173,
+      "sha256": "1573d5df4511e12de4bc75cac6eeb63c1ce7ec21fe1f0b2ea73cce75f17a8817"
+    },
+    "sources/external/rv32i/5-Stage-Pipeline/ResultMux.sv": {
+      "bytes": 340,
+      "sha256": "677c2dbcee01b906e1dc86c2e1a8b20a88e29ceee3bd7ab90d5089f5b34ab638"
+    },
+    "sources/external/rv32i/5-Stage-Pipeline/verification/PipelineAssertions.sv": {
+      "bytes": 3298,
+      "sha256": "42fe77bf4f324a6022c3cb6927a6efbe1888ec244470d002f7b80625df7c46fc"
+    },
+    "sources/firmware/include/soc.h": {
+      "bytes": 2420,
+      "sha256": "ee3d84d5a029ffc0d636b19232025021f43c988d4c6b53aca0afa7f661d2d1b4"
+    },
+    "sources/firmware/ports/castle.c": {
+      "bytes": 6643,
+      "sha256": "fddc856ddc8ee45dffc759b8dfe48f4729c7d725cab73d1664ddf936e3959aa4"
+    },
+    "sources/firmware/ports/castle_rules.c": {
+      "bytes": 566,
+      "sha256": "842a46771b30802d3857a8f85bd48bf09b4ca8dc2cd0191e1774ad8dcd636016"
+    },
+    "sources/firmware/src/animation.c": {
+      "bytes": 5864,
+      "sha256": "be670beaf8e2137c984316af1188fddd0b1343b13a0bff8b110f0e2497f0fafc"
+    },
+    "sources/firmware/src/camera.c": {
+      "bytes": 9058,
+      "sha256": "ab6402fe3b9e2cc4a43767178aaa61528a6ba5cb896febfcc0c12226c3003c58"
+    },
+    "sources/firmware/src/cpu_profile.c": {
+      "bytes": 3922,
+      "sha256": "43c27cb9ade862a3102516354189c6723aa9c23074f247dc33ccffdce024454a"
+    },
+    "sources/firmware/src/game_runtime.c": {
+      "bytes": 2808,
+      "sha256": "2ea95274c3a61f84ea56ec1cf90332bbcd86ceee9768ac9d9a14f242aeb5a6f4"
+    },
+    "sources/firmware/src/game_services.c": {
+      "bytes": 5904,
+      "sha256": "12c8781a6a08f46968700558b15bc9272659fcac406c062faec0ab417ea959b8"
+    },
+    "sources/firmware/src/gfx.c": {
+      "bytes": 8230,
+      "sha256": "b72c16e266c6349aeb8d394f55e69fa4844a20d0438456f5201f569e48adfb3e"
+    },
+    "sources/firmware/src/portable_main.c": {
+      "bytes": 2238,
+      "sha256": "31542e52f777187973bb928c95847d2cf646da89b974e7fec1e01ee246579c97"
+    },
+    "sources/firmware/src/world.c": {
+      "bytes": 16448,
+      "sha256": "8846e2e156b102977d3c59a626d65d29066eae711b3e3fd45b58895216a137b1"
+    },
+    "sources/rtl/boards/de2_115_soc_top.sv": {
+      "bytes": 3978,
+      "sha256": "9e39b170e0357bef8d728bf14c1bb666c4d79701a37335bd1c6ea82dcbf50865"
+    },
+    "sources/rtl/generated/graphics_command_processor.sv": {
+      "bytes": 9201,
+      "sha256": "05923b5253ec4e94a237ebc1bac6c33aec6b8a568633ba89167df3dfeb90a7dd"
+    },
+    "sources/rtl/generated/graphics_command_stream_decoder.sv": {
+      "bytes": 23404,
+      "sha256": "402b175b9a49f494d2000a24626123dae19cc411cce86256db56aa14202b18f8"
+    },
+    "sources/rtl/generated/graphics_pipeline.sv": {
+      "bytes": 8877,
+      "sha256": "fcf8b481705caa9d1753d9bd1e001ac4b921ac5821a472152ffa026994b77f95"
+    },
+    "sources/rtl/generated/graphics_renderer_core.sv": {
+      "bytes": 6371,
+      "sha256": "e245d4943cf9b4bf9a5577e58f562e098dcf720f75213b0a456786266cd9b999"
+    },
+    "sources/rtl/generated/graphics_stream_renderer.sv": {
+      "bytes": 1819,
+      "sha256": "fc9ff8c6396a768d3cd4ae5eaf2590d48530b9f405270f73ee72f635630fc53f"
+    },
+    "sources/rtl/generated/indexed_mesh_store.sv": {
+      "bytes": 12819,
+      "sha256": "5f69d0116f11f06988d74bbeb16dc00ca42ea3b22d40ed0fe47eeae761cb317a"
+    },
+    "sources/rtl/generated/palette_ip.v": {
+      "bytes": 1242,
+      "sha256": "53f971debd4c8f5bba38caf8782a08de919dcbef37b0b7c342849bfe773658bc"
+    },
+    "sources/rtl/generated/renderer.sv": {
+      "bytes": 16122,
+      "sha256": "f3382af57de3584385736fd9d0c87f31b03baf4516d577eca0cec15dc3374ed5"
+    },
+    "sources/rtl/generated/RV32I_SoC.sv": {
+      "bytes": 11962,
+      "sha256": "5e8aa778a2f592e2c5e652c5e79a8d9fa32e3ad33b50adfc90055164f5102f83"
+    },
+    "sources/rtl/generated/soc_ControlUnit.sv": {
+      "bytes": 3898,
+      "sha256": "39cbee4843c35f8bc5b206d1a76d7e02104152abb7bda16a32b942b9a420e06f"
+    },
+    "sources/rtl/generated/soc_EX_MEM.sv": {
+      "bytes": 1130,
+      "sha256": "0988aa26a575d5b49fdc4ca1e7501684e75ab9a10bd81e0569fe24a2f14100d1"
+    },
+    "sources/rtl/generated/soc_ID_EX.sv": {
+      "bytes": 1517,
+      "sha256": "4b8a8bea79f603e1751d176a490743111043776b8d6c8aa0aefefbd717e6b762"
+    },
+    "sources/rtl/generated/soc_IF_ID.sv": {
+      "bytes": 643,
+      "sha256": "ae0dd0847cb48d7a19a547543f0e9cfb38c4c5d9eea0adfaaa7128956b82dccd"
+    },
+    "sources/rtl/generated/soc_MEM_WB.sv": {
+      "bytes": 1031,
+      "sha256": "2654fe037b68c41fe7dc6f6f67dd5bcf7da7aff5d9b06f5f190c62e33b13613b"
+    },
+    "sources/rtl/generated/soc_PC_IF.sv": {
+      "bytes": 482,
+      "sha256": "40f4ba9537bc9856ff8bc13b289f79adf54b6877bc33f4aa00c7d2a91cebb3c5"
+    },
+    "sources/rtl/generated/soc_PipelineAssertions.sv": {
+      "bytes": 3346,
+      "sha256": "abbdc1bbdfdbccd9ba124d6fa2281acfa6b12699fbaa0f55fd7d67d7ecc012e7"
+    },
+    "sources/rtl/generated/soc_ram.sv": {
+      "bytes": 7202,
+      "sha256": "965aecf84c1c77e96eb41486ebd358745b97aaa2e5e3be46292e5bdcfbbdc758"
+    },
+    "sources/rtl/generated/soc_RegFile.sv": {
+      "bytes": 1209,
+      "sha256": "0edae9416aaacb1bef7feb21f269488323d5c79b705e5056bc2ab6e0a0cc9837"
+    },
+    "sources/rtl/generated/transform_3d_pipeline.sv": {
+      "bytes": 17850,
+      "sha256": "8b90afabe74fc762e237574bd8412867cd91bf4a19e9afdfe15fd55e156d42cc"
+    }
+  }
+}

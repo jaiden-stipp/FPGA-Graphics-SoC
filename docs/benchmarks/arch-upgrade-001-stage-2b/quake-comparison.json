@@ -1,0 +1,55 @@
+{
+  "submitted_triangles_equal": true,
+  "before_triangles": 1572,
+  "after_triangles": 1572,
+  "scope": "static original scene terrain snapshots; actors, animation, input/controller and game behavior excluded",
+  "before": "build\\arch-stage2a\\quake-packed",
+  "after": "build\\arch-stage2b\\quake-dma",
+  "frames": [
+    {
+      "frame": 1,
+      "label": "scene-yaw-0",
+      "color.hex": {
+        "samples": 76800,
+        "differences": 0,
+        "before_sha256": "642c842639415226e7c5fe28c8619e9f6dfdc536a2a0aa9c2f9f275c4ee71cfa",
+        "after_sha256": "642c842639415226e7c5fe28c8619e9f6dfdc536a2a0aa9c2f9f275c4ee71cfa"
+      },
+      "depth.hex": {
+        "samples": 76800,
+        "differences": 0,
+        "before_sha256": "812b601d72067e5580d2454c258073612c6a493fb11db3ebcfcad5ea6a0641f8",
+        "after_sha256": "812b601d72067e5580d2454c258073612c6a493fb11db3ebcfcad5ea6a0641f8"
+      },
+      "palette.hex": {
+        "samples": 256,
+        "differences": 0,
+        "before_sha256": "ebe2b525a93a72303217c1efb462e135d01da9445e51d5e9ce3969fd10e43112",
+        "after_sha256": "ebe2b525a93a72303217c1efb462e135d01da9445e51d5e9ce3969fd10e43112"
+      }
+    },
+    {
+      "frame": 2,
+      "label": "scene-yaw-16",
+      "color.hex": {
+        "samples": 76800,
+        "differences": 0,
+        "before_sha256": "b891a975799b4abb761064d47d2e200f43845b36e962c8121d0059da0189511d",
+        "after_sha256": "b891a975799b4abb761064d47d2e200f43845b36e962c8121d0059da0189511d"
+      },
+      "depth.hex": {
+        "samples": 76800,
+        "differences": 0,
+        "before_sha256": "0a32c90d3da13f0278c3060ab63eca7e3a9dd35d5e783744f61c010fed8e3baa",
+        "after_sha256": "0a32c90d3da13f0278c3060ab63eca7e3a9dd35d5e783744f61c010fed8e3baa"
+      },
+      "palette.hex": {
+        "samples": 256,
+        "differences": 0,
+        "before_sha256": "ebe2b525a93a72303217c1efb462e135d01da9445e51d5e9ce3969fd10e43112",
+        "after_sha256": "ebe2b525a93a72303217c1efb462e135d01da9445e51d5e9ce3969fd10e43112"
+      }
+    }
+  ],
+  "exact": true
+}

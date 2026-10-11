@@ -43,7 +43,7 @@ module gfx_dma_tb;
  initial begin
   repeat(4)@(negedge clk);reset=0;
   for(integer n=1;n<=65;n=n+1)run(n,n);
-  run(127,100);run(255,101);run(1024,102);run(4096,103);
+  run(127,100);run(255,101);run(1024,102);run(4096,103);run(65535,108);run(65536,109);
   invalid(32'h80000001,32);invalid(32'h80000000,0);invalid(32'h80000000,65537);invalid(32'h87ffefe0,33);invalid(32'hffffffe0,32);
   // Cancel an already accepted burst and require complete drain before reuse.
   @(negedge clk);source=32'h80001000;length=100;submission_id=104;start=1;

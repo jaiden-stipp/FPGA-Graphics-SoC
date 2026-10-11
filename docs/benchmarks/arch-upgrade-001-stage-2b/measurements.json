@@ -1,0 +1,591 @@
+{
+  "date": "2026-10-11",
+  "baseline_commit": "df9c539",
+  "hardware_implementation_commit": "59a4d3a",
+  "local_staging_commit": "40e4ee1",
+  "clock_hz": 50000000,
+  "scope": "Three standing spawn trials for each of six cases, all on one final DMA candidate image. Ordinary live timers are non-atomic; profiles are instrumented atomic completed-frame snapshots. No game FPS improvement or complete-level acceptance claim.",
+  "measurements": {
+    "packed-normal": {
+      "trials": [
+        {
+          "trial": 1,
+          "metrics": {
+            "game_frame_cycles": 1668299,
+            "game_cpu_cycles": 905274,
+            "game_update_cycles": 40182,
+            "game_present_cycles": 763017
+          },
+          "fps": 29.775715390781727,
+          "position": [
+            -1328,
+            260,
+            4664
+          ],
+          "render": null,
+          "dma": null
+        },
+        {
+          "trial": 2,
+          "metrics": {
+            "game_frame_cycles": 1668299,
+            "game_cpu_cycles": 905274,
+            "game_update_cycles": 40182,
+            "game_present_cycles": 763017
+          },
+          "fps": 29.77571539044662,
+          "position": [
+            -1328,
+            260,
+            4664
+          ],
+          "render": null,
+          "dma": null
+        },
+        {
+          "trial": 3,
+          "metrics": {
+            "game_frame_cycles": 1668299,
+            "game_cpu_cycles": 905336,
+            "game_update_cycles": 40182,
+            "game_present_cycles": 763017
+          },
+          "fps": 29.982702287260103,
+          "position": [
+            -1328,
+            260,
+            4664
+          ],
+          "render": null,
+          "dma": null
+        }
+      ],
+      "median": {
+        "game_frame_cycles": 1668299,
+        "game_cpu_cycles": 905274,
+        "game_update_cycles": 40182,
+        "game_present_cycles": 763017
+      },
+      "fps_median": 29.775715390781727
+    },
+    "dma-normal": {
+      "trials": [
+        {
+          "trial": 1,
+          "metrics": {
+            "game_frame_cycles": 1668298,
+            "game_cpu_cycles": 986749,
+            "game_update_cycles": 40186,
+            "game_present_cycles": 681541
+          },
+          "fps": 30.056234244677924,
+          "position": [
+            -1328,
+            260,
+            4664
+          ],
+          "render": null,
+          "dma": null
+        },
+        {
+          "trial": 2,
+          "metrics": {
+            "game_frame_cycles": 1668287,
+            "game_cpu_cycles": 986750,
+            "game_update_cycles": 40188,
+            "game_present_cycles": 681596
+          },
+          "fps": 30.069390901944082,
+          "position": [
+            -1328,
+            260,
+            4664
+          ],
+          "render": null,
+          "dma": null
+        },
+        {
+          "trial": 3,
+          "metrics": {
+            "game_frame_cycles": 1668287,
+            "game_cpu_cycles": 986750,
+            "game_update_cycles": 40188,
+            "game_present_cycles": 681596
+          },
+          "fps": 29.862323056002584,
+          "position": [
+            -1328,
+            260,
+            4664
+          ],
+          "render": null,
+          "dma": null
+        }
+      ],
+      "median": {
+        "game_frame_cycles": 1668287,
+        "game_cpu_cycles": 986750,
+        "game_update_cycles": 40188,
+        "game_present_cycles": 681596
+      },
+      "fps_median": 30.056234244677924,
+      "ordinary_cpu_regression_percent": 9.000148021482989
+    },
+    "dma-local-normal": {
+      "trials": [
+        {
+          "trial": 1,
+          "metrics": {
+            "game_frame_cycles": 1668299,
+            "game_cpu_cycles": 982405,
+            "game_update_cycles": 40187,
+            "game_present_cycles": 685886
+          },
+          "fps": 29.853658536585368,
+          "position": [
+            -1328,
+            260,
+            4664
+          ],
+          "render": null,
+          "dma": null
+        },
+        {
+          "trial": 2,
+          "metrics": {
+            "game_frame_cycles": 1668299,
+            "game_cpu_cycles": 982405,
+            "game_update_cycles": 40187,
+            "game_present_cycles": 685886
+          },
+          "fps": 29.77571539044662,
+          "position": [
+            -1328,
+            260,
+            4664
+          ],
+          "render": null,
+          "dma": null
+        },
+        {
+          "trial": 3,
+          "metrics": {
+            "game_frame_cycles": 1668299,
+            "game_cpu_cycles": 982478,
+            "game_update_cycles": 40187,
+            "game_present_cycles": 685886
+          },
+          "fps": 29.982702287260103,
+          "position": [
+            -1328,
+            260,
+            4664
+          ],
+          "render": null,
+          "dma": null
+        }
+      ],
+      "median": {
+        "game_frame_cycles": 1668299,
+        "game_cpu_cycles": 982405,
+        "game_update_cycles": 40187,
+        "game_present_cycles": 685886
+      },
+      "fps_median": 29.853658536585368,
+      "ordinary_cpu_regression_percent": 8.520182839670642
+    },
+    "packed-detail": {
+      "trials": [
+        {
+          "trial": 1,
+          "metrics": {
+            "command_cycles": 230481,
+            "fifo_wait_span_cycles": 0,
+            "bytes": 7011,
+            "commands": 242,
+            "tick_wall_cycles": 18,
+            "update_wall_cycles": 40352,
+            "cpu_wall_cycles": 946107,
+            "present_wall_cycles": 721360,
+            "frame_wall_cycles": 1667598,
+            "frame": 251,
+            "clock_hz": 50000000,
+            "cpu_abi": 1129316609
+          },
+          "fps": 29.969064191683287,
+          "position": [
+            -1328,
+            260,
+            4664
+          ],
+          "render": {
+            "cycles": 905755,
+            "retired": 693173,
+            "memory_freezes": 44751,
+            "dependency_bubbles": 20713,
+            "redirects": 73559,
+            "status_reads": 0,
+            "full_status_reads": 0
+          },
+          "dma": null
+        },
+        {
+          "trial": 2,
+          "metrics": {
+            "command_cycles": 230481,
+            "fifo_wait_span_cycles": 0,
+            "bytes": 7011,
+            "commands": 242,
+            "tick_wall_cycles": 18,
+            "update_wall_cycles": 40352,
+            "cpu_wall_cycles": 946107,
+            "present_wall_cycles": 721360,
+            "frame_wall_cycles": 1667598,
+            "frame": 251,
+            "clock_hz": 50000000,
+            "cpu_abi": 1129316609
+          },
+          "fps": 29.790505477726384,
+          "position": [
+            -1328,
+            260,
+            4664
+          ],
+          "render": {
+            "cycles": 905755,
+            "retired": 693173,
+            "memory_freezes": 44751,
+            "dependency_bubbles": 20713,
+            "redirects": 73559,
+            "status_reads": 0,
+            "full_status_reads": 0
+          },
+          "dma": null
+        },
+        {
+          "trial": 3,
+          "metrics": {
+            "command_cycles": 230481,
+            "fifo_wait_span_cycles": 0,
+            "bytes": 7011,
+            "commands": 242,
+            "tick_wall_cycles": 18,
+            "update_wall_cycles": 40352,
+            "cpu_wall_cycles": 946107,
+            "present_wall_cycles": 721360,
+            "frame_wall_cycles": 1667598,
+            "frame": 251,
+            "clock_hz": 50000000,
+            "cpu_abi": 1129316609
+          },
+          "fps": 29.790505477393108,
+          "position": [
+            -1328,
+            260,
+            4664
+          ],
+          "render": {
+            "cycles": 905755,
+            "retired": 693173,
+            "memory_freezes": 44751,
+            "dependency_bubbles": 20713,
+            "redirects": 73559,
+            "status_reads": 0,
+            "full_status_reads": 0
+          },
+          "dma": null
+        }
+      ],
+      "median": {
+        "command_cycles": 230481,
+        "fifo_wait_span_cycles": 0,
+        "bytes": 7011,
+        "commands": 242,
+        "tick_wall_cycles": 18,
+        "update_wall_cycles": 40352,
+        "cpu_wall_cycles": 946107,
+        "present_wall_cycles": 721360,
+        "frame_wall_cycles": 1667598,
+        "clock_hz": 50000000
+      },
+      "fps_median": 29.790505477726384
+    },
+    "dma-detail": {
+      "trials": [
+        {
+          "trial": 1,
+          "metrics": {
+            "command_cycles": 295071,
+            "fifo_wait_span_cycles": 1303,
+            "bytes": 7011,
+            "commands": 242,
+            "tick_wall_cycles": 18,
+            "update_wall_cycles": 40352,
+            "cpu_wall_cycles": 1013274,
+            "present_wall_cycles": 654169,
+            "frame_wall_cycles": 1667574,
+            "frame": 250,
+            "clock_hz": 50000000,
+            "cpu_abi": 1129316609
+          },
+          "fps": 29.974859795167195,
+          "position": [
+            -1328,
+            260,
+            4664
+          ],
+          "render": {
+            "cycles": 972922,
+            "retired": 750611,
+            "memory_freezes": 64104,
+            "dependency_bubbles": 11693,
+            "redirects": 73257,
+            "status_reads": 0,
+            "full_status_reads": 0
+          },
+          "dma": {
+            "bytes": 7011,
+            "read_words": 1760,
+            "request_wait_cycles": 26,
+            "fifo_wait_cycles": 922
+          }
+        },
+        {
+          "trial": 2,
+          "metrics": {
+            "command_cycles": 295071,
+            "fifo_wait_span_cycles": 1303,
+            "bytes": 7011,
+            "commands": 242,
+            "tick_wall_cycles": 18,
+            "update_wall_cycles": 40352,
+            "cpu_wall_cycles": 1013274,
+            "present_wall_cycles": 654158,
+            "frame_wall_cycles": 1667563,
+            "frame": 250,
+            "clock_hz": 50000000,
+            "cpu_abi": 1129316609
+          },
+          "fps": 29.868114817925512,
+          "position": [
+            -1328,
+            260,
+            4664
+          ],
+          "render": {
+            "cycles": 972922,
+            "retired": 750611,
+            "memory_freezes": 64104,
+            "dependency_bubbles": 11693,
+            "redirects": 73257,
+            "status_reads": 0,
+            "full_status_reads": 0
+          },
+          "dma": {
+            "bytes": 7011,
+            "read_words": 1760,
+            "request_wait_cycles": 26,
+            "fifo_wait_cycles": 922
+          }
+        },
+        {
+          "trial": 3,
+          "metrics": {
+            "command_cycles": 295104,
+            "fifo_wait_span_cycles": 1303,
+            "bytes": 7011,
+            "commands": 242,
+            "tick_wall_cycles": 18,
+            "update_wall_cycles": 40346,
+            "cpu_wall_cycles": 1013305,
+            "present_wall_cycles": 654125,
+            "frame_wall_cycles": 1667561,
+            "frame": 250,
+            "clock_hz": 50000000,
+            "cpu_abi": 1129316609
+          },
+          "fps": 29.876638396162388,
+          "position": [
+            -1328,
+            260,
+            4664
+          ],
+          "render": {
+            "cycles": 972959,
+            "retired": 750611,
+            "memory_freezes": 64141,
+            "dependency_bubbles": 11693,
+            "redirects": 73257,
+            "status_reads": 0,
+            "full_status_reads": 0
+          },
+          "dma": {
+            "bytes": 7011,
+            "read_words": 1760,
+            "request_wait_cycles": 38,
+            "fifo_wait_cycles": 908
+          }
+        }
+      ],
+      "median": {
+        "command_cycles": 295071,
+        "fifo_wait_span_cycles": 1303,
+        "bytes": 7011,
+        "commands": 242,
+        "tick_wall_cycles": 18,
+        "update_wall_cycles": 40352,
+        "cpu_wall_cycles": 1013274,
+        "present_wall_cycles": 654158,
+        "frame_wall_cycles": 1667563,
+        "clock_hz": 50000000
+      },
+      "fps_median": 29.876638396162388
+    },
+    "dma-local-detail": {
+      "trials": [
+        {
+          "trial": 1,
+          "metrics": {
+            "command_cycles": 290976,
+            "fifo_wait_span_cycles": 1279,
+            "bytes": 7011,
+            "commands": 242,
+            "tick_wall_cycles": 18,
+            "update_wall_cycles": 40349,
+            "cpu_wall_cycles": 1009191,
+            "present_wall_cycles": 658248,
+            "frame_wall_cycles": 1667570,
+            "frame": 250,
+            "clock_hz": 50000000,
+            "cpu_abi": 1129316609
+          },
+          "fps": 29.868114817925512,
+          "position": [
+            -1328,
+            260,
+            4664
+          ],
+          "render": {
+            "cycles": 968842,
+            "retired": 726766,
+            "memory_freezes": 64153,
+            "dependency_bubbles": 17501,
+            "redirects": 80211,
+            "status_reads": 0,
+            "full_status_reads": 0
+          },
+          "dma": {
+            "bytes": 7011,
+            "read_words": 1760,
+            "request_wait_cycles": 57,
+            "fifo_wait_cycles": 910
+          }
+        },
+        {
+          "trial": 2,
+          "metrics": {
+            "command_cycles": 290976,
+            "fifo_wait_span_cycles": 1279,
+            "bytes": 7011,
+            "commands": 242,
+            "tick_wall_cycles": 18,
+            "update_wall_cycles": 40349,
+            "cpu_wall_cycles": 1009191,
+            "present_wall_cycles": 658248,
+            "frame_wall_cycles": 1667570,
+            "frame": 250,
+            "clock_hz": 50000000,
+            "cpu_abi": 1129316609
+          },
+          "fps": 30.062063615105128,
+          "position": [
+            -1328,
+            260,
+            4664
+          ],
+          "render": {
+            "cycles": 968842,
+            "retired": 726766,
+            "memory_freezes": 64153,
+            "dependency_bubbles": 17501,
+            "redirects": 80211,
+            "status_reads": 0,
+            "full_status_reads": 0
+          },
+          "dma": {
+            "bytes": 7011,
+            "read_words": 1760,
+            "request_wait_cycles": 57,
+            "fifo_wait_cycles": 910
+          }
+        },
+        {
+          "trial": 3,
+          "metrics": {
+            "command_cycles": 290988,
+            "fifo_wait_span_cycles": 1279,
+            "bytes": 7011,
+            "commands": 242,
+            "tick_wall_cycles": 18,
+            "update_wall_cycles": 40353,
+            "cpu_wall_cycles": 1009305,
+            "present_wall_cycles": 658127,
+            "frame_wall_cycles": 1667563,
+            "frame": 251,
+            "clock_hz": 50000000,
+            "cpu_abi": 1129316609
+          },
+          "fps": 29.790505477726384,
+          "position": [
+            -1328,
+            260,
+            4664
+          ],
+          "render": {
+            "cycles": 968952,
+            "retired": 726766,
+            "memory_freezes": 64263,
+            "dependency_bubbles": 17501,
+            "redirects": 80211,
+            "status_reads": 0,
+            "full_status_reads": 0
+          },
+          "dma": {
+            "bytes": 7011,
+            "read_words": 1760,
+            "request_wait_cycles": 50,
+            "fifo_wait_cycles": 909
+          }
+        }
+      ],
+      "median": {
+        "command_cycles": 290976,
+        "fifo_wait_span_cycles": 1279,
+        "bytes": 7011,
+        "commands": 242,
+        "tick_wall_cycles": 18,
+        "update_wall_cycles": 40349,
+        "cpu_wall_cycles": 1009191,
+        "present_wall_cycles": 658248,
+        "frame_wall_cycles": 1667570,
+        "clock_hz": 50000000
+      },
+      "fps_median": 29.868114817925512
+    }
+  },
+  "resources": {
+    "stage2a_logic_elements": 22675,
+    "candidate_logic_elements": 23788,
+    "delta_logic_elements": 1113,
+    "stage2a_logical_memory_bits": 2659684,
+    "candidate_logical_memory_bits": 2659688,
+    "delta_logical_memory_bits": 4,
+    "m9k_blocks": 354,
+    "multipliers_9bit": 80,
+    "plls": 2,
+    "worst_setup_ns": 0.401,
+    "worst_hold_ns": 0.086,
+    "unconstrained_setup_hold": 0
+  },
+  "decision": "Do not promote DMA: final command-local staging regresses ordinary CPU update+render by 8.52018%; retain experimental backend, restore Stage 2A packed Mario."
+}

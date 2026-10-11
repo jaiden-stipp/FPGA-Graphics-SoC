@@ -98,6 +98,8 @@ Generated game assets and SOF binaries remain local. Full replays share `build/r
 
 ## Stage 2B reassessment
 
+Historical decision at Stage 2A completion: the follow-up [staging measurement](command-buffer-staging.md) and [Stage 2B experiment](architecture-stage-2b.md) are now complete. DMA remains experimental after an 8.52% ordinary CPU update/render regression; Stage 2A packed Mario is restored. The original reasoning below explains why measurements were required.
+
 Do not implement DMA solely to replace the remaining MMIO stores. Packed enqueue already reduces the tested stores by 73.3%, with no FIFO-capacity wait. CRC still processes every header/payload byte; a DMA engine preserves that work unless the protocol-building contract also changes. Initial SDRAM DMA would require CPU staging writes, independent-master arbitration, response ownership, bounded refresh/burst service, cache/store ordering, exclusive stream ownership and loader cancellation. Those costs have not been measured and could outweigh transfer savings for a 7 KiB frame.
 
 Keep Stage 2B deferred pending a measured staging/buffer prototype and evidence that transfer work limits a representative route. The updated packed detailed render still spends about 312,333 cycles (6.247 ms) in terrain transforms/outcodes and 231,073 cycles (4.621 ms) in clipping. Those and Stage 3's proposed setup/raster overlap deserve measurement before assuming command DMA is the next gain. Geometry stalls overlap raster work and are not a predicted setup-queue speedup.
