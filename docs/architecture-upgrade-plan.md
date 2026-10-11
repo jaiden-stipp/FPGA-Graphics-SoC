@@ -172,8 +172,8 @@ Raw evidence naming: `docs/benchmarks/arch-upgrade-001-stage-N/`, with substage 
 
 | Stage | State | Accepted commit / evidence | Next decision |
 | --- | --- | --- | --- |
-| 0: replay / baseline | In progress: deterministic command replay/capture implemented; game-engine route acceptance pending | Starting source 60782c8; SCREEN-EDGES-001 | Establish deterministic route and frame comparison |
-| 1: usable terrain offload | Not started | Existing safe-offload implementation is a prerequisite, not completion | Precision contract and tighter chunk fixture |
+| 0: replay / baseline | Shared-terrain foundation verified; full actor/transition/physical-route acceptance pending | Baseline 60782c8; replay commit a692b8f; [results](architecture-stage-0-1.md) | Extend the deterministic harness to complete game frames |
+| 1: usable terrain offload | Optional implementation verified; performance acceptance failed for both tested layouts | [Three-trial measurements](benchmarks/arch-upgrade-001-stage-1/measurements.json); original image/game restored | Reduce selection/admission cost and improve residency before promotion |
 | 2A: packed enqueue | Not started | None | Audit MMIO map and atomic capacity semantics |
 | 2B: command DMA | Not started | None | Decide from 2A profile; design arbiter/ownership first |
 | 3: overlapping setup | Not started | None | Compare setup idle cost and queue occupancy |
@@ -181,4 +181,4 @@ Raw evidence naming: `docs/benchmarks/arch-upgrade-001-stage-N/`, with substage 
 | 5: optional math worker | Deferred | None | Select only from updated profiles |
 | 6: timing/cadence | Deferred | Per-stage timing remains mandatory | Reassess after accepted parallel changes |
 
-The next action is **Stage 0**, followed by **Stage 1**. Packed enqueue can be evaluated as a separate low-scope experiment after Stage 0, but do not combine it with geometry changes in a single unseparated performance claim. Independent simulation work may proceed concurrently; physical board measurements and deployment require one owner.
+The next action is completing **Stage 0** game-frame coverage and **Stage 1** performance acceptance. The implemented fractional command is optional; measured regressions are preserved and not deployed as defaults. Packed enqueue can later be evaluated as a separate experiment, but do not combine it with geometry changes in a single unseparated performance claim. Physical board measurements and deployment require one owner.

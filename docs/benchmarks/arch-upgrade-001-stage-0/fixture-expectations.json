@@ -1,0 +1,50 @@
+{
+  "scope": "Authored empty/full/equal-depth/degenerate expectations and positive near/far visibility; other counts descriptive only. Fixtures use the renderer default view; queue-full and CPU near clipping not proven.",
+  "frames": {
+    "1": {
+      "color_counts": {
+        "0": 76800
+      }
+    },
+    "2": {
+      "color_counts": {
+        "1": 76800
+      }
+    },
+    "3": {
+      "color_counts": {
+        "0": 76544,
+        "1": 256
+      }
+    },
+    "4": {
+      "color_counts": {
+        "0": 76158,
+        "1": 248,
+        "2": 394
+      }
+    },
+    "5": {
+      "color_counts": {
+        "0": 76800
+      }
+    },
+    "6": {
+      "color_counts": {
+        "0": 75928,
+        "1": 423,
+        "2": 449
+      }
+    },
+    "7": {
+      "color_counts": {
+        "0": 76800
+      }
+    },
+    "8": {
+      "color_counts": {
+        "0": 76800
+      }
+    }
+  }
+}

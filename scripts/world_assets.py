@@ -15,8 +15,9 @@ def vertex(p):
         raise ValueError('World positions require three signed, bounded integer source-space coordinates')
     return tuple(p)
 
-def chunks(vertices,triangles,room_masks=None):
+def chunks(vertices,triangles,room_masks=None,tight=False,min_faces=0):
     """Partition by spatial centroid, retaining every supplied face and index order."""
+    if type(min_faces) is not int or not 0<=min_faces<=256:raise ValueError('Minimum chunk faces must be 0..256')
     groups={}
     for i,t in enumerate(triangles):
         if len(t)!=4:raise ValueError('World triangles require three indices and a palette entry')
@@ -34,20 +35,22 @@ def chunks(vertices,triangles,room_masks=None):
             result.append({'vertices':[[p[a]-center[a] for a in range(3)] for p in points],
                 'triangles':packed[:],'source_triangles':ids[:],'origin':center,
                 'bounds':[n for a in range(3) for n in (low[a],high[a])],'room_mask':mask})
-        # Order by spatial centroid, but don't reserve a mostly empty GPU mesh
-        # for every grid cell. Equal positions may share an index; faces and
-        # their palette entries/source IDs remain exact.
-        for _,i,t in sorted(faces):
+        # Tight cell boundaries improve conservative resident admission.
+        # Keep the legacy sorted face order, original winding and source IDs;
+        # shared positions may be duplicated across chunks, never changed.
+        previous_cell=None
+        for cell,i,t in sorted(faces):
             keys=[tuple(vertices[k]) for k in t[:3]]
-            if len(packed)>=256 or len(local)+len(set(keys)-local.keys())>128:
+            if (tight and len(packed)>=min_faces and previous_cell is not None and cell!=previous_cell) or len(packed)>=256 or len(local)+len(set(keys)-local.keys())>128:
                 emit();local={};points=[];packed=[];ids=[]
+            previous_cell=cell
             for p in keys:
                 if p not in local:local[p]=len(points);points.append(p)
             packed.append([*(local[p] for p in keys),t[3]]);ids.append(i)
         emit()
     return result
 
-def compile_world(scene):
+def compile_world(scene,tight_chunks=False,min_chunk_faces=0):
     if scene.get('format')!='soc-world-ir' or type(scene.get('version')) is not int or scene['version']!=1:raise ValueError('Expected soc-world-ir version 1')
     actors,palette,unused_floors,unused_walls,report=portable_game.compile_scene(scene['resident_scene'],False)
     if report['world_meshes'] or not 1<=len(actors)<=4:raise ValueError('World projects reserve one to four resident actor handles')
@@ -63,7 +66,7 @@ def compile_world(scene):
             game_package.integer(t[3],1,len(palette)-1)
         masks=area.get('triangle_room_masks')
         if masks is not None and (len(masks)!=len(area['triangles']) or any(type(m) is not int or not 0<=m<2**32 for m in masks)):raise ValueError('Invalid room mask table')
-        packed=chunks(points,area['triangles'],masks);source_faces+=len(area['triangles'])
+        packed=chunks(points,area['triangles'],masks,tight=tight_chunks,min_faces=min_chunk_faces);source_faces+=len(area['triangles'])
         if len(packed)>2048:raise ValueError('Area exceeds the software visibility index capacity of 2048 chunks')
         cp=[vertex(p) for p in area['collision']['vertices']];ct=area['collision']['triangles']
         if not cp or not ct or len(ct)>16384:raise ValueError('Area requires 1..16384 source collision faces')
@@ -165,12 +168,13 @@ def header(areas):
         '{world_%d_chunks,%d,world_%d_physics,world_%d_camera,%d,world_%d_cells,world_%d_fi,world_%d_wi,%s,%s,world_%d_normals,world_%d_rooms,world_%d_fs,world_%d_ws}'%(i,len(a['chunks']),i,i,len(a['surfaces']),i,i,i,','.join(map(str,a['grid_origin'])),','.join(map(str,a['grid_size'])),i,i,i,i) for i,a in enumerate(areas)],True)
     lines+=['#endif','#endif',''];return '\n'.join(lines)
 
-def generate(path):
+def generate(path,tight_chunks=False,min_chunk_faces=0):
     path=path.resolve();spec=json.loads(path.read_text());scene_path=(path.parent/spec['scene']).resolve();scene=json.loads(scene_path.read_text())
     if spec.get('format')!='soc-game-project' or type(spec.get('version')) is not int or spec['version']!=1:raise ValueError('Expected soc-game-project version 1')
     if not isinstance(spec.get('name'),str) or not re.fullmatch(r'[a-z][a-z0-9-]{0,47}',spec['name']):raise ValueError('Invalid world project name')
     if 'custom-rv32i-gameplay' not in scene['resident_scene']['target']['required_features']:raise ValueError('World port must declare custom-rv32i-gameplay')
-    actors,palette,floors,walls,report,areas=compile_world(scene)
+    actors,palette,floors,walls,report,areas=compile_world(scene,tight_chunks=tight_chunks,min_chunk_faces=min_chunk_faces)
+    report['terrain_packing']=f'centroid-cell-boundaries-min-{min_chunk_faces}-faces' if tight_chunks else 'legacy-capacity'
     # The existing project parser and shared resident compiler still validate ports.
     port=spec['port'];sources=[(path.parent/p).resolve() for p in port['sources']]
     if port['kind']!='custom' or not sources or any(not p.is_file() or p.suffix!='.c' or not p.is_relative_to(ROOT) for p in sources):raise ValueError('World requires an explicit custom gameplay port')

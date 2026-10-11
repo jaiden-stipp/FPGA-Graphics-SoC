@@ -1,0 +1,21 @@
+Uploading mario-castle-sdram-gpu-q8-profile-detail-mul.bin: 29,612 bytes at 0x00000000
+Verifying mario-castle-sdram-gpu-q8-profile-detail-mul.bin: 29,612 bytes at 0x00000000
+Uploading mario-castle-sdram-gpu-q8-profile-detail-mul.assets.bin: 959,216 bytes at 0x80000000
+  379,788/959,216 bytes
+  758,580/959,216 bytes
+Verifying mario-castle-sdram-gpu-q8-profile-detail-mul.assets.bin: 959,216 bytes at 0x80000000
+  378,624/959,216 bytes
+  757,344/959,216 bytes
+Readback verified; CPU released.
+trial 1 fps 29.982702287260103 position [-1328, 260, 4664] metrics {'command_cycles': 275575, 'fifo_wait_span_cycles': 0, 'bytes': 6851, 'commands': 231, 'tick_wall_cycles': 18, 'update_wall_cycles': 40364, 'cpu_wall_cycles': 1193200, 'present_wall_cycles': 474267, 'frame_wall_cycles': 1667598, 'frame': 251, 'clock_hz': 50000000, 'cpu_abi': 1129316609}
+Uploading mario-castle-sdram-gpu-q8-profile-detail-mul.bin: 29,612 bytes at 0x00000000
+Verifying mario-castle-sdram-gpu-q8-profile-detail-mul.bin: 29,612 bytes at 0x00000000
+Readback verified; CPU released.
+trial 2 fps 29.882398303587753 position [-1328, 260, 4664] metrics {'command_cycles': 275575, 'fifo_wait_span_cycles': 0, 'bytes': 6851, 'commands': 231, 'tick_wall_cycles': 18, 'update_wall_cycles': 40352, 'cpu_wall_cycles': 1193102, 'present_wall_cycles': 474366, 'frame_wall_cycles': 1667599, 'frame': 250, 'clock_hz': 50000000, 'cpu_abi': 1129316609}
+Uploading mario-castle-sdram-gpu-q8-profile-detail-mul.bin: 29,612 bytes at 0x00000000
+Verifying mario-castle-sdram-gpu-q8-profile-detail-mul.bin: 29,612 bytes at 0x00000000
+Readback verified; CPU released.
+trial 3 fps 29.876638396162388 position [-1328, 260, 4664] metrics {'command_cycles': 275575, 'fifo_wait_span_cycles': 0, 'bytes': 6851, 'commands': 231, 'tick_wall_cycles': 18, 'update_wall_cycles': 40352, 'cpu_wall_cycles': 1193102, 'present_wall_cycles': 474366, 'frame_wall_cycles': 1667599, 'frame': 250, 'clock_hz': 50000000, 'cpu_abi': 1129316609}
+Uploading mario-castle-sdram-gpu-q8-mul.bin: 28,228 bytes at 0x00000000
+Verifying mario-castle-sdram-gpu-q8-mul.bin: 28,228 bytes at 0x00000000
+Readback verified; CPU released.

@@ -1,0 +1,448 @@
+{
+  "scope": "Three standing-spawn physical trials per configuration, optional detailed profiling; individual completed-frame snapshots are not frame-time distributions. Presentation remains near 30 FPS. Actor poses may differ when snapshot frame differs.",
+  "clock_hz": 50000000,
+  "source_baseline": "60782c8",
+  "instrumentation_baseline": "a692b8f",
+  "configurations": {
+    "physical-balanced-gpu": {
+      "package": "C:\\Users\\Orb1t\\Documents\\Codex\\FPGA-Game-SoC\\build\\mario-castle-sdram-gpu-q8-profile-detail-mul.package.json",
+      "segments": [
+        {
+          "file": "mario-castle-sdram-gpu-q8-profile-detail-mul.bin",
+          "address": 0,
+          "bytes": 29612,
+          "sha256": "54e698852ad7c03c9cc8790a962a4ec41f1944393b989a35e4e505807a5abb59"
+        },
+        {
+          "file": "mario-castle-sdram-gpu-q8-profile-detail-mul.assets.bin",
+          "address": 2147483648,
+          "bytes": 899604,
+          "sha256": "e0cfc63f9741203f5254bf984902d826ea34f819795d1f47835db929e76f6fe1"
+        }
+      ],
+      "frames": [
+        250,
+        250,
+        251
+      ],
+      "positions": [
+        [
+          -1328,
+          260,
+          4664
+        ],
+        [
+          -1328,
+          260,
+          4664
+        ],
+        [
+          -1328,
+          260,
+          4664
+        ]
+      ],
+      "render_cycles": [
+        1081133,
+        1081144,
+        1081239
+      ],
+      "fps": [
+        29.862323056002584,
+        29.876638396162388,
+        29.982702287260103
+      ],
+      "commands": [
+        242,
+        242,
+        242
+      ],
+      "bytes": [
+        7011,
+        7011,
+        7011
+      ],
+      "detail_cycles": {
+        "chunk_selection": [
+          62302,
+          62302,
+          62301
+        ],
+        "vertex_transform_outcodes": [
+          378415,
+          378415,
+          378423
+        ],
+        "triangle_clipping": [
+          222527,
+          222527,
+          222524
+        ],
+        "animation_step": [
+          109,
+          109,
+          109
+        ],
+        "animation_joints": [
+          20075,
+          20080,
+          20177
+        ],
+        "animation_skin": [
+          35802,
+          35805,
+          35804
+        ],
+        "camera": [
+          38040,
+          38034,
+          38031
+        ]
+      },
+      "restored_status": {
+        "initialized": true,
+        "held": false,
+        "words": [
+          0,
+          0,
+          0
+        ],
+        "scratch": 2,
+        "refresh_count": 75978893,
+        "input_abi": 1229848833
+      },
+      "median_render_ms": 21.62288,
+      "render_change_percent_vs_baseline": 12.92465137460399
+    },
+    "physical-baseline": {
+      "package": "C:\\Users\\Orb1t\\Documents\\Codex\\FPGA-Game-SoC\\build\\arch-stage1\\baseline\\mario-castle-sdram-direct-profile-detail-mul.package.json",
+      "segments": [
+        {
+          "file": "mario-castle-sdram-direct-profile-detail-mul.bin",
+          "address": 0,
+          "bytes": 27220,
+          "sha256": "4204d952a286fdde0e1fcc6b82eb80cbf46c4030d14609c4e3e6eb4cfedc7495"
+        },
+        {
+          "file": "mario-castle-sdram-direct-profile-detail-mul.assets.bin",
+          "address": 2147483648,
+          "bytes": 883124,
+          "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+        }
+      ],
+      "frames": [
+        251,
+        251,
+        251
+      ],
+      "positions": [
+        [
+          -1328,
+          260,
+          4664
+        ],
+        [
+          -1328,
+          260,
+          4664
+        ],
+        [
+          -1328,
+          260,
+          4664
+        ]
+      ],
+      "render_cycles": [
+        957403,
+        957403,
+        957403
+      ],
+      "fps": [
+        29.86811481758832,
+        29.896512073628767,
+        29.882398303587753
+      ],
+      "commands": [
+        242,
+        242,
+        242
+      ],
+      "bytes": [
+        7011,
+        7011,
+        7011
+      ],
+      "detail_cycles": {
+        "chunk_selection": [
+          4398,
+          4398,
+          4398
+        ],
+        "vertex_transform_outcodes": [
+          312328,
+          312328,
+          312328
+        ],
+        "triangle_clipping": [
+          231076,
+          231076,
+          231076
+        ],
+        "animation_step": [
+          109,
+          109,
+          109
+        ],
+        "animation_joints": [
+          20177,
+          20177,
+          20177
+        ],
+        "animation_skin": [
+          35546,
+          35546,
+          35546
+        ],
+        "camera": [
+          38028,
+          38028,
+          38028
+        ]
+      },
+      "restored_status": {
+        "initialized": true,
+        "held": false,
+        "words": [
+          0,
+          0,
+          0
+        ],
+        "scratch": 2,
+        "refresh_count": 660820286,
+        "input_abi": 1229848833
+      },
+      "median_render_ms": 19.14806,
+      "render_change_percent_vs_baseline": 0.0
+    },
+    "physical-tight-direct": {
+      "package": "C:\\Users\\Orb1t\\Documents\\Codex\\FPGA-Game-SoC\\build\\mario-castle-sdram-direct-profile-detail-mul.package.json",
+      "segments": [
+        {
+          "file": "mario-castle-sdram-direct-profile-detail-mul.bin",
+          "address": 0,
+          "bytes": 27220,
+          "sha256": "77470821f9d01c37d4e25850235992530e1e500a6724de238fe273765b40e8e2"
+        },
+        {
+          "file": "mario-castle-sdram-direct-profile-detail-mul.assets.bin",
+          "address": 2147483648,
+          "bytes": 959216,
+          "sha256": "11bdfde3ff06deced0df702b9ccd57835ff67d9bea9d825a40bcc1dafbc6d46f"
+        }
+      ],
+      "frames": [
+        250,
+        251,
+        250
+      ],
+      "positions": [
+        [
+          -1328,
+          260,
+          4664
+        ],
+        [
+          -1328,
+          260,
+          4664
+        ],
+        [
+          -1328,
+          260,
+          4664
+        ]
+      ],
+      "render_cycles": [
+        1078875,
+        1078936,
+        1078869
+      ],
+      "fps": [
+        29.89078367513221,
+        29.982702287260103,
+        29.955261622233486
+      ],
+      "commands": [
+        242,
+        242,
+        242
+      ],
+      "bytes": [
+        7011,
+        7011,
+        7011
+      ],
+      "detail_cycles": {
+        "chunk_selection": [
+          179506,
+          179498,
+          179498
+        ],
+        "vertex_transform_outcodes": [
+          303736,
+          303734,
+          303734
+        ],
+        "triangle_clipping": [
+          190080,
+          190080,
+          190080
+        ],
+        "animation_step": [
+          109,
+          109,
+          109
+        ],
+        "animation_joints": [
+          20097,
+          20164,
+          20097
+        ],
+        "animation_skin": [
+          35546,
+          35546,
+          35546
+        ],
+        "camera": [
+          38031,
+          38039,
+          38042
+        ]
+      },
+      "restored_status": {
+        "initialized": true,
+        "held": false,
+        "words": [
+          0,
+          0,
+          0
+        ],
+        "scratch": 2,
+        "refresh_count": 11678449,
+        "input_abi": 1229848833
+      },
+      "median_render_ms": 21.5775,
+      "render_change_percent_vs_baseline": 12.687656086308486
+    },
+    "physical-tight-gpu": {
+      "package": "C:\\Users\\Orb1t\\Documents\\Codex\\FPGA-Game-SoC\\build\\mario-castle-sdram-gpu-q8-profile-detail-mul.package.json",
+      "segments": [
+        {
+          "file": "mario-castle-sdram-gpu-q8-profile-detail-mul.bin",
+          "address": 0,
+          "bytes": 29612,
+          "sha256": "2dd548f4a5df008b355a922da67a8d249ee185fd6476f15d88c0b0c09c758134"
+        },
+        {
+          "file": "mario-castle-sdram-gpu-q8-profile-detail-mul.assets.bin",
+          "address": 2147483648,
+          "bytes": 959216,
+          "sha256": "11bdfde3ff06deced0df702b9ccd57835ff67d9bea9d825a40bcc1dafbc6d46f"
+        }
+      ],
+      "frames": [
+        251,
+        250,
+        250
+      ],
+      "positions": [
+        [
+          -1328,
+          260,
+          4664
+        ],
+        [
+          -1328,
+          260,
+          4664
+        ],
+        [
+          -1328,
+          260,
+          4664
+        ]
+      ],
+      "render_cycles": [
+        1152836,
+        1152750,
+        1152750
+      ],
+      "fps": [
+        29.982702287260103,
+        29.882398303587753,
+        29.876638396162388
+      ],
+      "commands": [
+        231,
+        231,
+        231
+      ],
+      "bytes": [
+        6851,
+        6851,
+        6851
+      ],
+      "detail_cycles": {
+        "chunk_selection": [
+          262424,
+          262424,
+          262424
+        ],
+        "vertex_transform_outcodes": [
+          283669,
+          283657,
+          283657
+        ],
+        "triangle_clipping": [
+          184637,
+          184633,
+          184633
+        ],
+        "animation_step": [
+          109,
+          109,
+          109
+        ],
+        "animation_joints": [
+          20165,
+          20097,
+          20097
+        ],
+        "animation_skin": [
+          35546,
+          35546,
+          35546
+        ],
+        "camera": [
+          38046,
+          38034,
+          38034
+        ]
+      },
+      "restored_status": {
+        "initialized": true,
+        "held": false,
+        "words": [
+          0,
+          0,
+          0
+        ],
+        "scratch": 1,
+        "refresh_count": 22914892,
+        "input_abi": 1229848833
+      },
+      "median_render_ms": 23.055,
+      "render_change_percent_vs_baseline": 20.40384247803693
+    }
+  }
+}

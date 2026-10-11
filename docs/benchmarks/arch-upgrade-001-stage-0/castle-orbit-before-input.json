@@ -1,0 +1,2156 @@
+{
+  "scope": "production shared-world terrain/controller; supplied camera matrices; actors and game-specific transition logic excluded",
+  "world_sha256": "355bd2324a41b3ca820727c6abb50ccc7a5f939ba3e58ce596e9c34b249b1ae9",
+  "route": {
+    "version": 1,
+    "scope": "production controller and orbit camera; scripted area resets",
+    "frames": [
+      {
+        "area": 0,
+        "label": "grounds-camera-spawn",
+        "camera": {
+          "yaw": 128,
+          "pitch": -16,
+          "distance": 1000
+        }
+      },
+      {
+        "area": 0,
+        "label": "grounds-camera-walk",
+        "keys": 8,
+        "ticks": 30,
+        "camera": {
+          "yaw": 128,
+          "pitch": -16,
+          "distance": 1000
+        }
+      },
+      {
+        "area": 0,
+        "label": "grounds-camera-jump",
+        "keys": 16,
+        "ticks": 10,
+        "camera": {
+          "yaw": 128,
+          "pitch": -16,
+          "distance": 1000
+        }
+      },
+      {
+        "area": 1,
+        "label": "interior-camera-1",
+        "camera": {
+          "yaw": 128,
+          "pitch": -16,
+          "distance": 800
+        }
+      },
+      {
+        "area": 2,
+        "label": "interior-camera-2",
+        "camera": {
+          "yaw": 128,
+          "pitch": -16,
+          "distance": 800
+        }
+      },
+      {
+        "area": 3,
+        "label": "interior-camera-3",
+        "camera": {
+          "yaw": 128,
+          "pitch": -16,
+          "distance": 800
+        }
+      },
+      {
+        "area": 4,
+        "label": "interior-camera-4",
+        "camera": {
+          "yaw": 128,
+          "pitch": -16,
+          "distance": 1000
+        }
+      }
+    ]
+  },
+  "direct": true,
+  "fractional": false,
+  "legacy_packing": true,
+  "world_source_sha256": "0b01c5fc75037ed491489986f3cdd4cc44bd7342e1886cf74034a2cc7779965c",
+  "report": {
+    "module": "world",
+    "palette_colors": 101,
+    "meshes": 2,
+    "world_meshes": 0,
+    "actor_meshes": 2,
+    "world_triangles": 0,
+    "actor_triangles": 212,
+    "source_triangles": 8490,
+    "collision_floors": 2816,
+    "collision_walls": 4747,
+    "spawn_q8_8": [
+      0,
+      0,
+      0
+    ],
+    "physics": {},
+    "camera": {
+      "focal": 256,
+      "near_z": 257
+    },
+    "controller_present": false,
+    "coordinates": {
+      "origin": [
+        0,
+        0,
+        0
+      ],
+      "scale": 1,
+      "axes": [
+        1,
+        2,
+        3
+      ]
+    },
+    "winding_reflected": false,
+    "maximum_quantization_error_gpu_units": 0,
+    "logical_meshes": [
+      {
+        "id": "player-0",
+        "handles": [
+          0
+        ]
+      },
+      {
+        "id": "player-1",
+        "handles": [
+          1
+        ]
+      }
+    ],
+    "explicitly_retained_degenerate_actor_faces": 0,
+    "chunk_source_triangles": [
+      {
+        "mesh": "player-0",
+        "triangles": [
+          {
+            "source_triangle": 0,
+            "source_vertices": [
+              0,
+              1,
+              2
+            ]
+          },
+          {
+            "source_triangle": 1,
+            "source_vertices": [
+              1,
+              3,
+              4
+            ]
+          },
+          {
+            "source_triangle": 2,
+            "source_vertices": [
+              5,
+              6,
+              7
+            ]
+          },
+          {
+            "source_triangle": 3,
+            "source_vertices": [
+              0,
+              2,
+              6
+            ]
+          },
+          {
+            "source_triangle": 4,
+            "source_vertices": [
+              6,
+              5,
+              0
+            ]
+          },
+          {
+            "source_triangle": 5,
+            "source_vertices": [
+              0,
+              3,
+              1
+            ]
+          },
+          {
+            "source_triangle": 6,
+            "source_vertices": [
+              7,
+              8,
+              5
+            ]
+          },
+          {
+            "source_triangle": 7,
+            "source_vertices": [
+              3,
+              9,
+              4
+            ]
+          },
+          {
+            "source_triangle": 8,
+            "source_vertices": [
+              8,
+              7,
+              10
+            ]
+          },
+          {
+            "source_triangle": 9,
+            "source_vertices": [
+              4,
+              9,
+              8
+            ]
+          },
+          {
+            "source_triangle": 10,
+            "source_vertices": [
+              5,
+              9,
+              3
+            ]
+          },
+          {
+            "source_triangle": 11,
+            "source_vertices": [
+              3,
+              0,
+              5
+            ]
+          },
+          {
+            "source_triangle": 12,
+            "source_vertices": [
+              5,
+              8,
+              9
+            ]
+          },
+          {
+            "source_triangle": 13,
+            "source_vertices": [
+              10,
+              7,
+              6
+            ]
+          },
+          {
+            "source_triangle": 14,
+            "source_vertices": [
+              10,
+              4,
+              8
+            ]
+          },
+          {
+            "source_triangle": 15,
+            "source_vertices": [
+              2,
+              1,
+              10
+            ]
+          },
+          {
+            "source_triangle": 16,
+            "source_vertices": [
+              6,
+              2,
+              10
+            ]
+          },
+          {
+            "source_triangle": 17,
+            "source_vertices": [
+              1,
+              4,
+              10
+            ]
+          },
+          {
+            "source_triangle": 18,
+            "source_vertices": [
+              11,
+              12,
+              13
+            ]
+          },
+          {
+            "source_triangle": 19,
+            "source_vertices": [
+              14,
+              13,
+              12
+            ]
+          },
+          {
+            "source_triangle": 20,
+            "source_vertices": [
+              15,
+              16,
+              12
+            ]
+          },
+          {
+            "source_triangle": 21,
+            "source_vertices": [
+              12,
+              16,
+              14
+            ]
+          },
+          {
+            "source_triangle": 22,
+            "source_vertices": [
+              17,
+              11,
+              18
+            ]
+          },
+          {
+            "source_triangle": 23,
+            "source_vertices": [
+              18,
+              19,
+              17
+            ]
+          },
+          {
+            "source_triangle": 24,
+            "source_vertices": [
+              17,
+              15,
+              20
+            ]
+          },
+          {
+            "source_triangle": 25,
+            "source_vertices": [
+              19,
+              21,
+              17
+            ]
+          },
+          {
+            "source_triangle": 26,
+            "source_vertices": [
+              15,
+              17,
+              21
+            ]
+          },
+          {
+            "source_triangle": 27,
+            "source_vertices": [
+              17,
+              20,
+              11
+            ]
+          },
+          {
+            "source_triangle": 28,
+            "source_vertices": [
+              16,
+              15,
+              21
+            ]
+          },
+          {
+            "source_triangle": 29,
+            "source_vertices": [
+              20,
+              15,
+              12
+            ]
+          },
+          {
+            "source_triangle": 30,
+            "source_vertices": [
+              12,
+              11,
+              20
+            ]
+          },
+          {
+            "source_triangle": 31,
+            "source_vertices": [
+              19,
+              11,
+              13
+            ]
+          },
+          {
+            "source_triangle": 32,
+            "source_vertices": [
+              19,
+              18,
+              11
+            ]
+          },
+          {
+            "source_triangle": 33,
+            "source_vertices": [
+              21,
+              19,
+              22
+            ]
+          },
+          {
+            "source_triangle": 34,
+            "source_vertices": [
+              22,
+              23,
+              21
+            ]
+          },
+          {
+            "source_triangle": 35,
+            "source_vertices": [
+              24,
+              13,
+              14
+            ]
+          },
+          {
+            "source_triangle": 36,
+            "source_vertices": [
+              14,
+              16,
+              25
+            ]
+          },
+          {
+            "source_triangle": 37,
+            "source_vertices": [
+              25,
+              26,
+              14
+            ]
+          },
+          {
+            "source_triangle": 38,
+            "source_vertices": [
+              19,
+              13,
+              24
+            ]
+          },
+          {
+            "source_triangle": 39,
+            "source_vertices": [
+              24,
+              22,
+              19
+            ]
+          },
+          {
+            "source_triangle": 40,
+            "source_vertices": [
+              14,
+              26,
+              24
+            ]
+          },
+          {
+            "source_triangle": 41,
+            "source_vertices": [
+              22,
+              24,
+              26
+            ]
+          },
+          {
+            "source_triangle": 42,
+            "source_vertices": [
+              21,
+              23,
+              25
+            ]
+          },
+          {
+            "source_triangle": 43,
+            "source_vertices": [
+              21,
+              25,
+              16
+            ]
+          },
+          {
+            "source_triangle": 44,
+            "source_vertices": [
+              23,
+              22,
+              26
+            ]
+          },
+          {
+            "source_triangle": 45,
+            "source_vertices": [
+              26,
+              25,
+              23
+            ]
+          },
+          {
+            "source_triangle": 46,
+            "source_vertices": [
+              27,
+              28,
+              29
+            ]
+          },
+          {
+            "source_triangle": 47,
+            "source_vertices": [
+              30,
+              31,
+              28
+            ]
+          },
+          {
+            "source_triangle": 48,
+            "source_vertices": [
+              30,
+              28,
+              27
+            ]
+          },
+          {
+            "source_triangle": 49,
+            "source_vertices": [
+              29,
+              32,
+              33
+            ]
+          },
+          {
+            "source_triangle": 50,
+            "source_vertices": [
+              34,
+              32,
+              31
+            ]
+          },
+          {
+            "source_triangle": 51,
+            "source_vertices": [
+              34,
+              33,
+              32
+            ]
+          },
+          {
+            "source_triangle": 52,
+            "source_vertices": [
+              34,
+              31,
+              35
+            ]
+          },
+          {
+            "source_triangle": 53,
+            "source_vertices": [
+              35,
+              36,
+              34
+            ]
+          },
+          {
+            "source_triangle": 54,
+            "source_vertices": [
+              35,
+              37,
+              36
+            ]
+          },
+          {
+            "source_triangle": 55,
+            "source_vertices": [
+              33,
+              36,
+              38
+            ]
+          },
+          {
+            "source_triangle": 56,
+            "source_vertices": [
+              38,
+              29,
+              33
+            ]
+          },
+          {
+            "source_triangle": 57,
+            "source_vertices": [
+              36,
+              37,
+              38
+            ]
+          },
+          {
+            "source_triangle": 58,
+            "source_vertices": [
+              39,
+              40,
+              36
+            ]
+          },
+          {
+            "source_triangle": 59,
+            "source_vertices": [
+              33,
+              39,
+              36
+            ]
+          },
+          {
+            "source_triangle": 60,
+            "source_vertices": [
+              36,
+              40,
+              41
+            ]
+          },
+          {
+            "source_triangle": 61,
+            "source_vertices": [
+              36,
+              41,
+              34
+            ]
+          },
+          {
+            "source_triangle": 62,
+            "source_vertices": [
+              41,
+              40,
+              39
+            ]
+          },
+          {
+            "source_triangle": 63,
+            "source_vertices": [
+              41,
+              39,
+              33
+            ]
+          },
+          {
+            "source_triangle": 64,
+            "source_vertices": [
+              34,
+              41,
+              33
+            ]
+          },
+          {
+            "source_triangle": 65,
+            "source_vertices": [
+              38,
+              37,
+              42
+            ]
+          },
+          {
+            "source_triangle": 66,
+            "source_vertices": [
+              29,
+              38,
+              42
+            ]
+          },
+          {
+            "source_triangle": 67,
+            "source_vertices": [
+              42,
+              37,
+              43
+            ]
+          },
+          {
+            "source_triangle": 68,
+            "source_vertices": [
+              43,
+              37,
+              35
+            ]
+          },
+          {
+            "source_triangle": 69,
+            "source_vertices": [
+              43,
+              35,
+              31
+            ]
+          },
+          {
+            "source_triangle": 70,
+            "source_vertices": [
+              30,
+              27,
+              44
+            ]
+          },
+          {
+            "source_triangle": 71,
+            "source_vertices": [
+              31,
+              30,
+              45
+            ]
+          },
+          {
+            "source_triangle": 72,
+            "source_vertices": [
+              45,
+              30,
+              44
+            ]
+          },
+          {
+            "source_triangle": 73,
+            "source_vertices": [
+              44,
+              27,
+              29
+            ]
+          },
+          {
+            "source_triangle": 74,
+            "source_vertices": [
+              46,
+              44,
+              29
+            ]
+          },
+          {
+            "source_triangle": 75,
+            "source_vertices": [
+              46,
+              47,
+              44
+            ]
+          },
+          {
+            "source_triangle": 76,
+            "source_vertices": [
+              47,
+              45,
+              44
+            ]
+          },
+          {
+            "source_triangle": 77,
+            "source_vertices": [
+              31,
+              45,
+              48
+            ]
+          },
+          {
+            "source_triangle": 78,
+            "source_vertices": [
+              45,
+              47,
+              48
+            ]
+          },
+          {
+            "source_triangle": 79,
+            "source_vertices": [
+              32,
+              49,
+              31
+            ]
+          },
+          {
+            "source_triangle": 80,
+            "source_vertices": [
+              49,
+              28,
+              31
+            ]
+          },
+          {
+            "source_triangle": 81,
+            "source_vertices": [
+              48,
+              47,
+              46
+            ]
+          },
+          {
+            "source_triangle": 82,
+            "source_vertices": [
+              49,
+              29,
+              28
+            ]
+          },
+          {
+            "source_triangle": 83,
+            "source_vertices": [
+              49,
+              32,
+              29
+            ]
+          },
+          {
+            "source_triangle": 84,
+            "source_vertices": [
+              46,
+              42,
+              43
+            ]
+          },
+          {
+            "source_triangle": 85,
+            "source_vertices": [
+              46,
+              43,
+              48
+            ]
+          },
+          {
+            "source_triangle": 86,
+            "source_vertices": [
+              29,
+              42,
+              46
+            ]
+          },
+          {
+            "source_triangle": 87,
+            "source_vertices": [
+              48,
+              43,
+              31
+            ]
+          },
+          {
+            "source_triangle": 88,
+            "source_vertices": [
+              50,
+              51,
+              52
+            ]
+          },
+          {
+            "source_triangle": 89,
+            "source_vertices": [
+              53,
+              54,
+              51
+            ]
+          },
+          {
+            "source_triangle": 90,
+            "source_vertices": [
+              50,
+              53,
+              51
+            ]
+          },
+          {
+            "source_triangle": 91,
+            "source_vertices": [
+              55,
+              50,
+              52
+            ]
+          },
+          {
+            "source_triangle": 92,
+            "source_vertices": [
+              53,
+              50,
+              55
+            ]
+          },
+          {
+            "source_triangle": 93,
+            "source_vertices": [
+              52,
+              51,
+              54
+            ]
+          },
+          {
+            "source_triangle": 94,
+            "source_vertices": [
+              53,
+              55,
+              52
+            ]
+          },
+          {
+            "source_triangle": 95,
+            "source_vertices": [
+              53,
+              52,
+              54
+            ]
+          },
+          {
+            "source_triangle": 96,
+            "source_vertices": [
+              56,
+              57,
+              58
+            ]
+          },
+          {
+            "source_triangle": 97,
+            "source_vertices": [
+              59,
+              60,
+              57
+            ]
+          },
+          {
+            "source_triangle": 98,
+            "source_vertices": [
+              56,
+              59,
+              57
+            ]
+          },
+          {
+            "source_triangle": 99,
+            "source_vertices": [
+              61,
+              56,
+              58
+            ]
+          },
+          {
+            "source_triangle": 100,
+            "source_vertices": [
+              59,
+              56,
+              61
+            ]
+          },
+          {
+            "source_triangle": 101,
+            "source_vertices": [
+              58,
+              57,
+              60
+            ]
+          },
+          {
+            "source_triangle": 102,
+            "source_vertices": [
+              60,
+              59,
+              61
+            ]
+          },
+          {
+            "source_triangle": 103,
+            "source_vertices": [
+              60,
+              61,
+              58
+            ]
+          },
+          {
+            "source_triangle": 104,
+            "source_vertices": [
+              62,
+              63,
+              64
+            ]
+          },
+          {
+            "source_triangle": 105,
+            "source_vertices": [
+              63,
+              65,
+              64
+            ]
+          },
+          {
+            "source_triangle": 106,
+            "source_vertices": [
+              66,
+              67,
+              65
+            ]
+          },
+          {
+            "source_triangle": 107,
+            "source_vertices": [
+              62,
+              67,
+              68
+            ]
+          },
+          {
+            "source_triangle": 108,
+            "source_vertices": [
+              62,
+              64,
+              67
+            ]
+          },
+          {
+            "source_triangle": 109,
+            "source_vertices": [
+              66,
+              68,
+              67
+            ]
+          },
+          {
+            "source_triangle": 110,
+            "source_vertices": [
+              65,
+              63,
+              66
+            ]
+          },
+          {
+            "source_triangle": 111,
+            "source_vertices": [
+              64,
+              65,
+              67
+            ]
+          },
+          {
+            "source_triangle": 112,
+            "source_vertices": [
+              62,
+              68,
+              66
+            ]
+          },
+          {
+            "source_triangle": 113,
+            "source_vertices": [
+              66,
+              63,
+              62
+            ]
+          },
+          {
+            "source_triangle": 114,
+            "source_vertices": [
+              69,
+              70,
+              71
+            ]
+          },
+          {
+            "source_triangle": 115,
+            "source_vertices": [
+              72,
+              73,
+              74
+            ]
+          },
+          {
+            "source_triangle": 116,
+            "source_vertices": [
+              71,
+              73,
+              72
+            ]
+          },
+          {
+            "source_triangle": 117,
+            "source_vertices": [
+              70,
+              74,
+              73
+            ]
+          },
+          {
+            "source_triangle": 118,
+            "source_vertices": [
+              70,
+              69,
+              74
+            ]
+          },
+          {
+            "source_triangle": 119,
+            "source_vertices": [
+              71,
+              70,
+              73
+            ]
+          },
+          {
+            "source_triangle": 120,
+            "source_vertices": [
+              74,
+              69,
+              71
+            ]
+          },
+          {
+            "source_triangle": 121,
+            "source_vertices": [
+              74,
+              71,
+              72
+            ]
+          },
+          {
+            "source_triangle": 122,
+            "source_vertices": [
+              75,
+              76,
+              77
+            ]
+          },
+          {
+            "source_triangle": 123,
+            "source_vertices": [
+              78,
+              76,
+              75
+            ]
+          },
+          {
+            "source_triangle": 124,
+            "source_vertices": [
+              79,
+              77,
+              76
+            ]
+          },
+          {
+            "source_triangle": 125,
+            "source_vertices": [
+              79,
+              80,
+              77
+            ]
+          },
+          {
+            "source_triangle": 126,
+            "source_vertices": [
+              78,
+              79,
+              76
+            ]
+          },
+          {
+            "source_triangle": 127,
+            "source_vertices": [
+              77,
+              80,
+              78
+            ]
+          },
+          {
+            "source_triangle": 128,
+            "source_vertices": [
+              77,
+              78,
+              75
+            ]
+          },
+          {
+            "source_triangle": 129,
+            "source_vertices": [
+              80,
+              79,
+              78
+            ]
+          },
+          {
+            "source_triangle": 130,
+            "source_vertices": [
+              81,
+              82,
+              83
+            ]
+          },
+          {
+            "source_triangle": 131,
+            "source_vertices": [
+              81,
+              83,
+              84
+            ]
+          },
+          {
+            "source_triangle": 132,
+            "source_vertices": [
+              85,
+              81,
+              84
+            ]
+          },
+          {
+            "source_triangle": 133,
+            "source_vertices": [
+              85,
+              86,
+              82
+            ]
+          },
+          {
+            "source_triangle": 134,
+            "source_vertices": [
+              85,
+              84,
+              87
+            ]
+          },
+          {
+            "source_triangle": 135,
+            "source_vertices": [
+              86,
+              85,
+              87
+            ]
+          },
+          {
+            "source_triangle": 136,
+            "source_vertices": [
+              81,
+              85,
+              82
+            ]
+          },
+          {
+            "source_triangle": 137,
+            "source_vertices": [
+              84,
+              83,
+              87
+            ]
+          },
+          {
+            "source_triangle": 138,
+            "source_vertices": [
+              82,
+              86,
+              87
+            ]
+          },
+          {
+            "source_triangle": 139,
+            "source_vertices": [
+              87,
+              83,
+              82
+            ]
+          },
+          {
+            "source_triangle": 140,
+            "source_vertices": [
+              88,
+              89,
+              90
+            ]
+          },
+          {
+            "source_triangle": 141,
+            "source_vertices": [
+              91,
+              88,
+              92
+            ]
+          },
+          {
+            "source_triangle": 142,
+            "source_vertices": [
+              93,
+              91,
+              92
+            ]
+          },
+          {
+            "source_triangle": 143,
+            "source_vertices": [
+              92,
+              94,
+              93
+            ]
+          },
+          {
+            "source_triangle": 144,
+            "source_vertices": [
+              88,
+              90,
+              92
+            ]
+          },
+          {
+            "source_triangle": 145,
+            "source_vertices": [
+              89,
+              95,
+              90
+            ]
+          },
+          {
+            "source_triangle": 146,
+            "source_vertices": [
+              89,
+              88,
+              93
+            ]
+          },
+          {
+            "source_triangle": 147,
+            "source_vertices": [
+              88,
+              91,
+              93
+            ]
+          },
+          {
+            "source_triangle": 148,
+            "source_vertices": [
+              94,
+              92,
+              95
+            ]
+          },
+          {
+            "source_triangle": 149,
+            "source_vertices": [
+              92,
+              90,
+              95
+            ]
+          },
+          {
+            "source_triangle": 150,
+            "source_vertices": [
+              93,
+              95,
+              89
+            ]
+          },
+          {
+            "source_triangle": 151,
+            "source_vertices": [
+              93,
+              94,
+              95
+            ]
+          },
+          {
+            "source_triangle": 152,
+            "source_vertices": [
+              96,
+              97,
+              98
+            ]
+          },
+          {
+            "source_triangle": 153,
+            "source_vertices": [
+              96,
+              98,
+              99
+            ]
+          },
+          {
+            "source_triangle": 154,
+            "source_vertices": [
+              100,
+              99,
+              101
+            ]
+          },
+          {
+            "source_triangle": 155,
+            "source_vertices": [
+              101,
+              102,
+              100
+            ]
+          },
+          {
+            "source_triangle": 156,
+            "source_vertices": [
+              99,
+              100,
+              96
+            ]
+          },
+          {
+            "source_triangle": 157,
+            "source_vertices": [
+              96,
+              103,
+              97
+            ]
+          },
+          {
+            "source_triangle": 158,
+            "source_vertices": [
+              103,
+              100,
+              102
+            ]
+          },
+          {
+            "source_triangle": 159,
+            "source_vertices": [
+              103,
+              96,
+              100
+            ]
+          },
+          {
+            "source_triangle": 160,
+            "source_vertices": [
+              101,
+              99,
+              97
+            ]
+          },
+          {
+            "source_triangle": 161,
+            "source_vertices": [
+              99,
+              98,
+              97
+            ]
+          },
+          {
+            "source_triangle": 162,
+            "source_vertices": [
+              102,
+              101,
+              97
+            ]
+          },
+          {
+            "source_triangle": 163,
+            "source_vertices": [
+              97,
+              103,
+              102
+            ]
+          },
+          {
+            "source_triangle": 164,
+            "source_vertices": [
+              104,
+              105,
+              106
+            ]
+          },
+          {
+            "source_triangle": 165,
+            "source_vertices": [
+              107,
+              104,
+              106
+            ]
+          },
+          {
+            "source_triangle": 166,
+            "source_vertices": [
+              108,
+              104,
+              107
+            ]
+          },
+          {
+            "source_triangle": 167,
+            "source_vertices": [
+              109,
+              110,
+              106
+            ]
+          },
+          {
+            "source_triangle": 168,
+            "source_vertices": [
+              111,
+              108,
+              107
+            ]
+          },
+          {
+            "source_triangle": 169,
+            "source_vertices": [
+              109,
+              106,
+              105
+            ]
+          },
+          {
+            "source_triangle": 170,
+            "source_vertices": [
+              106,
+              111,
+              107
+            ]
+          },
+          {
+            "source_triangle": 171,
+            "source_vertices": [
+              109,
+              111,
+              110
+            ]
+          },
+          {
+            "source_triangle": 172,
+            "source_vertices": [
+              109,
+              105,
+              104
+            ]
+          },
+          {
+            "source_triangle": 173,
+            "source_vertices": [
+              104,
+              108,
+              109
+            ]
+          },
+          {
+            "source_triangle": 174,
+            "source_vertices": [
+              109,
+              108,
+              111
+            ]
+          },
+          {
+            "source_triangle": 175,
+            "source_vertices": [
+              106,
+              110,
+              111
+            ]
+          },
+          {
+            "source_triangle": 176,
+            "source_vertices": [
+              112,
+              113,
+              114
+            ]
+          },
+          {
+            "source_triangle": 177,
+            "source_vertices": [
+              115,
+              112,
+              114
+            ]
+          },
+          {
+            "source_triangle": 178,
+            "source_vertices": [
+              112,
+              116,
+              117
+            ]
+          },
+          {
+            "source_triangle": 179,
+            "source_vertices": [
+              112,
+              117,
+              113
+            ]
+          },
+          {
+            "source_triangle": 180,
+            "source_vertices": [
+              114,
+              118,
+              119
+            ]
+          },
+          {
+            "source_triangle": 181,
+            "source_vertices": [
+              114,
+              119,
+              115
+            ]
+          },
+          {
+            "source_triangle": 182,
+            "source_vertices": [
+              116,
+              112,
+              115
+            ]
+          },
+          {
+            "source_triangle": 183,
+            "source_vertices": [
+              117,
+              116,
+              119
+            ]
+          },
+          {
+            "source_triangle": 184,
+            "source_vertices": [
+              114,
+              113,
+              117
+            ]
+          },
+          {
+            "source_triangle": 185,
+            "source_vertices": [
+              117,
+              118,
+              114
+            ]
+          },
+          {
+            "source_triangle": 186,
+            "source_vertices": [
+              117,
+              119,
+              118
+            ]
+          },
+          {
+            "source_triangle": 187,
+            "source_vertices": [
+              116,
+              115,
+              119
+            ]
+          },
+          {
+            "source_triangle": 188,
+            "source_vertices": [
+              120,
+              121,
+              122
+            ]
+          },
+          {
+            "source_triangle": 189,
+            "source_vertices": [
+              122,
+              123,
+              120
+            ]
+          },
+          {
+            "source_triangle": 190,
+            "source_vertices": [
+              122,
+              124,
+              125
+            ]
+          },
+          {
+            "source_triangle": 191,
+            "source_vertices": [
+              122,
+              125,
+              123
+            ]
+          },
+          {
+            "source_triangle": 192,
+            "source_vertices": [
+              126,
+              127,
+              121
+            ]
+          },
+          {
+            "source_triangle": 193,
+            "source_vertices": [
+              120,
+              126,
+              121
+            ]
+          },
+          {
+            "source_triangle": 194,
+            "source_vertices": [
+              122,
+              121,
+              127
+            ]
+          },
+          {
+            "source_triangle": 195,
+            "source_vertices": [
+              127,
+              126,
+              125
+            ]
+          },
+          {
+            "source_triangle": 196,
+            "source_vertices": [
+              126,
+              120,
+              123
+            ]
+          },
+          {
+            "source_triangle": 197,
+            "source_vertices": [
+              123,
+              125,
+              126
+            ]
+          },
+          {
+            "source_triangle": 198,
+            "source_vertices": [
+              125,
+              124,
+              127
+            ]
+          },
+          {
+            "source_triangle": 199,
+            "source_vertices": [
+              124,
+              122,
+              127
+            ]
+          }
+        ]
+      },
+      {
+        "mesh": "player-1",
+        "triangles": [
+          {
+            "source_triangle": 0,
+            "source_vertices": [
+              0,
+              1,
+              2
+            ]
+          },
+          {
+            "source_triangle": 1,
+            "source_vertices": [
+              0,
+              3,
+              4
+            ]
+          },
+          {
+            "source_triangle": 2,
+            "source_vertices": [
+              4,
+              3,
+              5
+            ]
+          },
+          {
+            "source_triangle": 3,
+            "source_vertices": [
+              5,
+              6,
+              4
+            ]
+          },
+          {
+            "source_triangle": 4,
+            "source_vertices": [
+              1,
+              0,
+              4
+            ]
+          },
+          {
+            "source_triangle": 5,
+            "source_vertices": [
+              7,
+              0,
+              2
+            ]
+          },
+          {
+            "source_triangle": 6,
+            "source_vertices": [
+              6,
+              2,
+              4
+            ]
+          },
+          {
+            "source_triangle": 7,
+            "source_vertices": [
+              7,
+              3,
+              0
+            ]
+          },
+          {
+            "source_triangle": 8,
+            "source_vertices": [
+              2,
+              1,
+              4
+            ]
+          },
+          {
+            "source_triangle": 9,
+            "source_vertices": [
+              7,
+              5,
+              3
+            ]
+          },
+          {
+            "source_triangle": 10,
+            "source_vertices": [
+              2,
+              5,
+              7
+            ]
+          },
+          {
+            "source_triangle": 11,
+            "source_vertices": [
+              2,
+              6,
+              5
+            ]
+          }
+        ]
+      }
+    ],
+    "policy": "No simplification, face dropping, color merging or unsupported-feature fallback",
+    "source_provenance": {
+      "adapter": "sm64-castle",
+      "source_commit": "2b17d081c9798b31b91dc71f37994b0da28cffc9"
+    },
+    "areas": 5,
+    "stored_world_triangles": 8278,
+    "source_collision_triangles": 7563,
+    "stored_world_chunks": 72,
+    "area_reports": [
+      {
+        "id": "castle_geo_ground",
+        "source_triangles": 785,
+        "chunks": 8,
+        "floors": 539,
+        "walls": 340,
+        "grid_cells": 990,
+        "maximum_local_floor_candidates": 36,
+        "maximum_local_wall_candidates": 37,
+        "degenerate_collision_sources": []
+      },
+      {
+        "id": "castle_ground_floor",
+        "source_triangles": 2181,
+        "chunks": 19,
+        "floors": 738,
+        "walls": 1406,
+        "grid_cells": 500,
+        "maximum_local_floor_candidates": 87,
+        "maximum_local_wall_candidates": 122,
+        "degenerate_collision_sources": []
+      },
+      {
+        "id": "castle_upper_floor",
+        "source_triangles": 2546,
+        "chunks": 22,
+        "floors": 660,
+        "walls": 1359,
+        "grid_cells": 690,
+        "maximum_local_floor_candidates": 77,
+        "maximum_local_wall_candidates": 125,
+        "degenerate_collision_sources": []
+      },
+      {
+        "id": "castle_basement",
+        "source_triangles": 1419,
+        "chunks": 13,
+        "floors": 412,
+        "walls": 983,
+        "grid_cells": 465,
+        "maximum_local_floor_candidates": 36,
+        "maximum_local_wall_candidates": 62,
+        "degenerate_collision_sources": []
+      },
+      {
+        "id": "secret_slide",
+        "source_triangles": 1347,
+        "chunks": 10,
+        "floors": 467,
+        "walls": 659,
+        "grid_cells": 1089,
+        "maximum_local_floor_candidates": 30,
+        "maximum_local_wall_candidates": 34,
+        "degenerate_collision_sources": []
+      }
+    ]
+  },
+  "frames": [
+    {
+      "frame": 1,
+      "label": "grounds-camera-spawn",
+      "area": "castle_geo_ground",
+      "view": [
+        -256,
+        0,
+        0,
+        0,
+        0,
+        237,
+        -98,
+        -463,
+        0,
+        -98,
+        -237,
+        4207
+      ],
+      "player": [
+        -1328,
+        260,
+        4664,
+        0,
+        1,
+        16,
+        0,
+        0
+      ],
+      "visible_chunks": 8,
+      "gpu_chunks": 0,
+      "uploaded_chunks": 0,
+      "fallback_chunks": 8,
+      "commands": 234,
+      "bytes": 6050
+    },
+    {
+      "frame": 2,
+      "label": "grounds-camera-walk",
+      "area": "castle_geo_ground",
+      "view": [
+        -256,
+        0,
+        0,
+        0,
+        0,
+        237,
+        -98,
+        -385,
+        0,
+        -98,
+        -237,
+        4396
+      ],
+      "player": [
+        -1328,
+        260,
+        3944,
+        0,
+        1,
+        16,
+        8,
+        0
+      ],
+      "visible_chunks": 8,
+      "gpu_chunks": 0,
+      "uploaded_chunks": 0,
+      "fallback_chunks": 8,
+      "commands": 317,
+      "bytes": 8208
+    },
+    {
+      "frame": 3,
+      "label": "grounds-camera-jump",
+      "area": "castle_geo_ground",
+      "view": [
+        -256,
+        0,
+        0,
+        0,
+        0,
+        237,
+        -98,
+        -126,
+        0,
+        -98,
+        -237,
+        4068
+      ],
+      "player": [
+        -1328,
+        500,
+        3944,
+        2,
+        0,
+        16,
+        16,
+        0
+      ],
+      "visible_chunks": 8,
+      "gpu_chunks": 0,
+      "uploaded_chunks": 0,
+      "fallback_chunks": 8,
+      "commands": 317,
+      "bytes": 8208
+    },
+    {
+      "frame": 4,
+      "label": "interior-camera-1",
+      "area": "castle_ground_floor",
+      "view": [
+        -256,
+        0,
+        0,
+        0,
+        0,
+        237,
+        -98,
+        -465,
+        0,
+        -98,
+        -237,
+        3406
+      ],
+      "player": [
+        -1023,
+        -38,
+        1152,
+        0,
+        1,
+        16,
+        0,
+        0
+      ],
+      "visible_chunks": 6,
+      "gpu_chunks": 0,
+      "uploaded_chunks": 0,
+      "fallback_chunks": 6,
+      "commands": 357,
+      "bytes": 9248
+    },
+    {
+      "frame": 5,
+      "label": "interior-camera-2",
+      "area": "castle_upper_floor",
+      "view": [
+        -256,
+        0,
+        0,
+        0,
+        0,
+        237,
+        -98,
+        -465,
+        0,
+        -98,
+        -237,
+        3406
+      ],
+      "player": [
+        -1023,
+        512,
+        2850,
+        0,
+        1,
+        16,
+        0,
+        0
+      ],
+      "visible_chunks": 2,
+      "gpu_chunks": 0,
+      "uploaded_chunks": 0,
+      "fallback_chunks": 2,
+      "commands": 185,
+      "bytes": 4776
+    },
+    {
+      "frame": 6,
+      "label": "interior-camera-3",
+      "area": "castle_basement",
+      "view": [
+        -256,
+        0,
+        0,
+        0,
+        0,
+        237,
+        -98,
+        -465,
+        0,
+        -98,
+        -237,
+        3406
+      ],
+      "player": [
+        -1023,
+        -1074,
+        800,
+        0,
+        1,
+        16,
+        0,
+        0
+      ],
+      "visible_chunks": 4,
+      "gpu_chunks": 0,
+      "uploaded_chunks": 0,
+      "fallback_chunks": 4,
+      "commands": 165,
+      "bytes": 4256
+    },
+    {
+      "frame": 7,
+      "label": "interior-camera-4",
+      "area": "secret_slide",
+      "view": [
+        -256,
+        0,
+        0,
+        0,
+        0,
+        237,
+        -98,
+        -463,
+        0,
+        -98,
+        -237,
+        4207
+      ],
+      "player": [
+        5632,
+        6144,
+        -5631,
+        0,
+        1,
+        16,
+        0,
+        0
+      ],
+      "visible_chunks": 5,
+      "gpu_chunks": 0,
+      "uploaded_chunks": 0,
+      "fallback_chunks": 5,
+      "commands": 12,
+      "bytes": 278
+    }
+  ],
+  "stream_sha256": "36a2738dd0ae599231d56655defec3f4d9e40014bceb42d6d0fda3347d01421e"
+}

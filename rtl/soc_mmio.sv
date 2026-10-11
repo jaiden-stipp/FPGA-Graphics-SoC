@@ -53,7 +53,7 @@ module soc_mmio #(
                         addr[7:0] == 8'h0c || addr[7:0] == 8'h14 ||
                         addr[7:0] == 8'h18 || addr[7:0] == 8'h1c ||
                         (addr[7:0] >= 8'h20 && addr[7:0] <= 8'h5c) || addr[7:0] == 8'h64 ||
-                        (addr[7:0] >= 8'h68 && addr[7:0] <= 8'h94) || addr[7:0] == 8'h9c || addr[7:0] == 8'ha0 || addr[7:0] == 8'ha4;
+                        (addr[7:0] >= 8'h68 && addr[7:0] <= 8'h94) || addr[7:0] == 8'h9c || addr[7:0] == 8'ha0 || addr[7:0] == 8'ha4 || addr[7:0] == 8'ha8;
     assign byte_data = fifo[rd_ptr];
     assign byte_valid = !reset && count != 0;
     assign pop = byte_valid && byte_ready;
@@ -91,9 +91,10 @@ module soc_mmio #(
                 8'h8c: rdata = cpu_snapshot[159:128];
                 8'h90: rdata = cpu_snapshot[127:96];
                 8'h94: rdata = cpu_snapshot[95:64];
-                8'h9c: rdata = 32'h00000001; // feature bit 0: low-32-bit MUL
+                8'h9c: rdata = 32'h80000001; // MUL and GPU capability-register presence
                 8'ha0: rdata = cpu_snapshot[63:32];
                 8'ha4: rdata = cpu_snapshot[31:0];
+                8'ha8: rdata = 32'h00000001; // draw-mesh-fraction-v1
                 default: rdata = stats_snapshot[415 - ((addr[7:0]-8'h20)/4)*32 -: 32];
             endcase
         end

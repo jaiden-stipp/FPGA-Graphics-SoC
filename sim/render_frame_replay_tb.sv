@@ -10,6 +10,7 @@ module render_frame_replay_tb;
  reg [7:0] bytes[0:1999999],page0[0:76799],page1[0:76799],depth[0:76799];reg[23:0] palette[0:255];
  integer cycle=0,frame=0,captured=0,expected,length,fd,commands,triangles,timeline,first_byte,last_byte,last_setup,last_raster;
  integer occupancy=0,max_occupancy=0,queue_empty=0,queue_full=0,geometry_stalls=0;
+ integer previous_raster_state=0;
  always @(posedge clk)begin
   cycle=cycle+1;
   if(!reset)begin
@@ -35,9 +36,10 @@ module render_frame_replay_tb;
    if(`RP.triangle_fifo_empty)queue_empty=queue_empty+1;
    if(`RP.triangle_fifo_full)queue_full=queue_full+1;
    if(`RP.transform_out_valid && !`RP.transform_out_ready)geometry_stalls=geometry_stalls+1;
-   if(`RP.rasterizer.state==6)last_setup=cycle;
+   if(`RP.rasterizer.state==6 && previous_raster_state!=6)last_setup=cycle;
+   previous_raster_state=`RP.rasterizer.state;
    if(`RP.raster_write)last_raster=cycle;
-   if(`RP.swap_request)$fdisplay(timeline,"%0d swap_request %0d first_byte=%0d last_byte=%0d setup_or_raster=%0d last_raster=%0d max_queue=%0d empty=%0d full=%0d geometry_stall=%0d",frame,cycle,first_byte,last_byte,last_setup,last_raster,max_occupancy,queue_empty,queue_full,geometry_stalls);
+   if(`RP.swap_request)$fdisplay(timeline,"%0d swap_request %0d first_byte=%0d last_byte=%0d last_setup=%0d last_raster=%0d max_queue=%0d empty=%0d full=%0d geometry_stall=%0d",frame,cycle,first_byte,last_byte,last_setup,last_raster,max_occupancy,queue_empty,queue_full,geometry_stalls);
    if(done)begin
     if(done_id!=captured+1)$fatal(1,"out of order frame completion");
     $fdisplay(timeline,"%0d swap_ack %0d stats=%h",done_id,cycle,stats);

@@ -194,11 +194,11 @@ def project(path):
         raise ValueError('Custom port must declare custom-rv32i-gameplay')
     return spec,scene_path,scene,compiled,sources,api
 
-def generate(path):
+def generate(path,tight_chunks=False,min_chunk_faces=0):
     candidate=json.loads((path.parent/json.loads(path.read_text())['scene']).read_text())
     if candidate.get('format')=='soc-world-ir':
         from world_assets import generate as generate_world
-        return generate_world(path)
+        return generate_world(path,tight_chunks=tight_chunks,min_chunk_faces=min_chunk_faces)
     spec,scene_path,scene,compiled,sources,api=project(path)
     chunks,palette,floors,walls,report=compiled
     report['source_scene_sha256']=hashlib.sha256(scene_path.read_bytes()).hexdigest()

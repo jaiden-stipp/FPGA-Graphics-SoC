@@ -1,0 +1,558 @@
+----------------
+; Command Info ;
+----------------
+Report Timing: Found 3 setup paths (3 violated).  Worst case slack is -0.250 
+
+Tcl Command:
+    report_timing -setup -file build/arch-stage1/critical-setup.rpt -npaths 3 -detail full_path
+
+Options:
+    -setup 
+    -npaths 3 
+    -detail full_path 
+    -file {build/arch-stage1/critical-setup.rpt} 
+
+Delay Model:
+    Slow 1200mV 85C Model
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Summary of Paths                                                                                                                                                                                                                                                                                                                                           ;
++--------+-------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; Slack  ; From Node                                                                                                                                 ; To Node                                                                                                                         ; Launch Clock ; Latch Clock ; Relationship ; Clock Skew ; Data Delay ;
++--------+-------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+; -0.250 ; soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|indexed_mesh_store:mesh_store|transform_component_number[0] ; soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|indexed_mesh_store:mesh_store|triangle_data.y0[7] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; 0.377      ; 20.625     ;
+; -0.247 ; soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|indexed_mesh_store:mesh_store|transform_component_number[0] ; soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|indexed_mesh_store:mesh_store|triangle_data.y0[7] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; 0.377      ; 20.622     ;
+; -0.244 ; soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|indexed_mesh_store:mesh_store|transform_component_number[0] ; soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|indexed_mesh_store:mesh_store|triangle_data.y0[7] ; CLOCK_50     ; CLOCK_50    ; 20.000       ; 0.377      ; 20.619     ;
++--------+-------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------+--------------+-------------+--------------+------------+------------+
+
+Path #1: Setup slack is -0.250 (VIOLATED)
+===============================================================================
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Path Summary                                                                                                                                                   ;
++--------------------+-------------------------------------------------------------------------------------------------------------------------------------------+
+; Property           ; Value                                                                                                                                     ;
++--------------------+-------------------------------------------------------------------------------------------------------------------------------------------+
+; From Node          ; soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|indexed_mesh_store:mesh_store|transform_component_number[0] ;
+; To Node            ; soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|indexed_mesh_store:mesh_store|triangle_data.y0[7]           ;
+; Launch Clock       ; CLOCK_50 (INVERTED)                                                                                                                       ;
+; Latch Clock        ; CLOCK_50 (INVERTED)                                                                                                                       ;
+; Data Arrival Time  ; 33.799                                                                                                                                    ;
+; Data Required Time ; 33.549                                                                                                                                    ;
+; Slack              ; -0.250 (VIOLATED)                                                                                                                         ;
++--------------------+-------------------------------------------------------------------------------------------------------------------------------------------+
+
++------------------------------------------------------------------------------------+
+; Statistics                                                                         ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Property               ; Value  ; Count ; Total Delay ; % of Total ; Min   ; Max   ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Setup Relationship     ; 20.000 ;       ;             ;            ;       ;       ;
+; Clock Skew             ; 0.377  ;       ;             ;            ;       ;       ;
+; Data Delay             ; 20.625 ;       ;             ;            ;       ;       ;
+; Number of Logic Levels ;        ; 12    ;             ;            ;       ;       ;
+; Physical Delays        ;        ;       ;             ;            ;       ;       ;
+;  Arrival Path          ;        ;       ;             ;            ;       ;       ;
+;   Clock                ;        ;       ;             ;            ;       ;       ;
+;    IC                  ;        ; 3     ; 1.702       ; 54         ; 0.000 ; 1.529 ;
+;    Cell                ;        ; 3     ; 1.472       ; 46         ; 0.000 ; 0.875 ;
+;   Data                 ;        ;       ;             ;            ;       ;       ;
+;    IC                  ;        ; 45    ; 9.351       ; 45         ; 0.000 ; 1.561 ;
+;    Cell                ;        ; 46    ; 11.042      ; 54         ; 0.000 ; 3.476 ;
+;    uTco                ;        ; 1     ; 0.232       ; 1          ; 0.232 ; 0.232 ;
+;  Required Path         ;        ;       ;             ;            ;       ;       ;
+;   Clock                ;        ;       ;             ;            ;       ;       ;
+;    IC                  ;        ; 3     ; 2.089       ; 59         ; 0.000 ; 1.923 ;
+;    Cell                ;        ; 3     ; 1.429       ; 41         ; 0.000 ; 0.875 ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+Note: Negative delays are omitted from totals when calculating percentages
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Data Arrival Path                                                                                                                                                                                        ;
++----------+---------+----+------+--------+--------------------+-------------------------------------------------------------------------------------------------------------------------------------------+
+; Total    ; Incr    ; RF ; Type ; Fanout ; Location           ; Element                                                                                                                                   ;
++----------+---------+----+------+--------+--------------------+-------------------------------------------------------------------------------------------------------------------------------------------+
+; 10.000   ; 10.000  ;    ;      ;        ;                    ; launch edge time                                                                                                                          ;
+; 13.174   ; 3.174   ;    ;      ;        ;                    ; clock path                                                                                                                                ;
+;   10.000 ;   0.000 ;    ;      ;        ;                    ; source latency                                                                                                                            ;
+;   10.000 ;   0.000 ;    ;      ; 1      ; PIN_Y2             ; CLOCK_50                                                                                                                                  ;
+;   10.000 ;   0.000 ; FF ; IC   ; 1      ; IOIBUF_X0_Y36_N15  ; CLOCK_50~input|i                                                                                                                          ;
+;   10.875 ;   0.875 ; FF ; CELL ; 4      ; IOIBUF_X0_Y36_N15  ; CLOCK_50~input|o                                                                                                                          ;
+;   11.048 ;   0.173 ; FF ; IC   ; 1      ; CLKCTRL_G4         ; CLOCK_50~inputclkctrl|inclk[0]                                                                                                            ;
+;   11.048 ;   0.000 ; FF ; CELL ; 10116  ; CLKCTRL_G4         ; CLOCK_50~inputclkctrl|outclk                                                                                                              ;
+;   12.577 ;   1.529 ; FF ; IC   ; 1      ; FF_X46_Y15_N15     ; soc|graphics|renderer|mesh_store|transform_component_number[0]|clk                                                                        ;
+;   13.174 ;   0.597 ; FR ; CELL ; 1      ; FF_X46_Y15_N15     ; soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|indexed_mesh_store:mesh_store|transform_component_number[0] ;
+; 33.799   ; 20.625  ;    ;      ;        ;                    ; data path                                                                                                                                 ;
+;   13.406 ;   0.232 ;    ; uTco ; 1      ; FF_X46_Y15_N15     ; soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|indexed_mesh_store:mesh_store|transform_component_number[0] ;
+;   13.406 ;   0.000 ; FF ; CELL ; 89     ; FF_X46_Y15_N15     ; soc|graphics|renderer|mesh_store|transform_component_number[0]|q                                                                          ;
+;   14.922 ;   1.516 ; FF ; IC   ; 1      ; LCCOMB_X52_Y21_N12 ; soc|graphics|renderer|mesh_store|Selector56~0|datab                                                                                       ;
+;   15.347 ;   0.425 ; FF ; CELL ; 1      ; LCCOMB_X52_Y21_N12 ; soc|graphics|renderer|mesh_store|Selector56~0|combout                                                                                     ;
+;   15.576 ;   0.229 ; FF ; IC   ; 1      ; LCCOMB_X52_Y21_N26 ; soc|graphics|renderer|mesh_store|Selector56~1|datad                                                                                       ;
+;   15.701 ;   0.125 ; FF ; CELL ; 1      ; LCCOMB_X52_Y21_N26 ; soc|graphics|renderer|mesh_store|Selector56~1|combout                                                                                     ;
+;   17.262 ;   1.561 ; FF ; IC   ; 1      ; DSPMULT_X44_Y13_N0 ; soc|graphics|renderer|mesh_store|Mult0|auto_generated|mac_mult1|datab[9]                                                                  ;
+;   20.738 ;   3.476 ; FR ; CELL ; 32     ; DSPMULT_X44_Y13_N0 ; soc|graphics|renderer|mesh_store|Mult0|auto_generated|mac_mult1|dataout[35]                                                               ;
+;   20.738 ;   0.000 ; RR ; IC   ; 1      ; DSPOUT_X44_Y13_N2  ; soc|graphics|renderer|mesh_store|Mult0|auto_generated|mac_out2|dataa[5]                                                                   ;
+;   20.872 ;   0.134 ; RF ; CELL ; 1      ; DSPOUT_X44_Y13_N2  ; soc|graphics|renderer|mesh_store|Mult0|auto_generated|mac_out2|dataout[5]                                                                 ;
+;   21.506 ;   0.634 ; FF ; IC   ; 2      ; LCCOMB_X45_Y13_N16 ; soc|graphics|renderer|mesh_store|Add0~2|datab                                                                                             ;
+;   22.015 ;   0.509 ; FR ; CELL ; 1      ; LCCOMB_X45_Y13_N16 ; soc|graphics|renderer|mesh_store|Add0~2|cout                                                                                              ;
+;   22.015 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X45_Y13_N18 ; soc|graphics|renderer|mesh_store|Add0~4|cin                                                                                               ;
+;   22.081 ;   0.066 ; RF ; CELL ; 1      ; LCCOMB_X45_Y13_N18 ; soc|graphics|renderer|mesh_store|Add0~4|cout                                                                                              ;
+;   22.081 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X45_Y13_N20 ; soc|graphics|renderer|mesh_store|Add0~6|cin                                                                                               ;
+;   22.147 ;   0.066 ; FR ; CELL ; 1      ; LCCOMB_X45_Y13_N20 ; soc|graphics|renderer|mesh_store|Add0~6|cout                                                                                              ;
+;   22.147 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X45_Y13_N22 ; soc|graphics|renderer|mesh_store|Add0~8|cin                                                                                               ;
+;   22.213 ;   0.066 ; RF ; CELL ; 1      ; LCCOMB_X45_Y13_N22 ; soc|graphics|renderer|mesh_store|Add0~8|cout                                                                                              ;
+;   22.213 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X45_Y13_N24 ; soc|graphics|renderer|mesh_store|Add0~10|cin                                                                                              ;
+;   22.279 ;   0.066 ; FR ; CELL ; 1      ; LCCOMB_X45_Y13_N24 ; soc|graphics|renderer|mesh_store|Add0~10|cout                                                                                             ;
+;   22.279 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X45_Y13_N26 ; soc|graphics|renderer|mesh_store|Add0~12|cin                                                                                              ;
+;   22.345 ;   0.066 ; RF ; CELL ; 1      ; LCCOMB_X45_Y13_N26 ; soc|graphics|renderer|mesh_store|Add0~12|cout                                                                                             ;
+;   22.345 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X45_Y13_N28 ; soc|graphics|renderer|mesh_store|Add0~14|cin                                                                                              ;
+;   22.411 ;   0.066 ; FR ; CELL ; 1      ; LCCOMB_X45_Y13_N28 ; soc|graphics|renderer|mesh_store|Add0~14|cout                                                                                             ;
+;   22.411 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X45_Y13_N30 ; soc|graphics|renderer|mesh_store|Add0~16|cin                                                                                              ;
+;   22.477 ;   0.066 ; RF ; CELL ; 1      ; LCCOMB_X45_Y13_N30 ; soc|graphics|renderer|mesh_store|Add0~16|cout                                                                                             ;
+;   22.477 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X45_Y12_N0  ; soc|graphics|renderer|mesh_store|Add0~18|cin                                                                                              ;
+;   22.543 ;   0.066 ; FR ; CELL ; 1      ; LCCOMB_X45_Y12_N0  ; soc|graphics|renderer|mesh_store|Add0~18|cout                                                                                             ;
+;   22.543 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X45_Y12_N2  ; soc|graphics|renderer|mesh_store|Add0~20|cin                                                                                              ;
+;   22.609 ;   0.066 ; RF ; CELL ; 1      ; LCCOMB_X45_Y12_N2  ; soc|graphics|renderer|mesh_store|Add0~20|cout                                                                                             ;
+;   22.609 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X45_Y12_N4  ; soc|graphics|renderer|mesh_store|Add0~22|cin                                                                                              ;
+;   22.675 ;   0.066 ; FR ; CELL ; 1      ; LCCOMB_X45_Y12_N4  ; soc|graphics|renderer|mesh_store|Add0~22|cout                                                                                             ;
+;   22.675 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X45_Y12_N6  ; soc|graphics|renderer|mesh_store|Add0~24|cin                                                                                              ;
+;   22.741 ;   0.066 ; RF ; CELL ; 1      ; LCCOMB_X45_Y12_N6  ; soc|graphics|renderer|mesh_store|Add0~24|cout                                                                                             ;
+;   22.741 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X45_Y12_N8  ; soc|graphics|renderer|mesh_store|Add0~26|cin                                                                                              ;
+;   22.807 ;   0.066 ; FR ; CELL ; 1      ; LCCOMB_X45_Y12_N8  ; soc|graphics|renderer|mesh_store|Add0~26|cout                                                                                             ;
+;   22.807 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X45_Y12_N10 ; soc|graphics|renderer|mesh_store|Add0~28|cin                                                                                              ;
+;   23.343 ;   0.536 ; RR ; CELL ; 1      ; LCCOMB_X45_Y12_N10 ; soc|graphics|renderer|mesh_store|Add0~28|combout                                                                                          ;
+;   24.029 ;   0.686 ; RR ; IC   ; 2      ; LCCOMB_X43_Y12_N10 ; soc|graphics|renderer|mesh_store|product_sum[14]~28|dataa                                                                                 ;
+;   24.495 ;   0.466 ; RR ; CELL ; 1      ; LCCOMB_X43_Y12_N10 ; soc|graphics|renderer|mesh_store|product_sum[14]~28|cout                                                                                  ;
+;   24.495 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X43_Y12_N12 ; soc|graphics|renderer|mesh_store|product_sum[15]~30|cin                                                                                   ;
+;   24.561 ;   0.066 ; RF ; CELL ; 1      ; LCCOMB_X43_Y12_N12 ; soc|graphics|renderer|mesh_store|product_sum[15]~30|cout                                                                                  ;
+;   24.561 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X43_Y12_N14 ; soc|graphics|renderer|mesh_store|product_sum[16]~32|cin                                                                                   ;
+;   24.627 ;   0.066 ; FR ; CELL ; 1      ; LCCOMB_X43_Y12_N14 ; soc|graphics|renderer|mesh_store|product_sum[16]~32|cout                                                                                  ;
+;   24.627 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X43_Y12_N16 ; soc|graphics|renderer|mesh_store|product_sum[17]~34|cin                                                                                   ;
+;   24.693 ;   0.066 ; RF ; CELL ; 1      ; LCCOMB_X43_Y12_N16 ; soc|graphics|renderer|mesh_store|product_sum[17]~34|cout                                                                                  ;
+;   24.693 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X43_Y12_N18 ; soc|graphics|renderer|mesh_store|product_sum[18]~36|cin                                                                                   ;
+;   24.759 ;   0.066 ; FR ; CELL ; 1      ; LCCOMB_X43_Y12_N18 ; soc|graphics|renderer|mesh_store|product_sum[18]~36|cout                                                                                  ;
+;   24.759 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X43_Y12_N20 ; soc|graphics|renderer|mesh_store|product_sum[19]~38|cin                                                                                   ;
+;   24.825 ;   0.066 ; RF ; CELL ; 1      ; LCCOMB_X43_Y12_N20 ; soc|graphics|renderer|mesh_store|product_sum[19]~38|cout                                                                                  ;
+;   24.825 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X43_Y12_N22 ; soc|graphics|renderer|mesh_store|product_sum[20]~40|cin                                                                                   ;
+;   24.891 ;   0.066 ; FR ; CELL ; 1      ; LCCOMB_X43_Y12_N22 ; soc|graphics|renderer|mesh_store|product_sum[20]~40|cout                                                                                  ;
+;   24.891 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X43_Y12_N24 ; soc|graphics|renderer|mesh_store|product_sum[21]~42|cin                                                                                   ;
+;   25.403 ;   0.512 ; RF ; CELL ; 1      ; LCCOMB_X43_Y12_N24 ; soc|graphics|renderer|mesh_store|product_sum[21]~42|combout                                                                               ;
+;   26.054 ;   0.651 ; FF ; IC   ; 2      ; LCCOMB_X42_Y12_N24 ; soc|graphics|renderer|mesh_store|Add3~42|dataa                                                                                            ;
+;   26.552 ;   0.498 ; FR ; CELL ; 1      ; LCCOMB_X42_Y12_N24 ; soc|graphics|renderer|mesh_store|Add3~42|cout                                                                                             ;
+;   26.552 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X42_Y12_N26 ; soc|graphics|renderer|mesh_store|Add3~44|cin                                                                                              ;
+;   27.088 ;   0.536 ; RR ; CELL ; 1      ; LCCOMB_X42_Y12_N26 ; soc|graphics|renderer|mesh_store|Add3~44|combout                                                                                          ;
+;   27.836 ;   0.748 ; RR ; IC   ; 2      ; LCCOMB_X41_Y11_N0  ; soc|graphics|renderer|mesh_store|Add4~28|datab                                                                                            ;
+;   28.308 ;   0.472 ; RR ; CELL ; 1      ; LCCOMB_X41_Y11_N0  ; soc|graphics|renderer|mesh_store|Add4~28|cout                                                                                             ;
+;   28.308 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X41_Y11_N2  ; soc|graphics|renderer|mesh_store|Add4~30|cin                                                                                              ;
+;   28.374 ;   0.066 ; RF ; CELL ; 1      ; LCCOMB_X41_Y11_N2  ; soc|graphics|renderer|mesh_store|Add4~30|cout                                                                                             ;
+;   28.374 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X41_Y11_N4  ; soc|graphics|renderer|mesh_store|Add4~32|cin                                                                                              ;
+;   28.440 ;   0.066 ; FR ; CELL ; 1      ; LCCOMB_X41_Y11_N4  ; soc|graphics|renderer|mesh_store|Add4~32|cout                                                                                             ;
+;   28.440 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X41_Y11_N6  ; soc|graphics|renderer|mesh_store|Add4~34|cin                                                                                              ;
+;   28.506 ;   0.066 ; RF ; CELL ; 1      ; LCCOMB_X41_Y11_N6  ; soc|graphics|renderer|mesh_store|Add4~34|cout                                                                                             ;
+;   28.506 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X41_Y11_N8  ; soc|graphics|renderer|mesh_store|Add4~36|cin                                                                                              ;
+;   28.572 ;   0.066 ; FR ; CELL ; 1      ; LCCOMB_X41_Y11_N8  ; soc|graphics|renderer|mesh_store|Add4~36|cout                                                                                             ;
+;   28.572 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X41_Y11_N10 ; soc|graphics|renderer|mesh_store|Add4~38|cin                                                                                              ;
+;   28.638 ;   0.066 ; RF ; CELL ; 1      ; LCCOMB_X41_Y11_N10 ; soc|graphics|renderer|mesh_store|Add4~38|cout                                                                                             ;
+;   28.638 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X41_Y11_N12 ; soc|graphics|renderer|mesh_store|Add4~40|cin                                                                                              ;
+;   28.704 ;   0.066 ; FR ; CELL ; 1      ; LCCOMB_X41_Y11_N12 ; soc|graphics|renderer|mesh_store|Add4~40|cout                                                                                             ;
+;   28.704 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X41_Y11_N14 ; soc|graphics|renderer|mesh_store|Add4~42|cin                                                                                              ;
+;   28.770 ;   0.066 ; RF ; CELL ; 1      ; LCCOMB_X41_Y11_N14 ; soc|graphics|renderer|mesh_store|Add4~42|cout                                                                                             ;
+;   28.770 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X41_Y11_N16 ; soc|graphics|renderer|mesh_store|Add4~44|cin                                                                                              ;
+;   28.836 ;   0.066 ; FR ; CELL ; 1      ; LCCOMB_X41_Y11_N16 ; soc|graphics|renderer|mesh_store|Add4~44|cout                                                                                             ;
+;   28.836 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X41_Y11_N18 ; soc|graphics|renderer|mesh_store|Add4~46|cin                                                                                              ;
+;   28.902 ;   0.066 ; RF ; CELL ; 1      ; LCCOMB_X41_Y11_N18 ; soc|graphics|renderer|mesh_store|Add4~46|cout                                                                                             ;
+;   28.902 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X41_Y11_N20 ; soc|graphics|renderer|mesh_store|Add4~48|cin                                                                                              ;
+;   28.968 ;   0.066 ; FR ; CELL ; 1      ; LCCOMB_X41_Y11_N20 ; soc|graphics|renderer|mesh_store|Add4~48|cout                                                                                             ;
+;   28.968 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X41_Y11_N22 ; soc|graphics|renderer|mesh_store|Add4~50|cin                                                                                              ;
+;   29.504 ;   0.536 ; RR ; CELL ; 2      ; LCCOMB_X41_Y11_N22 ; soc|graphics|renderer|mesh_store|Add4~50|combout                                                                                          ;
+;   30.114 ;   0.610 ; RR ; IC   ; 1      ; LCCOMB_X40_Y11_N22 ; soc|graphics|renderer|mesh_store|saturate_q8_8~4|datac                                                                                    ;
+;   30.399 ;   0.285 ; RR ; CELL ; 1      ; LCCOMB_X40_Y11_N22 ; soc|graphics|renderer|mesh_store|saturate_q8_8~4|combout                                                                                  ;
+;   31.130 ;   0.731 ; RR ; IC   ; 1      ; LCCOMB_X40_Y12_N2  ; soc|graphics|renderer|mesh_store|saturate_q8_8~5|datad                                                                                    ;
+;   31.285 ;   0.155 ; RR ; CELL ; 15     ; LCCOMB_X40_Y12_N2  ; soc|graphics|renderer|mesh_store|saturate_q8_8~5|combout                                                                                  ;
+;   32.179 ;   0.894 ; RR ; IC   ; 1      ; LCCOMB_X48_Y12_N18 ; soc|graphics|renderer|mesh_store|saturate_q8_8~17|datac                                                                                   ;
+;   32.466 ;   0.287 ; RR ; CELL ; 9      ; LCCOMB_X48_Y12_N18 ; soc|graphics|renderer|mesh_store|saturate_q8_8~17|combout                                                                                 ;
+;   33.557 ;   1.091 ; RR ; IC   ; 1      ; LCCOMB_X52_Y13_N18 ; soc|graphics|renderer|mesh_store|triangle_data.y0[7]~feeder|datad                                                                         ;
+;   33.712 ;   0.155 ; RR ; CELL ; 1      ; LCCOMB_X52_Y13_N18 ; soc|graphics|renderer|mesh_store|triangle_data.y0[7]~feeder|combout                                                                       ;
+;   33.712 ;   0.000 ; RR ; IC   ; 1      ; FF_X52_Y13_N19     ; soc|graphics|renderer|mesh_store|triangle_data.y0[7]|d                                                                                    ;
+;   33.799 ;   0.087 ; RR ; CELL ; 1      ; FF_X52_Y13_N19     ; soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|indexed_mesh_store:mesh_store|triangle_data.y0[7]           ;
++----------+---------+----+------+--------+--------------------+-------------------------------------------------------------------------------------------------------------------------------------------+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Data Required Path                                                                                                                                                                            ;
++----------+---------+----+------+--------+-------------------+---------------------------------------------------------------------------------------------------------------------------------+
+; Total    ; Incr    ; RF ; Type ; Fanout ; Location          ; Element                                                                                                                         ;
++----------+---------+----+------+--------+-------------------+---------------------------------------------------------------------------------------------------------------------------------+
+; 30.000   ; 30.000  ;    ;      ;        ;                   ; latch edge time                                                                                                                 ;
+; 33.551   ; 3.551   ;    ;      ;        ;                   ; clock path                                                                                                                      ;
+;   30.000 ;   0.000 ;    ;      ;        ;                   ; source latency                                                                                                                  ;
+;   30.000 ;   0.000 ;    ;      ; 1      ; PIN_Y2            ; CLOCK_50                                                                                                                        ;
+;   30.000 ;   0.000 ; FF ; IC   ; 1      ; IOIBUF_X0_Y36_N15 ; CLOCK_50~input|i                                                                                                                ;
+;   30.875 ;   0.875 ; FF ; CELL ; 4      ; IOIBUF_X0_Y36_N15 ; CLOCK_50~input|o                                                                                                                ;
+;   31.041 ;   0.166 ; FF ; IC   ; 1      ; CLKCTRL_G4        ; CLOCK_50~inputclkctrl|inclk[0]                                                                                                  ;
+;   31.041 ;   0.000 ; FF ; CELL ; 10116  ; CLKCTRL_G4        ; CLOCK_50~inputclkctrl|outclk                                                                                                    ;
+;   32.964 ;   1.923 ; FF ; IC   ; 1      ; FF_X52_Y13_N19    ; soc|graphics|renderer|mesh_store|triangle_data.y0[7]|clk                                                                        ;
+;   33.518 ;   0.554 ; FR ; CELL ; 1      ; FF_X52_Y13_N19    ; soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|indexed_mesh_store:mesh_store|triangle_data.y0[7] ;
+;   33.551 ;   0.033 ;    ;      ;        ;                   ; clock pessimism removed                                                                                                         ;
+; 33.531   ; -0.020  ;    ;      ;        ;                   ; clock uncertainty                                                                                                               ;
+; 33.549   ; 0.018   ;    ; uTsu ; 1      ; FF_X52_Y13_N19    ; soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|indexed_mesh_store:mesh_store|triangle_data.y0[7] ;
++----------+---------+----+------+--------+-------------------+---------------------------------------------------------------------------------------------------------------------------------+
+
+----------------------------
+; Extra Fitter Information ;
+----------------------------
+HTML report is unavailable in plain text report export.
+
+
+Path #2: Setup slack is -0.247 (VIOLATED)
+===============================================================================
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Path Summary                                                                                                                                                   ;
++--------------------+-------------------------------------------------------------------------------------------------------------------------------------------+
+; Property           ; Value                                                                                                                                     ;
++--------------------+-------------------------------------------------------------------------------------------------------------------------------------------+
+; From Node          ; soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|indexed_mesh_store:mesh_store|transform_component_number[0] ;
+; To Node            ; soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|indexed_mesh_store:mesh_store|triangle_data.y0[7]           ;
+; Launch Clock       ; CLOCK_50 (INVERTED)                                                                                                                       ;
+; Latch Clock        ; CLOCK_50 (INVERTED)                                                                                                                       ;
+; Data Arrival Time  ; 33.796                                                                                                                                    ;
+; Data Required Time ; 33.549                                                                                                                                    ;
+; Slack              ; -0.247 (VIOLATED)                                                                                                                         ;
++--------------------+-------------------------------------------------------------------------------------------------------------------------------------------+
+
++------------------------------------------------------------------------------------+
+; Statistics                                                                         ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Property               ; Value  ; Count ; Total Delay ; % of Total ; Min   ; Max   ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Setup Relationship     ; 20.000 ;       ;             ;            ;       ;       ;
+; Clock Skew             ; 0.377  ;       ;             ;            ;       ;       ;
+; Data Delay             ; 20.622 ;       ;             ;            ;       ;       ;
+; Number of Logic Levels ;        ; 12    ;             ;            ;       ;       ;
+; Physical Delays        ;        ;       ;             ;            ;       ;       ;
+;  Arrival Path          ;        ;       ;             ;            ;       ;       ;
+;   Clock                ;        ;       ;             ;            ;       ;       ;
+;    IC                  ;        ; 3     ; 1.702       ; 54         ; 0.000 ; 1.529 ;
+;    Cell                ;        ; 3     ; 1.472       ; 46         ; 0.000 ; 0.875 ;
+;   Data                 ;        ;       ;             ;            ;       ;       ;
+;    IC                  ;        ; 45    ; 9.348       ; 45         ; 0.000 ; 1.561 ;
+;    Cell                ;        ; 46    ; 11.042      ; 54         ; 0.000 ; 3.476 ;
+;    uTco                ;        ; 1     ; 0.232       ; 1          ; 0.232 ; 0.232 ;
+;  Required Path         ;        ;       ;             ;            ;       ;       ;
+;   Clock                ;        ;       ;             ;            ;       ;       ;
+;    IC                  ;        ; 3     ; 2.089       ; 59         ; 0.000 ; 1.923 ;
+;    Cell                ;        ; 3     ; 1.429       ; 41         ; 0.000 ; 0.875 ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+Note: Negative delays are omitted from totals when calculating percentages
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Data Arrival Path                                                                                                                                                                                        ;
++----------+---------+----+------+--------+--------------------+-------------------------------------------------------------------------------------------------------------------------------------------+
+; Total    ; Incr    ; RF ; Type ; Fanout ; Location           ; Element                                                                                                                                   ;
++----------+---------+----+------+--------+--------------------+-------------------------------------------------------------------------------------------------------------------------------------------+
+; 10.000   ; 10.000  ;    ;      ;        ;                    ; launch edge time                                                                                                                          ;
+; 13.174   ; 3.174   ;    ;      ;        ;                    ; clock path                                                                                                                                ;
+;   10.000 ;   0.000 ;    ;      ;        ;                    ; source latency                                                                                                                            ;
+;   10.000 ;   0.000 ;    ;      ; 1      ; PIN_Y2             ; CLOCK_50                                                                                                                                  ;
+;   10.000 ;   0.000 ; FF ; IC   ; 1      ; IOIBUF_X0_Y36_N15  ; CLOCK_50~input|i                                                                                                                          ;
+;   10.875 ;   0.875 ; FF ; CELL ; 4      ; IOIBUF_X0_Y36_N15  ; CLOCK_50~input|o                                                                                                                          ;
+;   11.048 ;   0.173 ; FF ; IC   ; 1      ; CLKCTRL_G4         ; CLOCK_50~inputclkctrl|inclk[0]                                                                                                            ;
+;   11.048 ;   0.000 ; FF ; CELL ; 10116  ; CLKCTRL_G4         ; CLOCK_50~inputclkctrl|outclk                                                                                                              ;
+;   12.577 ;   1.529 ; FF ; IC   ; 1      ; FF_X46_Y15_N15     ; soc|graphics|renderer|mesh_store|transform_component_number[0]|clk                                                                        ;
+;   13.174 ;   0.597 ; FR ; CELL ; 1      ; FF_X46_Y15_N15     ; soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|indexed_mesh_store:mesh_store|transform_component_number[0] ;
+; 33.796   ; 20.622  ;    ;      ;        ;                    ; data path                                                                                                                                 ;
+;   13.406 ;   0.232 ;    ; uTco ; 1      ; FF_X46_Y15_N15     ; soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|indexed_mesh_store:mesh_store|transform_component_number[0] ;
+;   13.406 ;   0.000 ; FF ; CELL ; 89     ; FF_X46_Y15_N15     ; soc|graphics|renderer|mesh_store|transform_component_number[0]|q                                                                          ;
+;   14.922 ;   1.516 ; FF ; IC   ; 1      ; LCCOMB_X52_Y21_N12 ; soc|graphics|renderer|mesh_store|Selector56~0|datab                                                                                       ;
+;   15.347 ;   0.425 ; FF ; CELL ; 1      ; LCCOMB_X52_Y21_N12 ; soc|graphics|renderer|mesh_store|Selector56~0|combout                                                                                     ;
+;   15.576 ;   0.229 ; FF ; IC   ; 1      ; LCCOMB_X52_Y21_N26 ; soc|graphics|renderer|mesh_store|Selector56~1|datad                                                                                       ;
+;   15.701 ;   0.125 ; FF ; CELL ; 1      ; LCCOMB_X52_Y21_N26 ; soc|graphics|renderer|mesh_store|Selector56~1|combout                                                                                     ;
+;   17.262 ;   1.561 ; FF ; IC   ; 1      ; DSPMULT_X44_Y13_N0 ; soc|graphics|renderer|mesh_store|Mult0|auto_generated|mac_mult1|datab[9]                                                                  ;
+;   20.738 ;   3.476 ; FR ; CELL ; 32     ; DSPMULT_X44_Y13_N0 ; soc|graphics|renderer|mesh_store|Mult0|auto_generated|mac_mult1|dataout[35]                                                               ;
+;   20.738 ;   0.000 ; RR ; IC   ; 1      ; DSPOUT_X44_Y13_N2  ; soc|graphics|renderer|mesh_store|Mult0|auto_generated|mac_out2|dataa[5]                                                                   ;
+;   20.872 ;   0.134 ; RF ; CELL ; 1      ; DSPOUT_X44_Y13_N2  ; soc|graphics|renderer|mesh_store|Mult0|auto_generated|mac_out2|dataout[5]                                                                 ;
+;   21.506 ;   0.634 ; FF ; IC   ; 2      ; LCCOMB_X45_Y13_N16 ; soc|graphics|renderer|mesh_store|Add0~2|datab                                                                                             ;
+;   22.015 ;   0.509 ; FR ; CELL ; 1      ; LCCOMB_X45_Y13_N16 ; soc|graphics|renderer|mesh_store|Add0~2|cout                                                                                              ;
+;   22.015 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X45_Y13_N18 ; soc|graphics|renderer|mesh_store|Add0~4|cin                                                                                               ;
+;   22.081 ;   0.066 ; RF ; CELL ; 1      ; LCCOMB_X45_Y13_N18 ; soc|graphics|renderer|mesh_store|Add0~4|cout                                                                                              ;
+;   22.081 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X45_Y13_N20 ; soc|graphics|renderer|mesh_store|Add0~6|cin                                                                                               ;
+;   22.147 ;   0.066 ; FR ; CELL ; 1      ; LCCOMB_X45_Y13_N20 ; soc|graphics|renderer|mesh_store|Add0~6|cout                                                                                              ;
+;   22.147 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X45_Y13_N22 ; soc|graphics|renderer|mesh_store|Add0~8|cin                                                                                               ;
+;   22.213 ;   0.066 ; RF ; CELL ; 1      ; LCCOMB_X45_Y13_N22 ; soc|graphics|renderer|mesh_store|Add0~8|cout                                                                                              ;
+;   22.213 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X45_Y13_N24 ; soc|graphics|renderer|mesh_store|Add0~10|cin                                                                                              ;
+;   22.279 ;   0.066 ; FR ; CELL ; 1      ; LCCOMB_X45_Y13_N24 ; soc|graphics|renderer|mesh_store|Add0~10|cout                                                                                             ;
+;   22.279 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X45_Y13_N26 ; soc|graphics|renderer|mesh_store|Add0~12|cin                                                                                              ;
+;   22.345 ;   0.066 ; RF ; CELL ; 1      ; LCCOMB_X45_Y13_N26 ; soc|graphics|renderer|mesh_store|Add0~12|cout                                                                                             ;
+;   22.345 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X45_Y13_N28 ; soc|graphics|renderer|mesh_store|Add0~14|cin                                                                                              ;
+;   22.411 ;   0.066 ; FR ; CELL ; 1      ; LCCOMB_X45_Y13_N28 ; soc|graphics|renderer|mesh_store|Add0~14|cout                                                                                             ;
+;   22.411 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X45_Y13_N30 ; soc|graphics|renderer|mesh_store|Add0~16|cin                                                                                              ;
+;   22.477 ;   0.066 ; RF ; CELL ; 1      ; LCCOMB_X45_Y13_N30 ; soc|graphics|renderer|mesh_store|Add0~16|cout                                                                                             ;
+;   22.477 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X45_Y12_N0  ; soc|graphics|renderer|mesh_store|Add0~18|cin                                                                                              ;
+;   22.543 ;   0.066 ; FR ; CELL ; 1      ; LCCOMB_X45_Y12_N0  ; soc|graphics|renderer|mesh_store|Add0~18|cout                                                                                             ;
+;   22.543 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X45_Y12_N2  ; soc|graphics|renderer|mesh_store|Add0~20|cin                                                                                              ;
+;   23.079 ;   0.536 ; RR ; CELL ; 1      ; LCCOMB_X45_Y12_N2  ; soc|graphics|renderer|mesh_store|Add0~20|combout                                                                                          ;
+;   23.762 ;   0.683 ; RR ; IC   ; 2      ; LCCOMB_X43_Y12_N2  ; soc|graphics|renderer|mesh_store|product_sum[10]~20|dataa                                                                                 ;
+;   24.228 ;   0.466 ; RR ; CELL ; 1      ; LCCOMB_X43_Y12_N2  ; soc|graphics|renderer|mesh_store|product_sum[10]~20|cout                                                                                  ;
+;   24.228 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X43_Y12_N4  ; soc|graphics|renderer|mesh_store|product_sum[11]~22|cin                                                                                   ;
+;   24.294 ;   0.066 ; RF ; CELL ; 1      ; LCCOMB_X43_Y12_N4  ; soc|graphics|renderer|mesh_store|product_sum[11]~22|cout                                                                                  ;
+;   24.294 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X43_Y12_N6  ; soc|graphics|renderer|mesh_store|product_sum[12]~24|cin                                                                                   ;
+;   24.360 ;   0.066 ; FR ; CELL ; 1      ; LCCOMB_X43_Y12_N6  ; soc|graphics|renderer|mesh_store|product_sum[12]~24|cout                                                                                  ;
+;   24.360 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X43_Y12_N8  ; soc|graphics|renderer|mesh_store|product_sum[13]~26|cin                                                                                   ;
+;   24.426 ;   0.066 ; RF ; CELL ; 1      ; LCCOMB_X43_Y12_N8  ; soc|graphics|renderer|mesh_store|product_sum[13]~26|cout                                                                                  ;
+;   24.426 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X43_Y12_N10 ; soc|graphics|renderer|mesh_store|product_sum[14]~28|cin                                                                                   ;
+;   24.492 ;   0.066 ; FR ; CELL ; 1      ; LCCOMB_X43_Y12_N10 ; soc|graphics|renderer|mesh_store|product_sum[14]~28|cout                                                                                  ;
+;   24.492 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X43_Y12_N12 ; soc|graphics|renderer|mesh_store|product_sum[15]~30|cin                                                                                   ;
+;   24.558 ;   0.066 ; RF ; CELL ; 1      ; LCCOMB_X43_Y12_N12 ; soc|graphics|renderer|mesh_store|product_sum[15]~30|cout                                                                                  ;
+;   24.558 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X43_Y12_N14 ; soc|graphics|renderer|mesh_store|product_sum[16]~32|cin                                                                                   ;
+;   24.624 ;   0.066 ; FR ; CELL ; 1      ; LCCOMB_X43_Y12_N14 ; soc|graphics|renderer|mesh_store|product_sum[16]~32|cout                                                                                  ;
+;   24.624 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X43_Y12_N16 ; soc|graphics|renderer|mesh_store|product_sum[17]~34|cin                                                                                   ;
+;   24.690 ;   0.066 ; RF ; CELL ; 1      ; LCCOMB_X43_Y12_N16 ; soc|graphics|renderer|mesh_store|product_sum[17]~34|cout                                                                                  ;
+;   24.690 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X43_Y12_N18 ; soc|graphics|renderer|mesh_store|product_sum[18]~36|cin                                                                                   ;
+;   24.756 ;   0.066 ; FR ; CELL ; 1      ; LCCOMB_X43_Y12_N18 ; soc|graphics|renderer|mesh_store|product_sum[18]~36|cout                                                                                  ;
+;   24.756 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X43_Y12_N20 ; soc|graphics|renderer|mesh_store|product_sum[19]~38|cin                                                                                   ;
+;   24.822 ;   0.066 ; RF ; CELL ; 1      ; LCCOMB_X43_Y12_N20 ; soc|graphics|renderer|mesh_store|product_sum[19]~38|cout                                                                                  ;
+;   24.822 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X43_Y12_N22 ; soc|graphics|renderer|mesh_store|product_sum[20]~40|cin                                                                                   ;
+;   24.888 ;   0.066 ; FR ; CELL ; 1      ; LCCOMB_X43_Y12_N22 ; soc|graphics|renderer|mesh_store|product_sum[20]~40|cout                                                                                  ;
+;   24.888 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X43_Y12_N24 ; soc|graphics|renderer|mesh_store|product_sum[21]~42|cin                                                                                   ;
+;   25.400 ;   0.512 ; RF ; CELL ; 1      ; LCCOMB_X43_Y12_N24 ; soc|graphics|renderer|mesh_store|product_sum[21]~42|combout                                                                               ;
+;   26.051 ;   0.651 ; FF ; IC   ; 2      ; LCCOMB_X42_Y12_N24 ; soc|graphics|renderer|mesh_store|Add3~42|dataa                                                                                            ;
+;   26.549 ;   0.498 ; FR ; CELL ; 1      ; LCCOMB_X42_Y12_N24 ; soc|graphics|renderer|mesh_store|Add3~42|cout                                                                                             ;
+;   26.549 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X42_Y12_N26 ; soc|graphics|renderer|mesh_store|Add3~44|cin                                                                                              ;
+;   27.085 ;   0.536 ; RR ; CELL ; 1      ; LCCOMB_X42_Y12_N26 ; soc|graphics|renderer|mesh_store|Add3~44|combout                                                                                          ;
+;   27.833 ;   0.748 ; RR ; IC   ; 2      ; LCCOMB_X41_Y11_N0  ; soc|graphics|renderer|mesh_store|Add4~28|datab                                                                                            ;
+;   28.305 ;   0.472 ; RR ; CELL ; 1      ; LCCOMB_X41_Y11_N0  ; soc|graphics|renderer|mesh_store|Add4~28|cout                                                                                             ;
+;   28.305 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X41_Y11_N2  ; soc|graphics|renderer|mesh_store|Add4~30|cin                                                                                              ;
+;   28.371 ;   0.066 ; RF ; CELL ; 1      ; LCCOMB_X41_Y11_N2  ; soc|graphics|renderer|mesh_store|Add4~30|cout                                                                                             ;
+;   28.371 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X41_Y11_N4  ; soc|graphics|renderer|mesh_store|Add4~32|cin                                                                                              ;
+;   28.437 ;   0.066 ; FR ; CELL ; 1      ; LCCOMB_X41_Y11_N4  ; soc|graphics|renderer|mesh_store|Add4~32|cout                                                                                             ;
+;   28.437 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X41_Y11_N6  ; soc|graphics|renderer|mesh_store|Add4~34|cin                                                                                              ;
+;   28.503 ;   0.066 ; RF ; CELL ; 1      ; LCCOMB_X41_Y11_N6  ; soc|graphics|renderer|mesh_store|Add4~34|cout                                                                                             ;
+;   28.503 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X41_Y11_N8  ; soc|graphics|renderer|mesh_store|Add4~36|cin                                                                                              ;
+;   28.569 ;   0.066 ; FR ; CELL ; 1      ; LCCOMB_X41_Y11_N8  ; soc|graphics|renderer|mesh_store|Add4~36|cout                                                                                             ;
+;   28.569 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X41_Y11_N10 ; soc|graphics|renderer|mesh_store|Add4~38|cin                                                                                              ;
+;   28.635 ;   0.066 ; RF ; CELL ; 1      ; LCCOMB_X41_Y11_N10 ; soc|graphics|renderer|mesh_store|Add4~38|cout                                                                                             ;
+;   28.635 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X41_Y11_N12 ; soc|graphics|renderer|mesh_store|Add4~40|cin                                                                                              ;
+;   28.701 ;   0.066 ; FR ; CELL ; 1      ; LCCOMB_X41_Y11_N12 ; soc|graphics|renderer|mesh_store|Add4~40|cout                                                                                             ;
+;   28.701 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X41_Y11_N14 ; soc|graphics|renderer|mesh_store|Add4~42|cin                                                                                              ;
+;   28.767 ;   0.066 ; RF ; CELL ; 1      ; LCCOMB_X41_Y11_N14 ; soc|graphics|renderer|mesh_store|Add4~42|cout                                                                                             ;
+;   28.767 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X41_Y11_N16 ; soc|graphics|renderer|mesh_store|Add4~44|cin                                                                                              ;
+;   28.833 ;   0.066 ; FR ; CELL ; 1      ; LCCOMB_X41_Y11_N16 ; soc|graphics|renderer|mesh_store|Add4~44|cout                                                                                             ;
+;   28.833 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X41_Y11_N18 ; soc|graphics|renderer|mesh_store|Add4~46|cin                                                                                              ;
+;   28.899 ;   0.066 ; RF ; CELL ; 1      ; LCCOMB_X41_Y11_N18 ; soc|graphics|renderer|mesh_store|Add4~46|cout                                                                                             ;
+;   28.899 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X41_Y11_N20 ; soc|graphics|renderer|mesh_store|Add4~48|cin                                                                                              ;
+;   28.965 ;   0.066 ; FR ; CELL ; 1      ; LCCOMB_X41_Y11_N20 ; soc|graphics|renderer|mesh_store|Add4~48|cout                                                                                             ;
+;   28.965 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X41_Y11_N22 ; soc|graphics|renderer|mesh_store|Add4~50|cin                                                                                              ;
+;   29.501 ;   0.536 ; RR ; CELL ; 2      ; LCCOMB_X41_Y11_N22 ; soc|graphics|renderer|mesh_store|Add4~50|combout                                                                                          ;
+;   30.111 ;   0.610 ; RR ; IC   ; 1      ; LCCOMB_X40_Y11_N22 ; soc|graphics|renderer|mesh_store|saturate_q8_8~4|datac                                                                                    ;
+;   30.396 ;   0.285 ; RR ; CELL ; 1      ; LCCOMB_X40_Y11_N22 ; soc|graphics|renderer|mesh_store|saturate_q8_8~4|combout                                                                                  ;
+;   31.127 ;   0.731 ; RR ; IC   ; 1      ; LCCOMB_X40_Y12_N2  ; soc|graphics|renderer|mesh_store|saturate_q8_8~5|datad                                                                                    ;
+;   31.282 ;   0.155 ; RR ; CELL ; 15     ; LCCOMB_X40_Y12_N2  ; soc|graphics|renderer|mesh_store|saturate_q8_8~5|combout                                                                                  ;
+;   32.176 ;   0.894 ; RR ; IC   ; 1      ; LCCOMB_X48_Y12_N18 ; soc|graphics|renderer|mesh_store|saturate_q8_8~17|datac                                                                                   ;
+;   32.463 ;   0.287 ; RR ; CELL ; 9      ; LCCOMB_X48_Y12_N18 ; soc|graphics|renderer|mesh_store|saturate_q8_8~17|combout                                                                                 ;
+;   33.554 ;   1.091 ; RR ; IC   ; 1      ; LCCOMB_X52_Y13_N18 ; soc|graphics|renderer|mesh_store|triangle_data.y0[7]~feeder|datad                                                                         ;
+;   33.709 ;   0.155 ; RR ; CELL ; 1      ; LCCOMB_X52_Y13_N18 ; soc|graphics|renderer|mesh_store|triangle_data.y0[7]~feeder|combout                                                                       ;
+;   33.709 ;   0.000 ; RR ; IC   ; 1      ; FF_X52_Y13_N19     ; soc|graphics|renderer|mesh_store|triangle_data.y0[7]|d                                                                                    ;
+;   33.796 ;   0.087 ; RR ; CELL ; 1      ; FF_X52_Y13_N19     ; soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|indexed_mesh_store:mesh_store|triangle_data.y0[7]           ;
++----------+---------+----+------+--------+--------------------+-------------------------------------------------------------------------------------------------------------------------------------------+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Data Required Path                                                                                                                                                                            ;
++----------+---------+----+------+--------+-------------------+---------------------------------------------------------------------------------------------------------------------------------+
+; Total    ; Incr    ; RF ; Type ; Fanout ; Location          ; Element                                                                                                                         ;
++----------+---------+----+------+--------+-------------------+---------------------------------------------------------------------------------------------------------------------------------+
+; 30.000   ; 30.000  ;    ;      ;        ;                   ; latch edge time                                                                                                                 ;
+; 33.551   ; 3.551   ;    ;      ;        ;                   ; clock path                                                                                                                      ;
+;   30.000 ;   0.000 ;    ;      ;        ;                   ; source latency                                                                                                                  ;
+;   30.000 ;   0.000 ;    ;      ; 1      ; PIN_Y2            ; CLOCK_50                                                                                                                        ;
+;   30.000 ;   0.000 ; FF ; IC   ; 1      ; IOIBUF_X0_Y36_N15 ; CLOCK_50~input|i                                                                                                                ;
+;   30.875 ;   0.875 ; FF ; CELL ; 4      ; IOIBUF_X0_Y36_N15 ; CLOCK_50~input|o                                                                                                                ;
+;   31.041 ;   0.166 ; FF ; IC   ; 1      ; CLKCTRL_G4        ; CLOCK_50~inputclkctrl|inclk[0]                                                                                                  ;
+;   31.041 ;   0.000 ; FF ; CELL ; 10116  ; CLKCTRL_G4        ; CLOCK_50~inputclkctrl|outclk                                                                                                    ;
+;   32.964 ;   1.923 ; FF ; IC   ; 1      ; FF_X52_Y13_N19    ; soc|graphics|renderer|mesh_store|triangle_data.y0[7]|clk                                                                        ;
+;   33.518 ;   0.554 ; FR ; CELL ; 1      ; FF_X52_Y13_N19    ; soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|indexed_mesh_store:mesh_store|triangle_data.y0[7] ;
+;   33.551 ;   0.033 ;    ;      ;        ;                   ; clock pessimism removed                                                                                                         ;
+; 33.531   ; -0.020  ;    ;      ;        ;                   ; clock uncertainty                                                                                                               ;
+; 33.549   ; 0.018   ;    ; uTsu ; 1      ; FF_X52_Y13_N19    ; soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|indexed_mesh_store:mesh_store|triangle_data.y0[7] ;
++----------+---------+----+------+--------+-------------------+---------------------------------------------------------------------------------------------------------------------------------+
+
+----------------------------
+; Extra Fitter Information ;
+----------------------------
+HTML report is unavailable in plain text report export.
+
+
+Path #3: Setup slack is -0.244 (VIOLATED)
+===============================================================================
++----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Path Summary                                                                                                                                                   ;
++--------------------+-------------------------------------------------------------------------------------------------------------------------------------------+
+; Property           ; Value                                                                                                                                     ;
++--------------------+-------------------------------------------------------------------------------------------------------------------------------------------+
+; From Node          ; soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|indexed_mesh_store:mesh_store|transform_component_number[0] ;
+; To Node            ; soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|indexed_mesh_store:mesh_store|triangle_data.y0[7]           ;
+; Launch Clock       ; CLOCK_50 (INVERTED)                                                                                                                       ;
+; Latch Clock        ; CLOCK_50 (INVERTED)                                                                                                                       ;
+; Data Arrival Time  ; 33.793                                                                                                                                    ;
+; Data Required Time ; 33.549                                                                                                                                    ;
+; Slack              ; -0.244 (VIOLATED)                                                                                                                         ;
++--------------------+-------------------------------------------------------------------------------------------------------------------------------------------+
+
++------------------------------------------------------------------------------------+
+; Statistics                                                                         ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Property               ; Value  ; Count ; Total Delay ; % of Total ; Min   ; Max   ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+; Setup Relationship     ; 20.000 ;       ;             ;            ;       ;       ;
+; Clock Skew             ; 0.377  ;       ;             ;            ;       ;       ;
+; Data Delay             ; 20.619 ;       ;             ;            ;       ;       ;
+; Number of Logic Levels ;        ; 12    ;             ;            ;       ;       ;
+; Physical Delays        ;        ;       ;             ;            ;       ;       ;
+;  Arrival Path          ;        ;       ;             ;            ;       ;       ;
+;   Clock                ;        ;       ;             ;            ;       ;       ;
+;    IC                  ;        ; 3     ; 1.702       ; 54         ; 0.000 ; 1.529 ;
+;    Cell                ;        ; 3     ; 1.472       ; 46         ; 0.000 ; 0.875 ;
+;   Data                 ;        ;       ;             ;            ;       ;       ;
+;    IC                  ;        ; 45    ; 9.339       ; 45         ; 0.000 ; 1.561 ;
+;    Cell                ;        ; 46    ; 11.048      ; 54         ; 0.000 ; 3.476 ;
+;    uTco                ;        ; 1     ; 0.232       ; 1          ; 0.232 ; 0.232 ;
+;  Required Path         ;        ;       ;             ;            ;       ;       ;
+;   Clock                ;        ;       ;             ;            ;       ;       ;
+;    IC                  ;        ; 3     ; 2.089       ; 59         ; 0.000 ; 1.923 ;
+;    Cell                ;        ; 3     ; 1.429       ; 41         ; 0.000 ; 0.875 ;
++------------------------+--------+-------+-------------+------------+-------+-------+
+Note: Negative delays are omitted from totals when calculating percentages
+
++----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Data Arrival Path                                                                                                                                                                                        ;
++----------+---------+----+------+--------+--------------------+-------------------------------------------------------------------------------------------------------------------------------------------+
+; Total    ; Incr    ; RF ; Type ; Fanout ; Location           ; Element                                                                                                                                   ;
++----------+---------+----+------+--------+--------------------+-------------------------------------------------------------------------------------------------------------------------------------------+
+; 10.000   ; 10.000  ;    ;      ;        ;                    ; launch edge time                                                                                                                          ;
+; 13.174   ; 3.174   ;    ;      ;        ;                    ; clock path                                                                                                                                ;
+;   10.000 ;   0.000 ;    ;      ;        ;                    ; source latency                                                                                                                            ;
+;   10.000 ;   0.000 ;    ;      ; 1      ; PIN_Y2             ; CLOCK_50                                                                                                                                  ;
+;   10.000 ;   0.000 ; FF ; IC   ; 1      ; IOIBUF_X0_Y36_N15  ; CLOCK_50~input|i                                                                                                                          ;
+;   10.875 ;   0.875 ; FF ; CELL ; 4      ; IOIBUF_X0_Y36_N15  ; CLOCK_50~input|o                                                                                                                          ;
+;   11.048 ;   0.173 ; FF ; IC   ; 1      ; CLKCTRL_G4         ; CLOCK_50~inputclkctrl|inclk[0]                                                                                                            ;
+;   11.048 ;   0.000 ; FF ; CELL ; 10116  ; CLKCTRL_G4         ; CLOCK_50~inputclkctrl|outclk                                                                                                              ;
+;   12.577 ;   1.529 ; FF ; IC   ; 1      ; FF_X46_Y15_N15     ; soc|graphics|renderer|mesh_store|transform_component_number[0]|clk                                                                        ;
+;   13.174 ;   0.597 ; FR ; CELL ; 1      ; FF_X46_Y15_N15     ; soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|indexed_mesh_store:mesh_store|transform_component_number[0] ;
+; 33.793   ; 20.619  ;    ;      ;        ;                    ; data path                                                                                                                                 ;
+;   13.406 ;   0.232 ;    ; uTco ; 1      ; FF_X46_Y15_N15     ; soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|indexed_mesh_store:mesh_store|transform_component_number[0] ;
+;   13.406 ;   0.000 ; FF ; CELL ; 89     ; FF_X46_Y15_N15     ; soc|graphics|renderer|mesh_store|transform_component_number[0]|q                                                                          ;
+;   14.922 ;   1.516 ; FF ; IC   ; 1      ; LCCOMB_X52_Y21_N12 ; soc|graphics|renderer|mesh_store|Selector56~0|datab                                                                                       ;
+;   15.347 ;   0.425 ; FF ; CELL ; 1      ; LCCOMB_X52_Y21_N12 ; soc|graphics|renderer|mesh_store|Selector56~0|combout                                                                                     ;
+;   15.576 ;   0.229 ; FF ; IC   ; 1      ; LCCOMB_X52_Y21_N26 ; soc|graphics|renderer|mesh_store|Selector56~1|datad                                                                                       ;
+;   15.701 ;   0.125 ; FF ; CELL ; 1      ; LCCOMB_X52_Y21_N26 ; soc|graphics|renderer|mesh_store|Selector56~1|combout                                                                                     ;
+;   17.262 ;   1.561 ; FF ; IC   ; 1      ; DSPMULT_X44_Y13_N0 ; soc|graphics|renderer|mesh_store|Mult0|auto_generated|mac_mult1|datab[9]                                                                  ;
+;   20.738 ;   3.476 ; FR ; CELL ; 32     ; DSPMULT_X44_Y13_N0 ; soc|graphics|renderer|mesh_store|Mult0|auto_generated|mac_mult1|dataout[35]                                                               ;
+;   20.738 ;   0.000 ; RR ; IC   ; 1      ; DSPOUT_X44_Y13_N2  ; soc|graphics|renderer|mesh_store|Mult0|auto_generated|mac_out2|dataa[5]                                                                   ;
+;   20.872 ;   0.134 ; RF ; CELL ; 1      ; DSPOUT_X44_Y13_N2  ; soc|graphics|renderer|mesh_store|Mult0|auto_generated|mac_out2|dataout[5]                                                                 ;
+;   21.506 ;   0.634 ; FF ; IC   ; 2      ; LCCOMB_X45_Y13_N16 ; soc|graphics|renderer|mesh_store|Add0~2|datab                                                                                             ;
+;   22.015 ;   0.509 ; FR ; CELL ; 1      ; LCCOMB_X45_Y13_N16 ; soc|graphics|renderer|mesh_store|Add0~2|cout                                                                                              ;
+;   22.015 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X45_Y13_N18 ; soc|graphics|renderer|mesh_store|Add0~4|cin                                                                                               ;
+;   22.551 ;   0.536 ; RR ; CELL ; 1      ; LCCOMB_X45_Y13_N18 ; soc|graphics|renderer|mesh_store|Add0~4|combout                                                                                           ;
+;   23.212 ;   0.661 ; RR ; IC   ; 2      ; LCCOMB_X43_Y13_N18 ; soc|graphics|renderer|mesh_store|product_sum[2]~4|datab                                                                                   ;
+;   23.684 ;   0.472 ; RR ; CELL ; 1      ; LCCOMB_X43_Y13_N18 ; soc|graphics|renderer|mesh_store|product_sum[2]~4|cout                                                                                    ;
+;   23.684 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X43_Y13_N20 ; soc|graphics|renderer|mesh_store|product_sum[3]~6|cin                                                                                     ;
+;   23.750 ;   0.066 ; RF ; CELL ; 1      ; LCCOMB_X43_Y13_N20 ; soc|graphics|renderer|mesh_store|product_sum[3]~6|cout                                                                                    ;
+;   23.750 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X43_Y13_N22 ; soc|graphics|renderer|mesh_store|product_sum[4]~8|cin                                                                                     ;
+;   23.816 ;   0.066 ; FR ; CELL ; 1      ; LCCOMB_X43_Y13_N22 ; soc|graphics|renderer|mesh_store|product_sum[4]~8|cout                                                                                    ;
+;   23.816 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X43_Y13_N24 ; soc|graphics|renderer|mesh_store|product_sum[5]~10|cin                                                                                    ;
+;   23.882 ;   0.066 ; RF ; CELL ; 1      ; LCCOMB_X43_Y13_N24 ; soc|graphics|renderer|mesh_store|product_sum[5]~10|cout                                                                                   ;
+;   23.882 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X43_Y13_N26 ; soc|graphics|renderer|mesh_store|product_sum[6]~12|cin                                                                                    ;
+;   23.948 ;   0.066 ; FR ; CELL ; 1      ; LCCOMB_X43_Y13_N26 ; soc|graphics|renderer|mesh_store|product_sum[6]~12|cout                                                                                   ;
+;   23.948 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X43_Y13_N28 ; soc|graphics|renderer|mesh_store|product_sum[7]~14|cin                                                                                    ;
+;   24.014 ;   0.066 ; RF ; CELL ; 1      ; LCCOMB_X43_Y13_N28 ; soc|graphics|renderer|mesh_store|product_sum[7]~14|cout                                                                                   ;
+;   24.014 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X43_Y13_N30 ; soc|graphics|renderer|mesh_store|product_sum[8]~16|cin                                                                                    ;
+;   24.080 ;   0.066 ; FR ; CELL ; 1      ; LCCOMB_X43_Y13_N30 ; soc|graphics|renderer|mesh_store|product_sum[8]~16|cout                                                                                   ;
+;   24.080 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X43_Y12_N0  ; soc|graphics|renderer|mesh_store|product_sum[9]~18|cin                                                                                    ;
+;   24.592 ;   0.512 ; RF ; CELL ; 1      ; LCCOMB_X43_Y12_N0  ; soc|graphics|renderer|mesh_store|product_sum[9]~18|combout                                                                                ;
+;   25.256 ;   0.664 ; FF ; IC   ; 2      ; LCCOMB_X42_Y12_N0  ; soc|graphics|renderer|mesh_store|Add3~18|dataa                                                                                            ;
+;   25.754 ;   0.498 ; FR ; CELL ; 1      ; LCCOMB_X42_Y12_N0  ; soc|graphics|renderer|mesh_store|Add3~18|cout                                                                                             ;
+;   25.754 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X42_Y12_N2  ; soc|graphics|renderer|mesh_store|Add3~20|cin                                                                                              ;
+;   25.820 ;   0.066 ; RF ; CELL ; 1      ; LCCOMB_X42_Y12_N2  ; soc|graphics|renderer|mesh_store|Add3~20|cout                                                                                             ;
+;   25.820 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X42_Y12_N4  ; soc|graphics|renderer|mesh_store|Add3~22|cin                                                                                              ;
+;   25.886 ;   0.066 ; FR ; CELL ; 1      ; LCCOMB_X42_Y12_N4  ; soc|graphics|renderer|mesh_store|Add3~22|cout                                                                                             ;
+;   25.886 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X42_Y12_N6  ; soc|graphics|renderer|mesh_store|Add3~24|cin                                                                                              ;
+;   25.952 ;   0.066 ; RF ; CELL ; 1      ; LCCOMB_X42_Y12_N6  ; soc|graphics|renderer|mesh_store|Add3~24|cout                                                                                             ;
+;   25.952 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X42_Y12_N8  ; soc|graphics|renderer|mesh_store|Add3~26|cin                                                                                              ;
+;   26.018 ;   0.066 ; FR ; CELL ; 1      ; LCCOMB_X42_Y12_N8  ; soc|graphics|renderer|mesh_store|Add3~26|cout                                                                                             ;
+;   26.018 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X42_Y12_N10 ; soc|graphics|renderer|mesh_store|Add3~28|cin                                                                                              ;
+;   26.084 ;   0.066 ; RF ; CELL ; 1      ; LCCOMB_X42_Y12_N10 ; soc|graphics|renderer|mesh_store|Add3~28|cout                                                                                             ;
+;   26.084 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X42_Y12_N12 ; soc|graphics|renderer|mesh_store|Add3~30|cin                                                                                              ;
+;   26.150 ;   0.066 ; FR ; CELL ; 1      ; LCCOMB_X42_Y12_N12 ; soc|graphics|renderer|mesh_store|Add3~30|cout                                                                                             ;
+;   26.150 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X42_Y12_N14 ; soc|graphics|renderer|mesh_store|Add3~32|cin                                                                                              ;
+;   26.216 ;   0.066 ; RF ; CELL ; 1      ; LCCOMB_X42_Y12_N14 ; soc|graphics|renderer|mesh_store|Add3~32|cout                                                                                             ;
+;   26.216 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X42_Y12_N16 ; soc|graphics|renderer|mesh_store|Add3~34|cin                                                                                              ;
+;   26.282 ;   0.066 ; FR ; CELL ; 1      ; LCCOMB_X42_Y12_N16 ; soc|graphics|renderer|mesh_store|Add3~34|cout                                                                                             ;
+;   26.282 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X42_Y12_N18 ; soc|graphics|renderer|mesh_store|Add3~36|cin                                                                                              ;
+;   26.348 ;   0.066 ; RF ; CELL ; 1      ; LCCOMB_X42_Y12_N18 ; soc|graphics|renderer|mesh_store|Add3~36|cout                                                                                             ;
+;   26.348 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X42_Y12_N20 ; soc|graphics|renderer|mesh_store|Add3~38|cin                                                                                              ;
+;   26.414 ;   0.066 ; FR ; CELL ; 1      ; LCCOMB_X42_Y12_N20 ; soc|graphics|renderer|mesh_store|Add3~38|cout                                                                                             ;
+;   26.414 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X42_Y12_N22 ; soc|graphics|renderer|mesh_store|Add3~40|cin                                                                                              ;
+;   26.480 ;   0.066 ; RF ; CELL ; 1      ; LCCOMB_X42_Y12_N22 ; soc|graphics|renderer|mesh_store|Add3~40|cout                                                                                             ;
+;   26.480 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X42_Y12_N24 ; soc|graphics|renderer|mesh_store|Add3~42|cin                                                                                              ;
+;   26.546 ;   0.066 ; FR ; CELL ; 1      ; LCCOMB_X42_Y12_N24 ; soc|graphics|renderer|mesh_store|Add3~42|cout                                                                                             ;
+;   26.546 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X42_Y12_N26 ; soc|graphics|renderer|mesh_store|Add3~44|cin                                                                                              ;
+;   27.082 ;   0.536 ; RR ; CELL ; 1      ; LCCOMB_X42_Y12_N26 ; soc|graphics|renderer|mesh_store|Add3~44|combout                                                                                          ;
+;   27.830 ;   0.748 ; RR ; IC   ; 2      ; LCCOMB_X41_Y11_N0  ; soc|graphics|renderer|mesh_store|Add4~28|datab                                                                                            ;
+;   28.302 ;   0.472 ; RR ; CELL ; 1      ; LCCOMB_X41_Y11_N0  ; soc|graphics|renderer|mesh_store|Add4~28|cout                                                                                             ;
+;   28.302 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X41_Y11_N2  ; soc|graphics|renderer|mesh_store|Add4~30|cin                                                                                              ;
+;   28.368 ;   0.066 ; RF ; CELL ; 1      ; LCCOMB_X41_Y11_N2  ; soc|graphics|renderer|mesh_store|Add4~30|cout                                                                                             ;
+;   28.368 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X41_Y11_N4  ; soc|graphics|renderer|mesh_store|Add4~32|cin                                                                                              ;
+;   28.434 ;   0.066 ; FR ; CELL ; 1      ; LCCOMB_X41_Y11_N4  ; soc|graphics|renderer|mesh_store|Add4~32|cout                                                                                             ;
+;   28.434 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X41_Y11_N6  ; soc|graphics|renderer|mesh_store|Add4~34|cin                                                                                              ;
+;   28.500 ;   0.066 ; RF ; CELL ; 1      ; LCCOMB_X41_Y11_N6  ; soc|graphics|renderer|mesh_store|Add4~34|cout                                                                                             ;
+;   28.500 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X41_Y11_N8  ; soc|graphics|renderer|mesh_store|Add4~36|cin                                                                                              ;
+;   28.566 ;   0.066 ; FR ; CELL ; 1      ; LCCOMB_X41_Y11_N8  ; soc|graphics|renderer|mesh_store|Add4~36|cout                                                                                             ;
+;   28.566 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X41_Y11_N10 ; soc|graphics|renderer|mesh_store|Add4~38|cin                                                                                              ;
+;   28.632 ;   0.066 ; RF ; CELL ; 1      ; LCCOMB_X41_Y11_N10 ; soc|graphics|renderer|mesh_store|Add4~38|cout                                                                                             ;
+;   28.632 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X41_Y11_N12 ; soc|graphics|renderer|mesh_store|Add4~40|cin                                                                                              ;
+;   28.698 ;   0.066 ; FR ; CELL ; 1      ; LCCOMB_X41_Y11_N12 ; soc|graphics|renderer|mesh_store|Add4~40|cout                                                                                             ;
+;   28.698 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X41_Y11_N14 ; soc|graphics|renderer|mesh_store|Add4~42|cin                                                                                              ;
+;   28.764 ;   0.066 ; RF ; CELL ; 1      ; LCCOMB_X41_Y11_N14 ; soc|graphics|renderer|mesh_store|Add4~42|cout                                                                                             ;
+;   28.764 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X41_Y11_N16 ; soc|graphics|renderer|mesh_store|Add4~44|cin                                                                                              ;
+;   28.830 ;   0.066 ; FR ; CELL ; 1      ; LCCOMB_X41_Y11_N16 ; soc|graphics|renderer|mesh_store|Add4~44|cout                                                                                             ;
+;   28.830 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X41_Y11_N18 ; soc|graphics|renderer|mesh_store|Add4~46|cin                                                                                              ;
+;   28.896 ;   0.066 ; RF ; CELL ; 1      ; LCCOMB_X41_Y11_N18 ; soc|graphics|renderer|mesh_store|Add4~46|cout                                                                                             ;
+;   28.896 ;   0.000 ; FF ; IC   ; 2      ; LCCOMB_X41_Y11_N20 ; soc|graphics|renderer|mesh_store|Add4~48|cin                                                                                              ;
+;   28.962 ;   0.066 ; FR ; CELL ; 1      ; LCCOMB_X41_Y11_N20 ; soc|graphics|renderer|mesh_store|Add4~48|cout                                                                                             ;
+;   28.962 ;   0.000 ; RR ; IC   ; 2      ; LCCOMB_X41_Y11_N22 ; soc|graphics|renderer|mesh_store|Add4~50|cin                                                                                              ;
+;   29.498 ;   0.536 ; RR ; CELL ; 2      ; LCCOMB_X41_Y11_N22 ; soc|graphics|renderer|mesh_store|Add4~50|combout                                                                                          ;
+;   30.108 ;   0.610 ; RR ; IC   ; 1      ; LCCOMB_X40_Y11_N22 ; soc|graphics|renderer|mesh_store|saturate_q8_8~4|datac                                                                                    ;
+;   30.393 ;   0.285 ; RR ; CELL ; 1      ; LCCOMB_X40_Y11_N22 ; soc|graphics|renderer|mesh_store|saturate_q8_8~4|combout                                                                                  ;
+;   31.124 ;   0.731 ; RR ; IC   ; 1      ; LCCOMB_X40_Y12_N2  ; soc|graphics|renderer|mesh_store|saturate_q8_8~5|datad                                                                                    ;
+;   31.279 ;   0.155 ; RR ; CELL ; 15     ; LCCOMB_X40_Y12_N2  ; soc|graphics|renderer|mesh_store|saturate_q8_8~5|combout                                                                                  ;
+;   32.173 ;   0.894 ; RR ; IC   ; 1      ; LCCOMB_X48_Y12_N18 ; soc|graphics|renderer|mesh_store|saturate_q8_8~17|datac                                                                                   ;
+;   32.460 ;   0.287 ; RR ; CELL ; 9      ; LCCOMB_X48_Y12_N18 ; soc|graphics|renderer|mesh_store|saturate_q8_8~17|combout                                                                                 ;
+;   33.551 ;   1.091 ; RR ; IC   ; 1      ; LCCOMB_X52_Y13_N18 ; soc|graphics|renderer|mesh_store|triangle_data.y0[7]~feeder|datad                                                                         ;
+;   33.706 ;   0.155 ; RR ; CELL ; 1      ; LCCOMB_X52_Y13_N18 ; soc|graphics|renderer|mesh_store|triangle_data.y0[7]~feeder|combout                                                                       ;
+;   33.706 ;   0.000 ; RR ; IC   ; 1      ; FF_X52_Y13_N19     ; soc|graphics|renderer|mesh_store|triangle_data.y0[7]|d                                                                                    ;
+;   33.793 ;   0.087 ; RR ; CELL ; 1      ; FF_X52_Y13_N19     ; soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|indexed_mesh_store:mesh_store|triangle_data.y0[7]           ;
++----------+---------+----+------+--------+--------------------+-------------------------------------------------------------------------------------------------------------------------------------------+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Data Required Path                                                                                                                                                                            ;
++----------+---------+----+------+--------+-------------------+---------------------------------------------------------------------------------------------------------------------------------+
+; Total    ; Incr    ; RF ; Type ; Fanout ; Location          ; Element                                                                                                                         ;
++----------+---------+----+------+--------+-------------------+---------------------------------------------------------------------------------------------------------------------------------+
+; 30.000   ; 30.000  ;    ;      ;        ;                   ; latch edge time                                                                                                                 ;
+; 33.551   ; 3.551   ;    ;      ;        ;                   ; clock path                                                                                                                      ;
+;   30.000 ;   0.000 ;    ;      ;        ;                   ; source latency                                                                                                                  ;
+;   30.000 ;   0.000 ;    ;      ; 1      ; PIN_Y2            ; CLOCK_50                                                                                                                        ;
+;   30.000 ;   0.000 ; FF ; IC   ; 1      ; IOIBUF_X0_Y36_N15 ; CLOCK_50~input|i                                                                                                                ;
+;   30.875 ;   0.875 ; FF ; CELL ; 4      ; IOIBUF_X0_Y36_N15 ; CLOCK_50~input|o                                                                                                                ;
+;   31.041 ;   0.166 ; FF ; IC   ; 1      ; CLKCTRL_G4        ; CLOCK_50~inputclkctrl|inclk[0]                                                                                                  ;
+;   31.041 ;   0.000 ; FF ; CELL ; 10116  ; CLKCTRL_G4        ; CLOCK_50~inputclkctrl|outclk                                                                                                    ;
+;   32.964 ;   1.923 ; FF ; IC   ; 1      ; FF_X52_Y13_N19    ; soc|graphics|renderer|mesh_store|triangle_data.y0[7]|clk                                                                        ;
+;   33.518 ;   0.554 ; FR ; CELL ; 1      ; FF_X52_Y13_N19    ; soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|indexed_mesh_store:mesh_store|triangle_data.y0[7] ;
+;   33.551 ;   0.033 ;    ;      ;        ;                   ; clock pessimism removed                                                                                                         ;
+; 33.531   ; -0.020  ;    ;      ;        ;                   ; clock uncertainty                                                                                                               ;
+; 33.549   ; 0.018   ;    ; uTsu ; 1      ; FF_X52_Y13_N19    ; soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|indexed_mesh_store:mesh_store|triangle_data.y0[7] ;
++----------+---------+----+------+--------+-------------------+---------------------------------------------------------------------------------------------------------------------------------+
+
+----------------------------
+; Extra Fitter Information ;
+----------------------------
+HTML report is unavailable in plain text report export.
+
+

@@ -254,6 +254,8 @@ def generate():
         else if (current_depth > $signed({1'b0, maximum_depth, 8'b0}))
             current_depth_byte = maximum_depth;''')
     write(ROOT / 'rtl/generated/renderer.sv', raster)
+    from gpu_fractional import generate as generate_fractional
+    generate_fractional(replace_once,write)
     protocol = json.loads((ROOT / "external/renderer/protocol/protocol.json").read_text())
     header = ["// Generated from pinned renderer protocol/protocol.json.",
               "#ifndef GFX_PROTOCOL_H", "#define GFX_PROTOCOL_H",
@@ -263,6 +265,7 @@ def generate():
     for name, value in protocol["opcodes"].items():
         macro = re.sub(r"(?<!^)(?=[A-Z])", "_", name).upper()
         header.append(f"#define GFX_OP_{macro} {value}u")
+    header.append("#define GFX_OP_DRAW_MESH_Q8 13u")
     write(ROOT / "firmware/generated/gfx_protocol.h", "\n".join(header + ["#endif", ""]))
     print("Generated CPU boundary, RAM wrapper, palette path and firmware protocol header.")
 
@@ -407,7 +410,7 @@ def sources(full=False):
     files += [ROOT / "rtl/udp_controls.sv"]
     if full:
         files += [ROOT / "rtl/generated/palette_ip.v"]
-        replaced = {"graphics_stream_renderer.sv", "graphics_renderer_core.sv", "graphics_pipeline.sv", "transform_3d_pipeline.sv", "renderer.sv"}
+        replaced = {"graphics_stream_renderer.sv", "graphics_renderer_core.sv", "graphics_pipeline.sv", "transform_3d_pipeline.sv", "renderer.sv", "graphics_command_stream_decoder.sv", "graphics_command_processor.sv", "indexed_mesh_store.sv"}
         files += [ROOT / "rtl/generated" / name for name in sorted(replaced)]
         for directory in ("common", "command", "system", "pipeline", "memory", "video"):
             files += sorted(p for p in (renderer / directory).iterdir()
@@ -428,7 +431,7 @@ def simulate(args):
     available = tests + ['sdram_cache_tb','sdram_memory_tb','sdram_cpu_tb','udp_loader_tb','udp_extended_input_tb','soc_cpu_counters_tb','cpu_counter_pipeline_tb','cpu_batch_stream_tb','cpu_mul_tb']
     if args.full:
         tests += ["soc_top_tb", "soc_game_top_tb", "soc_scene_top_tb", "soc_mario_top_tb", "soc_mario_bridge_top_tb"]
-        available += ['sdram_mario_top_tb','beacon_sdram_top_tb','quake_sdram_top_tb','portable_scene_top_tb','quake_interactive_top_tb','castle_world_top_tb','projection_precision_tb','screen_edge_coverage_tb','depth_edge_coverage_tb','render_frame_replay_tb']
+        available += ['sdram_mario_top_tb','beacon_sdram_top_tb','quake_sdram_top_tb','portable_scene_top_tb','quake_interactive_top_tb','castle_world_top_tb','projection_precision_tb','screen_edge_coverage_tb','depth_edge_coverage_tb','render_frame_replay_tb','gpu_fractional_decoder_tb','gpu_fractional_mesh_tb']
     if getattr(args, "tests", None):
         requested = args.tests.split(",")
         if set(requested) - set(available + tests):
@@ -436,7 +439,7 @@ def simulate(args):
         tests = requested
     if "soc_mario_bridge_top_tb" in tests and not (BUILD/"mario-bridge-test.hex").exists():
         raise RuntimeError("Run sm64-mario or build-fw --app all to generate the bridge fixture")
-    include = "+incdir+" + str(ROOT / "external/renderer/rtl/common") + "+" + str(ROOT / "sim/generated") + "+" + str(ROOT / "sim")
+    include = "+incdir+" + str(ROOT / "rtl/generated") + "+" + str(ROOT / "external/renderer/rtl/common") + "+" + str(ROOT / "sim/generated") + "+" + str(ROOT / "sim")
     src = sources(args.full) + ([ROOT/'sim/sdram_device_model.sv'] if args.full or any('sdram' in name or name=='udp_loader_tb' for name in tests) else []) + [ROOT / f"sim/{name}.sv" for name in tests]
     if any(name in tests for name in ('portable_scene_top_tb','quake_interactive_top_tb','castle_world_top_tb')) and 'quake_sdram_top_tb' not in tests:
         src.insert(-1,ROOT/'sim/quake_sdram_top_tb.sv')
@@ -482,6 +485,7 @@ def quartus(_args):
              'set_global_assignment -name TOP_LEVEL_ENTITY de2_115_soc_top',
              'set_global_assignment -name NUM_PARALLEL_PROCESSORS 4',
              'set_global_assignment -name FITTER_EFFORT "STANDARD FIT"',
+             'set_global_assignment -name SEARCH_PATH rtl/generated',
              'set_global_assignment -name SEARCH_PATH external/renderer/rtl/common',
              'set_global_assignment -name PROJECT_OUTPUT_DIRECTORY build/quartus',
              'set_global_assignment -name SDC_FILE fpga/soc.sdc']
@@ -613,30 +617,38 @@ def game_packages(args):
 def portable_package(args):
     from portable_game import generate as generate_portable
     from rv32i_subset import check
+    if getattr(args,'terrain_gpu_fractional',False):args.terrain_gpu_safe=True
+    if not 0<=getattr(args,'terrain_min_chunk_faces',0)<=256:
+        raise ValueError('--terrain-min-chunk-faces requires 0..256')
+    if getattr(args,'terrain_min_chunk_faces',0) and not (getattr(args,'terrain_tight_chunks',False) or getattr(args,'terrain_gpu_fractional',False)):
+        raise ValueError('--terrain-min-chunk-faces requires --terrain-tight-chunks or --terrain-gpu-fractional')
     if getattr(args,'profile_fine',False):args.profile_detail=True;args.cpu_profile=True
     if getattr(args,'terrain_gpu_safe',False) and getattr(args,'terrain_direct',False):
         raise ValueError('--terrain-gpu-safe and --terrain-direct are mutually exclusive')
     if 'clang' not in Path(args.cc).name:
         raise ValueError('Portable game builds require Clang for the mandatory specialized-C audit')
     try:
-        spec,args.content,args.target,args.port_sources,api,report=generate_portable(args.project)
+        spec,args.content,args.target,args.port_sources,api,report=generate_portable(args.project,tight_chunks=getattr(args,'terrain_tight_chunks',False) or getattr(args,'terrain_gpu_fractional',False),min_chunk_faces=getattr(args,'terrain_min_chunk_faces',0))
     except (KeyError,TypeError) as exc:
         raise ValueError('Invalid portable project/scene: '+str(exc)) from exc
     api=set(api)|{'portable_assets','portable_world','portable_camera','portable_meshes'}
     sources=['gfx.c','gfx_scene.c','player.c','first_person.c','game_runtime.c','sdram.c','portable_assets.c','portable_main.c','cpu_profile.c']
     for source in [ROOT/'firmware/src'/name for name in sources]+args.port_sources:
-        check(source,args.cc,additional_api=api,extra_flags=(['-DSOC_PROFILE'] if getattr(args,'cpu_profile',False) or getattr(args,'profile_detail',False) else []) + (['-DSOC_PROFILE_DETAIL'] if getattr(args,'profile_detail',False) else []) + (['-DSOC_PROFILE_FINE'] if getattr(args,'profile_fine',False) else []) + (['-DGFX_BATCHED'] if getattr(args,'batch_gfx',False) else []) + (['-DSOC_INTEGER_MUL'] if getattr(args,'integer_mul',False) else []))
+        check(source,args.cc,additional_api=api,extra_flags=(['-DSOC_PROFILE'] if getattr(args,'cpu_profile',False) or getattr(args,'profile_detail',False) else []) + (['-DSOC_PROFILE_DETAIL'] if getattr(args,'profile_detail',False) else []) + (['-DSOC_PROFILE_FINE'] if getattr(args,'profile_fine',False) else []) + (['-DGFX_BATCHED'] if getattr(args,'batch_gfx',False) else []) + (['-DSOC_INTEGER_MUL'] if getattr(args,'integer_mul',False) else []) + (['-DWORLD_GPU_FRACTIONAL=1'] if getattr(args,'terrain_gpu_fractional',False) else []))
     direct=getattr(args,'terrain_direct',False)
     if direct and 'world_prepare' not in api:
         raise ValueError('--terrain-direct requires a port using the shared world renderer')
     if getattr(args,'terrain_gpu_safe',False) and 'world_prepare' not in api:
         raise ValueError('--terrain-gpu-safe requires the shared world renderer')
     args.app='portable';args.boot=None;args.use_sdram=True
-    suffix=('-direct' if direct else '-gpu-safe' if getattr(args,'terrain_gpu_safe',False) else '')+('-profile' if getattr(args,'cpu_profile',False) or getattr(args,'profile_detail',False) else '')+('-detail' if getattr(args,'profile_detail',False) else '')+('-fine' if getattr(args,'profile_fine',False) else '')+('-batched' if getattr(args,'batch_gfx',False) else '')+('-mul' if getattr(args,'integer_mul',False) else '')
+    suffix=('-direct' if direct else '-gpu-q8' if getattr(args,'terrain_gpu_fractional',False) else '-gpu-safe' if getattr(args,'terrain_gpu_safe',False) else '')+('-profile' if getattr(args,'cpu_profile',False) or getattr(args,'profile_detail',False) else '')+('-detail' if getattr(args,'profile_detail',False) else '')+('-fine' if getattr(args,'profile_fine',False) else '')+('-batched' if getattr(args,'batch_gfx',False) else '')+('-mul' if getattr(args,'integer_mul',False) else '')
+    if getattr(args,'terrain_tight_chunks',False):suffix+='-tight'
+    if getattr(args,'terrain_min_chunk_faces',0):suffix+='-min'+str(args.terrain_min_chunk_faces)
     args.image_name=spec['name']+'-sdram'+suffix
     diagnostic_flags=['-DWORLD_FORCE_DIRECT=1'] if direct else []
     diagnostic_flags += (['-DSOC_PROFILE'] if getattr(args,'cpu_profile',False) or getattr(args,'profile_detail',False) else []) + (['-DSOC_PROFILE_DETAIL'] if getattr(args,'profile_detail',False) else []) + (['-DGFX_BATCHED'] if getattr(args,'batch_gfx',False) else []) + (['-DSOC_INTEGER_MUL'] if getattr(args,'integer_mul',False) else [])
     diagnostic_flags += ['-DSOC_PROFILE_FINE'] if getattr(args,'profile_fine',False) else []
+    diagnostic_flags += ['-DWORLD_GPU_FRACTIONAL=1'] if getattr(args,'terrain_gpu_fractional',False) else []
     args.extra_flags=diagnostic_flags
     firmware(args)
     from load_game import package_segments
@@ -645,6 +657,11 @@ def portable_package(args):
     args.extra_flags=diagnostic_flags+['-DSDRAM_RETENTION_CYCLES=1000u']
     firmware(args)
     package_segments(BUILD/(args.image_name+'.package.json'))
+    if getattr(args,'terrain_gpu_fractional',False):
+        for stem in (spec['name']+'-sdram'+suffix,spec['name']+'-sdram'+suffix+'-test'):
+            path=BUILD/(stem+'.package.json');package=json.loads(path.read_text())
+            package['required_gpu_features']={'draw-mesh-fraction-v1':True,'mmio_address':0x400000a8,'bit':0}
+            write(path,json.dumps(package,indent=2)+'\n')
     if direct:
         for stem in (spec['name']+'-sdram'+suffix,spec['name']+'-sdram'+suffix+'-test'):
             path=BUILD/(stem+'.package.json')
@@ -652,7 +669,7 @@ def portable_package(args):
             package['diagnostic']={'terrain_submission':'CPU-clipped direct triangles; GPU resident terrain cache bypassed',
                 'purpose':'isolate terrain mesh uploads and cached-versus-direct clipping; not a performance optimization'}
             write(path,json.dumps(package,indent=2)+'\n')
-    print(f'Built {spec["name"]}: {report["source_triangles"]} triangles via shared scene IR and direct-call game port ABI; CPU/GPU cores preserved. Use a compatible target FPGA image.')
+    print(f'Built {spec["name"]}: {report["source_triangles"]} triangles via shared scene IR and direct-call game port ABI. Use a compatible target FPGA image.')
 
 
 def build_fpga(args):
@@ -737,6 +754,9 @@ def main():
     p.add_argument('--project',type=Path,required=True)
     p.add_argument('--terrain-direct',action='store_true',help='Diagnostic: draw shared-world terrain without resident GPU mesh handles; preserve normal packages')
     p.add_argument('--terrain-gpu-safe',action='store_true',help='Conservative exact-rounding, full-frustum resident terrain with direct fallback')
+    p.add_argument('--terrain-gpu-fractional',action='store_true',help='Use optional exact fractional terrain matrix command; needs matching GPU feature')
+    p.add_argument('--terrain-tight-chunks',action='store_true',help='Opt in to spatial-cell terrain chunks for a measured packing comparison')
+    p.add_argument('--terrain-min-chunk-faces',type=int,default=0,help='Experimental minimum faces before spatial splitting (0..256); requires tight or fractional terrain')
     p.add_argument('--cc',default='clang');p.add_argument('--objcopy')
     p.add_argument('--cpu-profile',action='store_true',help='Require CPU counter ABI and publish atomic completed-frame profiles')
     p.add_argument('--profile-detail',action='store_true',help='Optional per-function cycle/call profiles; implies --cpu-profile')

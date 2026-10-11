@@ -1,0 +1,24 @@
+PASS RV32I C subset: gfx.c; report build/subset/gfx.json
+PASS RV32I C subset: gfx_scene.c; report build/subset/gfx_scene.json
+PASS RV32I C subset: player.c; report build/subset/player.json
+PASS RV32I C subset: first_person.c; report build/subset/first_person.json
+PASS RV32I C subset: game_runtime.c; report build/subset/game_runtime.json
+PASS RV32I C subset: sdram.c; report build/subset/sdram.json
+PASS RV32I C subset: portable_assets.c; report build/subset/portable_assets.json
+PASS RV32I C subset: portable_main.c; report build/subset/portable_main.json
+PASS RV32I C subset: cpu_profile.c; report build/subset/cpu_profile.json
+PASS RV32I C subset: castle.c; report build/subset/castle.json
+PASS RV32I C subset: castle_rules.c; report build/subset/castle_rules.json
+PASS RV32I C subset: world.c; report build/subset/world.json
+PASS RV32I C subset: camera.c; report build/subset/camera.json
+PASS RV32I C subset: animation.c; report build/subset/animation.json
+PASS RV32I C subset: game_services.c; report build/subset/game_services.json
++ C:\Program Files\LLVM\bin\clang.EXE --target=riscv32-unknown-elf -fuse-ld=lld -march=rv32i -mabi=ilp32 -msmall-data-limit=0 -mno-relax -O1 ... (34 more arguments)
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --remove-section=.game_assets -O binary build/mario-castle-sdram-gpu-q8-profile-detail-mul.elf build/mario-castle-sdram-gpu-q8-profile-detail-mul.bin
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --only-section=.game_assets -O binary build/mario-castle-sdram-gpu-q8-profile-detail-mul.elf build/mario-castle-sdram-gpu-q8-profile-detail-mul.assets.bin
+Built portable: build/mario-castle-sdram-gpu-q8-profile-detail-mul.hex and build/mario-castle-sdram-gpu-q8-profile-detail-mul.mif
++ C:\Program Files\LLVM\bin\clang.EXE --target=riscv32-unknown-elf -fuse-ld=lld -march=rv32i -mabi=ilp32 -msmall-data-limit=0 -mno-relax -O1 ... (35 more arguments)
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --remove-section=.game_assets -O binary build/mario-castle-sdram-gpu-q8-profile-detail-mul-test.elf build/mario-castle-sdram-gpu-q8-profile-detail-mul-test.bin
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --only-section=.game_assets -O binary build/mario-castle-sdram-gpu-q8-profile-detail-mul-test.elf build/mario-castle-sdram-gpu-q8-profile-detail-mul-test.assets.bin
+Built portable: build/mario-castle-sdram-gpu-q8-profile-detail-mul-test.hex and build/mario-castle-sdram-gpu-q8-profile-detail-mul-test.mif
+Built mario-castle: 8490 triangles via shared scene IR and direct-call game port ABI; CPU/GPU cores preserved. Use a compatible target FPGA image.

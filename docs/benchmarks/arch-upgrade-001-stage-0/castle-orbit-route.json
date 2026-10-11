@@ -1,0 +1,73 @@
+{
+  "version": 1,
+  "scope": "production controller and orbit camera; scripted area resets",
+  "frames": [
+    {
+      "area": 0,
+      "label": "grounds-camera-spawn",
+      "camera": {
+        "yaw": 128,
+        "pitch": -16,
+        "distance": 1000
+      }
+    },
+    {
+      "area": 0,
+      "label": "grounds-camera-walk",
+      "keys": 8,
+      "ticks": 30,
+      "camera": {
+        "yaw": 128,
+        "pitch": -16,
+        "distance": 1000
+      }
+    },
+    {
+      "area": 0,
+      "label": "grounds-camera-jump",
+      "keys": 16,
+      "ticks": 10,
+      "camera": {
+        "yaw": 128,
+        "pitch": -16,
+        "distance": 1000
+      }
+    },
+    {
+      "area": 1,
+      "label": "interior-camera-1",
+      "camera": {
+        "yaw": 128,
+        "pitch": -16,
+        "distance": 800
+      }
+    },
+    {
+      "area": 2,
+      "label": "interior-camera-2",
+      "camera": {
+        "yaw": 128,
+        "pitch": -16,
+        "distance": 800
+      }
+    },
+    {
+      "area": 3,
+      "label": "interior-camera-3",
+      "camera": {
+        "yaw": 128,
+        "pitch": -16,
+        "distance": 800
+      }
+    },
+    {
+      "area": 4,
+      "label": "interior-camera-4",
+      "camera": {
+        "yaw": 128,
+        "pitch": -16,
+        "distance": 1000
+      }
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "scope": "authored protocol/GPU fixtures",
+  "frames": [
+    {
+      "frame": 1,
+      "label": "empty"
+    },
+    {
+      "frame": 2,
+      "label": "viewport"
+    },
+    {
+      "frame": 3,
+      "label": "equal-depth-order"
+    },
+    {
+      "frame": 4,
+      "label": "occlusion"
+    },
+    {
+      "frame": 5,
+      "label": "degenerate"
+    },
+    {
+      "frame": 6,
+      "label": "shared-edge"
+    },
+    {
+      "frame": 7,
+      "label": "near-crossing"
+    },
+    {
+      "frame": 8,
+      "label": "queue-backpressure"
+    }
+  ],
+  "stream_sha256": "a2f02be72e5e00df5bd45ac552b225d101b45a2d4a429162493f396829b93999"
+}

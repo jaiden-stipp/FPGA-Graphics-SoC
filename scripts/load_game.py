@@ -114,6 +114,9 @@ class Loader:
 
 
 def require_hardware(loader,spec):
+    if spec.get('required_gpu_features',{}).get('draw-mesh-fraction-v1'):
+        if not loader.operation(READ,0x4000009c,count=1)['words'][0]&0x80000000 or not loader.operation(READ,0x400000a8,count=1)['words'][0]&1:
+            raise RuntimeError('Package requires draw-mesh-fraction-v1 hardware (CPU left running)')
     if 'mouse-look-v1' in spec.get('target',{}).get('required_features',[]):
         if loader.operation(STATUS,retries=max(loader.retries,40))['input_abi']!=0x494e0101:
             raise RuntimeError('Package needs the IN v1 FPGA image; current board is incompatible (CPU left running)')

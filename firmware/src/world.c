@@ -10,12 +10,18 @@
 #ifndef WORLD_FORCE_DIRECT
 #define WORLD_FORCE_DIRECT 0
 #endif
+#ifndef WORLD_GPU_FRACTIONAL
+#define WORLD_GPU_FRACTIONAL 0
+#endif
+#ifndef WORLD_GPU_CAPABLE
+#define WORLD_GPU_CAPABLE ((SOC_CPU_FEATURES & SOC_FEATURE_GPU_REGS) && (SOC_GPU_FEATURES & SOC_GPU_FEATURE_FRACTION))
+#endif
 
 // Fixed hardware; software cache uploads occur before BEGIN_FRAME only.
 static const world_area_t *selected;
 static const world_chunk_t *cache[16];
 static int16_t prepared_matrix[16][12],prepared_view[12];
-static uint8_t prepared_safe[16];
+static uint8_t prepared_safe[16],prepared_fraction[16][3];
 static int32_t prepared_position[3];
 static uint16_t visible_chunks[2048];
 static uint32_t room=1;
@@ -105,6 +111,7 @@ static int visible(const world_chunk_t *c,const player_t *p,const int16_t *v) {
            plane(center,4)+vertical>=0 && plane(center,5)+vertical>=0;
 }
 static int safe_matrix(const world_chunk_t *c,const player_t *p,const int16_t *v,int16_t *m) {
+    if(WORLD_GPU_FRACTIONAL && !WORLD_GPU_CAPABLE)return 0;
     // Bounds are absolute source-world coordinates, validated by the converter.
     // Restrict arithmetic so neither the CPU proof nor GPU products overflow.
     if(p->x<-32768 || p->x>32767 || p->y<-32768 || p->y>32767 || p->z<-32768 || p->z>32767)return 0;
@@ -112,12 +119,12 @@ static int safe_matrix(const world_chunk_t *c,const player_t *p,const int16_t *v
     for(uint32_t row=0;row<3;++row) {
         uint32_t b=row<<2;
         for(uint32_t j=0;j<3;++j)if(v[b+j]<-256 || v[b+j]>256)return 0;
-        // GPU floors local dot before adding integer translation. Require the
-        // origin dot to be integral, making it exactly equal to the CPU's one
-        // combined floor, including negative coordinates.
+        // Legacy GPU draws need integral origin translation. Fractional draws
+        // carry its unsigned remainder into the local dot before flooring,
+        // matching the CPU's combined floor, including negative coordinates.
         int32_t x=(c->origin[0]-p->x)*4,y=(c->origin[1]-p->y)*4,z=(c->origin[2]-p->z)*4;
         int32_t sum=fixed_mul(x,v[b])+fixed_mul(y,v[b+1])+fixed_mul(z,v[b+2]);
-        if(sum&255)return 0;
+        if(!WORLD_GPU_FRACTIONAL && (sum&255))return 0;
     }
     clip_point_t q=transform(c->origin[0],c->origin[1],c->origin[2],p,v);
     if(q.x<-32764 || q.x>32764 || q.y<-32764 || q.y>32764 || q.z<-32764 || q.z>30000)return 0;
@@ -208,6 +215,11 @@ int world_prepare(const world_area_t *a,const player_t *p,const int16_t v[12],ui
             }
             for(uint32_t j=0;j<12;++j)prepared_matrix[h][j]=m[j];
             prepared_safe[h]=1;
+            if(WORLD_GPU_FRACTIONAL)for(uint32_t row=0;row<3;++row) {
+                uint32_t b=row<<2;
+                int32_t sum=fixed_mul((c->origin[0]-p->x)*4,v[b])+fixed_mul((c->origin[1]-p->y)*4,v[b+1])+fixed_mul((c->origin[2]-p->z)*4,v[b+2]);
+                prepared_fraction[h][row]=(uint8_t)sum;
+            }
         }
     }
     DETAIL_END(PROFILE_VISIBILITY,visibility_start);
@@ -290,7 +302,12 @@ int world_draw(const world_area_t *a,const player_t *p,const int16_t v[12],uint3
         uint32_t handle=16;
         for(uint32_t h=reserved;h<16;++h)if(cache[h]==c)handle=h;
         if(!WORLD_FORCE_DIRECT && same && handle<16 && prepared_safe[handle]) {
-            if(gfx_draw_matrix((uint8_t)handle,prepared_matrix[handle]))return -1;
+            if(WORLD_GPU_FRACTIONAL) {
+                uint8_t data[28];data[0]=(uint8_t)handle;
+                for(uint32_t j=0;j<12;++j)word(data+1+2*j,prepared_matrix[handle][j]);
+                for(uint32_t j=0;j<3;++j)data[25+j]=prepared_fraction[handle][j];
+                if(gfx_command(GFX_OP_DRAW_MESH_Q8,data,28))return -1;
+            }else if(gfx_draw_matrix((uint8_t)handle,prepared_matrix[handle]))return -1;
             ++world_gpu_chunks;FINE_EVENT(EVENT_GPU_DRAW);
         }
         else {

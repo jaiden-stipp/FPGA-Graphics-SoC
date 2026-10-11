@@ -1,0 +1,21 @@
+Uploading mario-castle-sdram-direct-mul.bin: 25,876 bytes at 0x00000000
+Verifying mario-castle-sdram-direct-mul.bin: 25,876 bytes at 0x00000000
+Uploading mario-castle-sdram-direct-mul.assets.bin: 883,124 bytes at 0x80000000
+  367,212/883,124 bytes
+  741,156/883,124 bytes
+Verifying mario-castle-sdram-direct-mul.assets.bin: 883,124 bytes at 0x80000000
+  364,236/883,124 bytes
+  721,488/883,124 bytes
+Readback verified; CPU released.
+{
+  "initialized": true,
+  "held": false,
+  "words": [
+    0,
+    0,
+    0
+  ],
+  "scratch": 0,
+  "refresh_count": 7227800,
+  "input_abi": 1229848833
+}
