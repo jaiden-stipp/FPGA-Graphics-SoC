@@ -1,0 +1,1876 @@
+{
+  "date": "2026-10-11",
+  "baseline_commit": "6153efa",
+  "implementation_commits": [
+    "2bf56dd",
+    "8ee9eed",
+    "8bb928c",
+    "0d10359"
+  ],
+  "decision": "Optional setup/raster overlap accepted and loaded with unchanged packed Mario; global serial fallback retained; no ordinary CPU/FPS gain",
+  "clock_hz": 50000000,
+  "tools": {
+    "Quartus": "18.1.0 Build 625 Lite",
+    "ModelSim": "10.5b"
+  },
+  "physical_trials": 18,
+  "files": {
+    "accepted-deployment.log": {
+      "bytes": 1844,
+      "sha256": "b054fec1ba314c9d614ff58929a22e0cdb11922634b7953aa55a363eb61e74bd"
+    },
+    "accepted-programming.log": {
+      "bytes": 2121,
+      "sha256": "ab83e12d67aa2db93bcf67567398380644cc8341d9d2fec067d99128aa36e560"
+    },
+    "accepted-running-check.json": {
+      "bytes": 1374,
+      "sha256": "586f83af51e0ca5971a0214e86ee5331d4070cc1c6585361681527abd3ba1cba"
+    },
+    "archive.py": {
+      "bytes": 3230,
+      "sha256": "7f2b9cf42bedc63771a14c97fdbf43e33e0c69c503dc5c5e2dd9ae720f4110f9"
+    },
+    "castle-overlap-comparison.json": {
+      "bytes": 6584,
+      "sha256": "0d0752206b740edd1dae9eb0138f494ba4971e270e4883ce0c8e858dc0151737"
+    },
+    "castle-overlap-replay.log": {
+      "bytes": 11899,
+      "sha256": "7ee2439204413952b7bac51e2bdc10da12dcc8b58d2ae22fcd5390b428362fd6"
+    },
+    "castle-serial-comparison.json": {
+      "bytes": 6583,
+      "sha256": "6004d38fab2ed0ad2878827b34a7a7ebc703cec3bd3b92be76d76be2b05b5e44"
+    },
+    "castle-serial-replay.log": {
+      "bytes": 11679,
+      "sha256": "0dc91e060a19e9712ab6cec93f244dafaf276760d5d9688a634e864c7b754962"
+    },
+    "deploy.py": {
+      "bytes": 2839,
+      "sha256": "c189f4e00466128aab87471ece73e4123b38c39806592fb673404cc4f7a0a635"
+    },
+    "final-running-check.json": {
+      "bytes": 1294,
+      "sha256": "b2fa14e4ae2e126258084f23cf23a1898c3894777498cda12a231d5c1ef27611"
+    },
+    "final-unit.log": {
+      "bytes": 11541,
+      "sha256": "fdcc799d1aba322b401bb3d0555fec653ffd7c3273da73037ccbc21be06e7e07"
+    },
+    "fixtures-overlap-comparison.json": {
+      "bytes": 7328,
+      "sha256": "0631718fa8fd2034a032dbe4e2703c41ed17584191d4da6e7cb5b4ce8134c705"
+    },
+    "fixtures-overlap-replay.log": {
+      "bytes": 11660,
+      "sha256": "ac076e6388254c3a768f4c8d881d1c18325405ee7d4da2729c660931c200385e"
+    },
+    "fixtures-serial-comparison.json": {
+      "bytes": 7327,
+      "sha256": "4d7106ed3a0524858e72b187d084a5187f6eb686ba8c4805c72544e98b1d25db"
+    },
+    "fixtures-serial-replay.log": {
+      "bytes": 11681,
+      "sha256": "7e8f5d461d9b76a4590c9e2ced3f04a7b419702dad54a17edb38d7b485601397"
+    },
+    "host-packed.log": {
+      "bytes": 106,
+      "sha256": "5f36af93d37324bed6b20e011673c39d7409af988adcc1d43fecd4a6e06723ff"
+    },
+    "host-replay.log": {
+      "bytes": 106,
+      "sha256": "f7e4e1611ef41a72da536480156719a4142b31fbff62b0bcb60fc3b4f1101296"
+    },
+    "initial-arbiter-map-failure.log": {
+      "bytes": 56575,
+      "sha256": "c8be4faae516dbcf400aac6811ceb9f92945365dbc79d799cf903ec9100eceff"
+    },
+    "initial-enum-map-failure.log": {
+      "bytes": 57982,
+      "sha256": "daaba32a3533c3deb0f9cf485f6e05934f48d590befb566a49ceff808e31a0e2"
+    },
+    "initial-fixture-failure.log": {
+      "bytes": 13022,
+      "sha256": "41805bfbb3b1388b049bd384db6af404dccf1e3b7261540057622ba2dd28e90e"
+    },
+    "initial-map-failure.log": {
+      "bytes": 56462,
+      "sha256": "ef92837ac0b875d6f99ccc215ef5fe7490e92c065afe3605d23e670f7834fe38"
+    },
+    "initial-packed-elaboration-failure.log": {
+      "bytes": 40164,
+      "sha256": "e5b5cbc873f1f4663731d856659e8f10c8bd3fa88c07be76b2de7d0cff918a19"
+    },
+    "measurements.json": {
+      "bytes": 68402,
+      "sha256": "42567f0eff26c4ec27fafee3c47adc7aecc1036a243eb4ade961563cef1ef301"
+    },
+    "overlap-programmed-image.json": {
+      "bytes": 458,
+      "sha256": "95ab562ab662c4948ba1cd8a188e5dc806debe6b080dc43c07f6fe3f4910ab31"
+    },
+    "overlap-programming.log": {
+      "bytes": 2211,
+      "sha256": "afd2c0682054422a1cef107dd0d5facf9ef7faaa7db6934d413f514cf152d450"
+    },
+    "overlap-restored-running-check.json": {
+      "bytes": 1294,
+      "sha256": "b2fa14e4ae2e126258084f23cf23a1898c3894777498cda12a231d5c1ef27611"
+    },
+    "physical-overlap-detail.json": {
+      "bytes": 99200,
+      "sha256": "29d108c6afb7cb9a016da01327e855880847a17671e60239e16c5b1578b66a5c"
+    },
+    "physical-overlap-normal.json": {
+      "bytes": 88740,
+      "sha256": "a6a4bd3f7d3b87eea68ad26db9afcb81eaafd7d057bb430a01174cf0326f1afc"
+    },
+    "physical-overlap-probe.json": {
+      "bytes": 8091,
+      "sha256": "b10184254e491760b1f472d2f9e31426665cf58f44b27a15078fe80a677ce242"
+    },
+    "physical-overlap.log": {
+      "bytes": 5002,
+      "sha256": "29d876a75c8501d367f2b7dd718aed6c12d2ffef3fc6ea3e8d3f0c6599ae4c6d"
+    },
+    "physical-serial-detail.json": {
+      "bytes": 99360,
+      "sha256": "dd2520cc3b38b93b5c9ad9a4d5684519d7104155eb17d031c8564e4e51d8e032"
+    },
+    "physical-serial-normal.json": {
+      "bytes": 88344,
+      "sha256": "af4f56121c75081ccbb7940300c19f94db74be9f021b0a3fafed550e9b8b346b"
+    },
+    "physical-serial-probe.json": {
+      "bytes": 8091,
+      "sha256": "9c65cd8a6809f4b7a5595387e6418b631bcf9aed9df1f8a557ad464f8d89b4ea"
+    },
+    "physical-serial.log": {
+      "bytes": 4910,
+      "sha256": "191f93be4bb06d068be544c91d7a220ba0f37b0c75967edfe28d7dae08644b5f"
+    },
+    "probe-build.log": {
+      "bytes": 90,
+      "sha256": "980d821af3bfa571425ec8d237687291b2f6e1c49868b0339ef750457d1600cc"
+    },
+    "provenance.json": {
+      "bytes": 15713,
+      "sha256": "4fd5213eab06dc6a9475668421e08f56dfa12b51a87b28e9c8b0d8bbd7caea22"
+    },
+    "quake-overlap-comparison.json": {
+      "bytes": 2117,
+      "sha256": "6029bb1b7eadd03242b564ee88f09373fab901f180626b2839dfb268e4829d8f"
+    },
+    "quake-overlap-replay.log": {
+      "bytes": 11657,
+      "sha256": "9499bc7cf550c8a70c1cb1305837b517ed6ff29cfc4b1d8ebe342afb98c00e94"
+    },
+    "quake-serial-comparison.json": {
+      "bytes": 2116,
+      "sha256": "f357b9673cc096385e03070f790af43ee756d68ad7e02343e4441c4446e84371"
+    },
+    "quake-serial-replay.log": {
+      "bytes": 11678,
+      "sha256": "5a76210de84f7f4d1f2e441bd55224cd89027e30ce89abbc5b18426a9fa29b4d"
+    },
+    "quartus-overlap.log": {
+      "bytes": 170,
+      "sha256": "c83631b871de0582cd670f5232843dd5a9bb00076331da6ed721aed85c0f56e4"
+    },
+    "quartus.log": {
+      "bytes": 610,
+      "sha256": "cc7507fc00b952361acfe6c64568f11a2741ddeb7e890e61ef3782b1963461cd"
+    },
+    "regressions.log": {
+      "bytes": 14848,
+      "sha256": "5e7631c2e6329f356dbef397f0474c84f8bc9cddc1f7465d634b530de89679b5"
+    },
+    "replay.py": {
+      "bytes": 902,
+      "sha256": "c5bc0aa2f5e06d003740b956d23684088d9b68e8caef563fb0c8e37c4a925be3"
+    },
+    "replays.log": {
+      "bytes": 386,
+      "sha256": "6afa60c6a616c32016801df4399e28cad27c9ed232ca98d3629c36faa96135b3"
+    },
+    "rollback-programming.log": {
+      "bytes": 2199,
+      "sha256": "475aaee62c69e0ac8ae7c9ce6caea7fe37109b432fdd5d2deb1fab8b86132816"
+    },
+    "serial-programmed-image.json": {
+      "bytes": 463,
+      "sha256": "2b63330f7a61c2e171d6678db6044f5c74e7d4ffddf865e5962946adc4510886"
+    },
+    "serial-programming.log": {
+      "bytes": 2221,
+      "sha256": "ed20bc6320ed415cdb81181b87aab8214dd9e0e401d0203ba6dc2ec110bfca44"
+    },
+    "serial-restored-running-check.json": {
+      "bytes": 1294,
+      "sha256": "2ab86dfb86143892dfdd40dfb077f12060ef71613ea594a01d552f52aab13ee8"
+    },
+    "serial-rollback-programming.log": {
+      "bytes": 2199,
+      "sha256": "f635a691bab898f7ba2066377efc43794774ad37e28db5c1332673ea5de9bae6"
+    },
+    "snapshot.py": {
+      "bytes": 1595,
+      "sha256": "a83394fe46b35ffdb8a9a00addc9ffdffc8336b8fe7574f9d835e0f0cb44adb2"
+    },
+    "summarize.py": {
+      "bytes": 4902,
+      "sha256": "2427bf932a72ea20ce3d2f26cb792f33198862606ae69205afd2763cf3a83493"
+    },
+    "unit.log": {
+      "bytes": 11455,
+      "sha256": "31e61b6cf78627857da8dd25cb1ca5c443a4de4d350ef05d26baad09b53ea12c"
+    },
+    "update-ledger.py": {
+      "bytes": 4443,
+      "sha256": "505ded044d7da19ec6d8a191fa427b2c783c3362a6976d65528d68d17568b646"
+    },
+    "write-report.py": {
+      "bytes": 8522,
+      "sha256": "8d497d30d6abe24f231465dfd9da08b7e908be39434e0f79d4a93a5acb37fed3"
+    },
+    "castle-overlap/input.hex": {
+      "bytes": 168732,
+      "sha256": "95e02cf377f33f1fa685f37a9b8421b31bb423f7e633631cac246d611e78b023"
+    },
+    "castle-overlap/input.json": {
+      "bytes": 45103,
+      "sha256": "50aeb69876233aa4d6b7685a4cf3b58dfda23f662b7b471edaae9eddab742161"
+    },
+    "castle-overlap/input.meta": {
+      "bytes": 9,
+      "sha256": "b263decffd315fa51fc098d2dfcc80928dac7b580ca051f663dd748484873f51"
+    },
+    "castle-serial/input.hex": {
+      "bytes": 168732,
+      "sha256": "95e02cf377f33f1fa685f37a9b8421b31bb423f7e633631cac246d611e78b023"
+    },
+    "castle-serial/input.json": {
+      "bytes": 45103,
+      "sha256": "50aeb69876233aa4d6b7685a4cf3b58dfda23f662b7b471edaae9eddab742161"
+    },
+    "castle-serial/input.meta": {
+      "bytes": 9,
+      "sha256": "b263decffd315fa51fc098d2dfcc80928dac7b580ca051f663dd748484873f51"
+    },
+    "firmware/mario-castle-sdram-direct-packed-mul.bin": {
+      "bytes": 26332,
+      "sha256": "4cfe0c4811c35df0f14b1269f5d6eed628d8c97a19483ac1cd224d9b06cf8eda"
+    },
+    "firmware/mario-castle-sdram-direct-packed-mul.isa.json": {
+      "bytes": 519,
+      "sha256": "ef4cbada6c1f5052282ee7515d643b9ac638042e1506e9ab443c8fe35e1e36be"
+    },
+    "firmware/mario-castle-sdram-direct-packed-mul.map": {
+      "bytes": 29607,
+      "sha256": "d0e05d860ab792093da1ad4e0ab37a67bf8310d7e6e31c8d8ec14982d8aa2b71"
+    },
+    "firmware/mario-castle-sdram-direct-packed-mul.package.json": {
+      "bytes": 2442,
+      "sha256": "6a5a72f450adb163ebce299b652dd28ce13deb1589e45b8edca3bae7d55ab4e2"
+    },
+    "firmware/mario-castle-sdram-direct-packed-mul.symbols.json": {
+      "bytes": 10236,
+      "sha256": "3a62e8e9b100b26393e8d26982ac53ada37458e9153595eb4f22ee5e4fae2bae"
+    },
+    "firmware/mario-castle-sdram-direct-profile-detail-packed-mul.bin": {
+      "bytes": 27704,
+      "sha256": "ca33309535bce4653d0eba9dc2933e1ae2dc1f54e876d5fba00e72115e83656c"
+    },
+    "firmware/mario-castle-sdram-direct-profile-detail-packed-mul.isa.json": {
+      "bytes": 519,
+      "sha256": "8529afe8b3b9570b0f66e65669aa5b87ece5b99170853613d9a45c017bbf5d15"
+    },
+    "firmware/mario-castle-sdram-direct-profile-detail-packed-mul.map": {
+      "bytes": 31050,
+      "sha256": "abba80558bd3990c7f21057869a297b874dec5f850c253c35b1709f806bf508e"
+    },
+    "firmware/mario-castle-sdram-direct-profile-detail-packed-mul.package.json": {
+      "bytes": 2472,
+      "sha256": "be218c020cd2280d7f78aea429e115adbb6fbdbd81b40bb1c3497ebdcdecdd01"
+    },
+    "firmware/mario-castle-sdram-direct-profile-detail-packed-mul.symbols.json": {
+      "bytes": 10738,
+      "sha256": "1cb8a249d18a5c63e2d99191252268aa06e37f7f2cbcf37c98cb745d2fa39083"
+    },
+    "fixtures-overlap/input.hex": {
+      "bytes": 8924,
+      "sha256": "e2ed06d519028b25b5663136e09ee696df458b5f190ac58b466a83bee34bc02e"
+    },
+    "fixtures-overlap/input.json": {
+      "bytes": 708,
+      "sha256": "6f22a5b30dae99e7afeb96cbc668a2336eb93ab48e0ac5c5fa15c63d86b09437"
+    },
+    "fixtures-overlap/input.meta": {
+      "bytes": 8,
+      "sha256": "6296035533f7f85edcd40c2791beeb35d9d898dfb1e4b990a17b97617fa73be7"
+    },
+    "fixtures-serial/input.hex": {
+      "bytes": 8924,
+      "sha256": "e2ed06d519028b25b5663136e09ee696df458b5f190ac58b466a83bee34bc02e"
+    },
+    "fixtures-serial/input.json": {
+      "bytes": 708,
+      "sha256": "6f22a5b30dae99e7afeb96cbc668a2336eb93ab48e0ac5c5fa15c63d86b09437"
+    },
+    "fixtures-serial/input.meta": {
+      "bytes": 8,
+      "sha256": "6296035533f7f85edcd40c2791beeb35d9d898dfb1e4b990a17b97617fa73be7"
+    },
+    "overlap/project.qsf": {
+      "bytes": 21188,
+      "sha256": "d0378370e431e9bf82c239d0a9dafdc9f9d582604bae09f3bb2afb22a8cfe47e"
+    },
+    "overlap/quartus-asm.log": {
+      "bytes": 1610,
+      "sha256": "dadf52b24a4d2fdbaa9a49586019c1186085b3331ca2a8fddea389a187fccd3e"
+    },
+    "overlap/quartus-fit.log": {
+      "bytes": 23667,
+      "sha256": "d98b0eacf3bde606945bdf0f58b36ed1f9e524d08d36206918ba08f8f3235a47"
+    },
+    "overlap/quartus-map.log": {
+      "bytes": 124234,
+      "sha256": "b90d71120e653912ca01e4de89b9ca566713dd76369126b27cd5f5b6e0bb2a9e"
+    },
+    "overlap/quartus-sta.log": {
+      "bytes": 13389,
+      "sha256": "a44a20e9dc78a23c76b6365bbda25cbe8726f84feb3ac89f6bf185789a321d66"
+    },
+    "probe/build.json": {
+      "bytes": 1844,
+      "sha256": "9c23c398ec3f9c5234a2abf230f86d507085a414b1f9916fc1b87751db839083"
+    },
+    "probe/isa.json": {
+      "bytes": 98,
+      "sha256": "806d407cf567d50abb392a494f9d874fc7c3487ea6d33782ef62b8652fe9fded"
+    },
+    "probe/probe-disassembly.txt": {
+      "bytes": 25169,
+      "sha256": "7857cc443698113135d5cb80805c6d712270023d527fc86f8a73526499ce79ce"
+    },
+    "probe/probe.bin": {
+      "bytes": 2376,
+      "sha256": "dba6924a32f52c94797f1a08e7b10064d5fb658d117404ee1082460a38e3ed5d"
+    },
+    "probe/probe.elf": {
+      "bytes": 8132,
+      "sha256": "d99f50f04c560559f74ea90b41e3bdab0fe6e82a3e7ebf7c74f118fabb1cc487"
+    },
+    "probe/probe.map": {
+      "bytes": 5007,
+      "sha256": "7edc9728575f0eea4efe595576326beb301e3efc6da6bb2ac7346f7340a6521d"
+    },
+    "probe/probe.package.json": {
+      "bytes": 314,
+      "sha256": "af78c3ac493eebba891385080fe002dac96c4f7582475752bfdf606d57494009"
+    },
+    "probe/subset.json": {
+      "bytes": 679,
+      "sha256": "611fa22c9a76b676c756565c4e88d468d797fc2c186f01a471fa77db5a251b36"
+    },
+    "quake-overlap/input.hex": {
+      "bytes": 93312,
+      "sha256": "626703cf9d7867a9f50407eb854accd05e344cea9b080e5f149cc66feb320a22"
+    },
+    "quake-overlap/input.json": {
+      "bytes": 219920,
+      "sha256": "e736f574cb3032e1ec7390b5ae0e97d78646143809c4bb72b4b9a5b81952b149"
+    },
+    "quake-overlap/input.meta": {
+      "bytes": 9,
+      "sha256": "c83c34656a861eed46c859f93d1d3b812bd1142cae67f384c7b094a8c36cfc94"
+    },
+    "quake-serial/input.hex": {
+      "bytes": 93312,
+      "sha256": "626703cf9d7867a9f50407eb854accd05e344cea9b080e5f149cc66feb320a22"
+    },
+    "quake-serial/input.json": {
+      "bytes": 219920,
+      "sha256": "e736f574cb3032e1ec7390b5ae0e97d78646143809c4bb72b4b9a5b81952b149"
+    },
+    "quake-serial/input.meta": {
+      "bytes": 9,
+      "sha256": "c83c34656a861eed46c859f93d1d3b812bd1142cae67f384c7b094a8c36cfc94"
+    },
+    "serial/project.qsf": {
+      "bytes": 21118,
+      "sha256": "78d49c96aa36ecbfbc2ea8b4b8f6d0793e3eaff7de34cd96ce915410ff6ba578"
+    },
+    "serial/quartus-asm.log": {
+      "bytes": 1616,
+      "sha256": "09eb6137574717ecec51e02e7cde699a983d2c0c0d3f240ae4fe04473c611c98"
+    },
+    "serial/quartus-fit.log": {
+      "bytes": 23693,
+      "sha256": "0dc366e18ebe2ac54ea872738a21dda2a5d4f6965010c32389ebc1c87c54f8d7"
+    },
+    "serial/quartus-map.log": {
+      "bytes": 118815,
+      "sha256": "7150b7df523f5876d229f657bcb3c8a3de0ed1268b3eed1ca03e8ee19abe3eeb"
+    },
+    "serial/quartus-sta.log": {
+      "bytes": 13395,
+      "sha256": "10ddd293cb085b3b6f1eb1347269ffdebb48573c81780e09bdd918d3779a7c3f"
+    },
+    "source-snapshot/upstream.lock.json": {
+      "bytes": 279,
+      "sha256": "fba7b84d51c10cc547f1364edba571911e38467be37885caf29cfd19f3e2f9b4"
+    },
+    "castle-overlap/capture/frame-1.color.hex": {
+      "bytes": 307200,
+      "sha256": "3c0eb25eca1e257ae1371f0c10440670637915189a57c2925e6c709496c91908"
+    },
+    "castle-overlap/capture/frame-1.depth.hex": {
+      "bytes": 307200,
+      "sha256": "149252b02871cc1ad70767b49ce93045d523a9e6e6990780f904f76d99b2d79d"
+    },
+    "castle-overlap/capture/frame-1.palette.hex": {
+      "bytes": 2048,
+      "sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907"
+    },
+    "castle-overlap/capture/frame-2.color.hex": {
+      "bytes": 307200,
+      "sha256": "d6d5965fea24e569303a2afb0ad52d9c8ff39a45b8699331e251448c4e993812"
+    },
+    "castle-overlap/capture/frame-2.depth.hex": {
+      "bytes": 307200,
+      "sha256": "f388f7a91250680be4066960160b0a2710996958327b8cbceb8d8e0e2fc0c072"
+    },
+    "castle-overlap/capture/frame-2.palette.hex": {
+      "bytes": 2048,
+      "sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907"
+    },
+    "castle-overlap/capture/frame-3.color.hex": {
+      "bytes": 307200,
+      "sha256": "aeb385e24da1880a33719c22c0540f7ff896f8bc83e1e529f3f8c1c78cc68dfc"
+    },
+    "castle-overlap/capture/frame-3.depth.hex": {
+      "bytes": 307200,
+      "sha256": "9f0dd7ffdd09ba9e57d4fdbd4f540bd2bcd55d4b5dfcb395364f925ee975e2ff"
+    },
+    "castle-overlap/capture/frame-3.palette.hex": {
+      "bytes": 2048,
+      "sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907"
+    },
+    "castle-overlap/capture/frame-4.color.hex": {
+      "bytes": 307200,
+      "sha256": "99721f3a2e98de2b0c8835a6a9761367ecab9dd0fa15597ad977bf35a05a1e28"
+    },
+    "castle-overlap/capture/frame-4.depth.hex": {
+      "bytes": 307200,
+      "sha256": "662ee9c2468d2391da511b4d0493a9efdf929d33d77cfb8d087a63a363d0bf61"
+    },
+    "castle-overlap/capture/frame-4.palette.hex": {
+      "bytes": 2048,
+      "sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907"
+    },
+    "castle-overlap/capture/frame-5.color.hex": {
+      "bytes": 307200,
+      "sha256": "8fac48e3e627dfbbf9dae2499776ddba959df3378d82eba66d4eca73392b58b1"
+    },
+    "castle-overlap/capture/frame-5.depth.hex": {
+      "bytes": 307200,
+      "sha256": "a64263ab2bb35b6daf242e7b6768427f0cad33e6c87c6cf9519ef993585ce0ba"
+    },
+    "castle-overlap/capture/frame-5.palette.hex": {
+      "bytes": 2048,
+      "sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907"
+    },
+    "castle-overlap/capture/frame-6.color.hex": {
+      "bytes": 307200,
+      "sha256": "92a00441809fdaef929fec46429399a90670f42f9e3b61806b59d83c831cb594"
+    },
+    "castle-overlap/capture/frame-6.depth.hex": {
+      "bytes": 307200,
+      "sha256": "987098518063727d1b3345a0a5b7d6b23dc2fd6f1072f88dfec9b6c91b3b446e"
+    },
+    "castle-overlap/capture/frame-6.palette.hex": {
+      "bytes": 2048,
+      "sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907"
+    },
+    "castle-overlap/capture/frame-7.color.hex": {
+      "bytes": 307200,
+      "sha256": "73cabaf3d528be256bcfe2ee68305c1aeb5394f7e76feacc01886b79bf3f4418"
+    },
+    "castle-overlap/capture/frame-7.depth.hex": {
+      "bytes": 307200,
+      "sha256": "8773d761494ac1059413b37afb1f2dd60290a23d40b92d5070f077bfbf45a962"
+    },
+    "castle-overlap/capture/frame-7.palette.hex": {
+      "bytes": 2048,
+      "sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907"
+    },
+    "castle-overlap/capture/frame-commands.log": {
+      "bytes": 117188,
+      "sha256": "66d60c42e32295f31ff4a740969d449ffd2e1bfe9db11f8abe35e079002052ce"
+    },
+    "castle-overlap/capture/frame-timeline.log": {
+      "bytes": 2892,
+      "sha256": "9e3640a4f34d3a3e6af9ac6ea6d6774c1d48431ee83ba8088d074b40b599d62f"
+    },
+    "castle-overlap/capture/frame-triangles.log": {
+      "bytes": 66066,
+      "sha256": "b78e19f041d05b78f4bc9e44a2e026e634d6eed99de65a6cca0b05298dc01cba"
+    },
+    "castle-overlap/capture/simulation.log": {
+      "bytes": 27840,
+      "sha256": "c74c7e23dbc43081071456b47c72e04e5976d7a1f869b362af2b3ca32d9d3783"
+    },
+    "castle-serial/capture/frame-1.color.hex": {
+      "bytes": 307200,
+      "sha256": "3c0eb25eca1e257ae1371f0c10440670637915189a57c2925e6c709496c91908"
+    },
+    "castle-serial/capture/frame-1.depth.hex": {
+      "bytes": 307200,
+      "sha256": "149252b02871cc1ad70767b49ce93045d523a9e6e6990780f904f76d99b2d79d"
+    },
+    "castle-serial/capture/frame-1.palette.hex": {
+      "bytes": 2048,
+      "sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907"
+    },
+    "castle-serial/capture/frame-2.color.hex": {
+      "bytes": 307200,
+      "sha256": "d6d5965fea24e569303a2afb0ad52d9c8ff39a45b8699331e251448c4e993812"
+    },
+    "castle-serial/capture/frame-2.depth.hex": {
+      "bytes": 307200,
+      "sha256": "f388f7a91250680be4066960160b0a2710996958327b8cbceb8d8e0e2fc0c072"
+    },
+    "castle-serial/capture/frame-2.palette.hex": {
+      "bytes": 2048,
+      "sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907"
+    },
+    "castle-serial/capture/frame-3.color.hex": {
+      "bytes": 307200,
+      "sha256": "aeb385e24da1880a33719c22c0540f7ff896f8bc83e1e529f3f8c1c78cc68dfc"
+    },
+    "castle-serial/capture/frame-3.depth.hex": {
+      "bytes": 307200,
+      "sha256": "9f0dd7ffdd09ba9e57d4fdbd4f540bd2bcd55d4b5dfcb395364f925ee975e2ff"
+    },
+    "castle-serial/capture/frame-3.palette.hex": {
+      "bytes": 2048,
+      "sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907"
+    },
+    "castle-serial/capture/frame-4.color.hex": {
+      "bytes": 307200,
+      "sha256": "99721f3a2e98de2b0c8835a6a9761367ecab9dd0fa15597ad977bf35a05a1e28"
+    },
+    "castle-serial/capture/frame-4.depth.hex": {
+      "bytes": 307200,
+      "sha256": "662ee9c2468d2391da511b4d0493a9efdf929d33d77cfb8d087a63a363d0bf61"
+    },
+    "castle-serial/capture/frame-4.palette.hex": {
+      "bytes": 2048,
+      "sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907"
+    },
+    "castle-serial/capture/frame-5.color.hex": {
+      "bytes": 307200,
+      "sha256": "8fac48e3e627dfbbf9dae2499776ddba959df3378d82eba66d4eca73392b58b1"
+    },
+    "castle-serial/capture/frame-5.depth.hex": {
+      "bytes": 307200,
+      "sha256": "a64263ab2bb35b6daf242e7b6768427f0cad33e6c87c6cf9519ef993585ce0ba"
+    },
+    "castle-serial/capture/frame-5.palette.hex": {
+      "bytes": 2048,
+      "sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907"
+    },
+    "castle-serial/capture/frame-6.color.hex": {
+      "bytes": 307200,
+      "sha256": "92a00441809fdaef929fec46429399a90670f42f9e3b61806b59d83c831cb594"
+    },
+    "castle-serial/capture/frame-6.depth.hex": {
+      "bytes": 307200,
+      "sha256": "987098518063727d1b3345a0a5b7d6b23dc2fd6f1072f88dfec9b6c91b3b446e"
+    },
+    "castle-serial/capture/frame-6.palette.hex": {
+      "bytes": 2048,
+      "sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907"
+    },
+    "castle-serial/capture/frame-7.color.hex": {
+      "bytes": 307200,
+      "sha256": "73cabaf3d528be256bcfe2ee68305c1aeb5394f7e76feacc01886b79bf3f4418"
+    },
+    "castle-serial/capture/frame-7.depth.hex": {
+      "bytes": 307200,
+      "sha256": "8773d761494ac1059413b37afb1f2dd60290a23d40b92d5070f077bfbf45a962"
+    },
+    "castle-serial/capture/frame-7.palette.hex": {
+      "bytes": 2048,
+      "sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907"
+    },
+    "castle-serial/capture/frame-commands.log": {
+      "bytes": 117204,
+      "sha256": "6c33e05d00ecced6726e88ee9121c994e7e60e207fbe5a768648742bd95a2768"
+    },
+    "castle-serial/capture/frame-timeline.log": {
+      "bytes": 2842,
+      "sha256": "e8e09df76fd6c4ab952f5f8942697bfe47adb103cf983bfa3e8b9591c6d76c40"
+    },
+    "castle-serial/capture/frame-triangles.log": {
+      "bytes": 66066,
+      "sha256": "b78e19f041d05b78f4bc9e44a2e026e634d6eed99de65a6cca0b05298dc01cba"
+    },
+    "castle-serial/capture/simulation.log": {
+      "bytes": 27780,
+      "sha256": "999f1155905f9f7e1e46313ab0b0344113c756ab4a93f3a030766434f8f37514"
+    },
+    "fixtures-overlap/capture/frame-1.color.hex": {
+      "bytes": 307200,
+      "sha256": "a9e74a0511b823d3a6b643757c8a4aa69c50443ff371c9c17335556c1b7385b9"
+    },
+    "fixtures-overlap/capture/frame-1.depth.hex": {
+      "bytes": 307200,
+      "sha256": "a9e74a0511b823d3a6b643757c8a4aa69c50443ff371c9c17335556c1b7385b9"
+    },
+    "fixtures-overlap/capture/frame-1.palette.hex": {
+      "bytes": 2048,
+      "sha256": "32e3a2f0cfe8f3b5c318fb3ed732b19ed31a3328eeeed2ca2f0f6a414b62789f"
+    },
+    "fixtures-overlap/capture/frame-2.color.hex": {
+      "bytes": 307200,
+      "sha256": "0c5253ae507a8b7b9cf0b08280b0e61adad8fe4135895587cad23ab0a3d6827e"
+    },
+    "fixtures-overlap/capture/frame-2.depth.hex": {
+      "bytes": 307200,
+      "sha256": "995c0d9ba0cea70771efa4b8e3734f349d708a202d8b1c37be7a0aa67b53983f"
+    },
+    "fixtures-overlap/capture/frame-2.palette.hex": {
+      "bytes": 2048,
+      "sha256": "32e3a2f0cfe8f3b5c318fb3ed732b19ed31a3328eeeed2ca2f0f6a414b62789f"
+    },
+    "fixtures-overlap/capture/frame-3.color.hex": {
+      "bytes": 307200,
+      "sha256": "168b4eb5e7f01bd435d484b6721298e9e3c4cf279db86f8b93e79b11a520bf94"
+    },
+    "fixtures-overlap/capture/frame-3.depth.hex": {
+      "bytes": 307200,
+      "sha256": "251b9bcc9b9759be08cee06fcd918eab91b295ace877059aebec8189e892990e"
+    },
+    "fixtures-overlap/capture/frame-3.palette.hex": {
+      "bytes": 2048,
+      "sha256": "32e3a2f0cfe8f3b5c318fb3ed732b19ed31a3328eeeed2ca2f0f6a414b62789f"
+    },
+    "fixtures-overlap/capture/frame-4.color.hex": {
+      "bytes": 307200,
+      "sha256": "f460bde632a2f54bb85e6854bfb8c68daa5a9b95ac32c5dfc51d7b4cb849df23"
+    },
+    "fixtures-overlap/capture/frame-4.depth.hex": {
+      "bytes": 307200,
+      "sha256": "f11a7177dcafe6038d2813b1b9e29cce4fbe8aa07fc53047e3aa63326e1aeb74"
+    },
+    "fixtures-overlap/capture/frame-4.palette.hex": {
+      "bytes": 2048,
+      "sha256": "32e3a2f0cfe8f3b5c318fb3ed732b19ed31a3328eeeed2ca2f0f6a414b62789f"
+    },
+    "fixtures-overlap/capture/frame-5.color.hex": {
+      "bytes": 307200,
+      "sha256": "a9e74a0511b823d3a6b643757c8a4aa69c50443ff371c9c17335556c1b7385b9"
+    },
+    "fixtures-overlap/capture/frame-5.depth.hex": {
+      "bytes": 307200,
+      "sha256": "a9e74a0511b823d3a6b643757c8a4aa69c50443ff371c9c17335556c1b7385b9"
+    },
+    "fixtures-overlap/capture/frame-5.palette.hex": {
+      "bytes": 2048,
+      "sha256": "32e3a2f0cfe8f3b5c318fb3ed732b19ed31a3328eeeed2ca2f0f6a414b62789f"
+    },
+    "fixtures-overlap/capture/frame-6.color.hex": {
+      "bytes": 307200,
+      "sha256": "0936a8b94238c634c3cb7a102cd6a88fb5e76957154342e20bc3e695c0ebdb90"
+    },
+    "fixtures-overlap/capture/frame-6.depth.hex": {
+      "bytes": 307200,
+      "sha256": "520bcbec275ef914778db4af73e5782e2bc51a554107788f6fab8079bb2dd7b4"
+    },
+    "fixtures-overlap/capture/frame-6.palette.hex": {
+      "bytes": 2048,
+      "sha256": "32e3a2f0cfe8f3b5c318fb3ed732b19ed31a3328eeeed2ca2f0f6a414b62789f"
+    },
+    "fixtures-overlap/capture/frame-7.color.hex": {
+      "bytes": 307200,
+      "sha256": "a9e74a0511b823d3a6b643757c8a4aa69c50443ff371c9c17335556c1b7385b9"
+    },
+    "fixtures-overlap/capture/frame-7.depth.hex": {
+      "bytes": 307200,
+      "sha256": "a9e74a0511b823d3a6b643757c8a4aa69c50443ff371c9c17335556c1b7385b9"
+    },
+    "fixtures-overlap/capture/frame-7.palette.hex": {
+      "bytes": 2048,
+      "sha256": "32e3a2f0cfe8f3b5c318fb3ed732b19ed31a3328eeeed2ca2f0f6a414b62789f"
+    },
+    "fixtures-overlap/capture/frame-8.color.hex": {
+      "bytes": 307200,
+      "sha256": "a9e74a0511b823d3a6b643757c8a4aa69c50443ff371c9c17335556c1b7385b9"
+    },
+    "fixtures-overlap/capture/frame-8.depth.hex": {
+      "bytes": 307200,
+      "sha256": "a9e74a0511b823d3a6b643757c8a4aa69c50443ff371c9c17335556c1b7385b9"
+    },
+    "fixtures-overlap/capture/frame-8.palette.hex": {
+      "bytes": 2048,
+      "sha256": "32e3a2f0cfe8f3b5c318fb3ed732b19ed31a3328eeeed2ca2f0f6a414b62789f"
+    },
+    "fixtures-overlap/capture/frame-commands.log": {
+      "bytes": 6835,
+      "sha256": "888fb0d42a24b1d2dfcc7a3ed030dfeaf3c5fc691bb1f6b5fb3ff8dad42f1698"
+    },
+    "fixtures-overlap/capture/frame-timeline.log": {
+      "bytes": 3087,
+      "sha256": "1fcb079ffa7ce2be77dfce07a3e7fdbb04918edd6c97a44c07b962cb86eb869a"
+    },
+    "fixtures-overlap/capture/frame-triangles.log": {
+      "bytes": 3318,
+      "sha256": "16b5fd0540651ec03bb69aa05cf6fe6543f556da8198e1ab633bbc859265ebfb"
+    },
+    "fixtures-overlap/capture/simulation.log": {
+      "bytes": 27871,
+      "sha256": "a1f572511c3b12401e7f5b9c974dd9e20979d62969efa3f959837fbfc8af5de7"
+    },
+    "fixtures-serial/capture/frame-1.color.hex": {
+      "bytes": 307200,
+      "sha256": "a9e74a0511b823d3a6b643757c8a4aa69c50443ff371c9c17335556c1b7385b9"
+    },
+    "fixtures-serial/capture/frame-1.depth.hex": {
+      "bytes": 307200,
+      "sha256": "a9e74a0511b823d3a6b643757c8a4aa69c50443ff371c9c17335556c1b7385b9"
+    },
+    "fixtures-serial/capture/frame-1.palette.hex": {
+      "bytes": 2048,
+      "sha256": "32e3a2f0cfe8f3b5c318fb3ed732b19ed31a3328eeeed2ca2f0f6a414b62789f"
+    },
+    "fixtures-serial/capture/frame-2.color.hex": {
+      "bytes": 307200,
+      "sha256": "0c5253ae507a8b7b9cf0b08280b0e61adad8fe4135895587cad23ab0a3d6827e"
+    },
+    "fixtures-serial/capture/frame-2.depth.hex": {
+      "bytes": 307200,
+      "sha256": "995c0d9ba0cea70771efa4b8e3734f349d708a202d8b1c37be7a0aa67b53983f"
+    },
+    "fixtures-serial/capture/frame-2.palette.hex": {
+      "bytes": 2048,
+      "sha256": "32e3a2f0cfe8f3b5c318fb3ed732b19ed31a3328eeeed2ca2f0f6a414b62789f"
+    },
+    "fixtures-serial/capture/frame-3.color.hex": {
+      "bytes": 307200,
+      "sha256": "168b4eb5e7f01bd435d484b6721298e9e3c4cf279db86f8b93e79b11a520bf94"
+    },
+    "fixtures-serial/capture/frame-3.depth.hex": {
+      "bytes": 307200,
+      "sha256": "251b9bcc9b9759be08cee06fcd918eab91b295ace877059aebec8189e892990e"
+    },
+    "fixtures-serial/capture/frame-3.palette.hex": {
+      "bytes": 2048,
+      "sha256": "32e3a2f0cfe8f3b5c318fb3ed732b19ed31a3328eeeed2ca2f0f6a414b62789f"
+    },
+    "fixtures-serial/capture/frame-4.color.hex": {
+      "bytes": 307200,
+      "sha256": "f460bde632a2f54bb85e6854bfb8c68daa5a9b95ac32c5dfc51d7b4cb849df23"
+    },
+    "fixtures-serial/capture/frame-4.depth.hex": {
+      "bytes": 307200,
+      "sha256": "f11a7177dcafe6038d2813b1b9e29cce4fbe8aa07fc53047e3aa63326e1aeb74"
+    },
+    "fixtures-serial/capture/frame-4.palette.hex": {
+      "bytes": 2048,
+      "sha256": "32e3a2f0cfe8f3b5c318fb3ed732b19ed31a3328eeeed2ca2f0f6a414b62789f"
+    },
+    "fixtures-serial/capture/frame-5.color.hex": {
+      "bytes": 307200,
+      "sha256": "a9e74a0511b823d3a6b643757c8a4aa69c50443ff371c9c17335556c1b7385b9"
+    },
+    "fixtures-serial/capture/frame-5.depth.hex": {
+      "bytes": 307200,
+      "sha256": "a9e74a0511b823d3a6b643757c8a4aa69c50443ff371c9c17335556c1b7385b9"
+    },
+    "fixtures-serial/capture/frame-5.palette.hex": {
+      "bytes": 2048,
+      "sha256": "32e3a2f0cfe8f3b5c318fb3ed732b19ed31a3328eeeed2ca2f0f6a414b62789f"
+    },
+    "fixtures-serial/capture/frame-6.color.hex": {
+      "bytes": 307200,
+      "sha256": "0936a8b94238c634c3cb7a102cd6a88fb5e76957154342e20bc3e695c0ebdb90"
+    },
+    "fixtures-serial/capture/frame-6.depth.hex": {
+      "bytes": 307200,
+      "sha256": "520bcbec275ef914778db4af73e5782e2bc51a554107788f6fab8079bb2dd7b4"
+    },
+    "fixtures-serial/capture/frame-6.palette.hex": {
+      "bytes": 2048,
+      "sha256": "32e3a2f0cfe8f3b5c318fb3ed732b19ed31a3328eeeed2ca2f0f6a414b62789f"
+    },
+    "fixtures-serial/capture/frame-7.color.hex": {
+      "bytes": 307200,
+      "sha256": "a9e74a0511b823d3a6b643757c8a4aa69c50443ff371c9c17335556c1b7385b9"
+    },
+    "fixtures-serial/capture/frame-7.depth.hex": {
+      "bytes": 307200,
+      "sha256": "a9e74a0511b823d3a6b643757c8a4aa69c50443ff371c9c17335556c1b7385b9"
+    },
+    "fixtures-serial/capture/frame-7.palette.hex": {
+      "bytes": 2048,
+      "sha256": "32e3a2f0cfe8f3b5c318fb3ed732b19ed31a3328eeeed2ca2f0f6a414b62789f"
+    },
+    "fixtures-serial/capture/frame-8.color.hex": {
+      "bytes": 307200,
+      "sha256": "a9e74a0511b823d3a6b643757c8a4aa69c50443ff371c9c17335556c1b7385b9"
+    },
+    "fixtures-serial/capture/frame-8.depth.hex": {
+      "bytes": 307200,
+      "sha256": "a9e74a0511b823d3a6b643757c8a4aa69c50443ff371c9c17335556c1b7385b9"
+    },
+    "fixtures-serial/capture/frame-8.palette.hex": {
+      "bytes": 2048,
+      "sha256": "32e3a2f0cfe8f3b5c318fb3ed732b19ed31a3328eeeed2ca2f0f6a414b62789f"
+    },
+    "fixtures-serial/capture/frame-commands.log": {
+      "bytes": 6835,
+      "sha256": "888fb0d42a24b1d2dfcc7a3ed030dfeaf3c5fc691bb1f6b5fb3ff8dad42f1698"
+    },
+    "fixtures-serial/capture/frame-timeline.log": {
+      "bytes": 3092,
+      "sha256": "9e78c46a1f71bea94494bd9e4547174e4a77f5afd83b3d0db72dc67d1e2496c5"
+    },
+    "fixtures-serial/capture/frame-triangles.log": {
+      "bytes": 3318,
+      "sha256": "16b5fd0540651ec03bb69aa05cf6fe6543f556da8198e1ab633bbc859265ebfb"
+    },
+    "fixtures-serial/capture/simulation.log": {
+      "bytes": 27811,
+      "sha256": "d278a59aa4a423b96a850a84c0fca0a221f8bc74189dc2a58cafcb27342a0c67"
+    },
+    "quake-overlap/capture/frame-1.color.hex": {
+      "bytes": 307200,
+      "sha256": "642c842639415226e7c5fe28c8619e9f6dfdc536a2a0aa9c2f9f275c4ee71cfa"
+    },
+    "quake-overlap/capture/frame-1.depth.hex": {
+      "bytes": 307200,
+      "sha256": "812b601d72067e5580d2454c258073612c6a493fb11db3ebcfcad5ea6a0641f8"
+    },
+    "quake-overlap/capture/frame-1.palette.hex": {
+      "bytes": 2048,
+      "sha256": "ebe2b525a93a72303217c1efb462e135d01da9445e51d5e9ce3969fd10e43112"
+    },
+    "quake-overlap/capture/frame-2.color.hex": {
+      "bytes": 307200,
+      "sha256": "b891a975799b4abb761064d47d2e200f43845b36e962c8121d0059da0189511d"
+    },
+    "quake-overlap/capture/frame-2.depth.hex": {
+      "bytes": 307200,
+      "sha256": "0a32c90d3da13f0278c3060ab63eca7e3a9dd35d5e783744f61c010fed8e3baa"
+    },
+    "quake-overlap/capture/frame-2.palette.hex": {
+      "bytes": 2048,
+      "sha256": "ebe2b525a93a72303217c1efb462e135d01da9445e51d5e9ce3969fd10e43112"
+    },
+    "quake-overlap/capture/frame-commands.log": {
+      "bytes": 112585,
+      "sha256": "fd741b2b4e9c227b2d9000d95330353bdb2acc3d709016e64ba572a2ffca241e"
+    },
+    "quake-overlap/capture/frame-timeline.log": {
+      "bytes": 825,
+      "sha256": "fd8ab5de8b19d1dda21ee0d886ea2602f905eeaccec6e4574b38b11866c6c373"
+    },
+    "quake-overlap/capture/frame-triangles.log": {
+      "bytes": 66024,
+      "sha256": "0a5c5ca242578277b1bd4d4c7a0d1c9b98b3c6d50ce2f5952b1f390bfa9de31f"
+    },
+    "quake-overlap/capture/simulation.log": {
+      "bytes": 27684,
+      "sha256": "0b35bed003354aaaf87360b5bdd998bbb9c4d362cae0b4791e5e76f9d5e2ee91"
+    },
+    "quake-serial/capture/frame-1.color.hex": {
+      "bytes": 307200,
+      "sha256": "642c842639415226e7c5fe28c8619e9f6dfdc536a2a0aa9c2f9f275c4ee71cfa"
+    },
+    "quake-serial/capture/frame-1.depth.hex": {
+      "bytes": 307200,
+      "sha256": "812b601d72067e5580d2454c258073612c6a493fb11db3ebcfcad5ea6a0641f8"
+    },
+    "quake-serial/capture/frame-1.palette.hex": {
+      "bytes": 2048,
+      "sha256": "ebe2b525a93a72303217c1efb462e135d01da9445e51d5e9ce3969fd10e43112"
+    },
+    "quake-serial/capture/frame-2.color.hex": {
+      "bytes": 307200,
+      "sha256": "b891a975799b4abb761064d47d2e200f43845b36e962c8121d0059da0189511d"
+    },
+    "quake-serial/capture/frame-2.depth.hex": {
+      "bytes": 307200,
+      "sha256": "0a32c90d3da13f0278c3060ab63eca7e3a9dd35d5e783744f61c010fed8e3baa"
+    },
+    "quake-serial/capture/frame-2.palette.hex": {
+      "bytes": 2048,
+      "sha256": "ebe2b525a93a72303217c1efb462e135d01da9445e51d5e9ce3969fd10e43112"
+    },
+    "quake-serial/capture/frame-commands.log": {
+      "bytes": 112585,
+      "sha256": "170d28954c0ab930771c2c7c238b5c6ccfba63252914bee8d5e53675d78231e5"
+    },
+    "quake-serial/capture/frame-timeline.log": {
+      "bytes": 810,
+      "sha256": "52ff28a92776e3aecca4cc4866bfe05964ed1701cdf9ea5080c8deb135d1f622"
+    },
+    "quake-serial/capture/frame-triangles.log": {
+      "bytes": 66024,
+      "sha256": "0a5c5ca242578277b1bd4d4c7a0d1c9b98b3c6d50ce2f5952b1f390bfa9de31f"
+    },
+    "quake-serial/capture/simulation.log": {
+      "bytes": 27624,
+      "sha256": "9419960075ec773dd8052d0ebb203137bd0838222259e288694c60f58f52e597"
+    },
+    "quartus/overlap/ArchStage3SoC.asm.rpt": {
+      "bytes": 9056,
+      "sha256": "ab94fa73e671a6c3fe36673f98f60264230dd5ecd4b18dd468c541e44cfbafb3"
+    },
+    "quartus/overlap/ArchStage3SoC.fit.rpt": {
+      "bytes": 2162875,
+      "sha256": "7e24d45f41870780c6e2e81ce53599fa8b0e2b6ba7ebf41e75a48bbb5e1588ea"
+    },
+    "quartus/overlap/ArchStage3SoC.fit.summary": {
+      "bytes": 657,
+      "sha256": "004453a8f489b57c51edf551bd0e1187294888d7f2f216bb6be35ec9b9705d29"
+    },
+    "quartus/overlap/ArchStage3SoC.flow.rpt": {
+      "bytes": 7485,
+      "sha256": "6dff7082879e5e1921b100952f5525f65b022dce845c1a6f48ad7ba1c3d06995"
+    },
+    "quartus/overlap/ArchStage3SoC.map.rpt": {
+      "bytes": 1677625,
+      "sha256": "637fc8eb38b7f1631e8295b6149fdf1a4e32f61785696432ab06a8306f984c56"
+    },
+    "quartus/overlap/ArchStage3SoC.map.summary": {
+      "bytes": 503,
+      "sha256": "2be819ed435101d1367e9b41068e21b4e932b5dd0f8773c10bf5e571811b7272"
+    },
+    "quartus/overlap/ArchStage3SoC.sta.rpt": {
+      "bytes": 1639848,
+      "sha256": "c9b334fb49e3141c397acf6830b4a9605a388d48efc5199438f609c642959cb3"
+    },
+    "quartus/overlap/ArchStage3SoC.sta.summary": {
+      "bytes": 6701,
+      "sha256": "67ac891fa91570905294f2d51636ba20c4e12ce5d0afaf9f2433f8f696e460a1"
+    },
+    "quartus/serial/ArchStage3SerialSoC.asm.rpt": {
+      "bytes": 9148,
+      "sha256": "e0f6377e8011fe1bdbb7ecd9a791e62610f6de643f9cc88282287dcd3b362c40"
+    },
+    "quartus/serial/ArchStage3SerialSoC.fit.rpt": {
+      "bytes": 2122643,
+      "sha256": "4b701dad51d94fa644430dcede4a1d40d9b23486e99d2bb6570405653cd97ec7"
+    },
+    "quartus/serial/ArchStage3SerialSoC.fit.summary": {
+      "bytes": 663,
+      "sha256": "cf612342339683893c4fc7f32f316333537682500d360385639a6acee2eb31fc"
+    },
+    "quartus/serial/ArchStage3SerialSoC.flow.rpt": {
+      "bytes": 7476,
+      "sha256": "c5db62b205084f54fac78a1d3509846deb53942ce5960e39a9a8623b0232d6c8"
+    },
+    "quartus/serial/ArchStage3SerialSoC.map.rpt": {
+      "bytes": 1586172,
+      "sha256": "8047206c848d3f5bb0fe6442692901d69f892b0616f40deb7305f80783e3bbf7"
+    },
+    "quartus/serial/ArchStage3SerialSoC.map.summary": {
+      "bytes": 509,
+      "sha256": "2f0fcb038c3c48c8a6dc3b70fd133e7bfbcf271de1cf5f93ad458ee24a7a98d0"
+    },
+    "quartus/serial/ArchStage3SerialSoC.sta.rpt": {
+      "bytes": 1641026,
+      "sha256": "e2d72faef398f1a5b4b7447cc45bae40c576850991b338adbe8b54e4305d2259"
+    },
+    "quartus/serial/ArchStage3SerialSoC.sta.summary": {
+      "bytes": 6701,
+      "sha256": "6718b4534f5d13837d393d5c7cf09966ed3b07ac5b3e0290f7789483fd9a63f6"
+    },
+    "source-snapshot/build/boot.json": {
+      "bytes": 44,
+      "sha256": "9bf369e0b87ec0b47a9fa88cec717b3431106ad05404df414270d29935a06d23"
+    },
+    "source-snapshot/build/firmware.hex": {
+      "bytes": 147456,
+      "sha256": "067e0c2bf73328ad40a1c6a1575a801d11ffe89aa060b56057513e656c523ad2"
+    },
+    "source-snapshot/build/firmware.mif": {
+      "bytes": 278605,
+      "sha256": "f70ee691343753ca316bec2aa5d0d4f84b7a8f9a193f9b662d9a4ff1d188c36a"
+    },
+    "source-snapshot/fpga/soc.sdc": {
+      "bytes": 2445,
+      "sha256": "8bab502639ba541613e3cfaa35303f2869d321c5e1a3ad7741fb2ad25f8f4d7c"
+    },
+    "source-snapshot/rtl/gfx_command_dma.sv": {
+      "bytes": 3135,
+      "sha256": "3ab02142603634f2e6bbb0d3e12cbf8663995eab3c3b5c0c52f9020bfd0c8269"
+    },
+    "source-snapshot/rtl/sdram_bridge.sv": {
+      "bytes": 2848,
+      "sha256": "b58bd47a0b71f179df8acb3855e935fb8b6def5b04fad0221caf7864b59974ed"
+    },
+    "source-snapshot/rtl/sdram_cache.sv": {
+      "bytes": 6526,
+      "sha256": "433f43139bc0a562edc4e722cbc2893b69c3d86c58734ce293eb3bc6b626d92b"
+    },
+    "source-snapshot/rtl/sdram_capture_clock.sv": {
+      "bytes": 1366,
+      "sha256": "9d20b840ed55776d25aaf34915b044d7d4b023f5fea6923bddf419bf81374ce0"
+    },
+    "source-snapshot/rtl/sdram_command_arbiter.sv": {
+      "bytes": 1924,
+      "sha256": "6abd1cc03b5bd7b68ebed28adbd3650b03ec13e623372b0d88c0f4cf95505e3c"
+    },
+    "source-snapshot/rtl/sdram_controller.sv": {
+      "bytes": 7553,
+      "sha256": "cb8fd223b7720aaf69b14d0e5dd4ee3e640c2036f2d35e014ca57a52db4a800e"
+    },
+    "source-snapshot/rtl/soc_alu.sv": {
+      "bytes": 619,
+      "sha256": "f8c9c56634bc527431ebb37b541ad1416a10e389ba072551abc52c80e4afc5e0"
+    },
+    "source-snapshot/rtl/soc_cpu_counters.sv": {
+      "bytes": 1007,
+      "sha256": "f03a2ec07acaab146b6252889aa6a819a85a512e2a313a3b41137c99c2d3c166"
+    },
+    "source-snapshot/rtl/soc_memory.sv": {
+      "bytes": 10860,
+      "sha256": "b6115fb4aadcbb6145a6b4860a1e3641ad00edfcadfdcd5383f7f41844831337"
+    },
+    "source-snapshot/rtl/soc_mmio.sv": {
+      "bytes": 11951,
+      "sha256": "b1d8f7af7213279587feb0be911c4b125ff5f80e80a1f8bd5ac278b0cf360c1c"
+    },
+    "source-snapshot/rtl/soc_top.sv": {
+      "bytes": 4362,
+      "sha256": "835c329c44219d0521ea7645b7f8cf22d8dde2e8efe50e473b999c3672862ea8"
+    },
+    "source-snapshot/rtl/udp_controls.sv": {
+      "bytes": 4635,
+      "sha256": "eddabdecaf25fb98d847c214db158acb396e46b59797f5d4fc394c14560d1bf0"
+    },
+    "source-snapshot/rtl/udp_memory_loader.sv": {
+      "bytes": 4741,
+      "sha256": "db6173abd2fe02186c6db0de564b42dfa9ff915c2dc4a2c2a4d6b284fa8f0a00"
+    },
+    "source-snapshot/scripts/build_setup_overlap.py": {
+      "bytes": 2647,
+      "sha256": "321c9af8f81b620454eceae7e5f34a96bea0b9442d20bc9233d7289af2cdbf74"
+    },
+    "source-snapshot/scripts/gpu_setup.py": {
+      "bytes": 13163,
+      "sha256": "e7270e3b6d6ef6f382b78830c895c6a2fbe7b8e758d8b5a8751f0fedb764f64d"
+    },
+    "source-snapshot/scripts/measure_setup_overlap.py": {
+      "bytes": 8742,
+      "sha256": "4ac9e25ec631fdfd76c98f05a1c27d433ae2f1f4783ad8c924610e46b11219dc"
+    },
+    "source-snapshot/scripts/replay_render_route.py": {
+      "bytes": 12516,
+      "sha256": "e701bbe9a9ee56ce3a88c0a20285cd8e83778ab7f06829d06d84f34ab4617409"
+    },
+    "source-snapshot/scripts/soc.py": {
+      "bytes": 53800,
+      "sha256": "2da23f895d6c00ad354b6a099d683b9441cd4fc3826ddaf6ecd03b586c034784"
+    },
+    "source-snapshot/sim/render_frame_replay_tb.sv": {
+      "bytes": 10551,
+      "sha256": "9dc69f825dd5e6b5f946b8b087e8fa6f352282747cc075c6cec8625750d37625"
+    },
+    "source-snapshot/sim/setup_overlap_tb.sv": {
+      "bytes": 5974,
+      "sha256": "58c7f66719507101a2ee7347a652e9512f06057feee40fb0a4b44753b45d6715"
+    },
+    "source-snapshot/external/renderer/rtl/command/graphics_command_processor.sv": {
+      "bytes": 9115,
+      "sha256": "f7ec879dbdb9631a071bdc96233f1e51f275f813577d531a0cf7889363f5af74"
+    },
+    "source-snapshot/external/renderer/rtl/command/graphics_command_stream_decoder.sv": {
+      "bytes": 23181,
+      "sha256": "65dd6a522c8b86a3bd7142a223ceb7a0577948c298d59ce17501877ce27c46e7"
+    },
+    "source-snapshot/external/renderer/rtl/common/iterative_signed_divider.sv": {
+      "bytes": 3427,
+      "sha256": "6d333292789539502521972e735dc2888d589fddb0372ad2bd1afe9e0c1639b4"
+    },
+    "source-snapshot/external/renderer/rtl/common/protocol_generated.svh": {
+      "bytes": 2285,
+      "sha256": "35d17b30df278a9c8a2aafe643112e0fa883671519e279f3a75ee3b077200caa"
+    },
+    "source-snapshot/external/renderer/rtl/common/renderer_types.svh": {
+      "bytes": 3328,
+      "sha256": "786cd60e501a72e308a99c7fe60d35fa8174cabf47aac5d2b3d5f9c80087f37c"
+    },
+    "source-snapshot/external/renderer/rtl/demo/cube_demo.sv": {
+      "bytes": 20095,
+      "sha256": "30ee250fde414495d373598000c10fc3072c3b6709ec05c28f0c83950a2fd537"
+    },
+    "source-snapshot/external/renderer/rtl/demo/de2_115_top.sv": {
+      "bytes": 4725,
+      "sha256": "231d43d5a3c3df35269794d0edf22a781aef7c08550de199b40de44439c2588f"
+    },
+    "source-snapshot/external/renderer/rtl/memory/framebuffer.sv": {
+      "bytes": 3430,
+      "sha256": "22dfa6111685a3c7e8ac3aa16bdd1697696681c76fe6ebe232a355d8d1957575"
+    },
+    "source-snapshot/external/renderer/rtl/memory/framebuffer_ip.v": {
+      "bytes": 1118,
+      "sha256": "d11c8f215225ccea4b65d059ffcd2711ad66ddb9dc73b3687d7262bf8da80127"
+    },
+    "source-snapshot/external/renderer/rtl/memory/palette_default.mif": {
+      "bytes": 4927,
+      "sha256": "80f13a31528de9a6b8e4e74e831b28d1961d31622f484fbaa181f305a5cf7be3"
+    },
+    "source-snapshot/external/renderer/rtl/memory/palette_ip.v": {
+      "bytes": 1269,
+      "sha256": "8d4bc23aebdafb73b52611d78f222d0649aa2302f965befd78c842fb35c4c9e3"
+    },
+    "source-snapshot/external/renderer/rtl/memory/zbuffer.sv": {
+      "bytes": 3055,
+      "sha256": "2bef8538e55d02102b8865ae879b8b26611ca7052d139aad4013eb0978867a59"
+    },
+    "source-snapshot/external/renderer/rtl/memory/zbuffer_ip.v": {
+      "bytes": 1110,
+      "sha256": "ba8fc8671a787368e1f5db8d1dfdf8ae027be96d35732c134b56a46484b62aee"
+    },
+    "source-snapshot/external/renderer/rtl/network/async_byte_fifo.sv": {
+      "bytes": 911,
+      "sha256": "70e751124f649dda17f4d145854cf2746d882f04738df3a450fa1ca6cd8c3ee5"
+    },
+    "source-snapshot/external/renderer/rtl/network/async_fifo.sv": {
+      "bytes": 4537,
+      "sha256": "a0a284f9b5d7b8fc5d19d0d183497ed1bcf015e1af611dc9404601ed1e535926"
+    },
+    "source-snapshot/external/renderer/rtl/network/ethernet_command_receiver.sv": {
+      "bytes": 9745,
+      "sha256": "4b696e6070fa1f6bccd9cd842d86b6492d9d14f1f99ba18829975a29a9d5463e"
+    },
+    "source-snapshot/external/renderer/rtl/network/mii_arp_responder.sv": {
+      "bytes": 5861,
+      "sha256": "b5b92a03e9dcebb2baf9b2eed4de02494a5a91b8aa3af80505fcf82c8a43a0f1"
+    },
+    "source-snapshot/external/renderer/rtl/network/mii_response_transmitter.sv": {
+      "bytes": 17621,
+      "sha256": "ebe3b396842c314ab66a886c03fa086a8c2dfdf55f47aa9cf821cc2b8d96cfa5"
+    },
+    "source-snapshot/external/renderer/rtl/network/mii_udp_receiver.sv": {
+      "bytes": 16195,
+      "sha256": "959db588c98d21de3eaf027faf81afa64bea17ecd67264f75fc5bc32927e334f"
+    },
+    "source-snapshot/external/renderer/rtl/pipeline/depth_test_stage.sv": {
+      "bytes": 2265,
+      "sha256": "b4e15cce285a7b34ff2406c0538e0f7f3289f7777925a6f8f5190cde09ae55ad"
+    },
+    "source-snapshot/external/renderer/rtl/pipeline/graphics_pipeline.sv": {
+      "bytes": 9104,
+      "sha256": "cefe1a0fcb007ae5a734484458f48bbd864e1ccb82b70148f6ba09cc1c897fc7"
+    },
+    "source-snapshot/external/renderer/rtl/pipeline/indexed_mesh_store.sv": {
+      "bytes": 12373,
+      "sha256": "5306f7e2144548db032bf172dc019d38f7e49a1933473c4c95587a1d072533fb"
+    },
+    "source-snapshot/external/renderer/rtl/pipeline/renderer.sv": {
+      "bytes": 16155,
+      "sha256": "1aebfae7d7e672456d18d92e6ef5084d4f338bd8a1781eba204d1898766d4441"
+    },
+    "source-snapshot/external/renderer/rtl/pipeline/render_performance_counters.sv": {
+      "bytes": 4645,
+      "sha256": "c6dad6d56a7d20fb09fb4f5eecbd86b9a282c56f9da76cf89304e4ac20f2825d"
+    },
+    "source-snapshot/external/renderer/rtl/pipeline/transform_3d_pipeline.sv": {
+      "bytes": 17987,
+      "sha256": "96d2b86352ebef8302d5b4a0a7881819b8453ac2c9cc515e547d98f0dac4a129"
+    },
+    "source-snapshot/external/renderer/rtl/pipeline/triangle_fifo.sv": {
+      "bytes": 2653,
+      "sha256": "0f4b5bf21f6545f1435419fcac45afa7413869c26cc21958baf325f808f88e88"
+    },
+    "source-snapshot/external/renderer/rtl/pipeline/view_transform_stage.sv": {
+      "bytes": 5513,
+      "sha256": "882e0ba7c5f1cbf2b1979216c5c87f6409685e7fae76ceb2869b1f8b41f7829a"
+    },
+    "source-snapshot/external/renderer/rtl/system/graphics_renderer_core.sv": {
+      "bytes": 6353,
+      "sha256": "4e8da0b691363472146f9477d8350a5049a2dfc1edda8e01d4e806de1b341a38"
+    },
+    "source-snapshot/external/renderer/rtl/system/graphics_stream_renderer.sv": {
+      "bytes": 1814,
+      "sha256": "5fac992e9cb945439f282972658ef5ba3ae24e2fa4a4921ab5dc0af5b77bc6e0"
+    },
+    "source-snapshot/external/renderer/rtl/video/vga_controller.sv": {
+      "bytes": 15612,
+      "sha256": "44be5fb84939c0aa333106238435e2748425212980b1d6b66701ce138d61ce0a"
+    },
+    "source-snapshot/external/renderer/rtl/video/vga_page_swap_controller.sv": {
+      "bytes": 2526,
+      "sha256": "43f457ad4ed53565b18b121a301512dea98039d109943c81773aa6b878aab6fa"
+    },
+    "source-snapshot/external/renderer/rtl/video/vga_pll.sv": {
+      "bytes": 2198,
+      "sha256": "25c5e5a8c92a729d5e59620e05a4b72e81f118fa6f92d725c51df47c1fe50c8a"
+    },
+    "source-snapshot/external/renderer/rtl/video/vga_timing.sv": {
+      "bytes": 1764,
+      "sha256": "9af825e7bcf96e59e53b197f89534d525d43a85098a84d5d0da7f016b60636af"
+    },
+    "source-snapshot/firmware/tests/setup_overlap_probe.c": {
+      "bytes": 1299,
+      "sha256": "6296420e861f8edb470a18e96b3efaef5acc40fd9c2b3c46a82cb9be48079aa9"
+    },
+    "source-snapshot/rtl/boards/de2_115_soc_top.sv": {
+      "bytes": 4100,
+      "sha256": "68b19deb015b2669d4a51293fc7eed805a7678baefdd10e62493d8f2707bd7e0"
+    },
+    "source-snapshot/rtl/generated/graphics_command_processor.sv": {
+      "bytes": 9201,
+      "sha256": "05923b5253ec4e94a237ebc1bac6c33aec6b8a568633ba89167df3dfeb90a7dd"
+    },
+    "source-snapshot/rtl/generated/graphics_command_stream_decoder.sv": {
+      "bytes": 23404,
+      "sha256": "402b175b9a49f494d2000a24626123dae19cc411cce86256db56aa14202b18f8"
+    },
+    "source-snapshot/rtl/generated/graphics_pipeline.sv": {
+      "bytes": 8868,
+      "sha256": "744d2c694659d5acaa602fa501b3f506874012108bd54570caafd3168b912935"
+    },
+    "source-snapshot/rtl/generated/graphics_renderer_core.sv": {
+      "bytes": 6371,
+      "sha256": "e245d4943cf9b4bf9a5577e58f562e098dcf720f75213b0a456786266cd9b999"
+    },
+    "source-snapshot/rtl/generated/graphics_stream_renderer.sv": {
+      "bytes": 1819,
+      "sha256": "fc9ff8c6396a768d3cd4ae5eaf2590d48530b9f405270f73ee72f635630fc53f"
+    },
+    "source-snapshot/rtl/generated/indexed_mesh_store.sv": {
+      "bytes": 12819,
+      "sha256": "5f69d0116f11f06988d74bbeb16dc00ca42ea3b22d40ed0fe47eeae761cb317a"
+    },
+    "source-snapshot/rtl/generated/palette_ip.v": {
+      "bytes": 1242,
+      "sha256": "53f971debd4c8f5bba38caf8782a08de919dcbef37b0b7c342849bfe773658bc"
+    },
+    "source-snapshot/rtl/generated/renderer.sv": {
+      "bytes": 2376,
+      "sha256": "607ddf4e052743fe99b3339cb44fef274189dd86f3243c8a487cede69f34e0f6"
+    },
+    "source-snapshot/rtl/generated/renderer_overlap.sv": {
+      "bytes": 8393,
+      "sha256": "e9cd306c1960c4c5ba50333a5351c301d1597a7dbd562d6730342e1dc6cddac5"
+    },
+    "source-snapshot/rtl/generated/renderer_serial.sv": {
+      "bytes": 16129,
+      "sha256": "c7214137bde8fd2e3a31f57550cc86a2097e75b02e099a2b6d3b5718c3fc57f0"
+    },
+    "source-snapshot/rtl/generated/renderer_types.svh": {
+      "bytes": 3295,
+      "sha256": "48c1649119c3bfd5398e7bfd56df1ac8c46254d7917f8173ce4a7b2368dfe38a"
+    },
+    "source-snapshot/rtl/generated/RV32I_SoC.sv": {
+      "bytes": 11962,
+      "sha256": "5e8aa778a2f592e2c5e652c5e79a8d9fa32e3ad33b50adfc90055164f5102f83"
+    },
+    "source-snapshot/rtl/generated/soc_ControlUnit.sv": {
+      "bytes": 3898,
+      "sha256": "39cbee4843c35f8bc5b206d1a76d7e02104152abb7bda16a32b942b9a420e06f"
+    },
+    "source-snapshot/rtl/generated/soc_EX_MEM.sv": {
+      "bytes": 1130,
+      "sha256": "0988aa26a575d5b49fdc4ca1e7501684e75ab9a10bd81e0569fe24a2f14100d1"
+    },
+    "source-snapshot/rtl/generated/soc_ID_EX.sv": {
+      "bytes": 1517,
+      "sha256": "4b8a8bea79f603e1751d176a490743111043776b8d6c8aa0aefefbd717e6b762"
+    },
+    "source-snapshot/rtl/generated/soc_IF_ID.sv": {
+      "bytes": 643,
+      "sha256": "ae0dd0847cb48d7a19a547543f0e9cfb38c4c5d9eea0adfaaa7128956b82dccd"
+    },
+    "source-snapshot/rtl/generated/soc_MEM_WB.sv": {
+      "bytes": 1031,
+      "sha256": "2654fe037b68c41fe7dc6f6f67dd5bcf7da7aff5d9b06f5f190c62e33b13613b"
+    },
+    "source-snapshot/rtl/generated/soc_PC_IF.sv": {
+      "bytes": 482,
+      "sha256": "40f4ba9537bc9856ff8bc13b289f79adf54b6877bc33f4aa00c7d2a91cebb3c5"
+    },
+    "source-snapshot/rtl/generated/soc_PipelineAssertions.sv": {
+      "bytes": 3346,
+      "sha256": "abbdc1bbdfdbccd9ba124d6fa2281acfa6b12699fbaa0f55fd7d67d7ecc012e7"
+    },
+    "source-snapshot/rtl/generated/soc_ram.sv": {
+      "bytes": 7202,
+      "sha256": "965aecf84c1c77e96eb41486ebd358745b97aaa2e5e3be46292e5bdcfbbdc758"
+    },
+    "source-snapshot/rtl/generated/soc_RegFile.sv": {
+      "bytes": 1209,
+      "sha256": "0edae9416aaacb1bef7feb21f269488323d5c79b705e5056bc2ab6e0a0cc9837"
+    },
+    "source-snapshot/rtl/generated/transform_3d_pipeline.sv": {
+      "bytes": 17850,
+      "sha256": "8b90afabe74fc762e237574bd8412867cd91bf4a19e9afdfe15fd55e156d42cc"
+    },
+    "source-snapshot/rtl/generated/triangle_setup_engine.sv": {
+      "bytes": 14158,
+      "sha256": "8df64541a102b0796dbf062f11cd41830480c1befeb68acb2f6019a06323bf85"
+    },
+    "source-snapshot/rtl/generated/triangle_setup_types.svh": {
+      "bytes": 599,
+      "sha256": "369e274c2ef70df90460f08c6b45127c1ce9c07f072b2d07231188cc25d8a420"
+    }
+  },
+  "hardware": {
+    "serial": {
+      "logic_elements": 22774,
+      "memory_bits": 2659684,
+      "multipliers_9bit": 80,
+      "plls": 2,
+      "m9k": 354,
+      "physical_memory_bits": 3262464,
+      "setup_min_ns": 0.641,
+      "hold_min_ns": 0.117,
+      "timings": [
+        {
+          "type": "Slow 1200mV 85C Model Setup 'CLOCK_50'",
+          "slack_ns": 0.641
+        },
+        {
+          "type": "Slow 1200mV 85C Model Setup 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 1.408
+        },
+        {
+          "type": "Slow 1200mV 85C Model Setup 'SDRAM_CLK'",
+          "slack_ns": 2.991
+        },
+        {
+          "type": "Slow 1200mV 85C Model Setup 'ENET0_TX_CLK'",
+          "slack_ns": 4.608
+        },
+        {
+          "type": "Slow 1200mV 85C Model Setup 'ENET0_RX_CLK'",
+          "slack_ns": 6.251
+        },
+        {
+          "type": "Slow 1200mV 85C Model Setup 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 12.94
+        },
+        {
+          "type": "Slow 1200mV 85C Model Hold 'CLOCK_50'",
+          "slack_ns": 0.309
+        },
+        {
+          "type": "Slow 1200mV 85C Model Hold 'ENET0_RX_CLK'",
+          "slack_ns": 0.34
+        },
+        {
+          "type": "Slow 1200mV 85C Model Hold 'ENET0_TX_CLK'",
+          "slack_ns": 0.387
+        },
+        {
+          "type": "Slow 1200mV 85C Model Hold 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 0.409
+        },
+        {
+          "type": "Slow 1200mV 85C Model Hold 'SDRAM_CLK'",
+          "slack_ns": 11.118
+        },
+        {
+          "type": "Slow 1200mV 85C Model Hold 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 13.42
+        },
+        {
+          "type": "Slow 1200mV 85C Model Recovery 'CLOCK_50'",
+          "slack_ns": 2.953
+        },
+        {
+          "type": "Slow 1200mV 85C Model Removal 'CLOCK_50'",
+          "slack_ns": 6.844
+        },
+        {
+          "type": "Slow 1200mV 85C Model Minimum Pulse Width 'CLOCK_50'",
+          "slack_ns": 9.525
+        },
+        {
+          "type": "Slow 1200mV 85C Model Minimum Pulse Width 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 9.799
+        },
+        {
+          "type": "Slow 1200mV 85C Model Minimum Pulse Width 'SDRAM_CLK'",
+          "slack_ns": 15.79
+        },
+        {
+          "type": "Slow 1200mV 85C Model Minimum Pulse Width 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 19.574
+        },
+        {
+          "type": "Slow 1200mV 85C Model Minimum Pulse Width 'ENET0_RX_CLK'",
+          "slack_ns": 19.628
+        },
+        {
+          "type": "Slow 1200mV 85C Model Minimum Pulse Width 'ENET0_TX_CLK'",
+          "slack_ns": 19.648
+        },
+        {
+          "type": "Slow 1200mV 0C Model Setup 'CLOCK_50'",
+          "slack_ns": 1.368
+        },
+        {
+          "type": "Slow 1200mV 0C Model Setup 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 1.938
+        },
+        {
+          "type": "Slow 1200mV 0C Model Setup 'SDRAM_CLK'",
+          "slack_ns": 3.429
+        },
+        {
+          "type": "Slow 1200mV 0C Model Setup 'ENET0_RX_CLK'",
+          "slack_ns": 6.7
+        },
+        {
+          "type": "Slow 1200mV 0C Model Setup 'ENET0_TX_CLK'",
+          "slack_ns": 7.044
+        },
+        {
+          "type": "Slow 1200mV 0C Model Setup 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 15.304
+        },
+        {
+          "type": "Slow 1200mV 0C Model Hold 'CLOCK_50'",
+          "slack_ns": 0.307
+        },
+        {
+          "type": "Slow 1200mV 0C Model Hold 'ENET0_TX_CLK'",
+          "slack_ns": 0.34
+        },
+        {
+          "type": "Slow 1200mV 0C Model Hold 'ENET0_RX_CLK'",
+          "slack_ns": 0.343
+        },
+        {
+          "type": "Slow 1200mV 0C Model Hold 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 0.364
+        },
+        {
+          "type": "Slow 1200mV 0C Model Hold 'SDRAM_CLK'",
+          "slack_ns": 10.73
+        },
+        {
+          "type": "Slow 1200mV 0C Model Hold 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 12.966
+        },
+        {
+          "type": "Slow 1200mV 0C Model Recovery 'CLOCK_50'",
+          "slack_ns": 3.628
+        },
+        {
+          "type": "Slow 1200mV 0C Model Removal 'CLOCK_50'",
+          "slack_ns": 6.224
+        },
+        {
+          "type": "Slow 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'",
+          "slack_ns": 9.555
+        },
+        {
+          "type": "Slow 1200mV 0C Model Minimum Pulse Width 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 9.808
+        },
+        {
+          "type": "Slow 1200mV 0C Model Minimum Pulse Width 'SDRAM_CLK'",
+          "slack_ns": 15.79
+        },
+        {
+          "type": "Slow 1200mV 0C Model Minimum Pulse Width 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 19.573
+        },
+        {
+          "type": "Slow 1200mV 0C Model Minimum Pulse Width 'ENET0_RX_CLK'",
+          "slack_ns": 19.648
+        },
+        {
+          "type": "Slow 1200mV 0C Model Minimum Pulse Width 'ENET0_TX_CLK'",
+          "slack_ns": 19.667
+        },
+        {
+          "type": "Fast 1200mV 0C Model Setup 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 3.593
+        },
+        {
+          "type": "Fast 1200mV 0C Model Setup 'CLOCK_50'",
+          "slack_ns": 4.971
+        },
+        {
+          "type": "Fast 1200mV 0C Model Setup 'SDRAM_CLK'",
+          "slack_ns": 5.493
+        },
+        {
+          "type": "Fast 1200mV 0C Model Setup 'ENET0_RX_CLK'",
+          "slack_ns": 8.623
+        },
+        {
+          "type": "Fast 1200mV 0C Model Setup 'ENET0_TX_CLK'",
+          "slack_ns": 17.251
+        },
+        {
+          "type": "Fast 1200mV 0C Model Setup 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 25.76
+        },
+        {
+          "type": "Fast 1200mV 0C Model Hold 'CLOCK_50'",
+          "slack_ns": 0.117
+        },
+        {
+          "type": "Fast 1200mV 0C Model Hold 'ENET0_RX_CLK'",
+          "slack_ns": 0.134
+        },
+        {
+          "type": "Fast 1200mV 0C Model Hold 'ENET0_TX_CLK'",
+          "slack_ns": 0.175
+        },
+        {
+          "type": "Fast 1200mV 0C Model Hold 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 0.187
+        },
+        {
+          "type": "Fast 1200mV 0C Model Hold 'SDRAM_CLK'",
+          "slack_ns": 9.737
+        },
+        {
+          "type": "Fast 1200mV 0C Model Hold 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 11.27
+        },
+        {
+          "type": "Fast 1200mV 0C Model Recovery 'CLOCK_50'",
+          "slack_ns": 6.776
+        },
+        {
+          "type": "Fast 1200mV 0C Model Removal 'CLOCK_50'",
+          "slack_ns": 3.601
+        },
+        {
+          "type": "Fast 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'",
+          "slack_ns": 9.194
+        },
+        {
+          "type": "Fast 1200mV 0C Model Minimum Pulse Width 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 9.797
+        },
+        {
+          "type": "Fast 1200mV 0C Model Minimum Pulse Width 'SDRAM_CLK'",
+          "slack_ns": 16.0
+        },
+        {
+          "type": "Fast 1200mV 0C Model Minimum Pulse Width 'ENET0_RX_CLK'",
+          "slack_ns": 19.378
+        },
+        {
+          "type": "Fast 1200mV 0C Model Minimum Pulse Width 'ENET0_TX_CLK'",
+          "slack_ns": 19.383
+        },
+        {
+          "type": "Fast 1200mV 0C Model Minimum Pulse Width 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 19.613
+        }
+      ],
+      "sof_sha256": "94cb92a4235d8f1d6cec07a088b99d91fd5a754facbaf73917cdcdafc19e2a04",
+      "unconstrained_clocks": {
+        "setup": 0,
+        "hold": 0
+      },
+      "unconstrained_input_ports": {
+        "setup": 0,
+        "hold": 0
+      },
+      "unconstrained_input_port_paths": {
+        "setup": 0,
+        "hold": 0
+      },
+      "unconstrained_output_ports": {
+        "setup": 0,
+        "hold": 0
+      },
+      "unconstrained_output_port_paths": {
+        "setup": 0,
+        "hold": 0
+      }
+    },
+    "overlap": {
+      "logic_elements": 23784,
+      "memory_bits": 2659684,
+      "multipliers_9bit": 80,
+      "plls": 2,
+      "m9k": 354,
+      "physical_memory_bits": 3262464,
+      "setup_min_ns": 0.311,
+      "hold_min_ns": 0.089,
+      "timings": [
+        {
+          "type": "Slow 1200mV 85C Model Setup 'CLOCK_50'",
+          "slack_ns": 0.311
+        },
+        {
+          "type": "Slow 1200mV 85C Model Setup 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 1.408
+        },
+        {
+          "type": "Slow 1200mV 85C Model Setup 'SDRAM_CLK'",
+          "slack_ns": 3.086
+        },
+        {
+          "type": "Slow 1200mV 85C Model Setup 'ENET0_TX_CLK'",
+          "slack_ns": 4.48
+        },
+        {
+          "type": "Slow 1200mV 85C Model Setup 'ENET0_RX_CLK'",
+          "slack_ns": 5.93
+        },
+        {
+          "type": "Slow 1200mV 85C Model Setup 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 12.923
+        },
+        {
+          "type": "Slow 1200mV 85C Model Hold 'ENET0_RX_CLK'",
+          "slack_ns": 0.27
+        },
+        {
+          "type": "Slow 1200mV 85C Model Hold 'CLOCK_50'",
+          "slack_ns": 0.3
+        },
+        {
+          "type": "Slow 1200mV 85C Model Hold 'ENET0_TX_CLK'",
+          "slack_ns": 0.385
+        },
+        {
+          "type": "Slow 1200mV 85C Model Hold 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 0.408
+        },
+        {
+          "type": "Slow 1200mV 85C Model Hold 'SDRAM_CLK'",
+          "slack_ns": 10.37
+        },
+        {
+          "type": "Slow 1200mV 85C Model Hold 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 13.419
+        },
+        {
+          "type": "Slow 1200mV 85C Model Recovery 'CLOCK_50'",
+          "slack_ns": 2.608
+        },
+        {
+          "type": "Slow 1200mV 85C Model Removal 'CLOCK_50'",
+          "slack_ns": 6.191
+        },
+        {
+          "type": "Slow 1200mV 85C Model Minimum Pulse Width 'CLOCK_50'",
+          "slack_ns": 9.521
+        },
+        {
+          "type": "Slow 1200mV 85C Model Minimum Pulse Width 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 9.799
+        },
+        {
+          "type": "Slow 1200mV 85C Model Minimum Pulse Width 'SDRAM_CLK'",
+          "slack_ns": 15.79
+        },
+        {
+          "type": "Slow 1200mV 85C Model Minimum Pulse Width 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 19.572
+        },
+        {
+          "type": "Slow 1200mV 85C Model Minimum Pulse Width 'ENET0_RX_CLK'",
+          "slack_ns": 19.628
+        },
+        {
+          "type": "Slow 1200mV 85C Model Minimum Pulse Width 'ENET0_TX_CLK'",
+          "slack_ns": 19.651
+        },
+        {
+          "type": "Slow 1200mV 0C Model Setup 'CLOCK_50'",
+          "slack_ns": 1.118
+        },
+        {
+          "type": "Slow 1200mV 0C Model Setup 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 1.938
+        },
+        {
+          "type": "Slow 1200mV 0C Model Setup 'SDRAM_CLK'",
+          "slack_ns": 3.508
+        },
+        {
+          "type": "Slow 1200mV 0C Model Setup 'ENET0_RX_CLK'",
+          "slack_ns": 6.39
+        },
+        {
+          "type": "Slow 1200mV 0C Model Setup 'ENET0_TX_CLK'",
+          "slack_ns": 6.903
+        },
+        {
+          "type": "Slow 1200mV 0C Model Setup 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 15.434
+        },
+        {
+          "type": "Slow 1200mV 0C Model Hold 'ENET0_RX_CLK'",
+          "slack_ns": 0.274
+        },
+        {
+          "type": "Slow 1200mV 0C Model Hold 'CLOCK_50'",
+          "slack_ns": 0.298
+        },
+        {
+          "type": "Slow 1200mV 0C Model Hold 'ENET0_TX_CLK'",
+          "slack_ns": 0.337
+        },
+        {
+          "type": "Slow 1200mV 0C Model Hold 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 0.365
+        },
+        {
+          "type": "Slow 1200mV 0C Model Hold 'SDRAM_CLK'",
+          "slack_ns": 10.051
+        },
+        {
+          "type": "Slow 1200mV 0C Model Hold 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 12.965
+        },
+        {
+          "type": "Slow 1200mV 0C Model Recovery 'CLOCK_50'",
+          "slack_ns": 3.314
+        },
+        {
+          "type": "Slow 1200mV 0C Model Removal 'CLOCK_50'",
+          "slack_ns": 5.601
+        },
+        {
+          "type": "Slow 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'",
+          "slack_ns": 9.553
+        },
+        {
+          "type": "Slow 1200mV 0C Model Minimum Pulse Width 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 9.808
+        },
+        {
+          "type": "Slow 1200mV 0C Model Minimum Pulse Width 'SDRAM_CLK'",
+          "slack_ns": 15.79
+        },
+        {
+          "type": "Slow 1200mV 0C Model Minimum Pulse Width 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 19.573
+        },
+        {
+          "type": "Slow 1200mV 0C Model Minimum Pulse Width 'ENET0_RX_CLK'",
+          "slack_ns": 19.649
+        },
+        {
+          "type": "Slow 1200mV 0C Model Minimum Pulse Width 'ENET0_TX_CLK'",
+          "slack_ns": 19.669
+        },
+        {
+          "type": "Fast 1200mV 0C Model Setup 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 3.593
+        },
+        {
+          "type": "Fast 1200mV 0C Model Setup 'CLOCK_50'",
+          "slack_ns": 4.844
+        },
+        {
+          "type": "Fast 1200mV 0C Model Setup 'SDRAM_CLK'",
+          "slack_ns": 5.551
+        },
+        {
+          "type": "Fast 1200mV 0C Model Setup 'ENET0_RX_CLK'",
+          "slack_ns": 8.624
+        },
+        {
+          "type": "Fast 1200mV 0C Model Setup 'ENET0_TX_CLK'",
+          "slack_ns": 17.141
+        },
+        {
+          "type": "Fast 1200mV 0C Model Setup 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 25.837
+        },
+        {
+          "type": "Fast 1200mV 0C Model Hold 'ENET0_RX_CLK'",
+          "slack_ns": 0.089
+        },
+        {
+          "type": "Fast 1200mV 0C Model Hold 'CLOCK_50'",
+          "slack_ns": 0.107
+        },
+        {
+          "type": "Fast 1200mV 0C Model Hold 'ENET0_TX_CLK'",
+          "slack_ns": 0.173
+        },
+        {
+          "type": "Fast 1200mV 0C Model Hold 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 0.189
+        },
+        {
+          "type": "Fast 1200mV 0C Model Hold 'SDRAM_CLK'",
+          "slack_ns": 9.377
+        },
+        {
+          "type": "Fast 1200mV 0C Model Hold 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 11.27
+        },
+        {
+          "type": "Fast 1200mV 0C Model Recovery 'CLOCK_50'",
+          "slack_ns": 6.545
+        },
+        {
+          "type": "Fast 1200mV 0C Model Removal 'CLOCK_50'",
+          "slack_ns": 3.293
+        },
+        {
+          "type": "Fast 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'",
+          "slack_ns": 9.192
+        },
+        {
+          "type": "Fast 1200mV 0C Model Minimum Pulse Width 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 9.797
+        },
+        {
+          "type": "Fast 1200mV 0C Model Minimum Pulse Width 'SDRAM_CLK'",
+          "slack_ns": 16.0
+        },
+        {
+          "type": "Fast 1200mV 0C Model Minimum Pulse Width 'ENET0_RX_CLK'",
+          "slack_ns": 19.378
+        },
+        {
+          "type": "Fast 1200mV 0C Model Minimum Pulse Width 'ENET0_TX_CLK'",
+          "slack_ns": 19.385
+        },
+        {
+          "type": "Fast 1200mV 0C Model Minimum Pulse Width 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 19.614
+        }
+      ],
+      "sof_sha256": "eb28b7007c48fc799ec729655d83a823112ea15c73a06cac665c32e9f1037f62",
+      "unconstrained_clocks": {
+        "setup": 0,
+        "hold": 0
+      },
+      "unconstrained_input_ports": {
+        "setup": 0,
+        "hold": 0
+      },
+      "unconstrained_input_port_paths": {
+        "setup": 0,
+        "hold": 0
+      },
+      "unconstrained_output_ports": {
+        "setup": 0,
+        "hold": 0
+      },
+      "unconstrained_output_port_paths": {
+        "setup": 0,
+        "hold": 0
+      }
+    }
+  },
+  "coverage": "17 exact shared-terrain/fixture frames in both rebuilt modes; excludes full actors/transitions/physical framebuffer and complete-level traversal. Synthetic probes are not game speedups. Raw bytes preserved."
+}

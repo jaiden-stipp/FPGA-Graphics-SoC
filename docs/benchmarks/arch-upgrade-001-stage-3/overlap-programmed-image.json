@@ -1,0 +1,18 @@
+{
+  "sof": "C:\\Users\\Orb1t\\Documents\\Codex\\FPGA-Game-SoC\\build\\quartus-arch-stage3-overlap\\ArchStage3SoC.sof",
+  "sha256": "eb28b7007c48fc799ec729655d83a823112ea15c73a06cac665c32e9f1037f62",
+  "status": {
+    "initialized": true,
+    "held": true,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 0,
+    "refresh_count": 478525,
+    "input_abi": 1229848833,
+    "cpu_features": 2147483649,
+    "gpu_features": 3
+  }
+}

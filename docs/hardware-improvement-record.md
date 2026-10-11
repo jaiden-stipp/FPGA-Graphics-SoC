@@ -4,7 +4,7 @@
 
 Baseline source/report revision `ba78b16`; existing IntegerMulSoC bitstream unchanged.
 Fresh TimeQuest queries of the fitted database confirm +0.468 ns worst setup
-(half-cycle local RAM → UDP loader), +1.032 ns CPU endpoint setup
+(half-cycle local RAM â†’ UDP loader), +1.032 ns CPU endpoint setup
 (forwarding/MUL/next-PC), +1.456 ns GPU endpoint setup (fan-area/culling),
 +4.901 ns cache endpoint setup, and +0.115 ns worst hold (Ethernet RX FIFO input).
 The original multicorner report passes its reported checks with no unconstrained
@@ -302,7 +302,7 @@ On one final image at 50 MHz, three standing detailed trials reduce median comma
 
 The final image costs +142 fitted logic elements, +16 logical memory bits and +3 M9Ks versus the Stage 1 candidate; multipliers/PLLs are unchanged. Worst multicorner setup/hold are +0.182/+0.126 ns at unchanged clocks. Combined optional Stage 1/2A cost versus ScreenEdges is +921 logic elements; do not attribute the entire difference to packing. Normal unprofiled packed Mario is loaded with readback and advancing frames (56 to 86); prior accepted image/package hashes are preserved. DMA is deferred pending staging economics, ownership and arbitration design.
 
-[Full results, scope and deployment](architecture-stage-2a.md), [raw trials/resources](benchmarks/arch-upgrade-001-stage-2a/measurements.json), [hashes and reproducible evidence](benchmarks/arch-upgrade-001-stage-2a/manifest.json). Defensible resume wording: �Implemented and verified atomic packed GPU command submission on an FPGA SoC, reducing sampled per-frame MMIO stores 73.3%; measured a 0.86% reduction in ordinary standing-view CPU update/render time and documented instrumentation, timing and memory-banking costs.� No game-FPS gain is supported.
+[Full results, scope and deployment](architecture-stage-2a.md), [raw trials/resources](benchmarks/arch-upgrade-001-stage-2a/measurements.json), [hashes and reproducible evidence](benchmarks/arch-upgrade-001-stage-2a/manifest.json). Defensible resume wording: “Implemented and verified atomic packed GPU command submission on an FPGA SoC, reducing sampled per-frame MMIO stores 73.3%; measured a 0.86% reduction in ordinary standing-view CPU update/render time and documented instrumentation, timing and memory-banking costs.” No game-FPS gain is supported.
 
 
 ## GPU-DMA-001: ARCH-UPGRADE-001 Stage 2B (not promoted)
@@ -314,3 +314,44 @@ On one timing-passing candidate image at 50 MHz, three ordinary standing trials 
 Final hardware costs +1,113 logic elements and +4 logical memory bits versus Stage 2A; M9K count 354, physical memory implementation bits, 80 multiplier elements and two PLLs are unchanged. Worst setup/hold slack +0.401/+0.086 ns at unchanged clocks, with no unconstrained setup/hold paths. The initial fit failed setup by 0.507 ns and was never assembled/programmed; registered descriptor validation resolves the half-cycle path. Twenty-three host tests, nine affected RTL regressions plus maximum descriptor-tail coverage, firmware audits and exact seven-castle/two-Quake/eight-fixture replays pass. Full actors/transitions/physical framebuffer/traversal acceptance is not claimed.
 
 DMA is an experimental optional backend, not the selected transport. Exact accepted Stage 2A image and normal packed Mario are restored, all upload/readback verified, with final frame progress 2 to 32 over the one-second check. [Results, interpretation and reproducible commands](architecture-stage-2b.md), [all measurements](benchmarks/arch-upgrade-001-stage-2b/measurements.json), [hashes/raw evidence](benchmarks/arch-upgrade-001-stage-2b/manifest.json). Defensible resume claim: designed and verified a reusable SDRAM command DMA backend with arbitration/cancellation, and rejected default deployment after measured regression. No positive DMA performance, power, Fmax or complete-game claim is supported.
+
+
+## GPU-SETUP-001 / ARCH-UPGRADE-001 Stage 3: overlapping setup and rasterization
+
+Implemented and measured October 11, 2026. Baseline 6153efa; initial implementation
+2bf56dd; Quartus compatibility correction 8bb928c. A selectable producer computes
+setup/depth gradients while an ordered consumer rasterizes, with a stable two-record
+queue and explicit busy/drain page-swap barrier. Existing arithmetic, strict depth
+order, command ABI, models, gameplay, cache and clocks are preserved.
+
+Seventeen complete captured terrain/fixture frames (seven castle, two Quake, eight
+authored) match accepted color, depth, palette and ordered triangle references
+exactly. Eleven affected RTL regressions and six existing host tests pass; reset
+with queued/active work and full-queue stability are covered. Eighteen physical
+trials cover serial and overlap images, resident-mesh GPU probes, ordinary standing
+Mario and instrumented standing diagnostics. The measurement probe passes C-subset
+and a 580-instruction RV32I audit. Coverage excludes whole-game actors/transitions,
+physical framebuffer capture and full-level traversal acceptance.
+
+A synthetic 128-face resident mesh with 33x33 projected bounds reduces GPU total
+minus swap wait from 221,644 to 216,820 cycles (4.43288 to 4.33640 ms at 50 MHz,
+2.17646% less work before swap waiting). The 65x65 case saves the same 4,824 cycles;
+the 5x5 case adds two such cycles and 256 raster-busy cycles. These are synthetic
+GPU scheduling results, not original-game FPS gains. Ordinary standing update+render
+median is identical at 905,336 cycles in both images, with FPS near 30. Matched
+instrumented frame 251 has identical seven event counts and geometry stalls falling
+238,048 to 209,639; nested/overlapping spans are not summed as serial frame time.
+
+Matched-control fitted cost: +1,010 logic elements (22,774 to 23,784), unchanged
+2,659,684 logical memory bits, 354 M9Ks, 80 embedded 9-bit multiplier elements and
+two PLLs. Candidate worst multicorner setup/hold slack is +0.311/+0.089 ns at
+unchanged clocks, with zero unconstrained setup/hold clocks/input/output paths.
+No maximum-frequency or power improvement is claimed. Initial tool failures and
+both hardware hashes are retained. Serial stays the global fallback; Stage 3 is
+accepted as an optional reusable scheduling upgrade. Stage 2B DMA stays disabled.
+
+Resume-safe claim: designed and verified an ordered setup/raster overlap engine,
+validated exact output across 17 replay frames and measured 2.176% lower GPU work
+before swap waiting in a specified synthetic resident-mesh workload. No ordinary
+Mario CPU or FPS improvement is supported. [Full results, contracts and reproduction](architecture-stage-3.md), [measurements](benchmarks/arch-upgrade-001-stage-3/measurements.json)
+and [raw evidence/hashes](benchmarks/arch-upgrade-001-stage-3/manifest.json).

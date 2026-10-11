@@ -1,0 +1,6 @@
+Generated CPU boundary, RAM wrapper, palette path and firmware protocol header.
+overlap map 0
+overlap fit 0
+overlap sta 0
+overlap minimum slack 0.089
+overlap asm 0

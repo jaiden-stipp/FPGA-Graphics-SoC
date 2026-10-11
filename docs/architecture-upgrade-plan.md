@@ -1,6 +1,6 @@
 # FPGA parallel architecture upgrade plan
 
-Plan ID: **ARCH-UPGRADE-001**. Created October 10, 2026. Status: **Stage 0 terrain foundation verified; Stage 1 optional with measured regressions; Stage 2A verified and measured; Stage 2B deferred**.
+Plan ID: **ARCH-UPGRADE-001**. Created October 10, 2026. Status: **Stage 0 terrain foundation verified; Stage 1 optional with measured regressions; Stage 2A accepted; Stage 2B experimental/not promoted; Stage 3 optional upgrade verified and measured**.
 
 This is the reference plan for future architecture work. Read this file, `hardware-improvement-record.md`, and the latest accepted benchmark before implementing an upgrade. Update the execution ledger when work is measured and accepted. A stage number in this document refers specifically to ARCH-UPGRADE-001, not earlier game-port milestones.
 
@@ -51,7 +51,7 @@ flowchart LR
 
 This is the target topology, not an existing connection diagram. Command and geometry paths must use an explicit ordered scheduler; they cannot independently inject triangles into a shared FIFO. Frame begin, clear, draw and end remain ordered. CPU updates can overlap rendering only where buffer ownership and game-state dependencies permit; collision and camera must see the intended simulation state.
 
-## Stage 0 — Establish reproducible frame acceptance and counters
+## Stage 0 â€” Establish reproducible frame acceptance and counters
 
 **First executable task.** Preserve the current accepted source, SOF, firmware and asset hashes, then add deterministic input replay and frame capture before changing datapaths.
 
@@ -65,7 +65,7 @@ This is the target topology, not an existing connection diagram. Command and geo
 
 **Exit:** replay is repeatable, reference outputs archived, completed-frame snapshots agree on IDs, and ordinary unprofiled Mario is restored. If whole-frame differences are nondeterministic, resolve them before optimization.
 
-## Stage 1 — Make existing GPU terrain offload usable
+## Stage 1 â€” Make existing GPU terrain offload usable
 
 Start with the existing GPU rather than immediately duplicating transform hardware.
 
@@ -78,7 +78,7 @@ Start with the existing GPU rather than immediately duplicating transform hardwa
 
 **Exit:** original castle chunks actually use GPU drawing in controlled views, differential geometry/framebuffer checks pass, fallback still works, and a measured workload benefit outweighs upload/admission cost. If residency churn eliminates the benefit, record that outcome and keep direct rendering as default.
 
-## Stage 2 — Reduce CPU command transport work
+## Stage 2 â€” Reduce CPU command transport work
 
 ### 2A: Packed MMIO enqueue
 
@@ -107,7 +107,7 @@ After 2A has a measured result, add a proposed `rtl/gfx_command_dma.sv` and shar
 
 **Exit:** byte-for-byte transport equivalence under randomized backpressure, boundary/tail tests, loader/reset tests and physical readback pass. Accept only if total CPU/frame work improves; DMA may lose on small command buffers due to CPU packing and memory traffic.
 
-## Stage 3 — Overlap triangle setup with rasterization
+## Stage 3 â€” Overlap triangle setup with rasterization
 
 The current renderer owns setup, division, rasterization and drain in one state machine. Split setup into a producer and raster traversal into a consumer, with a ready/valid setup-record queue.
 
@@ -119,7 +119,7 @@ Setup for triangle N+1 may run while N rasterizes. Queue records remain stable u
 
 **Exit:** exact output equivalence at the established depth/fill conventions, reduced setup-induced raster idle cycles in suitable fixtures, and positive physical timing. A speedup in small-triangle fixtures is not automatically a game improvement.
 
-## Stage 4 — Two pixel lanes with banked depth and color memory
+## Stage 4 â€” Two pixel lanes with banked depth and color memory
 
 Add two adjacent-pixel lanes to one ordered triangle traversal. This is spatial parallelism within a triangle, not two independent triangles racing on the same framebuffer.
 
@@ -134,9 +134,9 @@ Add two adjacent-pixel lanes to one ordered triangle traversal. This is spatial 
 
 **Exit:** lane-boundary, single-pixel, overlapping/equal-depth, shared-edge, clear/reset/swap and randomized-backpressure tests pass; complete framebuffer/depth comparisons pass; measured raster cycles decrease in representative views without a harmful overall regression. Two lanes imply a possible pixel-rate increase, not a guaranteed twofold frame-rate increase. Four lanes are deferred until two-lane memory/timing results justify them.
 
-## Stage 5 — Optional independent math accelerator
+## Stage 5 â€” Optional independent math accelerator
 
-Reassess after stages 1–4. Choose one remaining measured bottleneck:
+Reassess after stages 1â€“4. Choose one remaining measured bottleneck:
 
 - A queued geometry worker for CPU-fallback transforms/outcodes or clipping, if substantial CPU geometry work remains after resident offload. Preserve the 16-bit fraction and exact interpolation semantics. Use the ownership/arbiter contracts above; keep ordered output assembly.
 - A skinning worker if animation becomes a significant frame cost. Inputs are generic joint transforms, bind-pose vertices and weights; output is a render-owned posed-vertex buffer. Preserve engine animation state and timing. The current one-matrix mesh path is not a replacement for skeletal skinning.
@@ -145,7 +145,7 @@ Do not implement both speculatively. Add a proposed `rtl/geometry_worker.sv` or 
 
 **Exit:** independently verified arithmetic, bounded descriptors, buffer/reset safety, and measured benefit including data movement. A second general-purpose CPU is deferred because software concurrency and shared-memory overhead remain unmeasured.
 
-## Stage 6 — Timing and frame-cadence reassessment
+## Stage 6 â€” Timing and frame-cadence reassessment
 
 Timing closure is mandatory at every earlier stage. This stage is a deliberate frequency/throughput experiment after useful parallelism exists.
 
@@ -176,9 +176,9 @@ Raw evidence naming: `docs/benchmarks/arch-upgrade-001-stage-N/`, with substage 
 | 1: usable terrain offload | Optional implementation verified; performance acceptance failed for both tested layouts | [Three-trial measurements](benchmarks/arch-upgrade-001-stage-1/measurements.json); original image/game restored | Reduce selection/admission cost and improve residency before promotion |
 | 2A: packed enqueue | Optional transport accepted; normal packed Mario loaded; full-frame terrain equivalence verified | Implementation 2f226d6; [results](architecture-stage-2a.md) | Ordinary standing update+render improves 0.864%; extend route coverage before changing global defaults |
 | 2B: command DMA | Experimental implementation verified; not promoted | Hardware 59a4d3a, local staging 40e4ee1; [results](architecture-stage-2b.md) | Final ordinary CPU update/render regresses 8.52%; packed Stage 2A image/game restored |
-| 3: overlapping setup | Not started | None | Compare setup idle cost and queue occupancy |
+| 3: overlapping setup | Optional upgrade accepted; selected Stage 3 image with normal packed Mario | Baseline 6153efa; implementation 2bf56dd / 8bb928c; [results](architecture-stage-3.md) | Exact 17-frame replay match; medium resident-mesh work before swap wait improves 2.176%; ordinary CPU/FPS unchanged; preserve this baseline for Stage 4 |
 | 4: two pixel lanes | Not started | None | Validate banking and hazard model before lane duplication |
 | 5: optional math worker | Deferred | None | Select only from updated profiles |
 | 6: timing/cadence | Deferred | Per-stage timing remains mandatory | Reassess after accepted parallel changes |
 
-Stage 2B staging measurement and implementation are complete. Staging-only savings did not transfer to the integrated game: final command-local DMA is 8.52% slower than packed in ordinary standing CPU update/render time, with FPS near 30. The accepted Stage 2A image and normal packed Mario are restored. Keep DMA experimental; measure lower-cost word/span serialization before further DMA hardware changes. Extend Stage 0 actor/transition/physical-route coverage, improve Stage 1 selection/admission economics, and measure Stage 3 setup/raster overlap independently. Do not combine geometry, transport and clock changes in an unseparated performance claim. Physical board measurements and deployment require one owner.
+Stage 2B staging measurement and implementation are complete. Staging-only savings did not transfer to the integrated game: final command-local DMA is 8.52% slower than packed in ordinary standing CPU update/render time, with FPS near 30. Stage 2A remains the selected transport; Stage 3 now adds optional setup/raster overlap with normal packed Mario. Keep DMA experimental; measure lower-cost word/span serialization before further DMA hardware changes. Extend Stage 0 actor/transition/physical-route coverage, improve Stage 1 selection/admission economics, and preserve the measured Stage 3 control/candidate artifacts before Stage 4 banking/lane work. Do not combine geometry, transport and clock changes in an unseparated performance claim. Physical board measurements and deployment require one owner.

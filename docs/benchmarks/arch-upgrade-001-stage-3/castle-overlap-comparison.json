@@ -1,0 +1,165 @@
+{
+  "submitted_triangles_equal": true,
+  "before_triangles": 1573,
+  "after_triangles": 1573,
+  "scope": "production shared-world terrain/controller; supplied camera matrices; actors and game-specific transition logic excluded",
+  "before": "build\\arch-stage2a\\castle-packed",
+  "after": "build\\arch-stage3\\castle-overlap",
+  "frames": [
+    {
+      "frame": 1,
+      "label": "grounds-camera-spawn",
+      "color.hex": {
+        "samples": 76800,
+        "differences": 0,
+        "before_sha256": "3c0eb25eca1e257ae1371f0c10440670637915189a57c2925e6c709496c91908",
+        "after_sha256": "3c0eb25eca1e257ae1371f0c10440670637915189a57c2925e6c709496c91908"
+      },
+      "depth.hex": {
+        "samples": 76800,
+        "differences": 0,
+        "before_sha256": "149252b02871cc1ad70767b49ce93045d523a9e6e6990780f904f76d99b2d79d",
+        "after_sha256": "149252b02871cc1ad70767b49ce93045d523a9e6e6990780f904f76d99b2d79d"
+      },
+      "palette.hex": {
+        "samples": 256,
+        "differences": 0,
+        "before_sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907",
+        "after_sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907"
+      }
+    },
+    {
+      "frame": 2,
+      "label": "grounds-camera-walk",
+      "color.hex": {
+        "samples": 76800,
+        "differences": 0,
+        "before_sha256": "d6d5965fea24e569303a2afb0ad52d9c8ff39a45b8699331e251448c4e993812",
+        "after_sha256": "d6d5965fea24e569303a2afb0ad52d9c8ff39a45b8699331e251448c4e993812"
+      },
+      "depth.hex": {
+        "samples": 76800,
+        "differences": 0,
+        "before_sha256": "f388f7a91250680be4066960160b0a2710996958327b8cbceb8d8e0e2fc0c072",
+        "after_sha256": "f388f7a91250680be4066960160b0a2710996958327b8cbceb8d8e0e2fc0c072"
+      },
+      "palette.hex": {
+        "samples": 256,
+        "differences": 0,
+        "before_sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907",
+        "after_sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907"
+      }
+    },
+    {
+      "frame": 3,
+      "label": "grounds-camera-jump",
+      "color.hex": {
+        "samples": 76800,
+        "differences": 0,
+        "before_sha256": "aeb385e24da1880a33719c22c0540f7ff896f8bc83e1e529f3f8c1c78cc68dfc",
+        "after_sha256": "aeb385e24da1880a33719c22c0540f7ff896f8bc83e1e529f3f8c1c78cc68dfc"
+      },
+      "depth.hex": {
+        "samples": 76800,
+        "differences": 0,
+        "before_sha256": "9f0dd7ffdd09ba9e57d4fdbd4f540bd2bcd55d4b5dfcb395364f925ee975e2ff",
+        "after_sha256": "9f0dd7ffdd09ba9e57d4fdbd4f540bd2bcd55d4b5dfcb395364f925ee975e2ff"
+      },
+      "palette.hex": {
+        "samples": 256,
+        "differences": 0,
+        "before_sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907",
+        "after_sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907"
+      }
+    },
+    {
+      "frame": 4,
+      "label": "interior-camera-1",
+      "color.hex": {
+        "samples": 76800,
+        "differences": 0,
+        "before_sha256": "99721f3a2e98de2b0c8835a6a9761367ecab9dd0fa15597ad977bf35a05a1e28",
+        "after_sha256": "99721f3a2e98de2b0c8835a6a9761367ecab9dd0fa15597ad977bf35a05a1e28"
+      },
+      "depth.hex": {
+        "samples": 76800,
+        "differences": 0,
+        "before_sha256": "662ee9c2468d2391da511b4d0493a9efdf929d33d77cfb8d087a63a363d0bf61",
+        "after_sha256": "662ee9c2468d2391da511b4d0493a9efdf929d33d77cfb8d087a63a363d0bf61"
+      },
+      "palette.hex": {
+        "samples": 256,
+        "differences": 0,
+        "before_sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907",
+        "after_sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907"
+      }
+    },
+    {
+      "frame": 5,
+      "label": "interior-camera-2",
+      "color.hex": {
+        "samples": 76800,
+        "differences": 0,
+        "before_sha256": "8fac48e3e627dfbbf9dae2499776ddba959df3378d82eba66d4eca73392b58b1",
+        "after_sha256": "8fac48e3e627dfbbf9dae2499776ddba959df3378d82eba66d4eca73392b58b1"
+      },
+      "depth.hex": {
+        "samples": 76800,
+        "differences": 0,
+        "before_sha256": "a64263ab2bb35b6daf242e7b6768427f0cad33e6c87c6cf9519ef993585ce0ba",
+        "after_sha256": "a64263ab2bb35b6daf242e7b6768427f0cad33e6c87c6cf9519ef993585ce0ba"
+      },
+      "palette.hex": {
+        "samples": 256,
+        "differences": 0,
+        "before_sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907",
+        "after_sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907"
+      }
+    },
+    {
+      "frame": 6,
+      "label": "interior-camera-3",
+      "color.hex": {
+        "samples": 76800,
+        "differences": 0,
+        "before_sha256": "92a00441809fdaef929fec46429399a90670f42f9e3b61806b59d83c831cb594",
+        "after_sha256": "92a00441809fdaef929fec46429399a90670f42f9e3b61806b59d83c831cb594"
+      },
+      "depth.hex": {
+        "samples": 76800,
+        "differences": 0,
+        "before_sha256": "987098518063727d1b3345a0a5b7d6b23dc2fd6f1072f88dfec9b6c91b3b446e",
+        "after_sha256": "987098518063727d1b3345a0a5b7d6b23dc2fd6f1072f88dfec9b6c91b3b446e"
+      },
+      "palette.hex": {
+        "samples": 256,
+        "differences": 0,
+        "before_sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907",
+        "after_sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907"
+      }
+    },
+    {
+      "frame": 7,
+      "label": "interior-camera-4",
+      "color.hex": {
+        "samples": 76800,
+        "differences": 0,
+        "before_sha256": "73cabaf3d528be256bcfe2ee68305c1aeb5394f7e76feacc01886b79bf3f4418",
+        "after_sha256": "73cabaf3d528be256bcfe2ee68305c1aeb5394f7e76feacc01886b79bf3f4418"
+      },
+      "depth.hex": {
+        "samples": 76800,
+        "differences": 0,
+        "before_sha256": "8773d761494ac1059413b37afb1f2dd60290a23d40b92d5070f077bfbf45a962",
+        "after_sha256": "8773d761494ac1059413b37afb1f2dd60290a23d40b92d5070f077bfbf45a962"
+      },
+      "palette.hex": {
+        "samples": 256,
+        "differences": 0,
+        "before_sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907",
+        "after_sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907"
+      }
+    }
+  ],
+  "exact": true
+}

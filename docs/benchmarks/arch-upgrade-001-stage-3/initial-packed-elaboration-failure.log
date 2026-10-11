@@ -1,0 +1,284 @@
++ C:\intelFPGA\18.1\modelsim_ase\win32aloem\vlog.EXE -work build\render-replay\simlib -sv -mfcu +incdir+C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated+C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\renderer\rtl\common+C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\sim\generated+C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\sim C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\pipeline_pkg.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\ALU.sv ... (74 more arguments)
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+Start time: 12:22:12 on Oct 11,2026
+vlog -work build\render-replay\simlib -sv -mfcu "+incdir+C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated+C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\renderer\rtl\common+C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\sim\generated+C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\sim" C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\pipeline_pkg.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\ALU.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\BranchUnit.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\ControlUnit.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\EX_MEM.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\ForwardingUnit.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\ForwardMux.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\HazardUnit.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\ID_EX.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\IF_ID.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\ImmGen.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\MEM_WB.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\Monitor.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\PC_IF.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\RegFile.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\ResultMux.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\verification\PipelineAssertions.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated\RV32I_SoC.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated\soc_ram.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated\soc_PC_IF.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated\soc_IF_ID.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated\soc_ID_EX.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated\soc_EX_MEM.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated\soc_MEM_WB.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated\soc_RegFile.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated\soc_PipelineAssertions.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\sdram_capture_clock.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\sdram_controller.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\sdram_bridge.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\sdram_cache.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\gfx_command_dma.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\sdram_command_arbiter.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\udp_memory_loader.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\soc_alu.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated\soc_ControlUnit.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\soc_cpu_counters.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\soc_mmio.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\soc_memory.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\renderer\rtl\command\graphics_command_stream_decoder.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\renderer\rtl\network\async_byte_fifo.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\renderer\rtl\network\async_fifo.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\renderer\rtl\network\ethernet_command_receiver.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\renderer\rtl\network\mii_arp_responder.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\renderer\rtl\network\mii_response_transmitter.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\renderer\rtl\network\mii_udp_receiver.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\udp_controls.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated\palette_ip.v C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated\graphics_command_processor.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated\graphics_command_stream_decoder.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated\graphics_pipeline.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated\graphics_renderer_core.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated\graphics_stream_renderer.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated\indexed_mesh_store.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated\renderer.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated\transform_3d_pipeline.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated\renderer_serial.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated\triangle_setup_engine.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated\renderer_overlap.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\renderer\rtl\common\iterative_signed_divider.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\renderer\rtl\pipeline\depth_test_stage.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\renderer\rtl\pipeline\render_performance_counters.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\renderer\rtl\pipeline\triangle_fifo.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\renderer\rtl\pipeline\view_transform_stage.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\renderer\rtl\memory\framebuffer.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\renderer\rtl\memory\framebuffer_ip.v C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\renderer\rtl\memory\zbuffer.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\renderer\rtl\memory\zbuffer_ip.v C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\renderer\rtl\video\vga_controller.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\renderer\rtl\video\vga_page_swap_controller.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\renderer\rtl\video\vga_pll.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\renderer\rtl\video\vga_timing.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\soc_top.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\boards\de2_115_soc_top.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\sim\sdram_device_model.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\sim\render_frame_replay_tb.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\sim\packed_render_replay_tb.sv 
+-- Compiling package pipeline_pkg
+** Warning: C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\ALU.sv(1): (vlog-13233) Design unit "pipeline_pkg_sv_unit" already exists and will be overwritten. Overwriting SystemVerilog $unit with different source files.
+-- Compiling package pipeline_pkg_sv_unit
+-- Importing package pipeline_pkg
+-- Compiling module ALU
+-- Compiling module BranchUnit
+-- Compiling module ControlUnit
+-- Compiling module EX_MEM
+-- Compiling module ForwardingUnit
+-- Compiling module ForwardMux
+-- Compiling module HazardUnit
+-- Compiling module ID_EX
+-- Compiling module IF_ID
+-- Compiling module ImmGen
+-- Compiling module MEM_WB
+-- Compiling module Monitor
+-- Compiling module PC_IF
+-- Compiling module RegFile
+-- Compiling module ResultMux
+-- Compiling module PipelineAssertions
+-- Compiling module RV32I_SoC
+-- Compiling module soc_ram
+-- Compiling module soc_PC_IF
+-- Compiling module soc_IF_ID
+-- Compiling module soc_ID_EX
+-- Compiling module soc_EX_MEM
+-- Compiling module soc_MEM_WB
+-- Compiling module soc_RegFile
+-- Compiling module soc_PipelineAssertions
+-- Compiling module sdram_capture_clock
+-- Compiling module sdram_controller
+-- Compiling module sdram_bridge
+-- Compiling module sdram_cache
+-- Compiling module gfx_command_dma
+-- Compiling module sdram_command_arbiter
+-- Compiling module udp_memory_loader
+-- Compiling module soc_ALU
+-- Compiling module soc_ControlUnit
+-- Compiling module soc_cpu_counters
+-- Compiling module soc_mmio
+** Warning: C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\soc_mmio.sv(214): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\soc_mmio.sv(215): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\soc_mmio.sv(216): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\soc_mmio.sv(217): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+-- Compiling module soc_memory
+-- Compiling module graphics_command_stream_decoder
+-- Compiling module async_byte_fifo
+-- Compiling module async_fifo
+-- Compiling module ethernet_command_receiver
+-- Compiling module mii_arp_responder
+-- Compiling module mii_response_transmitter
+-- Compiling module mii_udp_receiver
+-- Compiling module udp_controls
+-- Compiling module palette_256x24
+-- Compiling module graphics_command_processor
+-- Compiling module graphics_command_stream_decoder
+-- Compiling module graphics_pipeline
+-- Compiling module graphics_renderer_core
+-- Compiling module graphics_stream_renderer
+-- Compiling module indexed_mesh_store
+-- Compiling module renderer
+-- Compiling module transform_3d_pipeline
+-- Compiling module renderer_serial
+-- Compiling module triangle_setup_engine
+-- Compiling module renderer_overlap
+-- Compiling module iterative_signed_divider
+-- Compiling module depth_test_stage
+-- Compiling module render_performance_counters
+-- Compiling module triangle_fifo
+-- Compiling module view_transform_stage
+-- Compiling module framebuffer
+-- Compiling module framebuffer_320x240_8bit
+-- Compiling module zbuffer
+-- Compiling module zbuffer_320x240_8bit
+-- Compiling module vga_controller_640x480
+-- Compiling module vga_page_swap_controller
+-- Compiling module vga_pll
+-- Compiling module vga_timing_640x480
+-- Compiling module soc_top
+-- Compiling module de2_115_soc_top
+-- Compiling module sdram_device_model
+-- Compiling module render_frame_replay_tb
+-- Compiling module packed_render_replay_tb
+
+Top level modules:
+	ControlUnit
+	EX_MEM
+	ID_EX
+	IF_ID
+	MEM_WB
+	PC_IF
+	RegFile
+	PipelineAssertions
+	mii_arp_responder
+	de2_115_soc_top
+	sdram_device_model
+	packed_render_replay_tb
+End time: 12:22:12 on Oct 11,2026, Elapsed time: 0:00:00
+Errors: 0, Warnings: 5
++ C:\intelFPGA\18.1\modelsim_ase\win32aloem\vsim.EXE -c -L altera_mf -lib build\render-replay\simlib packed_render_replay_tb -do onerror {quit -code 1}; run -all; quit -code 0
+Reading C:/intelFPGA/18.1/modelsim_ase/tcl/vsim/pref.tcl
+
+# 10.5b
+
+# vsim -c -L altera_mf -lib build\render-replay\simlib packed_render_replay_tb -do "onerror {quit -code 1}; run -all; quit -code 0" 
+# Start time: 12:22:13 on Oct 11,2026
+# Loading sv_std.std
+# Loading build\render-replay\simlib.pipeline_pkg
+# Loading build\render-replay\simlib.pipeline_pkg_sv_unit
+# Loading build\render-replay\simlib.packed_render_replay_tb
+# Loading build\render-replay\simlib.render_frame_replay_tb
+# Loading build\render-replay\simlib.graphics_stream_renderer
+# Loading build\render-replay\simlib.graphics_command_stream_decoder
+# Loading build\render-replay\simlib.graphics_renderer_core
+# Loading build\render-replay\simlib.graphics_command_processor
+# Loading build\render-replay\simlib.indexed_mesh_store
+# Loading build\render-replay\simlib.graphics_pipeline
+# Loading build\render-replay\simlib.vga_pll
+# Loading build\render-replay\simlib.triangle_fifo
+# Loading build\render-replay\simlib.view_transform_stage
+# Loading build\render-replay\simlib.transform_3d_pipeline
+# Loading build\render-replay\simlib.iterative_signed_divider
+# Loading build\render-replay\simlib.renderer
+# Loading build\render-replay\simlib.render_performance_counters
+# Loading build\render-replay\simlib.zbuffer
+# Loading build\render-replay\simlib.zbuffer_320x240_8bit
+# Loading build\render-replay\simlib.vga_controller_640x480
+# Loading build\render-replay\simlib.vga_timing_640x480
+# Loading build\render-replay\simlib.vga_page_swap_controller
+# Loading build\render-replay\simlib.framebuffer
+# Loading build\render-replay\simlib.framebuffer_320x240_8bit
+# Loading build\render-replay\simlib.palette_256x24
+# Loading build\render-replay\simlib.renderer_serial
+# Loading build\render-replay\simlib.depth_test_stage
+# Loading build\render-replay\simlib.soc_mmio
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading altera_mf.altera_common_conversion(body)
+# Loading altera_mf.altera_device_families(body)
+# Loading altera_mf.altsyncram(translated)
+# ** Error: (vsim-3043) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/render_frame_replay_tb.sv(115): Unresolved reference to 'dma_source'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/render_frame_replay_tb.sv
+# ** Warning: (vsim-3017) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/render_frame_replay_tb.sv(38): [TFMPC] - Too few port connections. Expected 38, found 24.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/packed_source/input_fifo File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/soc_mmio.sv
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/render_frame_replay_tb.sv(38): [TFMPC] - Missing connection for port 'dma_busy'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/render_frame_replay_tb.sv(38): [TFMPC] - Missing connection for port 'dma_byte_valid'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/render_frame_replay_tb.sv(38): [TFMPC] - Missing connection for port 'dma_byte_data'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/render_frame_replay_tb.sv(38): [TFMPC] - Missing connection for port 'dma_error_code'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/render_frame_replay_tb.sv(38): [TFMPC] - Missing connection for port 'dma_completed_id'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/render_frame_replay_tb.sv(38): [TFMPC] - Missing connection for port 'dma_bytes_sent'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/render_frame_replay_tb.sv(38): [TFMPC] - Missing connection for port 'dma_read_words'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/render_frame_replay_tb.sv(38): [TFMPC] - Missing connection for port 'dma_request_wait'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/render_frame_replay_tb.sv(38): [TFMPC] - Missing connection for port 'dma_fifo_wait'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/render_frame_replay_tb.sv(38): [TFMPC] - Missing connection for port 'dma_byte_accepted'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/render_frame_replay_tb.sv(38): [TFMPC] - Missing connection for port 'dma_start'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/render_frame_replay_tb.sv(38): [TFMPC] - Missing connection for port 'dma_source'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/render_frame_replay_tb.sv(38): [TFMPC] - Missing connection for port 'dma_length'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/render_frame_replay_tb.sv(38): [TFMPC] - Missing connection for port 'dma_submission_id'.
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/zbuffer_ip.v(28): [TFMPC] - Missing Verilog connection for formal VHDL port 'wren_b'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/depth_memory/zbuffer_ram/zbuffer_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/zbuffer_ip.v(28): [TFMPC] - Missing Verilog connection for formal VHDL port 'rden_a'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/depth_memory/zbuffer_ram/zbuffer_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/zbuffer_ip.v(28): [TFMPC] - Missing Verilog connection for formal VHDL port 'data_b'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/depth_memory/zbuffer_ram/zbuffer_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/zbuffer_ip.v(28): [TFMPC] - Missing Verilog connection for formal VHDL port 'clocken2'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/depth_memory/zbuffer_ram/zbuffer_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/zbuffer_ip.v(28): [TFMPC] - Missing Verilog connection for formal VHDL port 'clocken3'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/depth_memory/zbuffer_ram/zbuffer_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/zbuffer_ip.v(28): [TFMPC] - Missing Verilog connection for formal VHDL port 'aclr0'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/depth_memory/zbuffer_ram/zbuffer_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/zbuffer_ip.v(28): [TFMPC] - Missing Verilog connection for formal VHDL port 'aclr1'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/depth_memory/zbuffer_ram/zbuffer_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/zbuffer_ip.v(28): [TFMPC] - Missing Verilog connection for formal VHDL port 'addressstall_a'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/depth_memory/zbuffer_ram/zbuffer_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/zbuffer_ip.v(28): [TFMPC] - Missing Verilog connection for formal VHDL port 'addressstall_b'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/depth_memory/zbuffer_ram/zbuffer_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/zbuffer_ip.v(28): [TFMPC] - Missing Verilog connection for formal VHDL port 'byteena_a'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/depth_memory/zbuffer_ram/zbuffer_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/zbuffer_ip.v(28): [TFMPC] - Missing Verilog connection for formal VHDL port 'byteena_b'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/depth_memory/zbuffer_ram/zbuffer_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/zbuffer_ip.v(28): [TFMPC] - Missing Verilog connection for formal VHDL port 'q_a'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/depth_memory/zbuffer_ram/zbuffer_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/zbuffer_ip.v(28): [TFMPC] - Missing Verilog connection for formal VHDL port 'eccstatus'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/depth_memory/zbuffer_ram/zbuffer_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/framebuffer_ip.v(28): [TFMPC] - Missing Verilog connection for formal VHDL port 'wren_b'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/display/framebuffer0/framebuffer_ram/framebuffer_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/framebuffer_ip.v(28): [TFMPC] - Missing Verilog connection for formal VHDL port 'rden_a'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/display/framebuffer0/framebuffer_ram/framebuffer_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/framebuffer_ip.v(28): [TFMPC] - Missing Verilog connection for formal VHDL port 'data_b'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/display/framebuffer0/framebuffer_ram/framebuffer_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/framebuffer_ip.v(28): [TFMPC] - Missing Verilog connection for formal VHDL port 'clocken2'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/display/framebuffer0/framebuffer_ram/framebuffer_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/framebuffer_ip.v(28): [TFMPC] - Missing Verilog connection for formal VHDL port 'clocken3'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/display/framebuffer0/framebuffer_ram/framebuffer_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/framebuffer_ip.v(28): [TFMPC] - Missing Verilog connection for formal VHDL port 'aclr0'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/display/framebuffer0/framebuffer_ram/framebuffer_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/framebuffer_ip.v(28): [TFMPC] - Missing Verilog connection for formal VHDL port 'aclr1'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/display/framebuffer0/framebuffer_ram/framebuffer_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/framebuffer_ip.v(28): [TFMPC] - Missing Verilog connection for formal VHDL port 'addressstall_a'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/display/framebuffer0/framebuffer_ram/framebuffer_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/framebuffer_ip.v(28): [TFMPC] - Missing Verilog connection for formal VHDL port 'addressstall_b'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/display/framebuffer0/framebuffer_ram/framebuffer_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/framebuffer_ip.v(28): [TFMPC] - Missing Verilog connection for formal VHDL port 'byteena_a'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/display/framebuffer0/framebuffer_ram/framebuffer_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/framebuffer_ip.v(28): [TFMPC] - Missing Verilog connection for formal VHDL port 'byteena_b'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/display/framebuffer0/framebuffer_ram/framebuffer_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/framebuffer_ip.v(28): [TFMPC] - Missing Verilog connection for formal VHDL port 'q_a'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/display/framebuffer0/framebuffer_ram/framebuffer_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/framebuffer_ip.v(28): [TFMPC] - Missing Verilog connection for formal VHDL port 'eccstatus'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/display/framebuffer0/framebuffer_ram/framebuffer_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/framebuffer_ip.v(28): [TFMPC] - Missing Verilog connection for formal VHDL port 'wren_b'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/display/framebuffer1/framebuffer_ram/framebuffer_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/framebuffer_ip.v(28): [TFMPC] - Missing Verilog connection for formal VHDL port 'rden_a'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/display/framebuffer1/framebuffer_ram/framebuffer_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/framebuffer_ip.v(28): [TFMPC] - Missing Verilog connection for formal VHDL port 'data_b'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/display/framebuffer1/framebuffer_ram/framebuffer_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/framebuffer_ip.v(28): [TFMPC] - Missing Verilog connection for formal VHDL port 'clocken2'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/display/framebuffer1/framebuffer_ram/framebuffer_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/framebuffer_ip.v(28): [TFMPC] - Missing Verilog connection for formal VHDL port 'clocken3'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/display/framebuffer1/framebuffer_ram/framebuffer_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/framebuffer_ip.v(28): [TFMPC] - Missing Verilog connection for formal VHDL port 'aclr0'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/display/framebuffer1/framebuffer_ram/framebuffer_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/framebuffer_ip.v(28): [TFMPC] - Missing Verilog connection for formal VHDL port 'aclr1'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/display/framebuffer1/framebuffer_ram/framebuffer_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/framebuffer_ip.v(28): [TFMPC] - Missing Verilog connection for formal VHDL port 'addressstall_a'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/display/framebuffer1/framebuffer_ram/framebuffer_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/framebuffer_ip.v(28): [TFMPC] - Missing Verilog connection for formal VHDL port 'addressstall_b'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/display/framebuffer1/framebuffer_ram/framebuffer_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/framebuffer_ip.v(28): [TFMPC] - Missing Verilog connection for formal VHDL port 'byteena_a'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/display/framebuffer1/framebuffer_ram/framebuffer_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/framebuffer_ip.v(28): [TFMPC] - Missing Verilog connection for formal VHDL port 'byteena_b'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/display/framebuffer1/framebuffer_ram/framebuffer_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/framebuffer_ip.v(28): [TFMPC] - Missing Verilog connection for formal VHDL port 'q_a'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/display/framebuffer1/framebuffer_ram/framebuffer_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/framebuffer_ip.v(28): [TFMPC] - Missing Verilog connection for formal VHDL port 'eccstatus'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/display/framebuffer1/framebuffer_ram/framebuffer_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/palette_ip.v(32): [TFMPC] - Missing Verilog connection for formal VHDL port 'wren_b'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/display/palette/palette_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/palette_ip.v(32): [TFMPC] - Missing Verilog connection for formal VHDL port 'rden_a'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/display/palette/palette_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/palette_ip.v(32): [TFMPC] - Missing Verilog connection for formal VHDL port 'data_b'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/display/palette/palette_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/palette_ip.v(32): [TFMPC] - Missing Verilog connection for formal VHDL port 'clocken2'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/display/palette/palette_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/palette_ip.v(32): [TFMPC] - Missing Verilog connection for formal VHDL port 'clocken3'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/display/palette/palette_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/palette_ip.v(32): [TFMPC] - Missing Verilog connection for formal VHDL port 'aclr0'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/display/palette/palette_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/palette_ip.v(32): [TFMPC] - Missing Verilog connection for formal VHDL port 'aclr1'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/display/palette/palette_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/palette_ip.v(32): [TFMPC] - Missing Verilog connection for formal VHDL port 'addressstall_a'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/display/palette/palette_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/palette_ip.v(32): [TFMPC] - Missing Verilog connection for formal VHDL port 'addressstall_b'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/display/palette/palette_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/palette_ip.v(32): [TFMPC] - Missing Verilog connection for formal VHDL port 'byteena_a'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/display/palette/palette_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/palette_ip.v(32): [TFMPC] - Missing Verilog connection for formal VHDL port 'byteena_b'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/display/palette/palette_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/palette_ip.v(32): [TFMPC] - Missing Verilog connection for formal VHDL port 'q_a'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/display/palette/palette_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/palette_ip.v(32): [TFMPC] - Missing Verilog connection for formal VHDL port 'eccstatus'.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_render_replay_tb/replay/dut/renderer/pipeline/display/palette/palette_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# Error loading design
+Error loading design
+# End time: 12:22:14 on Oct 11,2026, Elapsed time: 0:00:01
+# Errors: 1, Warnings: 67
+ERROR: Command '['C:\\intelFPGA\\18.1\\modelsim_ase\\win32aloem\\vsim.EXE', '-c', '-L', 'altera_mf', '-lib', 'build\\render-replay\\simlib', 'packed_render_replay_tb', '-do', 'onerror {quit -code 1}; run -all; quit -code 0']' returned non-zero exit status 12.
+
+Traceback (most recent call last):
+  File "C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\scripts\replay_render_route.py", line 152, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\scripts\replay_render_route.py", line 147, in main
+    subprocess.run([__import__('sys').executable,'scripts/soc.py','sim','--full','--simulator','modelsim','--tests','dma_render_replay_tb' if a.dma else 'packed_render_replay_tb' if a.packed_mmio else 'render_frame_replay_tb','--work-dir','build/render-replay/simlib']+(['--setup-overlap'] if a.setup_overlap else []),cwd=ROOT,env=env,check=True)
+  File "C:\Users\Orb1t\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['C:\\Users\\Orb1t\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe', 'scripts/soc.py', 'sim', '--full', '--simulator', 'modelsim', '--tests', 'packed_render_replay_tb', '--work-dir', 'build/render-replay/simlib']' returned non-zero exit status 1.

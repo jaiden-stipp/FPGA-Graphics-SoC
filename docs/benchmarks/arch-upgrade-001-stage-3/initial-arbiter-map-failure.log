@@ -1,0 +1,414 @@
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+    Info: Copyright (C) 2018  Intel Corporation. All rights reserved.
+    Info: Your use of Intel Corporation's design tools, logic functions 
+    Info: and other software and tools, and its AMPP partner logic 
+    Info: functions, and any output files from any of the foregoing 
+    Info: (including device programming or simulation files), and any 
+    Info: associated documentation or information are expressly subject 
+    Info: to the terms and conditions of the Intel Program License 
+    Info: Subscription Agreement, the Intel Quartus Prime License Agreement,
+    Info: the Intel FPGA IP License Agreement, or other applicable license
+    Info: agreement, including, without limitation, that your use is for
+    Info: the sole purpose of programming logic devices manufactured by
+    Info: Intel and sold by Intel or its authorized distributors.  Please
+    Info: refer to the applicable agreement for further details.
+    Info: Processing started: Sun Oct 11 12:21:13 2026
+Info: Command: quartus_map ArchStage3SerialSoC
+Info (20032): Parallel compilation is enabled and will use up to 4 processors
+Info (12021): Found 1 design units, including 0 entities, in source file external/rv32i/5-stage-pipeline/pipeline_pkg.sv
+    Info (12022): Found design unit 1: pipeline_pkg (SystemVerilog) File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/rv32i/5-Stage-Pipeline/pipeline_pkg.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file external/rv32i/5-stage-pipeline/alu.sv
+    Info (12023): Found entity 1: ALU File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/rv32i/5-Stage-Pipeline/ALU.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file external/rv32i/5-stage-pipeline/branchunit.sv
+    Info (12023): Found entity 1: BranchUnit File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/rv32i/5-Stage-Pipeline/BranchUnit.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file external/rv32i/5-stage-pipeline/controlunit.sv
+    Info (12023): Found entity 1: ControlUnit File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/rv32i/5-Stage-Pipeline/ControlUnit.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file external/rv32i/5-stage-pipeline/ex_mem.sv
+    Info (12023): Found entity 1: EX_MEM File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/rv32i/5-Stage-Pipeline/EX_MEM.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file external/rv32i/5-stage-pipeline/forwardingunit.sv
+    Info (12023): Found entity 1: ForwardingUnit File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/rv32i/5-Stage-Pipeline/ForwardingUnit.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file external/rv32i/5-stage-pipeline/forwardmux.sv
+    Info (12023): Found entity 1: ForwardMux File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/rv32i/5-Stage-Pipeline/ForwardMux.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file external/rv32i/5-stage-pipeline/hazardunit.sv
+    Info (12023): Found entity 1: HazardUnit File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/rv32i/5-Stage-Pipeline/HazardUnit.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file external/rv32i/5-stage-pipeline/id_ex.sv
+    Info (12023): Found entity 1: ID_EX File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/rv32i/5-Stage-Pipeline/ID_EX.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file external/rv32i/5-stage-pipeline/if_id.sv
+    Info (12023): Found entity 1: IF_ID File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/rv32i/5-Stage-Pipeline/IF_ID.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file external/rv32i/5-stage-pipeline/immgen.sv
+    Info (12023): Found entity 1: ImmGen File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/rv32i/5-Stage-Pipeline/ImmGen.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file external/rv32i/5-stage-pipeline/mem_wb.sv
+    Info (12023): Found entity 1: MEM_WB File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/rv32i/5-Stage-Pipeline/MEM_WB.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file external/rv32i/5-stage-pipeline/monitor.sv
+    Info (12023): Found entity 1: Monitor File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/rv32i/5-Stage-Pipeline/Monitor.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file external/rv32i/5-stage-pipeline/pc_if.sv
+    Info (12023): Found entity 1: PC_IF File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/rv32i/5-Stage-Pipeline/PC_IF.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file external/rv32i/5-stage-pipeline/regfile.sv
+    Info (12023): Found entity 1: RegFile File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/rv32i/5-Stage-Pipeline/RegFile.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file external/rv32i/5-stage-pipeline/resultmux.sv
+    Info (12023): Found entity 1: ResultMux File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/rv32i/5-Stage-Pipeline/ResultMux.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file external/rv32i/5-stage-pipeline/verification/pipelineassertions.sv
+    Info (12023): Found entity 1: PipelineAssertions File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/rv32i/5-Stage-Pipeline/verification/PipelineAssertions.sv Line: 5
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/generated/rv32i_soc.sv
+    Info (12023): Found entity 1: RV32I_SoC File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/RV32I_SoC.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/generated/soc_ram.sv
+    Info (12023): Found entity 1: soc_ram File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/soc_ram.sv Line: 9
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/generated/soc_pc_if.sv
+    Info (12023): Found entity 1: soc_PC_IF File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/soc_PC_IF.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/generated/soc_if_id.sv
+    Info (12023): Found entity 1: soc_IF_ID File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/soc_IF_ID.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/generated/soc_id_ex.sv
+    Info (12023): Found entity 1: soc_ID_EX File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/soc_ID_EX.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/generated/soc_ex_mem.sv
+    Info (12023): Found entity 1: soc_EX_MEM File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/soc_EX_MEM.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/generated/soc_mem_wb.sv
+    Info (12023): Found entity 1: soc_MEM_WB File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/soc_MEM_WB.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/generated/soc_regfile.sv
+    Info (12023): Found entity 1: soc_RegFile File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/soc_RegFile.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/generated/soc_pipelineassertions.sv
+    Info (12023): Found entity 1: soc_PipelineAssertions File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/soc_PipelineAssertions.sv Line: 5
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/sdram_capture_clock.sv
+    Info (12023): Found entity 1: sdram_capture_clock File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/sdram_capture_clock.sv Line: 4
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/sdram_controller.sv
+    Info (12023): Found entity 1: sdram_controller File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/sdram_controller.sv Line: 5
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/sdram_bridge.sv
+    Info (12023): Found entity 1: sdram_bridge File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/sdram_bridge.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/udp_memory_loader.sv
+    Info (12023): Found entity 1: udp_memory_loader File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/udp_memory_loader.sv Line: 4
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/soc_mmio.sv
+    Info (12023): Found entity 1: soc_mmio File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/soc_mmio.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/soc_memory.sv
+    Info (12023): Found entity 1: soc_memory File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/soc_memory.sv Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/generated/graphics_command_stream_decoder.sv
+    Info (12023): Found entity 1: graphics_command_stream_decoder File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/graphics_command_stream_decoder.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file external/renderer/rtl/network/async_byte_fifo.sv
+    Info (12023): Found entity 1: async_byte_fifo File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/network/async_byte_fifo.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file external/renderer/rtl/network/async_fifo.sv
+    Info (12023): Found entity 1: async_fifo File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/network/async_fifo.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file external/renderer/rtl/network/ethernet_command_receiver.sv
+    Info (12023): Found entity 1: ethernet_command_receiver File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/network/ethernet_command_receiver.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file external/renderer/rtl/network/mii_arp_responder.sv
+    Info (12023): Found entity 1: mii_arp_responder File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/network/mii_arp_responder.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file external/renderer/rtl/network/mii_response_transmitter.sv
+    Info (12023): Found entity 1: mii_response_transmitter File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/network/mii_response_transmitter.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file external/renderer/rtl/network/mii_udp_receiver.sv
+    Info (12023): Found entity 1: mii_udp_receiver File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/network/mii_udp_receiver.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/udp_controls.sv
+    Info (12023): Found entity 1: udp_controls File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/udp_controls.sv Line: 4
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/generated/palette_ip.v
+    Info (12023): Found entity 1: palette_256x24 File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/palette_ip.v Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/generated/graphics_pipeline.sv
+    Info (12023): Found entity 1: graphics_pipeline File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/graphics_pipeline.sv Line: 5
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/generated/graphics_renderer_core.sv
+    Info (12023): Found entity 1: graphics_renderer_core File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/graphics_renderer_core.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/generated/graphics_stream_renderer.sv
+    Info (12023): Found entity 1: graphics_stream_renderer File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/graphics_stream_renderer.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file external/renderer/rtl/common/iterative_signed_divider.sv
+    Info (12023): Found entity 1: iterative_signed_divider File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/common/iterative_signed_divider.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/generated/graphics_command_processor.sv
+    Info (12023): Found entity 1: graphics_command_processor File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/graphics_command_processor.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file external/renderer/rtl/pipeline/depth_test_stage.sv
+    Info (12023): Found entity 1: depth_test_stage File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/depth_test_stage.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/generated/indexed_mesh_store.sv
+    Info (12023): Found entity 1: indexed_mesh_store File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/indexed_mesh_store.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file external/renderer/rtl/pipeline/render_performance_counters.sv
+    Info (12023): Found entity 1: render_performance_counters File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/render_performance_counters.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/generated/renderer.sv
+    Info (12023): Found entity 1: renderer File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/renderer.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/generated/transform_3d_pipeline.sv
+    Info (12023): Found entity 1: transform_3d_pipeline File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/transform_3d_pipeline.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file external/renderer/rtl/pipeline/triangle_fifo.sv
+    Info (12023): Found entity 1: triangle_fifo File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/triangle_fifo.sv Line: 5
+Info (12021): Found 1 design units, including 1 entities, in source file external/renderer/rtl/pipeline/view_transform_stage.sv
+    Info (12023): Found entity 1: view_transform_stage File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/view_transform_stage.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file external/renderer/rtl/memory/framebuffer.sv
+    Info (12023): Found entity 1: framebuffer File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/framebuffer.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file external/renderer/rtl/memory/framebuffer_ip.v
+    Info (12023): Found entity 1: framebuffer_320x240_8bit File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/framebuffer_ip.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file external/renderer/rtl/memory/zbuffer.sv
+    Info (12023): Found entity 1: zbuffer File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/zbuffer.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file external/renderer/rtl/memory/zbuffer_ip.v
+    Info (12023): Found entity 1: zbuffer_320x240_8bit File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/zbuffer_ip.v Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file external/renderer/rtl/video/vga_controller.sv
+    Info (12023): Found entity 1: vga_controller_640x480 File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/video/vga_controller.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file external/renderer/rtl/video/vga_page_swap_controller.sv
+    Info (12023): Found entity 1: vga_page_swap_controller File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/video/vga_page_swap_controller.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file external/renderer/rtl/video/vga_pll.sv
+    Info (12023): Found entity 1: vga_pll File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/video/vga_pll.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file external/renderer/rtl/video/vga_timing.sv
+    Info (12023): Found entity 1: vga_timing_640x480 File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/video/vga_timing.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/soc_top.sv
+    Info (12023): Found entity 1: soc_top File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/soc_top.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/boards/de2_115_soc_top.sv
+    Info (12023): Found entity 1: de2_115_soc_top File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/boards/de2_115_soc_top.sv Line: 1
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/sdram_cache.sv
+    Info (12023): Found entity 1: sdram_cache File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/sdram_cache.sv Line: 4
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/soc_cpu_counters.sv
+    Info (12023): Found entity 1: soc_cpu_counters File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/soc_cpu_counters.sv Line: 2
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/soc_alu.sv
+    Info (12023): Found entity 1: soc_ALU File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/soc_alu.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/generated/soc_controlunit.sv
+    Info (12023): Found entity 1: soc_ControlUnit File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/soc_ControlUnit.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/generated/renderer_serial.sv
+    Info (12023): Found entity 1: renderer_serial File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/renderer_serial.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/generated/triangle_setup_engine.sv
+    Info (12023): Found entity 1: triangle_setup_engine File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/triangle_setup_engine.sv Line: 3
+Info (12021): Found 1 design units, including 1 entities, in source file rtl/generated/renderer_overlap.sv
+    Info (12023): Found entity 1: renderer_overlap File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/renderer_overlap.sv Line: 3
+Info (12127): Elaborating entity "de2_115_soc_top" for the top level hierarchy
+Info (12128): Elaborating entity "udp_controls" for hierarchy "udp_controls:controls" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/boards/de2_115_soc_top.sv Line: 61
+Info (12128): Elaborating entity "udp_memory_loader" for hierarchy "udp_controls:controls|udp_memory_loader:loader" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/udp_controls.sv Line: 39
+Info (12128): Elaborating entity "ethernet_command_receiver" for hierarchy "udp_controls:controls|ethernet_command_receiver:ethernet" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/udp_controls.sv Line: 61
+Info (12128): Elaborating entity "mii_udp_receiver" for hierarchy "udp_controls:controls|ethernet_command_receiver:ethernet|mii_udp_receiver:receiver" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/network/ethernet_command_receiver.sv Line: 105
+Info (12128): Elaborating entity "async_fifo" for hierarchy "udp_controls:controls|ethernet_command_receiver:ethernet|async_fifo:arp_response_queue" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/network/ethernet_command_receiver.sv Line: 142
+Info (12128): Elaborating entity "async_fifo" for hierarchy "udp_controls:controls|ethernet_command_receiver:ethernet|async_fifo:packet_response_queue" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/network/ethernet_command_receiver.sv Line: 156
+Info (12128): Elaborating entity "async_fifo" for hierarchy "udp_controls:controls|ethernet_command_receiver:ethernet|async_fifo:frame_response_queue" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/network/ethernet_command_receiver.sv Line: 170
+Info (12128): Elaborating entity "mii_response_transmitter" for hierarchy "udp_controls:controls|ethernet_command_receiver:ethernet|mii_response_transmitter:response_transmitter" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/network/ethernet_command_receiver.sv Line: 201
+Info (12128): Elaborating entity "async_byte_fifo" for hierarchy "udp_controls:controls|ethernet_command_receiver:ethernet|async_byte_fifo:receive_fifo" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/network/ethernet_command_receiver.sv Line: 217
+Info (12128): Elaborating entity "async_fifo" for hierarchy "udp_controls:controls|ethernet_command_receiver:ethernet|async_byte_fifo:receive_fifo|async_fifo:fifo" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/network/async_byte_fifo.sv Line: 32
+Info (12128): Elaborating entity "graphics_command_stream_decoder" for hierarchy "udp_controls:controls|ethernet_command_receiver:ethernet|graphics_command_stream_decoder:decoder" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/network/ethernet_command_receiver.sv Line: 229
+Info (10264): Verilog HDL Case Statement information at graphics_command_stream_decoder.sv(162): all case item expressions in this case statement are onehot File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/graphics_command_stream_decoder.sv Line: 162
+Info (12128): Elaborating entity "soc_top" for hierarchy "soc_top:soc" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/boards/de2_115_soc_top.sv Line: 77
+Info (12128): Elaborating entity "RV32I_SoC" for hierarchy "soc_top:soc|RV32I_SoC:cpu" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/soc_top.sv Line: 54
+Warning (10036): Verilog HDL or VHDL warning at RV32I_SoC.sv(84): object "halt" assigned a value but never read File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/RV32I_SoC.sv Line: 84
+Warning (10036): Verilog HDL or VHDL warning at RV32I_SoC.sv(262): object "misaligned" assigned a value but never read File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/RV32I_SoC.sv Line: 262
+Warning (10036): Verilog HDL or VHDL warning at RV32I_SoC.sv(262): object "mem_write_performed" assigned a value but never read File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/RV32I_SoC.sv Line: 262
+Info (12128): Elaborating entity "soc_cpu_counters" for hierarchy "soc_top:soc|RV32I_SoC:cpu|soc_cpu_counters:performance" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/RV32I_SoC.sv Line: 42
+Info (12128): Elaborating entity "soc_PC_IF" for hierarchy "soc_top:soc|RV32I_SoC:cpu|soc_PC_IF:pc_if" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/RV32I_SoC.sv Line: 53
+Info (12128): Elaborating entity "soc_IF_ID" for hierarchy "soc_top:soc|RV32I_SoC:cpu|soc_IF_ID:stage1" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/RV32I_SoC.sv Line: 72
+Info (12128): Elaborating entity "soc_ControlUnit" for hierarchy "soc_top:soc|RV32I_SoC:cpu|soc_ControlUnit:CU" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/RV32I_SoC.sv Line: 106
+Warning (10270): Verilog HDL Case Statement warning at soc_ControlUnit.sv(30): incomplete case statement has no default case item File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/soc_ControlUnit.sv Line: 30
+Info (12128): Elaborating entity "soc_RegFile" for hierarchy "soc_top:soc|RV32I_SoC:cpu|soc_RegFile:RF" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/RV32I_SoC.sv Line: 121
+Info (12128): Elaborating entity "ImmGen" for hierarchy "soc_top:soc|RV32I_SoC:cpu|ImmGen:IG" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/RV32I_SoC.sv Line: 129
+Info (12128): Elaborating entity "HazardUnit" for hierarchy "soc_top:soc|RV32I_SoC:cpu|HazardUnit:HU" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/RV32I_SoC.sv Line: 156
+Info (12128): Elaborating entity "soc_ID_EX" for hierarchy "soc_top:soc|RV32I_SoC:cpu|soc_ID_EX:stage2" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/RV32I_SoC.sv Line: 187
+Info (12128): Elaborating entity "ForwardMux" for hierarchy "soc_top:soc|RV32I_SoC:cpu|ForwardMux:Afw" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/RV32I_SoC.sv Line: 204
+Info (12128): Elaborating entity "soc_ALU" for hierarchy "soc_top:soc|RV32I_SoC:cpu|soc_ALU:alu" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/RV32I_SoC.sv Line: 222
+Info (12128): Elaborating entity "ALU" for hierarchy "soc_top:soc|RV32I_SoC:cpu|soc_ALU:alu|ALU:base" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/soc_alu.sv Line: 13
+Info (12128): Elaborating entity "BranchUnit" for hierarchy "soc_top:soc|RV32I_SoC:cpu|BranchUnit:BU" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/RV32I_SoC.sv Line: 236
+Info (12128): Elaborating entity "soc_EX_MEM" for hierarchy "soc_top:soc|RV32I_SoC:cpu|soc_EX_MEM:stage3" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/RV32I_SoC.sv Line: 258
+Info (12128): Elaborating entity "soc_MEM_WB" for hierarchy "soc_top:soc|RV32I_SoC:cpu|soc_MEM_WB:stage4" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/RV32I_SoC.sv Line: 298
+Info (12128): Elaborating entity "ResultMux" for hierarchy "soc_top:soc|RV32I_SoC:cpu|ResultMux:RM" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/RV32I_SoC.sv Line: 313
+Info (12128): Elaborating entity "ForwardingUnit" for hierarchy "soc_top:soc|RV32I_SoC:cpu|ForwardingUnit:FU" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/RV32I_SoC.sv Line: 370
+Info (12128): Elaborating entity "soc_memory" for hierarchy "soc_top:soc|soc_memory:memory" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/soc_top.sv Line: 73
+Info (12128): Elaborating entity "soc_ram" for hierarchy "soc_top:soc|soc_memory:memory|soc_ram:ram" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/soc_memory.sv Line: 71
+Info (12128): Elaborating entity "altsyncram" for hierarchy "soc_top:soc|soc_memory:memory|soc_ram:ram|altsyncram:ram_ip" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/soc_ram.sv Line: 113
+Info (12130): Elaborated megafunction instantiation "soc_top:soc|soc_memory:memory|soc_ram:ram|altsyncram:ram_ip" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/soc_ram.sv Line: 113
+Info (12133): Instantiated megafunction "soc_top:soc|soc_memory:memory|soc_ram:ram|altsyncram:ram_ip" with the following parameter: File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/soc_ram.sv Line: 113
+    Info (12134): Parameter "address_reg_b" = "CLOCK0"
+    Info (12134): Parameter "byteena_reg_b" = "CLOCK0"
+    Info (12134): Parameter "clock_enable_input_a" = "BYPASS"
+    Info (12134): Parameter "clock_enable_input_b" = "BYPASS"
+    Info (12134): Parameter "clock_enable_output_a" = "BYPASS"
+    Info (12134): Parameter "clock_enable_output_b" = "BYPASS"
+    Info (12134): Parameter "indata_reg_b" = "CLOCK0"
+    Info (12134): Parameter "init_file" = "build/firmware.mif"
+    Info (12134): Parameter "intended_device_family" = "Cyclone IV E"
+    Info (12134): Parameter "lpm_type" = "altsyncram"
+    Info (12134): Parameter "numwords_a" = "16384"
+    Info (12134): Parameter "numwords_b" = "16384"
+    Info (12134): Parameter "operation_mode" = "BIDIR_DUAL_PORT"
+    Info (12134): Parameter "outdata_aclr_a" = "NONE"
+    Info (12134): Parameter "outdata_aclr_b" = "NONE"
+    Info (12134): Parameter "outdata_reg_a" = "UNREGISTERED"
+    Info (12134): Parameter "outdata_reg_b" = "UNREGISTERED"
+    Info (12134): Parameter "power_up_uninitialized" = "FALSE"
+    Info (12134): Parameter "read_during_write_mode_mixed_ports" = "DONT_CARE"
+    Info (12134): Parameter "read_during_write_mode_port_b" = "NEW_DATA_NO_NBE_READ"
+    Info (12134): Parameter "widthad_a" = "14"
+    Info (12134): Parameter "widthad_b" = "14"
+    Info (12134): Parameter "width_a" = "32"
+    Info (12134): Parameter "width_b" = "32"
+    Info (12134): Parameter "width_byteena_a" = "1"
+    Info (12134): Parameter "width_byteena_b" = "4"
+    Info (12134): Parameter "wrcontrol_wraddress_reg_b" = "CLOCK0"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_koh2.tdf
+    Info (12023): Found entity 1: altsyncram_koh2 File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/altsyncram_koh2.tdf Line: 33
+Info (12128): Elaborating entity "altsyncram_koh2" for hierarchy "soc_top:soc|soc_memory:memory|soc_ram:ram|altsyncram:ram_ip|altsyncram_koh2:auto_generated" File: c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
+Info (12021): Found 1 design units, including 1 entities, in source file db/decode_jsa.tdf
+    Info (12023): Found entity 1: decode_jsa File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/decode_jsa.tdf Line: 22
+Info (12128): Elaborating entity "decode_jsa" for hierarchy "soc_top:soc|soc_memory:memory|soc_ram:ram|altsyncram:ram_ip|altsyncram_koh2:auto_generated|decode_jsa:decode2" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/altsyncram_koh2.tdf Line: 48
+Info (12021): Found 1 design units, including 1 entities, in source file db/decode_c8a.tdf
+    Info (12023): Found entity 1: decode_c8a File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/decode_c8a.tdf Line: 22
+Info (12128): Elaborating entity "decode_c8a" for hierarchy "soc_top:soc|soc_memory:memory|soc_ram:ram|altsyncram:ram_ip|altsyncram_koh2:auto_generated|decode_c8a:rden_decode_a" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/altsyncram_koh2.tdf Line: 50
+Info (12021): Found 1 design units, including 1 entities, in source file db/mux_gob.tdf
+    Info (12023): Found entity 1: mux_gob File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/mux_gob.tdf Line: 22
+Info (12128): Elaborating entity "mux_gob" for hierarchy "soc_top:soc|soc_memory:memory|soc_ram:ram|altsyncram:ram_ip|altsyncram_koh2:auto_generated|mux_gob:mux4" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/altsyncram_koh2.tdf Line: 52
+Info (12128): Elaborating entity "soc_mmio" for hierarchy "soc_top:soc|soc_memory:memory|soc_mmio:mmio" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/soc_memory.sv Line: 87
+Warning (10230): Verilog HDL assignment warning at soc_mmio.sv(197): truncated value with size 32 to match size of target (8) File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/soc_mmio.sv Line: 197
+Warning (10230): Verilog HDL assignment warning at soc_mmio.sv(214): truncated value with size 32 to match size of target (2) File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/soc_mmio.sv Line: 214
+Warning (10230): Verilog HDL assignment warning at soc_mmio.sv(217): truncated value with size 32 to match size of target (6) File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/soc_mmio.sv Line: 217
+Info (12128): Elaborating entity "altsyncram" for hierarchy "soc_top:soc|soc_memory:memory|soc_mmio:mmio|altsyncram:banked.bank[0].storage[0][7]__1"
+Info (12130): Elaborated megafunction instantiation "soc_top:soc|soc_memory:memory|soc_mmio:mmio|altsyncram:banked.bank[0].storage[0][7]__1"
+Info (12133): Instantiated megafunction "soc_top:soc|soc_memory:memory|soc_mmio:mmio|altsyncram:banked.bank[0].storage[0][7]__1" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "8"
+    Info (12134): Parameter "WIDTHAD_A" = "6"
+    Info (12134): Parameter "NUMWORDS_A" = "64"
+    Info (12134): Parameter "WIDTH_B" = "8"
+    Info (12134): Parameter "WIDTHAD_B" = "6"
+    Info (12134): Parameter "NUMWORDS_B" = "64"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+    Info (12134): Parameter "READ_DURING_WRITE_MODE_MIXED_PORTS" = "OLD_DATA"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_79i1.tdf
+    Info (12023): Found entity 1: altsyncram_79i1 File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/altsyncram_79i1.tdf Line: 27
+Info (12128): Elaborating entity "altsyncram_79i1" for hierarchy "soc_top:soc|soc_memory:memory|soc_mmio:mmio|altsyncram:banked.bank[0].storage[0][7]__1|altsyncram_79i1:auto_generated" File: c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
+Info (12128): Elaborating entity "sdram_bridge" for hierarchy "soc_top:soc|soc_memory:memory|sdram_bridge:external_memory.bridge" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/soc_memory.sv Line: 115
+Info (12128): Elaborating entity "sdram_cache" for hierarchy "soc_top:soc|soc_memory:memory|sdram_cache:external_memory.cached.cache" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/soc_memory.sv Line: 133
+Info (12128): Elaborating entity "altsyncram" for hierarchy "soc_top:soc|soc_memory:memory|sdram_cache:external_memory.cached.cache|altsyncram:words[0][31]__5"
+Info (12130): Elaborated megafunction instantiation "soc_top:soc|soc_memory:memory|sdram_cache:external_memory.cached.cache|altsyncram:words[0][31]__5"
+Info (12133): Instantiated megafunction "soc_top:soc|soc_memory:memory|sdram_cache:external_memory.cached.cache|altsyncram:words[0][31]__5" with the following parameter:
+    Info (12134): Parameter "OPERATION_MODE" = "DUAL_PORT"
+    Info (12134): Parameter "WIDTH_A" = "8"
+    Info (12134): Parameter "WIDTHAD_A" = "10"
+    Info (12134): Parameter "NUMWORDS_A" = "1024"
+    Info (12134): Parameter "WIDTH_B" = "8"
+    Info (12134): Parameter "WIDTHAD_B" = "10"
+    Info (12134): Parameter "NUMWORDS_B" = "1024"
+    Info (12134): Parameter "ADDRESS_ACLR_A" = "NONE"
+    Info (12134): Parameter "OUTDATA_REG_B" = "UNREGISTERED"
+    Info (12134): Parameter "ADDRESS_ACLR_B" = "NONE"
+    Info (12134): Parameter "OUTDATA_ACLR_B" = "NONE"
+    Info (12134): Parameter "ADDRESS_REG_B" = "CLOCK0"
+    Info (12134): Parameter "INDATA_ACLR_A" = "NONE"
+    Info (12134): Parameter "WRCONTROL_ACLR_A" = "NONE"
+    Info (12134): Parameter "READ_DURING_WRITE_MODE_MIXED_PORTS" = "OLD_DATA"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_g2h1.tdf
+    Info (12023): Found entity 1: altsyncram_g2h1 File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/altsyncram_g2h1.tdf Line: 27
+Info (12128): Elaborating entity "altsyncram_g2h1" for hierarchy "soc_top:soc|soc_memory:memory|sdram_cache:external_memory.cached.cache|altsyncram:words[0][31]__5|altsyncram_g2h1:auto_generated" File: c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
+Info (12128): Elaborating entity "sdram_controller" for hierarchy "soc_top:soc|soc_memory:memory|sdram_controller:external_memory.controller" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/soc_memory.sv Line: 158
+Warning (10230): Verilog HDL assignment warning at sdram_controller.sv(80): truncated value with size 32 to match size of target (13) File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/sdram_controller.sv Line: 80
+Warning (10230): Verilog HDL assignment warning at sdram_controller.sv(111): truncated value with size 32 to match size of target (14) File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/sdram_controller.sv Line: 111
+Info (12128): Elaborating entity "sdram_capture_clock" for hierarchy "soc_top:soc|soc_memory:memory|sdram_controller:external_memory.controller|sdram_capture_clock:read_clock" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/sdram_controller.sv Line: 44
+Info (12128): Elaborating entity "altpll" for hierarchy "soc_top:soc|soc_memory:memory|sdram_controller:external_memory.controller|sdram_capture_clock:read_clock|altpll:pll" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/sdram_capture_clock.sv Line: 16
+Info (12130): Elaborated megafunction instantiation "soc_top:soc|soc_memory:memory|sdram_controller:external_memory.controller|sdram_capture_clock:read_clock|altpll:pll" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/sdram_capture_clock.sv Line: 16
+Info (12133): Instantiated megafunction "soc_top:soc|soc_memory:memory|sdram_controller:external_memory.controller|sdram_capture_clock:read_clock|altpll:pll" with the following parameter: File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/sdram_capture_clock.sv Line: 16
+    Info (12134): Parameter "bandwidth_type" = "AUTO"
+    Info (12134): Parameter "clk0_divide_by" = "1"
+    Info (12134): Parameter "clk0_multiply_by" = "1"
+    Info (12134): Parameter "clk0_duty_cycle" = "50"
+    Info (12134): Parameter "clk0_phase_shift" = "4500"
+    Info (12134): Parameter "compensate_clock" = "CLK0"
+    Info (12134): Parameter "inclk0_input_frequency" = "20000"
+    Info (12134): Parameter "intended_device_family" = "Cyclone IV E"
+    Info (12134): Parameter "lpm_type" = "altpll"
+    Info (12134): Parameter "operation_mode" = "NORMAL"
+    Info (12134): Parameter "pll_type" = "AUTO"
+    Info (12134): Parameter "port_areset" = "PORT_USED"
+    Info (12134): Parameter "port_inclk0" = "PORT_USED"
+    Info (12134): Parameter "port_locked" = "PORT_USED"
+    Info (12134): Parameter "width_clock" = "5"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altpll_e531.tdf
+    Info (12023): Found entity 1: altpll_e531 File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/altpll_e531.tdf Line: 27
+Info (12128): Elaborating entity "altpll_e531" for hierarchy "soc_top:soc|soc_memory:memory|sdram_controller:external_memory.controller|sdram_capture_clock:read_clock|altpll:pll|altpll_e531:auto_generated" File: c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altpll.tdf Line: 897
+Info (12128): Elaborating entity "graphics_stream_renderer" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/soc_top.sv Line: 84
+Info (12128): Elaborating entity "graphics_renderer_core" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/graphics_stream_renderer.sv Line: 65
+Info (12128): Elaborating entity "graphics_command_processor" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_command_processor:command_processor" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/graphics_renderer_core.sv Line: 121
+Info (10264): Verilog HDL Case Statement information at graphics_command_processor.sv(97): all case item expressions in this case statement are onehot File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/graphics_command_processor.sv Line: 97
+Info (12128): Elaborating entity "indexed_mesh_store" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|indexed_mesh_store:mesh_store" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/graphics_renderer_core.sv Line: 155
+Info (10264): Verilog HDL Case Statement information at indexed_mesh_store.sv(177): all case item expressions in this case statement are onehot File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/indexed_mesh_store.sv Line: 177
+Info (12128): Elaborating entity "graphics_pipeline" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/graphics_renderer_core.sv Line: 185
+Info (12128): Elaborating entity "vga_pll" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|vga_pll:clock_generator" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/graphics_pipeline.sv Line: 91
+Info (12128): Elaborating entity "altpll" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|vga_pll:clock_generator|altpll:altpll_component" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/video/vga_pll.sv Line: 31
+Info (12130): Elaborated megafunction instantiation "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|vga_pll:clock_generator|altpll:altpll_component" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/video/vga_pll.sv Line: 31
+Info (12133): Instantiated megafunction "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|vga_pll:clock_generator|altpll:altpll_component" with the following parameter: File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/video/vga_pll.sv Line: 31
+    Info (12134): Parameter "bandwidth_type" = "AUTO"
+    Info (12134): Parameter "clk0_divide_by" = "288"
+    Info (12134): Parameter "clk0_duty_cycle" = "50"
+    Info (12134): Parameter "clk0_multiply_by" = "145"
+    Info (12134): Parameter "clk0_phase_shift" = "0"
+    Info (12134): Parameter "compensate_clock" = "CLK0"
+    Info (12134): Parameter "inclk0_input_frequency" = "20000"
+    Info (12134): Parameter "intended_device_family" = "Cyclone IV E"
+    Info (12134): Parameter "lpm_type" = "altpll"
+    Info (12134): Parameter "operation_mode" = "NORMAL"
+    Info (12134): Parameter "pll_type" = "AUTO"
+    Info (12134): Parameter "port_areset" = "PORT_USED"
+    Info (12134): Parameter "port_inclk0" = "PORT_USED"
+    Info (12134): Parameter "port_locked" = "PORT_USED"
+    Info (12134): Parameter "width_clock" = "5"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altpll_f731.tdf
+    Info (12023): Found entity 1: altpll_f731 File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/altpll_f731.tdf Line: 27
+Info (12128): Elaborating entity "altpll_f731" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|vga_pll:clock_generator|altpll:altpll_component|altpll_f731:auto_generated" File: c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altpll.tdf Line: 897
+Info (12128): Elaborating entity "triangle_fifo" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|triangle_fifo:triangle_feed" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/graphics_pipeline.sv Line: 109
+Info (10264): Verilog HDL Case Statement information at triangle_fifo.sv(79): all case item expressions in this case statement are onehot File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/pipeline/triangle_fifo.sv Line: 79
+Info (12128): Elaborating entity "view_transform_stage" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|view_transform_stage:view_transform" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/graphics_pipeline.sv Line: 123
+Info (12128): Elaborating entity "transform_3d_pipeline" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|transform_3d_pipeline:transform" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/graphics_pipeline.sv Line: 142
+Info (12128): Elaborating entity "iterative_signed_divider" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|transform_3d_pipeline:transform|iterative_signed_divider:shared_divider" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/transform_3d_pipeline.sv Line: 170
+Info (12128): Elaborating entity "renderer" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|renderer:rasterizer" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/graphics_pipeline.sv Line: 171
+Info (12128): Elaborating entity "renderer_serial" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|renderer:rasterizer|renderer_serial:serial.core" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/renderer.sv Line: 43
+Info (12128): Elaborating entity "iterative_signed_divider" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|renderer:rasterizer|renderer_serial:serial.core|iterative_signed_divider:depth_dx_divider" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/renderer_serial.sv Line: 205
+Info (12128): Elaborating entity "depth_test_stage" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|renderer:rasterizer|renderer_serial:serial.core|depth_test_stage:depth_test" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/renderer_serial.sv Line: 245
+Info (12128): Elaborating entity "render_performance_counters" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|render_performance_counters:performance_counters" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/graphics_pipeline.sv Line: 194
+Info (12128): Elaborating entity "zbuffer" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|zbuffer:depth_memory" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/graphics_pipeline.sv Line: 210
+Info (12128): Elaborating entity "zbuffer_320x240_8bit" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|zbuffer:depth_memory|zbuffer_320x240_8bit:zbuffer_ram" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/zbuffer.sv Line: 90
+Info (12128): Elaborating entity "altsyncram" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|zbuffer:depth_memory|zbuffer_320x240_8bit:zbuffer_ram|altsyncram:zbuffer_ram" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/zbuffer_ip.v Line: 39
+Info (12130): Elaborated megafunction instantiation "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|zbuffer:depth_memory|zbuffer_320x240_8bit:zbuffer_ram|altsyncram:zbuffer_ram" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/zbuffer_ip.v Line: 39
+Info (12133): Instantiated megafunction "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|zbuffer:depth_memory|zbuffer_320x240_8bit:zbuffer_ram|altsyncram:zbuffer_ram" with the following parameter: File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/zbuffer_ip.v Line: 39
+    Info (12134): Parameter "operation_mode" = "DUAL_PORT"
+    Info (12134): Parameter "width_a" = "8"
+    Info (12134): Parameter "widthad_a" = "17"
+    Info (12134): Parameter "numwords_a" = "76800"
+    Info (12134): Parameter "width_b" = "8"
+    Info (12134): Parameter "widthad_b" = "17"
+    Info (12134): Parameter "numwords_b" = "76800"
+    Info (12134): Parameter "address_reg_b" = "CLOCK1"
+    Info (12134): Parameter "rdcontrol_reg_b" = "CLOCK1"
+    Info (12134): Parameter "outdata_reg_b" = "UNREGISTERED"
+    Info (12134): Parameter "ram_block_type" = "M9K"
+    Info (12134): Parameter "intended_device_family" = "Cyclone IV E"
+    Info (12134): Parameter "power_up_uninitialized" = "FALSE"
+    Info (12134): Parameter "read_during_write_mode_mixed_ports" = "DONT_CARE"
+    Info (12134): Parameter "lpm_type" = "altsyncram"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_9if1.tdf
+    Info (12023): Found entity 1: altsyncram_9if1 File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/altsyncram_9if1.tdf Line: 31
+Info (12128): Elaborating entity "altsyncram_9if1" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|zbuffer:depth_memory|zbuffer_320x240_8bit:zbuffer_ram|altsyncram:zbuffer_ram|altsyncram_9if1:auto_generated" File: c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
+Info (12021): Found 1 design units, including 1 entities, in source file db/decode_5ua.tdf
+    Info (12023): Found entity 1: decode_5ua File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/decode_5ua.tdf Line: 22
+Info (12128): Elaborating entity "decode_5ua" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|zbuffer:depth_memory|zbuffer_320x240_8bit:zbuffer_ram|altsyncram:zbuffer_ram|altsyncram_9if1:auto_generated|decode_5ua:decode2" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/altsyncram_9if1.tdf Line: 45
+Info (12021): Found 1 design units, including 1 entities, in source file db/mux_lob.tdf
+    Info (12023): Found entity 1: mux_lob File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/mux_lob.tdf Line: 22
+Info (12128): Elaborating entity "mux_lob" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|zbuffer:depth_memory|zbuffer_320x240_8bit:zbuffer_ram|altsyncram:zbuffer_ram|altsyncram_9if1:auto_generated|mux_lob:mux3" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/altsyncram_9if1.tdf Line: 48
+Info (12128): Elaborating entity "vga_controller_640x480" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|vga_controller_640x480:display" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/graphics_pipeline.sv Line: 266
+Info (12128): Elaborating entity "vga_timing_640x480" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|vga_controller_640x480:display|vga_timing_640x480:timing" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/video/vga_controller.sv Line: 299
+Info (12128): Elaborating entity "vga_page_swap_controller" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|vga_controller_640x480:display|vga_page_swap_controller:page_swap" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/video/vga_controller.sv Line: 314
+Info (12128): Elaborating entity "framebuffer" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|vga_controller_640x480:display|framebuffer:framebuffer0" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/video/vga_controller.sv Line: 352
+Info (12128): Elaborating entity "framebuffer_320x240_8bit" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|vga_controller_640x480:display|framebuffer:framebuffer0|framebuffer_320x240_8bit:framebuffer_ram" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/memory/framebuffer.sv Line: 87
+Info (12128): Elaborating entity "palette_256x24" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|vga_controller_640x480:display|palette_256x24:palette" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/external/renderer/rtl/video/vga_controller.sv Line: 384
+Info (12128): Elaborating entity "altsyncram" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|vga_controller_640x480:display|palette_256x24:palette|altsyncram:palette_ram" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/palette_ip.v Line: 43
+Info (12130): Elaborated megafunction instantiation "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|vga_controller_640x480:display|palette_256x24:palette|altsyncram:palette_ram" File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/palette_ip.v Line: 43
+Info (12133): Instantiated megafunction "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|vga_controller_640x480:display|palette_256x24:palette|altsyncram:palette_ram" with the following parameter: File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/palette_ip.v Line: 43
+    Info (12134): Parameter "operation_mode" = "DUAL_PORT"
+    Info (12134): Parameter "width_a" = "24"
+    Info (12134): Parameter "widthad_a" = "8"
+    Info (12134): Parameter "numwords_a" = "256"
+    Info (12134): Parameter "width_b" = "24"
+    Info (12134): Parameter "widthad_b" = "8"
+    Info (12134): Parameter "numwords_b" = "256"
+    Info (12134): Parameter "address_reg_b" = "CLOCK1"
+    Info (12134): Parameter "rdcontrol_reg_b" = "CLOCK1"
+    Info (12134): Parameter "outdata_reg_b" = "UNREGISTERED"
+    Info (12134): Parameter "ram_block_type" = "M9K"
+    Info (12134): Parameter "intended_device_family" = "Cyclone IV E"
+    Info (12134): Parameter "init_file" = "external/renderer/rtl/memory/palette_default.mif"
+    Info (12134): Parameter "power_up_uninitialized" = "FALSE"
+    Info (12134): Parameter "read_during_write_mode_mixed_ports" = "DONT_CARE"
+    Info (12134): Parameter "lpm_type" = "altsyncram"
+Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_76l1.tdf
+    Info (12023): Found entity 1: altsyncram_76l1 File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/db/altsyncram_76l1.tdf Line: 27
+Info (12128): Elaborating entity "altsyncram_76l1" for hierarchy "soc_top:soc|graphics_stream_renderer:graphics|graphics_renderer_core:renderer|graphics_pipeline:pipeline|vga_controller_640x480:display|palette_256x24:palette|altsyncram:palette_ram|altsyncram_76l1:auto_generated" File: c:/intelfpga_lite/18.1/quartus/libraries/megafunctions/altsyncram.tdf Line: 791
+Error (12006): Node instance "external_memory.command_arbiter" instantiates undefined entity "sdram_command_arbiter". Ensure that required library paths are specified correctly, define the specified entity, or change the instantiation. If this entity represents Intel FPGA or third-party IP, generate the synthesis files for the IP. File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/soc_memory.sv Line: 148
+Info (144001): Generated suppressed messages file C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/build/quartus-arch-stage3-serial/ArchStage3SerialSoC.map.smsg
+Error: Quartus Prime Analysis & Synthesis was unsuccessful. 1 error, 9 warnings
+    Error: Peak virtual memory: 4885 megabytes
+    Error: Processing ended: Sun Oct 11 12:21:34 2026
+    Error: Elapsed time: 00:00:21
+    Error: Total CPU time (on all processors): 00:00:10

@@ -1,0 +1,14 @@
+Generated CPU boundary, RAM wrapper, palette path and firmware protocol header.
+serial map 0
+serial fit 0
+serial sta 0
+serial minimum slack 0.117
+serial asm 0
+Generated CPU boundary, RAM wrapper, palette path and firmware protocol header.
+overlap map 3
+Traceback (most recent call last):
+  File "C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\scripts\build_setup_overlap.py", line 56, in <module>
+    build(mode)
+  File "C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\scripts\build_setup_overlap.py", line 39, in build
+    raise RuntimeError('Quartus failed '+stage)
+RuntimeError: Quartus failed map

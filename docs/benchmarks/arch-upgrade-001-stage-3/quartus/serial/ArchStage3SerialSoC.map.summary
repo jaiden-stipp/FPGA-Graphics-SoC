@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Sun Oct 11 12:26:55 2026
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+Revision Name : ArchStage3SerialSoC
+Top-level Entity Name : de2_115_soc_top
+Family : Cyclone IV E
+Total logic elements : 25,639
+    Total combinational functions : 19,381
+    Dedicated logic registers : 12,191
+Total registers : 12191
+Total pins : 109
+Total virtual pins : 0
+Total memory bits : 2,659,684
+Embedded Multiplier 9-bit elements : 80
+Total PLLs : 2

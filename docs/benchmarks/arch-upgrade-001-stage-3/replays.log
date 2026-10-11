@@ -1,0 +1,13 @@
+Exact full-frame match: True
+Generated CPU boundary, RAM wrapper, palette path and firmware protocol header.
+PASS castle serial
+Exact full-frame match: True
+PASS quake serial
+Exact full-frame match: True
+PASS fixtures serial
+Exact full-frame match: True
+PASS castle overlap
+Exact full-frame match: True
+PASS quake overlap
+Exact full-frame match: True
+PASS fixtures overlap

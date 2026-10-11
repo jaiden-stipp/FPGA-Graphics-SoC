@@ -1,0 +1,22 @@
+{
+  "source": "C:\\Users\\Orb1t\\Documents\\Codex\\FPGA-Game-SoC\\firmware\\tests\\setup_overlap_probe.c",
+  "sha256": "6296420e861f8edb470a18e96b3efaef5acc40fd9c2b3c46a82cb9be48079aa9",
+  "target": "rv32i/ilp32",
+  "functions": [
+    "check",
+    "main"
+  ],
+  "external_api": [
+    "gfx_begin_frame",
+    "gfx_define_mesh",
+    "gfx_draw_mesh",
+    "gfx_end_frame",
+    "gfx_identity_view",
+    "gfx_index",
+    "gfx_projection",
+    "gfx_vertex",
+    "gfx_wait_frame"
+  ],
+  "numeric_policy": "integer/fixed-point, at most 32-bit operations",
+  "runtime_policy": "static storage/stack, direct calls, no OS/heap or implicit compiler arithmetic helpers"
+}

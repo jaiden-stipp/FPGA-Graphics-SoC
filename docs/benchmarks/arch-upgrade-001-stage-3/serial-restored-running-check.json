@@ -1,0 +1,47 @@
+{
+  "sof": "C:\\Users\\Orb1t\\Documents\\Codex\\FPGA-Game-SoC\\build\\quartus-arch-stage2a\\ArchStage2ASoC.sof",
+  "sof_sha256": "917ed067296ef2405c7d4706dea4224da261add9a9a481ff1e5c4b45d94c9a32",
+  "package": "C:\\Users\\Orb1t\\Documents\\Codex\\FPGA-Game-SoC\\build\\mario-castle-sdram-direct-packed-mul.package.json",
+  "segments": [
+    {
+      "file": "mario-castle-sdram-direct-packed-mul.bin",
+      "address": 0,
+      "bytes": 26332,
+      "sha256": "4cfe0c4811c35df0f14b1269f5d6eed628d8c97a19483ac1cd224d9b06cf8eda"
+    },
+    {
+      "file": "mario-castle-sdram-direct-packed-mul.assets.bin",
+      "address": 2147483648,
+      "bytes": 883124,
+      "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+    }
+  ],
+  "first_status": {
+    "initialized": true,
+    "held": false,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 2,
+    "refresh_count": 7902014,
+    "input_abi": 1229848833,
+    "cpu_features": 2147483649,
+    "gpu_features": 3
+  },
+  "last_status": {
+    "initialized": true,
+    "held": false,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 32,
+    "refresh_count": 8037971,
+    "input_abi": 1229848833,
+    "cpu_features": 2147483649,
+    "gpu_features": 3
+  }
+}

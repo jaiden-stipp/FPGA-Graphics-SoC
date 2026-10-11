@@ -1,0 +1,18 @@
+{
+  "sof": "C:\\Users\\Orb1t\\Documents\\Codex\\FPGA-Game-SoC\\build\\quartus-arch-stage3-serial\\ArchStage3SerialSoC.sof",
+  "sha256": "94cb92a4235d8f1d6cec07a088b99d91fd5a754facbaf73917cdcdafc19e2a04",
+  "status": {
+    "initialized": true,
+    "held": true,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 0,
+    "refresh_count": 478741,
+    "input_abi": 1229848833,
+    "cpu_features": 2147483649,
+    "gpu_features": 3
+  }
+}

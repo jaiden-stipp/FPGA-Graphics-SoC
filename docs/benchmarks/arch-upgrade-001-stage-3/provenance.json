@@ -1,0 +1,311 @@
+{
+  "baseline_commit": "6153efa",
+  "implementation_commits": [
+    "2bf56dd",
+    "8ee9eed",
+    "8bb928c",
+    "0d10359"
+  ],
+  "head": "0d1035999402432dd911aad829d3adbc593959fa",
+  "tools": {
+    "Quartus": "18.1.0 Build 625 Lite",
+    "ModelSim": "10.5b"
+  },
+  "clocks": "50 MHz CPU/renderer, unchanged SDRAM/VGA constraints",
+  "normal_package": {
+    "format": "soc-game-package",
+    "version": 1,
+    "app": "portable",
+    "segments": [
+      {
+        "file": "mario-castle-sdram-direct-packed-mul.bin",
+        "address": 0,
+        "bytes": 26332,
+        "sha256": "4cfe0c4811c35df0f14b1269f5d6eed628d8c97a19483ac1cd224d9b06cf8eda"
+      },
+      {
+        "file": "mario-castle-sdram-direct-packed-mul.assets.bin",
+        "address": 2147483648,
+        "bytes": 883124,
+        "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+      }
+    ],
+    "required_cpu_features": {
+      "mul": true,
+      "mmio_feature_bit": 0
+    },
+    "content": {
+      "format": "soc-game-assets",
+      "version": 1,
+      "runtime_abi": 1,
+      "game": "mario-castle",
+      "units": "gpu-q8.8",
+      "material_policy": "indexed-flat-rgb",
+      "palette_colors": 101,
+      "meshes": [
+        {
+          "vertices": 128,
+          "triangles": 200
+        },
+        {
+          "vertices": 8,
+          "triangles": 12
+        }
+      ],
+      "collision": {
+        "abi": "triangle-q12-normal-v1",
+        "floors": 2816,
+        "walls": 4747
+      },
+      "animation": {
+        "abi": "none",
+        "clips": []
+      },
+      "configuration": {
+        "module": "world",
+        "physics": {},
+        "camera": {
+          "focal": 256,
+          "near_z": 257
+        },
+        "spawn": [
+          0,
+          0,
+          0
+        ],
+        "game": {
+          "port": "custom",
+          "implementation_status": "castle-traversal-foundation; mission incomplete"
+        },
+        "world": {
+          "abi": "sdram-areas-v1",
+          "areas": 5,
+          "stored_chunks": 72,
+          "render_scale": 4,
+          "near_gpu": 257,
+          "far_gpu": 30000,
+          "focal_gpu": 256,
+          "resident_handles": 2,
+          "cache_policy": "uploads-between-frames; uncached-visible-triangles-software-clipped"
+        }
+      },
+      "source": {
+        "profile": "game.project.json",
+        "sha256": "a4da0e61a05d55be5e5f0a5e842156d20fcf47f93fb4f17b364534ce49a2e439"
+      }
+    },
+    "target": {
+      "id": "de2-115-fixed-v2",
+      "runtime_abi": 1,
+      "required_features": [
+        "indexed-flat-rgb",
+        "triangle-collision",
+        "custom-rv32i-gameplay",
+        "mouse-look-v1"
+      ]
+    },
+    "required_gpu_features": {
+      "packed-enqueue-v1": true
+    },
+    "diagnostic": {
+      "terrain_submission": "CPU-clipped direct triangles; GPU resident terrain cache bypassed",
+      "purpose": "isolate terrain mesh uploads and cached-versus-direct clipping; not a performance optimization"
+    }
+  },
+  "detailed_package": {
+    "format": "soc-game-package",
+    "version": 1,
+    "app": "portable",
+    "segments": [
+      {
+        "file": "mario-castle-sdram-direct-profile-detail-packed-mul.bin",
+        "address": 0,
+        "bytes": 27704,
+        "sha256": "ca33309535bce4653d0eba9dc2933e1ae2dc1f54e876d5fba00e72115e83656c"
+      },
+      {
+        "file": "mario-castle-sdram-direct-profile-detail-packed-mul.assets.bin",
+        "address": 2147483648,
+        "bytes": 883124,
+        "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+      }
+    ],
+    "required_cpu_features": {
+      "mul": true,
+      "mmio_feature_bit": 0
+    },
+    "content": {
+      "format": "soc-game-assets",
+      "version": 1,
+      "runtime_abi": 1,
+      "game": "mario-castle",
+      "units": "gpu-q8.8",
+      "material_policy": "indexed-flat-rgb",
+      "palette_colors": 101,
+      "meshes": [
+        {
+          "vertices": 128,
+          "triangles": 200
+        },
+        {
+          "vertices": 8,
+          "triangles": 12
+        }
+      ],
+      "collision": {
+        "abi": "triangle-q12-normal-v1",
+        "floors": 2816,
+        "walls": 4747
+      },
+      "animation": {
+        "abi": "none",
+        "clips": []
+      },
+      "configuration": {
+        "module": "world",
+        "physics": {},
+        "camera": {
+          "focal": 256,
+          "near_z": 257
+        },
+        "spawn": [
+          0,
+          0,
+          0
+        ],
+        "game": {
+          "port": "custom",
+          "implementation_status": "castle-traversal-foundation; mission incomplete"
+        },
+        "world": {
+          "abi": "sdram-areas-v1",
+          "areas": 5,
+          "stored_chunks": 72,
+          "render_scale": 4,
+          "near_gpu": 257,
+          "far_gpu": 30000,
+          "focal_gpu": 256,
+          "resident_handles": 2,
+          "cache_policy": "uploads-between-frames; uncached-visible-triangles-software-clipped"
+        }
+      },
+      "source": {
+        "profile": "game.project.json",
+        "sha256": "a4da0e61a05d55be5e5f0a5e842156d20fcf47f93fb4f17b364534ce49a2e439"
+      }
+    },
+    "target": {
+      "id": "de2-115-fixed-v2",
+      "runtime_abi": 1,
+      "required_features": [
+        "indexed-flat-rgb",
+        "triangle-collision",
+        "custom-rv32i-gameplay",
+        "mouse-look-v1"
+      ]
+    },
+    "required_gpu_features": {
+      "packed-enqueue-v1": true
+    },
+    "diagnostic": {
+      "terrain_submission": "CPU-clipped direct triangles; GPU resident terrain cache bypassed",
+      "purpose": "isolate terrain mesh uploads and cached-versus-direct clipping; not a performance optimization"
+    }
+  },
+  "source_hashes": {
+    "upstream.lock.json": "fba7b84d51c10cc547f1364edba571911e38467be37885caf29cfd19f3e2f9b4",
+    "build/boot.json": "9bf369e0b87ec0b47a9fa88cec717b3431106ad05404df414270d29935a06d23",
+    "build/firmware.hex": "067e0c2bf73328ad40a1c6a1575a801d11ffe89aa060b56057513e656c523ad2",
+    "build/firmware.mif": "f70ee691343753ca316bec2aa5d0d4f84b7a8f9a193f9b662d9a4ff1d188c36a",
+    "fpga/soc.sdc": "8bab502639ba541613e3cfaa35303f2869d321c5e1a3ad7741fb2ad25f8f4d7c",
+    "rtl/gfx_command_dma.sv": "3ab02142603634f2e6bbb0d3e12cbf8663995eab3c3b5c0c52f9020bfd0c8269",
+    "rtl/sdram_bridge.sv": "b58bd47a0b71f179df8acb3855e935fb8b6def5b04fad0221caf7864b59974ed",
+    "rtl/sdram_cache.sv": "433f43139bc0a562edc4e722cbc2893b69c3d86c58734ce293eb3bc6b626d92b",
+    "rtl/sdram_capture_clock.sv": "9d20b840ed55776d25aaf34915b044d7d4b023f5fea6923bddf419bf81374ce0",
+    "rtl/sdram_command_arbiter.sv": "6abd1cc03b5bd7b68ebed28adbd3650b03ec13e623372b0d88c0f4cf95505e3c",
+    "rtl/sdram_controller.sv": "cb8fd223b7720aaf69b14d0e5dd4ee3e640c2036f2d35e014ca57a52db4a800e",
+    "rtl/soc_alu.sv": "f8c9c56634bc527431ebb37b541ad1416a10e389ba072551abc52c80e4afc5e0",
+    "rtl/soc_cpu_counters.sv": "f03a2ec07acaab146b6252889aa6a819a85a512e2a313a3b41137c99c2d3c166",
+    "rtl/soc_memory.sv": "b6115fb4aadcbb6145a6b4860a1e3641ad00edfcadfdcd5383f7f41844831337",
+    "rtl/soc_mmio.sv": "b1d8f7af7213279587feb0be911c4b125ff5f80e80a1f8bd5ac278b0cf360c1c",
+    "rtl/soc_top.sv": "835c329c44219d0521ea7645b7f8cf22d8dde2e8efe50e473b999c3672862ea8",
+    "rtl/udp_controls.sv": "eddabdecaf25fb98d847c214db158acb396e46b59797f5d4fc394c14560d1bf0",
+    "rtl/udp_memory_loader.sv": "db6173abd2fe02186c6db0de564b42dfa9ff915c2dc4a2c2a4d6b284fa8f0a00",
+    "scripts/build_setup_overlap.py": "321c9af8f81b620454eceae7e5f34a96bea0b9442d20bc9233d7289af2cdbf74",
+    "scripts/gpu_setup.py": "e7270e3b6d6ef6f382b78830c895c6a2fbe7b8e758d8b5a8751f0fedb764f64d",
+    "scripts/measure_setup_overlap.py": "4ac9e25ec631fdfd76c98f05a1c27d433ae2f1f4783ad8c924610e46b11219dc",
+    "scripts/replay_render_route.py": "e701bbe9a9ee56ce3a88c0a20285cd8e83778ab7f06829d06d84f34ab4617409",
+    "scripts/soc.py": "2da23f895d6c00ad354b6a099d683b9441cd4fc3826ddaf6ecd03b586c034784",
+    "sim/render_frame_replay_tb.sv": "9dc69f825dd5e6b5f946b8b087e8fa6f352282747cc075c6cec8625750d37625",
+    "sim/setup_overlap_tb.sv": "58c7f66719507101a2ee7347a652e9512f06057feee40fb0a4b44753b45d6715",
+    "external/renderer/rtl/command/graphics_command_processor.sv": "f7ec879dbdb9631a071bdc96233f1e51f275f813577d531a0cf7889363f5af74",
+    "external/renderer/rtl/command/graphics_command_stream_decoder.sv": "65dd6a522c8b86a3bd7142a223ceb7a0577948c298d59ce17501877ce27c46e7",
+    "external/renderer/rtl/common/iterative_signed_divider.sv": "6d333292789539502521972e735dc2888d589fddb0372ad2bd1afe9e0c1639b4",
+    "external/renderer/rtl/common/protocol_generated.svh": "35d17b30df278a9c8a2aafe643112e0fa883671519e279f3a75ee3b077200caa",
+    "external/renderer/rtl/common/renderer_types.svh": "786cd60e501a72e308a99c7fe60d35fa8174cabf47aac5d2b3d5f9c80087f37c",
+    "external/renderer/rtl/demo/cube_demo.sv": "30ee250fde414495d373598000c10fc3072c3b6709ec05c28f0c83950a2fd537",
+    "external/renderer/rtl/demo/de2_115_top.sv": "231d43d5a3c3df35269794d0edf22a781aef7c08550de199b40de44439c2588f",
+    "external/renderer/rtl/memory/framebuffer.sv": "22dfa6111685a3c7e8ac3aa16bdd1697696681c76fe6ebe232a355d8d1957575",
+    "external/renderer/rtl/memory/framebuffer_ip.v": "d11c8f215225ccea4b65d059ffcd2711ad66ddb9dc73b3687d7262bf8da80127",
+    "external/renderer/rtl/memory/palette_default.mif": "80f13a31528de9a6b8e4e74e831b28d1961d31622f484fbaa181f305a5cf7be3",
+    "external/renderer/rtl/memory/palette_ip.v": "8d4bc23aebdafb73b52611d78f222d0649aa2302f965befd78c842fb35c4c9e3",
+    "external/renderer/rtl/memory/zbuffer.sv": "2bef8538e55d02102b8865ae879b8b26611ca7052d139aad4013eb0978867a59",
+    "external/renderer/rtl/memory/zbuffer_ip.v": "ba8fc8671a787368e1f5db8d1dfdf8ae027be96d35732c134b56a46484b62aee",
+    "external/renderer/rtl/network/async_byte_fifo.sv": "70e751124f649dda17f4d145854cf2746d882f04738df3a450fa1ca6cd8c3ee5",
+    "external/renderer/rtl/network/async_fifo.sv": "a0a284f9b5d7b8fc5d19d0d183497ed1bcf015e1af611dc9404601ed1e535926",
+    "external/renderer/rtl/network/ethernet_command_receiver.sv": "4b696e6070fa1f6bccd9cd842d86b6492d9d14f1f99ba18829975a29a9d5463e",
+    "external/renderer/rtl/network/mii_arp_responder.sv": "b5b92a03e9dcebb2baf9b2eed4de02494a5a91b8aa3af80505fcf82c8a43a0f1",
+    "external/renderer/rtl/network/mii_response_transmitter.sv": "ebe3b396842c314ab66a886c03fa086a8c2dfdf55f47aa9cf821cc2b8d96cfa5",
+    "external/renderer/rtl/network/mii_udp_receiver.sv": "959db588c98d21de3eaf027faf81afa64bea17ecd67264f75fc5bc32927e334f",
+    "external/renderer/rtl/pipeline/depth_test_stage.sv": "b4e15cce285a7b34ff2406c0538e0f7f3289f7777925a6f8f5190cde09ae55ad",
+    "external/renderer/rtl/pipeline/graphics_pipeline.sv": "cefe1a0fcb007ae5a734484458f48bbd864e1ccb82b70148f6ba09cc1c897fc7",
+    "external/renderer/rtl/pipeline/indexed_mesh_store.sv": "5306f7e2144548db032bf172dc019d38f7e49a1933473c4c95587a1d072533fb",
+    "external/renderer/rtl/pipeline/renderer.sv": "1aebfae7d7e672456d18d92e6ef5084d4f338bd8a1781eba204d1898766d4441",
+    "external/renderer/rtl/pipeline/render_performance_counters.sv": "c6dad6d56a7d20fb09fb4f5eecbd86b9a282c56f9da76cf89304e4ac20f2825d",
+    "external/renderer/rtl/pipeline/transform_3d_pipeline.sv": "96d2b86352ebef8302d5b4a0a7881819b8453ac2c9cc515e547d98f0dac4a129",
+    "external/renderer/rtl/pipeline/triangle_fifo.sv": "0f4b5bf21f6545f1435419fcac45afa7413869c26cc21958baf325f808f88e88",
+    "external/renderer/rtl/pipeline/view_transform_stage.sv": "882e0ba7c5f1cbf2b1979216c5c87f6409685e7fae76ceb2869b1f8b41f7829a",
+    "external/renderer/rtl/system/graphics_renderer_core.sv": "4e8da0b691363472146f9477d8350a5049a2dfc1edda8e01d4e806de1b341a38",
+    "external/renderer/rtl/system/graphics_stream_renderer.sv": "5fac992e9cb945439f282972658ef5ba3ae24e2fa4a4921ab5dc0af5b77bc6e0",
+    "external/renderer/rtl/video/vga_controller.sv": "44be5fb84939c0aa333106238435e2748425212980b1d6b66701ce138d61ce0a",
+    "external/renderer/rtl/video/vga_page_swap_controller.sv": "43f457ad4ed53565b18b121a301512dea98039d109943c81773aa6b878aab6fa",
+    "external/renderer/rtl/video/vga_pll.sv": "25c5e5a8c92a729d5e59620e05a4b72e81f118fa6f92d725c51df47c1fe50c8a",
+    "external/renderer/rtl/video/vga_timing.sv": "9af825e7bcf96e59e53b197f89534d525d43a85098a84d5d0da7f016b60636af",
+    "firmware/tests/setup_overlap_probe.c": "6296420e861f8edb470a18e96b3efaef5acc40fd9c2b3c46a82cb9be48079aa9",
+    "rtl/boards/de2_115_soc_top.sv": "68b19deb015b2669d4a51293fc7eed805a7678baefdd10e62493d8f2707bd7e0",
+    "rtl/generated/graphics_command_processor.sv": "05923b5253ec4e94a237ebc1bac6c33aec6b8a568633ba89167df3dfeb90a7dd",
+    "rtl/generated/graphics_command_stream_decoder.sv": "402b175b9a49f494d2000a24626123dae19cc411cce86256db56aa14202b18f8",
+    "rtl/generated/graphics_pipeline.sv": "744d2c694659d5acaa602fa501b3f506874012108bd54570caafd3168b912935",
+    "rtl/generated/graphics_renderer_core.sv": "e245d4943cf9b4bf9a5577e58f562e098dcf720f75213b0a456786266cd9b999",
+    "rtl/generated/graphics_stream_renderer.sv": "fc9ff8c6396a768d3cd4ae5eaf2590d48530b9f405270f73ee72f635630fc53f",
+    "rtl/generated/indexed_mesh_store.sv": "5f69d0116f11f06988d74bbeb16dc00ca42ea3b22d40ed0fe47eeae761cb317a",
+    "rtl/generated/palette_ip.v": "53f971debd4c8f5bba38caf8782a08de919dcbef37b0b7c342849bfe773658bc",
+    "rtl/generated/renderer.sv": "607ddf4e052743fe99b3339cb44fef274189dd86f3243c8a487cede69f34e0f6",
+    "rtl/generated/renderer_overlap.sv": "e9cd306c1960c4c5ba50333a5351c301d1597a7dbd562d6730342e1dc6cddac5",
+    "rtl/generated/renderer_serial.sv": "c7214137bde8fd2e3a31f57550cc86a2097e75b02e099a2b6d3b5718c3fc57f0",
+    "rtl/generated/renderer_types.svh": "48c1649119c3bfd5398e7bfd56df1ac8c46254d7917f8173ce4a7b2368dfe38a",
+    "rtl/generated/RV32I_SoC.sv": "5e8aa778a2f592e2c5e652c5e79a8d9fa32e3ad33b50adfc90055164f5102f83",
+    "rtl/generated/soc_ControlUnit.sv": "39cbee4843c35f8bc5b206d1a76d7e02104152abb7bda16a32b942b9a420e06f",
+    "rtl/generated/soc_EX_MEM.sv": "0988aa26a575d5b49fdc4ca1e7501684e75ab9a10bd81e0569fe24a2f14100d1",
+    "rtl/generated/soc_ID_EX.sv": "4b8a8bea79f603e1751d176a490743111043776b8d6c8aa0aefefbd717e6b762",
+    "rtl/generated/soc_IF_ID.sv": "ae0dd0847cb48d7a19a547543f0e9cfb38c4c5d9eea0adfaaa7128956b82dccd",
+    "rtl/generated/soc_MEM_WB.sv": "2654fe037b68c41fe7dc6f6f67dd5bcf7da7aff5d9b06f5f190c62e33b13613b",
+    "rtl/generated/soc_PC_IF.sv": "40f4ba9537bc9856ff8bc13b289f79adf54b6877bc33f4aa00c7d2a91cebb3c5",
+    "rtl/generated/soc_PipelineAssertions.sv": "abbdc1bbdfdbccd9ba124d6fa2281acfa6b12699fbaa0f55fd7d67d7ecc012e7",
+    "rtl/generated/soc_ram.sv": "965aecf84c1c77e96eb41486ebd358745b97aaa2e5e3be46292e5bdcfbbdc758",
+    "rtl/generated/soc_RegFile.sv": "0edae9416aaacb1bef7feb21f269488323d5c79b705e5056bc2ab6e0a0cc9837",
+    "rtl/generated/transform_3d_pipeline.sv": "8b90afabe74fc762e237574bd8412867cd91bf4a19e9afdfe15fd55e156d42cc",
+    "rtl/generated/triangle_setup_engine.sv": "8df64541a102b0796dbf062f11cd41830480c1befeb68acb2f6019a06323bf85",
+    "rtl/generated/triangle_setup_types.svh": "369e274c2ef70df90460f08c6b45127c1ce9c07f072b2d07231188cc25d8a420"
+  },
+  "upstream_lock": {
+    "rv32i": {
+      "url": "https://github.com/jaiden-stipp/RV32I.git",
+      "commit": "1a2ac85a7a5fa5b2d185dd38ec7bcca3dc75613a"
+    },
+    "renderer": {
+      "url": "https://github.com/jaiden-stipp/FPGA-3D-Renderer.git",
+      "commit": "16dbd609835462889ef03f76a65f0c702f3f2bc4"
+    }
+  }
+}

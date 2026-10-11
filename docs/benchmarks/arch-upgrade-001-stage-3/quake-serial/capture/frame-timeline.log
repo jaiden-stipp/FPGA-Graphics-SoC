@@ -1,0 +1,8 @@
+1 begin 24663
+1 swap_request 348386 first_byte=24664 last_byte=348092 last_setup=333228 last_raster=333965 max_queue=64 empty=76894 full=242949 geometry_stall=129197
+1 setup_metrics 348386 setup_work=12540 setup_blocked=0 raster_wait=12540 overlap=0 max_setup_queue=0
+2 begin 768022
+1 swap_ack 768022 stats=00000312000000dc0000011a0002ab850000bcec00000cf40000aff8000021da0003a2930002de5800012c00000b57bd00066733
+2 swap_request 1108818 first_byte=768023 last_byte=1031567 last_setup=1108574 last_raster=1105104 max_queue=64 empty=77154 full=250098 geometry_stall=127571
+2 setup_metrics 1108818 setup_work=14060 setup_blocked=0 raster_wait=14060 overlap=0 max_setup_queue=0
+2 swap_ack 1608022 stats=00000312000000eb0000014a0002b0d70000d68000001b5e0000bb220000225d0003e4c10002e9f200012c00000cd13e00079e03
