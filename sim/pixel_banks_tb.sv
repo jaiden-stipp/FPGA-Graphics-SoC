@@ -53,6 +53,17 @@ module pixel_banks_tb;
         end
         @(negedge clk);we=0;we1=0;re=0;re1=0;
         scan(0);
+        // Read stored depths without concurrent writes; exercise RAM, not bypass.
+        for(integer y=0;y<H;y++)for(integer x=0;x<W;x+=2)begin
+            @(negedge clk);re=1;re1=1;rx=x;rx1=x+1;ry=y;ry1=y;
+            @(posedge clk);#1;
+            if(!rv || !rv1 || rd!==8'(y*W+x+1) || rd1!==8'(y*W+x+2))$fatal(1,"stored depth mismatch");
+        end
+        @(negedge clk);re=0;re1=0;
+        // Wrong parity and out-of-bounds requests cannot reach a bank.
+        @(negedge clk);re=1;re1=1;rx=1;rx1=W+1;
+        @(posedge clk);#1;if(rv || rv1)$fatal(1,"invalid read accepted");
+        @(negedge clk);re=0;re1=0;
         // Clear owns both banks even when conflicting writes are asserted.
         we=1;we1=1;wd=255;wd1=255;clear_banks();we=0;we1=0;
         scan(1);

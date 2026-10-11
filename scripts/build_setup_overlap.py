@@ -16,7 +16,9 @@ def build(mode):
     # Exact accepted Stage 2A source list, updated for reproducible generation.
     q = (root / 'docs/benchmarks/arch-upgrade-001-stage-2a/project.qsf').read_text()
     q = q.replace('build/quartus-arch-stage2a', fit)
-    for file in ('renderer_serial.sv','triangle_setup_engine.sv','renderer_overlap.sv'):
+    q=q.replace('external/renderer/rtl/video/vga_controller.sv','rtl/generated/vga_controller.sv')
+    q=q.replace('external/renderer/rtl/pipeline/render_performance_counters.sv','rtl/generated/render_performance_counters.sv')
+    for file in ('renderer_serial.sv','triangle_setup_engine.sv','renderer_overlap.sv','renderer_dual.sv','zbuffer_single.sv','framebuffer_single.sv','zbuffer_banked.sv','framebuffer_banked.sv','pixel_bank_ram.sv'):
         q += 'set_global_assignment -name SYSTEMVERILOG_FILE rtl/generated/' + file + '\n'
     # Stage 2B is rejected and must not contaminate either side of this test.
     q += 'set_global_assignment -name VERILOG_MACRO "SOC_DISABLE_COMMAND_DMA=1"\n'

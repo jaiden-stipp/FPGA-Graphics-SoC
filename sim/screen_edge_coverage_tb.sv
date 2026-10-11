@@ -11,6 +11,8 @@ module screen_edge_coverage_tb;
     logic [9:0] read_x,write_x,raster_x;
     logic [8:0] read_y,write_y,raster_y;
     logic [7:0] write_depth,color;
+    logic read_enable1,read_valid1=0,raster_write1;
+    logic[9:0]raster_x1;logic[8:0]raster_y1;
     bit coverage[0:76799];
     integer written,missing,case_number;
     transform_3d_pipeline transform(
@@ -22,9 +24,15 @@ module screen_edge_coverage_tb;
         .depth_read_enable(read_enable),.depth_read_x(read_x),.depth_read_y(read_y),
         .depth_read_value(8'd0),.depth_read_valid(read_valid),.depth_write_enable(write_enable),
         .depth_write_x(write_x),.depth_write_y(write_y),.depth_write_value(write_depth),.busy(render_busy),
-        .bounding_box_pixel(),.pixel_inside(),.depth_rejected(),.pixel_written());
+        .bounding_box_pixel(),.pixel_inside(),.depth_rejected(),.pixel_written(),
+        .raster_write1(raster_write1),.raster_x1(raster_x1),.raster_y1(raster_y1),
+        .depth_read_enable1(read_enable1),.depth_read_value1(8'd0),.depth_read_valid1(read_valid1));
     always @(posedge clk) begin
-        read_valid<=read_enable;
+        read_valid<=read_enable;read_valid1<=read_enable1;
+        if(raster_write1)begin
+            if(raster_x1>=320 || raster_y1>=240)$fatal(1,"out-of-screen odd write");
+            coverage[integer'(raster_y1)*320+integer'(raster_x1)]=1;written++;
+        end
         if(raster_write)begin
             if(raster_x>=320 || raster_y>=240)$fatal(1,"out-of-screen write");
             coverage[integer'(raster_y)*320+integer'(raster_x)]=1;

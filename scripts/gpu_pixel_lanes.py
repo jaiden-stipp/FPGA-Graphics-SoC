@@ -234,7 +234,8 @@ module zbuffer_banked #(parameter int FRAME_WIDTH=320,FRAME_HEIGHT=240)(
             else clear_address<=clear_address+1'b1;
         end
     end
-    generate for(genvar b=0;b<2;b++)begin:banks
+    genvar b;
+    generate for(b=0;b<2;b=b+1)begin:banks
         wire [AB-1:0] ra=ry[b]*(FRAME_WIDTH/2)+(rx[b]>>1);
         wire [AB-1:0] ram_write_address=clear_active?clear_address:wy[b]*(FRAME_WIDTH/2)+(wx[b]>>1);
         wire [7:0] ram_write_depth=clear_active?8'd0:wz[b];
@@ -290,7 +291,8 @@ module framebuffer_banked #(parameter int FRAME_WIDTH=320,FRAME_HEIGHT=240)(
             else clear_address<=clear_address+1'b1;
         end
     end
-    generate for(genvar b=0;b<2;b++)begin:banks
+    genvar b;
+    generate for(b=0;b<2;b=b+1)begin:banks
         wire[AB-1:0]ram_write_address=clear_active?clear_address:wy[b]*(FRAME_WIDTH/2)+(wx[b]>>1);
         wire[7:0]ram_write_data=clear_active?8'd0:wc[b];
         wire ram_write_enable=!reset && (clear_active || (we[b] && wx[b]<FRAME_WIDTH && wy[b]<FRAME_HEIGHT && wx[b][0]==b && !clear_request));
