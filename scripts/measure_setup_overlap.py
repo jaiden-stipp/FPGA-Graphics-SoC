@@ -123,12 +123,13 @@ def restore_accepted():
 
 
 if __name__=='__main__':
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--build-only',action='store_true');a=p.parse_args()
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--build-only',action='store_true')
+    p.add_argument('--mode',choices=('both','serial','overlap'),default='both');a=p.parse_args()
     build_probe()
     if not a.build_only:
         # Never leave failed experiments selected on the physical board.
         try:
-            for mode in ('serial','overlap'):
+            for mode in ('serial','overlap') if a.mode=='both' else (a.mode,):
                 program(mode);probe(mode)
                 for label,package,instrumented in [('normal',NORMAL,False),('detail',DETAIL,True)]:
                     collect(package,package.with_name(package.name.replace('.package.json','.symbols.json')),

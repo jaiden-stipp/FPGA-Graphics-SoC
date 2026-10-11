@@ -134,7 +134,7 @@ endmodule
     consumer = '''`include "renderer_types.svh"
 `include "triangle_setup_types.svh"
 module renderer_overlap #(''' + consumer_ports + '''
-    typedef enum logic [2:0] {IDLE=0, RASTERIZE=6, DRAIN=7} raster_state_t;
+    typedef enum logic [2:0] {IDLE=3'd0, RASTERIZE=3'd6, DRAIN=3'd7} raster_state_t;
     raster_state_t state;
     triangle_setup_record_t produced, active, records[0:1];
     logic produced_valid, produced_ready, setup_busy;
