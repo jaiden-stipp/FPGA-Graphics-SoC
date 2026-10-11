@@ -57,27 +57,34 @@ module geometry_worker(
             outcode={p5[31],p4[31],p3[31],p2[31],p1[31],p0[31]};
         end
     endfunction
+    logic[31:0]read_value;
     always_comb begin
-        rdata=0;
+        read_value=0;
         if(!reset && selected && aligned && read_en)begin
-            if(offset>=8'h10 && offset<=8'h3c)rdata={{16{matrix[(offset-16)>>2][15]}},matrix[(offset-16)>>2]};
-            else if(offset>=8'h40 && offset<=8'h48)rdata=reference_position[(offset-64)>>2];
-            else if(offset>=8'h50 && offset<=8'h58)rdata=origin[(offset-80)>>2];
+            if(offset>=8'h10 && offset<=8'h3c)read_value={{16{matrix[(offset-16)>>2][15]}},matrix[(offset-16)>>2]};
+            else if(offset>=8'h40 && offset<=8'h48)read_value=reference_position[(offset-64)>>2];
+            else if(offset>=8'h50 && offset<=8'h58)read_value=origin[(offset-80)>>2];
             else case(offset)
-                8'h00:rdata=ABI;
-                8'h04:rdata={16'd0,5'd0,out_count,1'b0,(3'd4-in_count),2'd0,error,active};
-                8'h08:rdata={24'd0,received};
-                8'h0c:rdata={24'd0,generated};
-                8'h60:rdata=descriptor_count;
-                8'h80:if(out_count!=0)rdata=results[out_rd][31:0];
-                8'h84:if(out_count!=0)rdata=results[out_rd][63:32];
-                8'h88:if(out_count!=0)rdata=results[out_rd][95:64];
-                8'h8c:if(out_count!=0)rdata={26'd0,results[out_rd][101:96]};
-                8'h90:rdata=active_cycles;
-                8'h94:rdata=result_wait_cycles;
+                8'h00:read_value=ABI;
+                8'h04:read_value={16'd0,5'd0,out_count,1'b0,(3'd4-in_count),2'd0,error,active};
+                8'h08:read_value={24'd0,received};
+                8'h0c:read_value={24'd0,generated};
+                8'h60:read_value=descriptor_count;
+                8'h80:if(out_count!=0)read_value=results[out_rd][31:0];
+                8'h84:if(out_count!=0)read_value=results[out_rd][63:32];
+                8'h88:if(out_count!=0)read_value=results[out_rd][95:64];
+                8'h8c:if(out_count!=0)read_value={26'd0,results[out_rd][101:96]};
+                8'h90:read_value=active_cycles;
+                8'h94:read_value=result_wait_cycles;
                 default:begin end
             endcase
         end
+    end
+    // Match the existing falling-edge RAM contract. Pop and response capture
+    // use the same pre-edge FIFO head; CPU samples the registered word later.
+    always_ff @(posedge clk or posedge reset)begin
+        if(reset)rdata<=0;
+        else if(read_en)rdata<=read_value;
     end
     integer i;
     always_ff @(posedge clk or posedge reset)begin

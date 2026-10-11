@@ -434,7 +434,7 @@ def simulate(args):
     if args.full and simulator != "modelsim":
         raise RuntimeError("Full VGA test requires ModelSim with the altera_mf library")
     tests = ["soc_mmio_tb", "soc_memory_tb", "cpu_stream_tb", "game_stream_tb", "udp_controls_tb", "scene_stream_tb", "mario_stream_tb"]
-    available = tests + ['geometry_worker_tb','gfx_dma_tb','sdram_arbiter_tb','gfx_dma_memory_tb','packed_mmio_tb','sdram_cache_tb','sdram_memory_tb','sdram_cpu_tb','udp_loader_tb','udp_extended_input_tb','soc_cpu_counters_tb','cpu_counter_pipeline_tb','cpu_batch_stream_tb','cpu_mul_tb']
+    available = tests + ['geometry_worker_tb','cpu_geometry_tb','gfx_dma_tb','sdram_arbiter_tb','gfx_dma_memory_tb','packed_mmio_tb','sdram_cache_tb','sdram_memory_tb','sdram_cpu_tb','udp_loader_tb','udp_extended_input_tb','soc_cpu_counters_tb','cpu_counter_pipeline_tb','cpu_batch_stream_tb','cpu_mul_tb']
     if args.full:
         tests += ["soc_top_tb", "soc_game_top_tb", "soc_scene_top_tb", "soc_mario_top_tb", "soc_mario_bridge_top_tb"]
         available += ['setup_overlap_tb','pixel_lanes_tb','pixel_banks_tb']

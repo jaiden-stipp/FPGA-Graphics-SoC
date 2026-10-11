@@ -17,7 +17,7 @@ module geometry_worker_tb;
     endtask
     task read_reg(input integer off,output logic[31:0]data);
         @(negedge clk);addr=32'h40000100+off;rd=1;
-        #1;data=rdata;
+        @(posedge clk);#1;data=rdata;
         @(negedge clk);rd=0;
     endtask
     task input_vertex(input integer index);
