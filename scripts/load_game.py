@@ -119,6 +119,12 @@ class Loader:
 
 
 def require_hardware(loader,spec):
+    cpu=spec.get('required_cpu_features',{})
+    bits=(1 if cpu.get('mul') else 0)|(2 if cpu.get('geometry-worker-v1') else 0)
+    if bits:
+        status=loader.operation(STATUS,retries=max(loader.retries,40))
+        if status.get('cpu_features',0)&bits!=bits:
+            raise RuntimeError('Package requires CPU features '+str(cpu)+'; current status does not advertise them (CPU left running)')
     required=spec.get('required_gpu_features',{})
     if required.get('packed-enqueue-v1') or required.get('draw-mesh-fraction-v1') or required.get('command-dma-v1'):
         status=loader.operation(STATUS,retries=max(loader.retries,40))

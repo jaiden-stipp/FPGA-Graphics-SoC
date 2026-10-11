@@ -30,6 +30,11 @@ module soc_mmio #(
     output logic dma_byte_accepted,dma_start,
     output logic [31:0] dma_source,dma_length,dma_submission_id
 );
+`ifdef SOC_GEOMETRY_WORKER
+    localparam CPU_FEATURES=32'h80000003;
+`else
+    localparam CPU_FEATURES=32'h80000001;
+`endif
     localparam integer PTR_BITS = $clog2(FIFO_DEPTH);
     localparam integer COUNT_BITS = $clog2(FIFO_DEPTH + 1);
     logic [PTR_BITS-1:0] wr_ptr, rd_ptr;
@@ -107,7 +112,7 @@ module soc_mmio #(
                 8'h8c: rdata = cpu_snapshot[159:128];
                 8'h90: rdata = cpu_snapshot[127:96];
                 8'h94: rdata = cpu_snapshot[95:64];
-                8'h9c: rdata = 32'h80000001; // MUL and GPU capability-register presence
+                8'h9c: rdata = CPU_FEATURES; // MUL and GPU capability-register presence
                 8'ha0: rdata = cpu_snapshot[63:32];
                 8'ha4: rdata = cpu_snapshot[31:0];
                 8'ha8: rdata = DMA_SUPPORTED ? 32'h00000007 : 32'h00000003; // fractional mesh and packed-enqueue-v1

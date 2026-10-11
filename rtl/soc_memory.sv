@@ -69,10 +69,21 @@ module soc_memory #(
         .Instruction(instruction), .d_rdata(ram_rdata),
         .misaligned(ram_misaligned), .write_performed(ram_write)
     );
+    wire [31:0] geometry_rdata;
+    wire geometry_write;
+`ifdef SOC_GEOMETRY_WORKER
+    wire geometry_selected=addr[31:8]==24'h400001 && !load_hold;
+    geometry_worker geometry(.clk(~clk),.reset(reset || load_hold),.addr(addr),.wdata(wdata),
+        .funct3(funct3),.read_en(read_en && geometry_selected),.write_en(write_en && geometry_selected),
+        .rdata(geometry_rdata),.write_performed(geometry_write));
+`else
+    wire geometry_selected=0;
+    assign geometry_rdata=0,geometry_write=0;
+`endif
     soc_mmio #(.DMA_SUPPORTED(DMA_SUPPORTED)) mmio (
         .clk(~clk), .reset(reset), .addr(addr), .wdata(wdata), .funct3(funct3),
-        .read_en(read_en && !ram_selected && !sdram_selected && !load_hold),
-        .write_en(write_en && !ram_selected && !sdram_selected && !load_hold),
+        .read_en(read_en && !ram_selected && !sdram_selected && !geometry_selected && !load_hold),
+        .write_en(write_en && !ram_selected && !sdram_selected && !geometry_selected && !load_hold),
         .rdata(mmio_rdata), .write_performed(mmio_write),
         .byte_data(byte_data), .byte_valid(byte_valid), .byte_ready(byte_ready),
         .decoder_error(decoder_error), .command_error(command_error),
@@ -85,10 +96,10 @@ module soc_memory #(
         .dma_error_code(dma_error),.dma_completed_id(dma_completed),.dma_bytes_sent(dma_sent),.dma_read_words(dma_reads),.dma_request_wait(dma_reqwait),.dma_fifo_wait(dma_fifowait),
         .dma_start(dma_start),.dma_source(dma_source),.dma_length(dma_length),.dma_submission_id(dma_id)
     );
-    assign rdata = ram_selected ? ram_rdata : sdram_selected ? ext_rdata : mmio_rdata;
+    assign rdata = ram_selected ? ram_rdata : sdram_selected ? ext_rdata : geometry_selected ? geometry_rdata : mmio_rdata;
     assign misaligned = ram_selected ? ram_misaligned : sdram_selected ? ext_bad :
                         ((read_en || write_en) && |addr[1:0]);
-    assign write_performed = !load_hold && (ram_write || mmio_write || ext_write);
+    assign write_performed = !load_hold && (ram_write || mmio_write || ext_write || geometry_write);
     generate if(DMA_SUPPORTED)begin : command_transfer
         gfx_command_dma dma(.clk(clk),.reset(sdram_reset),.cancel(load_hold || reset),.start(dma_start),
           .source(dma_source),.length(dma_length),.submission_id(dma_id),.busy(dma_busy),.error_code(dma_error),.completed_id(dma_completed),

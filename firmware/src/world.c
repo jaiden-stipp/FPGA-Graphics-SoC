@@ -4,6 +4,7 @@
 #include "gfx_protocol.h"
 #include "game_services.h"
 #include "cpu_profile.h"
+#include "geometry_worker.h"
 
 // Diagnostic comparison only: preserve source meshes and physics while
 // bypassing resident GPU handles for terrain. Actors still use mesh draws.
@@ -27,7 +28,7 @@ static uint16_t visible_chunks[2048];
 static uint32_t room=1;
 volatile uint32_t world_visible_chunks,world_direct_triangles,world_uploaded_chunks;
 volatile uint32_t world_gpu_chunks,world_fallback_chunks;
-typedef struct {int32_t x,y,z;} clip_point_t;
+typedef geometry_point_t clip_point_t;
 // One reusable CPU scratch buffer. A source vertex shared by several faces
 // keeps exactly one transform/outcode per direct-drawn mesh and frame.
 static clip_point_t direct_points[128];
@@ -314,6 +315,12 @@ int world_draw(const world_area_t *a,const player_t *p,const int16_t v[12],uint3
             ++world_fallback_chunks;FINE_EVENT(EVENT_DIRECT_DRAW);
             if(c->mesh.vertex_count>128)return -1;
             DETAIL_START(vertex_start);
+#ifdef SOC_GEOMETRY_OFFLOAD
+            int32_t position[3]={p->x,p->y,p->z};
+            int accelerated=geometry_transform(c->mesh.vertices,c->mesh.vertex_count,c->origin,position,v,direct_points,direct_outcodes);
+            if(accelerated<0)return -1;
+            if(!accelerated)
+#endif
             for(uint32_t j=0;j<c->mesh.vertex_count;++j) {
                 const scene_vertex_t *s=c->mesh.vertices+j;
                 direct_points[j]=transform(s->x+c->origin[0],s->y+c->origin[1],s->z+c->origin[2],p,v);
