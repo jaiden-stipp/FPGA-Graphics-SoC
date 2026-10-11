@@ -31,6 +31,12 @@ static uint16_t crc_byte(uint16_t crc, uint8_t byte) {
 #define GFX_DMA_BUFFER(index) ((volatile uint32_t *)(uintptr_t)(0x87fe0000u+(index)*GFX_DMA_BUFFER_BYTES))
 #endif
 static uint32_t dma_checked,dma_buffer,dma_size,dma_word,dma_count,dma_words,dma_sequence,dma_active;
+// Local command state avoids persistent-state loads/stores on every byte.
+typedef struct { uint32_t word,count,size,words,buffer; } dma_builder_t;
+static void dma_save(const dma_builder_t *tx) {
+    dma_word=tx->word;dma_count=tx->count;dma_size=tx->size;
+    dma_words=tx->words;dma_buffer=tx->buffer;
+}
 static int dma_check(void) {
     if(dma_checked)return 0;
     if(!(SOC_CPU_FEATURES&SOC_FEATURE_GPU_REGS) || !(SOC_GPU_FEATURES&SOC_GPU_FEATURE_DMA) || GFX_DMA_ABI!=0x444d0101u)return -1;
@@ -106,15 +112,25 @@ static int send_packed(uint32_t word,uint32_t count) {
     return -1;
 }
 #endif
-static int send_byte(uint8_t byte) {
 #ifdef GFX_DMA
-    dma_word|=(uint32_t)byte<<(dma_count<<3);
-    ++dma_count;++dma_size;
-    if(dma_count==4) {
-        GFX_DMA_BUFFER(dma_buffer)[dma_words++]=dma_word;
-        dma_word=0;dma_count=0;
+#define GFX_SEND(byte) send_byte(byte,&builder)
+static int send_byte(uint8_t byte,dma_builder_t *tx) {
+#else
+#define GFX_SEND(byte) send_byte(byte)
+static int send_byte(uint8_t byte) {
+#endif
+#ifdef GFX_DMA
+    tx->word|=(uint32_t)byte<<(tx->count<<3);
+    ++tx->count;++tx->size;
+    if(tx->count==4) {
+        GFX_DMA_BUFFER(tx->buffer)[tx->words++]=tx->word;
+        tx->word=0;tx->count=0;
     }
-    if(dma_size==GFX_DMA_BUFFER_BYTES)return dma_publish();
+    if(tx->size==GFX_DMA_BUFFER_BYTES) {
+        dma_save(tx);
+        if(dma_publish())return -1;
+        tx->word=0;tx->count=0;tx->size=0;tx->words=0;tx->buffer^=1u;
+    }
     return 0;
 #elif defined(GFX_PACKED)
     tx_word|=(uint32_t)byte<<(tx_count<<3);
@@ -170,6 +186,7 @@ int gfx_command(uint8_t opcode, const uint8_t *payload, uint8_t length) {
 #endif
 #ifdef GFX_DMA
     if(dma_check())return -1;
+    dma_builder_t builder={dma_word,dma_count,dma_size,dma_words,dma_buffer};
 #endif
 #ifdef GFX_PACKED
     if(!packed_checked) {
@@ -185,14 +202,14 @@ int gfx_command(uint8_t opcode, const uint8_t *payload, uint8_t length) {
     uint16_t crc = 0xffffu;
     for (unsigned i = 0; i < 5; ++i) {
         crc = crc_byte(crc, header[i]);
-        if (send_byte(header[i])) return -1;
+        if (GFX_SEND(header[i])) return -1;
     }
     for (unsigned i = 0; i < length; ++i) {
         crc = crc_byte(crc, payload[i]);
-        if (send_byte(payload[i])) return -1;
+        if (GFX_SEND(payload[i])) return -1;
     }
-    if (send_byte((uint8_t)(crc >> 8))) return -1;
-    int result=send_byte((uint8_t)crc);
+    if (GFX_SEND((uint8_t)(crc >> 8))) return -1;
+    int result=GFX_SEND((uint8_t)crc);
 #ifdef GFX_PACKED
     if(!result && tx_count)result=send_packed(tx_word,tx_count);
 #endif
@@ -200,6 +217,7 @@ int gfx_command(uint8_t opcode, const uint8_t *payload, uint8_t length) {
     if (GFX_ERRORS) result=-1;
 #endif
 #ifdef GFX_DMA
+    dma_save(&builder);
     // Frame boundary publishes the exact tail; commands may span buffers.
     if(!result && opcode==GFX_OP_END_FRAME)result=dma_publish();
 #endif
