@@ -2,6 +2,7 @@
 import argparse
 import hashlib
 import json
+import os
 from pathlib import Path
 import re
 import subprocess
@@ -19,6 +20,13 @@ DETAIL = ROOT / 'build/mario-castle-sdram-direct-profile-detail-packed-mul.packa
 def build_probe():
     out=OUT/'probe';out.mkdir(parents=True,exist_ok=True)
     llvm=Path('C:/Program Files/LLVM/bin');elf=out/'probe.elf'
+    from rv32i_subset import check
+    original_path=os.environ.get('PATH','')
+    try:
+        os.environ['PATH']=str(llvm)+os.pathsep+original_path
+        check(ROOT/'firmware/tests/setup_overlap_probe.c',cc=str(llvm/'clang.exe'),extra_flags=['-DGFX_PACKED'])
+    finally:os.environ['PATH']=original_path
+    (out/'subset.json').write_bytes((ROOT/'build/subset/setup_overlap_probe.json').read_bytes())
     cmd=[str(llvm/'clang.exe'),'--target=riscv32-unknown-elf','-fuse-ld=lld',
         '-march=rv32i','-mabi=ilp32','-msmall-data-limit=0','-mno-relax','-O1',
         '-ffreestanding','-fno-builtin','-nostdlib','-Wall','-Wextra','-Werror',
@@ -33,12 +41,17 @@ def build_probe():
     syms={m[3]:int(m[1],16) for line in nm.splitlines() if (m:=re.fullmatch(r'([0-9a-fA-F]+)\s+(\w)\s+(\S+)',line))}
     dis=subprocess.check_output([str(llvm/'llvm-objdump.exe'),'-d',str(elf)],text=True)
     (out/'probe-disassembly.txt').write_text(dis)
+    audited=0
     for line in dis.splitlines():
-        m=re.match(r'\s*[0-9a-f]+:\s+((?:[0-9a-f]{2} ){3}[0-9a-f]{2})',line)
+        m=re.match(r'\s*([0-9a-f]+):\s+([0-9a-f]{8})\s',line)
         if m:
-            ins=int.from_bytes(bytes.fromhex(m[1]),'little')
-            if ins&0x7f==0x33 and ins>>25==1:
-                raise ValueError('Probe unexpectedly emits M instructions')
+            ins=int(m[2],16);audited+=1
+            if ins&0x7f not in (0x03,0x23,0x13,0x33,0x37,0x17,0x6f,0x67,0x63):
+                raise ValueError('Unsupported probe opcode at '+m[1])
+            if ins&0x7f==0x33 and ins>>25 not in (0,32):
+                raise ValueError('Unsupported arithmetic probe opcode at '+m[1])
+    if not audited:raise ValueError('ISA audit matched no instructions')
+    (out/'isa.json').write_text(json.dumps({'compiler_isa':'rv32i','audited_instructions':audited,'optional_M_instructions':0},indent=2)+'\n')
     data=(out/'probe.bin').read_bytes()
     spec={'format':'soc-game-package','version':1,'required_gpu_features':{'packed-enqueue-v1':True},
           'segments':[{'file':'probe.bin','address':0,'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()}]}
