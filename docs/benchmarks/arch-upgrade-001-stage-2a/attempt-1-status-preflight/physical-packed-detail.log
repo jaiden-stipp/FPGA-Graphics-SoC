@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\scripts\profile_cpu.py", line 115, in <module>
+    collect(a.package,a.symbols,a.restore,a.out,a.ip,a.port,a.trials,a.moving,not a.uninstrumented,a.reuse_immutable_assets)
+  File "C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\scripts\profile_cpu.py", line 52, in collect
+    try:require_hardware(loader,json.loads(package.read_text()))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\scripts\load_game.py", line 118, in require_hardware
+    if not loader.operation(READ,0x4000009c,count=1)['words'][0]&0x80000000 or not loader.operation(READ,0x400000a8,count=1)['words'][0]&2:
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\scripts\load_game.py", line 91, in operation
+    result=decode_reply(data,self.transaction)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\scripts\load_game.py", line 33, in decode_reply
+    if values[1]: raise RuntimeError(f'FPGA rejected loader operation, code {values[1]}')
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: FPGA rejected loader operation, code 1

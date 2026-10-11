@@ -1,6 +1,6 @@
 # FPGA parallel architecture upgrade plan
 
-Plan ID: **ARCH-UPGRADE-001**. Created October 10, 2026. Status: **Stage 0 implementation started; later stages pending verification**.
+Plan ID: **ARCH-UPGRADE-001**. Created October 10, 2026. Status: **Stage 0 terrain foundation verified; Stage 1 optional with measured regressions; Stage 2A verified and measured; Stage 2B deferred**.
 
 This is the reference plan for future architecture work. Read this file, `hardware-improvement-record.md`, and the latest accepted benchmark before implementing an upgrade. Update the execution ledger when work is measured and accepted. A stage number in this document refers specifically to ARCH-UPGRADE-001, not earlier game-port milestones.
 
@@ -174,11 +174,11 @@ Raw evidence naming: `docs/benchmarks/arch-upgrade-001-stage-N/`, with substage 
 | --- | --- | --- | --- |
 | 0: replay / baseline | Shared-terrain foundation verified; full actor/transition/physical-route acceptance pending | Baseline 60782c8; replay commit a692b8f; [results](architecture-stage-0-1.md) | Extend the deterministic harness to complete game frames |
 | 1: usable terrain offload | Optional implementation verified; performance acceptance failed for both tested layouts | [Three-trial measurements](benchmarks/arch-upgrade-001-stage-1/measurements.json); original image/game restored | Reduce selection/admission cost and improve residency before promotion |
-| 2A: packed enqueue | Not started | None | Audit MMIO map and atomic capacity semantics |
-| 2B: command DMA | Not started | None | Decide from 2A profile; design arbiter/ownership first |
+| 2A: packed enqueue | Optional transport accepted; normal packed Mario loaded; full-frame terrain equivalence verified | Implementation 2f226d6; [results](architecture-stage-2a.md) | Ordinary standing update+render improves 0.864%; extend route coverage before changing global defaults |
+| 2B: command DMA | Deferred after 2A measurement | [Reassessment](architecture-stage-2a.md#stage-2b-reassessment) | Measure staging costs and remaining transfer bottleneck before arbiter/DMA implementation |
 | 3: overlapping setup | Not started | None | Compare setup idle cost and queue occupancy |
 | 4: two pixel lanes | Not started | None | Validate banking and hazard model before lane duplication |
 | 5: optional math worker | Deferred | None | Select only from updated profiles |
 | 6: timing/cadence | Deferred | Per-stage timing remains mandatory | Reassess after accepted parallel changes |
 
-The next action is completing **Stage 0** game-frame coverage and **Stage 1** performance acceptance. The implemented fractional command is optional; measured regressions are preserved and not deployed as defaults. Packed enqueue can later be evaluated as a separate experiment, but do not combine it with geometry changes in a single unseparated performance claim. Physical board measurements and deployment require one owner.
+The next decision is measuring Stage 2B buffer/staging cost before adding a shared SDRAM master. Packed enqueue remains selectable; ordinary standing update+render improves only 0.864%, despite a larger profiled reduction. There is no FIFO-capacity wait in the measured views. Extend Stage 0 actor/transition/physical-route coverage, improve Stage 1 selection/admission economics, and measure Stage 3 setup/raster overlap independently. Do not combine geometry, transport and clock changes in an unseparated performance claim. Physical board measurements and deployment require one owner.

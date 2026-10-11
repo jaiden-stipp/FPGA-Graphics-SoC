@@ -1,0 +1,21 @@
+Uploading mario-castle-sdram-direct-profile-detail-fine-packed-mul.bin: 27,944 bytes at 0x00000000
+Verifying mario-castle-sdram-direct-profile-detail-fine-packed-mul.bin: 27,944 bytes at 0x00000000
+Uploading mario-castle-sdram-direct-profile-detail-fine-packed-mul.assets.bin: 883,124 bytes at 0x80000000
+  379,416/883,124 bytes
+  761,292/883,124 bytes
+Verifying mario-castle-sdram-direct-profile-detail-fine-packed-mul.assets.bin: 883,124 bytes at 0x80000000
+  381,636/883,124 bytes
+  761,580/883,124 bytes
+Readback verified; CPU released.
+trial 1 fps 29.882398303587753 position [-1328, 260, 4664] metrics {'command_cycles': 570480, 'fifo_wait_span_cycles': 0, 'bytes': 7011, 'commands': 242, 'tick_wall_cycles': 18, 'update_wall_cycles': 40362, 'cpu_wall_cycles': 1321153, 'present_wall_cycles': 346062, 'frame_wall_cycles': 1667346, 'frame': 251, 'clock_hz': 50000000, 'cpu_abi': 1129316609}
+Uploading mario-castle-sdram-direct-profile-detail-fine-packed-mul.bin: 27,944 bytes at 0x00000000
+Verifying mario-castle-sdram-direct-profile-detail-fine-packed-mul.bin: 27,944 bytes at 0x00000000
+Readback verified; CPU released.
+trial 2 fps 30.069390901944082 position [-1328, 260, 4664] metrics {'command_cycles': 570480, 'fifo_wait_span_cycles': 0, 'bytes': 7011, 'commands': 242, 'tick_wall_cycles': 18, 'update_wall_cycles': 40349, 'cpu_wall_cycles': 1321053, 'present_wall_cycles': 346161, 'frame_wall_cycles': 1667345, 'frame': 250, 'clock_hz': 50000000, 'cpu_abi': 1129316609}
+Uploading mario-castle-sdram-direct-profile-detail-fine-packed-mul.bin: 27,944 bytes at 0x00000000
+Verifying mario-castle-sdram-direct-profile-detail-fine-packed-mul.bin: 27,944 bytes at 0x00000000
+Readback verified; CPU released.
+trial 3 fps 29.9769408146023 position [-1328, 260, 4664] metrics {'command_cycles': 570480, 'fifo_wait_span_cycles': 0, 'bytes': 7011, 'commands': 242, 'tick_wall_cycles': 18, 'update_wall_cycles': 40362, 'cpu_wall_cycles': 1321153, 'present_wall_cycles': 346062, 'frame_wall_cycles': 1667346, 'frame': 251, 'clock_hz': 50000000, 'cpu_abi': 1129316609}
+Uploading mario-castle-sdram-direct-mul.bin: 25,876 bytes at 0x00000000
+Verifying mario-castle-sdram-direct-mul.bin: 25,876 bytes at 0x00000000
+Readback verified; CPU released.

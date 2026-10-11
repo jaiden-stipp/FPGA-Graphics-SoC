@@ -147,6 +147,6 @@ def main():
   subprocess.run([__import__('sys').executable,'scripts/soc.py','sim','--full','--simulator','modelsim','--tests','packed_render_replay_tb' if a.packed_mmio else 'render_frame_replay_tb','--work-dir','build/render-replay/simlib'],cwd=ROOT,env=env,check=True)
   capture=a.out/'capture';capture.mkdir(exist_ok=True)
   for f in active.glob('frame-*'):shutil.copyfile(f,capture/f.name)
-  shutil.copyfile(ROOT/'build/render_frame_replay_tb.log',capture/'simulation.log')
+  shutil.copyfile(ROOT/('build/packed_render_replay_tb.log' if a.packed_mmio else 'build/render_frame_replay_tb.log'),capture/'simulation.log')
  print('Prepared deterministic replay:',a.out)
 if __name__=='__main__':main()

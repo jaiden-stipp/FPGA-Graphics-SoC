@@ -1,0 +1,1294 @@
+{
+  "date": "2026-10-11",
+  "source_baseline": "460957e",
+  "implementation_commit": "2f226d6",
+  "clock_hz": 50000000,
+  "scope": "Three standing-spawn trials per transport/profiling configuration plus three packed moving diagnostics on one Stage 2 image; completed-frame snapshots, not a route distribution. Normal live timers are non-atomic. No FPS or full-game equivalence claim.",
+  "configurations": {
+    "physical-batched-detail": {
+      "package": "C:\\Users\\Orb1t\\Documents\\Codex\\FPGA-Game-SoC\\build\\mario-castle-sdram-direct-profile-detail-batched-mul.package.json",
+      "scope": "Standing spawn view",
+      "instrumented": true,
+      "segments": [
+        {
+          "file": "mario-castle-sdram-direct-profile-detail-batched-mul.bin",
+          "address": 0,
+          "bytes": 27324,
+          "sha256": "b74616896b8bf250f2cadc87b00c157fb2d8b230c4437d7e49a7f676688daec1"
+        },
+        {
+          "file": "mario-castle-sdram-direct-profile-detail-batched-mul.assets.bin",
+          "address": 2147483648,
+          "bytes": 883124,
+          "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+        }
+      ],
+      "fps": [
+        29.86811481758832,
+        29.876638396162388,
+        29.868114817925512
+      ],
+      "positions": [
+        [
+          -1328,
+          260,
+          4664
+        ],
+        [
+          -1328,
+          260,
+          4664
+        ],
+        [
+          -1328,
+          260,
+          4664
+        ]
+      ],
+      "restored_status": {
+        "initialized": true,
+        "held": false,
+        "words": [
+          0,
+          0,
+          0
+        ],
+        "scratch": 2,
+        "refresh_count": 21779005,
+        "input_abi": 1229848833,
+        "cpu_features": 2147483649,
+        "gpu_features": 3
+      },
+      "frames": [
+        251,
+        251,
+        251
+      ],
+      "render_cycles": [
+        961268,
+        961268,
+        961268
+      ],
+      "command_cycles": [
+        284788,
+        284788,
+        284788
+      ],
+      "fifo_wait_cycles": [
+        0,
+        0,
+        0
+      ],
+      "bytes": [
+        7011,
+        7011,
+        7011
+      ],
+      "commands": [
+        242,
+        242,
+        242
+      ],
+      "fine": {},
+      "median_render_ms": 19.22536,
+      "median_command_ms": 5.69576,
+      "render_change_percent_vs_legacy": 0.40369624912393043,
+      "command_change_percent_vs_legacy": 1.0309278350515427
+    },
+    "physical-batched-fine": {
+      "package": "C:\\Users\\Orb1t\\Documents\\Codex\\FPGA-Game-SoC\\build\\mario-castle-sdram-direct-profile-detail-fine-batched-mul.package.json",
+      "scope": "Standing spawn view",
+      "instrumented": true,
+      "segments": [
+        {
+          "file": "mario-castle-sdram-direct-profile-detail-fine-batched-mul.bin",
+          "address": 0,
+          "bytes": 27600,
+          "sha256": "691c1c1126473d5ef5aa3f40edbf206e07d3c185b646e4d0d48a3805b3d1a4de"
+        },
+        {
+          "file": "mario-castle-sdram-direct-profile-detail-fine-batched-mul.assets.bin",
+          "address": 2147483648,
+          "bytes": 883124,
+          "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+        }
+      ],
+      "fps": [
+        19.914926527600766,
+        19.782777346937678,
+        19.840497957583217
+      ],
+      "positions": [
+        [
+          -1328,
+          260,
+          4664
+        ],
+        [
+          -1328,
+          260,
+          4664
+        ],
+        [
+          -1328,
+          260,
+          4664
+        ]
+      ],
+      "restored_status": {
+        "initialized": true,
+        "held": false,
+        "words": [
+          0,
+          0,
+          0
+        ],
+        "scratch": 2,
+        "refresh_count": 53739515,
+        "input_abi": 1229848833,
+        "cpu_features": 2147483649,
+        "gpu_features": 3
+      },
+      "frames": [
+        167,
+        167,
+        167
+      ],
+      "render_cycles": [
+        1729460,
+        1729460,
+        1729460
+      ],
+      "command_cycles": [
+        1019245,
+        1019245,
+        1019245
+      ],
+      "fifo_wait_cycles": [
+        0,
+        0,
+        0
+      ],
+      "bytes": [
+        7011,
+        7011,
+        7011
+      ],
+      "commands": [
+        242,
+        242,
+        242
+      ],
+      "fine": {
+        "command_crc": {
+          "cycles": [
+            157858,
+            157858,
+            157858
+          ],
+          "calls": [
+            6527,
+            6527,
+            6527
+          ]
+        },
+        "command_checks": {
+          "cycles": [
+            101300,
+            101300,
+            101300
+          ],
+          "calls": [
+            7011,
+            7011,
+            7011
+          ]
+        },
+        "command_writes": {
+          "cycles": [
+            77121,
+            77121,
+            77121
+          ],
+          "calls": [
+            7011,
+            7011,
+            7011
+          ]
+        },
+        "clip_fraction": {
+          "cycles": [
+            64352,
+            64352,
+            64352
+          ],
+          "calls": [
+            290,
+            290,
+            290
+          ]
+        },
+        "clip_intersection": {
+          "cycles": [
+            100022,
+            100022,
+            100022
+          ],
+          "calls": [
+            290,
+            290,
+            290
+          ]
+        },
+        "gpu_admission": {
+          "cycles": [
+            0,
+            0,
+            0
+          ],
+          "calls": [
+            0,
+            0,
+            0
+          ]
+        },
+        "terrain_upload": {
+          "cycles": [
+            0,
+            0,
+            0
+          ],
+          "calls": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "median_render_ms": 34.5892,
+      "median_command_ms": 20.3849
+    },
+    "physical-legacy-detail": {
+      "package": "C:\\Users\\Orb1t\\Documents\\Codex\\FPGA-Game-SoC\\build\\mario-castle-sdram-direct-profile-detail-mul.package.json",
+      "scope": "Standing spawn view",
+      "instrumented": true,
+      "segments": [
+        {
+          "file": "mario-castle-sdram-direct-profile-detail-mul.bin",
+          "address": 0,
+          "bytes": 27220,
+          "sha256": "4204d952a286fdde0e1fcc6b82eb80cbf46c4030d14609c4e3e6eb4cfedc7495"
+        },
+        {
+          "file": "mario-castle-sdram-direct-profile-detail-mul.assets.bin",
+          "address": 2147483648,
+          "bytes": 883124,
+          "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+        }
+      ],
+      "fps": [
+        29.86811481758832,
+        30.07518796972501,
+        29.882398303252415
+      ],
+      "positions": [
+        [
+          -1328,
+          260,
+          4664
+        ],
+        [
+          -1328,
+          260,
+          4664
+        ],
+        [
+          -1328,
+          260,
+          4664
+        ]
+      ],
+      "restored_status": {
+        "initialized": true,
+        "held": false,
+        "words": [
+          0,
+          0,
+          0
+        ],
+        "scratch": 2,
+        "refresh_count": 11088374,
+        "input_abi": 1229848833,
+        "cpu_features": 2147483649,
+        "gpu_features": 3
+      },
+      "frames": [
+        251,
+        251,
+        251
+      ],
+      "render_cycles": [
+        957403,
+        957403,
+        957403
+      ],
+      "command_cycles": [
+        281882,
+        281882,
+        281882
+      ],
+      "fifo_wait_cycles": [
+        0,
+        0,
+        0
+      ],
+      "bytes": [
+        7011,
+        7011,
+        7011
+      ],
+      "commands": [
+        242,
+        242,
+        242
+      ],
+      "fine": {},
+      "median_render_ms": 19.14806,
+      "median_command_ms": 5.63764,
+      "render_change_percent_vs_legacy": 0.0,
+      "command_change_percent_vs_legacy": 0.0
+    },
+    "physical-legacy-fine": {
+      "package": "C:\\Users\\Orb1t\\Documents\\Codex\\FPGA-Game-SoC\\build\\mario-castle-sdram-direct-profile-detail-fine-mul.package.json",
+      "scope": "Standing spawn view",
+      "instrumented": true,
+      "segments": [
+        {
+          "file": "mario-castle-sdram-direct-profile-detail-fine-mul.bin",
+          "address": 0,
+          "bytes": 27972,
+          "sha256": "134098a746eab98ec2daa27be7fa8887a4a256b61adba9d83f89febe0d4c9479"
+        },
+        {
+          "file": "mario-castle-sdram-direct-profile-detail-fine-mul.assets.bin",
+          "address": 2147483648,
+          "bytes": 883124,
+          "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+        }
+      ],
+      "fps": [
+        19.98846819128312,
+        20.108275328613303,
+        19.97672614423115
+      ],
+      "positions": [
+        [
+          -1328,
+          260,
+          4664
+        ],
+        [
+          -1328,
+          260,
+          4664
+        ],
+        [
+          -1328,
+          260,
+          4664
+        ]
+      ],
+      "restored_status": {
+        "initialized": true,
+        "held": false,
+        "words": [
+          0,
+          0,
+          0
+        ],
+        "scratch": 2,
+        "refresh_count": 43078842,
+        "input_abi": 1229848833,
+        "cpu_features": 2147483649,
+        "gpu_features": 3
+      },
+      "frames": [
+        167,
+        166,
+        167
+      ],
+      "render_cycles": [
+        1521309,
+        1521309,
+        1521309
+      ],
+      "command_cycles": [
+        809867,
+        809867,
+        809867
+      ],
+      "fifo_wait_cycles": [
+        0,
+        0,
+        0
+      ],
+      "bytes": [
+        7011,
+        7011,
+        7011
+      ],
+      "commands": [
+        242,
+        242,
+        242
+      ],
+      "fine": {
+        "command_crc": {
+          "cycles": [
+            175019,
+            175019,
+            175019
+          ],
+          "calls": [
+            6527,
+            6527,
+            6527
+          ]
+        },
+        "command_checks": {
+          "cycles": [
+            126198,
+            126198,
+            126198
+          ],
+          "calls": [
+            7011,
+            7011,
+            7011
+          ]
+        },
+        "command_writes": {
+          "cycles": [
+            77121,
+            77121,
+            77121
+          ],
+          "calls": [
+            7011,
+            7011,
+            7011
+          ]
+        },
+        "clip_fraction": {
+          "cycles": [
+            64352,
+            64352,
+            64352
+          ],
+          "calls": [
+            290,
+            290,
+            290
+          ]
+        },
+        "clip_intersection": {
+          "cycles": [
+            100022,
+            100022,
+            100022
+          ],
+          "calls": [
+            290,
+            290,
+            290
+          ]
+        },
+        "gpu_admission": {
+          "cycles": [
+            0,
+            0,
+            0
+          ],
+          "calls": [
+            0,
+            0,
+            0
+          ]
+        },
+        "terrain_upload": {
+          "cycles": [
+            0,
+            0,
+            0
+          ],
+          "calls": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "median_render_ms": 30.42618,
+      "median_command_ms": 16.19734
+    },
+    "physical-legacy-normal": {
+      "package": "C:\\Users\\Orb1t\\Documents\\Codex\\FPGA-Game-SoC\\build\\arch-stage1\\baseline\\mario-castle-sdram-direct-mul.package.json",
+      "scope": "Standing spawn view",
+      "instrumented": false,
+      "segments": [
+        {
+          "file": "mario-castle-sdram-direct-mul.bin",
+          "address": 0,
+          "bytes": 25876,
+          "sha256": "049e5fad1bbbac68e71cc2df6619efb8fd9737efff5b839b2155f0da7bbc439c"
+        },
+        {
+          "file": "mario-castle-sdram-direct-mul.assets.bin",
+          "address": 2147483648,
+          "bytes": 883124,
+          "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+        }
+      ],
+      "fps": [
+        29.790505477726384,
+        29.86811481758832,
+        29.969064191683287
+      ],
+      "positions": [
+        [
+          -1328,
+          260,
+          4664
+        ],
+        [
+          -1328,
+          260,
+          4664
+        ],
+        [
+          -1328,
+          260,
+          4664
+        ]
+      ],
+      "restored_status": {
+        "initialized": true,
+        "held": false,
+        "words": [
+          0,
+          0,
+          0
+        ],
+        "scratch": 2,
+        "refresh_count": 75010660,
+        "input_abi": 1229848833,
+        "cpu_features": 2147483649,
+        "gpu_features": 3
+      },
+      "live_timer_cycles": {
+        "game_frame_cycles": [
+          1668293,
+          1668293,
+          1668293
+        ],
+        "game_cpu_cycles": [
+          913221,
+          913166,
+          913166
+        ],
+        "game_update_cycles": [
+          40188,
+          40188,
+          40188
+        ],
+        "game_present_cycles": [
+          755119,
+          755119,
+          755119
+        ]
+      },
+      "median_update_plus_render_ms": 18.26332
+    },
+    "physical-packed-detail": {
+      "package": "C:\\Users\\Orb1t\\Documents\\Codex\\FPGA-Game-SoC\\build\\mario-castle-sdram-direct-profile-detail-packed-mul.package.json",
+      "scope": "Standing spawn view",
+      "instrumented": true,
+      "segments": [
+        {
+          "file": "mario-castle-sdram-direct-profile-detail-packed-mul.bin",
+          "address": 0,
+          "bytes": 27704,
+          "sha256": "ca33309535bce4653d0eba9dc2933e1ae2dc1f54e876d5fba00e72115e83656c"
+        },
+        {
+          "file": "mario-castle-sdram-direct-profile-detail-packed-mul.assets.bin",
+          "address": 2147483648,
+          "bytes": 883124,
+          "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+        }
+      ],
+      "fps": [
+        29.882398303252415,
+        29.969064191683287,
+        29.982702286924678
+      ],
+      "positions": [
+        [
+          -1328,
+          260,
+          4664
+        ],
+        [
+          -1328,
+          260,
+          4664
+        ],
+        [
+          -1328,
+          260,
+          4664
+        ]
+      ],
+      "restored_status": {
+        "initialized": true,
+        "held": false,
+        "words": [
+          0,
+          0,
+          0
+        ],
+        "scratch": 2,
+        "refresh_count": 32432032,
+        "input_abi": 1229848833,
+        "cpu_features": 2147483649,
+        "gpu_features": 3
+      },
+      "frames": [
+        251,
+        251,
+        251
+      ],
+      "render_cycles": [
+        905765,
+        905755,
+        905765
+      ],
+      "command_cycles": [
+        230481,
+        230481,
+        230481
+      ],
+      "fifo_wait_cycles": [
+        0,
+        0,
+        0
+      ],
+      "bytes": [
+        7011,
+        7011,
+        7011
+      ],
+      "commands": [
+        242,
+        242,
+        242
+      ],
+      "fine": {},
+      "median_render_ms": 18.1153,
+      "median_command_ms": 4.60962,
+      "render_change_percent_vs_legacy": -5.393549007053455,
+      "command_change_percent_vs_legacy": -18.234935185645064
+    },
+    "physical-packed-fine": {
+      "package": "C:\\Users\\Orb1t\\Documents\\Codex\\FPGA-Game-SoC\\build\\mario-castle-sdram-direct-profile-detail-fine-packed-mul.package.json",
+      "scope": "Standing spawn view",
+      "instrumented": true,
+      "segments": [
+        {
+          "file": "mario-castle-sdram-direct-profile-detail-fine-packed-mul.bin",
+          "address": 0,
+          "bytes": 27944,
+          "sha256": "c28ed5f3d5ea8ed13eb3924ae80eb89f5e61954e86e4f3a030f94d779a6a2df0"
+        },
+        {
+          "file": "mario-castle-sdram-direct-profile-detail-fine-packed-mul.assets.bin",
+          "address": 2147483648,
+          "bytes": 883124,
+          "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+        }
+      ],
+      "fps": [
+        29.882398303587753,
+        30.069390901944082,
+        29.9769408146023
+      ],
+      "positions": [
+        [
+          -1328,
+          260,
+          4664
+        ],
+        [
+          -1328,
+          260,
+          4664
+        ],
+        [
+          -1328,
+          260,
+          4664
+        ]
+      ],
+      "restored_status": {
+        "initialized": true,
+        "held": false,
+        "words": [
+          0,
+          0,
+          0
+        ],
+        "scratch": 2,
+        "refresh_count": 64389813,
+        "input_abi": 1229848833,
+        "cpu_features": 2147483649,
+        "gpu_features": 3
+      },
+      "frames": [
+        251,
+        250,
+        251
+      ],
+      "render_cycles": [
+        1280791,
+        1280704,
+        1280791
+      ],
+      "command_cycles": [
+        570480,
+        570480,
+        570480
+      ],
+      "fifo_wait_cycles": [
+        0,
+        0,
+        0
+      ],
+      "bytes": [
+        7011,
+        7011,
+        7011
+      ],
+      "commands": [
+        242,
+        242,
+        242
+      ],
+      "fine": {
+        "command_crc": {
+          "cycles": [
+            154228,
+            154228,
+            154228
+          ],
+          "calls": [
+            6527,
+            6527,
+            6527
+          ]
+        },
+        "command_checks": {
+          "cycles": [
+            31404,
+            31404,
+            31404
+          ],
+          "calls": [
+            1872,
+            1872,
+            1872
+          ]
+        },
+        "command_writes": {
+          "cycles": [
+            20592,
+            20592,
+            20592
+          ],
+          "calls": [
+            1872,
+            1872,
+            1872
+          ]
+        },
+        "clip_fraction": {
+          "cycles": [
+            64352,
+            64352,
+            64352
+          ],
+          "calls": [
+            290,
+            290,
+            290
+          ]
+        },
+        "clip_intersection": {
+          "cycles": [
+            100022,
+            100022,
+            100022
+          ],
+          "calls": [
+            290,
+            290,
+            290
+          ]
+        },
+        "gpu_admission": {
+          "cycles": [
+            0,
+            0,
+            0
+          ],
+          "calls": [
+            0,
+            0,
+            0
+          ]
+        },
+        "terrain_upload": {
+          "cycles": [
+            0,
+            0,
+            0
+          ],
+          "calls": [
+            0,
+            0,
+            0
+          ]
+        }
+      },
+      "median_render_ms": 25.61582,
+      "median_command_ms": 11.4096
+    },
+    "physical-packed-moving": {
+      "package": "C:\\Users\\Orb1t\\Documents\\Codex\\FPGA-Game-SoC\\build\\mario-castle-sdram-direct-profile-detail-packed-mul.package.json",
+      "scope": "Wall-clock controlled movement diagnostic; not a cycle-identical route",
+      "instrumented": true,
+      "segments": [
+        {
+          "file": "mario-castle-sdram-direct-profile-detail-packed-mul.bin",
+          "address": 0,
+          "bytes": 27704,
+          "sha256": "ca33309535bce4653d0eba9dc2933e1ae2dc1f54e876d5fba00e72115e83656c"
+        },
+        {
+          "file": "mario-castle-sdram-direct-profile-detail-packed-mul.assets.bin",
+          "address": 2147483648,
+          "bytes": 883124,
+          "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+        }
+      ],
+      "fps": [
+        29.76074693637483,
+        30.07518797006251,
+        29.882398303252415
+      ],
+      "positions": [
+        [
+          -1088,
+          260,
+          3920
+        ],
+        [
+          -1136,
+          260,
+          3944
+        ],
+        [
+          -1088,
+          260,
+          3944
+        ]
+      ],
+      "restored_status": {
+        "initialized": true,
+        "held": false,
+        "words": [
+          0,
+          0,
+          0
+        ],
+        "scratch": 2,
+        "refresh_count": 104268731,
+        "input_abi": 1229848833,
+        "cpu_features": 2147483649,
+        "gpu_features": 3
+      },
+      "frames": [
+        251,
+        251,
+        251
+      ],
+      "render_cycles": [
+        1008800,
+        1004943,
+        1006735
+      ],
+      "command_cycles": [
+        302637,
+        302637,
+        302637
+      ],
+      "fifo_wait_cycles": [
+        0,
+        0,
+        0
+      ],
+      "bytes": [
+        9195,
+        9195,
+        9195
+      ],
+      "commands": [
+        326,
+        326,
+        326
+      ],
+      "fine": {},
+      "median_render_ms": 20.1347,
+      "median_command_ms": 6.05274
+    },
+    "physical-packed-normal": {
+      "package": "C:\\Users\\Orb1t\\Documents\\Codex\\FPGA-Game-SoC\\build\\mario-castle-sdram-direct-packed-mul.package.json",
+      "scope": "Standing spawn view",
+      "instrumented": false,
+      "segments": [
+        {
+          "file": "mario-castle-sdram-direct-packed-mul.bin",
+          "address": 0,
+          "bytes": 26332,
+          "sha256": "4cfe0c4811c35df0f14b1269f5d6eed628d8c97a19483ac1cd224d9b06cf8eda"
+        },
+        {
+          "file": "mario-castle-sdram-direct-packed-mul.assets.bin",
+          "address": 2147483648,
+          "bytes": 883124,
+          "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+        }
+      ],
+      "fps": [
+        29.96906419202057,
+        30.069390901944082,
+        29.86811481758832
+      ],
+      "positions": [
+        [
+          -1328,
+          260,
+          4664
+        ],
+        [
+          -1328,
+          260,
+          4664
+        ],
+        [
+          -1328,
+          260,
+          4664
+        ]
+      ],
+      "restored_status": {
+        "initialized": true,
+        "held": false,
+        "words": [
+          0,
+          0,
+          0
+        ],
+        "scratch": 2,
+        "refresh_count": 85639457,
+        "input_abi": 1229848833,
+        "cpu_features": 2147483649,
+        "gpu_features": 3
+      },
+      "live_timer_cycles": {
+        "game_frame_cycles": [
+          1668299,
+          1668299,
+          1668287
+        ],
+        "game_cpu_cycles": [
+          905274,
+          905274,
+          905273
+        ],
+        "game_update_cycles": [
+          40182,
+          40182,
+          40182
+        ],
+        "game_present_cycles": [
+          763017,
+          763017,
+          763006
+        ]
+      },
+      "median_update_plus_render_ms": 18.10548,
+      "update_plus_render_change_percent_vs_legacy": -0.8642459311888562
+    }
+  },
+  "fitted": {
+    "logic_elements": 22675,
+    "logical_memory_bits": 2659684,
+    "multiplier_9bit_elements": 80,
+    "plls": 2,
+    "m9k_blocks": 354,
+    "worst_setup_ns": 0.182,
+    "worst_hold_ns": 0.126,
+    "reported_slacks": [
+      {
+        "type": "Slow 1200mV 85C Model Setup 'CLOCK_50'",
+        "slack_ns": 0.182
+      },
+      {
+        "type": "Slow 1200mV 85C Model Setup 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+        "slack_ns": 1.426
+      },
+      {
+        "type": "Slow 1200mV 85C Model Setup 'SDRAM_CLK'",
+        "slack_ns": 3.148
+      },
+      {
+        "type": "Slow 1200mV 85C Model Setup 'ENET0_TX_CLK'",
+        "slack_ns": 4.581
+      },
+      {
+        "type": "Slow 1200mV 85C Model Setup 'ENET0_RX_CLK'",
+        "slack_ns": 5.966
+      },
+      {
+        "type": "Slow 1200mV 85C Model Setup 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+        "slack_ns": 12.945
+      },
+      {
+        "type": "Slow 1200mV 85C Model Hold 'CLOCK_50'",
+        "slack_ns": 0.303
+      },
+      {
+        "type": "Slow 1200mV 85C Model Hold 'ENET0_RX_CLK'",
+        "slack_ns": 0.331
+      },
+      {
+        "type": "Slow 1200mV 85C Model Hold 'ENET0_TX_CLK'",
+        "slack_ns": 0.385
+      },
+      {
+        "type": "Slow 1200mV 85C Model Hold 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+        "slack_ns": 0.41
+      },
+      {
+        "type": "Slow 1200mV 85C Model Hold 'SDRAM_CLK'",
+        "slack_ns": 10.416
+      },
+      {
+        "type": "Slow 1200mV 85C Model Hold 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+        "slack_ns": 13.403
+      },
+      {
+        "type": "Slow 1200mV 85C Model Recovery 'CLOCK_50'",
+        "slack_ns": 2.82
+      },
+      {
+        "type": "Slow 1200mV 85C Model Removal 'CLOCK_50'",
+        "slack_ns": 6.391
+      },
+      {
+        "type": "Slow 1200mV 85C Model Minimum Pulse Width 'CLOCK_50'",
+        "slack_ns": 9.523
+      },
+      {
+        "type": "Slow 1200mV 85C Model Minimum Pulse Width 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+        "slack_ns": 9.798
+      },
+      {
+        "type": "Slow 1200mV 85C Model Minimum Pulse Width 'SDRAM_CLK'",
+        "slack_ns": 15.79
+      },
+      {
+        "type": "Slow 1200mV 85C Model Minimum Pulse Width 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+        "slack_ns": 19.572
+      },
+      {
+        "type": "Slow 1200mV 85C Model Minimum Pulse Width 'ENET0_RX_CLK'",
+        "slack_ns": 19.636
+      },
+      {
+        "type": "Slow 1200mV 85C Model Minimum Pulse Width 'ENET0_TX_CLK'",
+        "slack_ns": 19.658
+      },
+      {
+        "type": "Slow 1200mV 0C Model Setup 'CLOCK_50'",
+        "slack_ns": 1.11
+      },
+      {
+        "type": "Slow 1200mV 0C Model Setup 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+        "slack_ns": 1.956
+      },
+      {
+        "type": "Slow 1200mV 0C Model Setup 'SDRAM_CLK'",
+        "slack_ns": 3.548
+      },
+      {
+        "type": "Slow 1200mV 0C Model Setup 'ENET0_RX_CLK'",
+        "slack_ns": 6.415
+      },
+      {
+        "type": "Slow 1200mV 0C Model Setup 'ENET0_TX_CLK'",
+        "slack_ns": 7.126
+      },
+      {
+        "type": "Slow 1200mV 0C Model Setup 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+        "slack_ns": 15.225
+      },
+      {
+        "type": "Slow 1200mV 0C Model Hold 'CLOCK_50'",
+        "slack_ns": 0.303
+      },
+      {
+        "type": "Slow 1200mV 0C Model Hold 'ENET0_TX_CLK'",
+        "slack_ns": 0.338
+      },
+      {
+        "type": "Slow 1200mV 0C Model Hold 'ENET0_RX_CLK'",
+        "slack_ns": 0.339
+      },
+      {
+        "type": "Slow 1200mV 0C Model Hold 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+        "slack_ns": 0.366
+      },
+      {
+        "type": "Slow 1200mV 0C Model Hold 'SDRAM_CLK'",
+        "slack_ns": 10.086
+      },
+      {
+        "type": "Slow 1200mV 0C Model Hold 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+        "slack_ns": 12.948
+      },
+      {
+        "type": "Slow 1200mV 0C Model Recovery 'CLOCK_50'",
+        "slack_ns": 3.488
+      },
+      {
+        "type": "Slow 1200mV 0C Model Removal 'CLOCK_50'",
+        "slack_ns": 5.758
+      },
+      {
+        "type": "Slow 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'",
+        "slack_ns": 9.555
+      },
+      {
+        "type": "Slow 1200mV 0C Model Minimum Pulse Width 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+        "slack_ns": 9.808
+      },
+      {
+        "type": "Slow 1200mV 0C Model Minimum Pulse Width 'SDRAM_CLK'",
+        "slack_ns": 15.79
+      },
+      {
+        "type": "Slow 1200mV 0C Model Minimum Pulse Width 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+        "slack_ns": 19.572
+      },
+      {
+        "type": "Slow 1200mV 0C Model Minimum Pulse Width 'ENET0_RX_CLK'",
+        "slack_ns": 19.651
+      },
+      {
+        "type": "Slow 1200mV 0C Model Minimum Pulse Width 'ENET0_TX_CLK'",
+        "slack_ns": 19.671
+      },
+      {
+        "type": "Fast 1200mV 0C Model Setup 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+        "slack_ns": 3.601
+      },
+      {
+        "type": "Fast 1200mV 0C Model Setup 'CLOCK_50'",
+        "slack_ns": 4.718
+      },
+      {
+        "type": "Fast 1200mV 0C Model Setup 'SDRAM_CLK'",
+        "slack_ns": 5.595
+      },
+      {
+        "type": "Fast 1200mV 0C Model Setup 'ENET0_RX_CLK'",
+        "slack_ns": 8.786
+      },
+      {
+        "type": "Fast 1200mV 0C Model Setup 'ENET0_TX_CLK'",
+        "slack_ns": 17.145
+      },
+      {
+        "type": "Fast 1200mV 0C Model Setup 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+        "slack_ns": 25.666
+      },
+      {
+        "type": "Fast 1200mV 0C Model Hold 'ENET0_RX_CLK'",
+        "slack_ns": 0.126
+      },
+      {
+        "type": "Fast 1200mV 0C Model Hold 'CLOCK_50'",
+        "slack_ns": 0.127
+      },
+      {
+        "type": "Fast 1200mV 0C Model Hold 'ENET0_TX_CLK'",
+        "slack_ns": 0.173
+      },
+      {
+        "type": "Fast 1200mV 0C Model Hold 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+        "slack_ns": 0.189
+      },
+      {
+        "type": "Fast 1200mV 0C Model Hold 'SDRAM_CLK'",
+        "slack_ns": 9.368
+      },
+      {
+        "type": "Fast 1200mV 0C Model Hold 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+        "slack_ns": 11.262
+      },
+      {
+        "type": "Fast 1200mV 0C Model Recovery 'CLOCK_50'",
+        "slack_ns": 6.648
+      },
+      {
+        "type": "Fast 1200mV 0C Model Removal 'CLOCK_50'",
+        "slack_ns": 3.334
+      },
+      {
+        "type": "Fast 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'",
+        "slack_ns": 9.194
+      },
+      {
+        "type": "Fast 1200mV 0C Model Minimum Pulse Width 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+        "slack_ns": 9.798
+      },
+      {
+        "type": "Fast 1200mV 0C Model Minimum Pulse Width 'SDRAM_CLK'",
+        "slack_ns": 16.0
+      },
+      {
+        "type": "Fast 1200mV 0C Model Minimum Pulse Width 'ENET0_RX_CLK'",
+        "slack_ns": 19.379
+      },
+      {
+        "type": "Fast 1200mV 0C Model Minimum Pulse Width 'ENET0_TX_CLK'",
+        "slack_ns": 19.385
+      },
+      {
+        "type": "Fast 1200mV 0C Model Minimum Pulse Width 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+        "slack_ns": 19.614
+      }
+    ]
+  }
+}
