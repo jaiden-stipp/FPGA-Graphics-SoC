@@ -437,7 +437,7 @@ def simulate(args):
     available = tests + ['geometry_worker_tb','cpu_geometry_tb','gfx_dma_tb','sdram_arbiter_tb','gfx_dma_memory_tb','packed_mmio_tb','sdram_cache_tb','sdram_memory_tb','sdram_cpu_tb','udp_loader_tb','udp_extended_input_tb','soc_cpu_counters_tb','cpu_counter_pipeline_tb','cpu_batch_stream_tb','cpu_mul_tb']
     if args.full:
         tests += ["soc_top_tb", "soc_game_top_tb", "soc_scene_top_tb", "soc_mario_top_tb", "soc_mario_bridge_top_tb"]
-        available += ['setup_overlap_tb','pixel_lanes_tb','pixel_banks_tb']
+        available += ['geometry_stream_tb','geometry_game_tb','setup_overlap_tb','pixel_lanes_tb','pixel_banks_tb']
         available += ['sdram_mario_top_tb','beacon_sdram_top_tb','quake_sdram_top_tb','portable_scene_top_tb','quake_interactive_top_tb','castle_world_top_tb','projection_precision_tb','screen_edge_coverage_tb','depth_edge_coverage_tb','render_frame_replay_tb','packed_render_replay_tb','dma_render_replay_tb','gpu_fractional_decoder_tb','gpu_fractional_mesh_tb']
     if getattr(args, "tests", None):
         requested = args.tests.split(",")
