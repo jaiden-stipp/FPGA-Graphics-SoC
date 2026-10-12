@@ -1,0 +1,46 @@
+{
+  "sof_sha256": "e2b1dce3d5814f348e0ca88b38fe49e494e68fddd9e897aeeac4c3a75b7c6e14",
+  "package": "C:\\Users\\Orb1t\\Documents\\Codex\\FPGA-Game-SoC\\build\\render-fixes\\baseline\\mario-castle-sdram-direct-packed-mul-geometry-uncapped.package.json",
+  "segments": [
+    {
+      "file": "mario-castle-sdram-direct-packed-mul-geometry-uncapped.bin",
+      "address": 0,
+      "bytes": 27108,
+      "sha256": "aba46c6d488085f1e7999ff42eeb2caa0220d3dc58a5fc9bf9a43911bd24e531"
+    },
+    {
+      "file": "mario-castle-sdram-direct-packed-mul-geometry-uncapped.assets.bin",
+      "address": 2147483648,
+      "bytes": 883124,
+      "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+    }
+  ],
+  "first_status": {
+    "initialized": true,
+    "held": false,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 2,
+    "refresh_count": 50711638,
+    "input_abi": 1229848833,
+    "cpu_features": 2147483651,
+    "gpu_features": 3
+  },
+  "last_status": {
+    "initialized": true,
+    "held": false,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 62,
+    "refresh_count": 50847596,
+    "input_abi": 1229848833,
+    "cpu_features": 2147483651,
+    "gpu_features": 3
+  }
+}

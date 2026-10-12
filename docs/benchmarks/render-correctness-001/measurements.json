@@ -1,0 +1,152 @@
+{
+  "baseline_standing": {
+    "trials": 3,
+    "observed_fps": [
+      59.73622963517664,
+      59.973174937256644,
+      59.93812838404114
+    ],
+    "median_fps": 59.93812838404114,
+    "simulation_hz": [
+      29.93449114405202,
+      29.93449343800102,
+      29.874809705528374
+    ],
+    "positions": [
+      [
+        -1328,
+        260,
+        4664
+      ],
+      [
+        -1328,
+        260,
+        4664
+      ],
+      [
+        -1328,
+        260,
+        4664
+      ]
+    ],
+    "completed_frame_snapshot_medians_cycles": {
+      "game_update_cycles": 40197,
+      "game_cpu_cycles": 648823,
+      "game_present_cycles": 185121,
+      "game_frame_cycles": 833952
+    }
+  },
+  "baseline_moving": {
+    "trials": 3,
+    "observed_fps": [
+      44.8569218869066,
+      44.8569218869066,
+      45.050270688143264
+    ],
+    "median_fps": 44.8569218869066,
+    "simulation_hz": [
+      29.87443580268333,
+      29.87443565931274,
+      29.874435157515695
+    ],
+    "positions": [
+      [
+        -1136,
+        260,
+        3968
+      ],
+      [
+        -1136,
+        260,
+        3968
+      ],
+      [
+        -1112,
+        260,
+        3992
+      ]
+    ],
+    "completed_frame_snapshot_medians_cycles": {
+      "game_update_cycles": 41204,
+      "game_cpu_cycles": 743209,
+      "game_present_cycles": 924948,
+      "game_frame_cycles": 1668164
+    }
+  },
+  "fixed_standing": {
+    "trials": 3,
+    "observed_fps": [
+      59.79302414725753,
+      59.74477958212991,
+      59.97317493792552
+    ],
+    "median_fps": 59.79302414725753,
+    "simulation_hz": [
+      29.880507539591893,
+      29.820451992686674,
+      29.880508253867696
+    ],
+    "positions": [
+      [
+        -1328,
+        260,
+        4664
+      ],
+      [
+        -1328,
+        260,
+        4664
+      ],
+      [
+        -1328,
+        260,
+        4664
+      ]
+    ],
+    "completed_frame_snapshot_medians_cycles": {
+      "game_update_cycles": 99351,
+      "game_cpu_cycles": 581309,
+      "game_present_cycles": 252639,
+      "game_frame_cycles": 833953
+    }
+  },
+  "fixed_moving": {
+    "trials": 3,
+    "observed_fps": [
+      59.957586273650264,
+      59.965404573849355,
+      59.76479660650483
+    ],
+    "median_fps": 59.957586273650264,
+    "simulation_hz": [
+      29.820452706951237,
+      29.821040097425385,
+      29.82045220696604
+    ],
+    "positions": [
+      [
+        -1112,
+        260,
+        3944
+      ],
+      [
+        -1088,
+        260,
+        3944
+      ],
+      [
+        -1136,
+        260,
+        3992
+      ]
+    ],
+    "completed_frame_snapshot_medians_cycles": {
+      "game_update_cycles": 8,
+      "game_cpu_cycles": 560777,
+      "game_present_cycles": 273165,
+      "game_frame_cycles": 833952
+    }
+  },
+  "moving_median_change_percent": 33.664067331270545,
+  "scope": "Combined appearance deferral, baked/face shading, canonical clipping and render-only interpolation; same programmed 50 MHz hardware. Standing spawn and wall-clock input diagnostic, not cycle-identical or full-level performance. Per-frame counter medians are snapshots, not average cost per simulation tick."
+}

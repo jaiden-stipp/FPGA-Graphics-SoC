@@ -1,0 +1,42 @@
+{
+  "scope": "Corrected software, experimental macros disabled vs fully regenerated accepted Stage 6 hardware",
+  "exact": true,
+  "files": [
+    {
+      "file": "frame-1.color.hex",
+      "experimental_default_sha256": "41ec61308783cd2b705968c4188fed15dba0362c45ac63b7d6fe0cbffe826454",
+      "accepted_generator_sha256": "41ec61308783cd2b705968c4188fed15dba0362c45ac63b7d6fe0cbffe826454",
+      "exact": true
+    },
+    {
+      "file": "frame-1.depth.hex",
+      "experimental_default_sha256": "c15cd467d0689eaa963ccf3b5edc1dedf919d836f1dba8eca7d9a2b980fd4cfe",
+      "accepted_generator_sha256": "c15cd467d0689eaa963ccf3b5edc1dedf919d836f1dba8eca7d9a2b980fd4cfe",
+      "exact": true
+    },
+    {
+      "file": "frame-1.palette.hex",
+      "experimental_default_sha256": "fcfe156c50f03cb57d0b8be9c1e59c92dd1eabb3f866c0684b981501027949df",
+      "accepted_generator_sha256": "fcfe156c50f03cb57d0b8be9c1e59c92dd1eabb3f866c0684b981501027949df",
+      "exact": true
+    },
+    {
+      "file": "frame-2.color.hex",
+      "experimental_default_sha256": "6f219e7190e0906d61b1895e5af398298a97499828b9270140d56c624b7b873b",
+      "accepted_generator_sha256": "6f219e7190e0906d61b1895e5af398298a97499828b9270140d56c624b7b873b",
+      "exact": true
+    },
+    {
+      "file": "frame-2.depth.hex",
+      "experimental_default_sha256": "7c3d4ca67ae1f85008c3b41dac7f2fee304e2bbd6dc05c0179ccb88cb0f2a935",
+      "accepted_generator_sha256": "7c3d4ca67ae1f85008c3b41dac7f2fee304e2bbd6dc05c0179ccb88cb0f2a935",
+      "exact": true
+    },
+    {
+      "file": "frame-2.palette.hex",
+      "experimental_default_sha256": "fcfe156c50f03cb57d0b8be9c1e59c92dd1eabb3f866c0684b981501027949df",
+      "accepted_generator_sha256": "fcfe156c50f03cb57d0b8be9c1e59c92dd1eabb3f866c0684b981501027949df",
+      "exact": true
+    }
+  ]
+}

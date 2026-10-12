@@ -1,0 +1,42 @@
+[
+  {
+    "frame": 1,
+    "oracle_scope": "Floating-point reciprocal depth on integer projected coordinates, bounding boxes clamped to viewport; does not reproduce rounded hardware screen-plane intersections or actors",
+    "oracle_triangles": 206,
+    "oracle_covered_pixels": 74655,
+    "comparisons": {
+      "depth8": {
+        "disagree_with_scoped_oracle": 1213,
+        "sha256": "9784fc612faa9af6f33a8cf239d5c74fd6c66826b9ee7122b786a2a5dd2a06c3"
+      },
+      "depth12": {
+        "disagree_with_scoped_oracle": 542,
+        "sha256": "ad10483d3ecdeadc1f004dba05ba3b385578d49c292de7b4f94b1f2498c7faa4"
+      },
+      "subpixel": {
+        "disagree_with_scoped_oracle": 1010,
+        "sha256": "72e87634ca5edd0a0b5d4ab1954eb42b78169e69187ab2a3961a17077eac6abd"
+      }
+    }
+  },
+  {
+    "frame": 2,
+    "oracle_scope": "Floating-point reciprocal depth on integer projected coordinates, bounding boxes clamped to viewport; does not reproduce rounded hardware screen-plane intersections or actors",
+    "oracle_triangles": 192,
+    "oracle_covered_pixels": 73707,
+    "comparisons": {
+      "depth8": {
+        "disagree_with_scoped_oracle": 7262,
+        "sha256": "fdf2df1540e80ceb4990e1d57137782fa70bccd840ebc21a27153d344cca4e04"
+      },
+      "depth12": {
+        "disagree_with_scoped_oracle": 6061,
+        "sha256": "9b03ca16c2077f67c7e640043ff28040b09244aae2187dee7c1ddb43a19f5675"
+      },
+      "subpixel": {
+        "disagree_with_scoped_oracle": 6691,
+        "sha256": "6755dd15cd892a77147c59a4524c75e71983a6b64ef7360db09cb95fc81dc862"
+      }
+    }
+  }
+]

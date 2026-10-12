@@ -491,3 +491,39 @@ simulation timestep, and documented route-dependent performance and timing.
 [Results](architecture-stage-6.md),
 [measurements](benchmarks/arch-upgrade-001-stage-6/measurements.json),
 [artifact hashes](benchmarks/arch-upgrade-001-stage-6/manifest.json).
+
+
+## RENDER-001 — correctness and render interpolation (October 12, 2026)
+
+Baseline `15ce91c`, software implementation `8f46e2c`, same accepted 50 MHz
+Stage 5 hardware/SOF. Source inspection and a deterministic castle replay
+identified transparent tree-shadow decals being rendered as opaque foliage
+polygons. The generic compiler now retains unsupported appearance faces but
+flags them for deferred drawing. Structural geometry/collision, actor meshes,
+clips and warps compare exactly. The adapter retains baked brightness and
+adds declared flat face lighting; the runtime canonicalizes shared-edge clipping
+and interpolates presentation snapshots at the unchanged simulation tick.
+
+Twelve fresh physical trials (three per version/condition) give standing medians
+59.93813 to 59.79302 FPS and timed movement medians 44.85692 to 59.95759 FPS
+(33.664% higher). This measures the combined software change and reduced drawn
+geometry, not an isolated interpolation or hardware speedup. Wall-clock inputs
+are not cycle-identical, and this does not establish full-level 60 FPS. All raw
+input packets, sample timestamps and atomic counters are archived. Per-frame
+snapshots are not average update costs when some frames have zero updates.
+
+34 world, five interpolation/clipping/source and five scheduler/capability tests
+pass; firmware/ISA audits and two full-frame GPU replays pass. All 85 accepted
+RTL/SDC hashes match. The unsuccessful 12-bit depth experiment used +251 logic
+elements, +307,200 logical memory bits, +40 M9Ks and +8 multiplier elements in
+actual Quartus fits; it was never programmed. Q4 depth setup was simulated but
+not fitted or programmed. Neither solved the missing alpha/decal semantics.
+Sources, raw fit/timing reports and replay captures are preserved separately;
+normal hardware generation remains the accepted implementation.
+
+Resume-safe claim: diagnosed a source-to-hardware rendering mismatch in an FPGA
+SoC, implemented capability-aware appearance lowering and fixed-timestep render
+interpolation while preserving source geometry/collision, and measured a timed
+movement diagnostic from 44.86 to 59.96 FPS on unchanged 50 MHz hardware.
+[Full results and limits](render-correctness-fixes.md),
+[raw measurements](benchmarks/render-correctness-001/measurements.json).

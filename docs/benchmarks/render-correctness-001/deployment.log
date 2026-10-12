@@ -1,0 +1,9 @@
+Uploading mario-castle-sdram-direct-packed-mul-geometry-uncapped-interpolated.bin: 29,124 bytes at 0x00000000
+Verifying mario-castle-sdram-direct-packed-mul-geometry-uncapped-interpolated.bin: 29,124 bytes at 0x00000000
+Uploading mario-castle-sdram-direct-packed-mul-geometry-uncapped-interpolated.assets.bin: 883,160 bytes at 0x80000000
+  372,924/883,160 bytes
+  745,752/883,160 bytes
+Verifying mario-castle-sdram-direct-packed-mul-geometry-uncapped-interpolated.assets.bin: 883,160 bytes at 0x80000000
+  372,084/883,160 bytes
+  744,528/883,160 bytes
+Readback verified; CPU released.

@@ -203,8 +203,8 @@ the tested examples, not performance for arbitrary ports. See the
 `--uncapped-render` renders whenever the previous frame has been presented,
 while movement, input consumption, camera and animation advance at the existing
 1,666,667-cycle simulation tick (approximately 30 Hz at 50 MHz). Presentation
-still uses the existing vertical-blank page-swap handshake. It adds no
-interpolation; adjacent presentations may show the same simulation state.
+still uses the existing vertical-blank page-swap handshake. Without `--interpolate-render`, adjacent presentations may show the same
+simulation state.
 
 A port must explicitly declare `"render_repeat_safe": true` inside its project
 `port` object. That declaration means `game_port_render` may be called repeatedly
@@ -226,3 +226,33 @@ update/submission/presentation spans and the matching GPU counters. CPU and GPU
 work overlap. Elapsed-cycle counters are 32-bit; absolute simulation-rate
 estimates use fresh short reset trials, not counters read after wraparound.
 See [Stage 6 results](architecture-stage-6.md) for the actual workload and limits.
+
+
+## Optional render interpolation and deferred appearance
+
+An adapter declaring `port.render_interpolation: true` may use
+`--uncapped-render --interpolate-render`. It implements
+`game_port_render_interpolated(frame, alpha)`, where alpha is unsigned Q16 in
+0..65536. The scheduler computes alpha from the last completed fixed simulation
+tick. The adapter retains previous/current snapshots; drawing must not change
+simulation, camera following, animation phase or transitions. Reset both
+snapshots after an area transition or respawn. Interpolating previous/current
+poses introduces approximately one tick of presentation latency. Collision and
+input still advance at the original simulation cadence; interpolation does not
+increase the physics rate. Rebuild rotation matrices from interpolated angles
+rather than blending matrices into a potentially singular transform.
+
+World IR areas can supply `triangle_render_flags`, one integer per face.
+Zero is ordinary drawing; one means appearance is deferred on this target.
+The compiler retains every face and source ID and separates chunks by flag.
+`world_prepare` excludes deferred chunks from upload/visibility, and `world_draw`
+skips them. Collision is independent. This is explicit adapter capability
+lowering for unsupported alpha/decal appearance; it is not runtime streaming
+failure. Missing metadata defaults to ordinary drawing. Rebuild firmware and
+assets together because `world_chunk_t` now includes the flag field; do not mix
+old firmware with newly compiled world data.
+
+The Castle adapter uses this policy for original alpha/transparent/decal roots,
+which previously produced opaque surfaces and ground bands. The exact original
+textures, cutouts and blended shadows remain future work. See
+[render correction evidence](render-correctness-fixes.md).

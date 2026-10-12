@@ -47,7 +47,8 @@ room. Room zero retains the last selection, as in the original callback.
 The CPU stores physics positions in source units. Rendering uses a player-relative
 origin and four GPU units per source unit. The target policy uses focal 256,
 near depth 257 and software far depth 30,000 GPU units. Flat colors substitute
-textures explicitly; texture alpha/decal appearance is rendered solid. The
+textures explicitly; current exports retain alpha/decal faces but defer drawing
+them on the flat-color target. Earlier exports rendered them solid. The
 models' source files are not rewritten.
 
 The castle camera uses the shared `camera_orbit_step` service. Its framing is
@@ -211,3 +212,31 @@ geometry and behavior; mission return and save persistence; low-progress gate
 tests; two-way castle route validation; cold and moving-scene timing measurements and
 physical VGA/input verification. No claim of 30 Hz or a complete playable star
 mission is made by this checkpoint.
+
+
+## Rendering corrections, October 12, 2026
+
+The current default export retains baked vertex brightness when original
+lighting is disabled and applies quantized, authored face lighting. These
+constants are rendering policy, not measured physical lighting or recovered
+texture pixels. The palette has 146 entries. All original structural positions,
+ordered faces, collision, room membership, skeleton/clips and warps are retained.
+Unsupported alpha/transparent/decal faces remain stored but are not drawn:
+134 grounds, 118 ground-floor, 56 upper-floor, 52 basement and 46 slide faces.
+This removes opaque tree-shadow bands and solid cutout/decal overlays; accurate
+appearance requires original texture pixels and renderer support.
+
+Reproduce the accepted software candidate on the Stage 5 geometry-worker image:
+
+```powershell
+.\scripts\run.ps1 sm64_castle.py --out build/castle-shaded
+.\scripts\run.ps1 soc.py portable-game --project build/castle-shaded/game.project.json --terrain-direct --packed-gfx --integer-mul --geometry-offload --uncapped-render --interpolate-render
+.\scripts\run.ps1 load_game.py build/mario-castle-sdram-direct-packed-mul-geometry-uncapped-interpolated.package.json
+```
+
+`--legacy-flat-colors` preserves the old material/decal policy for comparisons.
+The fixed CPU clipper gives shared edges a canonical endpoint before rounding.
+Render interpolation uses original poses and a 30 Hz simulation; it does not
+replace the imported model, collision or gameplay rules. See the
+[results and limitations](render-correctness-fixes.md). Earlier measurements and
+chunk counts above describe their historical revisions.

@@ -1,0 +1,28 @@
+{
+  "version": 1,
+  "scope": "Deterministic production terrain/controller castle approach; no actors or source engine",
+  "frames": [
+    {
+      "area": 0,
+      "label": "approach-60",
+      "keys": 8,
+      "ticks": 60,
+      "camera": {
+        "yaw": 128,
+        "pitch": -16,
+        "distance": 1000
+      }
+    },
+    {
+      "label": "approach-120",
+      "keys": 8,
+      "ticks": 60,
+      "camera": {
+        "yaw": 128,
+        "pitch": -16,
+        "distance": 1000
+      },
+      "area": 0
+    }
+  ]
+}

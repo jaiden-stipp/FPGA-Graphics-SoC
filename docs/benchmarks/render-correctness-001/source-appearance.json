@@ -1,0 +1,3896 @@
+{
+  "areas": [
+    {
+      "id": "castle_geo_ground",
+      "provenance": {
+        "geo_sha256": "3d6ce9ce08a87f2fa87d03a143cdf8340de542a5435dc9f36daba7e6a1beba86",
+        "room_branches": [],
+        "sources": [
+          {
+            "file": "levels/castle_grounds/areas/1/1/model.inc.c",
+            "sha256": "b8bc419692f45d9cc2fbefc90002728b264693d5ffbbf9d0020161004362869f"
+          },
+          {
+            "file": "levels/castle_grounds/areas/1/10/model.inc.c",
+            "sha256": "cc1fb7745f929d1611f1e051d3ac09225b27cbc185bb1d66fcfe4916a26d989b"
+          },
+          {
+            "file": "levels/castle_grounds/areas/1/11/model.inc.c",
+            "sha256": "0ecb94072489e2cd7a9e1fcd35c4760bd4d77616e85827584b65991a5018cdcb"
+          },
+          {
+            "file": "levels/castle_grounds/areas/1/12/model.inc.c",
+            "sha256": "5493b63aa4bb8f6b0fb7f4ab83eb9d432d50bc49e4b44921bc2e64301f9a6127"
+          },
+          {
+            "file": "levels/castle_grounds/areas/1/13/model.inc.c",
+            "sha256": "132b25d51793d154fe79e612965c2a6c26393bb920b4defca498f5b811eb5626"
+          },
+          {
+            "file": "levels/castle_grounds/areas/1/2/model.inc.c",
+            "sha256": "811f71627a4de9578d8b9a137ab11c962853fc164c5b7c9918523901581762f6"
+          },
+          {
+            "file": "levels/castle_grounds/areas/1/3/model.inc.c",
+            "sha256": "d7ba79e02d20f58ab1c6cd466694ec7ab4372c649e5d33614fb169819ce2ebd0"
+          },
+          {
+            "file": "levels/castle_grounds/areas/1/4/model.inc.c",
+            "sha256": "475930d98f376936859d17bc2260f06c85ea686d6e6f334e45962718bd17a78d"
+          },
+          {
+            "file": "levels/castle_grounds/areas/1/5/model.inc.c",
+            "sha256": "73322fd957042e1b7d49c215a7b80cdee957cc3b447fb6598210e0bfa1f3f90b"
+          },
+          {
+            "file": "levels/castle_grounds/areas/1/6/model.inc.c",
+            "sha256": "c85645da7e44c4bef3d74f94a207e17b14c8306a1968de2372b5c905f7429fc2"
+          },
+          {
+            "file": "levels/castle_grounds/areas/1/7/model.inc.c",
+            "sha256": "66f6a79e9ab4e4fdd88c7d5dc81d94ac878fb45ebd2eaa633bc60945c6ee72c8"
+          },
+          {
+            "file": "levels/castle_grounds/areas/1/8/model.inc.c",
+            "sha256": "c1ed732eeb2ceb851fdbbcae0f49e50b3a5d9e398d2cee35b894d05c5426ddbe"
+          },
+          {
+            "file": "levels/castle_grounds/areas/1/9/model.inc.c",
+            "sha256": "32c1abad138662f1729dafbbf22af1bd83236a63c97466186379ea61f6b216ee"
+          }
+        ],
+        "roots": [
+          {
+            "root": "castle_grounds_seg7_dl_07006D70",
+            "layer": "LAYER_OPAQUE",
+            "triangles": 356,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 9,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 8,
+              "gsDPSetTileSize": 8,
+              "gsSPDisplayList": 11,
+              "gsDPSetTextureImage": 10,
+              "gsDPLoadSync": 10,
+              "gsDPLoadBlock": 10,
+              "gsSPVertex": 53,
+              "gsSP2Triangles": 166,
+              "gsSP1Triangle": 24,
+              "gsSPEndDisplayList": 12,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 9,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 8,
+              "gsDPSetTileSize": 8,
+              "gsDPSetTextureImage": 10,
+              "gsDPLoadSync": 10,
+              "gsDPLoadBlock": 10,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": false
+          },
+          {
+            "root": "castle_grounds_seg7_dl_070095F0",
+            "layer": "LAYER_OPAQUE",
+            "triangles": 269,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsDPSetTile": 6,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 5,
+              "gsDPSetTileSize": 5,
+              "gsSPDisplayList": 10,
+              "gsDPSetTextureImage": 10,
+              "gsDPLoadSync": 10,
+              "gsDPLoadBlock": 10,
+              "gsSPLight": 36,
+              "gsSPVertex": 38,
+              "gsSP2Triangles": 126,
+              "gsSPEndDisplayList": 11,
+              "gsSP1Triangle": 17
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsDPSetTile": 6,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 5,
+              "gsDPSetTileSize": 5,
+              "gsDPSetTextureImage": 10,
+              "gsDPLoadSync": 10,
+              "gsDPLoadBlock": 10,
+              "gsSPLight": 36
+            },
+            "deferred_appearance": false
+          },
+          {
+            "root": "castle_grounds_seg7_dl_0700A860",
+            "layer": "LAYER_ALPHA",
+            "triangles": 30,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsSPDisplayList": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPVertex": 5,
+              "gsSP2Triangles": 13,
+              "gsSP1Triangle": 4,
+              "gsSPEndDisplayList": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": true
+          },
+          {
+            "root": "castle_grounds_seg7_dl_0700B1D0",
+            "layer": "LAYER_TRANSPARENT_DECAL",
+            "triangles": 52,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsSPDisplayList": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPVertex": 8,
+              "gsSP2Triangles": 22,
+              "gsSP1Triangle": 8,
+              "gsSPEndDisplayList": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": true
+          },
+          {
+            "root": "castle_grounds_seg7_dl_0700BA20",
+            "layer": "LAYER_ALPHA",
+            "triangles": 44,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 3,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 2,
+              "gsDPSetTileSize": 2,
+              "gsSPDisplayList": 3,
+              "gsDPSetTextureImage": 3,
+              "gsDPLoadSync": 3,
+              "gsDPLoadBlock": 3,
+              "gsSPVertex": 8,
+              "gsSP2Triangles": 20,
+              "gsSP1Triangle": 4,
+              "gsSPEndDisplayList": 4,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 3,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 2,
+              "gsDPSetTileSize": 2,
+              "gsDPSetTextureImage": 3,
+              "gsDPLoadSync": 3,
+              "gsDPLoadBlock": 3,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": true
+          },
+          {
+            "root": "castle_grounds_seg7_dl_0700C430",
+            "layer": "LAYER_OPAQUE_DECAL",
+            "triangles": 8,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 3,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 2,
+              "gsDPSetTileSize": 2,
+              "gsSPDisplayList": 2,
+              "gsDPSetTextureImage": 2,
+              "gsDPLoadSync": 2,
+              "gsDPLoadBlock": 2,
+              "gsSPVertex": 2,
+              "gsSP2Triangles": 4,
+              "gsSPEndDisplayList": 3,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 3,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 2,
+              "gsDPSetTileSize": 2,
+              "gsDPSetTextureImage": 2,
+              "gsDPLoadSync": 2,
+              "gsDPLoadBlock": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": true
+          },
+          {
+            "root": "castle_grounds_seg7_dl_0700C210",
+            "layer": "LAYER_OPAQUE",
+            "triangles": 26,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 3,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 2,
+              "gsDPSetTileSize": 2,
+              "gsSPDisplayList": 2,
+              "gsDPSetTextureImage": 2,
+              "gsDPLoadSync": 2,
+              "gsDPLoadBlock": 2,
+              "gsSPLight": 12,
+              "gsSPVertex": 6,
+              "gsSP2Triangles": 13,
+              "gsSPEndDisplayList": 3,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 3,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 2,
+              "gsDPSetTileSize": 2,
+              "gsDPSetTextureImage": 2,
+              "gsDPLoadSync": 2,
+              "gsDPLoadBlock": 2,
+              "gsSPLight": 12,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": false
+          }
+        ],
+        "flat_texture_colors": {
+          "castle_grounds_seg7_texture_07000000": [
+            0.5215686274509804,
+            0.4980392156862745,
+            0.4470588235294118
+          ],
+          "castle_grounds_seg7_texture_07001000": [
+            0.8352941176470589,
+            0.5803921568627451,
+            0.6078431372549019
+          ],
+          "castle_grounds_seg7_texture_07002000": [
+            0.8352941176470589,
+            0.5803921568627451,
+            0.6078431372549019
+          ],
+          "castle_grounds_seg7_texture_0700C9E8": [
+            0.7215686274509804,
+            0.611764705882353,
+            0.45098039215686275
+          ],
+          "castle_grounds_seg7_texture_0700D9E8": [
+            0.7411764705882353,
+            0.23921568627450981,
+            0.17647058823529413
+          ],
+          "castle_grounds_seg7_us_texture_0700EAE8": [
+            0.7411764705882353,
+            0.23921568627450981,
+            0.17647058823529413
+          ],
+          "default": [
+            0.592156862745098,
+            0.5490196078431373,
+            0.4745098039215686
+          ],
+          "outside_09000000": [
+            0.4588235294117647,
+            0.34901960784313724,
+            0.24313725490196078
+          ],
+          "outside_09001000": [
+            0.8313725490196079,
+            0.8117647058823529,
+            0.7450980392156863
+          ],
+          "outside_09002000": [
+            0.3411764705882353,
+            0.6078431372549019,
+            0.1843137254901961
+          ],
+          "outside_09003000": [
+            0.8313725490196079,
+            0.8117647058823529,
+            0.7450980392156863
+          ],
+          "outside_09003800": [
+            0.5137254901960784,
+            0.3333333333333333,
+            0.17647058823529413
+          ],
+          "outside_09004000": [
+            0.7215686274509804,
+            0.611764705882353,
+            0.45098039215686275
+          ],
+          "outside_09004800": [
+            0.21568627450980393,
+            0.43137254901960786,
+            0.1450980392156863
+          ],
+          "outside_09005800": [
+            0.17254901960784313,
+            0.403921568627451,
+            0.1803921568627451
+          ],
+          "outside_09006000": [
+            0.5137254901960784,
+            0.3333333333333333,
+            0.17647058823529413
+          ],
+          "outside_09006800": [
+            0.4588235294117647,
+            0.34901960784313724,
+            0.24313725490196078
+          ],
+          "outside_09007800": [
+            0.6941176470588235,
+            0.18823529411764706,
+            0.16862745098039217
+          ],
+          "outside_09008000": [
+            0.3411764705882353,
+            0.6078431372549019,
+            0.1843137254901961
+          ],
+          "outside_09009000": [
+            0.4588235294117647,
+            0.34901960784313724,
+            0.24313725490196078
+          ],
+          "outside_09009800": [
+            0.5215686274509804,
+            0.4980392156862745,
+            0.4470588235294118
+          ],
+          "outside_0900A000": [
+            0.5137254901960784,
+            0.3333333333333333,
+            0.17647058823529413
+          ],
+          "outside_0900A800": [
+            0.49019607843137253,
+            0.13333333333333333,
+            0.12941176470588237
+          ],
+          "outside_0900B000": [
+            0.8352941176470589,
+            0.5803921568627451,
+            0.6078431372549019
+          ],
+          "outside_0900B400": [
+            0.17254901960784313,
+            0.403921568627451,
+            0.1803921568627451
+          ],
+          "outside_0900BC00": [
+            0.17254901960784313,
+            0.403921568627451,
+            0.1803921568627451
+          ]
+        },
+        "material_profile": {
+          "file": "profiles/sm64-castle-colors.json",
+          "sha256": "b00ba7e50c81d528b8aa15110b86dbd2f456cb203e57c2aad2e9f3cb1102fe56"
+        },
+        "shading": {
+          "mode": "flat-baked-brightness-and-face-light",
+          "direction": [
+            -1,
+            2,
+            -1
+          ],
+          "ambient": 0.65,
+          "levels": [
+            64,
+            128,
+            192,
+            255
+          ],
+          "policy": "Authored offline palette approximation; original baked vertex brightness when lighting is disabled; geometry and collision unchanged. No original texture pixels reconstructed."
+        },
+        "appearance_policy": "declared flat colors with baked brightness and face lighting; alpha/decal faces retained but drawing deferred until texture/alpha/decal support"
+      }
+    },
+    {
+      "id": "castle_ground_floor",
+      "provenance": {
+        "geo_sha256": "934083db0f9dbbdd08424e743b48f921ec4260f6ac8a208e845498e5959ad210",
+        "room_branches": [
+          "castle_geo_000F30",
+          "castle_geo_000F70",
+          "castle_geo_000F88",
+          "castle_geo_000FA8",
+          "castle_geo_000FD0",
+          "castle_geo_001000",
+          "castle_geo_001038",
+          "castle_geo_001088",
+          "castle_geo_0010C8",
+          "castle_geo_001110",
+          "castle_geo_001158",
+          "castle_geo_0011A8",
+          "castle_geo_001200",
+          "castle_geo_001260",
+          "castle_geo_0012C8",
+          "castle_geo_001348",
+          "castle_geo_0013B8"
+        ],
+        "sources": [
+          {
+            "file": "levels/castle_inside/areas/1/1/model.inc.c",
+            "sha256": "3d8366c19ea128562e99c8b7fd34295406ccb63918997a3844138427887d32c0"
+          },
+          {
+            "file": "levels/castle_inside/areas/1/10/model.inc.c",
+            "sha256": "2ff9be0656c2c6ad0cf0dfc6403dfba86a00edefe687e0d4627021c4c5d7ec15"
+          },
+          {
+            "file": "levels/castle_inside/areas/1/11/model.inc.c",
+            "sha256": "aa434aeaf8ee68abc3dfbe787c4eb29fe51c4c50f1aa0e96407ba9c52f559add"
+          },
+          {
+            "file": "levels/castle_inside/areas/1/12/model.inc.c",
+            "sha256": "4c733c029fd0731485886f8fa97452f5a3bae979d05220dd8df5398feb44b6ec"
+          },
+          {
+            "file": "levels/castle_inside/areas/1/13/model.inc.c",
+            "sha256": "dbd38092e9bbbb53b3196fb7181e4ac4866992a8f13f4c088859f972f53b42d7"
+          },
+          {
+            "file": "levels/castle_inside/areas/1/14/model.inc.c",
+            "sha256": "c9e8a7aa9ead6181b2b93a6ecc4cf6052055f8a3a83a17fcfb6bb452d3a6467f"
+          },
+          {
+            "file": "levels/castle_inside/areas/1/15/model.inc.c",
+            "sha256": "3ae21ce90fd15175c59c8aaaa1d613ca87346dcd503b4a0be52a359810c0680b"
+          },
+          {
+            "file": "levels/castle_inside/areas/1/16/model.inc.c",
+            "sha256": "dc781fb70178ac2d85d365f3ee1ec29d37dd99aeee8d5b33c6b61b48ec24411d"
+          },
+          {
+            "file": "levels/castle_inside/areas/1/17/model.inc.c",
+            "sha256": "1f9c3bdfc74eaa952069e69a73142ed6ff4a1fc2999710f3a2c1afb4f1361c4e"
+          },
+          {
+            "file": "levels/castle_inside/areas/1/18/model.inc.c",
+            "sha256": "880c9e4e04132691e172bfbf179956336aeac88d2e52123914cd910b3cb6cd61"
+          },
+          {
+            "file": "levels/castle_inside/areas/1/19/model.inc.c",
+            "sha256": "67d2c6a4a588ff8c0644dc609cc2cb4fa890ffb089b1181a920b3529e810cc94"
+          },
+          {
+            "file": "levels/castle_inside/areas/1/2/model.inc.c",
+            "sha256": "cf8150f9d12baf329c5f56bda2f207a504053b2fe69e26380c677a9cdcbcc908"
+          },
+          {
+            "file": "levels/castle_inside/areas/1/20/model.inc.c",
+            "sha256": "366172defc9fd7077b67e6aa0d977c97a9baa4305976deb5c2c214c6e8e908ef"
+          },
+          {
+            "file": "levels/castle_inside/areas/1/21/model.inc.c",
+            "sha256": "845b5cce8a20f02a186f2e55bb19cefe52a09b92e11aac05dca172f6a54f3b19"
+          },
+          {
+            "file": "levels/castle_inside/areas/1/22/model.inc.c",
+            "sha256": "c992912003e72e9ac477d6244374f733c4d431890574bbb408987586f51d2768"
+          },
+          {
+            "file": "levels/castle_inside/areas/1/23/model.inc.c",
+            "sha256": "08f41acc9d11527a43ad58a221fe2eae602fcceadc4c520ddea577131dc2e6f7"
+          },
+          {
+            "file": "levels/castle_inside/areas/1/24/model.inc.c",
+            "sha256": "0775ac08e567942e900aafea3dc52e34cbaf1742eae7f8c06d52fdd6d04d8dbc"
+          },
+          {
+            "file": "levels/castle_inside/areas/1/25/model.inc.c",
+            "sha256": "64857cc0833c93d046e567baab2d0940a80a0e2f45347f6a072bab63f23fd7f0"
+          },
+          {
+            "file": "levels/castle_inside/areas/1/26/model.inc.c",
+            "sha256": "ef65ace4c14b6ce0a973574f324ea405503b7e43d75238dd349d817463512119"
+          },
+          {
+            "file": "levels/castle_inside/areas/1/3/model.inc.c",
+            "sha256": "e45e7ac0620e240ec3f731ede59255b174e56372b47925f88aaaf39977569b50"
+          },
+          {
+            "file": "levels/castle_inside/areas/1/4/model.inc.c",
+            "sha256": "198d039f9776c9ce6a00ba023ab1d4a19b5b39c8392e09220674f991fe857952"
+          },
+          {
+            "file": "levels/castle_inside/areas/1/5/model.inc.c",
+            "sha256": "7ed3fd3dbd0fd53c6fdcfe2c91c4e34a712f97ed65ecb49016a7eaab34ddb6df"
+          },
+          {
+            "file": "levels/castle_inside/areas/1/6/model.inc.c",
+            "sha256": "75291e168eab390da788a9f152c616d4e2d9a03b38da3b921a2b00de37b7788e"
+          },
+          {
+            "file": "levels/castle_inside/areas/1/7/model.inc.c",
+            "sha256": "d714343c3ee3796556e489911e120789320dd17e8a1c7f810e67540eab43926e"
+          },
+          {
+            "file": "levels/castle_inside/areas/1/8/model.inc.c",
+            "sha256": "8b859adfbd11e2cd712a186ca676d8c80df355b73bc7361af6bb23ece835efc6"
+          },
+          {
+            "file": "levels/castle_inside/areas/1/9/model.inc.c",
+            "sha256": "6ed37d9b0535074e3e6133d9b77266488d7a653cece604c6b14f5d771660afa8"
+          },
+          {
+            "file": "levels/castle_inside/painting.inc.c",
+            "sha256": "60886f38b4af73b24eefe83da80176634b0c6a953939082fcbee01d1cb4653ae"
+          }
+        ],
+        "roots": [
+          {
+            "root": "inside_castle_seg7_dl_07028FD0",
+            "layer": "LAYER_OPAQUE",
+            "triangles": 472,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 3,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 2,
+              "gsDPSetTileSize": 2,
+              "gsSPDisplayList": 5,
+              "gsDPSetTextureImage": 5,
+              "gsDPLoadSync": 5,
+              "gsDPLoadBlock": 5,
+              "gsSPLight": 12,
+              "gsSPVertex": 69,
+              "gsSP2Triangles": 219,
+              "gsSP1Triangle": 34,
+              "gsSPEndDisplayList": 6,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 3,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 2,
+              "gsDPSetTileSize": 2,
+              "gsDPSetTextureImage": 5,
+              "gsDPLoadSync": 5,
+              "gsDPLoadBlock": 5,
+              "gsSPLight": 12,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": false
+          },
+          {
+            "root": "inside_castle_seg7_dl_07029578",
+            "layer": "LAYER_ALPHA",
+            "triangles": 32,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsSPDisplayList": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPVertex": 4,
+              "gsSP2Triangles": 15,
+              "gsSP1Triangle": 2,
+              "gsSPEndDisplayList": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": true
+          },
+          {
+            "root": "inside_castle_seg7_dl_0702A650",
+            "layer": "LAYER_OPAQUE",
+            "triangles": 105,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsDPSetTile": 3,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 2,
+              "gsDPSetTileSize": 2,
+              "gsSPDisplayList": 3,
+              "gsDPSetTextureImage": 3,
+              "gsDPLoadSync": 3,
+              "gsDPLoadBlock": 3,
+              "gsSPLight": 18,
+              "gsSPVertex": 18,
+              "gsSP2Triangles": 50,
+              "gsSP1Triangle": 5,
+              "gsSPEndDisplayList": 4
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsDPSetTile": 3,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 2,
+              "gsDPSetTileSize": 2,
+              "gsDPSetTextureImage": 3,
+              "gsDPLoadSync": 3,
+              "gsDPLoadBlock": 3,
+              "gsSPLight": 18
+            },
+            "deferred_appearance": false
+          },
+          {
+            "root": "inside_castle_seg7_dl_0702AA10",
+            "layer": "LAYER_TRANSPARENT_DECAL",
+            "triangles": 8,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsSPDisplayList": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPLight": 2,
+              "gsSPVertex": 1,
+              "gsSP2Triangles": 4,
+              "gsSPEndDisplayList": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPLight": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": true
+          },
+          {
+            "root": "inside_castle_seg7_dl_0702AB20",
+            "layer": "LAYER_ALPHA",
+            "triangles": 2,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsSPDisplayList": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPLight": 2,
+              "gsSPVertex": 1,
+              "gsSP2Triangles": 1,
+              "gsSPEndDisplayList": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPLight": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": true
+          },
+          {
+            "root": "inside_castle_seg7_dl_0702E408",
+            "layer": "LAYER_OPAQUE",
+            "triangles": 335,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsSPDisplayList": 4,
+              "gsDPSetTextureImage": 4,
+              "gsDPLoadSync": 4,
+              "gsDPLoadBlock": 4,
+              "gsSPLight": 4,
+              "gsSPVertex": 48,
+              "gsSP2Triangles": 154,
+              "gsSP1Triangle": 27,
+              "gsSPEndDisplayList": 5,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsDPSetTextureImage": 4,
+              "gsDPLoadSync": 4,
+              "gsDPLoadBlock": 4,
+              "gsSPLight": 4,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": false
+          },
+          {
+            "root": "inside_castle_seg7_dl_0702FD30",
+            "layer": "LAYER_OPAQUE",
+            "triangles": 142,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 3,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 2,
+              "gsDPSetTileSize": 2,
+              "gsSPDisplayList": 5,
+              "gsDPSetTextureImage": 4,
+              "gsDPLoadSync": 4,
+              "gsDPLoadBlock": 4,
+              "gsSPLight": 10,
+              "gsSPVertex": 22,
+              "gsSP2Triangles": 65,
+              "gsSP1Triangle": 12,
+              "gsSPEndDisplayList": 6,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 3,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 2,
+              "gsDPSetTileSize": 2,
+              "gsDPSetTextureImage": 4,
+              "gsDPLoadSync": 4,
+              "gsDPLoadBlock": 4,
+              "gsSPLight": 10,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": false
+          },
+          {
+            "root": "inside_castle_seg7_dl_07023DB0",
+            "layer": "LAYER_OPAQUE",
+            "triangles": 8,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCycleType": 2,
+              "gsDPSetCombineMode": 2,
+              "gsDPSetRenderMode": 2,
+              "gsDPSetTextureLOD": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPTileSync": 10,
+              "gsDPSetTile": 10,
+              "gsDPSetTileSize": 2,
+              "gsSPTexture": 2,
+              "gsSPVertex": 1,
+              "gsDPSetTextureImage": 8,
+              "gsDPLoadSync": 8,
+              "gsDPLoadBlock": 8,
+              "gsSP2Triangles": 4,
+              "gsSPSetGeometryMode": 1,
+              "gsSPEndDisplayList": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCycleType": 2,
+              "gsDPSetCombineMode": 2,
+              "gsDPSetRenderMode": 2,
+              "gsDPSetTextureLOD": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPTileSync": 10,
+              "gsDPSetTile": 10,
+              "gsDPSetTileSize": 2,
+              "gsSPTexture": 2,
+              "gsDPSetTextureImage": 8,
+              "gsDPLoadSync": 8,
+              "gsDPLoadBlock": 8,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": false
+          },
+          {
+            "root": "inside_castle_seg7_dl_07031588",
+            "layer": "LAYER_OPAQUE",
+            "triangles": 128,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsSPDisplayList": 3,
+              "gsDPSetTextureImage": 3,
+              "gsDPLoadSync": 3,
+              "gsDPLoadBlock": 3,
+              "gsSPLight": 2,
+              "gsSPVertex": 21,
+              "gsSP2Triangles": 61,
+              "gsSPEndDisplayList": 4,
+              "gsSP1Triangle": 6,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsDPSetTextureImage": 3,
+              "gsDPLoadSync": 3,
+              "gsDPLoadBlock": 3,
+              "gsSPLight": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": false
+          },
+          {
+            "root": "inside_castle_seg7_dl_07031720",
+            "layer": "LAYER_ALPHA",
+            "triangles": 6,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsSPDisplayList": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPVertex": 1,
+              "gsSP2Triangles": 3,
+              "gsSPEndDisplayList": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": true
+          },
+          {
+            "root": "inside_castle_seg7_dl_07031830",
+            "layer": "LAYER_ALPHA",
+            "triangles": 2,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsSPDisplayList": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPLight": 2,
+              "gsSPVertex": 1,
+              "gsSP2Triangles": 1,
+              "gsSPEndDisplayList": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPLight": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": true
+          },
+          {
+            "root": "inside_castle_seg7_dl_07032FC0",
+            "layer": "LAYER_OPAQUE",
+            "triangles": 140,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 3,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 2,
+              "gsDPSetTileSize": 2,
+              "gsSPDisplayList": 5,
+              "gsDPSetTextureImage": 5,
+              "gsDPLoadSync": 5,
+              "gsDPLoadBlock": 5,
+              "gsSPLight": 4,
+              "gsSPVertex": 20,
+              "gsSP2Triangles": 67,
+              "gsSPEndDisplayList": 6,
+              "gsSP1Triangle": 6,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 3,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 2,
+              "gsDPSetTileSize": 2,
+              "gsDPSetTextureImage": 5,
+              "gsDPLoadSync": 5,
+              "gsDPLoadBlock": 5,
+              "gsSPLight": 4,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": false
+          },
+          {
+            "root": "inside_castle_seg7_dl_07033158",
+            "layer": "LAYER_ALPHA",
+            "triangles": 4,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsSPDisplayList": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPLight": 2,
+              "gsSPVertex": 1,
+              "gsSP2Triangles": 2,
+              "gsSPEndDisplayList": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPLight": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": true
+          },
+          {
+            "root": "inside_castle_seg7_dl_07034D88",
+            "layer": "LAYER_OPAQUE",
+            "triangles": 172,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 4,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 3,
+              "gsDPSetTileSize": 3,
+              "gsSPDisplayList": 6,
+              "gsDPSetTextureImage": 6,
+              "gsDPLoadSync": 6,
+              "gsDPLoadBlock": 6,
+              "gsSPLight": 4,
+              "gsSPVertex": 24,
+              "gsSP2Triangles": 80,
+              "gsSPEndDisplayList": 7,
+              "gsSP1Triangle": 12,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 4,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 3,
+              "gsDPSetTileSize": 3,
+              "gsDPSetTextureImage": 6,
+              "gsDPLoadSync": 6,
+              "gsDPLoadBlock": 6,
+              "gsSPLight": 4,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": false
+          },
+          {
+            "root": "inside_castle_seg7_dl_07035178",
+            "layer": "LAYER_ALPHA",
+            "triangles": 18,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsSPDisplayList": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPVertex": 3,
+              "gsSP2Triangles": 8,
+              "gsSP1Triangle": 2,
+              "gsSPEndDisplayList": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": true
+          },
+          {
+            "root": "inside_castle_seg7_dl_07035288",
+            "layer": "LAYER_ALPHA",
+            "triangles": 2,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsSPDisplayList": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPLight": 2,
+              "gsSPVertex": 1,
+              "gsSP2Triangles": 1,
+              "gsSPEndDisplayList": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPLight": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": true
+          },
+          {
+            "root": "inside_castle_seg7_dl_07036D88",
+            "layer": "LAYER_OPAQUE",
+            "triangles": 164,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 5,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 4,
+              "gsDPSetTileSize": 4,
+              "gsSPDisplayList": 6,
+              "gsDPSetTextureImage": 5,
+              "gsDPLoadSync": 5,
+              "gsDPLoadBlock": 5,
+              "gsSPLight": 14,
+              "gsSPVertex": 23,
+              "gsSP2Triangles": 77,
+              "gsSP1Triangle": 10,
+              "gsSPEndDisplayList": 7,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 5,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 4,
+              "gsDPSetTileSize": 4,
+              "gsDPSetTextureImage": 5,
+              "gsDPLoadSync": 5,
+              "gsDPLoadBlock": 5,
+              "gsSPLight": 14,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": false
+          },
+          {
+            "root": "inside_castle_seg7_dl_07037988",
+            "layer": "LAYER_OPAQUE",
+            "triangles": 64,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsSPDisplayList": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPLight": 2,
+              "gsSPVertex": 9,
+              "gsSP2Triangles": 30,
+              "gsSP1Triangle": 4,
+              "gsSPEndDisplayList": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPLight": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": false
+          },
+          {
+            "root": "inside_castle_seg7_dl_07037BF8",
+            "layer": "LAYER_OPAQUE",
+            "triangles": 22,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsSPDisplayList": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPLight": 2,
+              "gsSPVertex": 1,
+              "gsSP2Triangles": 11,
+              "gsSPEndDisplayList": 2
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPLight": 2
+            },
+            "deferred_appearance": false
+          },
+          {
+            "root": "inside_castle_seg7_dl_07037DE8",
+            "layer": "LAYER_TRANSPARENT",
+            "triangles": 8,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetEnvColor": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPDisplayList": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPLight": 2,
+              "gsSPVertex": 1,
+              "gsSP2Triangles": 4,
+              "gsSPEndDisplayList": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetEnvColor": 2,
+              "gsDPSetCombineMode": 2,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPLight": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": true
+          },
+          {
+            "root": "dl_castle_aquarium_light",
+            "layer": "LAYER_TRANSPARENT",
+            "triangles": 32,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsSPDisplayList": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPVertex": 3,
+              "gsSP2Triangles": 16,
+              "gsSPEndDisplayList": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": true
+          },
+          {
+            "root": "inside_castle_seg7_dl_07038350",
+            "layer": "LAYER_ALPHA",
+            "triangles": 2,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsSPDisplayList": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPLight": 2,
+              "gsSPVertex": 1,
+              "gsSP2Triangles": 1,
+              "gsSPEndDisplayList": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPLight": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": true
+          },
+          {
+            "root": "inside_castle_seg7_dl_0703A6C8",
+            "layer": "LAYER_OPAQUE",
+            "triangles": 204,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 3,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 2,
+              "gsDPSetTileSize": 2,
+              "gsSPDisplayList": 4,
+              "gsDPSetTextureImage": 4,
+              "gsDPLoadSync": 4,
+              "gsDPLoadBlock": 4,
+              "gsSPLight": 6,
+              "gsSPVertex": 30,
+              "gsSP2Triangles": 96,
+              "gsSP1Triangle": 12,
+              "gsSPEndDisplayList": 5,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 3,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 2,
+              "gsDPSetTileSize": 2,
+              "gsDPSetTextureImage": 4,
+              "gsDPLoadSync": 4,
+              "gsDPLoadBlock": 4,
+              "gsSPLight": 6,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": false
+          },
+          {
+            "root": "inside_castle_seg7_dl_0703A808",
+            "layer": "LAYER_ALPHA",
+            "triangles": 2,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsSPDisplayList": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPLight": 2,
+              "gsSPVertex": 1,
+              "gsSP2Triangles": 1,
+              "gsSPEndDisplayList": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPLight": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": true
+          },
+          {
+            "root": "inside_castle_seg7_dl_070234C0",
+            "layer": "LAYER_OPAQUE",
+            "triangles": 4,
+            "commands": {
+              "gsSPDisplayList": 4,
+              "gsDPPipeSync": 2,
+              "gsSPSetGeometryMode": 1,
+              "gsDPSetCombineMode": 2,
+              "gsSPLight": 2,
+              "gsDPSetTile": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsSPTexture": 2,
+              "gsSPEndDisplayList": 5,
+              "gsSPVertex": 1,
+              "gsDPSetTextureImage": 2,
+              "gsDPLoadSync": 2,
+              "gsDPLoadBlock": 2,
+              "gsSP2Triangles": 2
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsSPSetGeometryMode": 1,
+              "gsDPSetCombineMode": 2,
+              "gsSPLight": 2,
+              "gsDPSetTile": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsSPTexture": 2,
+              "gsDPSetTextureImage": 2,
+              "gsDPLoadSync": 2,
+              "gsDPLoadBlock": 2
+            },
+            "deferred_appearance": false
+          },
+          {
+            "root": "inside_castle_seg7_dl_07023520",
+            "layer": "LAYER_OPAQUE",
+            "triangles": 4,
+            "commands": {
+              "gsSPDisplayList": 4,
+              "gsDPPipeSync": 2,
+              "gsSPSetGeometryMode": 1,
+              "gsDPSetCombineMode": 2,
+              "gsSPLight": 2,
+              "gsDPSetTile": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsSPTexture": 2,
+              "gsSPEndDisplayList": 5,
+              "gsSPVertex": 1,
+              "gsDPSetTextureImage": 2,
+              "gsDPLoadSync": 2,
+              "gsDPLoadBlock": 2,
+              "gsSP2Triangles": 2
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsSPSetGeometryMode": 1,
+              "gsDPSetCombineMode": 2,
+              "gsSPLight": 2,
+              "gsDPSetTile": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsSPTexture": 2,
+              "gsDPSetTextureImage": 2,
+              "gsDPLoadSync": 2,
+              "gsDPLoadBlock": 2
+            },
+            "deferred_appearance": false
+          },
+          {
+            "root": "inside_castle_seg7_dl_0703BA08",
+            "layer": "LAYER_OPAQUE",
+            "triangles": 99,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 3,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 2,
+              "gsDPSetTileSize": 2,
+              "gsSPDisplayList": 5,
+              "gsDPSetTextureImage": 5,
+              "gsDPLoadSync": 5,
+              "gsDPLoadBlock": 5,
+              "gsSPLight": 4,
+              "gsSPVertex": 15,
+              "gsSP2Triangles": 46,
+              "gsSP1Triangle": 7,
+              "gsSPEndDisplayList": 6,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 3,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 2,
+              "gsDPSetTileSize": 2,
+              "gsDPSetTextureImage": 5,
+              "gsDPLoadSync": 5,
+              "gsDPLoadBlock": 5,
+              "gsSPLight": 4,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": false
+          }
+        ],
+        "flat_texture_colors": {
+          "default": [
+            0.592156862745098,
+            0.5490196078431373,
+            0.4745098039215686
+          ],
+          "inside_09000000": [
+            0.6509803921568628,
+            0.15294117647058825,
+            0.19607843137254902
+          ],
+          "inside_09001000": [
+            0.4196078431372549,
+            0.6509803921568628,
+            0.8549019607843137
+          ],
+          "inside_09003000": [
+            0.9137254901960784,
+            0.8980392156862745,
+            0.8313725490196079
+          ],
+          "inside_09003800": [
+            0.8980392156862745,
+            0.8588235294117647,
+            0.7058823529411765
+          ],
+          "inside_09004000": [
+            0.5137254901960784,
+            0.3333333333333333,
+            0.17647058823529413
+          ],
+          "inside_09005000": [
+            0.4196078431372549,
+            0.6509803921568628,
+            0.8549019607843137
+          ],
+          "inside_09007000": [
+            0.8313725490196079,
+            0.8117647058823529,
+            0.7450980392156863
+          ],
+          "inside_09008000": [
+            0.4196078431372549,
+            0.6509803921568628,
+            0.8549019607843137
+          ],
+          "inside_09008800": [
+            0.6509803921568628,
+            0.15294117647058825,
+            0.19607843137254902
+          ],
+          "inside_0900A000": [
+            0.26666666666666666,
+            0.25098039215686274,
+            0.25882352941176473
+          ],
+          "inside_0900B000": [
+            0.8980392156862745,
+            0.8588235294117647,
+            0.7058823529411765
+          ],
+          "inside_castle_seg7_texture_07000800": [
+            0.8156862745098039,
+            0.6705882352941176,
+            0.28627450980392155
+          ],
+          "inside_castle_seg7_texture_07002000": [
+            0.8352941176470589,
+            0.5803921568627451,
+            0.6078431372549019
+          ],
+          "inside_castle_seg7_texture_07003000": [
+            0.8156862745098039,
+            0.6705882352941176,
+            0.28627450980392155
+          ],
+          "inside_castle_seg7_texture_07006000": [
+            0.8352941176470589,
+            0.5803921568627451,
+            0.6078431372549019
+          ],
+          "inside_castle_seg7_texture_07006800": [
+            0.8352941176470589,
+            0.5803921568627451,
+            0.6078431372549019
+          ],
+          "inside_castle_seg7_texture_07007000": [
+            0.8352941176470589,
+            0.5803921568627451,
+            0.6078431372549019
+          ],
+          "inside_castle_seg7_texture_07007800": [
+            0.8352941176470589,
+            0.5803921568627451,
+            0.6078431372549019
+          ],
+          "inside_castle_seg7_texture_07008000": [
+            0.8352941176470589,
+            0.5803921568627451,
+            0.6078431372549019
+          ],
+          "inside_castle_seg7_texture_07008800": [
+            0.8352941176470589,
+            0.5803921568627451,
+            0.6078431372549019
+          ],
+          "inside_castle_seg7_texture_07009000": [
+            0.8352941176470589,
+            0.5803921568627451,
+            0.6078431372549019
+          ],
+          "inside_castle_seg7_texture_07009800": [
+            0.8352941176470589,
+            0.5803921568627451,
+            0.6078431372549019
+          ],
+          "inside_castle_seg7_texture_0700A800": [
+            0.29411764705882354,
+            0.5137254901960784,
+            0.7254901960784313
+          ],
+          "inside_castle_seg7_texture_0700B800": [
+            0.29411764705882354,
+            0.5137254901960784,
+            0.7254901960784313
+          ],
+          "inside_castle_seg7_texture_0700C800": [
+            0.3215686274509804,
+            0.5568627450980392,
+            0.2901960784313726
+          ],
+          "inside_castle_seg7_texture_0700D800": [
+            0.3215686274509804,
+            0.5568627450980392,
+            0.2901960784313726
+          ],
+          "inside_castle_seg7_texture_0700E800": [
+            0.592156862745098,
+            0.40784313725490196,
+            0.25882352941176473
+          ],
+          "inside_castle_seg7_texture_0700F800": [
+            0.592156862745098,
+            0.40784313725490196,
+            0.25882352941176473
+          ],
+          "inside_castle_seg7_texture_07010800": [
+            0.6941176470588235,
+            0.2784313725490196,
+            0.19607843137254902
+          ],
+          "inside_castle_seg7_texture_07011800": [
+            0.6941176470588235,
+            0.2784313725490196,
+            0.19607843137254902
+          ],
+          "inside_castle_seg7_texture_07012800": [
+            0.29411764705882354,
+            0.5137254901960784,
+            0.7254901960784313
+          ],
+          "inside_castle_seg7_texture_07013800": [
+            0.29411764705882354,
+            0.5137254901960784,
+            0.7254901960784313
+          ],
+          "inside_castle_seg7_texture_07014800": [
+            0.3215686274509804,
+            0.5568627450980392,
+            0.2901960784313726
+          ],
+          "inside_castle_seg7_texture_07015800": [
+            0.3215686274509804,
+            0.5568627450980392,
+            0.2901960784313726
+          ],
+          "inside_castle_seg7_texture_07017800": [
+            0.592156862745098,
+            0.40784313725490196,
+            0.25882352941176473
+          ],
+          "inside_castle_seg7_texture_07018800": [
+            0.6941176470588235,
+            0.2784313725490196,
+            0.19607843137254902
+          ],
+          "inside_castle_seg7_texture_07019800": [
+            0.6941176470588235,
+            0.2784313725490196,
+            0.19607843137254902
+          ],
+          "inside_castle_seg7_texture_0701A800": [
+            0.29411764705882354,
+            0.5137254901960784,
+            0.7254901960784313
+          ],
+          "inside_castle_seg7_texture_0701B800": [
+            0.29411764705882354,
+            0.5137254901960784,
+            0.7254901960784313
+          ],
+          "inside_castle_seg7_texture_0701C800": [
+            0.3215686274509804,
+            0.5568627450980392,
+            0.2901960784313726
+          ],
+          "inside_castle_seg7_texture_0701D800": [
+            0.3215686274509804,
+            0.5568627450980392,
+            0.2901960784313726
+          ],
+          "inside_castle_seg7_texture_0701E800": [
+            0.592156862745098,
+            0.40784313725490196,
+            0.25882352941176473
+          ],
+          "inside_castle_seg7_texture_0701F800": [
+            0.592156862745098,
+            0.40784313725490196,
+            0.25882352941176473
+          ],
+          "inside_castle_seg7_texture_07020800": [
+            0.6941176470588235,
+            0.2784313725490196,
+            0.19607843137254902
+          ],
+          "texture_castle_light": [
+            1.0,
+            0.9176470588235294,
+            0.6352941176470588
+          ]
+        },
+        "material_profile": {
+          "file": "profiles/sm64-castle-colors.json",
+          "sha256": "b00ba7e50c81d528b8aa15110b86dbd2f456cb203e57c2aad2e9f3cb1102fe56"
+        },
+        "shading": {
+          "mode": "flat-baked-brightness-and-face-light",
+          "direction": [
+            -1,
+            2,
+            -1
+          ],
+          "ambient": 0.65,
+          "levels": [
+            64,
+            128,
+            192,
+            255
+          ],
+          "policy": "Authored offline palette approximation; original baked vertex brightness when lighting is disabled; geometry and collision unchanged. No original texture pixels reconstructed."
+        },
+        "appearance_policy": "declared flat colors with baked brightness and face lighting; alpha/decal faces retained but drawing deferred until texture/alpha/decal support"
+      }
+    },
+    {
+      "id": "castle_upper_floor",
+      "provenance": {
+        "geo_sha256": "1404ca2ee1972d7cc513cbab9ad7d379edd28614c3e107a12bd543f7d1df029b",
+        "room_branches": [
+          "castle_geo_001560",
+          "castle_geo_001578",
+          "castle_geo_0015B8",
+          "castle_geo_0015F8",
+          "castle_geo_001628",
+          "castle_geo_001668",
+          "castle_geo_001690",
+          "castle_geo_0016D8",
+          "castle_geo_001740",
+          "castle_geo_001798",
+          "castle_geo_001800"
+        ],
+        "sources": [
+          {
+            "file": "levels/castle_inside/areas/2/1/model.inc.c",
+            "sha256": "1fb3c1111c514d3e75d23a6b79fcc3f768efdeccebc615a10df1d163bcfea18a"
+          },
+          {
+            "file": "levels/castle_inside/areas/2/10/model.inc.c",
+            "sha256": "5ffa7f0215b84a314457c45a3a3bf0c752581254c0a028f662f30c8b5027bfd1"
+          },
+          {
+            "file": "levels/castle_inside/areas/2/11/model.inc.c",
+            "sha256": "55a9e4665eaf42deedd6c5ad644a14bdf9ab62fea9cb8d42e7d348be050395ef"
+          },
+          {
+            "file": "levels/castle_inside/areas/2/12/model.inc.c",
+            "sha256": "577cbba81cc6e039fc9ed94ab9bf3d0ad31864886e438e7955ca900d951750ae"
+          },
+          {
+            "file": "levels/castle_inside/areas/2/13/model.inc.c",
+            "sha256": "d3afa073d8935bcd0a04d87e63d085e96d22b24957a520a8d069c25a5cb4c5e4"
+          },
+          {
+            "file": "levels/castle_inside/areas/2/14/model.inc.c",
+            "sha256": "97d54b296e7807ab79d9c44342e6c90330d92df6214d5d5e8f2813d24e0e5198"
+          },
+          {
+            "file": "levels/castle_inside/areas/2/15/model.inc.c",
+            "sha256": "dc506e4b26e8f9cf2e1971f008512a9aac32ad14fa4f9f50d7c216492bbd28b9"
+          },
+          {
+            "file": "levels/castle_inside/areas/2/2/model.inc.c",
+            "sha256": "b123eb7c50c84cd551f05e67d30262c5703b5d5989d6390ca3b362c7153b7e1f"
+          },
+          {
+            "file": "levels/castle_inside/areas/2/3/model.inc.c",
+            "sha256": "568ced90e322afcb4b9896b959150a6e5c1bc624b1e55c3ec9ef90d02e4d5c93"
+          },
+          {
+            "file": "levels/castle_inside/areas/2/4/model.inc.c",
+            "sha256": "56a23a8023f9fff8ec37ed2771b838b382dca63ba863b2d7a453f910a1b76f08"
+          },
+          {
+            "file": "levels/castle_inside/areas/2/5/model.inc.c",
+            "sha256": "7fefbacaf18bb35bd9c153322ce1e6d0114cecb16abff5ee3ba5e5128ebeec43"
+          },
+          {
+            "file": "levels/castle_inside/areas/2/6/model.inc.c",
+            "sha256": "1409cd7c2d4e9292b48ae8a24061fdf6edd83adf7af1ff0879907c8c4952c0d0"
+          },
+          {
+            "file": "levels/castle_inside/areas/2/7/model.inc.c",
+            "sha256": "e93fb7bf473c7ffaa373d05701e03341ad305e861f0677b648d8e0b77e3f392f"
+          },
+          {
+            "file": "levels/castle_inside/areas/2/8/model.inc.c",
+            "sha256": "4bcc83d247e44fdd058a3c59331cbca2b336b6424e554ca23570ebca5e11f692"
+          },
+          {
+            "file": "levels/castle_inside/areas/2/9/model.inc.c",
+            "sha256": "73704c7517de3c94a9deefe1393095ded0ff2d42dc61a3c58217819558c08470"
+          },
+          {
+            "file": "levels/castle_inside/areas/2/pendulum/model.inc.c",
+            "sha256": "3fa87c1963ee46cf714892b78c132ac81d06eec35d2dde6ad230f7002ce4c633"
+          },
+          {
+            "file": "levels/castle_inside/painting.inc.c",
+            "sha256": "60886f38b4af73b24eefe83da80176634b0c6a953939082fcbee01d1cb4653ae"
+          }
+        ],
+        "roots": [
+          {
+            "root": "inside_castle_seg7_dl_0703E6F0",
+            "layer": "LAYER_OPAQUE",
+            "triangles": 221,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 3,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 2,
+              "gsDPSetTileSize": 2,
+              "gsSPDisplayList": 5,
+              "gsDPSetTextureImage": 5,
+              "gsDPLoadSync": 5,
+              "gsDPLoadBlock": 5,
+              "gsSPLight": 4,
+              "gsSPVertex": 33,
+              "gsSP2Triangles": 106,
+              "gsSP1Triangle": 9,
+              "gsSPEndDisplayList": 6,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 3,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 2,
+              "gsDPSetTileSize": 2,
+              "gsDPSetTextureImage": 5,
+              "gsDPLoadSync": 5,
+              "gsDPLoadBlock": 5,
+              "gsSPLight": 4,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": false
+          },
+          {
+            "root": "inside_castle_seg7_dl_07043028",
+            "layer": "LAYER_OPAQUE",
+            "triangles": 453,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 4,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 3,
+              "gsDPSetTileSize": 3,
+              "gsSPDisplayList": 7,
+              "gsDPSetTextureImage": 7,
+              "gsDPLoadSync": 7,
+              "gsDPLoadBlock": 7,
+              "gsSPLight": 2,
+              "gsSPVertex": 60,
+              "gsSP2Triangles": 219,
+              "gsSP1Triangle": 15,
+              "gsSPEndDisplayList": 8,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 4,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 3,
+              "gsDPSetTileSize": 3,
+              "gsDPSetTextureImage": 7,
+              "gsDPLoadSync": 7,
+              "gsDPLoadBlock": 7,
+              "gsSPLight": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": false
+          },
+          {
+            "root": "inside_castle_seg7_dl_07043B48",
+            "layer": "LAYER_OPAQUE",
+            "triangles": 48,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 4,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 3,
+              "gsDPSetTileSize": 3,
+              "gsSPDisplayList": 11,
+              "gsDPSetTextureImage": 11,
+              "gsDPLoadSync": 11,
+              "gsDPLoadBlock": 11,
+              "gsSPLight": 6,
+              "gsSPVertex": 14,
+              "gsSP2Triangles": 23,
+              "gsSPEndDisplayList": 12,
+              "gsSP1Triangle": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 4,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 3,
+              "gsDPSetTileSize": 3,
+              "gsDPSetTextureImage": 11,
+              "gsDPLoadSync": 11,
+              "gsDPLoadBlock": 11,
+              "gsSPLight": 6,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": false
+          },
+          {
+            "root": "inside_castle_seg7_dl_07043CD8",
+            "layer": "LAYER_ALPHA",
+            "triangles": 2,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsSPDisplayList": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPLight": 2,
+              "gsSPVertex": 1,
+              "gsSP2Triangles": 1,
+              "gsSPEndDisplayList": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPLight": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": true
+          },
+          {
+            "root": "inside_castle_seg7_dl_0704A0E8",
+            "layer": "LAYER_OPAQUE",
+            "triangles": 614,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 4,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 3,
+              "gsDPSetTileSize": 3,
+              "gsSPDisplayList": 7,
+              "gsDPSetTextureImage": 7,
+              "gsDPLoadSync": 7,
+              "gsDPLoadBlock": 7,
+              "gsSPVertex": 84,
+              "gsSP2Triangles": 281,
+              "gsSPEndDisplayList": 8,
+              "gsSP1Triangle": 52,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 4,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 3,
+              "gsDPSetTileSize": 3,
+              "gsDPSetTextureImage": 7,
+              "gsDPLoadSync": 7,
+              "gsDPLoadBlock": 7,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": false
+          },
+          {
+            "root": "inside_castle_seg7_dl_0704A2E0",
+            "layer": "LAYER_TRANSPARENT",
+            "triangles": 6,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsSPSetGeometryMode": 1,
+              "gsDPSetCombineMode": 2,
+              "gsDPLoadTextureBlock": 1,
+              "gsSPTexture": 2,
+              "gsSPDisplayList": 1,
+              "gsSPLight": 2,
+              "gsSPVertex": 1,
+              "gsSP2Triangles": 3,
+              "gsSPEndDisplayList": 2,
+              "gsSPClearGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsSPSetGeometryMode": 1,
+              "gsDPSetCombineMode": 2,
+              "gsDPLoadTextureBlock": 1,
+              "gsSPTexture": 2,
+              "gsSPLight": 2,
+              "gsSPClearGeometryMode": 1
+            },
+            "deferred_appearance": true
+          },
+          {
+            "root": "inside_castle_seg7_dl_0704AA98",
+            "layer": "LAYER_OPAQUE",
+            "triangles": 36,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 4,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 3,
+              "gsDPSetTileSize": 3,
+              "gsSPDisplayList": 10,
+              "gsDPSetTextureImage": 10,
+              "gsDPLoadSync": 10,
+              "gsDPLoadBlock": 10,
+              "gsSPVertex": 10,
+              "gsSP2Triangles": 18,
+              "gsSPEndDisplayList": 11,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 4,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 3,
+              "gsDPSetTileSize": 3,
+              "gsDPSetTextureImage": 10,
+              "gsDPLoadSync": 10,
+              "gsDPLoadBlock": 10,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": false
+          },
+          {
+            "root": "inside_castle_seg7_dl_0704C7D8",
+            "layer": "LAYER_OPAQUE",
+            "triangles": 170,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 4,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 3,
+              "gsDPSetTileSize": 3,
+              "gsSPDisplayList": 8,
+              "gsDPSetTextureImage": 8,
+              "gsDPLoadSync": 8,
+              "gsDPLoadBlock": 8,
+              "gsSPLight": 8,
+              "gsSPVertex": 26,
+              "gsSP2Triangles": 80,
+              "gsSP1Triangle": 10,
+              "gsSPEndDisplayList": 9,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 4,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 3,
+              "gsDPSetTileSize": 3,
+              "gsDPSetTextureImage": 8,
+              "gsDPLoadSync": 8,
+              "gsDPLoadBlock": 8,
+              "gsSPLight": 8,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": false
+          },
+          {
+            "root": "inside_castle_seg7_dl_07050938",
+            "layer": "LAYER_OPAQUE",
+            "triangles": 382,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 7,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 6,
+              "gsDPSetTileSize": 6,
+              "gsSPDisplayList": 12,
+              "gsDPSetTextureImage": 12,
+              "gsDPLoadSync": 12,
+              "gsDPLoadBlock": 12,
+              "gsSPLight": 26,
+              "gsSPVertex": 58,
+              "gsSP2Triangles": 178,
+              "gsSP1Triangle": 26,
+              "gsSPEndDisplayList": 13,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 7,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 6,
+              "gsDPSetTileSize": 6,
+              "gsDPSetTextureImage": 12,
+              "gsDPLoadSync": 12,
+              "gsDPLoadBlock": 12,
+              "gsSPLight": 26,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": false
+          },
+          {
+            "root": "inside_castle_seg7_dl_07051678",
+            "layer": "LAYER_ALPHA",
+            "triangles": 18,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsSPDisplayList": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPVertex": 3,
+              "gsSP2Triangles": 8,
+              "gsSP1Triangle": 2,
+              "gsSPEndDisplayList": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": true
+          },
+          {
+            "root": "inside_castle_seg7_dl_070519C8",
+            "layer": "LAYER_TRANSPARENT",
+            "triangles": 24,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsSPDisplayList": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPVertex": 2,
+              "gsSP2Triangles": 12,
+              "gsSPEndDisplayList": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": true
+          },
+          {
+            "root": "inside_castle_seg7_dl_07051B60",
+            "layer": "LAYER_TRANSPARENT",
+            "triangles": 6,
+            "commands": {
+              "gsDPPipeSync": 1,
+              "gsSPClearGeometryMode": 1,
+              "gsSPDisplayList": 1,
+              "gsSPLight": 2,
+              "gsSPVertex": 1,
+              "gsSP2Triangles": 3,
+              "gsSPEndDisplayList": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 1,
+              "gsSPClearGeometryMode": 1,
+              "gsSPLight": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": true
+          },
+          {
+            "root": "inside_castle_seg7_dl_070558D0",
+            "layer": "LAYER_OPAQUE",
+            "triangles": 366,
+            "commands": {
+              "gsDPPipeSync": 3,
+              "gsDPSetCycleType": 2,
+              "gsDPSetRenderMode": 2,
+              "gsDPSetDepthSource": 1,
+              "gsDPSetFogColor": 1,
+              "gsSPFogPosition": 1,
+              "gsSPSetGeometryMode": 1,
+              "gsDPSetCombineMode": 3,
+              "gsDPSetTile": 3,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 2,
+              "gsDPSetTileSize": 2,
+              "gsSPDisplayList": 5,
+              "gsDPSetTextureImage": 4,
+              "gsDPLoadSync": 4,
+              "gsDPLoadBlock": 4,
+              "gsSPLight": 8,
+              "gsSPVertex": 53,
+              "gsSP2Triangles": 162,
+              "gsSPEndDisplayList": 6,
+              "gsSP1Triangle": 42,
+              "gsSPClearGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 3,
+              "gsDPSetCycleType": 2,
+              "gsDPSetRenderMode": 2,
+              "gsDPSetDepthSource": 1,
+              "gsDPSetFogColor": 1,
+              "gsSPFogPosition": 1,
+              "gsSPSetGeometryMode": 1,
+              "gsDPSetCombineMode": 3,
+              "gsDPSetTile": 3,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 2,
+              "gsDPSetTileSize": 2,
+              "gsDPSetTextureImage": 4,
+              "gsDPLoadSync": 4,
+              "gsDPLoadBlock": 4,
+              "gsSPLight": 8,
+              "gsSPClearGeometryMode": 1
+            },
+            "deferred_appearance": false
+          },
+          {
+            "root": "inside_castle_seg7_dl_070572A0",
+            "layer": "LAYER_OPAQUE",
+            "triangles": 136,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCycleType": 2,
+              "gsDPSetRenderMode": 2,
+              "gsDPSetDepthSource": 1,
+              "gsDPSetFogColor": 1,
+              "gsSPFogPosition": 1,
+              "gsSPSetGeometryMode": 1,
+              "gsDPSetCombineMode": 2,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsSPDisplayList": 8,
+              "gsDPSetTextureImage": 8,
+              "gsDPLoadSync": 8,
+              "gsDPLoadBlock": 8,
+              "gsSPLight": 18,
+              "gsSPVertex": 28,
+              "gsSP2Triangles": 60,
+              "gsSP1Triangle": 16,
+              "gsSPEndDisplayList": 9,
+              "gsSPClearGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCycleType": 2,
+              "gsDPSetRenderMode": 2,
+              "gsDPSetDepthSource": 1,
+              "gsDPSetFogColor": 1,
+              "gsSPFogPosition": 1,
+              "gsSPSetGeometryMode": 1,
+              "gsDPSetCombineMode": 2,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsDPSetTextureImage": 8,
+              "gsDPLoadSync": 8,
+              "gsDPLoadBlock": 8,
+              "gsSPLight": 18,
+              "gsSPClearGeometryMode": 1
+            },
+            "deferred_appearance": false
+          },
+          {
+            "root": "inside_castle_seg7_dl_07057F00",
+            "layer": "LAYER_OPAQUE",
+            "triangles": 64,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 4,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 3,
+              "gsDPSetTileSize": 3,
+              "gsSPDisplayList": 8,
+              "gsDPSetTextureImage": 8,
+              "gsDPLoadSync": 8,
+              "gsDPLoadBlock": 8,
+              "gsSPLight": 6,
+              "gsSPVertex": 12,
+              "gsSP2Triangles": 30,
+              "gsSPEndDisplayList": 9,
+              "gsSP1Triangle": 4,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 4,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 3,
+              "gsDPSetTileSize": 3,
+              "gsDPSetTextureImage": 8,
+              "gsDPLoadSync": 8,
+              "gsDPLoadBlock": 8,
+              "gsSPLight": 6,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": false
+          }
+        ],
+        "flat_texture_colors": {
+          "default": [
+            0.592156862745098,
+            0.5490196078431373,
+            0.4745098039215686
+          ],
+          "inside_09002000": [
+            0.6509803921568628,
+            0.15294117647058825,
+            0.19607843137254902
+          ],
+          "inside_09003000": [
+            0.9137254901960784,
+            0.8980392156862745,
+            0.8313725490196079
+          ],
+          "inside_09003800": [
+            0.8980392156862745,
+            0.8588235294117647,
+            0.7058823529411765
+          ],
+          "inside_09004000": [
+            0.5137254901960784,
+            0.3333333333333333,
+            0.17647058823529413
+          ],
+          "inside_09004800": [
+            0.8980392156862745,
+            0.8588235294117647,
+            0.7058823529411765
+          ],
+          "inside_09005000": [
+            0.4196078431372549,
+            0.6509803921568628,
+            0.8549019607843137
+          ],
+          "inside_09005800": [
+            0.6509803921568628,
+            0.15294117647058825,
+            0.19607843137254902
+          ],
+          "inside_09007000": [
+            0.8313725490196079,
+            0.8117647058823529,
+            0.7450980392156863
+          ],
+          "inside_09008000": [
+            0.4196078431372549,
+            0.6509803921568628,
+            0.8549019607843137
+          ],
+          "inside_09008800": [
+            0.6509803921568628,
+            0.15294117647058825,
+            0.19607843137254902
+          ],
+          "inside_0900A000": [
+            0.26666666666666666,
+            0.25098039215686274,
+            0.25882352941176473
+          ],
+          "inside_0900B000": [
+            0.8980392156862745,
+            0.8588235294117647,
+            0.7058823529411765
+          ],
+          "inside_0900B800": [
+            0.26666666666666666,
+            0.25098039215686274,
+            0.25882352941176473
+          ],
+          "inside_castle_seg7_texture_07003000": [
+            0.8156862745098039,
+            0.6705882352941176,
+            0.28627450980392155
+          ],
+          "inside_castle_seg7_texture_07006000": [
+            0.8352941176470589,
+            0.5803921568627451,
+            0.6078431372549019
+          ],
+          "inside_castle_seg7_texture_07006800": [
+            0.8352941176470589,
+            0.5803921568627451,
+            0.6078431372549019
+          ],
+          "inside_castle_seg7_texture_07007000": [
+            0.8352941176470589,
+            0.5803921568627451,
+            0.6078431372549019
+          ],
+          "inside_castle_seg7_texture_07007800": [
+            0.8352941176470589,
+            0.5803921568627451,
+            0.6078431372549019
+          ],
+          "inside_castle_seg7_texture_07008000": [
+            0.8352941176470589,
+            0.5803921568627451,
+            0.6078431372549019
+          ],
+          "inside_castle_seg7_texture_07008800": [
+            0.8352941176470589,
+            0.5803921568627451,
+            0.6078431372549019
+          ],
+          "inside_castle_seg7_texture_07009000": [
+            0.8352941176470589,
+            0.5803921568627451,
+            0.6078431372549019
+          ],
+          "inside_castle_seg7_texture_07009800": [
+            0.8352941176470589,
+            0.5803921568627451,
+            0.6078431372549019
+          ],
+          "inside_castle_seg7_texture_0700A000": [
+            0.29411764705882354,
+            0.5137254901960784,
+            0.7254901960784313
+          ],
+          "inside_castle_seg7_texture_0700A800": [
+            0.29411764705882354,
+            0.5137254901960784,
+            0.7254901960784313
+          ],
+          "inside_castle_seg7_texture_0700B800": [
+            0.29411764705882354,
+            0.5137254901960784,
+            0.7254901960784313
+          ],
+          "inside_castle_seg7_texture_0700C800": [
+            0.3215686274509804,
+            0.5568627450980392,
+            0.2901960784313726
+          ],
+          "inside_castle_seg7_texture_0700D800": [
+            0.3215686274509804,
+            0.5568627450980392,
+            0.2901960784313726
+          ],
+          "inside_castle_seg7_texture_0700E800": [
+            0.592156862745098,
+            0.40784313725490196,
+            0.25882352941176473
+          ],
+          "inside_castle_seg7_texture_0700F800": [
+            0.592156862745098,
+            0.40784313725490196,
+            0.25882352941176473
+          ],
+          "inside_castle_seg7_texture_07010800": [
+            0.6941176470588235,
+            0.2784313725490196,
+            0.19607843137254902
+          ],
+          "inside_castle_seg7_texture_07011800": [
+            0.6941176470588235,
+            0.2784313725490196,
+            0.19607843137254902
+          ],
+          "inside_castle_seg7_texture_07012800": [
+            0.29411764705882354,
+            0.5137254901960784,
+            0.7254901960784313
+          ],
+          "inside_castle_seg7_texture_07013800": [
+            0.29411764705882354,
+            0.5137254901960784,
+            0.7254901960784313
+          ],
+          "inside_castle_seg7_texture_07014800": [
+            0.3215686274509804,
+            0.5568627450980392,
+            0.2901960784313726
+          ],
+          "inside_castle_seg7_texture_07015800": [
+            0.3215686274509804,
+            0.5568627450980392,
+            0.2901960784313726
+          ],
+          "inside_castle_seg7_texture_07017800": [
+            0.592156862745098,
+            0.40784313725490196,
+            0.25882352941176473
+          ],
+          "inside_castle_seg7_texture_07018800": [
+            0.6941176470588235,
+            0.2784313725490196,
+            0.19607843137254902
+          ],
+          "inside_castle_seg7_texture_07019800": [
+            0.6941176470588235,
+            0.2784313725490196,
+            0.19607843137254902
+          ],
+          "inside_castle_seg7_texture_0701A800": [
+            0.29411764705882354,
+            0.5137254901960784,
+            0.7254901960784313
+          ],
+          "inside_castle_seg7_texture_0701B800": [
+            0.29411764705882354,
+            0.5137254901960784,
+            0.7254901960784313
+          ],
+          "inside_castle_seg7_texture_0701C800": [
+            0.3215686274509804,
+            0.5568627450980392,
+            0.2901960784313726
+          ],
+          "inside_castle_seg7_texture_0701D800": [
+            0.3215686274509804,
+            0.5568627450980392,
+            0.2901960784313726
+          ],
+          "inside_castle_seg7_texture_0701E800": [
+            0.592156862745098,
+            0.40784313725490196,
+            0.25882352941176473
+          ],
+          "inside_castle_seg7_texture_0701F800": [
+            0.592156862745098,
+            0.40784313725490196,
+            0.25882352941176473
+          ],
+          "inside_castle_seg7_texture_07020800": [
+            0.6941176470588235,
+            0.2784313725490196,
+            0.19607843137254902
+          ],
+          "texture_castle_light": [
+            1.0,
+            0.9176470588235294,
+            0.6352941176470588
+          ]
+        },
+        "material_profile": {
+          "file": "profiles/sm64-castle-colors.json",
+          "sha256": "b00ba7e50c81d528b8aa15110b86dbd2f456cb203e57c2aad2e9f3cb1102fe56"
+        },
+        "shading": {
+          "mode": "flat-baked-brightness-and-face-light",
+          "direction": [
+            -1,
+            2,
+            -1
+          ],
+          "ambient": 0.65,
+          "levels": [
+            64,
+            128,
+            192,
+            255
+          ],
+          "policy": "Authored offline palette approximation; original baked vertex brightness when lighting is disabled; geometry and collision unchanged. No original texture pixels reconstructed."
+        },
+        "appearance_policy": "declared flat colors with baked brightness and face lighting; alpha/decal faces retained but drawing deferred until texture/alpha/decal support"
+      }
+    },
+    {
+      "id": "castle_basement",
+      "provenance": {
+        "geo_sha256": "97b4fe2b5099a791cb73c864c24996689adedbe2aeb0df569e61630eb90688f0",
+        "room_branches": [
+          "castle_geo_001958",
+          "castle_geo_001980",
+          "castle_geo_0019C8",
+          "castle_geo_0019F8",
+          "castle_geo_001A30",
+          "castle_geo_001A58",
+          "castle_geo_001AB8",
+          "castle_geo_001AF8",
+          "castle_geo_001B48",
+          "castle_geo_001BB0"
+        ],
+        "sources": [
+          {
+            "file": "levels/castle_inside/areas/3/1/model.inc.c",
+            "sha256": "6c4ae1da98cc481360cad252fb4927e4ccc8f92e399e5f1b2758704edccf1ae5"
+          },
+          {
+            "file": "levels/castle_inside/areas/3/10/model.inc.c",
+            "sha256": "331a438a12103f8d7c0ec076681f8f948470ae0cf85785f8b70a952b60bf2cd7"
+          },
+          {
+            "file": "levels/castle_inside/areas/3/11/model.inc.c",
+            "sha256": "09f03798f016d46bd2ecf9d9c5858375c61c87e15ce93b591945346c5365f6a6"
+          },
+          {
+            "file": "levels/castle_inside/areas/3/2/model.inc.c",
+            "sha256": "9f52d2ecc0711499df7d88595db57b46e7b26d7f9b8b117836d5c2e7df01e740"
+          },
+          {
+            "file": "levels/castle_inside/areas/3/3/model.inc.c",
+            "sha256": "660c7ba4f402c2c1185acb03748d1dc81be9715a8b6d44eb6da1278ab2fb8f28"
+          },
+          {
+            "file": "levels/castle_inside/areas/3/4/model.inc.c",
+            "sha256": "e5669461c3be765283cb13383b3bbc070d8bbec8e52f9fc973e4a5931e5255cb"
+          },
+          {
+            "file": "levels/castle_inside/areas/3/5/model.inc.c",
+            "sha256": "460afd73476016750008f2c9572ef5a2b4adfa48f13c12d8af5c385803503d19"
+          },
+          {
+            "file": "levels/castle_inside/areas/3/6/model.inc.c",
+            "sha256": "cfbb575a2f4d9dfb37c0238ea2206ebc05df023b3c68c367f44c592732cafb85"
+          },
+          {
+            "file": "levels/castle_inside/areas/3/7/model.inc.c",
+            "sha256": "1dccb22488b45f573f74f7bf9a31d4b9ae8828a2ed39ee309bf5f8b42d8c4cda"
+          },
+          {
+            "file": "levels/castle_inside/areas/3/8/model.inc.c",
+            "sha256": "d726e2aff37b37517d3c2a7a10d49bfa8cbae5d9c82f6c2fc069c754019266fc"
+          },
+          {
+            "file": "levels/castle_inside/areas/3/9/model.inc.c",
+            "sha256": "3064e360189308546412b06fd80d2da2cefef448f919eedea09d538085013da7"
+          },
+          {
+            "file": "levels/castle_inside/painting.inc.c",
+            "sha256": "60886f38b4af73b24eefe83da80176634b0c6a953939082fcbee01d1cb4653ae"
+          }
+        ],
+        "roots": [
+          {
+            "root": "inside_castle_seg7_dl_0705E088",
+            "layer": "LAYER_OPAQUE",
+            "triangles": 458,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 3,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 2,
+              "gsDPSetTileSize": 2,
+              "gsSPDisplayList": 6,
+              "gsDPSetTextureImage": 6,
+              "gsDPLoadSync": 6,
+              "gsDPLoadBlock": 6,
+              "gsSPLight": 20,
+              "gsSPVertex": 71,
+              "gsSP2Triangles": 210,
+              "gsSP1Triangle": 38,
+              "gsSPEndDisplayList": 7,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 3,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 2,
+              "gsDPSetTileSize": 2,
+              "gsDPSetTextureImage": 6,
+              "gsDPLoadSync": 6,
+              "gsDPLoadBlock": 6,
+              "gsSPLight": 20,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": false
+          },
+          {
+            "root": "inside_castle_seg7_dl_0705E2A0",
+            "layer": "LAYER_ALPHA",
+            "triangles": 8,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsSPDisplayList": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPVertex": 1,
+              "gsSP2Triangles": 4,
+              "gsSPEndDisplayList": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": true
+          },
+          {
+            "root": "inside_castle_seg7_dl_0705E450",
+            "layer": "LAYER_TRANSPARENT",
+            "triangles": 6,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsSPDisplayList": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPLight": 2,
+              "gsSPVertex": 1,
+              "gsSP2Triangles": 3,
+              "gsSPEndDisplayList": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPLight": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": true
+          },
+          {
+            "root": "inside_castle_seg7_dl_070616E8",
+            "layer": "LAYER_OPAQUE",
+            "triangles": 291,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 3,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 2,
+              "gsDPSetTileSize": 2,
+              "gsSPDisplayList": 5,
+              "gsDPSetTextureImage": 5,
+              "gsDPLoadSync": 5,
+              "gsDPLoadBlock": 5,
+              "gsSPLight": 16,
+              "gsSPVertex": 43,
+              "gsSP2Triangles": 138,
+              "gsSP1Triangle": 15,
+              "gsSPEndDisplayList": 6,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 3,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 2,
+              "gsDPSetTileSize": 2,
+              "gsDPSetTextureImage": 5,
+              "gsDPLoadSync": 5,
+              "gsDPLoadBlock": 5,
+              "gsSPLight": 16,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": false
+          },
+          {
+            "root": "inside_castle_seg7_dl_07061C20",
+            "layer": "LAYER_TRANSPARENT",
+            "triangles": 26,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsSPDisplayList": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPVertex": 4,
+              "gsSP2Triangles": 12,
+              "gsSP1Triangle": 2,
+              "gsSPEndDisplayList": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": true
+          },
+          {
+            "root": "inside_castle_seg7_dl_07064B78",
+            "layer": "LAYER_OPAQUE",
+            "triangles": 282,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 4,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 3,
+              "gsDPSetTileSize": 3,
+              "gsSPDisplayList": 6,
+              "gsDPSetTextureImage": 5,
+              "gsDPLoadSync": 5,
+              "gsDPLoadBlock": 5,
+              "gsSPLight": 8,
+              "gsSPVertex": 41,
+              "gsSP2Triangles": 131,
+              "gsSP1Triangle": 20,
+              "gsSPEndDisplayList": 7,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 4,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 3,
+              "gsDPSetTileSize": 3,
+              "gsDPSetTextureImage": 5,
+              "gsDPLoadSync": 5,
+              "gsDPLoadBlock": 5,
+              "gsSPLight": 8,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": false
+          },
+          {
+            "root": "inside_castle_seg7_dl_07064D58",
+            "layer": "LAYER_ALPHA",
+            "triangles": 6,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsSPDisplayList": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPVertex": 1,
+              "gsSP2Triangles": 3,
+              "gsSPEndDisplayList": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": true
+          },
+          {
+            "root": "inside_castle_seg7_dl_07066CE0",
+            "layer": "LAYER_OPAQUE",
+            "triangles": 192,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 3,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 2,
+              "gsDPSetTileSize": 2,
+              "gsSPDisplayList": 5,
+              "gsDPSetTextureImage": 5,
+              "gsDPLoadSync": 5,
+              "gsDPLoadBlock": 5,
+              "gsSPLight": 2,
+              "gsSPVertex": 26,
+              "gsSP2Triangles": 91,
+              "gsSP1Triangle": 10,
+              "gsSPEndDisplayList": 6,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 3,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 2,
+              "gsDPSetTileSize": 2,
+              "gsDPSetTextureImage": 5,
+              "gsDPLoadSync": 5,
+              "gsDPLoadBlock": 5,
+              "gsSPLight": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": false
+          },
+          {
+            "root": "inside_castle_seg7_dl_07066E90",
+            "layer": "LAYER_TRANSPARENT",
+            "triangles": 4,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsSPDisplayList": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPVertex": 1,
+              "gsSP2Triangles": 2,
+              "gsSPEndDisplayList": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": true
+          },
+          {
+            "root": "inside_castle_seg7_dl_07066FA0",
+            "layer": "LAYER_ALPHA",
+            "triangles": 2,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsSPDisplayList": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPLight": 2,
+              "gsSPVertex": 1,
+              "gsSP2Triangles": 1,
+              "gsSPEndDisplayList": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPLight": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": true
+          },
+          {
+            "root": "inside_castle_seg7_dl_07068850",
+            "layer": "LAYER_OPAQUE",
+            "triangles": 144,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 3,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 2,
+              "gsDPSetTileSize": 2,
+              "gsSPDisplayList": 7,
+              "gsDPSetTextureImage": 6,
+              "gsDPLoadSync": 6,
+              "gsDPLoadBlock": 6,
+              "gsSPLight": 10,
+              "gsSPVertex": 21,
+              "gsSP2Triangles": 69,
+              "gsSPEndDisplayList": 8,
+              "gsSP1Triangle": 6,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 3,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 2,
+              "gsDPSetTileSize": 2,
+              "gsDPSetTextureImage": 6,
+              "gsDPLoadSync": 6,
+              "gsDPLoadBlock": 6,
+              "gsSPLight": 10,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": false
+          }
+        ],
+        "flat_texture_colors": {
+          "default": [
+            0.592156862745098,
+            0.5490196078431373,
+            0.4745098039215686
+          ],
+          "inside_09003000": [
+            0.9137254901960784,
+            0.8980392156862745,
+            0.8313725490196079
+          ],
+          "inside_09003800": [
+            0.8980392156862745,
+            0.8588235294117647,
+            0.7058823529411765
+          ],
+          "inside_09004000": [
+            0.5137254901960784,
+            0.3333333333333333,
+            0.17647058823529413
+          ],
+          "inside_09005000": [
+            0.4196078431372549,
+            0.6509803921568628,
+            0.8549019607843137
+          ],
+          "inside_09006000": [
+            0.23137254901960785,
+            0.49411764705882355,
+            0.7647058823529411
+          ],
+          "inside_09007000": [
+            0.8313725490196079,
+            0.8117647058823529,
+            0.7450980392156863
+          ],
+          "inside_09008800": [
+            0.6509803921568628,
+            0.15294117647058825,
+            0.19607843137254902
+          ],
+          "inside_09009000": [
+            0.4588235294117647,
+            0.34901960784313724,
+            0.24313725490196078
+          ],
+          "inside_0900B000": [
+            0.8980392156862745,
+            0.8588235294117647,
+            0.7058823529411765
+          ],
+          "inside_castle_seg7_texture_07001000": [
+            1.0,
+            0.9176470588235294,
+            0.6352941176470588
+          ],
+          "inside_castle_seg7_texture_07003000": [
+            0.8156862745098039,
+            0.6705882352941176,
+            0.28627450980392155
+          ],
+          "inside_castle_seg7_texture_0700A800": [
+            0.29411764705882354,
+            0.5137254901960784,
+            0.7254901960784313
+          ],
+          "inside_castle_seg7_texture_0700B800": [
+            0.29411764705882354,
+            0.5137254901960784,
+            0.7254901960784313
+          ],
+          "inside_castle_seg7_texture_0700C800": [
+            0.3215686274509804,
+            0.5568627450980392,
+            0.2901960784313726
+          ],
+          "inside_castle_seg7_texture_0700D800": [
+            0.3215686274509804,
+            0.5568627450980392,
+            0.2901960784313726
+          ],
+          "inside_castle_seg7_texture_0700E800": [
+            0.592156862745098,
+            0.40784313725490196,
+            0.25882352941176473
+          ],
+          "inside_castle_seg7_texture_0700F800": [
+            0.592156862745098,
+            0.40784313725490196,
+            0.25882352941176473
+          ],
+          "inside_castle_seg7_texture_07010800": [
+            0.6941176470588235,
+            0.2784313725490196,
+            0.19607843137254902
+          ],
+          "inside_castle_seg7_texture_07011800": [
+            0.6941176470588235,
+            0.2784313725490196,
+            0.19607843137254902
+          ],
+          "inside_castle_seg7_texture_07012800": [
+            0.29411764705882354,
+            0.5137254901960784,
+            0.7254901960784313
+          ],
+          "inside_castle_seg7_texture_07013800": [
+            0.29411764705882354,
+            0.5137254901960784,
+            0.7254901960784313
+          ],
+          "inside_castle_seg7_texture_07014800": [
+            0.3215686274509804,
+            0.5568627450980392,
+            0.2901960784313726
+          ],
+          "inside_castle_seg7_texture_07015800": [
+            0.3215686274509804,
+            0.5568627450980392,
+            0.2901960784313726
+          ],
+          "inside_castle_seg7_texture_07017800": [
+            0.592156862745098,
+            0.40784313725490196,
+            0.25882352941176473
+          ],
+          "inside_castle_seg7_texture_07018800": [
+            0.6941176470588235,
+            0.2784313725490196,
+            0.19607843137254902
+          ],
+          "inside_castle_seg7_texture_07019800": [
+            0.6941176470588235,
+            0.2784313725490196,
+            0.19607843137254902
+          ],
+          "inside_castle_seg7_texture_0701A800": [
+            0.29411764705882354,
+            0.5137254901960784,
+            0.7254901960784313
+          ],
+          "inside_castle_seg7_texture_0701B800": [
+            0.29411764705882354,
+            0.5137254901960784,
+            0.7254901960784313
+          ],
+          "inside_castle_seg7_texture_0701C800": [
+            0.3215686274509804,
+            0.5568627450980392,
+            0.2901960784313726
+          ],
+          "inside_castle_seg7_texture_0701D800": [
+            0.3215686274509804,
+            0.5568627450980392,
+            0.2901960784313726
+          ],
+          "inside_castle_seg7_texture_0701E800": [
+            0.592156862745098,
+            0.40784313725490196,
+            0.25882352941176473
+          ],
+          "inside_castle_seg7_texture_0701F800": [
+            0.592156862745098,
+            0.40784313725490196,
+            0.25882352941176473
+          ],
+          "inside_castle_seg7_texture_07020800": [
+            0.6941176470588235,
+            0.2784313725490196,
+            0.19607843137254902
+          ],
+          "texture_castle_light": [
+            1.0,
+            0.9176470588235294,
+            0.6352941176470588
+          ]
+        },
+        "material_profile": {
+          "file": "profiles/sm64-castle-colors.json",
+          "sha256": "b00ba7e50c81d528b8aa15110b86dbd2f456cb203e57c2aad2e9f3cb1102fe56"
+        },
+        "shading": {
+          "mode": "flat-baked-brightness-and-face-light",
+          "direction": [
+            -1,
+            2,
+            -1
+          ],
+          "ambient": 0.65,
+          "levels": [
+            64,
+            128,
+            192,
+            255
+          ],
+          "policy": "Authored offline palette approximation; original baked vertex brightness when lighting is disabled; geometry and collision unchanged. No original texture pixels reconstructed."
+        },
+        "appearance_policy": "declared flat colors with baked brightness and face lighting; alpha/decal faces retained but drawing deferred until texture/alpha/decal support"
+      }
+    },
+    {
+      "id": "secret_slide",
+      "provenance": {
+        "geo_sha256": "1ad85a1a09adcac40397a9df3ddddbf227fcb9a0c7edbfdc5de035ab5bfd2bd2",
+        "room_branches": [],
+        "sources": [
+          {
+            "file": "levels/pss/areas/1/1/model.inc.c",
+            "sha256": "a48b7e403ad4c978e16430a7633f5fbfee4f2dd5634c0dc83d4b0912ac98f461"
+          },
+          {
+            "file": "levels/pss/areas/1/2/model.inc.c",
+            "sha256": "b2d6dfe2469bbf597cc88685850d76ebca03b53ef9f684735d34957786efbb89"
+          },
+          {
+            "file": "levels/pss/areas/1/3/model.inc.c",
+            "sha256": "1ff22532b7b9d4e3e35ebe1c7ff0779952119eb61ef15ee025bb776a30f70dd0"
+          },
+          {
+            "file": "levels/pss/areas/1/4/model.inc.c",
+            "sha256": "2d25dd635f77b9702d2df1a43dfe3266261e91d05823bd7768b54c3be48fff27"
+          },
+          {
+            "file": "levels/pss/areas/1/5/model.inc.c",
+            "sha256": "76b9a7e1baaab177fb349b627b8daa7de7173c443db6d3cef5436e76481301a8"
+          },
+          {
+            "file": "levels/pss/areas/1/6/model.inc.c",
+            "sha256": "f3556c68a7958eaeb4054321b387e019fcb7c98f27988873da8e231494b1dedb"
+          },
+          {
+            "file": "levels/pss/areas/1/7/model.inc.c",
+            "sha256": "d0fe188f501fffc7c55857801454caa248c30ed8a46fdcf1c0125a7dd94a9c31"
+          }
+        ],
+        "roots": [
+          {
+            "root": "pss_seg7_dl_0700A7C0",
+            "layer": "LAYER_OPAQUE",
+            "triangles": 1014,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCycleType": 2,
+              "gsDPSetRenderMode": 2,
+              "gsDPSetDepthSource": 1,
+              "gsDPSetFogColor": 1,
+              "gsSPFogPosition": 1,
+              "gsSPSetGeometryMode": 1,
+              "gsDPSetCombineMode": 2,
+              "gsDPSetTile": 4,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 3,
+              "gsDPSetTileSize": 3,
+              "gsSPDisplayList": 5,
+              "gsDPSetTextureImage": 5,
+              "gsDPLoadSync": 5,
+              "gsDPLoadBlock": 5,
+              "gsSPLight": 4,
+              "gsSPVertex": 116,
+              "gsSP2Triangles": 464,
+              "gsSP1Triangle": 86,
+              "gsSPEndDisplayList": 6,
+              "gsSPClearGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCycleType": 2,
+              "gsDPSetRenderMode": 2,
+              "gsDPSetDepthSource": 1,
+              "gsDPSetFogColor": 1,
+              "gsSPFogPosition": 1,
+              "gsSPSetGeometryMode": 1,
+              "gsDPSetCombineMode": 2,
+              "gsDPSetTile": 4,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 3,
+              "gsDPSetTileSize": 3,
+              "gsDPSetTextureImage": 5,
+              "gsDPLoadSync": 5,
+              "gsDPLoadBlock": 5,
+              "gsSPLight": 4,
+              "gsSPClearGeometryMode": 1
+            },
+            "deferred_appearance": false
+          },
+          {
+            "root": "pss_seg7_dl_0700AFA8",
+            "layer": "LAYER_OPAQUE",
+            "triangles": 46,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCycleType": 2,
+              "gsDPSetRenderMode": 2,
+              "gsDPSetDepthSource": 1,
+              "gsDPSetFogColor": 1,
+              "gsSPFogPosition": 1,
+              "gsSPSetGeometryMode": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 2,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsSPDisplayList": 3,
+              "gsDPSetTextureImage": 3,
+              "gsDPLoadSync": 3,
+              "gsDPLoadBlock": 3,
+              "gsSPVertex": 6,
+              "gsSP2Triangles": 22,
+              "gsSPEndDisplayList": 4,
+              "gsSP1Triangle": 2
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCycleType": 2,
+              "gsDPSetRenderMode": 2,
+              "gsDPSetDepthSource": 1,
+              "gsDPSetFogColor": 1,
+              "gsSPFogPosition": 1,
+              "gsSPSetGeometryMode": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 2,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsDPSetTextureImage": 3,
+              "gsDPLoadSync": 3,
+              "gsDPLoadBlock": 3
+            },
+            "deferred_appearance": false
+          },
+          {
+            "root": "pss_seg7_dl_0700B3F0",
+            "layer": "LAYER_OPAQUE",
+            "triangles": 15,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCycleType": 2,
+              "gsDPSetRenderMode": 2,
+              "gsDPSetDepthSource": 1,
+              "gsDPSetFogColor": 1,
+              "gsSPFogPosition": 1,
+              "gsSPSetGeometryMode": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 2,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsSPDisplayList": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPVertex": 3,
+              "gsSP2Triangles": 6,
+              "gsSP1Triangle": 3,
+              "gsSPEndDisplayList": 2
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCycleType": 2,
+              "gsDPSetRenderMode": 2,
+              "gsDPSetDepthSource": 1,
+              "gsDPSetFogColor": 1,
+              "gsSPFogPosition": 1,
+              "gsSPSetGeometryMode": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 2,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1
+            },
+            "deferred_appearance": false
+          },
+          {
+            "root": "pss_seg7_dl_0700D338",
+            "layer": "LAYER_OPAQUE",
+            "triangles": 180,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsSPDisplayList": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPVertex": 26,
+              "gsSP2Triangles": 77,
+              "gsSP1Triangle": 26,
+              "gsSPEndDisplayList": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": false
+          },
+          {
+            "root": "pss_seg7_dl_0700DAD8",
+            "layer": "LAYER_TRANSPARENT",
+            "triangles": 44,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsSPDisplayList": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPVertex": 6,
+              "gsSP2Triangles": 20,
+              "gsSP1Triangle": 4,
+              "gsSPEndDisplayList": 2,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": true
+          },
+          {
+            "root": "pss_seg7_dl_0700E2B0",
+            "layer": "LAYER_OPAQUE",
+            "triangles": 46,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 3,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 2,
+              "gsDPSetTileSize": 2,
+              "gsSPDisplayList": 3,
+              "gsDPSetTextureImage": 3,
+              "gsDPLoadSync": 3,
+              "gsDPLoadBlock": 3,
+              "gsSPVertex": 7,
+              "gsSP2Triangles": 21,
+              "gsSPEndDisplayList": 4,
+              "gsSP1Triangle": 4,
+              "gsSPSetGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCombineMode": 2,
+              "gsSPClearGeometryMode": 1,
+              "gsDPSetTile": 3,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 2,
+              "gsDPSetTileSize": 2,
+              "gsDPSetTextureImage": 3,
+              "gsDPLoadSync": 3,
+              "gsDPLoadBlock": 3,
+              "gsSPSetGeometryMode": 1
+            },
+            "deferred_appearance": false
+          },
+          {
+            "root": "pss_seg7_dl_0700E3E8",
+            "layer": "LAYER_OPAQUE_DECAL",
+            "triangles": 2,
+            "commands": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCycleType": 2,
+              "gsDPSetRenderMode": 2,
+              "gsDPSetDepthSource": 1,
+              "gsDPSetFogColor": 1,
+              "gsSPFogPosition": 1,
+              "gsSPSetGeometryMode": 1,
+              "gsDPSetCombineMode": 2,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsSPDisplayList": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPLight": 2,
+              "gsSPVertex": 1,
+              "gsSP2Triangles": 1,
+              "gsSPEndDisplayList": 2,
+              "gsSPClearGeometryMode": 1
+            },
+            "discarded_appearance": {
+              "gsDPPipeSync": 2,
+              "gsDPSetCycleType": 2,
+              "gsDPSetRenderMode": 2,
+              "gsDPSetDepthSource": 1,
+              "gsDPSetFogColor": 1,
+              "gsSPFogPosition": 1,
+              "gsSPSetGeometryMode": 1,
+              "gsDPSetCombineMode": 2,
+              "gsDPSetTile": 2,
+              "gsSPTexture": 2,
+              "gsDPTileSync": 1,
+              "gsDPSetTileSize": 1,
+              "gsDPSetTextureImage": 1,
+              "gsDPLoadSync": 1,
+              "gsDPLoadBlock": 1,
+              "gsSPLight": 2,
+              "gsSPClearGeometryMode": 1
+            },
+            "deferred_appearance": true
+          }
+        ],
+        "flat_texture_colors": {
+          "default": [
+            0.592156862745098,
+            0.5490196078431373,
+            0.4745098039215686
+          ],
+          "mountain_09000000": [
+            0.8313725490196079,
+            0.8117647058823529,
+            0.7450980392156863
+          ],
+          "mountain_09001800": [
+            0.6901960784313725,
+            0.4823529411764706,
+            0.26666666666666666
+          ],
+          "mountain_09005800": [
+            0.42745098039215684,
+            0.2980392156862745,
+            0.17254901960784313
+          ],
+          "mountain_09007000": [
+            0.7215686274509804,
+            0.611764705882353,
+            0.45098039215686275
+          ],
+          "mountain_09007800": [
+            0.4588235294117647,
+            0.34901960784313724,
+            0.24313725490196078
+          ],
+          "mountain_0900C000": [
+            0.6901960784313725,
+            0.4823529411764706,
+            0.26666666666666666
+          ],
+          "pss_seg7_texture_07000000": [
+            0.9137254901960784,
+            0.8980392156862745,
+            0.8313725490196079
+          ],
+          "pss_seg7_texture_07000800": [
+            0.42745098039215684,
+            0.2980392156862745,
+            0.17254901960784313
+          ],
+          "pss_seg7_texture_07001000": [
+            0.7411764705882353,
+            0.23921568627450981,
+            0.17647058823529413
+          ]
+        },
+        "material_profile": {
+          "file": "profiles/sm64-castle-colors.json",
+          "sha256": "b00ba7e50c81d528b8aa15110b86dbd2f456cb203e57c2aad2e9f3cb1102fe56"
+        },
+        "shading": {
+          "mode": "flat-baked-brightness-and-face-light",
+          "direction": [
+            -1,
+            2,
+            -1
+          ],
+          "ambient": 0.65,
+          "levels": [
+            64,
+            128,
+            192,
+            255
+          ],
+          "policy": "Authored offline palette approximation; original baked vertex brightness when lighting is disabled; geometry and collision unchanged. No original texture pixels reconstructed."
+        },
+        "appearance_policy": "declared flat colors with baked brightness and face lighting; alpha/decal faces retained but drawing deferred until texture/alpha/decal support"
+      }
+    }
+  ]
+}

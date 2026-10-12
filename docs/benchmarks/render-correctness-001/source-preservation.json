@@ -1,0 +1,70 @@
+{
+  "baseline_commit": "15ce91c8080c965166296fae999d37387bba7f77",
+  "implementation_commit": "8f46e2c4f11df44e87adf09b086d460d7ca2da90",
+  "areas": [
+    {
+      "area": "castle_geo_ground",
+      "render_faces": 785,
+      "collision_faces": 879,
+      "deferred_faces": 134,
+      "checks": {
+        "positions": true,
+        "ordered_faces": true,
+        "collision": true,
+        "room_masks": true
+      }
+    },
+    {
+      "area": "castle_ground_floor",
+      "render_faces": 2181,
+      "collision_faces": 2144,
+      "deferred_faces": 118,
+      "checks": {
+        "positions": true,
+        "ordered_faces": true,
+        "collision": true,
+        "room_masks": true
+      }
+    },
+    {
+      "area": "castle_upper_floor",
+      "render_faces": 2546,
+      "collision_faces": 2019,
+      "deferred_faces": 56,
+      "checks": {
+        "positions": true,
+        "ordered_faces": true,
+        "collision": true,
+        "room_masks": true
+      }
+    },
+    {
+      "area": "castle_basement",
+      "render_faces": 1419,
+      "collision_faces": 1395,
+      "deferred_faces": 52,
+      "checks": {
+        "positions": true,
+        "ordered_faces": true,
+        "collision": true,
+        "room_masks": true
+      }
+    },
+    {
+      "area": "secret_slide",
+      "render_faces": 1347,
+      "collision_faces": 1126,
+      "deferred_faces": 46,
+      "checks": {
+        "positions": true,
+        "ordered_faces": true,
+        "collision": true,
+        "room_masks": true
+      }
+    }
+  ],
+  "palette_colors": {
+    "old": 101,
+    "new": 146
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "baseline_commit": "15ce91c8080c965166296fae999d37387bba7f77",
+  "scope_commit": "d84c8a4",
+  "implementation_commit": "8f46e2c4f11df44e87adf09b086d460d7ca2da90",
+  "tools": {
+    "quartus": "18.1.0 Build 625 SJ Lite Edition",
+    "clang": "21.1.6"
+  },
+  "selected_sof_sha256": "e2b1dce3d5814f348e0ca88b38fe49e494e68fddd9e897aeeac4c3a75b7c6e14",
+  "experimental_depth12_sof_sha256": "68de5fa1c27cfdf713e1c66668c4f1c9f265d178814b59225b0ded21bdf59217",
+  "experimental_sof_programmed": false,
+  "selected_hardware_sources_exact": true,
+  "tests": {
+    "world": 34,
+    "render_fixes": 5,
+    "clock": 5,
+    "physical_trials": 12
+  },
+  "scope": "Combined software fixes on unchanged accepted 50 MHz hardware. Original asset packages and SOFs identified by hash; omitted from archive. Replay includes terrain/controller only. Timed movement is not cycle-identical; full-level performance/mission completeness unproven."
+}
