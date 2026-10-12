@@ -31,12 +31,18 @@ STUB=r'''
 #include "world.h"
 #include "gfx.h"
 #include "gfx_protocol.h"
-static uint32_t active,errors,drawn,cached;
+static uint32_t active,errors,drawn,cached,render_size,saved_size;
+static unsigned char render_data[262144],saved_data[262144];
+void render_reset(void){render_size=0;}
+void render_save(void){saved_size=render_size;for(uint32_t i=0;i<saved_size && i<262144;++i)saved_data[i]=render_data[i];}
+int render_same(void){if(render_size!=saved_size || render_size>262144)return 0;for(uint32_t i=0;i<render_size;++i)if(render_data[i]!=saved_data[i])return 0;return 1;}
+static void render_bytes(const unsigned char *p,uint32_t n){for(uint32_t i=0;i<n;++i){if(render_size<262144)render_data[render_size]=p[i];++render_size;}}
 #ifndef WORLD_FORCE_DIRECT
 #define WORLD_FORCE_DIRECT 0
 #endif
 void *memcpy(void *d,const void *s,size_t n) { unsigned char *a=d;const unsigned char *b=s;for(size_t i=0;i<n;++i)a[i]=b[i];return d; }
 int gfx_command(uint8_t op,const uint8_t *p,uint8_t n) {
+    render_bytes(&op,1);render_bytes(&n,1);render_bytes(p,n);
     if(op==GFX_OP_UPLOAD_VERTICES || op==GFX_OP_UPLOAD_INDICES) { if(active)++errors; }
     else if(op==GFX_OP_DRAW_TRIANGLE) {
         if(!active || n!=19)++errors;
@@ -49,7 +55,7 @@ int gfx_command(uint8_t op,const uint8_t *p,uint8_t n) {
     return 0;
 }
 int gfx_define_mesh(uint8_t h,uint16_t v,uint16_t t) { if(active || h>=16 || v>128 || t>256)++errors;return 0; }
-int gfx_draw_matrix(uint8_t h,const int16_t m[12]) { (void)h;(void)m;if(!active)++errors;++cached;return 0; }
+int gfx_draw_matrix(uint8_t h,const int16_t m[12]) { render_bytes(&h,1);render_bytes((const unsigned char*)m,24);if(!active)++errors;++cached;return 0; }
 static const scene_vertex_t points[]={{-20,0,400},{0,20,400},{20,0,400}};
 static const scene_triangle_t triangles[]={{0,1,2,1}};
 static const world_chunk_t chunks[]={
@@ -155,6 +161,32 @@ class WorldTests(unittest.TestCase):
 int gfx_identity_view(void){return 0;}
 int gfx_begin_frame(uint32_t frame){(void)frame;return 0;}
 int gfx_end_frame(void){return 0;}
+void render_reset(void);void render_save(void);int render_same(void);
+static uint32_t state_hash(const void *data,uint32_t size) {
+    const unsigned char *p=data;uint32_t h=2166136261u;
+    for(uint32_t i=0;i<size;++i)h=(h^p[i])*16777619u;
+    return h;
+}
+static uint32_t logic_hash(void) {
+    return state_hash(&player,sizeof(player))^state_hash(&view,sizeof(view))^
+        state_hash(&animation,sizeof(animation))^state_hash(&camera,sizeof(camera))^
+        current_area^previous_buttons^transition_cooldown^pending_event^pending_ticks;
+}
+int castle_repeat_render_fixture(void) {
+    if(game_port_init())return -1;
+    for(uint32_t tick=0;tick<40;++tick) {
+        game_port_update(tick<20?0:1);
+        uint32_t before=logic_hash();
+        render_reset();if(game_port_render(1))return -2;
+        render_save();
+        uint32_t pose=state_hash(posed,sizeof(posed));
+        render_reset();if(game_port_render(2))return -3;
+        if(!render_same())return -6;
+        if(before!=logic_hash())return -4;
+        if(pose!=state_hash(posed,sizeof(posed)))return -5;
+    }
+    return 0;
+}
 int castle_camera_fixture(void) {
     if(game_port_init())return -1;
     if(view.view[9]>=0)return -2;
@@ -196,8 +228,8 @@ int castle_return_fixture(void) {
 }
 ''')
         route_dll=out/('route.dll' if os.name=='nt' else 'route.so')
-        route_flags=['-shared','-O1','-ffreestanding','-fno-builtin','-I'+str(out),'-Ifirmware/include','-Ifirmware/generated']
-        route_flags+=['-fuse-ld=lld','-nostdlib','-Wl,/noentry','-Wl,/export:castle_return_fixture','-Wl,/export:castle_camera_fixture'] if os.name=='nt' else ['-fPIC']
+        route_flags=['-DWORLD_FORCE_DIRECT=1','-shared','-O1','-ffreestanding','-fno-builtin','-I'+str(out),'-Ifirmware/include','-Ifirmware/generated']
+        route_flags+=['-fuse-ld=lld','-nostdlib','-Wl,/noentry','-Wl,/export:castle_return_fixture','-Wl,/export:castle_camera_fixture','-Wl,/export:castle_repeat_render_fixture'] if os.name=='nt' else ['-fPIC']
         subprocess.run([shutil.which('clang'),*route_flags,str(route_source),str(stub),
             'firmware/src/world.c','firmware/src/player.c','firmware/src/camera.c','firmware/src/animation.c',
             'firmware/src/game_services.c','firmware/ports/castle_rules.c','-o',str(route_dll)],cwd=ROOT,check=True)
@@ -442,6 +474,9 @@ int castle_return_fixture(void) {
 
     def test_castle_update_returns_from_slide_after_original_twenty_ticks(self):
         self.assertEqual(self.route.castle_return_fixture(),0)
+
+    def test_repeated_castle_render_preserves_simulation_and_pose(self):
+        self.assertEqual(self.route.castle_repeat_render_fixture(),0)
 
     def test_castle_camera_frames_character_and_resets_on_area_change(self):
         self.assertEqual(self.route.castle_camera_fixture(),0)

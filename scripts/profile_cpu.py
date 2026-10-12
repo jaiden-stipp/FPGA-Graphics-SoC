@@ -101,6 +101,26 @@ def collect(package,symbols,restore,output,ip='192.168.7.2',port=4000,trials=3,m
                 for phase in entry['phases'].values():
                     if phase['memory_freezes']+phase['dependency_bubbles']>phase['cycles'] or phase['retired']>phase['cycles']-phase['memory_freezes']:raise RuntimeError('Inconsistent CPU counters')
             else:entry['metrics']={name:read_words(loader,syms[name],1)[0] for name in needed if name!='game_player'}
+            cadence_names=('game_simulation_ticks','game_updates_this_frame','game_tick_wait_cycles','game_cadence_cycles')
+            if 'game_cadence_slot' in syms and 'game_cadence_slots' in syms:
+                for name,size in [('game_cadence_slot',4),('game_cadence_slots',192)]:
+                    if syms[name]%4 or not 0<=syms[name]<=65536-size:raise ValueError('Bad cadence symbol: '+name)
+                cadence_slot=read_words(loader,syms['game_cadence_slot'],1)[0]
+                if cadence_slot not in (0,1):raise RuntimeError('Bad cadence publication slot')
+                raw=read_words(loader,syms['game_cadence_slots']+96*cadence_slot,24)
+                if raw[23]!=0x43540101 or raw[9]!=50000000 or not raw[0] or not raw[2]:raise RuntimeError('Bad cadence ABI/clock/frame')
+                if raw[3]>4 or raw[6]<raw[5] or raw[8]<raw[6]+raw[7]:raise RuntimeError('Inconsistent cadence counters')
+                entry['cadence_raw_words']=raw
+                entry['cadence']={'atomic':True,'frame':raw[0],'game_simulation_ticks':raw[1],'game_cadence_cycles':raw[2],
+                    'game_updates_this_frame':raw[3],'game_tick_wait_cycles':raw[4],'simulation_hz':50000000*raw[1]/raw[2]}
+                entry['cadence_gpu']=dict(zip(GPU,raw[10:23]))
+                if not instrumented:
+                    entry['metrics']=dict(zip(('game_update_cycles','game_cpu_cycles','game_present_cycles','game_frame_cycles'),raw[5:9]))
+            elif all(name in syms for name in cadence_names):
+                entry['cadence']={name:read_words(loader,syms[name],1)[0] for name in cadence_names}
+                entry['cadence']['atomic']=False
+                if not entry['cadence']['game_cadence_cycles']:raise RuntimeError('Empty cadence window')
+                entry['cadence']['simulation_hz']=50000000*entry['cadence']['game_simulation_ticks']/entry['cadence']['game_cadence_cycles']
             report['trials'].append(entry);output.parent.mkdir(parents=True,exist_ok=True);output.write_text(json.dumps(report,indent=2)+'\n')
             print('trial',trial+1,'fps',entry['observed_fps'],'position',position,'metrics',entry['metrics'],flush=True)
     except Exception as exc:

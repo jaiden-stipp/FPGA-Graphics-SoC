@@ -170,6 +170,10 @@ def header(chunks,palette,floors,walls,report):
         f'{report["world_meshes"]},{report["actor_meshes"]},portable_palette,{len(palette)}'+'};')
     lines+=['#endif','#endif',''];return '\n'.join(lines)
 
+def validate_render_cadence(spec,uncapped):
+    if uncapped and spec['port'].get('render_repeat_safe') is not True:
+        raise ValueError('--uncapped-render requires port.render_repeat_safe=true; render must not advance gameplay, camera or animation')
+
 def project(path):
     path=path.resolve();spec=json.loads(path.read_text())
     if spec.get('format')!='soc-game-project' or type(spec.get('version')) is not int or spec['version']!=1:

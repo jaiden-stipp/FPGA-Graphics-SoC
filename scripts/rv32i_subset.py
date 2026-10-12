@@ -19,7 +19,7 @@ API = {"cpu_fine_end","cpu_fine_event","cpu_detail_end","gfx_profile_bytes", "gf
        "fixed_mul", "player_reset", "player_step", "player_floor", "camera_reset", "camera_step",
        "animation_reset", "animation_step", "animation_pose", "sdram_self_test",
        "game_runtime_upload", "game_runtime_clock_reset", "game_runtime_wait_tick",
-       "game_runtime_advance_tick", "game_runtime_input", "game_runtime_present",
+       "game_runtime_advance_tick", "game_runtime_tick_due", "game_clock_advance", "game_runtime_input", "game_runtime_present",
        "beacon_reset", "beacon_step", "first_person_reset", "first_person_step",
        "game_port_init", "game_port_update", "game_port_render",
        "game_input_decode","game_movement_keys","game_view_update","game_object_overlap","game_door_step",

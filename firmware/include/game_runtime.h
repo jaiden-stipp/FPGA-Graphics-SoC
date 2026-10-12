@@ -1,6 +1,7 @@
 #ifndef GAME_RUNTIME_H
 #define GAME_RUNTIME_H
 #include "assets.h"
+#include "game_clock.h"
 #define GAME_RUNTIME_ABI 1u
 
 // Immutable package descriptors; executable modules call this direct-call ABI.
@@ -11,7 +12,6 @@ typedef struct {
     const uint8_t (*palette)[3];
     uint32_t palette_count;
 } game_asset_set_t;
-typedef struct { uint32_t previous, period, ticks; } game_runtime_clock_t;
 
 int game_runtime_upload(const game_asset_set_t *assets,
                         const scene_vertex_t *posed_vertices, uint32_t posed_count);

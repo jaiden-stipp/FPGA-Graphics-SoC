@@ -645,10 +645,12 @@ def portable_package(args):
         spec,args.content,args.target,args.port_sources,api,report=generate_portable(args.project,tight_chunks=getattr(args,'terrain_tight_chunks',False) or getattr(args,'terrain_gpu_fractional',False),min_chunk_faces=getattr(args,'terrain_min_chunk_faces',0))
     except (KeyError,TypeError) as exc:
         raise ValueError('Invalid portable project/scene: '+str(exc)) from exc
+    from portable_game import validate_render_cadence
+    validate_render_cadence(spec,getattr(args,'uncapped_render',False))
     api=set(api)|{'portable_assets','portable_world','portable_camera','portable_meshes'}
     sources=['gfx.c','gfx_scene.c','player.c','first_person.c','game_runtime.c','sdram.c','portable_assets.c','portable_main.c','cpu_profile.c']
     for source in [ROOT/'firmware/src'/name for name in sources]+args.port_sources:
-        check(source,args.cc,additional_api=api,extra_flags=(['-DSOC_PROFILE'] if getattr(args,'cpu_profile',False) or getattr(args,'profile_detail',False) else []) + (['-DSOC_PROFILE_DETAIL'] if getattr(args,'profile_detail',False) else []) + (['-DSOC_PROFILE_FINE'] if getattr(args,'profile_fine',False) else []) + (['-DGFX_BATCHED'] if getattr(args,'batch_gfx',False) else []) + (['-DGFX_PACKED'] if getattr(args,'packed_gfx',False) else []) + (['-DGFX_DMA'] if getattr(args,'dma_gfx',False) else []) + (['-DSOC_INTEGER_MUL'] if getattr(args,'integer_mul',False) else []) + (['-DSOC_GEOMETRY_OFFLOAD'] if getattr(args,'geometry_offload',False) else []) + (['-DWORLD_GPU_FRACTIONAL=1'] if getattr(args,'terrain_gpu_fractional',False) else []))
+        check(source,args.cc,additional_api=api,extra_flags=(['-DSOC_PROFILE'] if getattr(args,'cpu_profile',False) or getattr(args,'profile_detail',False) else []) + (['-DSOC_PROFILE_DETAIL'] if getattr(args,'profile_detail',False) else []) + (['-DSOC_PROFILE_FINE'] if getattr(args,'profile_fine',False) else []) + (['-DGFX_BATCHED'] if getattr(args,'batch_gfx',False) else []) + (['-DGFX_PACKED'] if getattr(args,'packed_gfx',False) else []) + (['-DGFX_DMA'] if getattr(args,'dma_gfx',False) else []) + (['-DSOC_INTEGER_MUL'] if getattr(args,'integer_mul',False) else []) + (['-DSOC_GEOMETRY_OFFLOAD'] if getattr(args,'geometry_offload',False) else []) + (['-DGAME_UNCAPPED_RENDER'] if getattr(args,'uncapped_render',False) else []) + (['-DWORLD_GPU_FRACTIONAL=1'] if getattr(args,'terrain_gpu_fractional',False) else []))
     direct=getattr(args,'terrain_direct',False)
     if direct and 'world_prepare' not in api:
         raise ValueError('--terrain-direct requires a port using the shared world renderer')
@@ -656,11 +658,12 @@ def portable_package(args):
         raise ValueError('--terrain-gpu-safe requires the shared world renderer')
     args.app='portable';args.boot=None;args.use_sdram=True
     suffix=('-direct' if direct else '-gpu-q8' if getattr(args,'terrain_gpu_fractional',False) else '-gpu-safe' if getattr(args,'terrain_gpu_safe',False) else '')+('-profile' if getattr(args,'cpu_profile',False) or getattr(args,'profile_detail',False) else '')+('-detail' if getattr(args,'profile_detail',False) else '')+('-fine' if getattr(args,'profile_fine',False) else '')+('-batched' if getattr(args,'batch_gfx',False) else '')+('-packed' if getattr(args,'packed_gfx',False) else '')+('-dma' if getattr(args,'dma_gfx',False) else '')+('-mul' if getattr(args,'integer_mul',False) else '')+('-geometry' if getattr(args,'geometry_offload',False) else '')
+    if getattr(args,'uncapped_render',False):suffix+='-uncapped'
     if getattr(args,'terrain_tight_chunks',False):suffix+='-tight'
     if getattr(args,'terrain_min_chunk_faces',0):suffix+='-min'+str(args.terrain_min_chunk_faces)
     args.image_name=spec['name']+'-sdram'+suffix
     diagnostic_flags=['-DWORLD_FORCE_DIRECT=1'] if direct else []
-    diagnostic_flags += (['-DSOC_PROFILE'] if getattr(args,'cpu_profile',False) or getattr(args,'profile_detail',False) else []) + (['-DSOC_PROFILE_DETAIL'] if getattr(args,'profile_detail',False) else []) + (['-DGFX_BATCHED'] if getattr(args,'batch_gfx',False) else []) + (['-DGFX_PACKED'] if getattr(args,'packed_gfx',False) else []) + (['-DGFX_DMA'] if getattr(args,'dma_gfx',False) else []) + (['-DSOC_INTEGER_MUL'] if getattr(args,'integer_mul',False) else []) + (['-DSOC_GEOMETRY_OFFLOAD'] if getattr(args,'geometry_offload',False) else [])
+    diagnostic_flags += (['-DSOC_PROFILE'] if getattr(args,'cpu_profile',False) or getattr(args,'profile_detail',False) else []) + (['-DSOC_PROFILE_DETAIL'] if getattr(args,'profile_detail',False) else []) + (['-DGFX_BATCHED'] if getattr(args,'batch_gfx',False) else []) + (['-DGFX_PACKED'] if getattr(args,'packed_gfx',False) else []) + (['-DGFX_DMA'] if getattr(args,'dma_gfx',False) else []) + (['-DSOC_INTEGER_MUL'] if getattr(args,'integer_mul',False) else []) + (['-DSOC_GEOMETRY_OFFLOAD'] if getattr(args,'geometry_offload',False) else []) + (['-DGAME_UNCAPPED_RENDER'] if getattr(args,'uncapped_render',False) else [])
     diagnostic_flags += ['-DSOC_PROFILE_FINE'] if getattr(args,'profile_fine',False) else []
     diagnostic_flags += ['-DWORLD_GPU_FRACTIONAL=1'] if getattr(args,'terrain_gpu_fractional',False) else []
     args.extra_flags=diagnostic_flags
@@ -695,6 +698,10 @@ def portable_package(args):
             package['diagnostic']={'terrain_submission':'CPU-clipped direct triangles; GPU resident terrain cache bypassed',
                 'purpose':'isolate terrain mesh uploads and cached-versus-direct clipping; not a performance optimization'}
             write(path,json.dumps(package,indent=2)+'\n')
+    for stem in (spec['name']+'-sdram'+suffix,spec['name']+'-sdram'+suffix+'-test'):
+        path=BUILD/(stem+'.package.json');package=json.loads(path.read_text())
+        package['cadence']={'simulation_tick_cycles':1666667,'clock_hz':50000000,'render':'uncapped' if getattr(args,'uncapped_render',False) else 'tick-paced','render_repeat_safe':spec['port'].get('render_repeat_safe') is True}
+        write(path,json.dumps(package,indent=2)+'\n')
     print(f'Built {spec["name"]}: {report["source_triangles"]} triangles via shared scene IR and direct-call game port ABI. Use a compatible target FPGA image.')
 
 
@@ -791,6 +798,7 @@ def main():
     p.add_argument('--cpu-profile',action='store_true',help='Require CPU counter ABI and publish atomic completed-frame profiles')
     p.add_argument('--profile-detail',action='store_true',help='Optional per-function cycle/call profiles; implies --cpu-profile')
     p.add_argument('--profile-fine',action='store_true',help='Optional CRC/check/write and clipping fraction/intersection timers; implies --profile-detail')
+    p.add_argument('--uncapped-render',action='store_true',help='Stage 6 repeat-safe rendering with unchanged fixed simulation ticks')
     p.add_argument('--geometry-offload',action='store_true',help='Optional Stage 5 CPU-fallback transform/outcode worker')
     p.add_argument('--integer-mul',action='store_true',help='Use MUL-only fixed_mul; requires CPU feature bit 0')
     p.add_argument('--batch-gfx',action='store_true',help='Experimental FIFO-space reservation transport; retain byte stream ABI')

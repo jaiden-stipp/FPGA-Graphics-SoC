@@ -286,7 +286,7 @@ def export(destination):
         '\n'.join('#define CASTLE_'+name+' '+str(value)+'u' for name,value in sorted(types.items()))+'\n#endif\n')
     path=destination/'world.json';path.write_text(json.dumps(world,indent=2)+'\n')
     project={'format':'soc-game-project','version':1,'name':'mario-castle','scene':'world.json',
-        'port':{'kind':'custom','sources':[os.path.relpath(ROOT/'firmware/ports/castle.c',destination).replace('\\','/'),
+        'port':{'kind':'custom','render_repeat_safe':True,'sources':[os.path.relpath(ROOT/'firmware/ports/castle.c',destination).replace('\\','/'),
             os.path.relpath(ROOT/'firmware/ports/castle_rules.c',destination).replace('\\','/'),
             os.path.relpath(ROOT/'firmware/src/world.c',destination).replace('\\','/'),
             os.path.relpath(ROOT/'firmware/src/camera.c',destination).replace('\\','/'),

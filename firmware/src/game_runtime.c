@@ -47,10 +47,7 @@ uint32_t game_runtime_wait_tick(game_runtime_clock_t *clock) {
     return now;
 }
 int game_runtime_advance_tick(game_runtime_clock_t *clock, uint32_t now) {
-    clock->previous+=clock->period;
-    ++clock->ticks;
-    if (clock->ticks==4) { clock->previous=now; return 0; }
-    return (uint32_t)(now-clock->previous)>=clock->period;
+    return game_clock_advance(clock,now);
 }
 uint32_t game_runtime_input(void) { return SOC_BUTTONS; }
 int game_runtime_present(uint32_t frame) { return gfx_wait_frame(frame); }
