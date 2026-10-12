@@ -1,0 +1,24 @@
+{
+  "baseline_commit": "e50d34f49689646bead2ac1431302bf7e7c7afc5",
+  "firmware_implementation_commit": "a854e1ed41bbe2be926481489f6fccdc38106e97",
+  "accepted_hardware_commit": "df0649df",
+  "tool_versions": {
+    "quartus": "18.1.0 Build 625 SJ Lite Edition",
+    "clang": "21.1.6"
+  },
+  "clocks": {
+    "core_hz": 50000000,
+    "mii_rx_tx_hz": 25000000,
+    "sdram_inverted_core": true,
+    "sdram_capture_phase_ps": 4500,
+    "pixel": "Existing derived PLL; see exact SDC/QSF/STA"
+  },
+  "tests": {
+    "clock_capability_native": 5,
+    "castle_world_native": 30,
+    "final_physical_trials": 12,
+    "preliminary_physical_trials": 6
+  },
+  "hardware_sources_exact": true,
+  "scope": "Firmware cadence only; unchanged Stage 5 fit/SOF. Final atomic timing snapshots and host-timed frame progress; movement input is wall-clock, not cycle-identical. Assets and SOF are hash-identified local artifacts, not duplicated here."
+}

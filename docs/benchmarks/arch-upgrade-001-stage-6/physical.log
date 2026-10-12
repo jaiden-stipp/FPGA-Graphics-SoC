@@ -1,0 +1,60 @@
+Uploading mario-castle-sdram-direct-packed-mul-geometry.bin: 26,848 bytes at 0x00000000
+Verifying mario-castle-sdram-direct-packed-mul-geometry.bin: 26,848 bytes at 0x00000000
+Uploading mario-castle-sdram-direct-packed-mul-geometry.assets.bin: 883,124 bytes at 0x80000000
+  351,660/883,124 bytes
+  707,232/883,124 bytes
+Verifying mario-castle-sdram-direct-packed-mul-geometry.assets.bin: 883,124 bytes at 0x80000000
+  354,156/883,124 bytes
+  709,716/883,124 bytes
+Readback verified; CPU released.
+Uploading mario-castle-sdram-direct-packed-mul-geometry.bin: 27,096 bytes at 0x00000000
+Verifying mario-castle-sdram-direct-packed-mul-geometry.bin: 27,096 bytes at 0x00000000
+Uploading mario-castle-sdram-direct-packed-mul-geometry.assets.bin: 883,124 bytes at 0x80000000
+  354,852/883,124 bytes
+  714,684/883,124 bytes
+Verifying mario-castle-sdram-direct-packed-mul-geometry.assets.bin: 883,124 bytes at 0x80000000
+  355,188/883,124 bytes
+  708,876/883,124 bytes
+Readback verified; CPU released.
+trial 1 fps 29.862323056002584 position [-1328, 260, 4664] metrics {'game_update_cycles': 40190, 'game_cpu_cycles': 648913, 'game_present_cycles': 264464, 'game_frame_cycles': 913385}
+Uploading mario-castle-sdram-direct-packed-mul-geometry.bin: 27,096 bytes at 0x00000000
+Verifying mario-castle-sdram-direct-packed-mul-geometry.bin: 27,096 bytes at 0x00000000
+Readback verified; CPU released.
+trial 2 fps 29.96906419202057 position [-1328, 260, 4664] metrics {'game_update_cycles': 40190, 'game_cpu_cycles': 648913, 'game_present_cycles': 264464, 'game_frame_cycles': 913385}
+Uploading mario-castle-sdram-direct-packed-mul-geometry.bin: 27,096 bytes at 0x00000000
+Verifying mario-castle-sdram-direct-packed-mul-geometry.bin: 27,096 bytes at 0x00000000
+Readback verified; CPU released.
+trial 3 fps 29.96906419202057 position [-1328, 260, 4664] metrics {'game_update_cycles': 40190, 'game_cpu_cycles': 648913, 'game_present_cycles': 264442, 'game_frame_cycles': 913363}
+Uploading mario-castle-sdram-direct-packed-mul-geometry.bin: 26,848 bytes at 0x00000000
+Verifying mario-castle-sdram-direct-packed-mul-geometry.bin: 26,848 bytes at 0x00000000
+Readback verified; CPU released.
+Uploading mario-castle-sdram-direct-packed-mul-geometry-uncapped.bin: 27,108 bytes at 0x00000000
+Verifying mario-castle-sdram-direct-packed-mul-geometry-uncapped.bin: 27,108 bytes at 0x00000000
+Uploading mario-castle-sdram-direct-packed-mul-geometry-uncapped.assets.bin: 883,124 bytes at 0x80000000
+  354,168/883,124 bytes
+  711,516/883,124 bytes
+Verifying mario-castle-sdram-direct-packed-mul-geometry-uncapped.assets.bin: 883,124 bytes at 0x80000000
+  353,424/883,124 bytes
+  707,496/883,124 bytes
+Readback verified; CPU released.
+trial 1 fps 59.94971959033439 position [-1328, 260, 4664] metrics {'game_update_cycles': 40197, 'game_cpu_cycles': 648823, 'game_present_cycles': 185121, 'game_frame_cycles': 833952}
+Uploading mario-castle-sdram-direct-packed-mul-geometry-uncapped.bin: 27,108 bytes at 0x00000000
+Verifying mario-castle-sdram-direct-packed-mul-geometry-uncapped.bin: 27,108 bytes at 0x00000000
+Readback verified; CPU released.
+trial 2 fps 60.13147718460324 position [-1328, 260, 4664] metrics {'game_update_cycles': 8, 'game_cpu_cycles': 608640, 'game_present_cycles': 225304, 'game_frame_cycles': 833952}
+Uploading mario-castle-sdram-direct-packed-mul-geometry-uncapped.bin: 27,108 bytes at 0x00000000
+Verifying mario-castle-sdram-direct-packed-mul-geometry-uncapped.bin: 27,108 bytes at 0x00000000
+Readback verified; CPU released.
+trial 3 fps 59.957586273650264 position [-1328, 260, 4664] metrics {'game_update_cycles': 40197, 'game_cpu_cycles': 648823, 'game_present_cycles': 185121, 'game_frame_cycles': 833952}
+Uploading mario-castle-sdram-direct-packed-mul-geometry.bin: 26,848 bytes at 0x00000000
+Verifying mario-castle-sdram-direct-packed-mul-geometry.bin: 26,848 bytes at 0x00000000
+Readback verified; CPU released.
+Uploading mario-castle-sdram-direct-packed-mul-geometry.bin: 26,848 bytes at 0x00000000
+Verifying mario-castle-sdram-direct-packed-mul-geometry.bin: 26,848 bytes at 0x00000000
+Uploading mario-castle-sdram-direct-packed-mul-geometry.assets.bin: 883,124 bytes at 0x80000000
+  354,504/883,124 bytes
+  711,528/883,124 bytes
+Verifying mario-castle-sdram-direct-packed-mul-geometry.assets.bin: 883,124 bytes at 0x80000000
+  354,804/883,124 bytes
+  709,008/883,124 bytes
+Readback verified; CPU released.

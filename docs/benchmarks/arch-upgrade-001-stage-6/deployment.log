@@ -1,0 +1,10 @@
+Uploading mario-castle-sdram-direct-packed-mul-geometry-uncapped.bin: 27,108 bytes at 0x00000000
+Verifying mario-castle-sdram-direct-packed-mul-geometry-uncapped.bin: 27,108 bytes at 0x00000000
+Uploading mario-castle-sdram-direct-packed-mul-geometry-uncapped.assets.bin: 883,124 bytes at 0x80000000
+  357,816/883,124 bytes
+  712,272/883,124 bytes
+Verifying mario-castle-sdram-direct-packed-mul-geometry-uncapped.assets.bin: 883,124 bytes at 0x80000000
+  355,968/883,124 bytes
+  706,332/883,124 bytes
+Readback verified; CPU released.
+Accepted uncapped Mario loaded; complete CPU/assets readback and frame progression verified.

@@ -1,5 +1,5 @@
 """Matched software-only Stage 6 trials at 50 MHz; always restore Stage 5 Mario."""
-import hashlib,json,shutil,subprocess,time
+import argparse,hashlib,json,shutil,subprocess,time
 from pathlib import Path
 from soc import ROOT
 from load_game import Loader,STATUS,package_segments,require_hardware
@@ -43,7 +43,7 @@ def restore(package):
         (OUT/'restored-running-check.json').write_text(json.dumps({'sof_sha256':SOF_SHA,'package':str(package),'segments':json.loads(package.read_text())['segments'],'first':first,'last':last},indent=2)+'\n')
     finally:loader.close()
 
-def measure():
+def measure(moving=False):
     OUT.mkdir(parents=True,exist_ok=True);baseline=snapshot_baseline()
     timing_gate(FIT,'ArchStage5SoC')
     if hashlib.sha256(SOF.read_bytes()).hexdigest()!=SOF_SHA:raise RuntimeError('SOF changed')
@@ -53,7 +53,9 @@ def measure():
     try:
         for mode,package in [('tick-paced',ROOT/'build'/(STEM+'.package.json')),('uncapped',ROOT/'build'/(STEM+'-uncapped.package.json'))]:
             collect(package,package.with_name(package.name.replace('.package.json','.symbols.json')),baseline,
-                OUT/('physical-'+mode+'.json'),trials=3,instrumented=False,reuse_immutable_assets=True)
+                OUT/('physical-'+('moving-' if moving else '')+mode+'.json'),trials=3,moving=moving,instrumented=False,reuse_immutable_assets=True)
     finally:restore(baseline)
 
-if __name__=='__main__':measure()
+if __name__=='__main__':
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('--moving',action='store_true',help='Wall-clock square movement diagnostic; not a cycle-identical route')
+    measure(p.parse_args().moving)

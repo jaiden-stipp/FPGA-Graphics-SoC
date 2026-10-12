@@ -1,0 +1,433 @@
+{
+  "baseline_commit": "e50d34f49689646bead2ac1431302bf7e7c7afc5",
+  "accepted_stage5_commit": "c4f93877eb1c50b422046af8c1c89b9b1111a178",
+  "firmware_implementation_commit": "a854e1ed41bbe2be926481489f6fccdc38106e97",
+  "hardware_changed": false,
+  "clock_hz": 50000000,
+  "simulation_tick_cycles": 1666667,
+  "tick-paced": {
+    "scope": "Standing spawn view",
+    "observed_fps": [
+      29.862323056002584,
+      29.96906419202057,
+      29.96906419202057
+    ],
+    "median_fps": 29.96906419202057,
+    "metrics": {
+      "game_update_cycles": [
+        40190,
+        40190,
+        40190
+      ],
+      "game_cpu_cycles": [
+        648913,
+        648913,
+        648913
+      ],
+      "game_present_cycles": [
+        264464,
+        264464,
+        264442
+      ],
+      "game_frame_cycles": [
+        913385,
+        913385,
+        913363
+      ],
+      "render_submission_cycles": [
+        608723,
+        608723,
+        608723
+      ],
+      "tick_wait_cycles": [
+        754783,
+        754783,
+        754801
+      ]
+    },
+    "metric_medians": {
+      "game_update_cycles": 40190,
+      "game_cpu_cycles": 648913,
+      "game_present_cycles": 264464,
+      "game_frame_cycles": 913385,
+      "render_submission_cycles": 608723,
+      "tick_wait_cycles": 754783
+    },
+    "simulation_hz": [
+      29.93462702029573,
+      29.93462702029573,
+      29.934628733918576
+    ],
+    "completed_frame_ids": [
+      251,
+      251,
+      251
+    ],
+    "updates_in_sampled_frame": [
+      1,
+      1,
+      1
+    ],
+    "positions": [
+      [
+        -1328,
+        260,
+        4664
+      ],
+      [
+        -1328,
+        260,
+        4664
+      ],
+      [
+        -1328,
+        260,
+        4664
+      ]
+    ],
+    "segments": [
+      {
+        "file": "mario-castle-sdram-direct-packed-mul-geometry.bin",
+        "address": 0,
+        "bytes": 27096,
+        "sha256": "12d634016e2913b700e0fd21de522f3ae5e507fdc3417f692d92defafc2a3407"
+      },
+      {
+        "file": "mario-castle-sdram-direct-packed-mul-geometry.assets.bin",
+        "address": 2147483648,
+        "bytes": 883124,
+        "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+      }
+    ]
+  },
+  "uncapped": {
+    "scope": "Standing spawn view",
+    "observed_fps": [
+      59.94971959033439,
+      60.13147718460324,
+      59.957586273650264
+    ],
+    "median_fps": 59.957586273650264,
+    "metrics": {
+      "game_update_cycles": [
+        40197,
+        8,
+        40197
+      ],
+      "game_cpu_cycles": [
+        648823,
+        608640,
+        648823
+      ],
+      "game_present_cycles": [
+        185121,
+        225304,
+        185121
+      ],
+      "game_frame_cycles": [
+        833952,
+        833952,
+        833952
+      ],
+      "render_submission_cycles": [
+        608626,
+        608632,
+        608626
+      ],
+      "tick_wait_cycles": [
+        5,
+        5,
+        5
+      ]
+    },
+    "metric_medians": {
+      "game_update_cycles": 40197,
+      "game_cpu_cycles": 648823,
+      "game_present_cycles": 185121,
+      "game_frame_cycles": 833952,
+      "render_submission_cycles": 608626,
+      "tick_wait_cycles": 5
+    },
+    "simulation_hz": [
+      29.93449157416743,
+      29.874811347736294,
+      29.934492147654666
+    ],
+    "completed_frame_ids": [
+      500,
+      501,
+      500
+    ],
+    "updates_in_sampled_frame": [
+      1,
+      0,
+      1
+    ],
+    "positions": [
+      [
+        -1328,
+        260,
+        4664
+      ],
+      [
+        -1328,
+        260,
+        4664
+      ],
+      [
+        -1328,
+        260,
+        4664
+      ]
+    ],
+    "segments": [
+      {
+        "file": "mario-castle-sdram-direct-packed-mul-geometry-uncapped.bin",
+        "address": 0,
+        "bytes": 27108,
+        "sha256": "aba46c6d488085f1e7999ff42eeb2caa0220d3dc58a5fc9bf9a43911bd24e531"
+      },
+      {
+        "file": "mario-castle-sdram-direct-packed-mul-geometry-uncapped.assets.bin",
+        "address": 2147483648,
+        "bytes": 883124,
+        "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+      }
+    ]
+  },
+  "median_presentation_fps_change_percent": 100.06492658390815,
+  "timing": {
+    "sof_sha256": "e2b1dce3d5814f348e0ca88b38fe49e494e68fddd9e897aeeac4c3a75b7c6e14",
+    "clock_hz": 50000000,
+    "netlist_changed": false,
+    "new_exceptions": false,
+    "multicorner_minimum_slack_ns": {
+      "setup": 0.424,
+      "hold": 0.128,
+      "recovery": 2.996,
+      "removal": 3.478,
+      "minimum_pulse_width": 9.194
+    },
+    "unconstrained_setup_hold": {
+      "Clocks": [
+        0,
+        0
+      ],
+      "Input Ports": [
+        0,
+        0
+      ],
+      "Input Port Paths": [
+        0,
+        0
+      ],
+      "Output Ports": [
+        0,
+        0
+      ],
+      "Output Port Paths": [
+        0,
+        0
+      ]
+    },
+    "checks_pass": true,
+    "scope": "Same accepted Stage 5 routed netlist; reanalysis, not a frequency sweep or new fit. External delays are inherited board/device assumptions, not newly measured signal margins."
+  },
+  "limits": [
+    "Standing spawn comparison; three completed-frame phase snapshots are not a frame-time distribution.",
+    "More presentations can repeat the same 30 Hz simulation state; no interpolation, new-state rate or engine speedup claim.",
+    "CPU submission, accelerator and GPU spans overlap; do not sum them as serial frame time.",
+    "Preliminary non-atomic phase captures are excluded; frame-progress FPS remains exploratory evidence.",
+    "Simulation Hz is ticks divided by elapsed cycles in fresh short reset trials, below 32-bit elapsed-counter wrap."
+  ],
+  "moving-tick-paced": {
+    "scope": "Wall-clock controlled movement diagnostic; not a cycle-identical route",
+    "observed_fps": [
+      29.982702287260103,
+      29.86811481758832,
+      30.062063615444508
+    ],
+    "median_fps": 29.982702287260103,
+    "metrics": {
+      "game_update_cycles": [
+        41312,
+        41312,
+        41296
+      ],
+      "game_cpu_cycles": [
+        747786,
+        745781,
+        745742
+      ],
+      "game_present_cycles": [
+        165585,
+        167576,
+        169380
+      ],
+      "game_frame_cycles": [
+        913379,
+        913365,
+        915130
+      ],
+      "render_submission_cycles": [
+        706474,
+        704469,
+        704446
+      ],
+      "tick_wait_cycles": [
+        754795,
+        754801,
+        753037
+      ]
+    },
+    "metric_medians": {
+      "game_update_cycles": 41312,
+      "game_cpu_cycles": 745781,
+      "game_present_cycles": 167576,
+      "game_frame_cycles": 913379,
+      "render_submission_cycles": 704469,
+      "tick_wait_cycles": 754795
+    },
+    "simulation_hz": [
+      29.934627448701423,
+      29.93462851971571,
+      29.934761819375428
+    ],
+    "completed_frame_ids": [
+      251,
+      251,
+      252
+    ],
+    "updates_in_sampled_frame": [
+      1,
+      1,
+      1
+    ],
+    "positions": [
+      [
+        -1088,
+        260,
+        3920
+      ],
+      [
+        -1088,
+        260,
+        3944
+      ],
+      [
+        -1112,
+        260,
+        3944
+      ]
+    ],
+    "segments": [
+      {
+        "file": "mario-castle-sdram-direct-packed-mul-geometry.bin",
+        "address": 0,
+        "bytes": 27096,
+        "sha256": "12d634016e2913b700e0fd21de522f3ae5e507fdc3417f692d92defafc2a3407"
+      },
+      {
+        "file": "mario-castle-sdram-direct-packed-mul-geometry.assets.bin",
+        "address": 2147483648,
+        "bytes": 883124,
+        "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+      }
+    ]
+  },
+  "moving-uncapped": {
+    "scope": "Wall-clock controlled movement diagnostic; not a cycle-identical route",
+    "observed_fps": [
+      44.28543801995669,
+      44.672210404410464,
+      43.436478954620405
+    ],
+    "median_fps": 44.28543801995669,
+    "metrics": {
+      "game_update_cycles": [
+        41202,
+        41202,
+        41311
+      ],
+      "game_cpu_cycles": [
+        745658,
+        743207,
+        745751
+      ],
+      "game_present_cycles": [
+        922495,
+        924948,
+        922407
+      ],
+      "game_frame_cycles": [
+        1668161,
+        1668163,
+        1668166
+      ],
+      "render_submission_cycles": [
+        704456,
+        702005,
+        704440
+      ],
+      "tick_wait_cycles": [
+        5,
+        5,
+        5
+      ]
+    },
+    "metric_medians": {
+      "game_update_cycles": 41202,
+      "game_cpu_cycles": 745658,
+      "game_present_cycles": 922495,
+      "game_frame_cycles": 1668163,
+      "render_submission_cycles": 704440,
+      "tick_wait_cycles": 5
+    },
+    "simulation_hz": [
+      29.874435085830402,
+      29.874435085830402,
+      29.874808991524986
+    ],
+    "completed_frame_ids": [
+      415,
+      417,
+      413
+    ],
+    "updates_in_sampled_frame": [
+      1,
+      1,
+      1
+    ],
+    "positions": [
+      [
+        -1112,
+        260,
+        3944
+      ],
+      [
+        -1136,
+        260,
+        3968
+      ],
+      [
+        -1088,
+        260,
+        3944
+      ]
+    ],
+    "segments": [
+      {
+        "file": "mario-castle-sdram-direct-packed-mul-geometry-uncapped.bin",
+        "address": 0,
+        "bytes": 27108,
+        "sha256": "aba46c6d488085f1e7999ff42eeb2caa0220d3dc58a5fc9bf9a43911bd24e531"
+      },
+      {
+        "file": "mario-castle-sdram-direct-packed-mul-geometry-uncapped.assets.bin",
+        "address": 2147483648,
+        "bytes": 883124,
+        "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+      }
+    ]
+  }
+}

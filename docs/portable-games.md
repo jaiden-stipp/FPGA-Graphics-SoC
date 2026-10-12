@@ -196,3 +196,33 @@ gameplay and Quake packages each advanced 30 displayed frames in a one-second
 physical board sample after complete upload/readback. These samples establish
 the tested examples, not performance for arbitrary ports. See the
 [validation record](validation.md) for evidence and remaining limits.
+
+
+## Independent render cadence (Stage 6)
+
+`--uncapped-render` renders whenever the previous frame has been presented,
+while movement, input consumption, camera and animation advance at the existing
+1,666,667-cycle simulation tick (approximately 30 Hz at 50 MHz). Presentation
+still uses the existing vertical-blank page-swap handshake. It adds no
+interpolation; adjacent presentations may show the same simulation state.
+
+A port must explicitly declare `"render_repeat_safe": true` inside its project
+`port` object. That declaration means `game_port_render` may be called repeatedly
+without advancing gameplay, transitions, camera smoothing or animation phase.
+Move those state changes into `game_port_update` before declaring another port
+safe, and verify its repeated-render output/state. The Castle adapter declares
+this capability; other adapters retain their existing pacing. Omitting the flag
+retains tick-paced rendering even for a repeat-safe port.
+
+```powershell
+.\scripts\run.ps1 soc.py portable-game --project build/castle/game.project.json --terrain-direct --packed-gfx --integer-mul --geometry-offload --uncapped-render
+.\scripts\run.ps1 load_game.py build/mario-castle-sdram-direct-packed-mul-geometry-uncapped.package.json
+```
+
+The package records the cadence and hardware requirements. New firmware also
+publishes a 24-word, double-buffered completed-frame cadence snapshot (ABI
+`0x43540101`) for `profile_cpu.py`. It separates simulation ticks, tick waits,
+update/submission/presentation spans and the matching GPU counters. CPU and GPU
+work overlap. Elapsed-cycle counters are 32-bit; absolute simulation-rate
+estimates use fresh short reset trials, not counters read after wraparound.
+See [Stage 6 results](architecture-stage-6.md) for the actual workload and limits.

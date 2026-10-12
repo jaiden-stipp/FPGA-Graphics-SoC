@@ -450,3 +450,44 @@ This is not complete-level or physical-framebuffer acceptance.
 [Architecture/results](architecture-stage-5.md),
 [measurements](benchmarks/arch-upgrade-001-stage-5/measurements.json) and
 [raw evidence/hashes](benchmarks/arch-upgrade-001-stage-5/manifest.json).
+
+
+## CADENCE-001: fixed simulation, independent presentation (Stage 6)
+
+Baseline e50d34f (accepted Stage 5 c4f9387), firmware a854e1e. This is a
+firmware/runtime throughput change; 85 preserved RTL/SDC sources and the Stage 5
+SOF match exactly. No added FPGA resources, clock change, hardware execution
+speedup or power claim. All measured artifacts have a finite SHA manifest.
+
+Three atomic reset trials per mode show standing presentation FPS
+[29.862323056002584, 29.96906419202057, 29.96906419202057] versus [59.94971959033439, 60.13147718460324, 59.957586273650264]; medians
+29.96906 to 59.95759
+(100.065% higher).
+Three wall-clock movement trials per mode give medians
+29.98270 to 44.28544 FPS.
+The latter is a timed-input diagnostic, not a cycle-identical or full-level route.
+
+Simulation retains 1,666,667-cycle ticks at configured 50 MHz, including the
+existing catch-up cap. Render submission remains about 12.17 ms in standing
+snapshots; tick wait falls from median 754,783 to five cycles. Adjacent frames
+can repeat the same pose, so this is presentation throughput without
+interpolation or a higher new-state/physics rate. Do not call it a doubled
+engine speed or constant 60 FPS across the level.
+
+Five scheduler/capability tests and 30 Castle/world tests pass. Repeated C
+renders compare captured payload/matrix bytes exactly across 40 idle/moving
+updates and preserve state/pose hashes. Firmware subset and ISA audits pass.
+TimeQuest minima: setup +0.424, hold +0.128, recovery +2.996, removal +3.478,
+pulse +9.194 ns; zero unconstrained setup/hold clocks and I/O paths. These
+checks retain inherited external timing assumptions and do not prove a new
+frequency or complete CDC reliability. Twelve final atomic physical trials,
+six preliminary trials (non-atomic phases excluded), full readback and selected
+running-package verification are recorded.
+
+Resume-safe claim: implemented independent render scheduling and atomic
+performance telemetry in an FPGA SoC, measured standing-scene presentation
+from 29.97 to 59.96 FPS at unchanged 50 MHz while preserving the fixed
+simulation timestep, and documented route-dependent performance and timing.
+[Results](architecture-stage-6.md),
+[measurements](benchmarks/arch-upgrade-001-stage-6/measurements.json),
+[artifact hashes](benchmarks/arch-upgrade-001-stage-6/manifest.json).

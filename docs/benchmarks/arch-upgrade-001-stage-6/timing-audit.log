@@ -1,0 +1,37 @@
+{
+  "sof_sha256": "e2b1dce3d5814f348e0ca88b38fe49e494e68fddd9e897aeeac4c3a75b7c6e14",
+  "clock_hz": 50000000,
+  "netlist_changed": false,
+  "new_exceptions": false,
+  "multicorner_minimum_slack_ns": {
+    "setup": 0.424,
+    "hold": 0.128,
+    "recovery": 2.996,
+    "removal": 3.478,
+    "minimum_pulse_width": 9.194
+  },
+  "unconstrained_setup_hold": {
+    "Clocks": [
+      0,
+      0
+    ],
+    "Input Ports": [
+      0,
+      0
+    ],
+    "Input Port Paths": [
+      0,
+      0
+    ],
+    "Output Ports": [
+      0,
+      0
+    ],
+    "Output Port Paths": [
+      0,
+      0
+    ]
+  },
+  "checks_pass": true,
+  "scope": "Same accepted Stage 5 routed netlist; reanalysis, not a frequency sweep or new fit. External delays are inherited board/device assumptions, not newly measured signal margins."
+}
