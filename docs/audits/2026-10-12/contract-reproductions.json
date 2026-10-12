@@ -1,0 +1,66 @@
+{
+  "world_projection": {
+    "accepted_camera": {
+      "focal": 128,
+      "near_z": 257
+    },
+    "cpu_fixed_focal": 256,
+    "sample_camera_point": [
+      900,
+      0,
+      1000
+    ],
+    "gpu_screen_x_at_128": 275.2,
+    "cpu_plane_right": -70400,
+    "world_vertex_limit": 16000
+  },
+  "unknown_features": {
+    "requirements": {
+      "required_gpu_features": {
+        "packed-enqueue-v2": true
+      },
+      "required_cpu_features": {
+        "integer-multiply": true
+      }
+    },
+    "accepted": true,
+    "hardware_calls": []
+  },
+  "collision_overflow": {
+    "a": [
+      -16000,
+      -16000,
+      -16000
+    ],
+    "b": [
+      16000,
+      16000,
+      16000
+    ],
+    "point": [
+      0,
+      0,
+      0
+    ],
+    "radius": 60,
+    "edge_length_squared": 3072000000,
+    "expected_hit": 1,
+    "actual_hit": 0,
+    "world_compiler_accepts_triangle": true,
+    "accepted_collision_counts": [
+      3,
+      2
+    ]
+  },
+  "current_castle_max_squared_edge": 536805378,
+  "schema": {
+    "additionalProperties": false,
+    "generated_keys_rejected": [
+      "cadence",
+      "diagnostic",
+      "required_cpu_features",
+      "required_gpu_features"
+    ],
+    "method": "Direct additionalProperties/property-set check; no JSON Schema validator installed"
+  }
+}

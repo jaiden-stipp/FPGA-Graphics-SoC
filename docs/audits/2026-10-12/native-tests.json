@@ -1,0 +1,102 @@
+[
+  {
+    "file": "test_animation.py",
+    "exit_code": 0,
+    "seconds": 1.172
+  },
+  {
+    "file": "test_camera.py",
+    "exit_code": 0,
+    "seconds": 4.375
+  },
+  {
+    "file": "test_dma_gfx.py",
+    "exit_code": 0,
+    "seconds": 0.61
+  },
+  {
+    "file": "test_game_clock.py",
+    "exit_code": 0,
+    "seconds": 0.359
+  },
+  {
+    "file": "test_game_packages.py",
+    "exit_code": 0,
+    "seconds": 0.844
+  },
+  {
+    "file": "test_geometry_loader.py",
+    "exit_code": 0,
+    "seconds": 0.172
+  },
+  {
+    "file": "test_gfx_staging.py",
+    "exit_code": 0,
+    "seconds": 0.547
+  },
+  {
+    "file": "test_gpu_fractional.py",
+    "exit_code": 1,
+    "seconds": 0.906
+  },
+  {
+    "file": "test_interactive_demo.py",
+    "exit_code": 0,
+    "seconds": 1.156
+  },
+  {
+    "file": "test_packed_gfx.py",
+    "exit_code": 0,
+    "seconds": 1.031
+  },
+  {
+    "file": "test_player.py",
+    "exit_code": 0,
+    "seconds": 1.437
+  },
+  {
+    "file": "test_portable_pipeline.py",
+    "exit_code": 0,
+    "seconds": 1.531
+  },
+  {
+    "file": "test_quake_pipeline.py",
+    "exit_code": 0,
+    "seconds": 1.36
+  },
+  {
+    "file": "test_render_fixes.py",
+    "exit_code": 0,
+    "seconds": 1.109
+  },
+  {
+    "file": "test_render_replay.py",
+    "exit_code": 0,
+    "seconds": 0.797
+  },
+  {
+    "file": "test_scene_pipeline.py",
+    "exit_code": 0,
+    "seconds": 1.797
+  },
+  {
+    "file": "test_screen_edges.py",
+    "exit_code": 0,
+    "seconds": 0.937
+  },
+  {
+    "file": "test_sdram_package.py",
+    "exit_code": 0,
+    "seconds": 0.219
+  },
+  {
+    "file": "test_terrain_offload.py",
+    "exit_code": 0,
+    "seconds": 1.203
+  },
+  {
+    "file": "test_world_pipeline.py",
+    "exit_code": 0,
+    "seconds": 7.015
+  }
+]

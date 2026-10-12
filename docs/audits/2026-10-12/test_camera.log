@@ -1,0 +1,19 @@
+test_boom_recovers_gradually_after_obstacle_removed (__main__.CameraTests.test_boom_recovers_gradually_after_obstacle_removed) ... ok
+test_close_back_wall_keeps_character_visible (__main__.CameraTests.test_close_back_wall_keeps_character_visible) ... ok
+test_configured_projection_and_initial_framing (__main__.CameraTests.test_configured_projection_and_initial_framing) ... ok
+test_high_wall_forces_safe_steeper_pitch (__main__.CameraTests.test_high_wall_forces_safe_steeper_pitch) ... ok
+test_horizontal_follow_and_lookahead_settle_after_stopping (__main__.CameraTests.test_horizontal_follow_and_lookahead_settle_after_stopping) ... ok
+test_invalid_camera_profiles_rejected (__main__.CameraTests.test_invalid_camera_profiles_rejected) ... ok
+test_jump_moves_up_the_screen_and_landing_settles (__main__.CameraTests.test_jump_moves_up_the_screen_and_landing_settles) ... ok
+test_low_ceiling_shortens_without_forcing_minimum_distance (__main__.CameraTests.test_low_ceiling_shortens_without_forcing_minimum_distance) ... ok
+test_map_edge_fall_and_respawn_keep_character_framed (__main__.CameraTests.test_map_edge_fall_and_respawn_keep_character_framed) ... ok
+test_orbit_collision_retracts_then_recovers_gradually (__main__.CameraTests.test_orbit_collision_retracts_then_recovers_gradually) ... ok
+test_orbit_framing_follow_and_teleport (__main__.CameraTests.test_orbit_framing_follow_and_teleport) ... ok
+test_real_field_bridge_route_keeps_camera_outside_surfaces (__main__.CameraTests.test_real_field_bridge_route_keeps_camera_outside_surfaces) ... ok
+test_respawn_and_teleport_clear_follow_history (__main__.CameraTests.test_respawn_and_teleport_clear_follow_history) ... ok
+test_slope_follow_and_bounded_air_lag (__main__.CameraTests.test_slope_follow_and_bounded_air_lag) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 4.147s
+
+OK

@@ -1,0 +1,163 @@
+{
+  "tracked_files": 2412,
+  "parse_errors": [
+    {
+      "file": "docs/benchmarks/arch-upgrade-001-stage-1/restored-status.json",
+      "error": "Expecting value: line 1 column 1 (char 0)"
+    },
+    {
+      "file": "docs/command-buffer-staging.md",
+      "error": "'utf-8' codec can't decode byte 0x96 in position 1638: invalid start byte"
+    }
+  ],
+  "manifest_checks": [
+    {
+      "file": "docs/benchmarks/arch-upgrade-001-stage-6/manifest.json",
+      "entries": 182,
+      "bad": []
+    },
+    {
+      "file": "docs/benchmarks/render-correctness-001/manifest.json",
+      "entries": 89,
+      "bad": []
+    }
+  ],
+  "broken_local_doc_links": [],
+  "mojibake_docs": [
+    "docs/architecture-upgrade-plan.md"
+  ],
+  "package_schema_unknown_keys": [
+    "cadence",
+    "diagnostic",
+    "required_cpu_features",
+    "required_gpu_features"
+  ],
+  "native_suites": [
+    {
+      "file": "test_animation.py",
+      "exit_code": 0,
+      "seconds": 1.172,
+      "tests": 8
+    },
+    {
+      "file": "test_camera.py",
+      "exit_code": 0,
+      "seconds": 4.375,
+      "tests": 14
+    },
+    {
+      "file": "test_dma_gfx.py",
+      "exit_code": 0,
+      "seconds": 0.61,
+      "tests": 6
+    },
+    {
+      "file": "test_game_clock.py",
+      "exit_code": 0,
+      "seconds": 0.359,
+      "tests": 5
+    },
+    {
+      "file": "test_game_packages.py",
+      "exit_code": 0,
+      "seconds": 0.844,
+      "tests": 6
+    },
+    {
+      "file": "test_geometry_loader.py",
+      "exit_code": 0,
+      "seconds": 0.172,
+      "tests": 2
+    },
+    {
+      "file": "test_gfx_staging.py",
+      "exit_code": 0,
+      "seconds": 0.547,
+      "tests": 2
+    },
+    {
+      "file": "test_gpu_fractional.py",
+      "exit_code": 1,
+      "seconds": 0.906,
+      "tests": 3
+    },
+    {
+      "file": "test_interactive_demo.py",
+      "exit_code": 0,
+      "seconds": 1.156,
+      "tests": 15
+    },
+    {
+      "file": "test_packed_gfx.py",
+      "exit_code": 0,
+      "seconds": 1.031,
+      "tests": 3
+    },
+    {
+      "file": "test_player.py",
+      "exit_code": 0,
+      "seconds": 1.437,
+      "tests": 11
+    },
+    {
+      "file": "test_portable_pipeline.py",
+      "exit_code": 0,
+      "seconds": 1.531,
+      "tests": 13
+    },
+    {
+      "file": "test_quake_pipeline.py",
+      "exit_code": 0,
+      "seconds": 1.36,
+      "tests": 5
+    },
+    {
+      "file": "test_render_fixes.py",
+      "exit_code": 0,
+      "seconds": 1.109,
+      "tests": 5
+    },
+    {
+      "file": "test_render_replay.py",
+      "exit_code": 0,
+      "seconds": 0.797,
+      "tests": 3
+    },
+    {
+      "file": "test_scene_pipeline.py",
+      "exit_code": 0,
+      "seconds": 1.797,
+      "tests": 12
+    },
+    {
+      "file": "test_screen_edges.py",
+      "exit_code": 0,
+      "seconds": 0.937,
+      "tests": 3
+    },
+    {
+      "file": "test_sdram_package.py",
+      "exit_code": 0,
+      "seconds": 0.219,
+      "tests": 3
+    },
+    {
+      "file": "test_terrain_offload.py",
+      "exit_code": 0,
+      "seconds": 1.203,
+      "tests": 5
+    },
+    {
+      "file": "test_world_pipeline.py",
+      "exit_code": 0,
+      "seconds": 7.015,
+      "tests": 34
+    }
+  ],
+  "native_totals": {
+    "tests": 158,
+    "skipped": 0,
+    "failures": 1,
+    "errors": 0
+  }
+}

@@ -1,0 +1,19 @@
+..F
+======================================================================
+FAIL: test_source_faces_and_order_preserved_by_tighter_packing (__main__.FractionalTests.test_source_faces_and_order_preserved_by_tighter_packing)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\scripts\test_gpu_fractional.py", line 40, in test_source_faces_and_order_preserved_by_tighter_packing
+    self.assertEqual(before,world_assets.chunks(*args))
+AssertionError: Lists differ: [{'ve[5684 chars]k': 0}, {'vertices': [[7126, -1699, -1053], [6[32793 chars]: 0}] != [{'ve[5684 chars]k': 0, 'render_flags': 0}, {'vertices': [[7126[32945 chars]: 0}]
+
+First differing element 0:
+{'ver[5645 chars] -1842, 3349, -8085, -3356], 'room_mask': 0}
+{'ver[5645 chars] -1842, 3349, -8085, -3356], 'room_mask': 0, 'render_flags': 0}
+
+Diff is 88632 characters long. Set self.maxDiff to None to see it.
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.688s
+
+FAILED (failures=1)

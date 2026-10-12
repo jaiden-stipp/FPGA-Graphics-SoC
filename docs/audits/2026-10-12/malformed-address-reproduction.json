@@ -1,0 +1,22 @@
+{
+  "manifest": {
+    "format": "soc-game-package",
+    "version": 1,
+    "segments": [
+      {
+        "file": "cpu-probe.bin",
+        "address": 0.0,
+        "bytes": 4,
+        "sha256": "eba09f2f48f209cfa2dfbf19fc678d755d05559671eceda0164f3e080cb49765"
+      }
+    ]
+  },
+  "preflight_accepted": true,
+  "packet_encoding_error": "struct.error: required argument is not an integer",
+  "impact": "Loader.transfer sends BEGIN before encoding the first WRITE; malformed manifest can leave CPU held. No packet sent in this audit.",
+  "transfer_exception": "ValueError(\"Unknown format code 'x' for object of type 'float'\")",
+  "transfer_operations": [
+    1
+  ],
+  "network_sent": false
+}

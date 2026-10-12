@@ -1,0 +1,7 @@
++ C:\Program Files\LLVM\bin\clang.EXE --target=riscv32-unknown-elf -fuse-ld=lld -march=rv32i -mabi=ilp32 -msmall-data-limit=0 -mno-relax -O1 ... (21 more arguments)
+ld.lld: error: Firmware leaves less than 4 KiB stack
+ld.lld: error: section '.rodata' will not fit in region 'RAM': overflowed by 52406 bytes
+ld.lld: error: section '.data' will not fit in region 'RAM': overflowed by 52416 bytes
+ld.lld: error: section '.bss' will not fit in region 'RAM': overflowed by 53952 bytes
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+REPRODUCED: CalledProcessError(1, ['C:\\Program Files\\LLVM\\bin\\clang.EXE', '--target=riscv32-unknown-elf', '-fuse-ld=lld', '-march=rv32i', '-mabi=ilp32', '-msmall-data-limit=0', '-mno-relax', '-O1', '-ffreestanding', '-fno-builtin', '-nostdlib', '-Wall', '-Wextra', '-Werror', '-Ifirmware/include', '-Ifirmware/generated', '-Wl,-T,firmware/link.ld', '-Wl,--no-relax', '-Wl,-Map,build/repo-audit-mario.map', 'firmware/start.S', 'firmware/src/gfx.c', 'firmware/src/gfx_scene.c', 'firmware/src/player.c', 'firmware/src/camera.c', 'firmware/src/animation.c', 'firmware/src/game_runtime.c', 'firmware/src/mario.c', '-o', 'build/repo-audit-mario.elf'])

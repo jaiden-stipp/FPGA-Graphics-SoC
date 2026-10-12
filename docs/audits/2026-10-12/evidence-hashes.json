@@ -1,0 +1,62 @@
+[
+  {
+    "manifest": "docs\\benchmarks\\arch-upgrade-001-stage-0\\manifest.json",
+    "checked": 26,
+    "bad": [],
+    "unresolved": []
+  },
+  {
+    "manifest": "docs\\benchmarks\\arch-upgrade-001-stage-1\\manifest.json",
+    "checked": 46,
+    "bad": [],
+    "unresolved": []
+  },
+  {
+    "manifest": "docs\\benchmarks\\arch-upgrade-001-stage-2a\\manifest.json",
+    "checked": 126,
+    "bad": [],
+    "unresolved": []
+  },
+  {
+    "manifest": "docs\\benchmarks\\arch-upgrade-001-stage-2b\\manifest.json",
+    "checked": 269,
+    "bad": [],
+    "unresolved": []
+  },
+  {
+    "manifest": "docs\\benchmarks\\arch-upgrade-001-stage-2b-staging\\manifest.json",
+    "checked": 15,
+    "bad": [],
+    "unresolved": []
+  },
+  {
+    "manifest": "docs\\benchmarks\\arch-upgrade-001-stage-3\\manifest.json",
+    "checked": 327,
+    "bad": [],
+    "unresolved": []
+  },
+  {
+    "manifest": "docs\\benchmarks\\arch-upgrade-001-stage-4\\manifest.json",
+    "checked": 267,
+    "bad": [],
+    "unresolved": []
+  },
+  {
+    "manifest": "docs\\benchmarks\\arch-upgrade-001-stage-5\\manifest.json",
+    "checked": 252,
+    "bad": [],
+    "unresolved": []
+  },
+  {
+    "manifest": "docs\\benchmarks\\arch-upgrade-001-stage-6\\manifest.json",
+    "checked": 182,
+    "bad": [],
+    "unresolved": []
+  },
+  {
+    "manifest": "docs\\benchmarks\\render-correctness-001\\manifest.json",
+    "checked": 89,
+    "bad": [],
+    "unresolved": []
+  }
+]

@@ -1,0 +1,41 @@
+{
+  "repository_commit": "6bfbce42b3d0ffcb2fc930c69c3640b9a90c8d18",
+  "tracked_files": 2412,
+  "native": {
+    "suites": 20,
+    "tests": 158,
+    "passes": 157,
+    "failures": 1,
+    "skipped": 0
+  },
+  "rtl_passed": {
+    "rtl-baseline.log": [
+      "soc_mmio_tb",
+      "soc_memory_tb",
+      "sdram_cache_tb",
+      "sdram_memory_tb",
+      "sdram_arbiter_tb",
+      "udp_loader_tb",
+      "udp_extended_input_tb",
+      "cpu_mul_tb",
+      "geometry_worker_tb",
+      "packed_mmio_tb",
+      "pixel_banks_tb",
+      "pixel_lanes_tb",
+      "setup_overlap_tb"
+    ],
+    "rtl-worker-directed.log": [
+      "cpu_geometry_tb",
+      "cpu_counter_pipeline_tb",
+      "soc_cpu_counters_tb"
+    ]
+  },
+  "worker_variant_mmio_fixture_failed": true,
+  "historical_full_game_replay": "Stopped by audit; not an acceptance result; uses old fixed package names",
+  "archived_hash_entries_checked": 1599,
+  "hash_mismatches": 0,
+  "production_source_changed": false,
+  "fpga_programmed_or_loaded": false,
+  "selected_package_hashes_valid": true,
+  "pinned_dependencies_clean": true
+}
