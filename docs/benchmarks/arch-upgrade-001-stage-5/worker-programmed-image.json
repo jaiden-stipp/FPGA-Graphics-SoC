@@ -1,0 +1,18 @@
+{
+  "sof": "C:\\Users\\Orb1t\\Documents\\Codex\\FPGA-Game-SoC\\build\\quartus-arch-stage5-worker\\ArchStage5SoC.sof",
+  "sha256": "e2b1dce3d5814f348e0ca88b38fe49e494e68fddd9e897aeeac4c3a75b7c6e14",
+  "status": {
+    "initialized": true,
+    "held": true,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 0,
+    "refresh_count": 481049,
+    "input_abi": 1229848833,
+    "cpu_features": 2147483651,
+    "gpu_features": 3
+  }
+}

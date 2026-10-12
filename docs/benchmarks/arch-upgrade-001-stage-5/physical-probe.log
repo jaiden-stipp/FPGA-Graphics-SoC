@@ -1,0 +1,21 @@
+Uploading probe.bin: 9,320 bytes at 0x00000000
+Verifying probe.bin: 9,320 bytes at 0x00000000
+Readback verified; CPU released.
+probe 1 [(320, 246), (37742, 5523), (38039, 5565), (38039, 5565), (38039, 5565), (38039, 5565), (38039, 5565), (38039, 5565), (38039, 5565), (38039, 5565)]
+Uploading probe.bin: 9,320 bytes at 0x00000000
+Verifying probe.bin: 9,320 bytes at 0x00000000
+Readback verified; CPU released.
+probe 2 [(320, 246), (37742, 5523), (38039, 5565), (38039, 5565), (38039, 5565), (38039, 5565), (38039, 5565), (38039, 5565), (38039, 5565), (38039, 5565)]
+Uploading probe.bin: 9,320 bytes at 0x00000000
+Verifying probe.bin: 9,320 bytes at 0x00000000
+Readback verified; CPU released.
+probe 3 [(320, 246), (37742, 5523), (38039, 5565), (38039, 5565), (38039, 5565), (38039, 5565), (38039, 5565), (38039, 5565), (38039, 5565), (38039, 5565)]
+Uploading mario-castle-sdram-direct-packed-mul.bin: 26,332 bytes at 0x00000000
+Verifying mario-castle-sdram-direct-packed-mul.bin: 26,332 bytes at 0x00000000
+Uploading mario-castle-sdram-direct-packed-mul.assets.bin: 883,124 bytes at 0x80000000
+  358,404/883,124 bytes
+  719,100/883,124 bytes
+Verifying mario-castle-sdram-direct-packed-mul.assets.bin: 883,124 bytes at 0x80000000
+  355,080/883,124 bytes
+  710,772/883,124 bytes
+Readback verified; CPU released.

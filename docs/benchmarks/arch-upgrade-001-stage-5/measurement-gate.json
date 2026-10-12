@@ -1,0 +1,4 @@
+{
+  "equivalence_pending_during_profiling": true,
+  "promotion_requires_equivalence": true
+}

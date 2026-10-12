@@ -1,0 +1,368 @@
+{
+  "scope": "Same candidate CPU measures original production transform/outcodes versus actual MMIO adapter. Configuration, input writes, polling and result copies included. Static on-chip vertex data, not SDRAM game-time savings.",
+  "trials": [
+    {
+      "trial": 1,
+      "raw_words": [
+        320,
+        246,
+        51,
+        0,
+        37742,
+        5523,
+        5328,
+        0,
+        38039,
+        5565,
+        5370,
+        0,
+        38039,
+        5565,
+        5370,
+        0,
+        38039,
+        5565,
+        5370,
+        0,
+        38039,
+        5565,
+        5370,
+        0,
+        38039,
+        5565,
+        5370,
+        0,
+        38039,
+        5565,
+        5370,
+        0,
+        38039,
+        5565,
+        5370,
+        0,
+        38039,
+        5565,
+        5370,
+        0
+      ],
+      "cases": [
+        {
+          "software_cycles": 320,
+          "adapter_cycles": 246,
+          "worker_active_cycles": 51,
+          "result_wait_cycles": 0
+        },
+        {
+          "software_cycles": 37742,
+          "adapter_cycles": 5523,
+          "worker_active_cycles": 5328,
+          "result_wait_cycles": 0
+        },
+        {
+          "software_cycles": 38039,
+          "adapter_cycles": 5565,
+          "worker_active_cycles": 5370,
+          "result_wait_cycles": 0
+        },
+        {
+          "software_cycles": 38039,
+          "adapter_cycles": 5565,
+          "worker_active_cycles": 5370,
+          "result_wait_cycles": 0
+        },
+        {
+          "software_cycles": 38039,
+          "adapter_cycles": 5565,
+          "worker_active_cycles": 5370,
+          "result_wait_cycles": 0
+        },
+        {
+          "software_cycles": 38039,
+          "adapter_cycles": 5565,
+          "worker_active_cycles": 5370,
+          "result_wait_cycles": 0
+        },
+        {
+          "software_cycles": 38039,
+          "adapter_cycles": 5565,
+          "worker_active_cycles": 5370,
+          "result_wait_cycles": 0
+        },
+        {
+          "software_cycles": 38039,
+          "adapter_cycles": 5565,
+          "worker_active_cycles": 5370,
+          "result_wait_cycles": 0
+        },
+        {
+          "software_cycles": 38039,
+          "adapter_cycles": 5565,
+          "worker_active_cycles": 5370,
+          "result_wait_cycles": 0
+        },
+        {
+          "software_cycles": 38039,
+          "adapter_cycles": 5565,
+          "worker_active_cycles": 5370,
+          "result_wait_cycles": 0
+        }
+      ],
+      "status": {
+        "initialized": true,
+        "held": false,
+        "words": [
+          0,
+          0,
+          0
+        ],
+        "scratch": 889217037,
+        "refresh_count": 595965,
+        "input_abi": 1229848833,
+        "cpu_features": 2147483651,
+        "gpu_features": 3
+      }
+    },
+    {
+      "trial": 2,
+      "raw_words": [
+        320,
+        246,
+        51,
+        0,
+        37742,
+        5523,
+        5328,
+        0,
+        38039,
+        5565,
+        5370,
+        0,
+        38039,
+        5565,
+        5370,
+        0,
+        38039,
+        5565,
+        5370,
+        0,
+        38039,
+        5565,
+        5370,
+        0,
+        38039,
+        5565,
+        5370,
+        0,
+        38039,
+        5565,
+        5370,
+        0,
+        38039,
+        5565,
+        5370,
+        0,
+        38039,
+        5565,
+        5370,
+        0
+      ],
+      "cases": [
+        {
+          "software_cycles": 320,
+          "adapter_cycles": 246,
+          "worker_active_cycles": 51,
+          "result_wait_cycles": 0
+        },
+        {
+          "software_cycles": 37742,
+          "adapter_cycles": 5523,
+          "worker_active_cycles": 5328,
+          "result_wait_cycles": 0
+        },
+        {
+          "software_cycles": 38039,
+          "adapter_cycles": 5565,
+          "worker_active_cycles": 5370,
+          "result_wait_cycles": 0
+        },
+        {
+          "software_cycles": 38039,
+          "adapter_cycles": 5565,
+          "worker_active_cycles": 5370,
+          "result_wait_cycles": 0
+        },
+        {
+          "software_cycles": 38039,
+          "adapter_cycles": 5565,
+          "worker_active_cycles": 5370,
+          "result_wait_cycles": 0
+        },
+        {
+          "software_cycles": 38039,
+          "adapter_cycles": 5565,
+          "worker_active_cycles": 5370,
+          "result_wait_cycles": 0
+        },
+        {
+          "software_cycles": 38039,
+          "adapter_cycles": 5565,
+          "worker_active_cycles": 5370,
+          "result_wait_cycles": 0
+        },
+        {
+          "software_cycles": 38039,
+          "adapter_cycles": 5565,
+          "worker_active_cycles": 5370,
+          "result_wait_cycles": 0
+        },
+        {
+          "software_cycles": 38039,
+          "adapter_cycles": 5565,
+          "worker_active_cycles": 5370,
+          "result_wait_cycles": 0
+        },
+        {
+          "software_cycles": 38039,
+          "adapter_cycles": 5565,
+          "worker_active_cycles": 5370,
+          "result_wait_cycles": 0
+        }
+      ],
+      "status": {
+        "initialized": true,
+        "held": false,
+        "words": [
+          0,
+          0,
+          0
+        ],
+        "scratch": 889217037,
+        "refresh_count": 668387,
+        "input_abi": 1229848833,
+        "cpu_features": 2147483651,
+        "gpu_features": 3
+      }
+    },
+    {
+      "trial": 3,
+      "raw_words": [
+        320,
+        246,
+        51,
+        0,
+        37742,
+        5523,
+        5328,
+        0,
+        38039,
+        5565,
+        5370,
+        0,
+        38039,
+        5565,
+        5370,
+        0,
+        38039,
+        5565,
+        5370,
+        0,
+        38039,
+        5565,
+        5370,
+        0,
+        38039,
+        5565,
+        5370,
+        0,
+        38039,
+        5565,
+        5370,
+        0,
+        38039,
+        5565,
+        5370,
+        0,
+        38039,
+        5565,
+        5370,
+        0
+      ],
+      "cases": [
+        {
+          "software_cycles": 320,
+          "adapter_cycles": 246,
+          "worker_active_cycles": 51,
+          "result_wait_cycles": 0
+        },
+        {
+          "software_cycles": 37742,
+          "adapter_cycles": 5523,
+          "worker_active_cycles": 5328,
+          "result_wait_cycles": 0
+        },
+        {
+          "software_cycles": 38039,
+          "adapter_cycles": 5565,
+          "worker_active_cycles": 5370,
+          "result_wait_cycles": 0
+        },
+        {
+          "software_cycles": 38039,
+          "adapter_cycles": 5565,
+          "worker_active_cycles": 5370,
+          "result_wait_cycles": 0
+        },
+        {
+          "software_cycles": 38039,
+          "adapter_cycles": 5565,
+          "worker_active_cycles": 5370,
+          "result_wait_cycles": 0
+        },
+        {
+          "software_cycles": 38039,
+          "adapter_cycles": 5565,
+          "worker_active_cycles": 5370,
+          "result_wait_cycles": 0
+        },
+        {
+          "software_cycles": 38039,
+          "adapter_cycles": 5565,
+          "worker_active_cycles": 5370,
+          "result_wait_cycles": 0
+        },
+        {
+          "software_cycles": 38039,
+          "adapter_cycles": 5565,
+          "worker_active_cycles": 5370,
+          "result_wait_cycles": 0
+        },
+        {
+          "software_cycles": 38039,
+          "adapter_cycles": 5565,
+          "worker_active_cycles": 5370,
+          "result_wait_cycles": 0
+        },
+        {
+          "software_cycles": 38039,
+          "adapter_cycles": 5565,
+          "worker_active_cycles": 5370,
+          "result_wait_cycles": 0
+        }
+      ],
+      "status": {
+        "initialized": true,
+        "held": false,
+        "words": [
+          0,
+          0,
+          0
+        ],
+        "scratch": 889217037,
+        "refresh_count": 739409,
+        "input_abi": 1229848833,
+        "cpu_features": 2147483651,
+        "gpu_features": 3
+      }
+    }
+  ]
+}

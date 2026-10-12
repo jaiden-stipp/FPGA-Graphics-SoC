@@ -1,0 +1,6 @@
+Generated CPU boundary, RAM wrapper, palette path and firmware protocol header.
+control map 0
+control fit 0
+control sta 0
+control minimum slack 0.105
+control asm 0

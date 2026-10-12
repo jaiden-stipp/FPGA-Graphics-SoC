@@ -1,0 +1,81 @@
+{
+  "command": [
+    "C:\\Program Files\\LLVM\\bin\\clang.exe",
+    "--target=riscv32-unknown-elf",
+    "-fuse-ld=lld",
+    "-march=rv32i",
+    "-mabi=ilp32",
+    "-msmall-data-limit=0",
+    "-mno-relax",
+    "-O1",
+    "-ffreestanding",
+    "-fno-builtin",
+    "-nostdlib",
+    "-Wall",
+    "-Wextra",
+    "-Werror",
+    "-ffunction-sections",
+    "-fdata-sections",
+    "-Ifirmware/include",
+    "-Ifirmware/generated",
+    "-Wl,-T,firmware/link.ld",
+    "-Wl,--no-relax",
+    "-Wl,--gc-sections",
+    "-DSOC_GEOMETRY_OFFLOAD",
+    "-DSOC_INTEGER_MUL",
+    "firmware/start.S",
+    "firmware/tests/geometry_probe.c",
+    "firmware/src/player.c",
+    "-o",
+    "C:\\Users\\Orb1t\\Documents\\Codex\\FPGA-Game-SoC\\build\\arch-stage5\\probe.elf"
+  ],
+  "symbols": {
+    "_bss_end": 13460,
+    "_bss_start": 9320,
+    "_stack_top": 65536,
+    "_start": 0,
+    "actual_codes": 12788,
+    "actual_points": 10856,
+    "cache": 12468,
+    "direct_outcodes": 12532,
+    "expected_codes": 12660,
+    "expected_points": 9320,
+    "fixed_mul": 1860,
+    "geometry_cases": 8800,
+    "geometry_results": 12916,
+    "geometry_transform": 52,
+    "geometry_vertices": 1888,
+    "main": 840,
+    "prepared_matrix": 13076,
+    "prepared_position.0": 12404,
+    "prepared_position.1": 12408,
+    "prepared_position.2": 12412,
+    "prepared_safe": 12428,
+    "prepared_view": 12444,
+    "selected": 12392,
+    "transform": 500,
+    "world_direct_triangles": 12416,
+    "world_fallback_chunks": 12424,
+    "world_gpu_chunks": 12420,
+    "world_uploaded_chunks": 12400,
+    "world_visible_chunks": 12396
+  },
+  "audited_instructions": 467,
+  "mul_instructions": 1,
+  "package": {
+    "format": "soc-game-package",
+    "version": 1,
+    "required_cpu_features": {
+      "mul": true,
+      "geometry-worker-v1": true
+    },
+    "segments": [
+      {
+        "file": "probe.bin",
+        "address": 0,
+        "bytes": 9320,
+        "sha256": "c328c206015f4d6ef78759eb81adbd1baefaeaa70f8012d2a45caa168ec05d4a"
+      }
+    ]
+  }
+}

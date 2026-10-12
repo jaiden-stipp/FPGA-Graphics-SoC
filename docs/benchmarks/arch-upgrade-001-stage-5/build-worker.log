@@ -1,0 +1,6 @@
+Generated CPU boundary, RAM wrapper, palette path and firmware protocol header.
+worker map 0
+worker fit 0
+worker sta 0
+worker minimum slack 0.128
+worker asm 0

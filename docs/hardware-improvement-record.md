@@ -405,3 +405,48 @@ waiting in a specified resident-mesh benchmark, including parallel clear, at
 [Full results and reproduction](architecture-stage-4.md),
 [measurements](benchmarks/arch-upgrade-001-stage-4/measurements.json) and
 [raw evidence/hashes](benchmarks/arch-upgrade-001-stage-4/manifest.json).
+
+## CPU-GEOMETRY-001: queued Q8 transform/outcode worker
+
+October 11, 2026. ARCH-UPGRADE-001 Stage 5. Baseline 40219cec preserves Stage 4
+commit e0d776c. Implementation b677581 / df0649df; reproducible complete-game
+stream/profiling integration 765ecbe. Three parallel signed multipliers compute
+the original low-32-bit dot products and six shared frustum outcodes, with
+bounded input/result queues, configuration ownership, reset/abort safety and
+registered FIFO read responses. CPU owns cached source reads and render scratch
+copies; no new SDRAM master or cache-coherency path. Game models, collision,
+camera, animation, 16-bit clipping fractions, GPU raster/transport and clocks
+remain unchanged. Normal packages retain compatibility; offload is feature gated.
+
+An independent 1,152-vertex oracle and the real CPU/MMIO adapter agree with the
+production C transform/plane kernel. Three complete actor/game command streams
+match through CPUs/cache/SDRAM, and composed GPU replays match color/depth/palette
+and 1,332 submitted triangles. The equivalence fixture uses synthetic decoder
+backpressure/immediate presentation acknowledgement and supplies no timing claim.
+Physical evidence comprises 15 complete comparative reset trials plus three
+exploratory probe resets with their printed timings preserved separately.
+
+Ordinary standing Mario CPU update/render medians fall 905,274 to 648,906 cycles
+(28.319% less, 18.10548 to 12.97812 ms at configured 50 MHz). Observed FPS remains
+around 30; no uncapped FPS improvement is claimed. Detailed transform/outcode
+scope medians fall 312,333 to 54,939 cycles (82.410% less), including configuration,
+source reads, input writes, polling and result copies. Matched frame 251 retains
+all seven GPU events; worker snapshot 252 is a separate actor pose. Paired
+on-chip-data 128-vertex probes repeat 38,039 software versus 5,565 complete-adapter
+cycles; these are synthetic costs, not SDRAM game-time savings.
+
+Fitted cost is +2,372 LEs (24,185 to 26,557), +12 embedded 9-bit multiplier
+elements (80 to 92), no extra M9Ks (366/432), +4 logical memory bits and no new
+PLLs. Candidate setup/hold minima +0.424/+0.128 ns pass at unchanged clocks, with
+zero unconstrained setup/hold clock/input/output paths. No power/Fmax gain is
+claimed. Stage 5 is selected with normal worker-enabled packed Mario; full
+CPU/assets readback and running frame progression pass. Stage 4 rollback remains.
+
+Resume-safe claim: designed and verified a feature-gated queued FPGA geometry
+accelerator preserving fixed-point transform/frustum semantics and measured a
+28.3% reduction in ordinary standing-scene CPU update/render time, including
+transfer overhead, with exact complete-game command/GPU replay validation.
+This is not complete-level or physical-framebuffer acceptance.
+[Architecture/results](architecture-stage-5.md),
+[measurements](benchmarks/arch-upgrade-001-stage-5/measurements.json) and
+[raw evidence/hashes](benchmarks/arch-upgrade-001-stage-5/manifest.json).

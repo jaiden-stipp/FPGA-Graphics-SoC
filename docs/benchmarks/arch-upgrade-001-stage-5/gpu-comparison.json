@@ -1,0 +1,77 @@
+{
+  "submitted_triangles_equal": true,
+  "before_triangles": 1332,
+  "after_triangles": 1332,
+  "scope": "Real CPUs/cache/SDRAM/shared game and actors, standing zero-input, three frames; synthetic decoder backpressure and immediate presentation acknowledgement. This is equivalence, not timing/FPS measurement.",
+  "before": "build\\arch-stage5\\game-replay-0",
+  "after": "build\\arch-stage5\\game-replay-1",
+  "frames": [
+    {
+      "frame": 1,
+      "label": "complete-standing-frame-1",
+      "color.hex": {
+        "samples": 76800,
+        "differences": 0,
+        "before_sha256": "6558858b817c906f733a1a1b963ce59ea364c7114baba4ed838e695df4db79d2",
+        "after_sha256": "6558858b817c906f733a1a1b963ce59ea364c7114baba4ed838e695df4db79d2"
+      },
+      "depth.hex": {
+        "samples": 76800,
+        "differences": 0,
+        "before_sha256": "3a02d11b6744e9bb1981cb59f0d7a860f10da3fd3f8a1541e4c1ae6a133b46f0",
+        "after_sha256": "3a02d11b6744e9bb1981cb59f0d7a860f10da3fd3f8a1541e4c1ae6a133b46f0"
+      },
+      "palette.hex": {
+        "samples": 256,
+        "differences": 0,
+        "before_sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907",
+        "after_sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907"
+      }
+    },
+    {
+      "frame": 2,
+      "label": "complete-standing-frame-2",
+      "color.hex": {
+        "samples": 76800,
+        "differences": 0,
+        "before_sha256": "8b6ad10f48a3d3c67968f481993d239ec24c2b61ac512b36d013299d8d1e4f04",
+        "after_sha256": "8b6ad10f48a3d3c67968f481993d239ec24c2b61ac512b36d013299d8d1e4f04"
+      },
+      "depth.hex": {
+        "samples": 76800,
+        "differences": 0,
+        "before_sha256": "7083bec8adb3bc7ac946d6fe5ba2e3b31487642fd23e90d39774a70b53107117",
+        "after_sha256": "7083bec8adb3bc7ac946d6fe5ba2e3b31487642fd23e90d39774a70b53107117"
+      },
+      "palette.hex": {
+        "samples": 256,
+        "differences": 0,
+        "before_sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907",
+        "after_sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907"
+      }
+    },
+    {
+      "frame": 3,
+      "label": "complete-standing-frame-3",
+      "color.hex": {
+        "samples": 76800,
+        "differences": 0,
+        "before_sha256": "105da453d6d973de47a9fe01f6f401d958d3a1c9021a1ad6710be0d3e519e2ca",
+        "after_sha256": "105da453d6d973de47a9fe01f6f401d958d3a1c9021a1ad6710be0d3e519e2ca"
+      },
+      "depth.hex": {
+        "samples": 76800,
+        "differences": 0,
+        "before_sha256": "24a92ef3c9e4b639ffd9f62c3457749a7e8cde3aaea5d9281ad8f4dcd686b510",
+        "after_sha256": "24a92ef3c9e4b639ffd9f62c3457749a7e8cde3aaea5d9281ad8f4dcd686b510"
+      },
+      "palette.hex": {
+        "samples": 256,
+        "differences": 0,
+        "before_sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907",
+        "after_sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907"
+      }
+    }
+  ],
+  "exact": true
+}

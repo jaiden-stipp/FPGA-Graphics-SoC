@@ -1,0 +1,11 @@
+Generated CPU boundary, RAM wrapper, palette path and firmware protocol header.
+worker map 0
+worker fit 4294967295
+Traceback (most recent call last):
+  File "C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\scripts\build_geometry_worker.py", line 39, in <module>
+    for mode in ('worker','control') if a.mode=='both' else (a.mode,):build(mode)
+                                                                      ^^^^^^^^^^^
+  File "C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\scripts\build_geometry_worker.py", line 28, in build
+    if result.returncode:raise RuntimeError('Quartus failed '+stage)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Quartus failed fit

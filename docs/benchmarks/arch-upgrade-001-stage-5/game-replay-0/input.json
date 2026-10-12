@@ -1,0 +1,19 @@
+{
+  "scope": "Real CPUs/cache/SDRAM/shared game and actors, standing zero-input, three frames; synthetic decoder backpressure and immediate presentation acknowledgement. This is equivalence, not timing/FPS measurement.",
+  "cpu_stream_variant": 0,
+  "frames": [
+    {
+      "frame": 1,
+      "label": "complete-standing-frame-1"
+    },
+    {
+      "frame": 2,
+      "label": "complete-standing-frame-2"
+    },
+    {
+      "frame": 3,
+      "label": "complete-standing-frame-3"
+    }
+  ],
+  "stream_sha256": "e82d57b2560d7f3fe01a5d1f5fc2eb2833921c5ea7b8cb7e4761695ac32c695b"
+}

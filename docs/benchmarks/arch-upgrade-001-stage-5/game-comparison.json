@@ -1,0 +1,14 @@
+{
+  "scope": "Real CPUs/cache/SDRAM/shared game and actors, standing zero-input, three frames; synthetic decoder backpressure and immediate presentation acknowledgement. This is equivalence, not timing/FPS measurement.",
+  "commands_equal": true,
+  "command_counts": [
+    1571,
+    1571
+  ],
+  "sha256": [
+    "a4e603ff2887c4515a1d5f529daa9e92a860fcc22fe7c0c98a43deb25ce3b78c",
+    "a4e603ff2887c4515a1d5f529daa9e92a860fcc22fe7c0c98a43deb25ce3b78c"
+  ],
+  "frames": 3,
+  "exact": true
+}

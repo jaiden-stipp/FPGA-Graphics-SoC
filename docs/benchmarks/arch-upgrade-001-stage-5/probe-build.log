@@ -1,0 +1,2 @@
+PASS RV32I C subset: geometry_probe.c; report build/subset/geometry_probe.json
+Audited geometry probe: 467 instructions; 1 MUL instructions

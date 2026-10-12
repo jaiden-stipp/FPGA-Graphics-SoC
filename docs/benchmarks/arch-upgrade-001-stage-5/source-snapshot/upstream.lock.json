@@ -1,0 +1,10 @@
+{
+  "rv32i": {
+    "url": "https://github.com/jaiden-stipp/RV32I.git",
+    "commit": "1a2ac85a7a5fa5b2d185dd38ec7bcca3dc75613a"
+  },
+  "renderer": {
+    "url": "https://github.com/jaiden-stipp/FPGA-3D-Renderer.git",
+    "commit": "16dbd609835462889ef03f76a65f0c702f3f2bc4"
+  }
+}

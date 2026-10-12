@@ -1,0 +1,48 @@
+{
+  "decision": "Optional Stage 5 geometry worker accepted; normal worker-enabled packed Mario selected; Stage 4 rollback preserved. Measured standing CPU update/render improvement, no uncapped FPS/power/Fmax claim.",
+  "sof": "build\\quartus-arch-stage5-worker\\ArchStage5SoC.sof",
+  "sof_sha256": "e2b1dce3d5814f348e0ca88b38fe49e494e68fddd9e897aeeac4c3a75b7c6e14",
+  "package": "C:\\Users\\Orb1t\\Documents\\Codex\\FPGA-Game-SoC\\build\\mario-castle-sdram-direct-packed-mul-geometry.package.json",
+  "segments": [
+    {
+      "file": "mario-castle-sdram-direct-packed-mul-geometry.bin",
+      "address": 0,
+      "bytes": 26848,
+      "sha256": "3b104f5a1a701732b866d7a31dea4091e937116e1f5730ac9d0c0c50863c5edf"
+    },
+    {
+      "file": "mario-castle-sdram-direct-packed-mul-geometry.assets.bin",
+      "address": 2147483648,
+      "bytes": 883124,
+      "sha256": "afa690e2965016a9ce5cec307a34942856f6b573a551a5761e9f5738dd1f4cc6"
+    }
+  ],
+  "first_status": {
+    "initialized": true,
+    "held": false,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 2,
+    "refresh_count": 7292735,
+    "input_abi": 1229848833,
+    "cpu_features": 2147483651,
+    "gpu_features": 3
+  },
+  "last_status": {
+    "initialized": true,
+    "held": false,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 32,
+    "refresh_count": 7428735,
+    "input_abi": 1229848833,
+    "cpu_features": 2147483651,
+    "gpu_features": 3
+  }
+}

@@ -1,0 +1,10 @@
+Uploading mario-castle-sdram-direct-packed-mul-geometry.bin: 26,848 bytes at 0x00000000
+Verifying mario-castle-sdram-direct-packed-mul-geometry.bin: 26,848 bytes at 0x00000000
+Uploading mario-castle-sdram-direct-packed-mul-geometry.assets.bin: 883,124 bytes at 0x80000000
+  368,928/883,124 bytes
+  738,744/883,124 bytes
+Verifying mario-castle-sdram-direct-packed-mul-geometry.assets.bin: 883,124 bytes at 0x80000000
+  368,868/883,124 bytes
+  722,964/883,124 bytes
+Readback verified; CPU released.
+Selected Stage 5; frame progression 2 32

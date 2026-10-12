@@ -1,0 +1,16 @@
+{
+  "format": "soc-game-package",
+  "version": 1,
+  "required_cpu_features": {
+    "mul": true,
+    "geometry-worker-v1": true
+  },
+  "segments": [
+    {
+      "file": "probe.bin",
+      "address": 0,
+      "bytes": 9320,
+      "sha256": "c328c206015f4d6ef78759eb81adbd1baefaeaa70f8012d2a45caa168ec05d4a"
+    }
+  ]
+}

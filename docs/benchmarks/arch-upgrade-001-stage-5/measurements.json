@@ -1,0 +1,1799 @@
+{
+  "experiment": "ARCH-UPGRADE-001 Stage 5",
+  "baseline_commit": "40219cec",
+  "accepted_stage4_commit": "e0d776c",
+  "implementation_commit": "df0649df",
+  "clock_hz": 50000000,
+  "hardware": {
+    "control": {
+      "logic_elements": 24185,
+      "memory_bits": 2659684,
+      "multipliers_9bit": 80,
+      "plls": 2,
+      "m9k": 366,
+      "physical_memory_bits": 3373056,
+      "setup_min_ns": 0.623,
+      "hold_min_ns": 0.105,
+      "timings": [
+        {
+          "type": "Slow 1200mV 85C Model Setup 'CLOCK_50'",
+          "slack_ns": 0.623
+        },
+        {
+          "type": "Slow 1200mV 85C Model Setup 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 1.409
+        },
+        {
+          "type": "Slow 1200mV 85C Model Setup 'SDRAM_CLK'",
+          "slack_ns": 2.74
+        },
+        {
+          "type": "Slow 1200mV 85C Model Setup 'ENET0_TX_CLK'",
+          "slack_ns": 4.167
+        },
+        {
+          "type": "Slow 1200mV 85C Model Setup 'ENET0_RX_CLK'",
+          "slack_ns": 6.26
+        },
+        {
+          "type": "Slow 1200mV 85C Model Setup 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 12.567
+        },
+        {
+          "type": "Slow 1200mV 85C Model Hold 'ENET0_RX_CLK'",
+          "slack_ns": 0.287
+        },
+        {
+          "type": "Slow 1200mV 85C Model Hold 'CLOCK_50'",
+          "slack_ns": 0.341
+        },
+        {
+          "type": "Slow 1200mV 85C Model Hold 'ENET0_TX_CLK'",
+          "slack_ns": 0.392
+        },
+        {
+          "type": "Slow 1200mV 85C Model Hold 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 0.409
+        },
+        {
+          "type": "Slow 1200mV 85C Model Hold 'SDRAM_CLK'",
+          "slack_ns": 11.207
+        },
+        {
+          "type": "Slow 1200mV 85C Model Hold 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 13.419
+        },
+        {
+          "type": "Slow 1200mV 85C Model Recovery 'CLOCK_50'",
+          "slack_ns": 3.078
+        },
+        {
+          "type": "Slow 1200mV 85C Model Removal 'CLOCK_50'",
+          "slack_ns": 6.026
+        },
+        {
+          "type": "Slow 1200mV 85C Model Minimum Pulse Width 'CLOCK_50'",
+          "slack_ns": 9.524
+        },
+        {
+          "type": "Slow 1200mV 85C Model Minimum Pulse Width 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 9.799
+        },
+        {
+          "type": "Slow 1200mV 85C Model Minimum Pulse Width 'SDRAM_CLK'",
+          "slack_ns": 15.79
+        },
+        {
+          "type": "Slow 1200mV 85C Model Minimum Pulse Width 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 19.57
+        },
+        {
+          "type": "Slow 1200mV 85C Model Minimum Pulse Width 'ENET0_RX_CLK'",
+          "slack_ns": 19.635
+        },
+        {
+          "type": "Slow 1200mV 85C Model Minimum Pulse Width 'ENET0_TX_CLK'",
+          "slack_ns": 19.658
+        },
+        {
+          "type": "Slow 1200mV 0C Model Setup 'CLOCK_50'",
+          "slack_ns": 1.364
+        },
+        {
+          "type": "Slow 1200mV 0C Model Setup 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 1.938
+        },
+        {
+          "type": "Slow 1200mV 0C Model Setup 'SDRAM_CLK'",
+          "slack_ns": 3.203
+        },
+        {
+          "type": "Slow 1200mV 0C Model Setup 'ENET0_TX_CLK'",
+          "slack_ns": 6.608
+        },
+        {
+          "type": "Slow 1200mV 0C Model Setup 'ENET0_RX_CLK'",
+          "slack_ns": 6.717
+        },
+        {
+          "type": "Slow 1200mV 0C Model Setup 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 15.041
+        },
+        {
+          "type": "Slow 1200mV 0C Model Hold 'ENET0_RX_CLK'",
+          "slack_ns": 0.292
+        },
+        {
+          "type": "Slow 1200mV 0C Model Hold 'CLOCK_50'",
+          "slack_ns": 0.338
+        },
+        {
+          "type": "Slow 1200mV 0C Model Hold 'ENET0_TX_CLK'",
+          "slack_ns": 0.351
+        },
+        {
+          "type": "Slow 1200mV 0C Model Hold 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 0.364
+        },
+        {
+          "type": "Slow 1200mV 0C Model Hold 'SDRAM_CLK'",
+          "slack_ns": 10.821
+        },
+        {
+          "type": "Slow 1200mV 0C Model Hold 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 12.964
+        },
+        {
+          "type": "Slow 1200mV 0C Model Recovery 'CLOCK_50'",
+          "slack_ns": 3.768
+        },
+        {
+          "type": "Slow 1200mV 0C Model Removal 'CLOCK_50'",
+          "slack_ns": 5.482
+        },
+        {
+          "type": "Slow 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'",
+          "slack_ns": 9.555
+        },
+        {
+          "type": "Slow 1200mV 0C Model Minimum Pulse Width 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 9.807
+        },
+        {
+          "type": "Slow 1200mV 0C Model Minimum Pulse Width 'SDRAM_CLK'",
+          "slack_ns": 15.79
+        },
+        {
+          "type": "Slow 1200mV 0C Model Minimum Pulse Width 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 19.572
+        },
+        {
+          "type": "Slow 1200mV 0C Model Minimum Pulse Width 'ENET0_RX_CLK'",
+          "slack_ns": 19.651
+        },
+        {
+          "type": "Slow 1200mV 0C Model Minimum Pulse Width 'ENET0_TX_CLK'",
+          "slack_ns": 19.671
+        },
+        {
+          "type": "Fast 1200mV 0C Model Setup 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 3.593
+        },
+        {
+          "type": "Fast 1200mV 0C Model Setup 'CLOCK_50'",
+          "slack_ns": 5.017
+        },
+        {
+          "type": "Fast 1200mV 0C Model Setup 'SDRAM_CLK'",
+          "slack_ns": 5.37
+        },
+        {
+          "type": "Fast 1200mV 0C Model Setup 'ENET0_RX_CLK'",
+          "slack_ns": 8.898
+        },
+        {
+          "type": "Fast 1200mV 0C Model Setup 'ENET0_TX_CLK'",
+          "slack_ns": 17.121
+        },
+        {
+          "type": "Fast 1200mV 0C Model Setup 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 25.509
+        },
+        {
+          "type": "Fast 1200mV 0C Model Hold 'ENET0_RX_CLK'",
+          "slack_ns": 0.105
+        },
+        {
+          "type": "Fast 1200mV 0C Model Hold 'CLOCK_50'",
+          "slack_ns": 0.139
+        },
+        {
+          "type": "Fast 1200mV 0C Model Hold 'ENET0_TX_CLK'",
+          "slack_ns": 0.181
+        },
+        {
+          "type": "Fast 1200mV 0C Model Hold 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 0.187
+        },
+        {
+          "type": "Fast 1200mV 0C Model Hold 'SDRAM_CLK'",
+          "slack_ns": 9.758
+        },
+        {
+          "type": "Fast 1200mV 0C Model Hold 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 11.269
+        },
+        {
+          "type": "Fast 1200mV 0C Model Recovery 'CLOCK_50'",
+          "slack_ns": 6.785
+        },
+        {
+          "type": "Fast 1200mV 0C Model Removal 'CLOCK_50'",
+          "slack_ns": 3.154
+        },
+        {
+          "type": "Fast 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'",
+          "slack_ns": 9.194
+        },
+        {
+          "type": "Fast 1200mV 0C Model Minimum Pulse Width 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 9.798
+        },
+        {
+          "type": "Fast 1200mV 0C Model Minimum Pulse Width 'SDRAM_CLK'",
+          "slack_ns": 16.0
+        },
+        {
+          "type": "Fast 1200mV 0C Model Minimum Pulse Width 'ENET0_RX_CLK'",
+          "slack_ns": 19.378
+        },
+        {
+          "type": "Fast 1200mV 0C Model Minimum Pulse Width 'ENET0_TX_CLK'",
+          "slack_ns": 19.385
+        },
+        {
+          "type": "Fast 1200mV 0C Model Minimum Pulse Width 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 19.613
+        }
+      ],
+      "sof_sha256": "26222b239ac394052d63a2bfc437c394e770ab36c6bcdcf02f97dee8df5ef6b4",
+      "unconstrained_clocks": {
+        "setup": 0,
+        "hold": 0
+      },
+      "unconstrained_input_ports": {
+        "setup": 0,
+        "hold": 0
+      },
+      "unconstrained_input_port_paths": {
+        "setup": 0,
+        "hold": 0
+      },
+      "unconstrained_output_ports": {
+        "setup": 0,
+        "hold": 0
+      },
+      "unconstrained_output_port_paths": {
+        "setup": 0,
+        "hold": 0
+      }
+    },
+    "worker": {
+      "logic_elements": 26557,
+      "memory_bits": 2659688,
+      "multipliers_9bit": 92,
+      "plls": 2,
+      "m9k": 366,
+      "physical_memory_bits": 3373056,
+      "setup_min_ns": 0.424,
+      "hold_min_ns": 0.128,
+      "timings": [
+        {
+          "type": "Slow 1200mV 85C Model Setup 'CLOCK_50'",
+          "slack_ns": 0.424
+        },
+        {
+          "type": "Slow 1200mV 85C Model Setup 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 1.408
+        },
+        {
+          "type": "Slow 1200mV 85C Model Setup 'SDRAM_CLK'",
+          "slack_ns": 3.98
+        },
+        {
+          "type": "Slow 1200mV 85C Model Setup 'ENET0_TX_CLK'",
+          "slack_ns": 4.084
+        },
+        {
+          "type": "Slow 1200mV 85C Model Setup 'ENET0_RX_CLK'",
+          "slack_ns": 5.891
+        },
+        {
+          "type": "Slow 1200mV 85C Model Setup 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 14.117
+        },
+        {
+          "type": "Slow 1200mV 85C Model Hold 'CLOCK_50'",
+          "slack_ns": 0.322
+        },
+        {
+          "type": "Slow 1200mV 85C Model Hold 'ENET0_RX_CLK'",
+          "slack_ns": 0.333
+        },
+        {
+          "type": "Slow 1200mV 85C Model Hold 'ENET0_TX_CLK'",
+          "slack_ns": 0.394
+        },
+        {
+          "type": "Slow 1200mV 85C Model Hold 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 0.411
+        },
+        {
+          "type": "Slow 1200mV 85C Model Hold 'SDRAM_CLK'",
+          "slack_ns": 10.072
+        },
+        {
+          "type": "Slow 1200mV 85C Model Hold 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 13.419
+        },
+        {
+          "type": "Slow 1200mV 85C Model Recovery 'CLOCK_50'",
+          "slack_ns": 2.996
+        },
+        {
+          "type": "Slow 1200mV 85C Model Removal 'CLOCK_50'",
+          "slack_ns": 6.73
+        },
+        {
+          "type": "Slow 1200mV 85C Model Minimum Pulse Width 'CLOCK_50'",
+          "slack_ns": 9.523
+        },
+        {
+          "type": "Slow 1200mV 85C Model Minimum Pulse Width 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 9.798
+        },
+        {
+          "type": "Slow 1200mV 85C Model Minimum Pulse Width 'SDRAM_CLK'",
+          "slack_ns": 15.79
+        },
+        {
+          "type": "Slow 1200mV 85C Model Minimum Pulse Width 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 19.57
+        },
+        {
+          "type": "Slow 1200mV 85C Model Minimum Pulse Width 'ENET0_RX_CLK'",
+          "slack_ns": 19.636
+        },
+        {
+          "type": "Slow 1200mV 85C Model Minimum Pulse Width 'ENET0_TX_CLK'",
+          "slack_ns": 19.657
+        },
+        {
+          "type": "Slow 1200mV 0C Model Setup 'CLOCK_50'",
+          "slack_ns": 1.246
+        },
+        {
+          "type": "Slow 1200mV 0C Model Setup 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 1.939
+        },
+        {
+          "type": "Slow 1200mV 0C Model Setup 'SDRAM_CLK'",
+          "slack_ns": 4.286
+        },
+        {
+          "type": "Slow 1200mV 0C Model Setup 'ENET0_RX_CLK'",
+          "slack_ns": 6.345
+        },
+        {
+          "type": "Slow 1200mV 0C Model Setup 'ENET0_TX_CLK'",
+          "slack_ns": 6.557
+        },
+        {
+          "type": "Slow 1200mV 0C Model Setup 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 16.423
+        },
+        {
+          "type": "Slow 1200mV 0C Model Hold 'CLOCK_50'",
+          "slack_ns": 0.316
+        },
+        {
+          "type": "Slow 1200mV 0C Model Hold 'ENET0_RX_CLK'",
+          "slack_ns": 0.339
+        },
+        {
+          "type": "Slow 1200mV 0C Model Hold 'ENET0_TX_CLK'",
+          "slack_ns": 0.352
+        },
+        {
+          "type": "Slow 1200mV 0C Model Hold 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 0.367
+        },
+        {
+          "type": "Slow 1200mV 0C Model Hold 'SDRAM_CLK'",
+          "slack_ns": 9.844
+        },
+        {
+          "type": "Slow 1200mV 0C Model Hold 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 12.964
+        },
+        {
+          "type": "Slow 1200mV 0C Model Recovery 'CLOCK_50'",
+          "slack_ns": 3.63
+        },
+        {
+          "type": "Slow 1200mV 0C Model Removal 'CLOCK_50'",
+          "slack_ns": 6.095
+        },
+        {
+          "type": "Slow 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'",
+          "slack_ns": 9.556
+        },
+        {
+          "type": "Slow 1200mV 0C Model Minimum Pulse Width 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 9.808
+        },
+        {
+          "type": "Slow 1200mV 0C Model Minimum Pulse Width 'SDRAM_CLK'",
+          "slack_ns": 15.79
+        },
+        {
+          "type": "Slow 1200mV 0C Model Minimum Pulse Width 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 19.572
+        },
+        {
+          "type": "Slow 1200mV 0C Model Minimum Pulse Width 'ENET0_RX_CLK'",
+          "slack_ns": 19.651
+        },
+        {
+          "type": "Slow 1200mV 0C Model Minimum Pulse Width 'ENET0_TX_CLK'",
+          "slack_ns": 19.671
+        },
+        {
+          "type": "Fast 1200mV 0C Model Setup 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 3.594
+        },
+        {
+          "type": "Fast 1200mV 0C Model Setup 'CLOCK_50'",
+          "slack_ns": 4.964
+        },
+        {
+          "type": "Fast 1200mV 0C Model Setup 'SDRAM_CLK'",
+          "slack_ns": 6.011
+        },
+        {
+          "type": "Fast 1200mV 0C Model Setup 'ENET0_RX_CLK'",
+          "slack_ns": 8.728
+        },
+        {
+          "type": "Fast 1200mV 0C Model Setup 'ENET0_TX_CLK'",
+          "slack_ns": 17.02
+        },
+        {
+          "type": "Fast 1200mV 0C Model Setup 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 26.326
+        },
+        {
+          "type": "Fast 1200mV 0C Model Hold 'ENET0_RX_CLK'",
+          "slack_ns": 0.128
+        },
+        {
+          "type": "Fast 1200mV 0C Model Hold 'CLOCK_50'",
+          "slack_ns": 0.141
+        },
+        {
+          "type": "Fast 1200mV 0C Model Hold 'ENET0_TX_CLK'",
+          "slack_ns": 0.181
+        },
+        {
+          "type": "Fast 1200mV 0C Model Hold 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 0.189
+        },
+        {
+          "type": "Fast 1200mV 0C Model Hold 'SDRAM_CLK'",
+          "slack_ns": 9.207
+        },
+        {
+          "type": "Fast 1200mV 0C Model Hold 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 11.269
+        },
+        {
+          "type": "Fast 1200mV 0C Model Recovery 'CLOCK_50'",
+          "slack_ns": 6.793
+        },
+        {
+          "type": "Fast 1200mV 0C Model Removal 'CLOCK_50'",
+          "slack_ns": 3.478
+        },
+        {
+          "type": "Fast 1200mV 0C Model Minimum Pulse Width 'CLOCK_50'",
+          "slack_ns": 9.194
+        },
+        {
+          "type": "Fast 1200mV 0C Model Minimum Pulse Width 'soc|memory|external_memory.controller|read_clock|pll|auto_generated|pll1|clk[0]'",
+          "slack_ns": 9.798
+        },
+        {
+          "type": "Fast 1200mV 0C Model Minimum Pulse Width 'SDRAM_CLK'",
+          "slack_ns": 16.0
+        },
+        {
+          "type": "Fast 1200mV 0C Model Minimum Pulse Width 'ENET0_RX_CLK'",
+          "slack_ns": 19.379
+        },
+        {
+          "type": "Fast 1200mV 0C Model Minimum Pulse Width 'ENET0_TX_CLK'",
+          "slack_ns": 19.385
+        },
+        {
+          "type": "Fast 1200mV 0C Model Minimum Pulse Width 'soc|graphics|renderer|pipeline|clock_generator|altpll_component|auto_generated|pll1|clk[0]'",
+          "slack_ns": 19.614
+        }
+      ],
+      "sof_sha256": "e2b1dce3d5814f348e0ca88b38fe49e494e68fddd9e897aeeac4c3a75b7c6e14",
+      "unconstrained_clocks": {
+        "setup": 0,
+        "hold": 0
+      },
+      "unconstrained_input_ports": {
+        "setup": 0,
+        "hold": 0
+      },
+      "unconstrained_input_port_paths": {
+        "setup": 0,
+        "hold": 0
+      },
+      "unconstrained_output_ports": {
+        "setup": 0,
+        "hold": 0
+      },
+      "unconstrained_output_port_paths": {
+        "setup": 0,
+        "hold": 0
+      }
+    }
+  },
+  "physical": {
+    "control": {
+      "normal": {
+        "game_frame_cycles": {
+          "trials": [
+            1668299,
+            1668287,
+            1668299
+          ],
+          "median": 1668299,
+          "minimum": 1668287,
+          "maximum": 1668299
+        },
+        "game_cpu_cycles": {
+          "trials": [
+            905274,
+            905273,
+            905274
+          ],
+          "median": 905274,
+          "minimum": 905273,
+          "maximum": 905274
+        },
+        "game_update_cycles": {
+          "trials": [
+            40182,
+            40182,
+            40182
+          ],
+          "median": 40182,
+          "minimum": 40182,
+          "maximum": 40182
+        },
+        "game_present_cycles": {
+          "trials": [
+            763017,
+            763006,
+            763017
+          ],
+          "median": 763017,
+          "minimum": 763006,
+          "maximum": 763017
+        },
+        "observed_fps": {
+          "trials": [
+            29.78478093758562,
+            29.868114817925512,
+            29.969064191683287
+          ],
+          "median": 29.868114817925512,
+          "minimum": 29.78478093758562,
+          "maximum": 29.969064191683287
+        }
+      },
+      "detail": {
+        "triangles_submitted": {
+          "trials": [
+            444,
+            444,
+            444
+          ],
+          "median": 444,
+          "minimum": 444,
+          "maximum": 444
+        },
+        "triangles_clipped": {
+          "trials": [
+            4,
+            4,
+            4
+          ],
+          "median": 4,
+          "minimum": 4,
+          "maximum": 4
+        },
+        "triangles_culled": {
+          "trials": [
+            195,
+            195,
+            195
+          ],
+          "median": 195,
+          "minimum": 195,
+          "maximum": 195
+        },
+        "bounding_box_pixels": {
+          "trials": [
+            263013,
+            263013,
+            263013
+          ],
+          "median": 263013,
+          "minimum": 263013,
+          "maximum": 263013
+        },
+        "pixels_inside": {
+          "trials": [
+            90955,
+            90955,
+            90955
+          ],
+          "median": 90955,
+          "minimum": 90955,
+          "maximum": 90955
+        },
+        "depth_rejected": {
+          "trials": [
+            5999,
+            5999,
+            5999
+          ],
+          "median": 5999,
+          "minimum": 5999,
+          "maximum": 5999
+        },
+        "pixels_written": {
+          "trials": [
+            84956,
+            84956,
+            84956
+          ],
+          "median": 84956,
+          "minimum": 84956,
+          "maximum": 84956
+        },
+        "geometry_cycles": {
+          "trials": [
+            43842,
+            43842,
+            43842
+          ],
+          "median": 43842,
+          "minimum": 43842,
+          "maximum": 43842
+        },
+        "geometry_stall_cycles": {
+          "trials": [
+            103099,
+            103099,
+            103099
+          ],
+          "median": 103099,
+          "minimum": 103099,
+          "maximum": 103099
+        },
+        "raster_cycles": {
+          "trials": [
+            142504,
+            142504,
+            142504
+          ],
+          "median": 142504,
+          "minimum": 142504,
+          "maximum": 142504
+        },
+        "clear_cycles": {
+          "trials": [
+            38400,
+            38400,
+            38400
+          ],
+          "median": 38400,
+          "minimum": 38400,
+          "maximum": 38400
+        },
+        "total_cycles": {
+          "trials": [
+            1532591,
+            1532573,
+            1532577
+          ],
+          "median": 1532577,
+          "minimum": 1532573,
+          "maximum": 1532591
+        },
+        "swap_wait_cycles": {
+          "trials": [
+            624464,
+            624441,
+            624445
+          ],
+          "median": 624445,
+          "minimum": 624441,
+          "maximum": 624464
+        },
+        "render_cpu_cycles": {
+          "trials": [
+            905755,
+            905765,
+            905765
+          ],
+          "median": 905765,
+          "minimum": 905755,
+          "maximum": 905765
+        },
+        "frame_ids": [
+          251,
+          251,
+          251
+        ]
+      },
+      "detail_scopes": {
+        "chunk_selection": {
+          "cycles": {
+            "trials": [
+              4398,
+              4398,
+              4398
+            ],
+            "median": 4398,
+            "minimum": 4398,
+            "maximum": 4398
+          },
+          "calls": {
+            "trials": [
+              1,
+              1,
+              1
+            ],
+            "median": 1,
+            "minimum": 1,
+            "maximum": 1
+          }
+        },
+        "vertex_transform_outcodes": {
+          "cycles": {
+            "trials": [
+              312328,
+              312333,
+              312333
+            ],
+            "median": 312333,
+            "minimum": 312328,
+            "maximum": 312333
+          },
+          "calls": {
+            "trials": [
+              8,
+              8,
+              8
+            ],
+            "median": 8,
+            "minimum": 8,
+            "maximum": 8
+          }
+        },
+        "triangle_clipping": {
+          "cycles": {
+            "trials": [
+              231073,
+              231073,
+              231073
+            ],
+            "median": 231073,
+            "minimum": 231073,
+            "maximum": 231073
+          },
+          "calls": {
+            "trials": [
+              785,
+              785,
+              785
+            ],
+            "median": 785,
+            "minimum": 785,
+            "maximum": 785
+          }
+        },
+        "animation_step": {
+          "cycles": {
+            "trials": [
+              109,
+              109,
+              109
+            ],
+            "median": 109,
+            "minimum": 109,
+            "maximum": 109
+          },
+          "calls": {
+            "trials": [
+              1,
+              1,
+              1
+            ],
+            "median": 1,
+            "minimum": 1,
+            "maximum": 1
+          }
+        },
+        "animation_joints": {
+          "cycles": {
+            "trials": [
+              20176,
+              20178,
+              20178
+            ],
+            "median": 20178,
+            "minimum": 20176,
+            "maximum": 20178
+          },
+          "calls": {
+            "trials": [
+              1,
+              1,
+              1
+            ],
+            "median": 1,
+            "minimum": 1,
+            "maximum": 1
+          }
+        },
+        "animation_skin": {
+          "cycles": {
+            "trials": [
+              35547,
+              35550,
+              35550
+            ],
+            "median": 35550,
+            "minimum": 35547,
+            "maximum": 35550
+          },
+          "calls": {
+            "trials": [
+              1,
+              1,
+              1
+            ],
+            "median": 1,
+            "minimum": 1,
+            "maximum": 1
+          }
+        },
+        "camera": {
+          "cycles": {
+            "trials": [
+              38034,
+              38046,
+              38046
+            ],
+            "median": 38046,
+            "minimum": 38034,
+            "maximum": 38046
+          },
+          "calls": {
+            "trials": [
+              1,
+              1,
+              1
+            ],
+            "median": 1,
+            "minimum": 1,
+            "maximum": 1
+          }
+        }
+      }
+    },
+    "worker": {
+      "normal": {
+        "game_frame_cycles": {
+          "trials": [
+            915454,
+            913697,
+            913708
+          ],
+          "median": 913708,
+          "minimum": 913697,
+          "maximum": 915454
+        },
+        "game_cpu_cycles": {
+          "trials": [
+            648969,
+            648906,
+            648906
+          ],
+          "median": 648906,
+          "minimum": 648906,
+          "maximum": 648969
+        },
+        "game_update_cycles": {
+          "trials": [
+            40182,
+            40188,
+            40182
+          ],
+          "median": 40182,
+          "minimum": 40182,
+          "maximum": 40188
+        },
+        "game_present_cycles": {
+          "trials": [
+            266477,
+            264783,
+            264794
+          ],
+          "median": 264794,
+          "minimum": 264783,
+          "maximum": 266477
+        },
+        "observed_fps": {
+          "trials": [
+            30.082391262793312,
+            30.07518797006251,
+            30.069390901944082
+          ],
+          "median": 30.07518797006251,
+          "minimum": 30.069390901944082,
+          "maximum": 30.082391262793312
+        }
+      },
+      "detail": {
+        "triangles_submitted": {
+          "trials": [
+            444,
+            444,
+            444
+          ],
+          "median": 444,
+          "minimum": 444,
+          "maximum": 444
+        },
+        "triangles_clipped": {
+          "trials": [
+            4,
+            4,
+            4
+          ],
+          "median": 4,
+          "minimum": 4,
+          "maximum": 4
+        },
+        "triangles_culled": {
+          "trials": [
+            195,
+            193,
+            195
+          ],
+          "median": 195,
+          "minimum": 193,
+          "maximum": 195
+        },
+        "bounding_box_pixels": {
+          "trials": [
+            263013,
+            263076,
+            263013
+          ],
+          "median": 263013,
+          "minimum": 263013,
+          "maximum": 263076
+        },
+        "pixels_inside": {
+          "trials": [
+            90955,
+            90958,
+            90955
+          ],
+          "median": 90955,
+          "minimum": 90955,
+          "maximum": 90958
+        },
+        "depth_rejected": {
+          "trials": [
+            5999,
+            6004,
+            5999
+          ],
+          "median": 5999,
+          "minimum": 5999,
+          "maximum": 6004
+        },
+        "pixels_written": {
+          "trials": [
+            84956,
+            84954,
+            84956
+          ],
+          "median": 84956,
+          "minimum": 84954,
+          "maximum": 84956
+        },
+        "geometry_cycles": {
+          "trials": [
+            43842,
+            43842,
+            43842
+          ],
+          "median": 43842,
+          "minimum": 43842,
+          "maximum": 43842
+        },
+        "geometry_stall_cycles": {
+          "trials": [
+            103031,
+            103033,
+            103031
+          ],
+          "median": 103031,
+          "minimum": 103031,
+          "maximum": 103033
+        },
+        "raster_cycles": {
+          "trials": [
+            142504,
+            142614,
+            142504
+          ],
+          "median": 142504,
+          "minimum": 142504,
+          "maximum": 142614
+        },
+        "clear_cycles": {
+          "trials": [
+            38400,
+            38400,
+            38400
+          ],
+          "median": 38400,
+          "minimum": 38400,
+          "maximum": 38400
+        },
+        "total_cycles": {
+          "trials": [
+            755703,
+            757366,
+            755701
+          ],
+          "median": 755703,
+          "minimum": 755701,
+          "maximum": 757366
+        },
+        "swap_wait_cycles": {
+          "trials": [
+            102023,
+            103672,
+            102021
+          ],
+          "median": 102023,
+          "minimum": 102021,
+          "maximum": 103672
+        },
+        "render_cpu_cycles": {
+          "trials": [
+            651524,
+            651613,
+            651524
+          ],
+          "median": 651524,
+          "minimum": 651524,
+          "maximum": 651613
+        },
+        "frame_ids": [
+          251,
+          252,
+          251
+        ]
+      },
+      "detail_scopes": {
+        "chunk_selection": {
+          "cycles": {
+            "trials": [
+              4398,
+              4403,
+              4398
+            ],
+            "median": 4398,
+            "minimum": 4398,
+            "maximum": 4403
+          },
+          "calls": {
+            "trials": [
+              1,
+              1,
+              1
+            ],
+            "median": 1,
+            "minimum": 1,
+            "maximum": 1
+          }
+        },
+        "vertex_transform_outcodes": {
+          "cycles": {
+            "trials": [
+              54939,
+              54946,
+              54939
+            ],
+            "median": 54939,
+            "minimum": 54939,
+            "maximum": 54946
+          },
+          "calls": {
+            "trials": [
+              8,
+              8,
+              8
+            ],
+            "median": 8,
+            "minimum": 8,
+            "maximum": 8
+          }
+        },
+        "triangle_clipping": {
+          "cycles": {
+            "trials": [
+              230561,
+              230566,
+              230561
+            ],
+            "median": 230561,
+            "minimum": 230561,
+            "maximum": 230566
+          },
+          "calls": {
+            "trials": [
+              785,
+              785,
+              785
+            ],
+            "median": 785,
+            "minimum": 785,
+            "maximum": 785
+          }
+        },
+        "animation_step": {
+          "cycles": {
+            "trials": [
+              109,
+              109,
+              109
+            ],
+            "median": 109,
+            "minimum": 109,
+            "maximum": 109
+          },
+          "calls": {
+            "trials": [
+              1,
+              1,
+              1
+            ],
+            "median": 1,
+            "minimum": 1,
+            "maximum": 1
+          }
+        },
+        "animation_joints": {
+          "cycles": {
+            "trials": [
+              20171,
+              20244,
+              20171
+            ],
+            "median": 20171,
+            "minimum": 20171,
+            "maximum": 20244
+          },
+          "calls": {
+            "trials": [
+              1,
+              1,
+              1
+            ],
+            "median": 1,
+            "minimum": 1,
+            "maximum": 1
+          }
+        },
+        "animation_skin": {
+          "cycles": {
+            "trials": [
+              35547,
+              35546,
+              35547
+            ],
+            "median": 35547,
+            "minimum": 35546,
+            "maximum": 35547
+          },
+          "calls": {
+            "trials": [
+              1,
+              1,
+              1
+            ],
+            "median": 1,
+            "minimum": 1,
+            "maximum": 1
+          }
+        },
+        "camera": {
+          "cycles": {
+            "trials": [
+              38040,
+              38028,
+              38040
+            ],
+            "median": 38040,
+            "minimum": 38028,
+            "maximum": 38040
+          },
+          "calls": {
+            "trials": [
+              1,
+              1,
+              1
+            ],
+            "median": 1,
+            "minimum": 1,
+            "maximum": 1
+          }
+        }
+      }
+    }
+  },
+  "hardware_delta": {
+    "logic_elements": 2372,
+    "memory_bits": 4,
+    "multipliers_9bit": 12,
+    "plls": 0,
+    "m9k": 0,
+    "physical_memory_bits": 0
+  },
+  "ordinary_cpu_change": {
+    "control_cycles": 905274,
+    "worker_cycles": 648906,
+    "delta_cycles": -256368,
+    "change_percent": -28.319381756241757
+  },
+  "paired_probe": [
+    {
+      "software_cycles": {
+        "trials": [
+          320,
+          320,
+          320
+        ],
+        "median": 320,
+        "minimum": 320,
+        "maximum": 320
+      },
+      "adapter_cycles": {
+        "trials": [
+          246,
+          246,
+          246
+        ],
+        "median": 246,
+        "minimum": 246,
+        "maximum": 246
+      },
+      "worker_active_cycles": {
+        "trials": [
+          51,
+          51,
+          51
+        ],
+        "median": 51,
+        "minimum": 51,
+        "maximum": 51
+      },
+      "result_wait_cycles": {
+        "trials": [
+          0,
+          0,
+          0
+        ],
+        "median": 0,
+        "minimum": 0,
+        "maximum": 0
+      }
+    },
+    {
+      "software_cycles": {
+        "trials": [
+          37742,
+          37742,
+          37742
+        ],
+        "median": 37742,
+        "minimum": 37742,
+        "maximum": 37742
+      },
+      "adapter_cycles": {
+        "trials": [
+          5523,
+          5523,
+          5523
+        ],
+        "median": 5523,
+        "minimum": 5523,
+        "maximum": 5523
+      },
+      "worker_active_cycles": {
+        "trials": [
+          5328,
+          5328,
+          5328
+        ],
+        "median": 5328,
+        "minimum": 5328,
+        "maximum": 5328
+      },
+      "result_wait_cycles": {
+        "trials": [
+          0,
+          0,
+          0
+        ],
+        "median": 0,
+        "minimum": 0,
+        "maximum": 0
+      }
+    },
+    {
+      "software_cycles": {
+        "trials": [
+          38039,
+          38039,
+          38039
+        ],
+        "median": 38039,
+        "minimum": 38039,
+        "maximum": 38039
+      },
+      "adapter_cycles": {
+        "trials": [
+          5565,
+          5565,
+          5565
+        ],
+        "median": 5565,
+        "minimum": 5565,
+        "maximum": 5565
+      },
+      "worker_active_cycles": {
+        "trials": [
+          5370,
+          5370,
+          5370
+        ],
+        "median": 5370,
+        "minimum": 5370,
+        "maximum": 5370
+      },
+      "result_wait_cycles": {
+        "trials": [
+          0,
+          0,
+          0
+        ],
+        "median": 0,
+        "minimum": 0,
+        "maximum": 0
+      }
+    },
+    {
+      "software_cycles": {
+        "trials": [
+          38039,
+          38039,
+          38039
+        ],
+        "median": 38039,
+        "minimum": 38039,
+        "maximum": 38039
+      },
+      "adapter_cycles": {
+        "trials": [
+          5565,
+          5565,
+          5565
+        ],
+        "median": 5565,
+        "minimum": 5565,
+        "maximum": 5565
+      },
+      "worker_active_cycles": {
+        "trials": [
+          5370,
+          5370,
+          5370
+        ],
+        "median": 5370,
+        "minimum": 5370,
+        "maximum": 5370
+      },
+      "result_wait_cycles": {
+        "trials": [
+          0,
+          0,
+          0
+        ],
+        "median": 0,
+        "minimum": 0,
+        "maximum": 0
+      }
+    },
+    {
+      "software_cycles": {
+        "trials": [
+          38039,
+          38039,
+          38039
+        ],
+        "median": 38039,
+        "minimum": 38039,
+        "maximum": 38039
+      },
+      "adapter_cycles": {
+        "trials": [
+          5565,
+          5565,
+          5565
+        ],
+        "median": 5565,
+        "minimum": 5565,
+        "maximum": 5565
+      },
+      "worker_active_cycles": {
+        "trials": [
+          5370,
+          5370,
+          5370
+        ],
+        "median": 5370,
+        "minimum": 5370,
+        "maximum": 5370
+      },
+      "result_wait_cycles": {
+        "trials": [
+          0,
+          0,
+          0
+        ],
+        "median": 0,
+        "minimum": 0,
+        "maximum": 0
+      }
+    },
+    {
+      "software_cycles": {
+        "trials": [
+          38039,
+          38039,
+          38039
+        ],
+        "median": 38039,
+        "minimum": 38039,
+        "maximum": 38039
+      },
+      "adapter_cycles": {
+        "trials": [
+          5565,
+          5565,
+          5565
+        ],
+        "median": 5565,
+        "minimum": 5565,
+        "maximum": 5565
+      },
+      "worker_active_cycles": {
+        "trials": [
+          5370,
+          5370,
+          5370
+        ],
+        "median": 5370,
+        "minimum": 5370,
+        "maximum": 5370
+      },
+      "result_wait_cycles": {
+        "trials": [
+          0,
+          0,
+          0
+        ],
+        "median": 0,
+        "minimum": 0,
+        "maximum": 0
+      }
+    },
+    {
+      "software_cycles": {
+        "trials": [
+          38039,
+          38039,
+          38039
+        ],
+        "median": 38039,
+        "minimum": 38039,
+        "maximum": 38039
+      },
+      "adapter_cycles": {
+        "trials": [
+          5565,
+          5565,
+          5565
+        ],
+        "median": 5565,
+        "minimum": 5565,
+        "maximum": 5565
+      },
+      "worker_active_cycles": {
+        "trials": [
+          5370,
+          5370,
+          5370
+        ],
+        "median": 5370,
+        "minimum": 5370,
+        "maximum": 5370
+      },
+      "result_wait_cycles": {
+        "trials": [
+          0,
+          0,
+          0
+        ],
+        "median": 0,
+        "minimum": 0,
+        "maximum": 0
+      }
+    },
+    {
+      "software_cycles": {
+        "trials": [
+          38039,
+          38039,
+          38039
+        ],
+        "median": 38039,
+        "minimum": 38039,
+        "maximum": 38039
+      },
+      "adapter_cycles": {
+        "trials": [
+          5565,
+          5565,
+          5565
+        ],
+        "median": 5565,
+        "minimum": 5565,
+        "maximum": 5565
+      },
+      "worker_active_cycles": {
+        "trials": [
+          5370,
+          5370,
+          5370
+        ],
+        "median": 5370,
+        "minimum": 5370,
+        "maximum": 5370
+      },
+      "result_wait_cycles": {
+        "trials": [
+          0,
+          0,
+          0
+        ],
+        "median": 0,
+        "minimum": 0,
+        "maximum": 0
+      }
+    },
+    {
+      "software_cycles": {
+        "trials": [
+          38039,
+          38039,
+          38039
+        ],
+        "median": 38039,
+        "minimum": 38039,
+        "maximum": 38039
+      },
+      "adapter_cycles": {
+        "trials": [
+          5565,
+          5565,
+          5565
+        ],
+        "median": 5565,
+        "minimum": 5565,
+        "maximum": 5565
+      },
+      "worker_active_cycles": {
+        "trials": [
+          5370,
+          5370,
+          5370
+        ],
+        "median": 5370,
+        "minimum": 5370,
+        "maximum": 5370
+      },
+      "result_wait_cycles": {
+        "trials": [
+          0,
+          0,
+          0
+        ],
+        "median": 0,
+        "minimum": 0,
+        "maximum": 0
+      }
+    },
+    {
+      "software_cycles": {
+        "trials": [
+          38039,
+          38039,
+          38039
+        ],
+        "median": 38039,
+        "minimum": 38039,
+        "maximum": 38039
+      },
+      "adapter_cycles": {
+        "trials": [
+          5565,
+          5565,
+          5565
+        ],
+        "median": 5565,
+        "minimum": 5565,
+        "maximum": 5565
+      },
+      "worker_active_cycles": {
+        "trials": [
+          5370,
+          5370,
+          5370
+        ],
+        "median": 5370,
+        "minimum": 5370,
+        "maximum": 5370
+      },
+      "result_wait_cycles": {
+        "trials": [
+          0,
+          0,
+          0
+        ],
+        "median": 0,
+        "minimum": 0,
+        "maximum": 0
+      }
+    }
+  ],
+  "scope": "Accepted optional geometry worker. Paired on-chip-data synthetic probe and three ordinary/detailed standing resets per hardware. Configuration/input/poll/output copies included. Exact three-frame real CPU/cache/SDRAM game command streams, including actors, with synthetic decoder backpressure/immediate presentation ack; composed GPU replays match color/depth/palette/triangles. Not full-level traversal or uncapped FPS/power/Fmax evidence.",
+  "game_equivalence": {
+    "scope": "Real CPUs/cache/SDRAM/shared game and actors, standing zero-input, three frames; synthetic decoder backpressure and immediate presentation acknowledgement. This is equivalence, not timing/FPS measurement.",
+    "commands_equal": true,
+    "command_counts": [
+      1571,
+      1571
+    ],
+    "sha256": [
+      "a4e603ff2887c4515a1d5f529daa9e92a860fcc22fe7c0c98a43deb25ce3b78c",
+      "a4e603ff2887c4515a1d5f529daa9e92a860fcc22fe7c0c98a43deb25ce3b78c"
+    ],
+    "frames": 3,
+    "exact": true
+  },
+  "gpu_equivalence": {
+    "submitted_triangles_equal": true,
+    "before_triangles": 1332,
+    "after_triangles": 1332,
+    "scope": "Real CPUs/cache/SDRAM/shared game and actors, standing zero-input, three frames; synthetic decoder backpressure and immediate presentation acknowledgement. This is equivalence, not timing/FPS measurement.",
+    "before": "build\\arch-stage5\\game-replay-0",
+    "after": "build\\arch-stage5\\game-replay-1",
+    "frames": [
+      {
+        "frame": 1,
+        "label": "complete-standing-frame-1",
+        "color.hex": {
+          "samples": 76800,
+          "differences": 0,
+          "before_sha256": "6558858b817c906f733a1a1b963ce59ea364c7114baba4ed838e695df4db79d2",
+          "after_sha256": "6558858b817c906f733a1a1b963ce59ea364c7114baba4ed838e695df4db79d2"
+        },
+        "depth.hex": {
+          "samples": 76800,
+          "differences": 0,
+          "before_sha256": "3a02d11b6744e9bb1981cb59f0d7a860f10da3fd3f8a1541e4c1ae6a133b46f0",
+          "after_sha256": "3a02d11b6744e9bb1981cb59f0d7a860f10da3fd3f8a1541e4c1ae6a133b46f0"
+        },
+        "palette.hex": {
+          "samples": 256,
+          "differences": 0,
+          "before_sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907",
+          "after_sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907"
+        }
+      },
+      {
+        "frame": 2,
+        "label": "complete-standing-frame-2",
+        "color.hex": {
+          "samples": 76800,
+          "differences": 0,
+          "before_sha256": "8b6ad10f48a3d3c67968f481993d239ec24c2b61ac512b36d013299d8d1e4f04",
+          "after_sha256": "8b6ad10f48a3d3c67968f481993d239ec24c2b61ac512b36d013299d8d1e4f04"
+        },
+        "depth.hex": {
+          "samples": 76800,
+          "differences": 0,
+          "before_sha256": "7083bec8adb3bc7ac946d6fe5ba2e3b31487642fd23e90d39774a70b53107117",
+          "after_sha256": "7083bec8adb3bc7ac946d6fe5ba2e3b31487642fd23e90d39774a70b53107117"
+        },
+        "palette.hex": {
+          "samples": 256,
+          "differences": 0,
+          "before_sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907",
+          "after_sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907"
+        }
+      },
+      {
+        "frame": 3,
+        "label": "complete-standing-frame-3",
+        "color.hex": {
+          "samples": 76800,
+          "differences": 0,
+          "before_sha256": "105da453d6d973de47a9fe01f6f401d958d3a1c9021a1ad6710be0d3e519e2ca",
+          "after_sha256": "105da453d6d973de47a9fe01f6f401d958d3a1c9021a1ad6710be0d3e519e2ca"
+        },
+        "depth.hex": {
+          "samples": 76800,
+          "differences": 0,
+          "before_sha256": "24a92ef3c9e4b639ffd9f62c3457749a7e8cde3aaea5d9281ad8f4dcd686b510",
+          "after_sha256": "24a92ef3c9e4b639ffd9f62c3457749a7e8cde3aaea5d9281ad8f4dcd686b510"
+        },
+        "palette.hex": {
+          "samples": 256,
+          "differences": 0,
+          "before_sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907",
+          "after_sha256": "51f38634abb286996d97a9e2ce0edf4563f2185efbef936dbac274d6896bc907"
+        }
+      }
+    ],
+    "exact": true
+  }
+}
