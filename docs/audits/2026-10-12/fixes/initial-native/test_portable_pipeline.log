@@ -1,0 +1,20 @@
+........F....
+======================================================================
+FAIL: test_package_target_gate_precedes_cpu_hold (__main__.PortableTests.test_package_target_gate_precedes_cpu_hold)
+----------------------------------------------------------------------
+ValueError: Missing package segments
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\scripts\test_portable_pipeline.py", line 81, in test_package_target_gate_precedes_cpu_hold
+    with self.assertRaisesRegex(ValueError,'cannot provide'):load_game.package_segments(path)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: "cannot provide" does not match "Missing package segments"
+
+----------------------------------------------------------------------
+Ran 13 tests in 1.207s
+
+FAILED (failures=1)
+Exported generic OBJ scene IR and project: C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\tmpm822l_6h\scene.project.json
+Exported original Quake scene IR and project: C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\tmpfn3yprjt\scene.project.json

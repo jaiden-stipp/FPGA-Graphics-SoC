@@ -1,3 +1,4 @@
+from test_support import ensure_castle_fixture
 """Independent arithmetic, source-preservation and legacy capability checks."""
 import ctypes as c,importlib.util,json,os,random,shutil,subprocess,unittest
 from pathlib import Path
@@ -32,12 +33,14 @@ class FractionalTests(unittest.TestCase):
   self.assertGreater(accepted,100);self.assertGreater(fractional,100)
  def test_source_faces_and_order_preserved_by_tighter_packing(self):
   spec=importlib.util.spec_from_file_location('baseline_world_assets',ROOT/'docs/benchmarks/arch-upgrade-001-stage-0/baseline-world_assets.py');old=importlib.util.module_from_spec(spec);spec.loader.exec_module(old)
-  scene=json.loads((ROOT/'build/castle/world.json').read_text())
+  scene=json.loads(ensure_castle_fixture(False).read_text())
   def expand(chunks):
    return [(i,tuple(tuple(p[j]+ch['origin'][j] for j in range(3)) for p in (ch['vertices'][t[k]] for k in range(3))),t[3]) for ch in chunks for i,t in zip(ch['source_triangles'],ch['triangles'])]
   for area in scene['areas']:
    args=(area['vertices'],area['triangles'],area.get('triangle_room_masks'));before=old.chunks(*args);after=world_assets.chunks(*args,tight=True)
-   self.assertEqual(before,world_assets.chunks(*args))
+   current=world_assets.chunks(*args)
+   self.assertTrue(all(ch['render_flags']==0 for ch in current))
+   self.assertEqual(before,[{k:v for k,v in ch.items() if k!='render_flags'} for ch in current])
    balanced=world_assets.chunks(*args,tight=True,min_faces=32)
    self.assertEqual(expand(before),expand(balanced))
    self.assertEqual(expand(before),expand(after));self.assertEqual(len(expand(after)),len(area['triangles']))

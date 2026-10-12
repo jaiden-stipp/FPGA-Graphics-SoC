@@ -1,0 +1,100 @@
+Quake E1M1 start region: 786 triangles, 5 handles, spawn [0, 0, 0]
+Exported original Quake scene IR and project: C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\quake-interactive\scene.project.json
+Quake interactive demo: 11 handles, 1224 triangles, 8 original run frames; C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\quake-interactive/game.project.json
+Conversion report: build\game\world/conversion.json (static scene; gameplay not ported)
+Game: 9 meshes, 212 actor triangles; 516 floors/527 walls; spawn [-1640, -489, 1616]
+Conversion report: build\game\world/conversion.json (static scene; gameplay not ported)
+Game: 9 meshes, 212 actor triangles; 516 floors/527 walls; spawn [-1640, -489, 1616]
++ C:\Program Files\LLVM\bin\clang.EXE --target=riscv32-unknown-elf -fuse-ld=lld -march=rv32i -mabi=ilp32 -msmall-data-limit=0 -mno-relax -O1 ... (23 more arguments)
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --remove-section=.game_assets -O binary build/test-fixture-mario-sdram.elf build/test-fixture-mario-sdram.bin
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --only-section=.game_assets -O binary build/test-fixture-mario-sdram.elf build/test-fixture-mario-sdram.assets.bin
+Built mario: build/test-fixture-mario-sdram.hex and build/test-fixture-mario-sdram.mif
+Quake E1M1 start region: 786 triangles, 5 handles, spawn [0, 0, 0]
++ C:\Program Files\LLVM\bin\clang.EXE --target=riscv32-unknown-elf -fuse-ld=lld -march=rv32i -mabi=ilp32 -msmall-data-limit=0 -mno-relax -O1 ... (22 more arguments)
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --remove-section=.game_assets -O binary build/test-fixture-quake-sdram.elf build/test-fixture-quake-sdram.bin
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --only-section=.game_assets -O binary build/test-fixture-quake-sdram.elf build/test-fixture-quake-sdram.assets.bin
+Built quake: build/test-fixture-quake-sdram.hex and build/test-fixture-quake-sdram.mif
+Exported original Quake scene IR and project: C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\audit-fixes\clean-fixtures\packages\quake.scene.project.json
+PASS RV32I C subset: gfx.c; report build/subset/gfx.json
+PASS RV32I C subset: gfx_scene.c; report build/subset/gfx_scene.json
+PASS RV32I C subset: player.c; report build/subset/player.json
+PASS RV32I C subset: first_person.c; report build/subset/first_person.json
+PASS RV32I C subset: game_runtime.c; report build/subset/game_runtime.json
+PASS RV32I C subset: sdram.c; report build/subset/sdram.json
+PASS RV32I C subset: portable_assets.c; report build/subset/portable_assets.json
+PASS RV32I C subset: portable_main.c; report build/subset/portable_main.json
+PASS RV32I C subset: cpu_profile.c; report build/subset/cpu_profile.json
+PASS RV32I C subset: scene_explorer.c; report build/subset/scene_explorer.json
++ C:\Program Files\LLVM\bin\clang.EXE --target=riscv32-unknown-elf -fuse-ld=lld -march=rv32i -mabi=ilp32 -msmall-data-limit=0 -mno-relax -O1 ... (25 more arguments)
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --remove-section=.game_assets -O binary build/test-fixture-portable-room-sdram.elf build/test-fixture-portable-room-sdram.bin
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --only-section=.game_assets -O binary build/test-fixture-portable-room-sdram.elf build/test-fixture-portable-room-sdram.assets.bin
+Built portable: build/test-fixture-portable-room-sdram.hex and build/test-fixture-portable-room-sdram.mif
++ C:\Program Files\LLVM\bin\clang.EXE --target=riscv32-unknown-elf -fuse-ld=lld -march=rv32i -mabi=ilp32 -msmall-data-limit=0 -mno-relax -O1 ... (26 more arguments)
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --remove-section=.game_assets -O binary build/test-fixture-portable-room-sdram-test.elf build/test-fixture-portable-room-sdram-test.bin
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --only-section=.game_assets -O binary build/test-fixture-portable-room-sdram-test.elf build/test-fixture-portable-room-sdram-test.assets.bin
+Built portable: build/test-fixture-portable-room-sdram-test.hex and build/test-fixture-portable-room-sdram-test.mif
+Built test-fixture-portable-room: 26 triangles via shared scene IR and direct-call game port ABI. Use a compatible target FPGA image.
+PASS RV32I C subset: gfx.c; report build/subset/gfx.json
+PASS RV32I C subset: gfx_scene.c; report build/subset/gfx_scene.json
+PASS RV32I C subset: player.c; report build/subset/player.json
+PASS RV32I C subset: first_person.c; report build/subset/first_person.json
+PASS RV32I C subset: game_runtime.c; report build/subset/game_runtime.json
+PASS RV32I C subset: sdram.c; report build/subset/sdram.json
+PASS RV32I C subset: portable_assets.c; report build/subset/portable_assets.json
+PASS RV32I C subset: portable_main.c; report build/subset/portable_main.json
+PASS RV32I C subset: cpu_profile.c; report build/subset/cpu_profile.json
+PASS RV32I C subset: game.c; report build/subset/game.json
++ C:\Program Files\LLVM\bin\clang.EXE --target=riscv32-unknown-elf -fuse-ld=lld -march=rv32i -mabi=ilp32 -msmall-data-limit=0 -mno-relax -O1 ... (25 more arguments)
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --remove-section=.game_assets -O binary build/test-fixture-portable-custom-sdram.elf build/test-fixture-portable-custom-sdram.bin
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --only-section=.game_assets -O binary build/test-fixture-portable-custom-sdram.elf build/test-fixture-portable-custom-sdram.assets.bin
+Built portable: build/test-fixture-portable-custom-sdram.hex and build/test-fixture-portable-custom-sdram.mif
++ C:\Program Files\LLVM\bin\clang.EXE --target=riscv32-unknown-elf -fuse-ld=lld -march=rv32i -mabi=ilp32 -msmall-data-limit=0 -mno-relax -O1 ... (26 more arguments)
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --remove-section=.game_assets -O binary build/test-fixture-portable-custom-sdram-test.elf build/test-fixture-portable-custom-sdram-test.bin
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --only-section=.game_assets -O binary build/test-fixture-portable-custom-sdram-test.elf build/test-fixture-portable-custom-sdram-test.assets.bin
+Built portable: build/test-fixture-portable-custom-sdram-test.hex and build/test-fixture-portable-custom-sdram-test.mif
+Built test-fixture-portable-custom: 14 triangles via shared scene IR and direct-call game port ABI. Use a compatible target FPGA image.
+PASS RV32I C subset: gfx.c; report build/subset/gfx.json
+PASS RV32I C subset: gfx_scene.c; report build/subset/gfx_scene.json
+PASS RV32I C subset: player.c; report build/subset/player.json
+PASS RV32I C subset: first_person.c; report build/subset/first_person.json
+PASS RV32I C subset: game_runtime.c; report build/subset/game_runtime.json
+PASS RV32I C subset: sdram.c; report build/subset/sdram.json
+PASS RV32I C subset: portable_assets.c; report build/subset/portable_assets.json
+PASS RV32I C subset: portable_main.c; report build/subset/portable_main.json
+PASS RV32I C subset: cpu_profile.c; report build/subset/cpu_profile.json
+PASS RV32I C subset: scene_explorer.c; report build/subset/scene_explorer.json
++ C:\Program Files\LLVM\bin\clang.EXE --target=riscv32-unknown-elf -fuse-ld=lld -march=rv32i -mabi=ilp32 -msmall-data-limit=0 -mno-relax -O1 ... (25 more arguments)
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --remove-section=.game_assets -O binary build/test-fixture-portable-quake-sdram.elf build/test-fixture-portable-quake-sdram.bin
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --only-section=.game_assets -O binary build/test-fixture-portable-quake-sdram.elf build/test-fixture-portable-quake-sdram.assets.bin
+Built portable: build/test-fixture-portable-quake-sdram.hex and build/test-fixture-portable-quake-sdram.mif
++ C:\Program Files\LLVM\bin\clang.EXE --target=riscv32-unknown-elf -fuse-ld=lld -march=rv32i -mabi=ilp32 -msmall-data-limit=0 -mno-relax -O1 ... (26 more arguments)
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --remove-section=.game_assets -O binary build/test-fixture-portable-quake-sdram-test.elf build/test-fixture-portable-quake-sdram-test.bin
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --only-section=.game_assets -O binary build/test-fixture-portable-quake-sdram-test.elf build/test-fixture-portable-quake-sdram-test.assets.bin
+Built portable: build/test-fixture-portable-quake-sdram-test.hex and build/test-fixture-portable-quake-sdram-test.mif
+Built test-fixture-portable-quake: 786 triangles via shared scene IR and direct-call game port ABI. Use a compatible target FPGA image.
+PASS RV32I C subset: gfx.c; report build/subset/gfx.json
+PASS RV32I C subset: gfx_scene.c; report build/subset/gfx_scene.json
+PASS RV32I C subset: player.c; report build/subset/player.json
+PASS RV32I C subset: first_person.c; report build/subset/first_person.json
+PASS RV32I C subset: game_runtime.c; report build/subset/game_runtime.json
+PASS RV32I C subset: sdram.c; report build/subset/sdram.json
+PASS RV32I C subset: portable_assets.c; report build/subset/portable_assets.json
+PASS RV32I C subset: portable_main.c; report build/subset/portable_main.json
+PASS RV32I C subset: cpu_profile.c; report build/subset/cpu_profile.json
+PASS RV32I C subset: quake_demo.c; report build/subset/quake_demo.json
+PASS RV32I C subset: game_services.c; report build/subset/game_services.json
++ C:\Program Files\LLVM\bin\clang.EXE --target=riscv32-unknown-elf -fuse-ld=lld -march=rv32i -mabi=ilp32 -msmall-data-limit=0 -mno-relax -O1 ... (26 more arguments)
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --remove-section=.game_assets -O binary build/test-fixture-quake-interactive-sdram.elf build/test-fixture-quake-interactive-sdram.bin
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --only-section=.game_assets -O binary build/test-fixture-quake-interactive-sdram.elf build/test-fixture-quake-interactive-sdram.assets.bin
+Built portable: build/test-fixture-quake-interactive-sdram.hex and build/test-fixture-quake-interactive-sdram.mif
++ C:\Program Files\LLVM\bin\clang.EXE --target=riscv32-unknown-elf -fuse-ld=lld -march=rv32i -mabi=ilp32 -msmall-data-limit=0 -mno-relax -O1 ... (27 more arguments)
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --remove-section=.game_assets -O binary build/test-fixture-quake-interactive-sdram-test.elf build/test-fixture-quake-interactive-sdram-test.bin
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --only-section=.game_assets -O binary build/test-fixture-quake-interactive-sdram-test.elf build/test-fixture-quake-interactive-sdram-test.assets.bin
+Built portable: build/test-fixture-quake-interactive-sdram-test.hex and build/test-fixture-quake-interactive-sdram-test.mif
+Built test-fixture-quake-interactive: 1224 triangles via shared scene IR and direct-call game port ABI. Use a compatible target FPGA image.
+Uploading cpu: 4 bytes at 0x00000000
+..........
+----------------------------------------------------------------------
+Ran 10 tests in 25.186s
+
+OK

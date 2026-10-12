@@ -1,5 +1,10 @@
 `timescale 1ns/1ps
 module udp_loader_tb;
+`ifdef SOC_GEOMETRY_WORKER
+    localparam EXPECTED_CPU_FEATURES=32'h80000003;
+`else
+    localparam EXPECTED_CPU_FEATURES=32'h80000001;
+`endif
     logic clk=0,rx_clk=0,tx_clk=0,reset=1;
     always #10 clk=~clk;always #20 rx_clk=~rx_clk;always #19 tx_clk=~tx_clk;
     logic [3:0] rx_data=0,tx_data;
@@ -63,7 +68,7 @@ module udp_loader_tb;
         send_load(11,2,1,32'h80,1,0,0);check(11,1);
         send_control(1,18,0,0);if(buttons!=18 || !active) $fatal(1,"Controls after load");
         send_load(12,5,0,0,0,0,0);check(12,0);
-        if(response[95:0]!={32'h494e0101,32'h80000001,32'h00000003}) $fatal(1,"Loader feature advertisement");
+        if(response[95:0]!={32'h494e0101,EXPECTED_CPU_FEATURES,32'h00000003}) $fatal(1,"Loader feature advertisement");
         if(network_replies<12 || tx_er || memory.ram.mem[32]!=32'habcdef01) $fatal(1,"Loader TX/no-write guard");
         $display("PASS udp_loader_tb (MII/CRC/CDC, CPU and SDRAM readback, range/hold guards, keyboard preserved)");$finish;
     end

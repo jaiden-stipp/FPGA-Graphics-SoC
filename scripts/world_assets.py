@@ -53,6 +53,8 @@ def chunks(vertices,triangles,room_masks=None,tight=False,min_faces=0,render_fla
 def compile_world(scene,tight_chunks=False,min_chunk_faces=0):
     if scene.get('format')!='soc-world-ir' or type(scene.get('version')) is not int or scene['version']!=1:raise ValueError('Expected soc-world-ir version 1')
     actors,palette,unused_floors,unused_walls,report=portable_game.compile_scene(scene['resident_scene'],False)
+    if report['camera']['focal']!=256 or report['camera']['near_z']!=257:
+        raise ValueError('World runtime requires focal=256 and near_z=257')
     if report['world_meshes'] or not 1<=len(actors)<=4:raise ValueError('World projects reserve one to four resident actor handles')
     areas=scene['areas']
     if not isinstance(areas,list) or not 1<=len(areas)<=32:raise ValueError('World requires 1..32 areas')
@@ -110,6 +112,14 @@ def compile_world(scene,tight_chunks=False,min_chunk_faces=0):
         if not(0<physics['speed']<=physics['radius']//2 and physics['radius']+physics['speed']<=128 and
                physics['height']>=2*physics['radius'] and 0<physics['gravity']<=16 and 0<physics['jump_speed']<=256 and
                physics['step_height']>=0 and physics['kill_y']<0):raise ValueError('World physics exceeds conservative spatial query bounds')
+        # Signed 32-bit lengths/dots/crosses need a common conservative bound.
+        # No geometry is changed: incompatible source faces fail conversion.
+        padding=physics['height']+2*physics['radius']+16
+        for t in ct:
+            pts=[cp[i] for i in t[:3]]
+            spans=[max(p[k] for p in pts)-min(p[k] for p in pts)+2*padding for k in range(3)]
+            if sum(v*v for v in spans)>0x7fffffff:
+                raise ValueError('Collision face exceeds signed 32-bit distance bounds; partition/rebase the source explicitly')
         vertex(area['spawn'])
         # Conservative footprint padding includes next-tick movement and capsule.
         grid=[];flat_f=[];flat_w=[]
@@ -176,6 +186,7 @@ def generate(path,tight_chunks=False,min_chunk_faces=0):
     if spec.get('format')!='soc-game-project' or type(spec.get('version')) is not int or spec['version']!=1:raise ValueError('Expected soc-game-project version 1')
     if not isinstance(spec.get('name'),str) or not re.fullmatch(r'[a-z][a-z0-9-]{0,47}',spec['name']):raise ValueError('Invalid world project name')
     if 'custom-rv32i-gameplay' not in scene['resident_scene']['target']['required_features']:raise ValueError('World port must declare custom-rv32i-gameplay')
+    portable_game.validate_port_capabilities(spec)
     actors,palette,floors,walls,report,areas=compile_world(scene,tight_chunks=tight_chunks,min_chunk_faces=min_chunk_faces)
     report['terrain_packing']=f'centroid-cell-boundaries-min-{min_chunk_faces}-faces' if tight_chunks else 'legacy-capacity'
     # The existing project parser and shared resident compiler still validate ports.

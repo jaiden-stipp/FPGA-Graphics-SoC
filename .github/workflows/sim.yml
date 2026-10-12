@@ -6,7 +6,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install simulator and RV32I toolchain
-        run: sudo apt-get update && sudo apt-get install -y iverilog clang llvm libarchive-tools gcc-riscv64-unknown-elf binutils-riscv64-unknown-elf
+        run: sudo apt-get update && sudo apt-get install -y iverilog clang lld llvm libarchive-tools gcc-riscv64-unknown-elf binutils-riscv64-unknown-elf
+      - run: python3 -m pip install -r requirements-dev.txt
       - run: python3 scripts/test_scene_pipeline.py
       - run: python3 scripts/test_sdram_package.py
       - run: python3 scripts/soc.py bootstrap
@@ -28,3 +29,9 @@ jobs:
       - run: python3 scripts/soc.py portable-game --project build/quake-interactive/game.project.json
       - run: python3 scripts/test_interactive_demo.py
       - run: python3 scripts/soc.py sim --simulator iverilog --tests udp_extended_input_tb
+      - name: Complete native regressions with pinned fixtures
+        run: python3 scripts/test_all.py
+      - name: Baseline CPU and MMIO feature contracts
+        run: python3 scripts/soc.py sim --simulator iverilog --tests cpu_mul_tb,cpu_counter_pipeline_tb,soc_cpu_counters_tb,soc_mmio_tb,packed_mmio_tb
+      - name: Geometry-worker feature configuration
+        run: python3 scripts/soc.py sim --simulator iverilog --geometry-worker --disable-command-dma --tests soc_mmio_tb,cpu_geometry_tb,geometry_worker_tb

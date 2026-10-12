@@ -527,3 +527,18 @@ interpolation while preserving source geometry/collision, and measured a timed
 movement diagnostic from 44.86 to 59.96 FPS on unchanged 50 MHz hardware.
 [Full results and limits](render-correctness-fixes.md),
 [raw measurements](benchmarks/render-correctness-001/measurements.json).
+
+
+## AUDIT-FIX-001 — pipeline consistency and failure bounds
+
+Baseline audit `625dd74`. Strict package/feature preflight, projection and
+collision-arithmetic import guards, profile-driven builds, portable isolated
+fixtures, schema conformance and bounded worker failure handling are implemented.
+Hardware RTL, selected SOF and all 85 accepted RTL/SDC hashes are unchanged;
+no physical benchmark or new fit was performed. The guarded firmware is built
+separately and was not loaded. Its CPU binary is 29,176 versus 29,124 bytes
+(+52), while asset bytes/hash are identical. These are artifact sizes, not
+speed improvements. The 5,000,000-cycle timeout is an authored 100 ms failure
+budget at 50 MHz, not measured worker latency. Existing performance/resume
+claims retain their original evidence and scope.
+[Repair validation](repository-consistency-fixes.md).

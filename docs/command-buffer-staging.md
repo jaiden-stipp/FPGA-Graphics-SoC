@@ -16,7 +16,7 @@ At 50 MHz, median elapsed CPU cycles:
 | 6 | 4,256 | 208,031 | 124,526 | 136,259 | 11,733 | 34.50% |
 | 7 | 278 | 9,313 | 8,176 | 8,950 | 774 | 3.90% |
 
-The 6,050-byte view takes 5.34466 ms for packed submission and 3.87384 ms for SDRAM staging. The six larger streams use 20.6–34.5% fewer CPU cycles for staging; the 278-byte stream saves just 363 cycles. SDRAM write-through costs are visible in the freeze counter and vary with controller refresh. All three trials pass exact staged-byte/hash checks. Native tests independently cover all payload lengths 0..255 and randomized multi-command concatenations, including exact tails and no inter-command padding.
+The 6,050-byte view takes 5.34466 ms for packed submission and 3.87384 ms for SDRAM staging. The six larger streams use 20.6â€“34.5% fewer CPU cycles for staging; the 278-byte stream saves just 363 cycles. SDRAM write-through costs are visible in the freeze counter and vary with controller refresh. All three trials pass exact staged-byte/hash checks. Native tests independently cover all payload lengths 0..255 and randomized multi-command concatenations, including exact tails and no inter-command padding.
 
 ## Decision and limits
 

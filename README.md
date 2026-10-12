@@ -1,5 +1,38 @@
 # RV32I Renderer SoC
 
+## Current Castle deployment
+
+The selected hardware is the 50 MHz Stage 5 geometry-worker image with setup
+overlap and two raster lanes. See `profiles/current-deployment.json` for its
+exact identity. The generic `SoC.qpf` / `build/quartus/SoC.sof` recipes below
+are historical scaffold/example builds; they do not select this topology.
+
+From a fresh checkout with Clang, LLD and llvm-objcopy on PATH:
+
+```powershell
+.\scripts\run.ps1 soc.py bootstrap
+# Build only if the selected SOF is absent. A new fit must pass timing and
+# be reviewed/hash-selected before replacing the accepted hardware artifact.
+.\scripts\run.ps1 build_geometry_worker.py worker
+.\scripts\run.ps1 sm64_castle.py --out build/castle-shaded
+.\scripts\run.ps1 soc.py portable-game --project build/castle-shaded/game.project.json --terrain-direct --packed-gfx --integer-mul --geometry-offload --uncapped-render --interpolate-render
+.\scripts\run.ps1 current_deployment.py --write-cdf
+# Open build/current-deployment.cdf in Quartus Programmer, program, then load:
+.\scripts\run.ps1 load_game.py build/mario-castle-sdram-direct-packed-mul-geometry-uncapped-interpolated.package.json
+```
+
+`current_deployment.py` verifies the accepted SOF hash, package segments and recorded hardware features; it
+never programs the board or changes user-owned Chain*.cdf files. A refit may
+produce another hash even from unchanged source; do not silently accept it.
+Castle traversal/appearance remain a scoped port, with deferred alpha decoration
+and an incomplete Secret Slide mission. See [render corrections](docs/render-correctness-fixes.md).
+
+Run the complete host suite with `python scripts/test_all.py` after installing
+`requirements-dev.txt`. Fixtures are generated from pinned source into isolated
+`build/test-fixtures` directories. No ROM/texture images are required for these
+source-geometry tests. See [audit fixes](docs/repository-consistency-fixes.md).
+
+
 The [hardware improvement record](docs/hardware-improvement-record.md) tracks
 benchmark evidence, reproducible comparisons and supported resume claims.
 
@@ -229,11 +262,13 @@ upstream memory timing and imposes half-cycle timing paths. Review TimeQuest
 results after each hardware change. The VGA PLL has a separate direct 50 MHz
 reference, and pixel-domain/output constraints come from the renderer's board
 project. Ethernet RX/TX clocks and delays are also constrained. Consult the
-latest `build/quartus/SoC.sta.summary` for timing of the current image.
+selected artifact's `.sta.summary` for its timing. The generic project summary
+is not the current geometry-worker image's timing report.
 
 On this machine the complete project was moved to
-`C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC`. Open that folder's `SoC.qpf` in
-Quartus Lite; the programming image is `build/quartus/SoC.sof`. Close any project
+`C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC`. For the historical scaffold, open that folder's `SoC.qpf` in
+Quartus Lite; its programming image is `build/quartus/SoC.sof`. Use the current
+deployment selection above for the accepted Castle hardware. Close any project
 still open from the previous dated workspace path before reopening this one.
 
 ## Integration limits and next steps

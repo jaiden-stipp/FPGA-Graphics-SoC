@@ -1,0 +1,23 @@
+[
+  {
+    "sdram": true,
+    "profile": "sm64-mario-sdram",
+    "world_triangles": 1043,
+    "cpu_bytes": 18792,
+    "cpu_sha256": "ad16a6e946bc233d3c423f14d3ca44a6f197784cf1bd6b49c80ef77ad9d87d0b"
+  },
+  {
+    "sdram": false,
+    "profile": "sm64-mario-controller",
+    "world_triangles": 326,
+    "cpu_bytes": 59172,
+    "cpu_sha256": "e8dca24ab42b9606aff0dd82ad9a011668faa511cbc32b87b437f92ca4e6509c"
+  },
+  {
+    "sdram": false,
+    "profile": "sm64-mario-controller",
+    "world_triangles": 326,
+    "cpu_bytes": 59172,
+    "cpu_sha256": "e8dca24ab42b9606aff0dd82ad9a011668faa511cbc32b87b437f92ca4e6509c"
+  }
+]

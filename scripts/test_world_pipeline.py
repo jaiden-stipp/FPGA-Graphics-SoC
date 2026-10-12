@@ -1,3 +1,4 @@
+from test_support import ensure_castle_fixture
 """Exercise source-independent worlds, production collision and GPU command ordering."""
 import copy
 import binascii
@@ -157,7 +158,7 @@ class WorldTests(unittest.TestCase):
         # Build the real castle update path against an isolated copy of its
         # source-derived world, so another game's generated headers cannot
         # change this integration test's terrain or actor package.
-        scene=json.loads((ROOT/'build/castle/world.json').read_text())
+        scene=json.loads(ensure_castle_fixture(False).read_text())
         actors,palette,_,_,report,areas=world_assets.compile_world(scene)
         (out/'world_data.h').write_text(world_assets.header(areas))
         resident=portable_game.header(actors,palette,[],[],{**report,'collision_floors':0,'collision_walls':0})
@@ -278,7 +279,7 @@ int castle_return_fixture(void) {
         self.assertTrue(all(ch['render_flags']==0 for ch in world_assets.chunks(vertices,triangles)))
 
     def test_world_rejects_malformed_render_flags(self):
-        scene=json.loads((ROOT/'build/castle/world.json').read_text())
+        scene=json.loads(ensure_castle_fixture(False).read_text())
         n=len(scene['areas'][0]['triangles'])
         for flags in ([0]*(n-1),[2]*n,[True]*n):
             scene['areas'][0]['triangle_render_flags']=flags
@@ -398,7 +399,7 @@ int castle_return_fixture(void) {
         self.assertEqual(len(data['special_objects']),11)
 
     def test_source_warps_resolve_castle_slide_and_key_gates(self):
-        world=json.loads((ROOT/'build/castle/world.json').read_text())
+        world=json.loads(ensure_castle_fixture(False).read_text())
         ts,unsupported=sm64_castle.transitions(ROOT/'external/sm64',world['areas'])
         self.assertTrue(any(t['source_area']==1 and t['destination_area']==4 and t['source_node']==10 for t in ts))
         self.assertTrue(any(t['destination_area']==2 and t['required_keys']==1 for t in ts))
@@ -430,7 +431,7 @@ int castle_return_fixture(void) {
         self.assertEqual(self.lib.world_transition_find(c.byref(t),1,0,c.byref(p),0,0,0),0)
 
     def test_original_world_geometry_reconstructs_without_changed_faces(self):
-        source=json.loads((ROOT/'build/castle/world.json').read_text())
+        source=json.loads(ensure_castle_fixture(False).read_text())
         result=world_assets.compile_world(source)
         for a in result[-1]:
             recovered={}
@@ -442,7 +443,7 @@ int castle_return_fixture(void) {
             for i,t in enumerate(a['triangles']):self.assertEqual(recovered[i],([a['vertices'][k] for k in t[:3]],t[3]))
 
     def test_original_area_grid_queries_match_exhaustive_plane_queries(self):
-        source=json.loads((ROOT/'build/castle/world.json').read_text())
+        source=json.loads(ensure_castle_fixture(False).read_text())
         for a in world_assets.compile_world(source)[-1]:
             fs=(Floor*len(a['floors']))(*(Floor(*(Point(*p) for p in pts),*r) for pts,r in a['floors']))
             ws=(Wall*len(a['walls']))(*(Wall(*(Point(*p) for p in pts),*r) for pts,r in a['walls']))
@@ -480,7 +481,7 @@ int castle_return_fixture(void) {
         self.assertEqual(self.lib.contact_fixture(),0)
 
     def test_source_surface_types_and_special_parameters_survive_compile(self):
-        source=json.loads((ROOT/'build/castle/world.json').read_text())
+        source=json.loads(ensure_castle_fixture(False).read_text())
         types=sm64_castle.surface_types(ROOT/'external/sm64')
         for a in world_assets.compile_world(source)[-1]:
             for m in a['floor_metadata']+a['wall_metadata']:
@@ -499,7 +500,7 @@ int castle_return_fixture(void) {
         with self.assertRaises(ValueError):world_assets.compile_world(example)
 
     def test_slide_falling_exit_uses_original_f3_destination(self):
-        source=json.loads((ROOT/'build/castle/world.json').read_text())
+        source=json.loads(ensure_castle_fixture(False).read_text())
         exits=sm64_castle.event_exits(ROOT/'external/sm64',source['areas'])
         slide=[t for t in exits if t['source_area']==4]
         self.assertEqual({t['event'] for t in slide},{0xf0,0xf1,0xf3})

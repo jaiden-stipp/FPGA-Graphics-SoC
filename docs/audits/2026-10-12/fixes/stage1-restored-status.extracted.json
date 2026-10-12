@@ -1,0 +1,17 @@
+{
+  "source": "docs/benchmarks/arch-upgrade-001-stage-1/restored-status.json",
+  "source_sha256": "d06c181dc1e904b9cf6279f8fcdd8cf1283f3ac48e856bab97146b3bd08f52e3",
+  "source_format": "mixed loader stdout log; historical .json name retained",
+  "status": {
+    "initialized": true,
+    "held": false,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 0,
+    "refresh_count": 7227800,
+    "input_abi": 1229848833
+  }
+}

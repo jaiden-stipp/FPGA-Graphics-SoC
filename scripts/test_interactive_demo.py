@@ -1,3 +1,4 @@
+from test_support import linked_test_packages
 """Native production-module interaction checks plus source/transport contracts."""
 import binascii
 import ctypes as c
@@ -153,7 +154,7 @@ unsigned counter(unsigned index){return index==0?triangles:index==1?uploads:inde
         compiled=portable_game.compile_scene(scene,False);self.assertEqual(compiled[-1]['world_triangles'],786)
         self.assertEqual(compiled[-1]['actor_triangles'],438)
     def test_linked_package_and_capabilities(self):
-        path=ROOT/'build/quake-interactive-sdram.package.json';spec=json.loads(path.read_text())
+        path=linked_test_packages()/'quake-interactive-sdram.package.json';spec=json.loads(path.read_text())
         self.assertEqual(spec['target']['id'],'de2-115-fixed-v2');self.assertIn('mouse-look-v1',spec['target']['required_features'])
         self.assertEqual(len(load_game.package_segments(path)),2)
     def test_old_hardware_is_rejected_without_holding_cpu(self):

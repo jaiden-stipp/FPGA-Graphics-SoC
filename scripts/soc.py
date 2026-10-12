@@ -274,6 +274,17 @@ def generate():
     print("Generated CPU boundary, RAM wrapper, palette path and firmware protocol header.")
 
 
+def prepare_legacy_assets(args,apps):
+    # Existence is not provenance: select profiles explicitly on every build.
+    if any(app.startswith('scene') for app in apps):
+        from sm64_subset import convert
+        convert(getattr(args,'scene_profile',None) or ROOT/'profiles/sm64-bob-flat.json')
+    if any(app.startswith('mario') for app in apps):
+        from game_assets import generate as game_generate
+        default='sm64-mario-sdram.json' if getattr(args,'use_sdram',False) else 'sm64-mario.json'
+        game_generate(getattr(args,'mario_profile',None) or ROOT/'profiles'/default)
+
+
 def firmware(args):
     if not (ROOT / "firmware/generated/gfx_protocol.h").exists():
         raise RuntimeError("Run bootstrap first")
@@ -289,12 +300,7 @@ def firmware(args):
     if is_clang:
         flags = ["--target=riscv32-unknown-elf", "-fuse-ld=lld"] + flags
     apps = ["scene", "game", "triangle", "game-test", "scene-test", "mario", "mario-test", "mario-bridge-test"] if args.app == "all" else [args.app]
-    if any(app.startswith("scene") for app in apps) and not (ROOT / "firmware/generated/scene_data.h").exists():
-        from sm64_subset import convert
-        convert(ROOT / "profiles/sm64-bob-flat.json")
-    if any(app.startswith("mario") for app in apps) and not (ROOT / "firmware/generated/game_data.h").exists():
-        from game_assets import generate as game_generate
-        game_generate(ROOT / "profiles/sm64-mario.json")
+    prepare_legacy_assets(args,apps)
     for app in apps:
         use_sdram = getattr(args, 'use_sdram', False)
         stem = getattr(args,'image_name',None) or app + ('-sdram' if use_sdram else '')
@@ -482,7 +488,11 @@ def simulate(args):
         for name in tests:
             exe = BUILD / f"{name}.vvp"
             run([tool("iverilog"), "-g2012", "-s", name, "-I",
-                 ROOT / "external/renderer/rtl/common", "-I", ROOT / "sim/generated", "-I", ROOT / "sim", "-o", exe] + src)
+                 ROOT / "external/renderer/rtl/common", "-I", ROOT / "sim/generated", "-I", ROOT / "sim", "-o", exe] +
+                (["-DSOC_GEOMETRY_WORKER"] if getattr(args,"geometry_worker",False) else []) +
+                (["-DSOC_DISABLE_COMMAND_DMA"] if getattr(args,"disable_command_dma",False) else []) +
+                (["-DSOC_GPU_SETUP_OVERLAP"] if getattr(args,"setup_overlap",False) else []) +
+                (["-DSOC_GPU_TWO_PIXEL_LANES"] if getattr(args,"two_pixel_lanes",False) else []) + src)
             result = run([tool("vvp"), exe], stdout=subprocess.PIPE,
                          stderr=subprocess.STDOUT, text=True)
             write(BUILD / f"{name}.log", result.stdout)
@@ -531,6 +541,7 @@ def quartus(_args):
 
 def sm64_scene(args):
     from sm64_subset import convert
+    args.scene_profile=args.profile
     convert(args.profile)
     if "clang" in Path(args.cc).name:
         from rv32i_subset import check
@@ -548,6 +559,7 @@ def sm64_scene(args):
 
 def sm64_mario(args):
     from game_assets import generate as game_generate
+    args.mario_profile=args.profile
     game_generate(args.profile)
     if "clang" in Path(args.cc).name:
         from rv32i_subset import check
@@ -567,6 +579,7 @@ def sm64_mario(args):
 def sdram_game(args):
     from game_assets import generate as game_generate
     generate()
+    args.mario_profile=args.profile
     game_generate(args.profile)
     from game_package import mario_content
     args.content=mario_content(args.profile,json.loads((BUILD/'game/conversion.json').read_text()))
@@ -599,6 +612,7 @@ def game_packages(args):
     from game_assets import generate as mario_generate
     from rv32i_subset import check
     mario_profile=ROOT/'profiles/sm64-mario-sdram.json'
+    args.mario_profile=mario_profile
     mario_generate(mario_profile)
     args.content=mario_content(mario_profile,json.loads((BUILD/'game/conversion.json').read_text()))
     args.use_sdram=True; args.app='mario'; args.boot=None
@@ -741,6 +755,8 @@ def main():
     p.add_argument("--renderer-source", type=Path, help="Optional local Git clone")
     p.set_defaults(func=bootstrap)
     p = sub.add_parser("build-fw")
+    p.add_argument("--mario-profile",type=Path)
+    p.add_argument("--scene-profile",type=Path)
     p.add_argument("--app", choices=["all", "scene", "scene-test", "game", "triangle", "game-test", "mario", "mario-test", "mario-bridge-test"], default="all")
     p.add_argument("--boot", choices=["scene", "game", "triangle", "mario"], default="scene")
     p.add_argument("--cc", default="clang")

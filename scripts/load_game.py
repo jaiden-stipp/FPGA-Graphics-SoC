@@ -9,13 +9,17 @@ import secrets
 import socket
 import struct
 import time
+from target_capabilities import feature_bits, GPU_REGS_PRESENT
+from game_package import integer
 
 BEGIN, WRITE, READ, COMMIT, STATUS = range(1, 6)
 
 
 def packet(transaction, operation, address=0, words=(), count=None):
     count = len(words) if count is None else count
-    if operation not in range(1, 6) or not 0 <= count <= 3:
+    integer(transaction,0,0xffffffff);integer(address,0,0xffffffff)
+    for word in words:integer(word,0,0xffffffff)
+    if type(operation) is not int or type(count) is not int or operation not in range(1, 6) or not 0 <= count <= 3:
         raise ValueError('Invalid loader operation/count')
     payload = struct.pack('>2sBBII3I', b'SD', 1, (operation << 4) | count,
                           transaction, address, *(tuple(words)+(0,)*(3-len(words))))
@@ -37,16 +41,34 @@ def decode_reply(data, transaction):
 
 def package_segments(path):
     spec=json.loads(path.read_text())
-    if spec.get('format')!='soc-game-package' or spec.get('version')!=1:
+    if not isinstance(spec,dict) or spec.get('format')!='soc-game-package' or type(spec.get('version')) is not int or spec.get('version')!=1:
         raise ValueError('Unsupported game package')
+    allowed={'format','version','app','segments','target','content','required_cpu_features','required_gpu_features','cadence','diagnostic','command_buffers'}
+    if set(spec)-allowed:raise ValueError('Unknown package fields')
+    feature_bits(spec,'cpu');feature_bits(spec,'gpu')
+    if 'app' in spec and not isinstance(spec['app'],str):raise ValueError('Invalid app')
+    if 'diagnostic' in spec and (not isinstance(spec['diagnostic'],dict) or set(spec['diagnostic'])-{'terrain_submission','purpose'} or any(not isinstance(v,str) for v in spec['diagnostic'].values())):raise ValueError('Invalid diagnostic')
+    if 'cadence' in spec:
+        c=spec['cadence'];required={'simulation_tick_cycles','clock_hz','render','render_repeat_safe'}
+        if not isinstance(c,dict) or not required<=set(c) or set(c)-required-{'interpolation'}:raise ValueError('Invalid cadence')
+        integer(c['simulation_tick_cycles'],1,0xffffffff);integer(c['clock_hz'],1,0xffffffff)
+        if c['render'] not in ('tick-paced','uncapped') or type(c['render_repeat_safe']) is not bool or ('interpolation' in c and type(c['interpolation']) is not bool):raise ValueError('Invalid render cadence')
+        if c.get('interpolation') and (c['render']!='uncapped' or not c['render_repeat_safe']):raise ValueError('Interpolation requires uncapped repeat-safe rendering')
     if 'target' in spec:
         from target_capabilities import validate
         validate(spec['target'])
     if 'content' in spec:
         from game_package import validate_content
         validate_content(spec['content'])
+    if not isinstance(spec.get('segments'),list) or not spec['segments']:raise ValueError('Missing package segments')
     segments=[]
     for segment in spec['segments']:
+        if not isinstance(segment,dict) or set(segment)!={'file','address','bytes','sha256'}:raise ValueError('Invalid segment fields')
+        name=segment['file']
+        if not isinstance(name,str) or not name or '/' in name or '\\' in name:raise ValueError('Invalid segment filename')
+        integer(segment['address'],0,0xffffffff);integer(segment['bytes'],0,134213632)
+        h=segment['sha256']
+        if not isinstance(h,str) or len(h)!=64 or any(c not in '0123456789abcdef' for c in h):raise ValueError('Invalid segment hash')
         source=(path.parent/segment['file']).resolve()
         if source.parent != path.parent.resolve(): raise ValueError('Package files must share the manifest directory')
         payload=source.read_bytes()
@@ -61,8 +83,10 @@ def package_segments(path):
     for i,(base,data,_) in enumerate(segments):
         for other,other_data,_ in segments[:i]:
             if max(base,other)<min(base+len(data),other+len(other_data)): raise ValueError('Overlapping package segments')
+    if 'command_buffers' in spec and not spec.get('required_gpu_features',{}).get('command-dma-v1'):raise ValueError('Command buffers require DMA')
     if spec.get('required_gpu_features',{}).get('command-dma-v1'):
-        if spec.get('command_buffers')!={'address':0x87fe0000,'bytes':2048,'buffer_bytes':1024,'count':2}:
+        b=spec.get('command_buffers')
+        if not isinstance(b,dict) or any(type(v) is not int for v in b.values()) or b!={'address':0x87fe0000,'bytes':2048,'buffer_bytes':1024,'count':2}:
             raise ValueError('Invalid command DMA buffer reservation')
         if any(max(base,0x87fe0000)<min(base+len(data),0x87fe0800) for base,data,_ in segments):
             raise ValueError('Package overlaps command DMA buffers')
@@ -98,6 +122,17 @@ class Loader:
         raise TimeoutError(f'No completed-operation reply from {self.target} (op {op}, address {address:#x})')
 
     def transfer(self, segments):
+        # Validate direct callers too, before BEGIN. Never release partially verified code.
+        segments=list(segments)
+        if not segments:raise ValueError('Empty transfer')
+        for index,(base,data,name) in enumerate(segments):
+            integer(base,0,0xffffffff)
+            if not isinstance(data,bytes) or not data or len(data)%4 or not isinstance(name,str):raise ValueError('Invalid transfer segment')
+            end=base+len(data)
+            if base%4 or not (0<=base<end<=0x10000 or 0x80000000<=base<end<=0x87fff000):raise ValueError('Transfer outside memory')
+            for other,previous,_ in segments[:index]:
+                integer(other,0,0xffffffff)
+                if max(base,other)<min(end,other+len(previous)):raise ValueError('Overlapping transfer segments')
         # PHY/switch link negotiation may take a few seconds after programming.
         result=self.operation(BEGIN,retries=max(self.retries,40))
         if not result['initialized']: raise RuntimeError('SDRAM has not initialized')
@@ -120,16 +155,17 @@ class Loader:
 
 def require_hardware(loader,spec):
     cpu=spec.get('required_cpu_features',{})
-    bits=(1 if cpu.get('mul') else 0)|(2 if cpu.get('geometry-worker-v1') else 0)
+    bits=feature_bits(spec,'cpu')
+    gpu_bits=feature_bits(spec,'gpu')
     if bits:
         status=loader.operation(STATUS,retries=max(loader.retries,40))
         if status.get('cpu_features',0)&bits!=bits:
             raise RuntimeError('Package requires CPU features '+str(cpu)+'; current status does not advertise them (CPU left running)')
     required=spec.get('required_gpu_features',{})
-    if required.get('packed-enqueue-v1') or required.get('draw-mesh-fraction-v1') or required.get('command-dma-v1'):
+    if gpu_bits:
         status=loader.operation(STATUS,retries=max(loader.retries,40))
-        bits=(4 if required.get('command-dma-v1') else 0)|(2 if required.get('packed-enqueue-v1') else 0)|(1 if required.get('draw-mesh-fraction-v1') else 0)
-        if not status.get('cpu_features',0)&0x80000000 or status.get('gpu_features',0)&bits!=bits:
+        bits=gpu_bits
+        if not status.get('cpu_features',0)&GPU_REGS_PRESENT or status.get('gpu_features',0)&bits!=bits:
             raise RuntimeError('Package requires GPU features '+str(required)+'; current status does not advertise them (CPU left running)')
     if 'mouse-look-v1' in spec.get('target',{}).get('required_features',[]):
         if loader.operation(STATUS,retries=max(loader.retries,40))['input_abi']!=0x494e0101:

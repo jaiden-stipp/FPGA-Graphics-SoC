@@ -1,0 +1,50 @@
+{
+  "baseline_commit": "625dd74",
+  "native_suites": 21,
+  "native_tests": 169,
+  "native_failures": 0,
+  "rtl_passes": [
+    "soc_mmio_tb",
+    "cpu_geometry_tb",
+    "geometry_worker_tb",
+    "cpu_mul_tb",
+    "soc_cpu_counters_tb",
+    "cpu_counter_pipeline_tb",
+    "packed_mmio_tb",
+    "sdram_cache_tb",
+    "udp_loader_tb"
+  ],
+  "fixtures": "New isolated build/audit-fixes/clean-fixtures tree generated from pinned inputs; dependencies cached at clean lock-file revisions",
+  "hardware_inputs_exact": true,
+  "fpga_loaded": false,
+  "hardware_fitted": false,
+  "scope": "Correctness/build/validation changes. No new performance or timing claim. Linux CI updated but not executed locally.",
+  "selected_segments": [
+    {
+      "file": "mario-castle-sdram-direct-packed-mul-geometry-uncapped-interpolated.bin",
+      "address": 0,
+      "bytes": 29124,
+      "sha256": "e43468304dcd0b4c4cfdf5b756a69109cd19d0cdc19fc5cf1b9fd47611068f6c"
+    },
+    {
+      "file": "mario-castle-sdram-direct-packed-mul-geometry-uncapped-interpolated.assets.bin",
+      "address": 2147483648,
+      "bytes": 883160,
+      "sha256": "65413afb4c49b42581291d48547d58407cd118678d02bca0bb1869f790b226d4"
+    }
+  ],
+  "guarded_segments": [
+    {
+      "file": "mario-castle-audit-fixed-sdram-direct-packed-mul-geometry-uncapped-interpolated.bin",
+      "address": 0,
+      "bytes": 29176,
+      "sha256": "1ddf2d255c690c5094356969a173e22d1e3f347ec75ef85a7dd370834cbf7ca1"
+    },
+    {
+      "file": "mario-castle-audit-fixed-sdram-direct-packed-mul-geometry-uncapped-interpolated.assets.bin",
+      "address": 2147483648,
+      "bytes": 883160,
+      "sha256": "65413afb4c49b42581291d48547d58407cd118678d02bca0bb1869f790b226d4"
+    }
+  ]
+}

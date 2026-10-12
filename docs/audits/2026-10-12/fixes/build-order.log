@@ -1,0 +1,17 @@
+Conversion report: build\game\world/conversion.json (static scene; gameplay not ported)
+Game: 9 meshes, 212 actor triangles; 516 floors/527 walls; spawn [-1640, -489, 1616]
++ C:\Program Files\LLVM\bin\clang.EXE --target=riscv32-unknown-elf -fuse-ld=lld -march=rv32i -mabi=ilp32 -msmall-data-limit=0 -mno-relax -O1 ... (23 more arguments)
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --remove-section=.game_assets -O binary build/audit-fixes-buildorder-sdram.elf build/audit-fixes-buildorder-sdram.bin
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE --only-section=.game_assets -O binary build/audit-fixes-buildorder-sdram.elf build/audit-fixes-buildorder-sdram.assets.bin
+Built mario: build/audit-fixes-buildorder-sdram.hex and build/audit-fixes-buildorder-sdram.mif
+Conversion report: build\game\world/conversion.json (static scene; gameplay not ported)
+Game: 5 meshes, 212 actor triangles; 188 floors/138 walls; spawn [-1576, -208, 1616]
++ C:\Program Files\LLVM\bin\clang.EXE --target=riscv32-unknown-elf -fuse-ld=lld -march=rv32i -mabi=ilp32 -msmall-data-limit=0 -mno-relax -O1 ... (21 more arguments)
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE -O binary build/audit-fixes-buildorder-local.elf build/audit-fixes-buildorder-local.bin
+Built mario: build/audit-fixes-buildorder-local.hex and build/audit-fixes-buildorder-local.mif
+Conversion report: build\game\world/conversion.json (static scene; gameplay not ported)
+Game: 5 meshes, 212 actor triangles; 188 floors/138 walls; spawn [-1576, -208, 1616]
++ C:\Program Files\LLVM\bin\clang.EXE --target=riscv32-unknown-elf -fuse-ld=lld -march=rv32i -mabi=ilp32 -msmall-data-limit=0 -mno-relax -O1 ... (21 more arguments)
++ C:\Program Files\LLVM\bin\llvm-objcopy.EXE -O binary build/audit-fixes-buildorder-repeat.elf build/audit-fixes-buildorder-repeat.bin
+Built mario: build/audit-fixes-buildorder-repeat.hex and build/audit-fixes-buildorder-repeat.mif
+Verified SDRAM -> on-chip -> repeated on-chip builds with byte-identical local results.

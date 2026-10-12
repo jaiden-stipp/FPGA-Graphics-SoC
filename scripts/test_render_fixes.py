@@ -1,3 +1,4 @@
+from test_support import ensure_castle_fixture
 """Independent arithmetic and source-preservation checks for rendering fixes."""
 import ctypes as c,json,os,random,shutil,subprocess,unittest
 from pathlib import Path
@@ -45,7 +46,7 @@ void intersection_probe(const int32_t*a,const int32_t*b,int32_t da,int32_t db,in
             if a>b:a,b,da,db=b,a,db,da
             t=abs(da)*65536//(abs(da)+abs(db));self.assertEqual(list(x),[v+(w-v)*t//65536 for v,w in zip(a,b)])
     def test_shaded_world_retains_all_geometry_collision_and_actor_data(self):
-        old=json.loads((ROOT/'build/render-fixes/baseline/world.json').read_text());new=json.loads((ROOT/'build/castle-shaded/world.json').read_text())
+        old=json.loads(ensure_castle_fixture(False).read_text());new=json.loads(ensure_castle_fixture(True).read_text())
         self.assertEqual(old['resident_scene']['meshes'],new['resident_scene']['meshes'])
         self.assertEqual(old['transitions'],new['transitions']);self.assertEqual(old['event_exits'],new['event_exits'])
         self.assertEqual(old['animation'],new['animation']);self.assertLessEqual(len(new['resident_scene']['palette']),256)
@@ -53,7 +54,7 @@ void intersection_probe(const int32_t*a,const int32_t*b,int32_t da,int32_t db,in
             self.assertEqual(a['vertices'],b['vertices']);self.assertEqual([t[:3] for t in a['triangles']],[t[:3] for t in b['triangles']]);self.assertEqual(a['collision'],b['collision'])
             self.assertEqual(a['triangle_room_masks'],b['triangle_room_masks'])
     def test_original_baked_shading_changes_actual_colors(self):
-        old=json.loads((ROOT/'build/render-fixes/baseline/world.json').read_text());new=json.loads((ROOT/'build/castle-shaded/world.json').read_text())
+        old=json.loads(ensure_castle_fixture(False).read_text());new=json.loads(ensure_castle_fixture(True).read_text())
         op=old['resident_scene']['palette'];np=new['resident_scene']['palette']
         changes=sum(op[x[3]]!=np[y[3]] for a,b in zip(old['areas'],new['areas']) for x,y in zip(a['triangles'],b['triangles']))
         self.assertGreater(changes,0)

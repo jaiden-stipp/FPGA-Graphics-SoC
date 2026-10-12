@@ -170,6 +170,14 @@ def header(chunks,palette,floors,walls,report):
         f'{report["world_meshes"]},{report["actor_meshes"]},portable_palette,{len(palette)}'+'};')
     lines+=['#endif','#endif',''];return '\n'.join(lines)
 
+def validate_port_capabilities(spec):
+    port=spec['port']
+    for name in ('render_repeat_safe','render_interpolation'):
+        if name in port and type(port[name]) is not bool:raise ValueError('Port '+name+' must be boolean')
+    if port.get('render_interpolation') and (not port.get('render_repeat_safe') or port['kind']!='custom'):
+        raise ValueError('Interpolation requires a repeat-safe custom port')
+
+
 def validate_render_cadence(spec,uncapped):
     if uncapped and spec['port'].get('render_repeat_safe') is not True:
         raise ValueError('--uncapped-render requires port.render_repeat_safe=true; render must not advance gameplay, camera or animation')
@@ -179,6 +187,7 @@ def project(path):
     if spec.get('format')!='soc-game-project' or type(spec.get('version')) is not int or spec['version']!=1:
         raise ValueError('Expected soc-game-project version 1')
     if not re.fullmatch(r'[a-z][a-z0-9-]{0,47}',spec['name']):raise ValueError('Project name must be a lowercase filename-safe identifier')
+    validate_port_capabilities(spec)
     port=spec['port'];kind=port['kind']
     if kind=='scene-explorer':sources=[ROOT/'firmware/ports/scene_explorer.c'];api=[]
     elif kind=='custom':

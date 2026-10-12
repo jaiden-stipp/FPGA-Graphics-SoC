@@ -1,3 +1,5 @@
+from test_support import native_flags
+import shutil,os
 """Independent byte/CRC/tail checks for the measurement-only staging serializer."""
 import binascii,ctypes as c,os,random,subprocess,unittest
 from pathlib import Path
@@ -16,8 +18,8 @@ const uint8_t *data(void){return (const uint8_t *)ram_buffer;}
 uint32_t size(void){return staged_bytes;}
 uint32_t words(void){return staged_words;}
 ''')
-  dll=out/'probe.dll';names=('reset','append','finish','data','size','words')
-  subprocess.run(['C:/Program Files/LLVM/bin/clang.exe','-shared','-O1','-ffreestanding','-fno-builtin','-nostdlib','-fuse-ld=lld','-Wl,/noentry',*['-Wl,/export:'+n for n in names],'-I.','-Ifirmware/include','-Ifirmware/generated','-I'+str(out),str(out/'harness.c'),'-o',str(dll)],cwd=ROOT,check=True)
+  dll=out/('probe.dll' if os.name=='nt' else 'probe.so');names=('reset','append','finish','data','size','words')
+  subprocess.run([shutil.which('clang'),*native_flags(names),'-I.','-Ifirmware/include','-Ifirmware/generated','-I'+str(out),str(out/'harness.c'),'-o',str(dll)],cwd=ROOT,check=True)
   cls.lib=c.CDLL(str(dll));cls.lib.data.restype=c.POINTER(c.c_uint8)
  def append(self,op,p):
   payload=(c.c_uint8*max(1,len(p)))(*p);self.assertEqual(self.lib.append(op,payload,len(p)),0)

@@ -3,7 +3,8 @@
 | Address range | Owner | Behavior |
 | --- | --- | --- |
 | `0x00000000..0x0000ffff` | Unified 64 KiB CPU RAM | Code, constants, data, stack; RV32I subword operations |
-| `0x40000000..0x400000ff` | Graphics MMIO | Aligned 32-bit accesses only |
+| `0x40000000..0x400000ff` | Graphics, CPU counters and optional DMA MMIO | Aligned 32-bit accesses only |
+| `0x40000100..0x400001ff` | Optional geometry-worker MMIO | Present only when CPU feature bit 1 is set |
 | `0x80000000..0x87ffffff` | Optional 128 MiB SDRAM | RV32I data loads/stores with pipeline wait states; volatile assets and data |
 | Other data addresses | Unmapped | Reads zero, writes rejected, BAD_ACCESS sticky |
 
@@ -97,3 +98,45 @@ neutral in the sample game.
 The board ORs local KEY[1]/KEY3 with UDP key state before synchronization. The
 remote state is released after 300 ms without a fresh control envelope; see
 [sm64-subset.md](sm64-subset.md) for its wire format and Windows sender.
+
+
+## CPU counters, feature discovery and packed writes
+
+| Offset | Register | Behavior |
+|---|---|---|
+| 0x80 | CPU_ABI | 0x43500101 |
+| 0x84 / 0x88 | CPU_CYCLES / RETIRED | Counter snapshot |
+| 0x8c / 0x90 / 0x94 | MEMORY_FREEZES / DEPENDENCY_BUBBLES / REDIRECTS | Counter snapshot |
+| 0x98 | CPU_SNAPSHOT | Write captures CPU counters and GPU polling counts atomically |
+| 0x9c | CPU_FEATURES | Bit 0 MUL, bit 1 geometry worker, bit 31 GPU feature registers present |
+| 0xa0 / 0xa4 | GPU_STATUS_READS / GPU_FULL_READS | Same CPU snapshot |
+| 0xa8 | GPU_FEATURES | Bit 0 fractional mesh transform, bit 1 packed enqueue, bit 2 command DMA |
+| 0xb0 / 0xb4 / 0xb8 / 0xbc | PACKED_DATA | Enqueue 1 / 2 / 3 / 4 bytes, earliest byte in low eight bits |
+
+Packed writes require reservation of enough FIFO space; one pop does not
+permit an otherwise full write. Probe GPU_FEATURES only after confirming
+CPU_FEATURES bit 31. Probe geometry registers only after CPU_FEATURES bit 1.
+Original RV32I includes no multiply, but the current owned CPU adapter adds
+MUL only; it does not implement MULH/DIV or the complete M extension.
+
+## Optional command DMA
+
+Offsets 0xc0 ABI (0x444d0101), 0xc4 source, 0xc8 length, 0xcc submission ID,
+0xd0 START, 0xd4 status, 0xd8 completed ID and 0xe0/0xe4/0xe8/0xec counters
+are present only with GPU_FEATURES bit 2. Status bit 0 is busy, bit 1 is error,
+and bits 15:8 hold the error code. A descriptor completes after FIFO acceptance;
+frame completion still requires the ordinary presentation handshake. Current
+selected Stage 5 hardware keeps DMA disabled. See [DMA contract](gpu-command-dma.md).
+
+## Optional geometry worker
+
+Geometry offsets are relative to 0x40000100: 0 ABI (0x47570101), 4 status,
+8 received count, 0xc generated count, 0x10..0x3c matrix, 0x40..0x48 reference
+position, 0x50..0x58 chunk origin, 0x60 vertex count and 0x64 control
+(1 start, 2 abort). Inputs are written at 0x70 packed XY and 0x74 Z. Read
+output XYZ at 0x80/0x84/0x88, then read 0x8c outcode to consume that result.
+Status bit 0 is active, bit 1 error, bits 15:8 output count and bits 6:4
+input slots free. 0x90/0x94 report active/stall cycles. The driver retains at
+most four outstanding inputs and aborts on missing progress. Its default
+5,000,000-cycle timeout is an authored 100 ms failure budget at 50 MHz,
+not a measured geometry latency. See [worker architecture](architecture-stage-5.md).

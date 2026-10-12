@@ -1,3 +1,4 @@
+from test_support import linked_test_packages
 """Test shared compilation, explicit capability failures and independent ports."""
 import copy
 import ctypes as c
@@ -119,7 +120,7 @@ void state(player_t *p) {p->x=game_player.x;p->y=game_player.y;p->z=game_player.
     def test_built_examples_and_generic_quake_use_same_contract(self):
         names=('portable-room','portable-custom','portable-quake')
         for name in names:
-            path=ROOT/f'build/{name}-sdram.package.json'
+            path=linked_test_packages()/(name+'-sdram.package.json')
             spec=json.loads(path.read_text());self.assertEqual(spec['app'],'portable')
             self.assertEqual(spec['content']['runtime_abi'],1);target_capabilities.validate(spec['target'])
             self.assertEqual(len(load_game.package_segments(path)),2)

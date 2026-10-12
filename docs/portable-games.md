@@ -256,3 +256,32 @@ The Castle adapter uses this policy for original alpha/transparent/decal roots,
 which previously produced opaque surfaces and ground bands. The exact original
 textures, cutouts and blended shadows remain future work. See
 [render correction evidence](render-correctness-fixes.md).
+
+
+## Audited world and package bounds
+
+Multi-area worlds currently require focal=256 and near_z=257, matching the
+CPU frustum, geometry-worker outcodes and replay projection. The generic resident
+scene explorer retains its broader projection choices. World positions remain
+bounded to +/-16,000, but each collision face additionally needs a signed-32-bit
+arithmetic proof: squared padded bounding-diagonal must not exceed INT32_MAX.
+Padding is height + 2*radius + 16 source units, covering the capsule candidates
+and projection rounding. Incompatible faces fail conversion; the compiler does
+not alter/simplify them. A source adapter may explicitly partition such content,
+or a later collision-kernel upgrade can expand the accepted domain.
+
+The [world IR schema](../schemas/world-ir-v1.schema.json) documents optional
+room/render flags, collision metadata and projection policy. Semantic constraints
+such as index ranges, paired table lengths, spatial query padding and arithmetic
+bounds are enforced by the compiler beyond structural schema validation.
+Package/project schemas now describe typed hardware requirements, cadence,
+interpolation, diagnostics and DMA reservations. Unknown requirements fail
+preflight instead of becoming optional. The packet serializer and direct
+transfer API also require actual Python integers for addresses, excluding floats
+and booleans even when their mathematical value is integral.
+
+A transfer that fails after BEGIN deliberately leaves the CPU held because
+partially uploaded or unverified code must not execute. Reload a complete valid
+package (or use the profiler's recorded baseline restoration). COMMIT occurs
+only after successful readback. Invalid manifests/direct segments are rejected
+before BEGIN. See [audit repair evidence](repository-consistency-fixes.md).

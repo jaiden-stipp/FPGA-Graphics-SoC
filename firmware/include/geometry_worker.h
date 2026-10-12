@@ -6,6 +6,11 @@ typedef struct {int32_t x,y,z;} geometry_point_t;
 #define SOC_FEATURE_GEOMETRY 2u
 #define GW_REG(offset) SOC_REG(0x100u+(offset))
 
+#ifndef GEOMETRY_TIMEOUT_CYCLES
+// Authored failure budget: 100 ms at the configured 50 MHz, not a latency claim.
+#define GEOMETRY_TIMEOUT_CYCLES 5000000u
+#endif
+
 #ifdef SOC_GEOMETRY_OFFLOAD
 // Return 0 on old hardware (no MMIO probe), 1 on complete ordered output,
 // -1 on protocol failure. CPU/cache owns source data and render scratch memory.
@@ -31,8 +36,12 @@ static inline int geometry_transform(const scene_vertex_t *vertices,uint32_t cou
         GW_REG(0x74)=(uint32_t)(int32_t)s->z;++pushed;
     }
     while(completed<count) {
-        uint32_t status;
-        do { status=GW_REG(4);if(status&2u)goto failed; } while(!(status&0xff00u));
+        uint32_t status,waiting_start=SOC_CYCLES;
+        do {
+            status=GW_REG(4);if(status&2u)goto failed;
+            if(!(status&0xff00u) && (!(status&1u) ||
+                (uint32_t)(SOC_CYCLES-waiting_start)>=GEOMETRY_TIMEOUT_CYCLES))goto failed;
+        } while(!(status&0xff00u));
         points[completed].x=(int32_t)GW_REG(0x80);
         points[completed].y=(int32_t)GW_REG(0x84);
         points[completed].z=(int32_t)GW_REG(0x88);

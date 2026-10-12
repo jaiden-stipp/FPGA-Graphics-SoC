@@ -1,3 +1,4 @@
+from test_support import linked_test_packages
 """Exercise independent gameplay, shared runtime and package compatibility."""
 import copy
 import ctypes as c
@@ -145,7 +146,7 @@ unsigned present_fixture(unsigned frame) { game_runtime_present(frame);return co
         with self.assertRaises(ValueError):game_package.validate_content(bad)
 
     def test_both_linked_packages_have_distinct_games_shared_abi(self):
-        paths=[ROOT/'build'/name for name in ('mario-sdram.package.json','quake-sdram.package.json')]
+        paths=[linked_test_packages()/name for name in ('mario-sdram.package.json','quake-sdram.package.json')]
         specs=[json.loads(path.read_text()) for path in paths]
         for path,spec in zip(paths,specs):
             self.assertEqual(spec['content']['runtime_abi'],1);self.assertEqual(len(load_game.package_segments(path)),2)

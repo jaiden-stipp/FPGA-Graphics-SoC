@@ -1,3 +1,5 @@
+from test_support import native_flags
+import shutil,os
 """Actual DMA driver serialization, tails, ownership and host preflight guards."""
 import binascii, ctypes as c, json, random, subprocess, unittest
 from pathlib import Path
@@ -43,9 +45,9 @@ class DmaTests(unittest.TestCase):
  @classmethod
  def setUpClass(cls):
   out=ROOT/'build/dma-native';out.mkdir(parents=True,exist_ok=True)
-  src=out/'harness.c';src.write_text(HARNESS);dll=out/'driver.dll'
+  src=out/'harness.c';src.write_text(HARNESS);dll=out/('driver.dll' if os.name=='nt' else 'driver.so')
   names=('reset','append','finish','data','size','chunks','old_error')
-  subprocess.run(['C:/Program Files/LLVM/bin/clang.exe','-shared','-O1','-ffreestanding','-fno-builtin','-nostdlib','-fuse-ld=lld','-Wl,/noentry',*['-Wl,/export:'+n for n in names],'-I.','-Ifirmware/include','-Ifirmware/generated',str(src),'-o',str(dll)],cwd=ROOT,check=True)
+  subprocess.run([shutil.which('clang'),*native_flags(names),'-I.','-Ifirmware/include','-Ifirmware/generated',str(src),'-o',str(dll)],cwd=ROOT,check=True)
   cls.lib=c.CDLL(str(dll));cls.lib.data.restype=c.POINTER(c.c_uint8)
  def append(self,op,p):
   payload=(c.c_uint8*max(1,len(p)))(*p)
@@ -81,11 +83,11 @@ class DmaTests(unittest.TestCase):
   with self.assertRaises(RuntimeError):load_game.require_hardware(f,{'required_gpu_features':{'command-dma-v1':True}})
   self.assertEqual(f.last,load_game.STATUS)
  def test_buffer_overlap_rejected(self):
-  source=ROOT/'build/mario-castle-sdram-direct-dma-mul.package.json'
-  if not source.exists():self.skipTest('Build DMA package first')
-  spec=json.loads(source.read_text());spec['segments'][1]['address']=0x87fe0004-spec['segments'][1]['bytes']
-  path=source.parent/'dma-overlap-test.package.json';path.write_text(json.dumps(spec))
-  try:
+  import hashlib,tempfile
+  with tempfile.TemporaryDirectory() as tmp:
+   folder=Path(tmp);(folder/'cpu.bin').write_bytes(b'1234');(folder/'asset.bin').write_bytes(b'5678')
+   segments=[{'file':name,'address':base,'bytes':4,'sha256':hashlib.sha256(data).hexdigest()} for name,base,data in [('cpu.bin',0,b'1234'),('asset.bin',0x87fe0000,b'5678')]]
+   spec={'format':'soc-game-package','version':1,'segments':segments,'required_gpu_features':{'command-dma-v1':True},'command_buffers':{'address':0x87fe0000,'bytes':2048,'buffer_bytes':1024,'count':2}}
+   path=folder/'package.json';path.write_text(json.dumps(spec))
    with self.assertRaisesRegex(ValueError,'overlaps command'):load_game.package_segments(path)
-  finally:path.unlink()
 if __name__=='__main__':unittest.main()

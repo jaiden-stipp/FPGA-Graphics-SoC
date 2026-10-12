@@ -69,7 +69,11 @@ module soc_mmio_tb;
         get('h14, 8); put('h14, 8, 1);
         get('h60, 0); get('h14, 8); put('h14, 8, 1);
         get('h5c, 50000000);
+`ifdef SOC_GEOMETRY_WORKER
+        get('h9c, 32'h80000003);
+`else
         get('h9c, 32'h80000001);
+`endif
         get('ha8, 3);
         put('ha8, 0, 0); get('ha8, 3);
         get('h14, 8); put('h14, 8, 1);

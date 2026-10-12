@@ -1,16 +1,117 @@
 {
-  "$schema":"https://json-schema.org/draft/2020-12/schema",
-  "title":"SoC portable game project v1","type":"object",
-  "required":["format","version","name","scene","port"],
-  "properties":{
-    "format":{"const":"soc-game-project"},"version":{"const":1},
-    "name":{"type":"string","pattern":"^[a-z][a-z0-9-]{0,47}$"},
-    "scene":{"type":"string","minLength":1},
-    "port":{"oneOf":[
-      {"type":"object","required":["kind"],"properties":{"kind":{"const":"scene-explorer"}}},
-      {"type":"object","required":["kind","sources"],"properties":{"kind":{"const":"custom"},
-        "sources":{"type":"array","minItems":1,"items":{"type":"string"}},
-        "exports":{"type":"array","items":{"type":"string","pattern":"^[A-Za-z_][A-Za-z0-9_]*$"}}}}
-    ]}
-  }
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SoC portable game project v1",
+  "type": "object",
+  "required": [
+    "format",
+    "version",
+    "name",
+    "scene",
+    "port"
+  ],
+  "properties": {
+    "format": {
+      "const": "soc-game-project"
+    },
+    "version": {
+      "type": "integer",
+      "const": 1
+    },
+    "name": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]{0,47}$"
+    },
+    "scene": {
+      "type": "string",
+      "minLength": 1
+    },
+    "port": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": [
+            "kind"
+          ],
+          "properties": {
+            "kind": {
+              "const": "scene-explorer"
+            },
+            "render_repeat_safe": {
+              "type": "boolean"
+            },
+            "render_interpolation": {
+              "type": "boolean"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "required": [
+            "kind",
+            "sources"
+          ],
+          "properties": {
+            "kind": {
+              "const": "custom"
+            },
+            "sources": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "exports": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "pattern": "^[A-Za-z_][A-Za-z0-9_]*$"
+              }
+            },
+            "render_repeat_safe": {
+              "type": "boolean"
+            },
+            "render_interpolation": {
+              "type": "boolean"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "port": {
+            "required": [
+              "render_interpolation"
+            ],
+            "properties": {
+              "render_interpolation": {
+                "const": true
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "port": {
+            "required": [
+              "render_repeat_safe"
+            ],
+            "properties": {
+              "kind": {
+                "const": "custom"
+              },
+              "render_repeat_safe": {
+                "const": true
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
 }

@@ -246,3 +246,11 @@ conversion or a resource-heavy GPU redesign. Existing measured improvement
 claims and raw historical hashes were not altered. This audit establishes the
 listed reproductions and coverage; it does not certify every game/area, perform
 formal hardware verification, or replace physical VGA/timing acceptance.
+
+
+## Resolution
+
+The original findings above remain the immutable review context. All twelve
+are addressed by the subsequent [repair record](repository-consistency-fixes.md),
+with independent regression cases, fresh generated fixtures and raw logs.
+The running FPGA and historical benchmark captures were preserved.
