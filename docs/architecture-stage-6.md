@@ -1,0 +1,3 @@
+Stage 6 baseline: c4f93877eb1c50b422046af8c1c89b9b1111a178.
+Selected unchanged 50 MHz Stage 5 SOF: e2b1dce3d5814f348e0ca88b38fe49e494e68fddd9e897aeeac4c3a75b7c6e14.
+Experiment: optional repeat-safe render scheduling, retaining 1666667-cycle simulation ticks and the existing four-tick catch-up cap. No RTL, PLL, SDRAM timing or SDC changes. Compare three reset trials per variant, preserve full upload/readback and restore accepted software. Promotion requires scheduler tests, unchanged asset bytes, repeated-render state safety, instruction audit and physical benefit. Timing audit remains scoped to the accepted fit; no frequency claim.
