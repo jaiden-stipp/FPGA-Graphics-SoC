@@ -5,6 +5,7 @@
 #include "game_runtime.h"
 #include "game_port.h"
 #include "portable_data.h"
+#include "render_interpolation.h"
 #ifndef PLAYER_TICK_CYCLES
 #define PLAYER_TICK_CYCLES 1666667u
 #endif
@@ -54,7 +55,11 @@ int main(void) {
 #ifdef SOC_PROFILE
         cpu_profile_mark(1);
 #endif
+#ifdef GAME_RENDER_INTERPOLATION
+        if(game_port_render_interpolated(++frame,game_render_fraction(&clock,SOC_CYCLES))) goto failed;
+#else
         if(game_port_render(++frame)) goto failed;
+#endif
         game_cpu_cycles=SOC_CYCLES-start;
 #ifdef SOC_PROFILE
         cpu_profile_mark(2);

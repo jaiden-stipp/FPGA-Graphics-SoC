@@ -229,5 +229,21 @@
     "pss_seg7_texture_07000800": "slide_rail",
     "pss_seg7_texture_07001000": "banner",
     "texture_castle_light": "light"
+  },
+  "shading": {
+    "mode": "flat-baked-brightness-and-face-light",
+    "direction": [
+      -1,
+      2,
+      -1
+    ],
+    "ambient": 0.65,
+    "levels": [
+      64,
+      128,
+      192,
+      255
+    ],
+    "policy": "Authored offline palette approximation; original baked vertex brightness when lighting is disabled; geometry and collision unchanged. No original texture pixels reconstructed."
   }
 }

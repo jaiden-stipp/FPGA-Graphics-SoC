@@ -59,9 +59,9 @@ int gfx_draw_matrix(uint8_t h,const int16_t m[12]) { render_bytes(&h,1);render_b
 static const scene_vertex_t points[]={{-20,0,400},{0,20,400},{20,0,400}};
 static const scene_triangle_t triangles[]={{0,1,2,1}};
 static const world_chunk_t chunks[]={
-    {{points,triangles,3,1},{0,0,0},{-20,20,0,20,400,400},0},
-    {{points,triangles,3,1},{0,0,0},{-20,20,0,20,400,400},0},
-    {{points,triangles,3,1},{0,0,0},{-20,20,0,20,400,400},0}};
+    {{points,triangles,3,1},{0,0,0},{-20,20,0,20,400,400},0,0},
+    {{points,triangles,3,1},{0,0,0},{-20,20,0,20,400,400},0,0},
+    {{points,triangles,3,1},{0,0,0},{-20,20,0,20,400,400},0,0}};
 static const player_world_t physics={0,0,0,0,0,0,0,8,18,128,12,3,30,-1500};
 static const world_area_t area={chunks,3,&physics,0,0,0,0,0,0,0,0,0,0,0,0,0};
 int cache_fixture(void) {
@@ -76,12 +76,21 @@ int cache_fixture(void) {
     active=1;if(world_draw(&area,&p,v,15))return -5;active=0;
     return errors || cached!=(WORLD_FORCE_DIRECT?0u:1u) || drawn!=(WORLD_FORCE_DIRECT?3u:2u)?-6:0;
 }
+int deferred_fixture(void) {
+    static const world_chunk_t ch={ {points,triangles,3,1},{0,0,0},{-20,20,0,20,400,400},0,WORLD_RENDER_DEFERRED };
+    static const world_area_t a={&ch,1,&physics,0,0,0,0,0,0,0,0,0,0,0,0,0};
+    player_t p={0};int16_t v[12]={256,0,0,0,0,256,0,0,0,0,256,0};
+    active=errors=drawn=cached=0;render_reset();world_select(&a,&p);
+    if(world_prepare(&a,&p,v,15))return -1;
+    active=1;if(world_draw(&a,&p,v,15))return -2;active=0;
+    return errors || drawn || cached || render_size?-3:0;
+}
 int clip_fixture(void) {
     player_t p={0};int16_t v[12]={256,0,0,0,0,256,0,0,0,0,256,0};
     // Chunk translation exceeds int16; a small piece of the original face is
     // nevertheless visible. It must use the clipped direct path, not wrap.
     static const scene_vertex_t large[]={{-10000,0,1000},{10000,0,1000},{0,100,1000}};
-    static const world_chunk_t ch={{large,triangles,3,1},{0,0,0},{-10000,10000,0,100,1000,1000},0};
+    static const world_chunk_t ch={{large,triangles,3,1},{0,0,0},{-10000,10000,0,100,1000,1000},0,0};
     static const world_area_t a={&ch,1,&physics,0,0,0,0,0,0,0,0,0,0,0,0,0};
     active=errors=drawn=cached=0;world_select(&a,&p);
     if(world_prepare(&a,&p,v,15))return -1;
@@ -107,7 +116,7 @@ class WorldTests(unittest.TestCase):
         out=ROOT/'build/world-tests';out.mkdir(parents=True,exist_ok=True)
         stub=out/'stub.c';stub.write_text(STUB)
         dll=out/('world.dll' if os.name=='nt' else 'world.so')
-        exports=['cache_fixture','clip_fixture','contact_fixture','player_bind_query','player_floor','player_step','player_reset','world_transition_find','world_exit_find','castle_floor_event']
+        exports=['deferred_fixture','cache_fixture','clip_fixture','contact_fixture','player_bind_query','player_floor','player_step','player_reset','world_transition_find','world_exit_find','castle_floor_event']
         flags=['-shared','-O1','-ffreestanding','-fno-builtin','-Wall','-Wextra','-Werror','-Ifirmware/include','-Ifirmware/generated']
         flags+=['-fuse-ld=lld','-nostdlib','-Wl,/noentry',*['-Wl,/export:'+n for n in exports]] if os.name=='nt' else ['-fPIC']
         subprocess.run([shutil.which('clang'),*flags,'firmware/src/world.c','firmware/src/player.c',
@@ -187,6 +196,24 @@ int castle_repeat_render_fixture(void) {
     }
     return 0;
 }
+int castle_interpolation_fixture(void) {
+    if(game_port_init())return -1;
+    for(uint32_t tick=0;tick<20;++tick)game_port_update(0);
+    game_port_update(1);
+    uint32_t state=logic_hash();
+    if(game_port_render_interpolated(1,0))return -2;
+    for(uint32_t i=0;i<GAME_ANIMATION_VERTICES;++i)
+        if(posed[i].x!=pose_previous[i].x || posed[i].y!=pose_previous[i].y || posed[i].z!=pose_previous[i].z)return -3;
+    if(game_port_render_interpolated(2,65536))return -4;
+    for(uint32_t i=0;i<GAME_ANIMATION_VERTICES;++i)
+        if(posed[i].x!=pose_current[i].x || posed[i].y!=pose_current[i].y || posed[i].z!=pose_current[i].z)return -5;
+    if(game_port_render_interpolated(3,32768) || state!=logic_hash())return -6;
+    render_reset();if(game_port_render(4))return -7;render_save();
+    render_reset();if(game_port_render_interpolated(5,65536) || !render_same())return -8;
+    int16_t arrival[3]={-1023,0,1152};enter_area(1,arrival,0);camera_update();render_capture(1);
+    if(render_previous_player.x!=player.x || render_previous_player.y!=player.y || render_previous_view.yaw!=view.yaw)return -9;
+    return 0;
+}
 int castle_camera_fixture(void) {
     if(game_port_init())return -1;
     if(view.view[9]>=0)return -2;
@@ -229,13 +256,33 @@ int castle_return_fixture(void) {
 ''')
         route_dll=out/('route.dll' if os.name=='nt' else 'route.so')
         route_flags=['-DWORLD_FORCE_DIRECT=1','-shared','-O1','-ffreestanding','-fno-builtin','-I'+str(out),'-Ifirmware/include','-Ifirmware/generated']
-        route_flags+=['-fuse-ld=lld','-nostdlib','-Wl,/noentry','-Wl,/export:castle_return_fixture','-Wl,/export:castle_camera_fixture','-Wl,/export:castle_repeat_render_fixture'] if os.name=='nt' else ['-fPIC']
+        route_flags+=['-fuse-ld=lld','-nostdlib','-Wl,/noentry','-Wl,/export:castle_return_fixture','-Wl,/export:castle_camera_fixture','-Wl,/export:castle_repeat_render_fixture','-Wl,/export:castle_interpolation_fixture'] if os.name=='nt' else ['-fPIC']
         subprocess.run([shutil.which('clang'),*route_flags,str(route_source),str(stub),
             'firmware/src/world.c','firmware/src/player.c','firmware/src/camera.c','firmware/src/animation.c',
             'firmware/src/game_services.c','firmware/ports/castle_rules.c','-o',str(route_dll)],cwd=ROOT,check=True)
         cls.route=c.CDLL(str(route_dll))
 
     def setUp(self):self.lib.player_bind_query(None,None,0,None,0,4096,None)
+
+    def test_deferred_appearance_emits_no_upload_or_draw_on_both_paths(self):
+        self.assertEqual(self.lib.deferred_fixture(),0)
+        self.assertEqual(self.direct.deferred_fixture(),0)
+
+    def test_render_flags_partition_preserves_all_faces(self):
+        vertices=[[0,0,400],[0,20,400],[20,0,400]]
+        triangles=[[0,1,2,1]]*4
+        result=world_assets.chunks(vertices,triangles,render_flags=[0,1,0,1])
+        self.assertEqual(sorted(i for ch in result for i in ch['source_triangles']),list(range(4)))
+        for ch in result:
+            self.assertTrue(all([0,1,0,1][i]==ch['render_flags'] for i in ch['source_triangles']))
+        self.assertTrue(all(ch['render_flags']==0 for ch in world_assets.chunks(vertices,triangles)))
+
+    def test_world_rejects_malformed_render_flags(self):
+        scene=json.loads((ROOT/'build/castle/world.json').read_text())
+        n=len(scene['areas'][0]['triangles'])
+        for flags in ([0]*(n-1),[2]*n,[True]*n):
+            scene['areas'][0]['triangle_render_flags']=flags
+            with self.assertRaisesRegex(ValueError,'render flags'):world_assets.compile_world(scene)
 
     def test_cache_overflow_keeps_all_visible_faces_and_uploads_between_frames(self):
         self.assertEqual(self.lib.cache_fixture(),0)
@@ -474,6 +521,9 @@ int castle_return_fixture(void) {
 
     def test_castle_update_returns_from_slide_after_original_twenty_ticks(self):
         self.assertEqual(self.route.castle_return_fixture(),0)
+
+    def test_interpolation_endpoints_do_not_mutate_game_and_reset_on_transition(self):
+        self.assertEqual(self.route.castle_interpolation_fixture(),0)
 
     def test_repeated_castle_render_preserves_simulation_and_pose(self):
         self.assertEqual(self.route.castle_repeat_render_fixture(),0)

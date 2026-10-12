@@ -7,4 +7,6 @@
 int game_port_init(void);
 void game_port_update(uint32_t buttons);
 int game_port_render(uint32_t frame);
+// Optional port capability: presentation-only snapshots, alpha in [0,65536].
+int game_port_render_interpolated(uint32_t frame,uint32_t alpha);
 #endif

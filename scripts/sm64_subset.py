@@ -72,7 +72,7 @@ def calls(body, macro_pattern=r'gs\w+'):
         yield name, args
 
 
-def lower(text, profile):
+def lower(text, profile, *, face_attributes=None):
     if set(profile["discard_state"]) - DISCARDABLE_STATE:
         raise ValueError("Profile tries to discard a command outside the supported appearance-state subset")
     text = re.sub(r"/\*.*?\*/|//[^\n]*", "", text, flags=re.S)
@@ -87,6 +87,8 @@ def lower(text, profile):
     # modifying the source model. Terrain profiles retain their existing policy.
     light = [profile.get("initial_light", "default")]
     textured = [False]
+    lighting = [True]
+    vertex_attributes = {}
     light_colors = profile.get("light_colors", {})
 
     def number(value):
@@ -105,6 +107,9 @@ def lower(text, profile):
                 points.append(point)
             face.append(indices[point])
         faces.append((face, material[0] if textured[0] or not light_colors else light[0]))
+        if face_attributes is not None:
+            face_attributes.append({'rgba':[vertex_attributes[s] for s in slots],
+                                    'lighting':lighting[0],'textured':textured[0]})
 
     def visit(name):
         if name in stack:
@@ -126,6 +131,12 @@ def lower(text, profile):
                     raise ValueError(f"Unsupported/unresolved vertex pointer: {args[0]}")
                 coordinates = re.findall(r"\{\{\{\s*([^{}]+)\}", arrays[pointer[1]][1])
                 vertices = [tuple(number(v.strip()) for v in coordinate.split(",")) for coordinate in coordinates]
+                attributes=[]
+                if face_attributes is not None:
+                    records=re.findall(r'\{\{\{\s*[^{}]+\}\s*,\s*[^{}]+,\s*\{[^{}]+\}\s*,\s*\{([^{}]+)\}\s*\}\}',arrays[pointer[1]][1])
+                    attributes=[[number(v.strip()) for v in record.split(',')] for record in records]
+                    if len(attributes)!=len(vertices) or any(len(v)!=4 or any(x< -128 or x>255 for x in v) for v in attributes):
+                        raise ValueError('Vertex attribute records must cover every source vertex')
                 count, slot = number(args[1]), number(args[2])
                 offset = int(pointer[2] or 0)
                 if count <= 0 or slot < 0 or slot + count > 32 or offset + count > len(vertices):
@@ -134,6 +145,7 @@ def lower(text, profile):
                     if len(vertices[offset+i]) != 3:
                         raise ValueError("Vertex must have XYZ coordinates")
                     cache[slot+i] = vertices[offset+i]
+                    if face_attributes is not None:vertex_attributes[slot+i]=[v&255 for v in attributes[offset+i]]
             elif command in {"gsSP1Triangle", "gsSP2Triangles"}:
                 expected = 4 if command == "gsSP1Triangle" else 8
                 if len(args) != expected:
@@ -169,11 +181,16 @@ def lower(text, profile):
                 if match[2] == "l":
                     light[0] = match[1]
                 discarded[command] += 1
-            elif command == "gsSPTexture" and light_colors:
+            elif command == "gsSPTexture":
                 if args[-1] not in {"G_ON", "G_OFF"}:
                     raise ValueError("Actor texture enable must be G_ON/G_OFF")
                 textured[0] = args[-1] == "G_ON"
                 discarded[command] += 1
+            elif command in ('gsSPSetGeometryMode','gsSPClearGeometryMode'):
+                if 'G_LIGHTING' in args[0].split('|') or 'G_LIGHTING' in [v.strip() for v in args[0].split('|')]:
+                    lighting[0]=command=='gsSPSetGeometryMode'
+                if command not in profile['discard_state']:raise ValueError('Geometry mode needs explicit appearance policy')
+                discarded[command]+=1
             elif command in profile["discard_state"]:
                 discarded[command] += 1
             else:

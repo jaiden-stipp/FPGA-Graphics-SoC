@@ -3,7 +3,9 @@
 #include "assets.h"
 #include "player.h"
 #include "camera.h"
-typedef struct {scene_mesh_t mesh;int16_t origin[3],bounds[6];uint32_t room_mask;} world_chunk_t;
+// Deferred appearance remains in the asset package until the target supports it.
+#define WORLD_RENDER_DEFERRED 1u
+typedef struct {scene_mesh_t mesh;int16_t origin[3],bounds[6];uint32_t room_mask,render_flags;} world_chunk_t;
 typedef struct {uint32_t floor_start,floor_count,wall_start,wall_count;} world_cell_t;
 // Source-defined type IDs stay opaque to the shared engine. The game adapter
 // interprets them; geometry and special collision parameters are preserved.

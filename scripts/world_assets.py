@@ -15,7 +15,7 @@ def vertex(p):
         raise ValueError('World positions require three signed, bounded integer source-space coordinates')
     return tuple(p)
 
-def chunks(vertices,triangles,room_masks=None,tight=False,min_faces=0):
+def chunks(vertices,triangles,room_masks=None,tight=False,min_faces=0,render_flags=None):
     """Partition by spatial centroid, retaining every supplied face and index order."""
     if type(min_faces) is not int or not 0<=min_faces<=256:raise ValueError('Minimum chunk faces must be 0..256')
     groups={}
@@ -23,9 +23,9 @@ def chunks(vertices,triangles,room_masks=None,tight=False,min_faces=0):
         if len(t)!=4:raise ValueError('World triangles require three indices and a palette entry')
         for k in t[:3]:game_package.integer(k,0,len(vertices)-1)
         cell=tuple(sum(vertices[k][a] for k in t[:3])//1536 for a in (2,0))
-        groups.setdefault(room_masks[i] if room_masks else 0,[]).append((cell,i,t))
+        groups.setdefault((room_masks[i] if room_masks else 0,render_flags[i] if render_flags else 0),[]).append((cell,i,t))
     result=[]
-    for mask,faces in groups.items():
+    for (mask,flags),faces in groups.items():
         local={};points=[];packed=[];ids=[]
         def emit():
             if not packed:return
@@ -34,7 +34,7 @@ def chunks(vertices,triangles,room_masks=None,tight=False,min_faces=0):
             center=[(a+b)//2 for a,b in zip(low,high)]
             result.append({'vertices':[[p[a]-center[a] for a in range(3)] for p in points],
                 'triangles':packed[:],'source_triangles':ids[:],'origin':center,
-                'bounds':[n for a in range(3) for n in (low[a],high[a])],'room_mask':mask})
+                'bounds':[n for a in range(3) for n in (low[a],high[a])],'room_mask':mask,'render_flags':flags})
         # Tight cell boundaries improve conservative resident admission.
         # Keep the legacy sorted face order, original winding and source IDs;
         # shared positions may be duplicated across chunks, never changed.
@@ -66,7 +66,9 @@ def compile_world(scene,tight_chunks=False,min_chunk_faces=0):
             game_package.integer(t[3],1,len(palette)-1)
         masks=area.get('triangle_room_masks')
         if masks is not None and (len(masks)!=len(area['triangles']) or any(type(m) is not int or not 0<=m<2**32 for m in masks)):raise ValueError('Invalid room mask table')
-        packed=chunks(points,area['triangles'],masks,tight=tight_chunks,min_faces=min_chunk_faces);source_faces+=len(area['triangles'])
+        flags=area.get('triangle_render_flags')
+        if flags is not None and (len(flags)!=len(area['triangles']) or any(type(f) is not int or f not in (0,1) for f in flags)):raise ValueError('Invalid triangle render flags')
+        packed=chunks(points,area['triangles'],masks,tight=tight_chunks,min_faces=min_chunk_faces,render_flags=flags);source_faces+=len(area['triangles'])
         if len(packed)>2048:raise ValueError('Area exceeds the software visibility index capacity of 2048 chunks')
         cp=[vertex(p) for p in area['collision']['vertices']];ct=area['collision']['triangles']
         if not cp or not ct or len(ct)>16384:raise ValueError('Area requires 1..16384 source collision faces')
@@ -125,6 +127,7 @@ def compile_world(scene,tight_chunks=False,min_chunk_faces=0):
     report.update({'module':'world','areas':len(compiled),'stored_world_triangles':source_faces,
         'source_triangles':source_faces+report['actor_triangles'],
         'source_collision_triangles':collision_faces,'stored_world_chunks':sum(len(a['chunks']) for a in compiled),
+        'deferred_appearance_triangles':sum(len(ch['triangles']) for a in compiled for ch in a['chunks'] if ch['render_flags']),
         'collision_floors':sum(len(a['floors']) for a in compiled),'collision_walls':sum(len(a['walls']) for a in compiled),
         'area_reports':[{'id':a['id'],'source_triangles':len(a['triangles']),'chunks':len(a['chunks']),
             'floors':len(a['floors']),'walls':len(a['walls']),'grid_cells':len(a['grid']),
@@ -150,7 +153,7 @@ def header(areas):
             array('scene_vertex_t',f'world_{i}_v{j}',[row(p) for p in ch['vertices']])
             array('scene_triangle_t',f'world_{i}_t{j}',[row(t) for t in ch['triangles']])
         array('world_chunk_t',f'world_{i}_chunks',[
-            '{{world_%d_v%d,world_%d_t%d,%d,%d},%s,%s,%du}'%(i,j,i,j,len(ch['vertices']),len(ch['triangles']),row(ch['origin']),row(ch['bounds']),ch['room_mask']) for j,ch in enumerate(a['chunks'])])
+            '{{world_%d_v%d,world_%d_t%d,%d,%d},%s,%s,%du,%du}'%(i,j,i,j,len(ch['vertices']),len(ch['triangles']),row(ch['origin']),row(ch['bounds']),ch['room_mask'],ch['render_flags']) for j,ch in enumerate(a['chunks'])])
         for typ,suffix,rows in [('collision_floor_t','floors',collision_rows(a['floors'])),
             ('collision_wall_t','walls',collision_rows(a['walls'])),('collision_wall_t','camera',collision_rows(a['surfaces'])),
             ('world_cell_t','cells',[row(c) for c in a['grid']]),

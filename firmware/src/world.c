@@ -200,6 +200,7 @@ int world_prepare(const world_area_t *a,const player_t *p,const int16_t v[12],ui
     }
     for(uint32_t i=0;i<a->chunk_count;++i) {
         const world_chunk_t *c=a->chunks+i;
+        if(c->render_flags&WORLD_RENDER_DEFERRED)continue;
         if(!visible(c,p,v))continue;
         visible_chunks[world_visible_chunks++]=(uint16_t)i;
         uint32_t found=16,free=16;int16_t m[12];
@@ -246,6 +247,12 @@ static int32_t interpolate(int32_t a,int32_t b,int32_t t) {
 }
 static clip_point_t intersection(clip_point_t a,clip_point_t b,int32_t da,int32_t db) {
     FINE_START(intersection_start);
+    // Adjacent faces traverse their shared edge in opposite directions.
+    // Quantize the fraction from a canonical endpoint so both emit one point.
+    if(a.x>b.x || (a.x==b.x && (a.y>b.y || (a.y==b.y && a.z>b.z)))) {
+        clip_point_t point=a;a=b;b=point;
+        int32_t distance=da;da=db;db=distance;
+    }
     uint32_t na=da<0?0u-(uint32_t)da:(uint32_t)da;
     uint32_t nb=db<0?0u-(uint32_t)db:(uint32_t)db;
     int32_t t=(int32_t)fraction(na,na+nb);clip_point_t q;
@@ -300,6 +307,7 @@ int world_draw(const world_area_t *a,const player_t *p,const int16_t v[12],uint3
     for(uint32_t j=0;j<12;++j)if(v[j]!=prepared_view[j])same=0;
     for(uint32_t i=0;i<world_visible_chunks;++i) {
         const world_chunk_t *c=a->chunks+visible_chunks[i];
+        if(c->render_flags&WORLD_RENDER_DEFERRED)continue;
         uint32_t handle=16;
         for(uint32_t h=reserved;h<16;++h)if(cache[h]==c)handle=h;
         if(!WORLD_FORCE_DIRECT && same && handle<16 && prepared_safe[handle]) {

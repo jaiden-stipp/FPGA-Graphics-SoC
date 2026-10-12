@@ -213,7 +213,21 @@ def flat_policy(text):
         'texture_colors':{name:base[name] for name in sorted(textures|{'default'})},
         'opaque_environment':True,'alpha_as_solid':True,'flat_texture_block':True}
 
-def geometry(source,level,area,palette):
+def face_color(points,face,attributes,base,shading):
+    """Declared flat approximation: retain source baked brightness and face light."""
+    a,b,c=(points[i-1] for i in face)
+    u=[b[k]-a[k] for k in range(3)];v=[c[k]-a[k] for k in range(3)]
+    normal=[u[1]*v[2]-u[2]*v[1],u[2]*v[0]-u[0]*v[2],u[0]*v[1]-u[1]*v[0]]
+    direction=shading['direction'];length=math.sqrt(sum(n*n for n in normal)*sum(n*n for n in direction))
+    diffuse=max(0,sum(n*d for n,d in zip(normal,direction))/length) if length else 0
+    brightness=shading['ambient']+(1-shading['ambient'])*diffuse
+    if not attributes['lighting']:
+        brightness*=sum(sum(rgba[:3]) for rgba in attributes['rgba'])/(9*255)
+    level=min(shading['levels'],key=lambda v:abs(v-255*brightness))
+    rgb=base if attributes['textured'] else (255,255,255)
+    return tuple((c*level+127)//255 for c in rgb)
+
+def geometry(source,level,area,palette,shade=True):
     directory=source/'levels'/level/'areas'/str(area)
     geo=clean((directory/'geo.inc.c').read_text())
     # Branches retain source identities. All room geometry is stored; runtime visibility is separate.
@@ -229,34 +243,41 @@ def geometry(source,level,area,palette):
     painting=source/'levels'/level/'painting.inc.c'
     if painting.is_file():files.append(painting)
     text=region('\n'.join(p.read_text().replace('#include "game/paintings.h"','') if p==painting else p.read_text() for p in files));policy=flat_policy(text)
-    vertices=[];triangles=[];root_reports=[];triangle_rooms=[]
+    vertices=[];triangles=[];root_reports=[];triangle_rooms=[];triangle_render_flags=[]
+    shading=json.loads((ROOT/'profiles/sm64-castle-colors.json').read_text())['shading'] if shade else None
     for layer,root in roots:
-        p,fs,commands,discarded=sm64_subset.lower(text,{**policy,'display_list':root})
+        attributes=[]
+        p,fs,commands,discarded=sm64_subset.lower(text,{**policy,'display_list':root},face_attributes=attributes if shade else None)
         offset=len(vertices);vertices.extend([list(v) for v in p])
-        for f,material in fs:
+        for face_index,(f,material) in enumerate(fs):
             if material not in policy['texture_colors']:raise ValueError('Unmapped rendered castle material '+material)
             rgb=tuple(round(v*255) for v in policy['texture_colors'][material])
+            if shade:rgb=face_color(p,f,attributes[face_index],rgb,shading)
             if rgb not in palette:
                 if len(palette)>=256:raise ValueError('Explicit castle flat palette exceeds target capacity')
                 palette.append(rgb)
             triangles.append([*(i-1+offset for i in f),palette.index(rgb)])
             triangle_rooms.append(masks.get((layer,root),0))
-        root_reports.append({'root':root,'layer':layer,'triangles':len(fs),'commands':commands,'discarded_appearance':discarded})
-    return vertices,triangles,{'geo_sha256':digest(directory/'geo.inc.c'),'triangle_room_masks':triangle_rooms,
+            triangle_render_flags.append(1 if shade and any(mode in layer for mode in ('ALPHA','TRANSPARENT','DECAL')) else 0)
+        root_reports.append({'root':root,'layer':layer,'triangles':len(fs),'commands':commands,'discarded_appearance':discarded,
+            'deferred_appearance':bool(shade and any(mode in layer for mode in ('ALPHA','TRANSPARENT','DECAL')))})
+    return vertices,triangles,{'geo_sha256':digest(directory/'geo.inc.c'),'triangle_room_masks':triangle_rooms,'triangle_render_flags':triangle_render_flags,
         'room_branches':branches,
         'sources':[{'file':p.relative_to(source).as_posix(),'sha256':digest(p)} for p in files],
         'roots':root_reports,'flat_texture_colors':policy['texture_colors'],
         'material_profile':{'file':'profiles/sm64-castle-colors.json','sha256':digest(ROOT/'profiles/sm64-castle-colors.json')},
-        'appearance_policy':'declared-flat-colors; texture alpha/decal appearance rendered solid; geometry retained'}
+        'shading':shading,
+        'appearance_policy':'declared flat colors with baked brightness and face lighting; alpha/decal faces retained but drawing deferred until texture/alpha/decal support' if shade else 'declared-flat-colors; texture alpha/decal appearance rendered solid; geometry retained'}
 
-def export(destination):
+def export(destination,shade=True):
     source=sm64_subset.fetch();destination.mkdir(parents=True,exist_ok=True);(ROOT/'build/castle').mkdir(parents=True,exist_ok=True)
     palette=[(100,170,230)];palette,actors,animation=actor(source,palette);areas=[];types=surface_types(source)
     for index,(level,number,name) in enumerate(AREAS):
-        vertices,triangles,provenance=geometry(source,level,number,palette)
+        vertices,triangles,provenance=geometry(source,level,number,palette,shade)
         area_dir=source/'levels'/level/'areas'/str(number)
         areas.append({'id':name,'vertices':vertices,'triangles':triangles,'spawn':SPAWNS[index],
             'triangle_room_masks':provenance.pop('triangle_room_masks'),
+            'triangle_render_flags':provenance.pop('triangle_render_flags'),
             'collision':collision(area_dir/'collision.inc.c',area_dir/'room.inc.c',types),
             'provenance':provenance,'source_level':level,'source_area':number})
     target={'id':'de2-115-fixed-v2','runtime_abi':1,'required_features':['indexed-flat-rgb','triangle-collision','custom-rv32i-gameplay','mouse-look-v1']}
@@ -286,7 +307,7 @@ def export(destination):
         '\n'.join('#define CASTLE_'+name+' '+str(value)+'u' for name,value in sorted(types.items()))+'\n#endif\n')
     path=destination/'world.json';path.write_text(json.dumps(world,indent=2)+'\n')
     project={'format':'soc-game-project','version':1,'name':'mario-castle','scene':'world.json',
-        'port':{'kind':'custom','render_repeat_safe':True,'sources':[os.path.relpath(ROOT/'firmware/ports/castle.c',destination).replace('\\','/'),
+        'port':{'kind':'custom','render_repeat_safe':True,'render_interpolation':True,'sources':[os.path.relpath(ROOT/'firmware/ports/castle.c',destination).replace('\\','/'),
             os.path.relpath(ROOT/'firmware/ports/castle_rules.c',destination).replace('\\','/'),
             os.path.relpath(ROOT/'firmware/src/world.c',destination).replace('\\','/'),
             os.path.relpath(ROOT/'firmware/src/camera.c',destination).replace('\\','/'),
@@ -300,5 +321,6 @@ def export(destination):
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--out',type=Path,default=ROOT/'build/castle')
-    args=parser.parse_args();export(args.out.resolve())
+    parser.add_argument('--legacy-flat-colors',action='store_true',help='Reproduce the Stage 6 material baseline without baked/face shading')
+    args=parser.parse_args();export(args.out.resolve(),not args.legacy_flat_colors)
 if __name__=='__main__':main()
