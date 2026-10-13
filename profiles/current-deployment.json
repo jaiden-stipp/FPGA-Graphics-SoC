@@ -10,6 +10,6 @@
     "gpu_features": 3,
     "input_abi": 1229848833
   },
-  "package": "build/mario-castle-audit-fixed-sdram-direct-packed-mul-geometry-uncapped-interpolated.package.json",
-  "firmware_command": "scripts/run.ps1 soc.py portable-game --project build/castle-shaded/audit-fixed.project.json --terrain-direct --packed-gfx --integer-mul --geometry-offload --uncapped-render --interpolate-render"
+  "package": "build/mario-castle-gameplay-sdram-direct-packed-mul-geometry-uncapped-interpolated.package.json",
+  "firmware_command": "scripts/run.ps1 soc.py portable-game --project build/castle-gameplay/game.project.json --terrain-direct --packed-gfx --integer-mul --geometry-offload --uncapped-render --interpolate-render"
 }

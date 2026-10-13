@@ -1,0 +1,50 @@
+{
+  "timestamp_utc": "2026-10-13T11:44:55.305728+00:00",
+  "package": "build/mario-castle-gameplay-sdram-direct-packed-mul-geometry-uncapped-interpolated.package.json",
+  "segments": [
+    {
+      "file": "mario-castle-gameplay-sdram-direct-packed-mul-geometry-uncapped-interpolated.bin",
+      "address": 0,
+      "bytes": 41488,
+      "sha256": "a8599a94746d39517ada26ec96dbe19b6fda129351cebf620f72aaeb264f4db9"
+    },
+    {
+      "file": "mario-castle-gameplay-sdram-direct-packed-mul-geometry-uncapped-interpolated.assets.bin",
+      "address": 2147483648,
+      "bytes": 887500,
+      "sha256": "cffbbd3c39daeda6d07c9b43d5219902f830949be791e31b10b2b45ed832f6eb"
+    }
+  ],
+  "transfer": "Loader completed full CPU and SDRAM readback verification, then COMMIT",
+  "status_start": {
+    "initialized": true,
+    "held": false,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 1833,
+    "refresh_count": 3122399144,
+    "input_abi": 1229848833,
+    "cpu_features": 2147483651,
+    "gpu_features": 3
+  },
+  "status_end": {
+    "initialized": true,
+    "held": false,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 1893,
+    "refresh_count": 3122535071,
+    "input_abi": 1229848833,
+    "cpu_features": 2147483651,
+    "gpu_features": 3
+  },
+  "sample_seconds": 1.0150000000139698,
+  "frame_counter_delta": 60,
+  "scope": "Short frame-production check; not mission traversal or sustained FPS measurement"
+}

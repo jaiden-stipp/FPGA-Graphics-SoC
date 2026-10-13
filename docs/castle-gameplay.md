@@ -6,8 +6,14 @@ collision are available: grounds, ground-floor interior, upper-floor interior,
 basement, and Peach's Secret Slide. Existing area transitions remain in use.
 
 The prior implementation and deployment are preserved by commit `fcf1b8c`.
-No CPU/GPU/SDRAM/Ethernet RTL, clocks, fitted hardware, or active deployment
-selection is changed by this implementation.
+No CPU/GPU/SDRAM/Ethernet RTL, clocks, or fitted hardware is changed by this
+implementation. The local-code gameplay package was deployed on 2026-10-13
+and is now selected in `profiles/current-deployment.json`. CPU and SDRAM
+segments passed full readback verification before release. A short status
+sample advanced the frame counter from 1,833 to 1,893 over 1.015 seconds;
+this confirms frame production, not mission completion or sustained FPS.
+See `benchmarks/castle-gameplay-001/deployment-2026-10-13.json` for the record.
+The earlier milestone smoke-test/restoration evidence remains historical.
 
 ## Gameplay implemented
 
