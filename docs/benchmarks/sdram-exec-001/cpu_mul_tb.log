@@ -1,0 +1,62 @@
+Reading C:/intelFPGA/18.1/modelsim_ase/tcl/vsim/pref.tcl
+
+# 10.5b
+
+# vsim -c -L altera_mf -lib build\sdram-exec\final-lib cpu_mul_tb -do "onerror {quit -code 1}; run -all; quit -code 0" 
+# Start time: 21:52:12 on Oct 12,2026
+# Loading sv_std.std
+# Loading build\sdram-exec\final-lib.cpu_mul_tb
+# Loading build\sdram-exec\final-lib.pipeline_pkg
+# Loading build\sdram-exec\final-lib.RV32I_SoC_sv_unit
+# Loading build\sdram-exec\final-lib.RV32I_SoC
+# Loading build\sdram-exec\final-lib.soc_cpu_counters
+# Loading build\sdram-exec\final-lib.soc_PC_IF
+# Loading build\sdram-exec\final-lib.soc_IF_ID
+# Loading build\sdram-exec\final-lib.soc_ControlUnit_sv_unit
+# Loading build\sdram-exec\final-lib.soc_ControlUnit
+# Loading build\sdram-exec\final-lib.soc_RegFile
+# Loading build\sdram-exec\final-lib.ImmGen_sv_unit
+# Loading build\sdram-exec\final-lib.ImmGen
+# Loading build\sdram-exec\final-lib.HazardUnit
+# Loading build\sdram-exec\final-lib.soc_ID_EX_sv_unit
+# Loading build\sdram-exec\final-lib.soc_ID_EX
+# Loading build\sdram-exec\final-lib.ForwardMux
+# Loading build\sdram-exec\final-lib.soc_ALU
+# Loading build\sdram-exec\final-lib.ALU_sv_unit
+# Loading build\sdram-exec\final-lib.ALU
+# Loading build\sdram-exec\final-lib.BranchUnit
+# Loading build\sdram-exec\final-lib.soc_EX_MEM_sv_unit
+# Loading build\sdram-exec\final-lib.soc_EX_MEM
+# Loading build\sdram-exec\final-lib.soc_MEM_WB_sv_unit
+# Loading build\sdram-exec\final-lib.soc_MEM_WB
+# Loading build\sdram-exec\final-lib.ResultMux
+# Loading build\sdram-exec\final-lib.soc_PipelineAssertions
+# Loading build\sdram-exec\final-lib.ForwardingUnit
+# Loading build\sdram-exec\final-lib.Monitor
+# ** Warning: (vsim-3017) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_mul_tb.sv(14): [TFMPC] - Too few port connections. Expected 31, found 14.
+#    Time: 0 ps  Iteration: 0  Instance: /cpu_mul_tb/cpu File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/RV32I_SoC.sv
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_mul_tb.sv(14): [TFMPC] - Missing connection for port 'trace_instruction'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_mul_tb.sv(14): [TFMPC] - Missing connection for port 'trace_mem_read'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_mul_tb.sv(14): [TFMPC] - Missing connection for port 'trace_mem_write'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_mul_tb.sv(14): [TFMPC] - Missing connection for port 'trace_mem_address'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_mul_tb.sv(14): [TFMPC] - Missing connection for port 'trace_mem_data'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_mul_tb.sv(14): [TFMPC] - Missing connection for port 'trace_mem_funct3'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_mul_tb.sv(14): [TFMPC] - Missing connection for port 'trace_branch'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_mul_tb.sv(14): [TFMPC] - Missing connection for port 'trace_jump'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_mul_tb.sv(14): [TFMPC] - Missing connection for port 'trace_jalr'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_mul_tb.sv(14): [TFMPC] - Missing connection for port 'commit_valid'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_mul_tb.sv(14): [TFMPC] - Missing connection for port 'soc_pc'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_mul_tb.sv(14): [TFMPC] - Missing connection for port 'soc_addr'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_mul_tb.sv(14): [TFMPC] - Missing connection for port 'soc_wdata'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_mul_tb.sv(14): [TFMPC] - Missing connection for port 'soc_fetch_next_pc'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_mul_tb.sv(14): [TFMPC] - Missing connection for port 'soc_funct3'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_mul_tb.sv(14): [TFMPC] - Missing connection for port 'soc_read_en'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_mul_tb.sv(14): [TFMPC] - Missing connection for port 'soc_write_en'.
+# onerror {quit -code 1}
+#  Warning: onerror command for use within macro
+#  run -all
+# PASS cpu_mul_tb: 134 operand pairs, forwarding, load-use, x0, branch flush, unsupported M, 16 freeze cycles
+# ** Note: $finish    : C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/cpu_mul_tb.sv(73)
+#    Time: 9766 ns  Iteration: 0  Instance: /cpu_mul_tb
+# End time: 21:52:12 on Oct 12,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 18

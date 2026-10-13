@@ -569,3 +569,42 @@ gated packages. This does not establish SM64 engine fit, soft-float cost or FPS.
 [Characterization and limitations](sdram-execution-characterization.md),
 [raw results](benchmarks/exec-sdram-001/results.json),
 [validation](benchmarks/exec-sdram-001/validation.json).
+
+## SDRAM-EXEC-001 — local boot and cached external execution
+
+Baseline `f59d74a` preserves the exact accepted SOF and Mario package before the
+implementation. The opt-in backend adds a 4 KiB instruction cache with registered
+tag lookup/sequential hint, transaction-owned SDRAM arbitration, held MEM
+completion, gated peripheral side effects, loader invalidation and immutable-code
+protection. Linker/startup/package contracts separate local boot/hot code,
+external executable/constants, initialized state, BSS and assets. GPU rendering,
+game logic/models, clock and board timing constraints retain their prior scope.
+
+The final 50 MHz fit uses 30,221 versus 26,557 logic elements (+3,664), 370 versus
+366 M9Ks (+4), 2,692,460 versus 2,659,688 logical memory bits (+32,772), the same
+92 DSP9 elements and two PLLs. Worst setup/hold slacks are +0.181/+0.084 ns;
+all inherited constraint-coverage gates pass. Three earlier negative-slack fits
+were rejected and never programmed. Their raw reports are retained.
+
+Physical verification executed a function beyond the prior 64 KiB code range in
+a 65,668-byte diagnostic image that includes deliberate padding. The diagnostic
+checked local/external initialization, signed subword results and expected
+checksum, and recorded 2,552 configured CPU cycles, 1,804 I-cache hits, 17 misses
+and 136 fill words. These are workload-specific, separately sampled counters.
+
+Three consecutive three-second idle samples, after one load per placement, gave
+60/60/60 FPS on accepted hardware/local code, 60/60/60 on candidate hardware/the
+same local code, and 30/30/30 for SDRAM code/state Mario. This is an execution-
+capacity upgrade with an observed runtime cost, not a current-game speedup.
+These samples are not independent reset trials or controlled movement routes.
+The original accepted image/package was restored with full readback and verified
+frame progression from 2 to 62. The default deployment selection is unchanged.
+
+The final host regression suite passes 177 checks across 22 suites. Nine directed
+core/cache/loader tests, the executable-capability UDP variant and full two-frame
+Mario rendering pass. Original SM64 behavior and floating-point support remain
+separate work. Resume-safe claim: implemented and board-validated cached SDRAM
+instruction execution with local boot, coherent reload, reproducible linker/
+package tooling and measured capacity/resource/performance tradeoffs.
+[Implementation and measurements](sdram-execution.md),
+[raw result summary](benchmarks/sdram-exec-001/results-summary.json).

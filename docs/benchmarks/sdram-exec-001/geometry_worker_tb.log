@@ -1,0 +1,17 @@
+Reading C:/intelFPGA/18.1/modelsim_ase/tcl/vsim/pref.tcl
+
+# 10.5b
+
+# vsim -c -L altera_mf -lib build\sdram-exec\final-lib geometry_worker_tb -do "onerror {quit -code 1}; run -all; quit -code 0" 
+# Start time: 21:52:14 on Oct 12,2026
+# Loading sv_std.std
+# Loading build\sdram-exec\final-lib.geometry_worker_tb
+# Loading build\sdram-exec\final-lib.geometry_worker
+# onerror {quit -code 1}
+#  Warning: onerror command for use within macro
+#  run -all
+# PASS geometry_worker_tb vertices=1152 descriptors=10
+# ** Note: $finish    : C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/geometry_worker_tb.sv(82)
+#    Time: 389920 ns  Iteration: 1  Instance: /geometry_worker_tb
+# End time: 21:52:14 on Oct 12,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0

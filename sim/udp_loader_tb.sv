@@ -1,9 +1,9 @@
 `timescale 1ns/1ps
-module udp_loader_tb;
+module udp_loader_tb #(parameter SDRAM_EXEC_SUPPORTED=0);
 `ifdef SOC_GEOMETRY_WORKER
-    localparam EXPECTED_CPU_FEATURES=32'h80000003;
+    localparam EXPECTED_CPU_FEATURES=32'h80000003 | (SDRAM_EXEC_SUPPORTED?32'h4:32'h0);
 `else
-    localparam EXPECTED_CPU_FEATURES=32'h80000001;
+    localparam EXPECTED_CPU_FEATURES=32'h80000001 | (SDRAM_EXEC_SUPPORTED?32'h4:32'h0);
 `endif
     logic clk=0,rx_clk=0,tx_clk=0,reset=1;
     always #10 clk=~clk;always #20 rx_clk=~rx_clk;always #19 tx_clk=~tx_clk;
@@ -14,7 +14,7 @@ module udp_loader_tb;
     logic active,packet_seen,network_error;
     wire DRAM_CLK,DRAM_CKE,DRAM_CS_N,DRAM_RAS_N,DRAM_CAS_N,DRAM_WE_N;
     wire [12:0] DRAM_ADDR;wire [1:0] DRAM_BA;wire [3:0] DRAM_DQM;wire [31:0] DRAM_DQ;
-    udp_controls #(.REQUIRE_LOAD(1)) controls (
+    udp_controls #(.REQUIRE_LOAD(1),.SDRAM_EXEC_SUPPORTED(SDRAM_EXEC_SUPPORTED)) controls (
         .clk(clk),.reset(reset),.rx_clk(rx_clk),.tx_clk(tx_clk),.rx_data(rx_data),.rx_dv(rx_dv),.rx_er(rx_er),
         .tx_data(tx_data),.tx_en(tx_en),.tx_er(tx_er),.buttons(buttons),.active(active),
         .packet_seen(packet_seen),.network_error(network_error),
@@ -22,7 +22,7 @@ module udp_loader_tb;
         .load_addr(load_addr),.load_wdata(load_wdata),.load_rdata(load_rdata),
         .sdram_initialized(initialized),.scratch(scratch),.refresh_count(refresh_count)
     );
-    soc_memory #(.HEX_FILE(""),.ENABLE_SDRAM(1)) memory (
+    soc_memory #(.HEX_FILE(""),.ENABLE_SDRAM(1),.ENABLE_SDRAM_EXEC(SDRAM_EXEC_SUPPORTED)) memory (
         .clk(clk),.reset(reset||load_hold),.sdram_reset(reset),.pc(32'b0),.addr(32'b0),.wdata(32'b0),
         .funct3(3'b010),.read_en(1'b0),.write_en(1'b0),
         .load_hold(load_hold),.load_valid(load_valid),.load_write(load_write),.load_ready(load_ready),

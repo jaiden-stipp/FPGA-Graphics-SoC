@@ -3,6 +3,7 @@
 // BEGIN/WRITE/READ/COMMIT/STATUS = 1/2/3/4/5. Count is low nibble, 1..3.
 module udp_memory_loader #(
     parameter bit REQUIRE_LOAD = 0,
+    parameter SDRAM_EXEC_SUPPORTED=0,
     parameter logic[31:0] GPU_FEATURES=3,
 `ifdef SOC_GEOMETRY_WORKER
     parameter logic[31:0] CPU_FEATURES=32'h80000003
@@ -52,7 +53,7 @@ module udp_memory_loader #(
     // Final two reserved words now mirror soc_mmio CPU/GPU features for
     // read-only package preflight while the CPU runs; older images report zero.
     assign reply_statistics = {32'h53440100,status,results[0],results[1],results[2],
-        {30'b0,initialized,hold_cpu},scratch,refresh_count,base,{28'b0,count},32'h494e0101,CPU_FEATURES,GPU_FEATURES};
+        {30'b0,initialized,hold_cpu},scratch,refresh_count,base,{28'b0,count},32'h494e0101,(CPU_FEATURES | (SDRAM_EXEC_SUPPORTED?32'h4:32'h0)),GPU_FEATURES};
     always_ff @(posedge clk or posedge reset) begin
         if (reset) begin
             state <= IDLE; hold_cpu <= REQUIRE_LOAD; reply_valid <= 0;
@@ -83,7 +84,9 @@ module udp_memory_loader #(
                 end
                 SETTLE: if (settle != 0) settle <= settle-1'b1; else state <= REPLY;
                 ISSUE: if (bus_ready) begin
-                    results[index] <= bus_rdata;
+                    // WRITE acknowledgements do not consume the RAM collision
+                    // forwarding path. Readback is a separate READ transaction.
+                    results[index] <= operation==3 ? bus_rdata : 32'b0;
                     if (index+1 >= count) state <= REPLY;
                     else begin index <= index+1'b1; state <= GAP; end
                 end

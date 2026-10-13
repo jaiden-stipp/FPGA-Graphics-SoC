@@ -1,0 +1,78 @@
+{
+  "result": "success",
+  "baseline": {
+    "logic_elements": 26557,
+    "memory_bits": 2659688,
+    "dsp9": 92,
+    "plls": 2,
+    "m9k": 366
+  },
+  "candidate": {
+    "logic_elements": 30221,
+    "memory_bits": 2692460,
+    "dsp9": 92,
+    "plls": 2,
+    "m9k": 370
+  },
+  "difference": {
+    "logic_elements": 3664,
+    "memory_bits": 32772,
+    "dsp9": 0,
+    "plls": 0,
+    "m9k": 4
+  },
+  "multicorner_slack_ns": {
+    "setup": 0.181,
+    "hold": 0.084,
+    "recovery": 3.232,
+    "removal": 3.814,
+    "minimum_pulse_width": 9.194
+  },
+  "unconstrained_setup_hold": {
+    "Clocks": [
+      0,
+      0
+    ],
+    "Input Ports": [
+      0,
+      0
+    ],
+    "Input Port Paths": [
+      0,
+      0
+    ],
+    "Output Ports": [
+      0,
+      0
+    ],
+    "Output Port Paths": [
+      0,
+      0
+    ]
+  },
+  "idle_fps_medians": {
+    "baseline_samples": 60.0,
+    "candidate_local_samples": 60.0,
+    "candidate_exec_samples": 30.0
+  },
+  "physical_diagnostic": {
+    "execution_cycles": 2552,
+    "icache_abi": 1229127937,
+    "icache_hits": 1804,
+    "icache_misses": 17,
+    "icache_fill_words": 136,
+    "cpu_features": 2147483655,
+    "checksum": 128,
+    "subword_result": 2882371875,
+    "local_initialized": 2309737967,
+    "success": 1592549389
+  },
+  "active_final_deployment": "accepted baseline restored",
+  "candidate_sof": {
+    "file": "build\\quartus-sdram-exec\\SdramExecSoC.sof",
+    "sha256": "140fa00e9d66def31e6897be29bc927469de72a9a051481186f7d7b2bc30be15",
+    "cpu_features": 2147483655,
+    "gpu_features": 3
+  },
+  "scope": "Three consecutive 3-second idle frame-progress samples per placement, one load each; not independent reset trials, a scripted movement route, or SM64 engine performance"
+}

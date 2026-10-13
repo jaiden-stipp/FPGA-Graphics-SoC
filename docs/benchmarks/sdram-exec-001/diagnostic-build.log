@@ -1,0 +1,2 @@
+PASS RV32I C subset: sdram_exec_test.c; report build/subset/sdram_exec_test.json
+Diagnostic local/external segments: [(0, 148), (2147483648, 65668), (2164260864, 4)]

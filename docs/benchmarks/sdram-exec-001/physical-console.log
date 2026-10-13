@@ -1,0 +1,495 @@
+Loading accepted baseline for idle samples
+Uploading mario-castle-audit-fixed-sdram-direct-packed-mul-geometry-uncapped-interpolated.bin: 29,176 bytes at 0x00000000
+Verifying mario-castle-audit-fixed-sdram-direct-packed-mul-geometry-uncapped-interpolated.bin: 29,176 bytes at 0x00000000
+Uploading mario-castle-audit-fixed-sdram-direct-packed-mul-geometry-uncapped-interpolated.assets.bin: 883,160 bytes at 0x80000000
+  317,760/883,160 bytes
+  640,572/883,160 bytes
+Verifying mario-castle-audit-fixed-sdram-direct-packed-mul-geometry-uncapped-interpolated.assets.bin: 883,160 bytes at 0x80000000
+  320,436/883,160 bytes
+  638,520/883,160 bytes
+Readback verified; CPU released.
+Programming timing-approved execution candidate
+Uploading sdram-exec-test.bin: 148 bytes at 0x00000000
+Verifying sdram-exec-test.bin: 148 bytes at 0x00000000
+Uploading sdram-exec-test.code.bin: 65,668 bytes at 0x80000000
+Verifying sdram-exec-test.code.bin: 65,668 bytes at 0x80000000
+Uploading sdram-exec-test.state.bin: 4 bytes at 0x81000000
+Verifying sdram-exec-test.state.bin: 4 bytes at 0x81000000
+Readback verified; CPU released.
+Loading same local-code game on new hardware
+Uploading mario-castle-audit-fixed-sdram-direct-packed-mul-geometry-uncapped-interpolated.bin: 29,176 bytes at 0x00000000
+Verifying mario-castle-audit-fixed-sdram-direct-packed-mul-geometry-uncapped-interpolated.bin: 29,176 bytes at 0x00000000
+Uploading mario-castle-audit-fixed-sdram-direct-packed-mul-geometry-uncapped-interpolated.assets.bin: 883,160 bytes at 0x80000000
+  315,996/883,160 bytes
+  635,664/883,160 bytes
+Verifying mario-castle-audit-fixed-sdram-direct-packed-mul-geometry-uncapped-interpolated.assets.bin: 883,160 bytes at 0x80000000
+  320,820/883,160 bytes
+  639,024/883,160 bytes
+Readback verified; CPU released.
+Loading local boot + SDRAM-code game
+Uploading mario-castle-audit-fixed-sdram-direct-packed-mul-geometry-uncapped-interpolated-exec.bin: 1,900 bytes at 0x00000000
+Verifying mario-castle-audit-fixed-sdram-direct-packed-mul-geometry-uncapped-interpolated-exec.bin: 1,900 bytes at 0x00000000
+Uploading mario-castle-audit-fixed-sdram-direct-packed-mul-geometry-uncapped-interpolated-exec.code.bin: 27,340 bytes at 0x80000000
+Verifying mario-castle-audit-fixed-sdram-direct-packed-mul-geometry-uncapped-interpolated-exec.code.bin: 27,340 bytes at 0x80000000
+Uploading mario-castle-audit-fixed-sdram-direct-packed-mul-geometry-uncapped-interpolated-exec.state.bin: 12 bytes at 0x81000000
+Verifying mario-castle-audit-fixed-sdram-direct-packed-mul-geometry-uncapped-interpolated-exec.state.bin: 12 bytes at 0x81000000
+Uploading mario-castle-audit-fixed-sdram-direct-packed-mul-geometry-uncapped-interpolated-exec.assets.bin: 883,160 bytes at 0x81002560
+  313,488/883,160 bytes
+  621,804/883,160 bytes
+Verifying mario-castle-audit-fixed-sdram-direct-packed-mul-geometry-uncapped-interpolated-exec.assets.bin: 883,160 bytes at 0x81002560
+  318,480/883,160 bytes
+  635,208/883,160 bytes
+Readback verified; CPU released.
+Restoring accepted hardware and verified Mario package
+Uploading mario-castle-audit-fixed-sdram-direct-packed-mul-geometry-uncapped-interpolated.bin: 29,176 bytes at 0x00000000
+Verifying mario-castle-audit-fixed-sdram-direct-packed-mul-geometry-uncapped-interpolated.bin: 29,176 bytes at 0x00000000
+Uploading mario-castle-audit-fixed-sdram-direct-packed-mul-geometry-uncapped-interpolated.assets.bin: 883,160 bytes at 0x80000000
+  314,076/883,160 bytes
+  629,616/883,160 bytes
+Verifying mario-castle-audit-fixed-sdram-direct-packed-mul-geometry-uncapped-interpolated.assets.bin: 883,160 bytes at 0x80000000
+  321,600/883,160 bytes
+  644,424/883,160 bytes
+Readback verified; CPU released.
+{
+  "started_utc": "2026-10-13T05:17:46.636755+00:00",
+  "baseline": {
+    "format": "soc-deployment-selection",
+    "version": 1,
+    "board": "de2-115",
+    "hardware": {
+      "file": "build/quartus-arch-stage5-worker/ArchStage5SoC.sof",
+      "sha256": "e2b1dce3d5814f348e0ca88b38fe49e494e68fddd9e897aeeac4c3a75b7c6e14",
+      "build_command": "scripts/run.ps1 build_geometry_worker.py worker",
+      "cpu_features": 2147483651,
+      "gpu_features": 3,
+      "input_abi": 1229848833
+    },
+    "package": "build/mario-castle-audit-fixed-sdram-direct-packed-mul-geometry-uncapped-interpolated.package.json",
+    "firmware_command": "scripts/run.ps1 soc.py portable-game --project build/castle-shaded/audit-fixed.project.json --terrain-direct --packed-gfx --integer-mul --geometry-offload --uncapped-render --interpolate-render"
+  },
+  "candidate": {
+    "file": "build\\quartus-sdram-exec\\SdramExecSoC.sof",
+    "sha256": "140fa00e9d66def31e6897be29bc927469de72a9a051481186f7d7b2bc30be15",
+    "cpu_features": 2147483655,
+    "gpu_features": 3
+  },
+  "scope": "Three consecutive 3-second idle frame-progress samples per placement, one load each; not independent reset trials, a scripted movement route, or SM64 engine performance",
+  "baseline_boot": {
+    "initialized": true,
+    "held": false,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 2,
+    "refresh_count": 8258221,
+    "input_abi": 1229848833,
+    "cpu_features": 2147483651,
+    "gpu_features": 3
+  },
+  "baseline_samples": [
+    {
+      "first_status": {
+        "initialized": true,
+        "held": false,
+        "words": [
+          0,
+          0,
+          0
+        ],
+        "scratch": 122,
+        "refresh_count": 8529988,
+        "input_abi": 1229848833,
+        "cpu_features": 2147483651,
+        "gpu_features": 3
+      },
+      "last_status": {
+        "initialized": true,
+        "held": false,
+        "words": [
+          0,
+          0,
+          0
+        ],
+        "scratch": 302,
+        "refresh_count": 8937605,
+        "input_abi": 1229848833,
+        "cpu_features": 2147483651,
+        "gpu_features": 3
+      },
+      "wall_seconds": 3.0,
+      "displayed_frames": 180,
+      "fps": 60.0
+    },
+    {
+      "first_status": {
+        "initialized": true,
+        "held": false,
+        "words": [
+          0,
+          0,
+          0
+        ],
+        "scratch": 302,
+        "refresh_count": 8937664,
+        "input_abi": 1229848833,
+        "cpu_features": 2147483651,
+        "gpu_features": 3
+      },
+      "last_status": {
+        "initialized": true,
+        "held": false,
+        "words": [
+          0,
+          0,
+          0
+        ],
+        "scratch": 482,
+        "refresh_count": 9345271,
+        "input_abi": 1229848833,
+        "cpu_features": 2147483651,
+        "gpu_features": 3
+      },
+      "wall_seconds": 3.0,
+      "displayed_frames": 180,
+      "fps": 60.0
+    },
+    {
+      "first_status": {
+        "initialized": true,
+        "held": false,
+        "words": [
+          0,
+          0,
+          0
+        ],
+        "scratch": 482,
+        "refresh_count": 9345351,
+        "input_abi": 1229848833,
+        "cpu_features": 2147483651,
+        "gpu_features": 3
+      },
+      "last_status": {
+        "initialized": true,
+        "held": false,
+        "words": [
+          0,
+          0,
+          0
+        ],
+        "scratch": 662,
+        "refresh_count": 9752937,
+        "input_abi": 1229848833,
+        "cpu_features": 2147483651,
+        "gpu_features": 3
+      },
+      "wall_seconds": 3.0,
+      "displayed_frames": 180,
+      "fps": 60.0
+    }
+  ],
+  "candidate_status": {
+    "initialized": true,
+    "held": true,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 0,
+    "refresh_count": 478697,
+    "input_abi": 1229848833,
+    "cpu_features": 2147483655,
+    "gpu_features": 3
+  },
+  "diagnostic_status": {
+    "initialized": true,
+    "held": false,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 1592549389,
+    "refresh_count": 1062633,
+    "input_abi": 1229848833,
+    "cpu_features": 2147483655,
+    "gpu_features": 3
+  },
+  "diagnostic_record": {
+    "execution_cycles": 2552,
+    "icache_abi": 1229127937,
+    "icache_hits": 1804,
+    "icache_misses": 17,
+    "icache_fill_words": 136,
+    "cpu_features": 2147483655,
+    "checksum": 128,
+    "subword_result": 2882371875,
+    "local_initialized": 2309737967,
+    "success": 1592549389
+  },
+  "candidate_local_boot": {
+    "initialized": true,
+    "held": false,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 2,
+    "refresh_count": 8886684,
+    "input_abi": 1229848833,
+    "cpu_features": 2147483655,
+    "gpu_features": 3
+  },
+  "candidate_local_samples": [
+    {
+      "first_status": {
+        "initialized": true,
+        "held": false,
+        "words": [
+          0,
+          0,
+          0
+        ],
+        "scratch": 122,
+        "refresh_count": 9158451,
+        "input_abi": 1229848833,
+        "cpu_features": 2147483655,
+        "gpu_features": 3
+      },
+      "last_status": {
+        "initialized": true,
+        "held": false,
+        "words": [
+          0,
+          0,
+          0
+        ],
+        "scratch": 302,
+        "refresh_count": 9566042,
+        "input_abi": 1229848833,
+        "cpu_features": 2147483655,
+        "gpu_features": 3
+      },
+      "wall_seconds": 3.0,
+      "displayed_frames": 180,
+      "fps": 60.0
+    },
+    {
+      "first_status": {
+        "initialized": true,
+        "held": false,
+        "words": [
+          0,
+          0,
+          0
+        ],
+        "scratch": 302,
+        "refresh_count": 9566106,
+        "input_abi": 1229848833,
+        "cpu_features": 2147483655,
+        "gpu_features": 3
+      },
+      "last_status": {
+        "initialized": true,
+        "held": false,
+        "words": [
+          0,
+          0,
+          0
+        ],
+        "scratch": 482,
+        "refresh_count": 9973678,
+        "input_abi": 1229848833,
+        "cpu_features": 2147483655,
+        "gpu_features": 3
+      },
+      "wall_seconds": 3.0,
+      "displayed_frames": 180,
+      "fps": 60.0
+    },
+    {
+      "first_status": {
+        "initialized": true,
+        "held": false,
+        "words": [
+          0,
+          0,
+          0
+        ],
+        "scratch": 482,
+        "refresh_count": 9973750,
+        "input_abi": 1229848833,
+        "cpu_features": 2147483655,
+        "gpu_features": 3
+      },
+      "last_status": {
+        "initialized": true,
+        "held": false,
+        "words": [
+          0,
+          0,
+          0
+        ],
+        "scratch": 662,
+        "refresh_count": 10381376,
+        "input_abi": 1229848833,
+        "cpu_features": 2147483655,
+        "gpu_features": 3
+      },
+      "wall_seconds": 3.0,
+      "displayed_frames": 180,
+      "fps": 60.0
+    }
+  ],
+  "candidate_exec_boot": {
+    "initialized": true,
+    "held": false,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 2,
+    "refresh_count": 18275124,
+    "input_abi": 1229848833,
+    "cpu_features": 2147483655,
+    "gpu_features": 3
+  },
+  "candidate_exec_samples": [
+    {
+      "first_status": {
+        "initialized": true,
+        "held": false,
+        "words": [
+          0,
+          0,
+          0
+        ],
+        "scratch": 62,
+        "refresh_count": 18546793,
+        "input_abi": 1229848833,
+        "cpu_features": 2147483655,
+        "gpu_features": 3
+      },
+      "last_status": {
+        "initialized": true,
+        "held": false,
+        "words": [
+          0,
+          0,
+          0
+        ],
+        "scratch": 152,
+        "refresh_count": 18954197,
+        "input_abi": 1229848833,
+        "cpu_features": 2147483655,
+        "gpu_features": 3
+      },
+      "wall_seconds": 3.0,
+      "displayed_frames": 90,
+      "fps": 30.0
+    },
+    {
+      "first_status": {
+        "initialized": true,
+        "held": false,
+        "words": [
+          0,
+          0,
+          0
+        ],
+        "scratch": 152,
+        "refresh_count": 18954256,
+        "input_abi": 1229848833,
+        "cpu_features": 2147483655,
+        "gpu_features": 3
+      },
+      "last_status": {
+        "initialized": true,
+        "held": false,
+        "words": [
+          0,
+          0,
+          0
+        ],
+        "scratch": 242,
+        "refresh_count": 19361688,
+        "input_abi": 1229848833,
+        "cpu_features": 2147483655,
+        "gpu_features": 3
+      },
+      "wall_seconds": 3.0,
+      "displayed_frames": 90,
+      "fps": 30.0
+    },
+    {
+      "first_status": {
+        "initialized": true,
+        "held": false,
+        "words": [
+          0,
+          0,
+          0
+        ],
+        "scratch": 242,
+        "refresh_count": 19361747,
+        "input_abi": 1229848833,
+        "cpu_features": 2147483655,
+        "gpu_features": 3
+      },
+      "last_status": {
+        "initialized": true,
+        "held": false,
+        "words": [
+          0,
+          0,
+          0
+        ],
+        "scratch": 332,
+        "refresh_count": 19769112,
+        "input_abi": 1229848833,
+        "cpu_features": 2147483655,
+        "gpu_features": 3
+      },
+      "wall_seconds": 3.0,
+      "displayed_frames": 90,
+      "fps": 30.0
+    }
+  ],
+  "result": "success",
+  "restored": {
+    "first_status": {
+      "initialized": true,
+      "held": false,
+      "words": [
+        0,
+        0,
+        0
+      ],
+      "scratch": 2,
+      "refresh_count": 8313406,
+      "input_abi": 1229848833,
+      "cpu_features": 2147483651,
+      "gpu_features": 3
+    },
+    "last_status": {
+      "initialized": true,
+      "held": false,
+      "words": [
+        0,
+        0,
+        0
+      ],
+      "scratch": 62,
+      "refresh_count": 8449402,
+      "input_abi": 1229848833,
+      "cpu_features": 2147483651,
+      "gpu_features": 3
+    },
+    "sof_sha256": "e2b1dce3d5814f348e0ca88b38fe49e494e68fddd9e897aeeac4c3a75b7c6e14"
+  },
+  "finished_utc": "2026-10-13T05:22:48.759939+00:00"
+}

@@ -25,7 +25,7 @@ def validate(requirements):
     return caps
 
 
-CPU_FEATURE_BITS = {'mul': 1, 'geometry-worker-v1': 2}
+CPU_FEATURE_BITS = {'mul': 1, 'geometry-worker-v1': 2, 'sdram-exec-v1': 4}
 GPU_FEATURE_BITS = {'draw-mesh-fraction-v1': 1, 'packed-enqueue-v1': 2, 'command-dma-v1': 4}
 GPU_REGS_PRESENT = 0x80000000
 

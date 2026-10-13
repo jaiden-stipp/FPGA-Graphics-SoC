@@ -1,0 +1,140 @@
++ C:\intelFPGA\18.1\modelsim_ase\win32aloem\vlib.EXE build\sdram-exec\final-lib
++ C:\intelFPGA\18.1\modelsim_ase\win32aloem\vlog.EXE -work build\sdram-exec\final-lib -sv +incdir+C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated+C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\renderer\rtl\common+C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\sim\generated+C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\sim +define+SOC_GEOMETRY_WORKER +define+SOC_DISABLE_COMMAND_DMA C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\pipeline_pkg.sv ... (59 more arguments)
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+Start time: 21:52:03 on Oct 12,2026
+vlog -work build\sdram-exec\final-lib -sv "+incdir+C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated+C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\renderer\rtl\common+C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\sim\generated+C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\sim" "+define+SOC_GEOMETRY_WORKER" "+define+SOC_DISABLE_COMMAND_DMA" C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\pipeline_pkg.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\ALU.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\BranchUnit.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\ControlUnit.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\EX_MEM.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\ForwardingUnit.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\ForwardMux.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\HazardUnit.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\ID_EX.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\IF_ID.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\ImmGen.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\MEM_WB.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\Monitor.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\PC_IF.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\RegFile.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\ResultMux.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\rv32i\5-Stage-Pipeline\verification\PipelineAssertions.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated\RV32I_SoC.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated\soc_ram.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated\soc_PC_IF.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated\soc_IF_ID.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated\soc_ID_EX.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated\soc_EX_MEM.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated\soc_MEM_WB.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated\soc_RegFile.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated\soc_PipelineAssertions.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\sdram_capture_clock.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\sdram_controller.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\sdram_bridge.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\sdram_cache.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\gfx_command_dma.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\sdram_command_arbiter.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\udp_memory_loader.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\sdram_instruction_cache.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\sdram_fetch_arbiter.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\sdram_execution_bridge.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\geometry_worker.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\soc_alu.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\generated\soc_ControlUnit.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\soc_cpu_counters.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\soc_mmio.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\soc_memory.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\renderer\rtl\command\graphics_command_stream_decoder.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\renderer\rtl\network\async_byte_fifo.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\renderer\rtl\network\async_fifo.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\renderer\rtl\network\ethernet_command_receiver.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\renderer\rtl\network\mii_arp_responder.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\renderer\rtl\network\mii_response_transmitter.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\external\renderer\rtl\network\mii_udp_receiver.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\udp_controls.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\sim\sdram_device_model.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\sim\sdram_instruction_cache_tb.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\sim\sdram_execution_tb.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\sim\sdram_exec_protection_tb.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\sim\soc_mmio_tb.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\sim\soc_memory_tb.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\sim\udp_loader_tb.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\sim\cpu_mul_tb.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\sim\packed_mmio_tb.sv C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\sim\geometry_worker_tb.sv 
+-- Compiling package pipeline_pkg
+-- Compiling package ALU_sv_unit
+-- Importing package pipeline_pkg
+-- Compiling module ALU
+-- Compiling module BranchUnit
+-- Compiling package ControlUnit_sv_unit
+-- Importing package pipeline_pkg
+-- Compiling module ControlUnit
+-- Compiling package EX_MEM_sv_unit
+-- Importing package pipeline_pkg
+-- Compiling module EX_MEM
+-- Compiling module ForwardingUnit
+-- Compiling module ForwardMux
+-- Compiling module HazardUnit
+-- Compiling package ID_EX_sv_unit
+-- Importing package pipeline_pkg
+-- Compiling module ID_EX
+-- Compiling module IF_ID
+-- Compiling package ImmGen_sv_unit
+-- Importing package pipeline_pkg
+-- Compiling module ImmGen
+-- Compiling package MEM_WB_sv_unit
+-- Importing package pipeline_pkg
+-- Compiling module MEM_WB
+-- Compiling module Monitor
+-- Compiling module PC_IF
+-- Compiling module RegFile
+-- Compiling module ResultMux
+-- Compiling module PipelineAssertions
+-- Compiling package RV32I_SoC_sv_unit
+-- Importing package pipeline_pkg
+-- Compiling module RV32I_SoC
+-- Compiling package soc_ram_sv_unit
+-- Importing package pipeline_pkg
+-- Compiling module soc_ram
+-- Compiling module soc_PC_IF
+-- Compiling module soc_IF_ID
+-- Compiling package soc_ID_EX_sv_unit
+-- Importing package pipeline_pkg
+-- Compiling module soc_ID_EX
+-- Compiling package soc_EX_MEM_sv_unit
+-- Importing package pipeline_pkg
+-- Compiling module soc_EX_MEM
+-- Compiling package soc_MEM_WB_sv_unit
+-- Importing package pipeline_pkg
+-- Compiling module soc_MEM_WB
+-- Compiling module soc_RegFile
+-- Compiling module soc_PipelineAssertions
+-- Compiling module sdram_capture_clock
+-- Compiling module sdram_controller
+-- Compiling module sdram_bridge
+-- Compiling module sdram_cache
+-- Compiling module gfx_command_dma
+-- Compiling module sdram_command_arbiter
+-- Compiling package udp_memory_loader_sv_unit
+-- Compiling module udp_memory_loader
+-- Compiling module sdram_instruction_cache
+-- Compiling module sdram_fetch_arbiter
+-- Compiling module sdram_execution_bridge
+-- Compiling module geometry_worker
+-- Compiling module soc_ALU
+-- Compiling package soc_ControlUnit_sv_unit
+-- Importing package pipeline_pkg
+-- Compiling module soc_ControlUnit
+-- Compiling module soc_cpu_counters
+-- Compiling module soc_mmio
+** Warning: C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\soc_mmio.sv(226): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\soc_mmio.sv(227): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\soc_mmio.sv(228): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+** Warning: C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\rtl\soc_mmio.sv(229): (vlog-2583) [SVCHK] - Some checking for conflicts with always_comb and always_latch variables not yet supported. Run vopt to provide additional design-level checks.
+-- Compiling module soc_memory
+-- Compiling package graphics_command_stream_decoder_sv_unit
+-- Compiling module graphics_command_stream_decoder
+-- Compiling module async_byte_fifo
+-- Compiling module async_fifo
+-- Compiling package ethernet_command_receiver_sv_unit
+-- Compiling module ethernet_command_receiver
+-- Compiling module mii_arp_responder
+-- Compiling package mii_response_transmitter_sv_unit
+-- Compiling module mii_response_transmitter
+-- Compiling module mii_udp_receiver
+-- Compiling package udp_controls_sv_unit
+-- Compiling module udp_controls
+-- Compiling module sdram_device_model
+-- Compiling module sdram_instruction_cache_tb
+-- Compiling module sdram_execution_tb
+-- Compiling module sdram_exec_protection_tb
+-- Compiling module soc_mmio_tb
+-- Compiling module soc_memory_tb
+-- Compiling module udp_loader_tb
+-- Compiling module cpu_mul_tb
+-- Compiling module packed_mmio_case
+-- Compiling module packed_mmio_tb
+-- Compiling module geometry_worker_tb
+
+Top level modules:
+	ControlUnit
+	EX_MEM
+	ID_EX
+	IF_ID
+	MEM_WB
+	PC_IF
+	RegFile
+	PipelineAssertions
+	sdram_command_arbiter
+	mii_arp_responder
+	sdram_instruction_cache_tb
+	sdram_execution_tb
+	sdram_exec_protection_tb
+	soc_mmio_tb
+	soc_memory_tb
+	udp_loader_tb
+	cpu_mul_tb
+	packed_mmio_tb
+	geometry_worker_tb
+End time: 21:52:03 on Oct 12,2026, Elapsed time: 0:00:00
+Errors: 0, Warnings: 4
++ C:\intelFPGA\18.1\modelsim_ase\win32aloem\vsim.EXE -c -L altera_mf -lib build\sdram-exec\final-lib sdram_instruction_cache_tb -do onerror {quit -code 1}; run -all; quit -code 0
+PASS sdram_instruction_cache_tb
++ C:\intelFPGA\18.1\modelsim_ase\win32aloem\vsim.EXE -c -L altera_mf -lib build\sdram-exec\final-lib sdram_execution_tb -do onerror {quit -code 1}; run -all; quit -code 0
+PASS sdram_execution_tb
++ C:\intelFPGA\18.1\modelsim_ase\win32aloem\vsim.EXE -c -L altera_mf -lib build\sdram-exec\final-lib sdram_exec_protection_tb -do onerror {quit -code 1}; run -all; quit -code 0
+PASS sdram_exec_protection_tb
++ C:\intelFPGA\18.1\modelsim_ase\win32aloem\vsim.EXE -c -L altera_mf -lib build\sdram-exec\final-lib soc_mmio_tb -do onerror {quit -code 1}; run -all; quit -code 0
+PASS soc_mmio_tb
++ C:\intelFPGA\18.1\modelsim_ase\win32aloem\vsim.EXE -c -L altera_mf -lib build\sdram-exec\final-lib soc_memory_tb -do onerror {quit -code 1}; run -all; quit -code 0
+PASS soc_memory_tb
++ C:\intelFPGA\18.1\modelsim_ase\win32aloem\vsim.EXE -c -L altera_mf -lib build\sdram-exec\final-lib udp_loader_tb -do onerror {quit -code 1}; run -all; quit -code 0
+PASS udp_loader_tb
++ C:\intelFPGA\18.1\modelsim_ase\win32aloem\vsim.EXE -c -L altera_mf -lib build\sdram-exec\final-lib cpu_mul_tb -do onerror {quit -code 1}; run -all; quit -code 0
+PASS cpu_mul_tb
++ C:\intelFPGA\18.1\modelsim_ase\win32aloem\vsim.EXE -c -L altera_mf -lib build\sdram-exec\final-lib packed_mmio_tb -do onerror {quit -code 1}; run -all; quit -code 0
+PASS packed_mmio_tb
++ C:\intelFPGA\18.1\modelsim_ase\win32aloem\vsim.EXE -c -L altera_mf -lib build\sdram-exec\final-lib geometry_worker_tb -do onerror {quit -code 1}; run -all; quit -code 0
+PASS geometry_worker_tb

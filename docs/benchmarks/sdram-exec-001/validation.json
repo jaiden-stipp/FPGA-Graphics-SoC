@@ -1,0 +1,11 @@
+{
+  "host_suites": 22,
+  "host_checks": 177,
+  "directed_core_tests": 9,
+  "udp_exec_variant_pass": true,
+  "full_mario_render_pass": true,
+  "physical_pass": true,
+  "accepted_image_restored": true,
+  "clock_hz_configured": 50000000,
+  "new_timing_exceptions": false
+}

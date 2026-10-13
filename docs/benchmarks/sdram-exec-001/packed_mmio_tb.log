@@ -1,0 +1,132 @@
+Reading C:/intelFPGA/18.1/modelsim_ase/tcl/vsim/pref.tcl
+
+# 10.5b
+
+# vsim -c -L altera_mf -lib build\sdram-exec\final-lib packed_mmio_tb -do "onerror {quit -code 1}; run -all; quit -code 0" 
+# Start time: 21:52:13 on Oct 12,2026
+# Loading sv_std.std
+# Loading build\sdram-exec\final-lib.packed_mmio_tb
+# Loading build\sdram-exec\final-lib.packed_mmio_case
+# Loading build\sdram-exec\final-lib.soc_mmio
+# ** Warning: (vsim-3017) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Too few port connections. Expected 40, found 24.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_mmio_tb/a/dut File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/soc_mmio.sv
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'instruction_statistics'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'external_fault'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_busy'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_byte_valid'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_byte_data'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_error_code'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_completed_id'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_bytes_sent'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_read_words'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_request_wait'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_fifo_wait'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_byte_accepted'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_start'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_source'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_length'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_submission_id'.
+# ** Warning: (vsim-3017) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Too few port connections. Expected 40, found 24.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_mmio_tb/b/dut File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/soc_mmio.sv
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'instruction_statistics'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'external_fault'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_busy'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_byte_valid'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_byte_data'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_error_code'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_completed_id'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_bytes_sent'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_read_words'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_request_wait'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_fifo_wait'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_byte_accepted'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_start'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_source'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_length'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_submission_id'.
+# ** Warning: (vsim-3017) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Too few port connections. Expected 40, found 24.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_mmio_tb/c/dut File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/soc_mmio.sv
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'instruction_statistics'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'external_fault'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_busy'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_byte_valid'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_byte_data'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_error_code'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_completed_id'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_bytes_sent'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_read_words'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_request_wait'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_fifo_wait'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_byte_accepted'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_start'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_source'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_length'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_submission_id'.
+# ** Warning: (vsim-3017) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Too few port connections. Expected 40, found 24.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_mmio_tb/d/dut File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/soc_mmio.sv
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'instruction_statistics'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'external_fault'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_busy'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_byte_valid'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_byte_data'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_error_code'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_completed_id'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_bytes_sent'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_read_words'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_request_wait'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_fifo_wait'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_byte_accepted'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_start'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_source'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_length'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_submission_id'.
+# ** Warning: (vsim-3017) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Too few port connections. Expected 40, found 24.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_mmio_tb/e/dut File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/soc_mmio.sv
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'instruction_statistics'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'external_fault'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_busy'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_byte_valid'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_byte_data'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_error_code'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_completed_id'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_bytes_sent'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_read_words'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_request_wait'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_fifo_wait'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_byte_accepted'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_start'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_source'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_length'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_submission_id'.
+# ** Warning: (vsim-3017) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Too few port connections. Expected 40, found 24.
+#    Time: 0 ps  Iteration: 0  Instance: /packed_mmio_tb/f/dut File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/soc_mmio.sv
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'instruction_statistics'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'external_fault'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_busy'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_byte_valid'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_byte_data'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_error_code'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_completed_id'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_bytes_sent'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_read_words'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_request_wait'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_fifo_wait'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_byte_accepted'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_start'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_source'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_length'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(7): [TFMPC] - Missing connection for port 'dma_submission_id'.
+# onerror {quit -code 1}
+#  Warning: onerror command for use within macro
+#  run -all
+# packed case depth=2 accepted=577 rejected=530 consumed=617
+# packed case depth=3 accepted=685 rejected=424 consumed=794
+# packed case depth=4 accepted=715 rejected=424 consumed=926
+# packed case depth=5 accepted=730 rejected=377 consumed=973
+# packed case depth=12 accepted=746 rejected=362 consumed=995
+# packed case depth=256 accepted=1078 rejected=306 consumed=1488
+# PASS packed_mmio_tb
+# ** Note: $finish    : C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/packed_mmio_tb.sv(60)
+#    Time: 26876 ns  Iteration: 1  Instance: /packed_mmio_tb
+# End time: 21:52:13 on Oct 12,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 102

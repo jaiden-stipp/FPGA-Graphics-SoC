@@ -43,7 +43,7 @@ def package_segments(path):
     spec=json.loads(path.read_text())
     if not isinstance(spec,dict) or spec.get('format')!='soc-game-package' or type(spec.get('version')) is not int or spec.get('version')!=1:
         raise ValueError('Unsupported game package')
-    allowed={'format','version','app','segments','target','content','required_cpu_features','required_gpu_features','cadence','diagnostic','command_buffers'}
+    allowed={'format','version','app','segments','target','content','required_cpu_features','required_gpu_features','cadence','diagnostic','command_buffers','execution'}
     if set(spec)-allowed:raise ValueError('Unknown package fields')
     feature_bits(spec,'cpu');feature_bits(spec,'gpu')
     if 'app' in spec and not isinstance(spec['app'],str):raise ValueError('Invalid app')
@@ -90,6 +90,8 @@ def package_segments(path):
             raise ValueError('Invalid command DMA buffer reservation')
         if any(max(base,0x87fe0000)<min(base+len(data),0x87fe0800) for base,data,_ in segments):
             raise ValueError('Package overlaps command DMA buffers')
+    from sdram_execution import validate_execution
+    validate_execution(spec,segments)
     return segments
 
 

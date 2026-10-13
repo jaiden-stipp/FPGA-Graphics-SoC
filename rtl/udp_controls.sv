@@ -4,7 +4,8 @@
 module udp_controls #(
     parameter integer TIMEOUT_CYCLES = 15000000,
     parameter REQUIRE_LOAD = 0,
-    parameter logic[31:0] GPU_FEATURES=3
+    parameter logic[31:0] GPU_FEATURES=3,
+    parameter SDRAM_EXEC_SUPPORTED=0
 )(
     input logic clk, reset,
     input logic rx_clk, tx_clk,
@@ -29,7 +30,7 @@ module udp_controls #(
     logic load_envelope, load_error, command_ready, reply_valid;
     logic [31:0] reply_id;
     logic [415:0] reply_statistics;
-    udp_memory_loader #(.REQUIRE_LOAD(REQUIRE_LOAD),.GPU_FEATURES(GPU_FEATURES)) loader (
+    udp_memory_loader #(.REQUIRE_LOAD(REQUIRE_LOAD),.GPU_FEATURES(GPU_FEATURES),.SDRAM_EXEC_SUPPORTED(SDRAM_EXEC_SUPPORTED)) loader (
         .clk(clk), .reset(reset), .command_data(command_data), .command_valid(command_valid),
         .command_ready(command_ready), .envelope(load_envelope), .error(load_error), .hold_cpu(load_hold),
         .bus_valid(load_valid), .bus_write(load_write), .bus_addr(load_addr), .bus_wdata(load_wdata),

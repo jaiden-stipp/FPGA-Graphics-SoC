@@ -97,6 +97,9 @@
         "mmio_feature_bit": {
           "type": "integer",
           "const": 0
+        },
+        "sdram-exec-v1": {
+          "type": "boolean"
         }
       }
     },
@@ -218,6 +221,50 @@
         "count": {
           "type": "integer",
           "const": 2
+        }
+      }
+    },
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "abi",
+        "entry",
+        "code_address",
+        "code_bytes",
+        "bss_address",
+        "bss_bytes"
+      ],
+      "properties": {
+        "abi": {
+          "const": "local-boot-sdram-v1"
+        },
+        "entry": {
+          "type": "integer",
+          "minimum": 2147483648,
+          "maximum": 2164260860,
+          "multipleOf": 4
+        },
+        "code_address": {
+          "const": 2147483648
+        },
+        "code_bytes": {
+          "type": "integer",
+          "minimum": 4,
+          "maximum": 16777216,
+          "multipleOf": 4
+        },
+        "bss_address": {
+          "type": "integer",
+          "minimum": 2164260864,
+          "maximum": 2281697280,
+          "multipleOf": 4
+        },
+        "bss_bytes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 117436416,
+          "multipleOf": 4
         }
       }
     }

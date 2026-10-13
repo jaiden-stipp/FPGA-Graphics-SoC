@@ -3,7 +3,8 @@
 module soc_mmio #(
     parameter integer FIFO_DEPTH = 256,
     parameter integer CLOCK_HZ = 50000000,
-    parameter integer DMA_SUPPORTED = 0
+    parameter integer DMA_SUPPORTED = 0,
+    parameter integer SDRAM_EXEC_SUPPORTED = 0
 )(
     input logic clk, reset,
     input logic [31:0] addr, wdata,
@@ -21,6 +22,8 @@ module soc_mmio #(
     input tri0 [23:0] look_state,
     input tri0 [191:0] cache_statistics,
     input tri0 [159:0] cpu_statistics,
+    input tri0 [127:0] instruction_statistics,
+    input tri0 external_fault,
     output logic frame_pending,
     output logic [3:0] error_flags,
     output logic [31:0] scratch,
@@ -31,9 +34,9 @@ module soc_mmio #(
     output logic [31:0] dma_source,dma_length,dma_submission_id
 );
 `ifdef SOC_GEOMETRY_WORKER
-    localparam CPU_FEATURES=32'h80000003;
+    localparam CPU_FEATURES=32'h80000003 | (SDRAM_EXEC_SUPPORTED?32'h4:32'h0);
 `else
-    localparam CPU_FEATURES=32'h80000001;
+    localparam CPU_FEATURES=32'h80000001 | (SDRAM_EXEC_SUPPORTED?32'h4:32'h0);
 `endif
     localparam integer PTR_BITS = $clog2(FIFO_DEPTH);
     localparam integer COUNT_BITS = $clog2(FIFO_DEPTH + 1);
@@ -66,7 +69,7 @@ module soc_mmio #(
                         addr[7:0] == 8'h0c || addr[7:0] == 8'h14 ||
                         addr[7:0] == 8'h18 || addr[7:0] == 8'h1c ||
                         (addr[7:0] >= 8'h20 && addr[7:0] <= 8'h5c) || addr[7:0] == 8'h64 ||
-                        (addr[7:0] >= 8'h68 && addr[7:0] <= 8'h94) || addr[7:0] == 8'h9c || addr[7:0] == 8'ha0 || addr[7:0] == 8'ha4 || addr[7:0] == 8'ha8 || (DMA_SUPPORTED && addr[7:0]>=8'hc0 && addr[7:0]<=8'hec && addr[7:0]!=8'hd0);
+                        (addr[7:0] >= 8'h68 && addr[7:0] <= 8'h94) || addr[7:0] == 8'h9c || addr[7:0] == 8'ha0 || addr[7:0] == 8'ha4 || addr[7:0] == 8'ha8 || (SDRAM_EXEC_SUPPORTED && addr[7:4]==4'hf) || (DMA_SUPPORTED && addr[7:0]>=8'hc0 && addr[7:0]<=8'hec && addr[7:0]!=8'hd0);
     // Packed offsets b0/b4/b8/bc enqueue 1/2/3/4 bytes, low byte first.
     // Availability is conservative: a concurrent pop grants no reservation.
     assign packed_address = addr[7:4] == 4'hb;
@@ -116,6 +119,10 @@ module soc_mmio #(
                 8'ha0: rdata = cpu_snapshot[63:32];
                 8'ha4: rdata = cpu_snapshot[31:0];
                 8'ha8: rdata = DMA_SUPPORTED ? 32'h00000007 : 32'h00000003; // fractional mesh and packed-enqueue-v1
+                8'hf0: rdata=instruction_statistics[127:96];
+                8'hf4: rdata=instruction_statistics[95:64];
+                8'hf8: rdata=instruction_statistics[63:32];
+                8'hfc: rdata=instruction_statistics[31:0];
                 8'hc0: rdata=32'h444d0101;
                 8'hc4: rdata=dma_source;
                 8'hc8: rdata=dma_length;
@@ -136,9 +143,9 @@ module soc_mmio #(
                             enqueue_address && (dma_busy || FIFO_DEPTH-count < requested_bytes);
             new_errors[1] = decoder_error;
             new_errors[2] = command_error;
-            new_errors[3] = (read_en || write_en) &&
+            new_errors[3] = external_fault || ((read_en || write_en) &&
                 (!selected || !word_access || (read_en && !known_read) ||
-                 (write_en && (!known_write || (addr[7:0]==8'hd0 && (dma_busy || wdata!=1)))));
+                 (write_en && (!known_write || (addr[7:0]==8'hd0 && (dma_busy || wdata!=1))))));
         end
     end
 

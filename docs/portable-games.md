@@ -1,5 +1,11 @@
 # Source-neutral game pipeline
 
+The opt-in [local boot and SDRAM execution backend](sdram-execution.md) uses the
+same adapters, game-port interface and loader with `--sdram-exec`. It adds a
+capability-gated executable segment and relocates mutable state/assets; it does
+not enable floating point or unsupported engine dependencies. The original local
+execution backend and the limits described below remain supported.
+
 The optional [interactive Quake demo](quake-interactive.md) demonstrates shared
 input, HUD, object and frame-animation services on target `de2-115-fixed-v2`.
 That target needs the IN v1 input-wrapper image. The commands and limits below

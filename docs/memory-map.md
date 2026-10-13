@@ -8,8 +8,14 @@
 | `0x80000000..0x87ffffff` | Optional 128 MiB SDRAM | RV32I data loads/stores with pipeline wait states; volatile assets and data |
 | Other data addresses | Unmapped | Reads zero, writes rejected, BAD_ACCESS sticky |
 
-Instruction fetch can only address CPU RAM; out-of-range fetch returns RV32I NOP
-(`0x00000013`). Misaligned RAM data accesses are suppressed by the upstream RAM.
+Default instruction fetch addresses CPU RAM; out-of-range fetch returns RV32I NOP
+(`0x00000013`). The opt-in [SDRAM execution capability](sdram-execution.md) adds
+cached immutable code at `0x80000000..0x80ffffff`, with local boot/stack and
+writable state/assets starting at `0x81000000`. It advertises CPU feature bit 2
+and read-only instruction-cache ABI/hit/miss/fill counters at offsets `f0/f4/f8/fc`.
+On that capability, invalid fetches or executable-region CPU stores freeze the
+pipeline and latch BAD_ACCESS; held-loader writes remain allowed.
+Misaligned RAM data accesses are suppressed by the upstream RAM.
 RAM contents persist across reset. MMIO bytes/halfwords and misaligned accesses
 are rejected; misaligned accesses also drive the CPU's misalignment indication.
 The CPU has no precise exception/trap delivery for these conditions.

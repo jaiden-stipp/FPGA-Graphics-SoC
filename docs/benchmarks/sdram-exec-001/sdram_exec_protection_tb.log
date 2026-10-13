@@ -1,0 +1,43 @@
+Reading C:/intelFPGA/18.1/modelsim_ase/tcl/vsim/pref.tcl
+
+# 10.5b
+
+# vsim -c -L altera_mf -lib build\sdram-exec\final-lib sdram_exec_protection_tb -do "onerror {quit -code 1}; run -all; quit -code 0" 
+# Start time: 21:52:06 on Oct 12,2026
+# Loading sv_std.std
+# Loading build\sdram-exec\final-lib.sdram_exec_protection_tb
+# Loading build\sdram-exec\final-lib.soc_memory
+# Loading build\sdram-exec\final-lib.pipeline_pkg
+# Loading build\sdram-exec\final-lib.soc_ram_sv_unit
+# Loading build\sdram-exec\final-lib.soc_ram
+# Loading build\sdram-exec\final-lib.geometry_worker
+# Loading build\sdram-exec\final-lib.soc_mmio
+# Loading build\sdram-exec\final-lib.sdram_device_model
+# Loading build\sdram-exec\final-lib.sdram_instruction_cache
+# Loading build\sdram-exec\final-lib.sdram_execution_bridge
+# Loading build\sdram-exec\final-lib.sdram_cache
+# Loading build\sdram-exec\final-lib.sdram_fetch_arbiter
+# Loading build\sdram-exec\final-lib.sdram_controller
+# Loading build\sdram-exec\final-lib.sdram_capture_clock
+# ** Warning: (vsim-3017) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_exec_protection_tb.sv(10): [TFMPC] - Too few port connections. Expected 49, found 37.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_protection_tb/memory File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/soc_memory.sv
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_exec_protection_tb.sv(10): [TFMPC] - Missing connection for port 'cpu_statistics'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_exec_protection_tb.sv(10): [TFMPC] - Missing connection for port 'fetch_next_pc'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_exec_protection_tb.sv(10): [TFMPC] - Missing connection for port 'fetch_lookahead_valid'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_exec_protection_tb.sv(10): [TFMPC] - Missing connection for port 'rdata'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_exec_protection_tb.sv(10): [TFMPC] - Missing connection for port 'misaligned'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_exec_protection_tb.sv(10): [TFMPC] - Missing connection for port 'write_performed'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_exec_protection_tb.sv(10): [TFMPC] - Missing connection for port 'byte_data'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_exec_protection_tb.sv(10): [TFMPC] - Missing connection for port 'byte_valid'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_exec_protection_tb.sv(10): [TFMPC] - Missing connection for port 'look_state'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_exec_protection_tb.sv(10): [TFMPC] - Missing connection for port 'frame_pending'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_exec_protection_tb.sv(10): [TFMPC] - Missing connection for port 'scratch'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_exec_protection_tb.sv(10): [TFMPC] - Missing connection for port 'refresh_count'.
+# onerror {quit -code 1}
+#  Warning: onerror command for use within macro
+#  run -all
+# PASS sdram_exec_protection_tb (immutable code, invalid fetch halt/error, coherent reload, loader takeover during accepted MEM read)
+# ** Note: $finish    : C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_exec_protection_tb.sv(48)
+#    Time: 204200 ns  Iteration: 1  Instance: /sdram_exec_protection_tb
+# End time: 21:52:07 on Oct 12,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 13

@@ -32,3 +32,5 @@ docs/benchmarks/render-correctness-001/** -text -whitespace
 docs/audits/2026-10-12/** -text -whitespace
 
 docs/benchmarks/exec-sdram-001/** -text -whitespace
+
+docs/benchmarks/sdram-exec-001/** -text -whitespace

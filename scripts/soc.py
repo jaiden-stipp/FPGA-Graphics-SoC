@@ -64,6 +64,7 @@ def generate():
     input logic soc_misaligned, soc_write_performed,
     input tri0 soc_stall,
     output logic [31:0] soc_pc, soc_addr, soc_wdata,
+    output wire [31:0] soc_fetch_next_pc,
     output logic [2:0] soc_funct3,
     output logic soc_read_en, soc_write_en,
     output wire [159:0] cpu_statistics
@@ -72,6 +73,8 @@ def generate():
     end = cpu.index("    // MEM/WB register", start)
     cpu = cpu[:start] + """    // Generated SoC boundary: preserve the upstream zero-wait MEM timing.
     assign soc_pc = pc;
+    // Sequential hint only: cache line identity guards redirect mismatches.
+    assign soc_fetch_next_pc = (rst || stall) ? pc : pc + 32'd4;
     assign soc_addr = ALU_result_MEM;
     assign soc_wdata = rs2_MEM;
     assign soc_funct3 = ctrl_MEM.funct3;
@@ -121,7 +124,9 @@ def generate():
     ram = replace_once(ram, "`ifdef SYNTHESIS", "`ifdef ALTERA_RESERVED_QIS")
     ram = replace_once(ram, '    parameter DEVICE_FAMILY = "Cyclone IV E"',
                        '    parameter HEX_FILE = "build/firmware.hex",\n'
+                       '    parameter READ_DURING_WRITE_MODE = "NEW_DATA_NO_NBE_READ",\n'
                        '    parameter DEVICE_FAMILY = "Cyclone IV E"')
+    ram = replace_once(ram, '.read_during_write_mode_port_b("NEW_DATA_NO_NBE_READ"),', '.read_during_write_mode_port_b(READ_DURING_WRITE_MODE),')
     ram = replace_once(ram, "    logic [31:0] mem [0:N-1];", """    logic [31:0] mem [0:N-1];
     initial begin
         for (integer i = 0; i < N; i = i + 1) mem[i] = 0;
@@ -303,11 +308,14 @@ def firmware(args):
     prepare_legacy_assets(args,apps)
     for app in apps:
         use_sdram = getattr(args, 'use_sdram', False)
+        execute_sdram = getattr(args,'sdram_exec',False)
+        if execute_sdram and not use_sdram:raise ValueError('SDRAM execution requires an SDRAM package')
         stem = getattr(args,'image_name',None) or app + ('-sdram' if use_sdram else '')
         app_flags = [f"-Wl,-Map,build/{stem}.map"]
         app_flags += getattr(args,'extra_flags',[])
         if use_sdram:
-            app_flags += ['-DGAME_USE_SDRAM', '-Wl,-T,firmware/link-sdram.ld']
+            app_flags += ['-DGAME_USE_SDRAM', '-Wl,-T,firmware/link-sdram-exec.ld' if execute_sdram else '-Wl,-T,firmware/link-sdram.ld']
+        if execute_sdram:app_flags += ['-DSOC_SDRAM_EXEC','-ffunction-sections','-fdata-sections']
         compile_flags = [f for f in flags if not (use_sdram and f == '-Wl,-T,firmware/link.ld')]
         app_sources = ["firmware/start.S", "firmware/src/gfx.c"]
         if app == 'sdram-test':
@@ -340,10 +348,14 @@ def firmware(args):
             app_flags += ["-DPLAYER_TICK_CYCLES=100000u", "-DPLAYER_VALIDATION_VIEW=0"]
         if use_sdram and app != 'sdram-test': app_sources += ['firmware/src/sdram.c']
         run([cc] + compile_flags + app_flags + app_sources + ["-o", f"build/{stem}.elf"])
-        run([objcopy] + (['--remove-section=.game_assets'] if use_sdram else []) + ["-O", "binary", f"build/{stem}.elf", f"build/{stem}.bin"])
+        if execute_sdram:
+            from sdram_execution import extract
+            exec_segments,exec_metadata=extract(ROOT,stem,objcopy,tool(prefix+'nm'))
+        else:
+            run([objcopy] + (['--remove-section=.game_assets'] if use_sdram else []) + ["-O", "binary", f"build/{stem}.elf", f"build/{stem}.bin"])
         if use_sdram:
             import hashlib
-            run([objcopy,'--only-section=.game_assets','-O','binary',f'build/{stem}.elf',f'build/{stem}.assets.bin'])
+            if not execute_sdram:run([objcopy,'--only-section=.game_assets','-O','binary',f'build/{stem}.elf',f'build/{stem}.assets.bin'])
             asset_data=(BUILD/f'{stem}.assets.bin').read_bytes()
             asset_data=asset_data.ljust((len(asset_data)+3)//4*4,b'\0')
             write(BUILD/f'{stem}.assets.hex',''.join(f'{int.from_bytes(asset_data[i:i+4],"little"):08x}\n' for i in range(0,len(asset_data),4)))
@@ -352,7 +364,10 @@ def firmware(args):
                 path=BUILD/f'{stem}.{label}'; payload=path.read_bytes()
                 segments.append({'file':path.name,'address':address,'bytes':len(payload),'sha256':hashlib.sha256(payload).hexdigest()})
             package={'format':'soc-game-package','version':1,'app':app,'segments':segments}
-            if '-DSOC_INTEGER_MUL' in app_flags:package['required_cpu_features']={'mul':True,'mmio_feature_bit':0}
+            if execute_sdram:
+                package['segments']=exec_segments;package['execution']=exec_metadata
+                package['required_cpu_features']={'sdram-exec-v1':True}
+            if '-DSOC_INTEGER_MUL' in app_flags:package.setdefault('required_cpu_features',{}).update({'mul':True,'mmio_feature_bit':0})
             if '-DSOC_GEOMETRY_OFFLOAD' in app_flags:package.setdefault('required_cpu_features',{})['geometry-worker-v1']=True
             if getattr(args,'content',None): package['content']=args.content
             if getattr(args,'target',None): package['target']=args.target
@@ -414,6 +429,7 @@ def sources(full=False):
     files += [ROOT / ('rtl/generated/soc_'+name+'.sv') for name in
               ('PC_IF','IF_ID','ID_EX','EX_MEM','MEM_WB','RegFile','PipelineAssertions')]
     files += [ROOT/'rtl/sdram_capture_clock.sv', ROOT/'rtl/sdram_controller.sv', ROOT/'rtl/sdram_bridge.sv', ROOT/'rtl/sdram_cache.sv', ROOT/'rtl/gfx_command_dma.sv',ROOT/'rtl/sdram_command_arbiter.sv', ROOT/'rtl/udp_memory_loader.sv']
+    files += [ROOT/'rtl/sdram_instruction_cache.sv',ROOT/'rtl/sdram_fetch_arbiter.sv',ROOT/'rtl/sdram_execution_bridge.sv']
     files += [ROOT / "rtl/geometry_worker.sv", ROOT / "rtl/soc_alu.sv", ROOT / "rtl/generated/soc_ControlUnit.sv", ROOT / "rtl/soc_cpu_counters.sv", ROOT / "rtl/soc_mmio.sv", ROOT / "rtl/soc_memory.sv"]
     renderer = ROOT / "external/renderer/rtl"
     files += [renderer / "command/graphics_command_stream_decoder.sv"]
@@ -440,11 +456,11 @@ def simulate(args):
     if args.full and simulator != "modelsim":
         raise RuntimeError("Full VGA test requires ModelSim with the altera_mf library")
     tests = ["soc_mmio_tb", "soc_memory_tb", "cpu_stream_tb", "game_stream_tb", "udp_controls_tb", "scene_stream_tb", "mario_stream_tb"]
-    available = tests + ['geometry_worker_tb','cpu_geometry_tb','gfx_dma_tb','sdram_arbiter_tb','gfx_dma_memory_tb','packed_mmio_tb','sdram_cache_tb','sdram_memory_tb','sdram_cpu_tb','udp_loader_tb','udp_extended_input_tb','soc_cpu_counters_tb','cpu_counter_pipeline_tb','cpu_batch_stream_tb','cpu_mul_tb']
+    available = tests + ['sdram_exec_protection_tb','sdram_instruction_cache_tb','sdram_execution_tb','geometry_worker_tb','cpu_geometry_tb','gfx_dma_tb','sdram_arbiter_tb','gfx_dma_memory_tb','packed_mmio_tb','sdram_cache_tb','sdram_memory_tb','sdram_cpu_tb','udp_loader_tb','udp_extended_input_tb','soc_cpu_counters_tb','cpu_counter_pipeline_tb','cpu_batch_stream_tb','cpu_mul_tb']
     if args.full:
         tests += ["soc_top_tb", "soc_game_top_tb", "soc_scene_top_tb", "soc_mario_top_tb", "soc_mario_bridge_top_tb"]
         available += ['geometry_stream_tb','geometry_game_tb','setup_overlap_tb','pixel_lanes_tb','pixel_banks_tb']
-        available += ['sdram_mario_top_tb','beacon_sdram_top_tb','quake_sdram_top_tb','portable_scene_top_tb','quake_interactive_top_tb','castle_world_top_tb','projection_precision_tb','screen_edge_coverage_tb','depth_edge_coverage_tb','render_frame_replay_tb','packed_render_replay_tb','dma_render_replay_tb','gpu_fractional_decoder_tb','gpu_fractional_mesh_tb']
+        available += ['sdram_exec_game_tb','sdram_mario_top_tb','beacon_sdram_top_tb','quake_sdram_top_tb','portable_scene_top_tb','quake_interactive_top_tb','castle_world_top_tb','projection_precision_tb','screen_edge_coverage_tb','depth_edge_coverage_tb','render_frame_replay_tb','packed_render_replay_tb','dma_render_replay_tb','gpu_fractional_decoder_tb','gpu_fractional_mesh_tb']
     if getattr(args, "tests", None):
         requested = args.tests.split(",")
         if set(requested) - set(available + tests):
@@ -464,7 +480,7 @@ def simulate(args):
         lib.parent.mkdir(parents=True,exist_ok=True)
         if not lib.exists():
             run([tool("vlib"), lib])
-        run([tool("vlog"), "-work", lib, "-sv", "-mfcu", include] +
+        run([tool("vlog"), "-work", lib, "-sv"] + (['-mfcu'] if getattr(args,'shared_compilation',False) else []) + [include] +
             (['+define+SOC_GEOMETRY_WORKER'] if getattr(args,'geometry_worker',False) else []) +
             (['+define+SOC_GPU_TWO_PIXEL_LANES'] if getattr(args,'two_pixel_lanes',False) else []) +
             (['+define+SOC_GPU_SETUP_OVERLAP'] if getattr(args,'setup_overlap',False) else []) +
@@ -642,6 +658,8 @@ def game_packages(args):
 
 
 def portable_package(args):
+    if getattr(args,'sdram_exec',False) and getattr(args,'dma_gfx',False):
+        raise ValueError('Initial SDRAM-execution target disables command DMA; use packed-gfx')
     from portable_game import generate as generate_portable
     from rv32i_subset import check
     if getattr(args,'terrain_gpu_fractional',False):args.terrain_gpu_safe=True
@@ -676,6 +694,7 @@ def portable_package(args):
     suffix=('-direct' if direct else '-gpu-q8' if getattr(args,'terrain_gpu_fractional',False) else '-gpu-safe' if getattr(args,'terrain_gpu_safe',False) else '')+('-profile' if getattr(args,'cpu_profile',False) or getattr(args,'profile_detail',False) else '')+('-detail' if getattr(args,'profile_detail',False) else '')+('-fine' if getattr(args,'profile_fine',False) else '')+('-batched' if getattr(args,'batch_gfx',False) else '')+('-packed' if getattr(args,'packed_gfx',False) else '')+('-dma' if getattr(args,'dma_gfx',False) else '')+('-mul' if getattr(args,'integer_mul',False) else '')+('-geometry' if getattr(args,'geometry_offload',False) else '')
     if getattr(args,'uncapped_render',False):suffix+='-uncapped'
     if getattr(args,'interpolate_render',False):suffix+='-interpolated'
+    if getattr(args,'sdram_exec',False):suffix+='-exec'
     if getattr(args,'terrain_tight_chunks',False):suffix+='-tight'
     if getattr(args,'terrain_min_chunk_faces',0):suffix+='-min'+str(args.terrain_min_chunk_faces)
     args.image_name=spec['name']+'-sdram'+suffix
@@ -767,6 +786,9 @@ def main():
     p.add_argument("--full", action="store_true")
     p.add_argument("--tests", help="Comma-separated tests; permits selecting the Mario milestone tests")
     p.add_argument('--work-dir',type=Path,help='Independent ModelSim library for concurrent verification')
+    scope=p.add_mutually_exclusive_group()
+    scope.add_argument('--separate-compilation',action='store_true',help='Explicit default ModelSim per-file scopes')
+    scope.add_argument('--shared-compilation',action='store_true',help='Legacy ModelSim shared scopes; old Windows compiler may crash')
     p.add_argument('--geometry-worker',action='store_true',help='Enable optional Stage 5 Q8 geometry worker')
     p.add_argument('--two-pixel-lanes',action='store_true',help='Experimental Stage 4 parity-banked two-pixel raster')
     p.add_argument('--setup-overlap',action='store_true',help='Experimental Stage 3 setup/raster overlap; default retains serial renderer')
@@ -818,6 +840,7 @@ def main():
     p.add_argument('--profile-detail',action='store_true',help='Optional per-function cycle/call profiles; implies --cpu-profile')
     p.add_argument('--profile-fine',action='store_true',help='Optional CRC/check/write and clipping fraction/intersection timers; implies --profile-detail')
     p.add_argument('--interpolate-render',action='store_true',help='Render-only snapshots; requires an explicit interpolation-capable port')
+    p.add_argument('--sdram-exec',action='store_true',help='Local boot/graphics code plus immutable cached SDRAM code; needs sdram-exec-v1 hardware')
     p.add_argument('--uncapped-render',action='store_true',help='Stage 6 repeat-safe rendering with unchanged fixed simulation ticks')
     p.add_argument('--geometry-offload',action='store_true',help='Optional Stage 5 CPU-fallback transform/outcode worker')
     p.add_argument('--integer-mul',action='store_true',help='Use MUL-only fixed_mul; requires CPU feature bit 0')

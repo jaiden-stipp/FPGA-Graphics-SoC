@@ -1,0 +1,23 @@
+Reading C:/intelFPGA/18.1/modelsim_ase/tcl/vsim/pref.tcl
+
+# 10.5b
+
+# vsim -c -L altera_mf -lib build\sdram-exec\final-lib sdram_instruction_cache_tb -do "onerror {quit -code 1}; run -all; quit -code 0" 
+# Start time: 21:52:04 on Oct 12,2026
+# Loading sv_std.std
+# Loading build\sdram-exec\final-lib.sdram_instruction_cache_tb
+# Loading build\sdram-exec\final-lib.sdram_instruction_cache
+# Loading build\sdram-exec\final-lib.sdram_controller
+# Loading build\sdram-exec\final-lib.sdram_capture_clock
+# Loading build\sdram-exec\final-lib.sdram_device_model
+# ** Warning: (vsim-3017) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_instruction_cache_tb.sv(12): [TFMPC] - Too few port connections. Expected 23, found 22.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_instruction_cache_tb/ctl File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/sdram_controller.sv
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_instruction_cache_tb.sv(12): [TFMPC] - Missing connection for port 'refresh_count'.
+# onerror {quit -code 1}
+#  Warning: onerror command for use within macro
+#  run -all
+# PASS sdram_instruction_cache_tb (all beats, warm hits, conflicting tags, addresses beyond 64K, in-flight/final-beat invalidation, code reload)
+# ** Note: $finish    : C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_instruction_cache_tb.sv(48)
+#    Time: 5741 ns  Iteration: 0  Instance: /sdram_instruction_cache_tb
+# End time: 21:52:04 on Oct 12,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 2

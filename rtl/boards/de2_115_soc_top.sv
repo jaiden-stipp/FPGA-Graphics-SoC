@@ -5,7 +5,8 @@ module de2_115_soc_top #(
     parameter ENABLE_SDRAM = 0,
     parameter ENABLE_CACHE = 1,
     parameter ENABLE_BURST = 1,
-    parameter CACHE_LINE_BYTES = 32
+    parameter CACHE_LINE_BYTES = 32,
+    parameter ENABLE_SDRAM_EXEC = 0
 )(
     input logic CLOCK_50,
     input logic [1:0] KEY,
@@ -46,9 +47,9 @@ module de2_115_soc_top #(
 `ifdef SOC_DISABLE_COMMAND_DMA
     localparam GPU_FEATURES=3;
 `else
-    localparam GPU_FEATURES=(ENABLE_SDRAM && ENABLE_CACHE && ENABLE_BURST && CACHE_LINE_BYTES==32)?7:3;
+    localparam GPU_FEATURES=(ENABLE_SDRAM && ENABLE_CACHE && ENABLE_BURST && CACHE_LINE_BYTES==32 && !ENABLE_SDRAM_EXEC)?7:3;
 `endif
-    udp_controls #(.TIMEOUT_CYCLES(INPUT_TIMEOUT_CYCLES), .REQUIRE_LOAD(ENABLE_SDRAM),.GPU_FEATURES(GPU_FEATURES)) controls (
+    udp_controls #(.TIMEOUT_CYCLES(INPUT_TIMEOUT_CYCLES), .REQUIRE_LOAD(ENABLE_SDRAM),.GPU_FEATURES(GPU_FEATURES),.SDRAM_EXEC_SUPPORTED(ENABLE_SDRAM_EXEC)) controls (
         .clk(CLOCK_50), .reset(!reset_sync[1] || !ENET0_RST_N),
         .rx_clk(ENET0_RX_CLK), .tx_clk(ENET0_TX_CLK),
         .rx_data(ENET0_RX_DATA), .rx_dv(ENET0_RX_DV), .rx_er(ENET0_RX_ER),
@@ -59,7 +60,7 @@ module de2_115_soc_top #(
         .load_ready(load_ready), .load_rdata(load_rdata), .sdram_initialized(sdram_initialized),
         .scratch(scratch), .refresh_count(refresh_count)
     );
-    soc_top #(.HEX_FILE(HEX_FILE), .MIF_FILE(MIF_FILE), .ENABLE_SDRAM(ENABLE_SDRAM), .ENABLE_CACHE(ENABLE_CACHE), .ENABLE_BURST(ENABLE_BURST), .CACHE_LINE_BYTES(CACHE_LINE_BYTES)) soc (
+    soc_top #(.HEX_FILE(HEX_FILE), .MIF_FILE(MIF_FILE), .ENABLE_SDRAM(ENABLE_SDRAM), .ENABLE_CACHE(ENABLE_CACHE), .ENABLE_BURST(ENABLE_BURST), .CACHE_LINE_BYTES(CACHE_LINE_BYTES),.ENABLE_SDRAM_EXEC(ENABLE_SDRAM_EXEC)) soc (
         .clk(CLOCK_50), .reset(!reset_sync[1]),
         .buttons(network_buttons | {6'b0, !KEY3, !KEY[1]}),
         .look_state(network_look),

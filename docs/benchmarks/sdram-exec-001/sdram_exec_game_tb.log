@@ -1,0 +1,316 @@
+Reading C:/intelFPGA/18.1/modelsim_ase/tcl/vsim/pref.tcl
+
+# 10.5b
+
+# vsim -c -L altera_mf -lib build\sdram-exec\final-full-lib sdram_exec_game_tb -do "onerror {quit -code 1}; run -all; quit -code 0" 
+# Start time: 22:02:42 on Oct 12,2026
+# Loading sv_std.std
+# Loading build\sdram-exec\final-full-lib.sdram_exec_game_tb_sv_unit
+# Loading build\sdram-exec\final-full-lib.sdram_exec_game_tb
+# Loading build\sdram-exec\final-full-lib.soc_top_sv_unit
+# Loading build\sdram-exec\final-full-lib.soc_top
+# Loading build\sdram-exec\final-full-lib.pipeline_pkg
+# Loading build\sdram-exec\final-full-lib.RV32I_SoC_sv_unit
+# Loading build\sdram-exec\final-full-lib.RV32I_SoC
+# Loading build\sdram-exec\final-full-lib.soc_cpu_counters
+# Loading build\sdram-exec\final-full-lib.soc_PC_IF
+# Loading build\sdram-exec\final-full-lib.soc_IF_ID
+# Loading build\sdram-exec\final-full-lib.soc_ControlUnit_sv_unit
+# Loading build\sdram-exec\final-full-lib.soc_ControlUnit
+# Loading build\sdram-exec\final-full-lib.soc_RegFile
+# Loading build\sdram-exec\final-full-lib.ImmGen_sv_unit
+# Loading build\sdram-exec\final-full-lib.ImmGen
+# Loading build\sdram-exec\final-full-lib.HazardUnit
+# Loading build\sdram-exec\final-full-lib.soc_ID_EX_sv_unit
+# Loading build\sdram-exec\final-full-lib.soc_ID_EX
+# Loading build\sdram-exec\final-full-lib.ForwardMux
+# Loading build\sdram-exec\final-full-lib.soc_ALU
+# Loading build\sdram-exec\final-full-lib.ALU_sv_unit
+# Loading build\sdram-exec\final-full-lib.ALU
+# Loading build\sdram-exec\final-full-lib.BranchUnit
+# Loading build\sdram-exec\final-full-lib.soc_EX_MEM_sv_unit
+# Loading build\sdram-exec\final-full-lib.soc_EX_MEM
+# Loading build\sdram-exec\final-full-lib.soc_MEM_WB_sv_unit
+# Loading build\sdram-exec\final-full-lib.soc_MEM_WB
+# Loading build\sdram-exec\final-full-lib.ResultMux
+# Loading build\sdram-exec\final-full-lib.soc_PipelineAssertions
+# Loading build\sdram-exec\final-full-lib.ForwardingUnit
+# Loading build\sdram-exec\final-full-lib.Monitor
+# Loading build\sdram-exec\final-full-lib.soc_memory
+# Loading build\sdram-exec\final-full-lib.soc_ram_sv_unit
+# Loading build\sdram-exec\final-full-lib.soc_ram
+# Loading build\sdram-exec\final-full-lib.geometry_worker
+# Loading build\sdram-exec\final-full-lib.soc_mmio
+# Loading build\sdram-exec\final-full-lib.graphics_stream_renderer_sv_unit
+# Loading build\sdram-exec\final-full-lib.graphics_stream_renderer
+# Loading build\sdram-exec\final-full-lib.graphics_command_stream_decoder_sv_unit
+# Loading build\sdram-exec\final-full-lib.graphics_command_stream_decoder
+# Loading build\sdram-exec\final-full-lib.graphics_renderer_core_sv_unit
+# Loading build\sdram-exec\final-full-lib.graphics_renderer_core
+# Loading build\sdram-exec\final-full-lib.graphics_command_processor_sv_unit
+# Loading build\sdram-exec\final-full-lib.graphics_command_processor
+# Loading build\sdram-exec\final-full-lib.indexed_mesh_store_sv_unit
+# Loading build\sdram-exec\final-full-lib.indexed_mesh_store
+# Loading build\sdram-exec\final-full-lib.graphics_pipeline_sv_unit
+# Loading build\sdram-exec\final-full-lib.graphics_pipeline
+# Loading build\sdram-exec\final-full-lib.vga_pll
+# Loading build\sdram-exec\final-full-lib.triangle_fifo_sv_unit
+# Loading build\sdram-exec\final-full-lib.triangle_fifo
+# Loading build\sdram-exec\final-full-lib.view_transform_stage_sv_unit
+# Loading build\sdram-exec\final-full-lib.view_transform_stage
+# Loading build\sdram-exec\final-full-lib.transform_3d_pipeline_sv_unit
+# Loading build\sdram-exec\final-full-lib.transform_3d_pipeline
+# Loading build\sdram-exec\final-full-lib.iterative_signed_divider
+# Loading build\sdram-exec\final-full-lib.renderer_sv_unit
+# Loading build\sdram-exec\final-full-lib.renderer
+# Loading build\sdram-exec\final-full-lib.renderer_dual_sv_unit
+# Loading build\sdram-exec\final-full-lib.renderer_dual
+# Loading build\sdram-exec\final-full-lib.triangle_setup_engine_sv_unit
+# Loading build\sdram-exec\final-full-lib.triangle_setup_engine
+# Loading build\sdram-exec\final-full-lib.depth_test_stage
+# Loading build\sdram-exec\final-full-lib.render_performance_counters_sv_unit
+# Loading build\sdram-exec\final-full-lib.render_performance_counters
+# Loading build\sdram-exec\final-full-lib.zbuffer_banked
+# Loading build\sdram-exec\final-full-lib.vga_controller_640x480
+# Loading build\sdram-exec\final-full-lib.vga_timing_640x480
+# Loading build\sdram-exec\final-full-lib.vga_page_swap_controller
+# Loading build\sdram-exec\final-full-lib.framebuffer_banked
+# Loading build\sdram-exec\final-full-lib.palette_256x24
+# Loading build\sdram-exec\final-full-lib.sdram_device_model
+# Loading build\sdram-exec\final-full-lib.sdram_instruction_cache
+# Loading build\sdram-exec\final-full-lib.sdram_execution_bridge
+# Loading build\sdram-exec\final-full-lib.sdram_cache
+# Loading build\sdram-exec\final-full-lib.sdram_fetch_arbiter
+# Loading build\sdram-exec\final-full-lib.sdram_controller
+# Loading build\sdram-exec\final-full-lib.sdram_capture_clock
+# Loading build\sdram-exec\final-full-lib.pixel_bank_ram
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading altera_mf.altera_common_conversion(body)
+# Loading altera_mf.altera_device_families(body)
+# Loading altera_mf.altsyncram(translated)
+# ** Warning: (vsim-3017) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_exec_game_tb.sv(8): [TFMPC] - Too few port connections. Expected 36, found 20.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut File: C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/soc_top.sv
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_exec_game_tb.sv(8): [TFMPC] - Missing connection for port 'frame_pending'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_exec_game_tb.sv(8): [TFMPC] - Missing connection for port 'VGA_R'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_exec_game_tb.sv(8): [TFMPC] - Missing connection for port 'VGA_G'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_exec_game_tb.sv(8): [TFMPC] - Missing connection for port 'VGA_B'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_exec_game_tb.sv(8): [TFMPC] - Missing connection for port 'VGA_CLK'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_exec_game_tb.sv(8): [TFMPC] - Missing connection for port 'VGA_BLANK_N'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_exec_game_tb.sv(8): [TFMPC] - Missing connection for port 'VGA_SYNC_N'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_exec_game_tb.sv(8): [TFMPC] - Missing connection for port 'VGA_HS'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_exec_game_tb.sv(8): [TFMPC] - Missing connection for port 'VGA_VS'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_exec_game_tb.sv(8): [TFMPC] - Missing connection for port 'load_valid'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_exec_game_tb.sv(8): [TFMPC] - Missing connection for port 'load_write'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_exec_game_tb.sv(8): [TFMPC] - Missing connection for port 'load_addr'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_exec_game_tb.sv(8): [TFMPC] - Missing connection for port 'load_wdata'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_exec_game_tb.sv(8): [TFMPC] - Missing connection for port 'load_ready'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_exec_game_tb.sv(8): [TFMPC] - Missing connection for port 'load_rdata'.
+# ** Warning: (vsim-3722) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_exec_game_tb.sv(8): [TFMPC] - Missing connection for port 'refresh_count'.
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'wren_b'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/depth_memory/banks[0]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'rden_a'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/depth_memory/banks[0]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'data_b'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/depth_memory/banks[0]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'clocken2'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/depth_memory/banks[0]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'clocken3'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/depth_memory/banks[0]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'aclr0'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/depth_memory/banks[0]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'aclr1'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/depth_memory/banks[0]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'addressstall_a'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/depth_memory/banks[0]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'addressstall_b'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/depth_memory/banks[0]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'byteena_a'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/depth_memory/banks[0]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'byteena_b'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/depth_memory/banks[0]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'q_a'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/depth_memory/banks[0]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'eccstatus'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/depth_memory/banks[0]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'wren_b'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/depth_memory/banks[1]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'rden_a'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/depth_memory/banks[1]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'data_b'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/depth_memory/banks[1]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'clocken2'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/depth_memory/banks[1]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'clocken3'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/depth_memory/banks[1]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'aclr0'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/depth_memory/banks[1]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'aclr1'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/depth_memory/banks[1]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'addressstall_a'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/depth_memory/banks[1]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'addressstall_b'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/depth_memory/banks[1]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'byteena_a'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/depth_memory/banks[1]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'byteena_b'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/depth_memory/banks[1]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'q_a'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/depth_memory/banks[1]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'eccstatus'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/depth_memory/banks[1]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'wren_b'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer0/banks[0]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'rden_a'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer0/banks[0]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'data_b'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer0/banks[0]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'clocken2'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer0/banks[0]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'clocken3'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer0/banks[0]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'aclr0'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer0/banks[0]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'aclr1'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer0/banks[0]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'addressstall_a'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer0/banks[0]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'addressstall_b'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer0/banks[0]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'byteena_a'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer0/banks[0]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'byteena_b'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer0/banks[0]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'q_a'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer0/banks[0]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'eccstatus'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer0/banks[0]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'wren_b'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer0/banks[1]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'rden_a'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer0/banks[1]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'data_b'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer0/banks[1]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'clocken2'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer0/banks[1]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'clocken3'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer0/banks[1]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'aclr0'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer0/banks[1]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'aclr1'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer0/banks[1]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'addressstall_a'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer0/banks[1]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'addressstall_b'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer0/banks[1]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'byteena_a'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer0/banks[1]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'byteena_b'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer0/banks[1]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'q_a'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer0/banks[1]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'eccstatus'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer0/banks[1]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'wren_b'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer1/banks[0]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'rden_a'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer1/banks[0]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'data_b'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer1/banks[0]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'clocken2'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer1/banks[0]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'clocken3'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer1/banks[0]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'aclr0'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer1/banks[0]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'aclr1'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer1/banks[0]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'addressstall_a'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer1/banks[0]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'addressstall_b'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer1/banks[0]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'byteena_a'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer1/banks[0]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'byteena_b'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer1/banks[0]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'q_a'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer1/banks[0]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'eccstatus'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer1/banks[0]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'wren_b'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer1/banks[1]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'rden_a'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer1/banks[1]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'data_b'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer1/banks[1]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'clocken2'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer1/banks[1]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'clocken3'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer1/banks[1]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'aclr0'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer1/banks[1]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'aclr1'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer1/banks[1]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'addressstall_a'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer1/banks[1]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'addressstall_b'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer1/banks[1]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'byteena_a'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer1/banks[1]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'byteena_b'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer1/banks[1]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'q_a'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer1/banks[1]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/pixel_bank_ram.sv(14): [TFMPC] - Missing Verilog connection for formal VHDL port 'eccstatus'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer1/banks[1]/memory/ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/palette_ip.v(32): [TFMPC] - Missing Verilog connection for formal VHDL port 'wren_b'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/palette/palette_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/palette_ip.v(32): [TFMPC] - Missing Verilog connection for formal VHDL port 'rden_a'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/palette/palette_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/palette_ip.v(32): [TFMPC] - Missing Verilog connection for formal VHDL port 'data_b'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/palette/palette_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/palette_ip.v(32): [TFMPC] - Missing Verilog connection for formal VHDL port 'clocken2'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/palette/palette_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/palette_ip.v(32): [TFMPC] - Missing Verilog connection for formal VHDL port 'clocken3'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/palette/palette_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/palette_ip.v(32): [TFMPC] - Missing Verilog connection for formal VHDL port 'aclr0'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/palette/palette_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/palette_ip.v(32): [TFMPC] - Missing Verilog connection for formal VHDL port 'aclr1'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/palette/palette_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/palette_ip.v(32): [TFMPC] - Missing Verilog connection for formal VHDL port 'addressstall_a'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/palette/palette_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/palette_ip.v(32): [TFMPC] - Missing Verilog connection for formal VHDL port 'addressstall_b'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/palette/palette_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/palette_ip.v(32): [TFMPC] - Missing Verilog connection for formal VHDL port 'byteena_a'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/palette/palette_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/palette_ip.v(32): [TFMPC] - Missing Verilog connection for formal VHDL port 'byteena_b'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/palette/palette_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/palette_ip.v(32): [TFMPC] - Missing Verilog connection for formal VHDL port 'q_a'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/palette/palette_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# ** Warning: (vsim-8822) C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/rtl/generated/palette_ip.v(32): [TFMPC] - Missing Verilog connection for formal VHDL port 'eccstatus'.
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/palette/palette_ram File: C:/intelFPGA/18.1/modelsim_ase/win32aloem/../altera/vhdl/src/altera_mf/altera_mf.vhd
+# onerror {quit -code 1}
+#  Warning: onerror command for use within macro
+#  run -all
+# ** Warning: Warning: READ_DURING_WRITE_MODE_MIXED_PORTS is assumed as OLD_DATA
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/palette/palette_ram
+# ** Warning: Warning: READ_DURING_WRITE_MODE_MIXED_PORTS is assumed as OLD_DATA
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer1/banks[1]/memory/ram
+# ** Warning: Warning: READ_DURING_WRITE_MODE_MIXED_PORTS is assumed as OLD_DATA
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer1/banks[0]/memory/ram
+# ** Warning: Warning: READ_DURING_WRITE_MODE_MIXED_PORTS is assumed as OLD_DATA
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer0/banks[1]/memory/ram
+# ** Warning: Warning: READ_DURING_WRITE_MODE_MIXED_PORTS is assumed as OLD_DATA
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/display/framebuffer0/banks[0]/memory/ram
+# ** Warning: Warning: READ_DURING_WRITE_MODE_MIXED_PORTS is assumed as OLD_DATA
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/depth_memory/banks[1]/memory/ram
+# ** Warning: Warning: READ_DURING_WRITE_MODE_MIXED_PORTS is assumed as OLD_DATA
+#    Time: 0 ps  Iteration: 0  Instance: /sdram_exec_game_tb/dut/graphics/renderer/pipeline/depth_memory/banks[0]/memory/ram
+# PASS sdram_exec_game_tb (unchanged game logic, cached SDRAM code/state, geometry worker, two raster lanes, two presented frames, 2448355 cycles)
+# ** Note: $finish    : C:/Users/Orb1t/Documents/Codex/FPGA-Game-SoC/sim/sdram_exec_game_tb.sv(22)
+#    Time: 49167960 ns  Iteration: 3  Instance: /sdram_exec_game_tb
+# End time: 22:08:42 on Oct 12,2026, Elapsed time: 0:06:00
+# Errors: 0, Warnings: 115
