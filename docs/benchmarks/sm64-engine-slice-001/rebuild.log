@@ -1,0 +1,26 @@
+Exported original castle/slide geometry and collision: C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\engine-slice\assets\world.json
+castle_geo_ground 785 render triangles 879 original collision faces
+castle_ground_floor 2181 render triangles 2144 original collision faces
+castle_upper_floor 2546 render triangles 2019 original collision faces
+castle_basement 1419 render triangles 1395 original collision faces
+secret_slide 1347 render triangles 1126 original collision faces
+Compiled original engine and SoftFloat: 316 objects
+PASS RV32I C subset: gfx.c; report build/subset/gfx.json
+PASS RV32I C subset: gfx_scene.c; report build/subset/gfx_scene.json
+PASS RV32I C subset: player.c; report build/subset/player.json
+PASS RV32I C subset: first_person.c; report build/subset/first_person.json
+PASS RV32I C subset: game_runtime.c; report build/subset/game_runtime.json
+PASS RV32I C subset: portable_assets.c; report build/subset/portable_assets.json
+PASS RV32I C subset: portable_main.c; report build/subset/portable_main.json
+PASS RV32I C subset: cpu_profile.c; report build/subset/cpu_profile.json
+PASS RV32I C subset: sdram.c; report build/subset/sdram.json
+PASS RV32I C subset: castle_engine.c; report build/subset/castle_engine.json
+PASS RV32I C subset: castle_rules.c; report build/subset/castle_rules.json
+PASS RV32I C subset: world.c; report build/subset/world.json
+PASS RV32I C subset: camera.c; report build/subset/camera.json
+PASS RV32I C subset: animation.c; report build/subset/animation.json
+PASS RV32I C subset: game_services.c; report build/subset/game_services.json
+PASS RV32I C subset: castle_controller.c; report build/subset/castle_controller.json
+PASS RV32I C subset: castle_gameplay.c; report build/subset/castle_gameplay.json
+PASS RV32I C subset: game_memory.c; report build/subset/game_memory.json
+Built original-engine grounds: C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\mario-original-engine-grounds-exec.package.json [('mario-original-engine-grounds-exec.bin', 1744), ('mario-original-engine-grounds-exec.code.bin', 81960), ('mario-original-engine-grounds-exec.state.bin', 22748), ('mario-original-engine-grounds-exec.assets.bin', 1479080)]

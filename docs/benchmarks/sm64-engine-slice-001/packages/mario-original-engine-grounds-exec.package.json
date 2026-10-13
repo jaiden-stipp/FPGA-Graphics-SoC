@@ -1,0 +1,121 @@
+{
+  "format": "soc-game-package",
+  "version": 1,
+  "app": "original-engine-grounds",
+  "segments": [
+    {
+      "file": "mario-original-engine-grounds-exec.bin",
+      "address": 0,
+      "bytes": 1744,
+      "sha256": "459df5b639eca7590f2f6357730dfe85cd6eb4788aab571bcb423d4bf51d8826"
+    },
+    {
+      "file": "mario-original-engine-grounds-exec.code.bin",
+      "address": 2147483648,
+      "bytes": 81960,
+      "sha256": "0bd379f3390e47a42acda97e0ef1aad63de212bc2482bec2879659eb63145625"
+    },
+    {
+      "file": "mario-original-engine-grounds-exec.state.bin",
+      "address": 2164260864,
+      "bytes": 22748,
+      "sha256": "3fc156423bcc2bd74b957e8e4bb569e2e3145029f9823d49a17f444b6dfa82f2"
+    },
+    {
+      "file": "mario-original-engine-grounds-exec.assets.bin",
+      "address": 2164375488,
+      "bytes": 1479080,
+      "sha256": "941f8063f758c0e83fa19c4c72d1712e9edc0efa6eaf38135d9ceb3dacbc5da4"
+    }
+  ],
+  "execution": {
+    "abi": "local-boot-sdram-v1",
+    "entry": 2147485512,
+    "code_address": 2147483648,
+    "code_bytes": 81960,
+    "bss_address": 2164283612,
+    "bss_bytes": 91860
+  },
+  "required_cpu_features": {
+    "sdram-exec-v1": true,
+    "mul": true,
+    "geometry-worker-v1": true
+  },
+  "target": {
+    "id": "de2-115-fixed-v2",
+    "runtime_abi": 1,
+    "required_features": [
+      "indexed-flat-rgb",
+      "triangle-collision",
+      "custom-rv32i-gameplay",
+      "mouse-look-v1"
+    ]
+  },
+  "content": {
+    "format": "soc-game-assets",
+    "version": 1,
+    "runtime_abi": 1,
+    "game": "mario-original-engine-grounds",
+    "units": "gpu-q8.8",
+    "material_policy": "indexed-flat-rgb",
+    "palette_colors": 182,
+    "meshes": [
+      {
+        "vertices": 128,
+        "triangles": 200
+      },
+      {
+        "vertices": 8,
+        "triangles": 12
+      }
+    ],
+    "collision": {
+      "abi": "triangle-q12-normal-v1",
+      "floors": 2816,
+      "walls": 4747
+    },
+    "animation": {
+      "abi": "none",
+      "clips": []
+    },
+    "configuration": {
+      "module": "world",
+      "physics": {},
+      "camera": {
+        "focal": 256,
+        "near_z": 257
+      },
+      "spawn": [
+        0,
+        0,
+        0
+      ],
+      "game": {
+        "port": "custom",
+        "implementation_status": "scoped castle gameplay; original engine incomplete"
+      },
+      "world": {
+        "abi": "sdram-areas-v1",
+        "areas": 5,
+        "stored_chunks": 83,
+        "render_scale": 4,
+        "near_gpu": 257,
+        "far_gpu": 30000,
+        "focal_gpu": 256,
+        "resident_handles": 2,
+        "cache_policy": "uploads-between-frames; uncached-visible-triangles-software-clipped"
+      }
+    },
+    "source": {
+      "profile": "game.project.json",
+      "sha256": "8a30f95ac51dc5ba9c0977f2f654bf53eb351947031c83947f2da8ffb10a1472"
+    }
+  },
+  "cadence": {
+    "simulation_tick_cycles": 1666667,
+    "clock_hz": 50000000,
+    "render": "uncapped",
+    "render_repeat_safe": true,
+    "interpolation": true
+  }
+}

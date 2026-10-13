@@ -10,6 +10,10 @@
 #include "castle_transitions.h"
 #include "castle_rules.h"
 #include "render_interpolation.h"
+#ifdef CASTLE_ENGINE_SLICE
+#include "../engine/engine_slice.h"
+static uint32_t castle_engine_fault;
+#endif
 #ifdef CASTLE_GAMEPLAY
 #include "castle_gameplay.h"
 static castle_controller_t controller;
@@ -53,6 +57,7 @@ static void camera_update(void) {
     camera_orbit_step(&camera,&player,cfg,&cw,view.view,4);
     DETAIL_END(PROFILE_CAMERA,camera_start);
 }
+#ifndef CASTLE_ENGINE_SLICE
 static void enter_area(uint32_t area,const int16_t arrival[3],uint8_t yaw) {
     current_area=area;world_select(world_areas+area,&player);
     player.x=arrival[0];player.y=arrival[1];player.z=arrival[2];player.grounded=0;
@@ -64,6 +69,7 @@ static void enter_area(uint32_t area,const int16_t arrival[3],uint8_t yaw) {
     castle_controller_reset(&controller,&player);castle_gameplay_enter(area);
 #endif
 }
+#endif
 int game_port_init(void) {
     current_area=previous_buttons=transition_cooldown=0;view.yaw=128;view.pitch=CASTLE_DEFAULT_PITCH;
     camera.initialized=0;
@@ -72,6 +78,10 @@ int game_port_init(void) {
     animation_reset(&animation,&player,&game_animation_package);
 #ifdef CASTLE_GAMEPLAY
     castle_gameplay_init();castle_controller_reset(&controller,&player);
+#endif
+#ifdef CASTLE_ENGINE_SLICE
+    int32_t engine_spawn[3]={player.x,player.y,player.z};
+    sm64_engine_init(engine_spawn);castle_engine_fault=sm64_engine_probe(0);
 #endif
     castle_mission_state=0;camera_update();render_capture(1);return 0;
 }
@@ -85,7 +95,17 @@ void game_port_update(uint32_t word) {
         if(view.pitch< -32)view.pitch=-32;if(view.pitch>0)view.pitch=0;
     }
     world_collision(world_areas+current_area,&player);
-#ifdef CASTLE_GAMEPLAY
+#ifdef CASTLE_ENGINE_SLICE
+    if(input.buttons&GAME_RESET){const player_world_t *physics=world_areas[0].physics;int32_t engine_spawn[3]={physics->spawn_x,physics->spawn_y,physics->spawn_z};sm64_engine_init(engine_spawn);}
+    // The current renderer's yaw points forward; the original camera yaw
+    // describes the opposite direction. Reflect the stick X axis as well.
+    uint32_t engine_buttons=(input.buttons&~3u)|((input.buttons&1u)<<1)|((input.buttons&2u)>>1);
+    engine_result_t engine_state;sm64_engine_update(engine_buttons,(view.yaw+128u)&255u,&engine_state);
+    castle_engine_fault=engine_state.fault;
+    player.x=engine_state.x;player.y=engine_state.y;player.z=engine_state.z;
+    player.velocity_y=engine_state.velocity_y;player.grounded=engine_state.grounded;player.facing=engine_state.facing;
+    controller.action=player.grounded?(input.buttons&15u?CASTLE_ACTION_WALK:CASTLE_ACTION_IDLE):CASTLE_ACTION_AIR;
+#elif defined(CASTLE_GAMEPLAY)
     if(!pending_ticks && !castle_gameplay_frozen())castle_controller_step(&controller,&player,world_areas+current_area,current_area==4,game_movement_keys(&input,view.yaw),input.buttons,game_movement_heading(&input,view.yaw));
     if(player.respawns!=old_respawns){castle_controller_reset(&controller,&player);castle_gameplay_enter(current_area);}
     uint32_t mission_event=castle_gameplay_step(&player,current_area,input.buttons,controller.action);
@@ -94,6 +114,7 @@ void game_port_update(uint32_t word) {
 #else
     player_step(&player,world_areas[current_area].physics,game_movement_keys(&input,view.yaw));
 #endif
+#ifndef CASTLE_ENGINE_SLICE
     if(pending_ticks) {
         if(!--pending_ticks) {
             const world_exit_t *exit=world_exit_find(castle_exits,CASTLE_EXIT_COUNT,current_area,pending_event);
@@ -124,6 +145,7 @@ void game_port_update(uint32_t word) {
             enter_area(t->destination_area,t->arrival,t->yaw);
         }
     }
+#endif
     previous_buttons=input.buttons;
     DETAIL_START(animation_start);
 #ifdef CASTLE_GAMEPLAY
@@ -146,6 +168,9 @@ void game_port_update(uint32_t word) {
     castle_area=current_area;
 }
 static int render_frame(uint32_t frame,uint32_t alpha) {
+#ifdef CASTLE_ENGINE_SLICE
+    if(castle_engine_fault)return -1;
+#endif
     uint32_t start=SOC_CYCLES;
     player_t render_player=player;game_view_t render_view=view;
     render_player.x=game_render_lerp(render_previous_player.x,player.x,alpha);

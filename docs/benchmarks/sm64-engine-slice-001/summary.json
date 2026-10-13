@@ -1,0 +1,92 @@
+{
+  "baseline_commit": "45370e4c773eb5b68eb29fd630ab091aa4befc7d",
+  "valid_counter_source": "physical-diagnostic-measured.json",
+  "invalid_counter_source": "physical-initial-state-only.json",
+  "measurement_errata": [
+    "First pass omitted CPU snapshot triggers; zero CPU deltas are invalid for timing. Counters were already running.",
+    "Earlier raw samples labelled idle did not force neutral input. Treat all frame samples as uncontrolled live frame production."
+  ],
+  "trace_updates": 96,
+  "native_mismatch_count": 0,
+  "counter_statistics": {
+    "cycles": {
+      "minimum": 21163,
+      "median": 21685.0,
+      "maximum": 106813
+    },
+    "retired": {
+      "minimum": 7003,
+      "median": 7165.0,
+      "maximum": 39738
+    },
+    "combined_memory_fetch_freezes": {
+      "minimum": 12153,
+      "median": 12452.0,
+      "maximum": 56560
+    },
+    "dependency_bubbles": {
+      "minimum": 74,
+      "median": 79.0,
+      "maximum": 245
+    },
+    "icache_misses": {
+      "minimum": 558,
+      "median": 574.0,
+      "maximum": 2749
+    }
+  },
+  "time_conversion": {
+    "configured_clock_hz": 50000000,
+    "externally_calibrated": false,
+    "median_ms": 0.4337,
+    "maximum_ms": 2.13626
+  },
+  "game_memory": {
+    "static_state_bytes": 22748,
+    "static_bss_bytes": 91860,
+    "observed_stack_high_water_bytes": 824,
+    "local_stack_region_bytes": 63792,
+    "last_frame_fields": {
+      "game_player": [
+        4294965968,
+        260,
+        4664,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "game_gpu_stats": [
+        459,
+        2,
+        176,
+        253005,
+        88555,
+        4386,
+        84169,
+        45698,
+        100865,
+        139019,
+        38400,
+        1411863,
+        643817
+      ],
+      "game_update_cycles": [
+        186283
+      ],
+      "game_cpu_cycles": [
+        1023729
+      ],
+      "game_frame_cycles": [
+        1667440
+      ]
+    },
+    "scope": "Observed stack low-water after startup and a short live frame sample; includes startup/renderer; no heap; not a worst-case full-level bound"
+  },
+  "regression_suites": 24,
+  "regression_tests": 197,
+  "restored_selected_demo": true,
+  "performance_improvement_claim": null,
+  "rebuild_binary_segments_match_physical_test": true
+}

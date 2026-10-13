@@ -1,0 +1,42 @@
+Programming existing SDRAM-execution image
+Loading original-engine diagnostic
+Uploading sm64-original-engine-diagnostic.bin: 168 bytes at 0x00000000
+Verifying sm64-original-engine-diagnostic.bin: 168 bytes at 0x00000000
+Uploading sm64-original-engine-diagnostic.code.bin: 61,512 bytes at 0x80000000
+Verifying sm64-original-engine-diagnostic.code.bin: 61,512 bytes at 0x80000000
+Uploading sm64-original-engine-diagnostic.state.bin: 22,768 bytes at 0x81000000
+Verifying sm64-original-engine-diagnostic.state.bin: 22,768 bytes at 0x81000000
+Uploading sm64-original-engine-diagnostic.assets.bin: 591,364 bytes at 0x8101ab60
+  345,264/591,364 bytes
+Verifying sm64-original-engine-diagnostic.assets.bin: 591,364 bytes at 0x8101ab60
+  371,868/591,364 bytes
+Readback verified; CPU released.
+PASS: all 96 original-engine state/position records match native bit for bit
+Loading rendered original-engine grounds package
+Uploading mario-original-engine-grounds-exec.bin: 1,744 bytes at 0x00000000
+Verifying mario-original-engine-grounds-exec.bin: 1,744 bytes at 0x00000000
+Uploading mario-original-engine-grounds-exec.code.bin: 81,960 bytes at 0x80000000
+Verifying mario-original-engine-grounds-exec.code.bin: 81,960 bytes at 0x80000000
+Uploading mario-original-engine-grounds-exec.state.bin: 22,748 bytes at 0x81000000
+Verifying mario-original-engine-grounds-exec.state.bin: 22,748 bytes at 0x81000000
+Uploading mario-original-engine-grounds-exec.assets.bin: 1,479,080 bytes at 0x8101bfc0
+  372,072/1,479,080 bytes
+  744,060/1,479,080 bytes
+  1,114,536/1,479,080 bytes
+Verifying mario-original-engine-grounds-exec.assets.bin: 1,479,080 bytes at 0x8101bfc0
+  351,288/1,479,080 bytes
+  695,028/1,479,080 bytes
+  1,069,512/1,479,080 bytes
+  1,442,796/1,479,080 bytes
+Readback verified; CPU released.
+Original-engine frame progress: 30
+Restoring selected hardware and exact castle demo package
+Uploading mario-castle-gameplay-sdram-direct-packed-mul-geometry-uncapped-interpolated.bin: 41,668 bytes at 0x00000000
+Verifying mario-castle-gameplay-sdram-direct-packed-mul-geometry-uncapped-interpolated.bin: 41,668 bytes at 0x00000000
+Uploading mario-castle-gameplay-sdram-direct-packed-mul-geometry-uncapped-interpolated.assets.bin: 888,172 bytes at 0x80000000
+  337,080/888,172 bytes
+  675,180/888,172 bytes
+Verifying mario-castle-gameplay-sdram-direct-packed-mul-geometry-uncapped-interpolated.assets.bin: 888,172 bytes at 0x80000000
+  344,364/888,172 bytes
+  682,656/888,172 bytes
+Readback verified; CPU released.

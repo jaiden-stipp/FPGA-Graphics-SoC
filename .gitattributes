@@ -36,3 +36,4 @@ docs/benchmarks/exec-sdram-001/** -text -whitespace
 docs/benchmarks/sdram-exec-001/** -text -whitespace
 docs/benchmarks/castle-gameplay-001/** -text -whitespace
 docs/benchmarks/castle-doors-001/** -text -whitespace
+docs/benchmarks/sm64-engine-slice-001/** -text -whitespace

@@ -29,6 +29,17 @@ _start:
     addi t0, t0, 4
     j 1b
 2:
+#ifdef SOC_STACK_CANARY
+    // Opt-in engine experiment: paint unused local RAM before any stack use.
+    la t0, _local_bss_end
+    la t1, _stack_top
+    li t2, 0xa55a3cc3
+8:  bgeu t0, t1, 9f
+    sw t2, 0(t0)
+    addi t0, t0, 4
+    j 8b
+9:
+#endif
     call main
 3:
     j 3b

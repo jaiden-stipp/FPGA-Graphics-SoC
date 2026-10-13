@@ -1,0 +1,171 @@
+{
+  "started_utc": "2026-10-13T18:59:36.630593+00:00",
+  "baseline": {
+    "format": "soc-deployment-selection",
+    "version": 1,
+    "board": "de2-115",
+    "hardware": {
+      "file": "build/quartus-arch-stage5-worker/ArchStage5SoC.sof",
+      "sha256": "e2b1dce3d5814f348e0ca88b38fe49e494e68fddd9e897aeeac4c3a75b7c6e14",
+      "build_command": "scripts/run.ps1 build_geometry_worker.py worker",
+      "cpu_features": 2147483651,
+      "gpu_features": 3,
+      "input_abi": 1229848833
+    },
+    "package": "build/mario-castle-gameplay-sdram-direct-packed-mul-geometry-uncapped-interpolated.package.json",
+    "firmware_command": "scripts/run.ps1 soc.py portable-game --project build/castle-gameplay/game.project.json --terrain-direct --packed-gfx --integer-mul --geometry-offload --uncapped-render --interpolate-render"
+  },
+  "candidate": {
+    "file": "build\\quartus-sdram-exec\\SdramExecSoC.sof",
+    "sha256": "140fa00e9d66def31e6897be29bc927469de72a9a051481186f7d7b2bc30be15",
+    "cpu_features": 2147483655,
+    "gpu_features": 3
+  },
+  "scope": "Original grounds slice validation; diagnostic has 96 unpaced updates, no GPU work, and includes counter instrumentation; live rendering input is uncontrolled",
+  "diagnostic_only": false,
+  "game_only": true,
+  "restored": true,
+  "baseline_frame_sample": {
+    "start": {
+      "initialized": true,
+      "held": false,
+      "words": [
+        0,
+        0,
+        0
+      ],
+      "scratch": 44056,
+      "refresh_count": 107410444,
+      "input_abi": 1229848833,
+      "cpu_features": 2147483651,
+      "gpu_features": 3
+    },
+    "end": {
+      "initialized": true,
+      "held": false,
+      "words": [
+        0,
+        0,
+        0
+      ],
+      "scratch": 44116,
+      "refresh_count": 107546402,
+      "input_abi": 1229848833,
+      "cpu_features": 2147483651,
+      "gpu_features": 3
+    },
+    "seconds": 1.0,
+    "frames": 60,
+    "scope": "One short live frame-production sample; input is not forced neutral; not sustained FPS or a controlled movement/mission benchmark"
+  },
+  "engine_frame_sample": {
+    "start": {
+      "initialized": true,
+      "held": false,
+      "words": [
+        0,
+        0,
+        0
+      ],
+      "scratch": 50,
+      "refresh_count": 12381153,
+      "input_abi": 1229848833,
+      "cpu_features": 2147483655,
+      "gpu_features": 3
+    },
+    "end": {
+      "initialized": true,
+      "held": false,
+      "words": [
+        0,
+        0,
+        0
+      ],
+      "scratch": 80,
+      "refresh_count": 12516951,
+      "input_abi": 1229848833,
+      "cpu_features": 2147483655,
+      "gpu_features": 3
+    },
+    "seconds": 1.0,
+    "frames": 30,
+    "scope": "One short live frame-production sample; input is not forced neutral; not sustained FPS or a controlled movement/mission benchmark"
+  },
+  "game_memory": {
+    "static_state_bytes": 22748,
+    "static_bss_bytes": 91860,
+    "observed_stack_high_water_bytes": 824,
+    "local_stack_region_bytes": 63792,
+    "last_frame_fields": {
+      "game_player": [
+        4294965968,
+        260,
+        4664,
+        0,
+        1,
+        0,
+        0,
+        0
+      ],
+      "game_gpu_stats": [
+        459,
+        2,
+        176,
+        253005,
+        88555,
+        4386,
+        84169,
+        45698,
+        100865,
+        139019,
+        38400,
+        1411863,
+        643817
+      ],
+      "game_update_cycles": [
+        186283
+      ],
+      "game_cpu_cycles": [
+        1023729
+      ],
+      "game_frame_cycles": [
+        1667440
+      ]
+    },
+    "scope": "Observed stack low-water after startup and a short live frame sample; includes startup/renderer; no heap; not a worst-case full-level bound"
+  },
+  "restored_frame_sample": {
+    "start": {
+      "initialized": true,
+      "held": false,
+      "words": [
+        0,
+        0,
+        0
+      ],
+      "scratch": 113,
+      "refresh_count": 7504334,
+      "input_abi": 1229848833,
+      "cpu_features": 2147483651,
+      "gpu_features": 3
+    },
+    "end": {
+      "initialized": true,
+      "held": false,
+      "words": [
+        0,
+        0,
+        0
+      ],
+      "scratch": 173,
+      "refresh_count": 7640298,
+      "input_abi": 1229848833,
+      "cpu_features": 2147483651,
+      "gpu_features": 3
+    },
+    "seconds": 1.0,
+    "frames": 60,
+    "scope": "One short live frame-production sample; input is not forced neutral; not sustained FPS or a controlled movement/mission benchmark"
+  },
+  "finished_utc": "2026-10-13T19:02:25.058747+00:00"
+}
