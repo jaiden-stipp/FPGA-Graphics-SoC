@@ -1,0 +1,12 @@
+{
+  "passed_cpu_runs": 21,
+  "passed_focused_cache_tests": 1,
+  "exact_trace_equivalence": true,
+  "unchanged_protected_inputs": 74,
+  "compact_elf_results_and_fixture_bytes_identical": true,
+  "largest_fixture_elf_bytes": 29380,
+  "programmed_fpga": false,
+  "fitted_new_hardware": false,
+  "physical_performance_measured": false,
+  "scope": "Synthetic workloads in real CPU/controller RTL simulation; no SM64 engine execution"
+}

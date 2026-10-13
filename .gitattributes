@@ -30,3 +30,5 @@ docs/benchmarks/arch-upgrade-001-stage-6/** -text
 docs/benchmarks/render-correctness-001/** -text -whitespace
 
 docs/audits/2026-10-12/** -text -whitespace
+
+docs/benchmarks/exec-sdram-001/** -text -whitespace

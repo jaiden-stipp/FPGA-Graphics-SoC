@@ -542,3 +542,30 @@ speed improvements. The 5,000,000-cycle timeout is an authored 100 ms failure
 budget at 50 MHz, not measured worker latency. Existing performance/resume
 claims retain their original evidence and scope.
 [Repair validation](repository-consistency-fixes.md).
+
+## EXEC-SDRAM-001 — executable-memory architecture characterization
+
+Baseline `7c90adc`. Seven isolated architectures were compared across three
+synthetic workloads using the real generated RV32I/MUL CPU, SDRAM controller and
+JEDEC device model. All 21 runs pass expected arithmetic/store results and freeze
+checks. The five direct-SDRAM designs retire byte-identical full traces for each
+workload. A focused instruction-cache test passes warm hits, conflict/high tags,
+in-flight/final-beat invalidation and code reload. All protected production inputs,
+the accepted SOF and deployment profile remain unchanged.
+
+The fast split 4 KiB I + 4 KiB D prototype takes 6,562 / 14,151 / 25,704 simulated
+cycles for hot / alternating-conflict / streaming workloads. The equal-capacity
+8 KiB blocking shared cache takes 21,844 / 35,824 / 49,288. These comparisons
+combine hit-path, arbitration and topology differences; they are not isolated
+separation benefits or measured FPGA/game speedups. Local overlays take
+6,661 / 18,046 / 123,036 cycles, including copying. Cache capacity is logical
+array storage, not fitted device resources. No new fit, board programming or
+physical performance measurement was performed.
+
+The recommended next implementation is opt-in cached SDRAM instruction fetch
+with local boot/critical code, explicit executable ranges/invalidation, held MEM
+completion, shared-controller ownership, linker/startup support and capability-
+gated packages. This does not establish SM64 engine fit, soft-float cost or FPS.
+[Characterization and limitations](sdram-execution-characterization.md),
+[raw results](benchmarks/exec-sdram-001/results.json),
+[validation](benchmarks/exec-sdram-001/validation.json).
