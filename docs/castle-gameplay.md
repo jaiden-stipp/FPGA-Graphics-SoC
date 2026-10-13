@@ -26,6 +26,14 @@ The earlier milestone smoke-test/restoration evidence remains historical.
   existing idle/walk/jump/land, original `anim_91` slide and `anim_3D` ground pound.
 - Source-positioned wooden and castle local doors, with an authored open/close
   proxy and planar blocking. Original star-number alpha badges are deferred.
+- Source-positioned warp-door models, including the front entrance and doors
+  between castle areas. These were omitted from the initial gameplay export.
+  The adapter draws all 15 source warp doors independently of destination
+  support; existing transition rules still determine which areas can be entered.
+  Metal doors use the original metal display list; key doors retain the original
+  castle-door base mesh, with key/star texture badges deferred. Door material
+  sections retain distinct flat panel, darker overlay and gold handle colors,
+  using the shared converter's normal shading. Source geometry is unchanged.
 - Original star-box and star meshes. Nine source function bodies from
   `exclamation_box.inc.c` and `sparkle_spawn_star.inc.c` run through a compatibility
   boundary. Exact integral float literals are lowered to integers; US branches
@@ -53,6 +61,15 @@ does not increment it again. This is not original new-save progression. The
 under-21-second bonus star remains outside the selected mission.
 
 ## Reproduce and build
+
+The door visibility fix is documented in
+`benchmarks/castle-doors-001/record.json`. A native production-code view aimed at
+the front entrance submitted zero door triangles before the fix and 96 after
+the fix. This is a door-only command-submission reproduction, not a VGA capture
+or a performance comparison. The original baseline is commit `2a13501`; the
+previous CPU/asset package is preserved locally in `build/door-visibility-baseline`.
+The material preview in that evidence directory is an offline diagnostic of
+unchanged door geometry, not an FPGA screenshot.
 
 Run from `C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC` with LLVM on PATH:
 

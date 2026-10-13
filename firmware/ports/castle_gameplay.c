@@ -185,6 +185,14 @@ uint32_t castle_gameplay_step(player_t *p,uint32_t area,uint32_t buttons,uint32_
     previous_buttons=buttons;previous_player_y=p->y;previous_player_x=p->x;previous_player_z=p->z;return exit;
 }
 int castle_gameplay_draw(uint32_t area,const player_t *p,const game_view_t *v) {
+    // Warp triggers are handled by the world adapter; their source models
+    // still need to be drawn, including doors to unsupported destinations.
+    for(uint32_t i=0;i<CASTLE_WARP_DOOR_COUNT;++i) {
+        const int16_t *d=castle_warp_doors[i];if((uint32_t)d[0]!=area)continue;
+        int32_t position[3]={d[1],d[2],d[3]};uint32_t yaw=(uint32_t)d[4]&255u;
+        const scene_mesh_t *mesh=d[5]==2?&castle_metal_door_mesh:(d[5]?&castle_castle_door_mesh:&castle_door_mesh);
+        if(world_draw_instance(mesh,position,castle_game_rotations[yaw][0],castle_game_rotations[yaw][1],p,v->view))return -1;
+    }
     for(uint32_t i=0;i<CASTLE_LOCAL_DOOR_COUNT;++i) {
         const int16_t *d=castle_local_doors[i];if((uint32_t)d[0]!=area)continue;
         int32_t position[3]={d[1],d[2],d[3]};

@@ -66,6 +66,13 @@ def model(source,directory,roots,scale,translation,color):
             'flat_texture_block':True,'alpha_as_solid':True,
             'texture_colors':{name:[c/255 for c in color] for name in textures|{'default'}},
             'light_colors':{name:[c/255 for c in color] for name in lights|{'default'}}}
+    # Keep source face/material assignments. Flat RGB is an authored fallback,
+    # not texture sampling: overlays are darker wood/metal, handles stay gold.
+    if directory=='door':
+        for name in textures:
+            if name.endswith(('0300AD10','0300CD10','0300E510')):
+                policy['texture_colors'][name]=[c/255 for c in [max(0,v*2//3) for v in color]]
+        policy['light_colors']['door_seg3_lights_03009CF8']=[255/255,208/255,48/255]
     vertices=[];faces=[]
     for root in roots:
         p,t,_,_=sm64_subset.lower(text,{**policy,'display_list':root})
@@ -74,8 +81,30 @@ def model(source,directory,roots,scale,translation,color):
     obj=folder/(directory+'.obj');game_assets.write_obj(obj,vertices,faces,{**policy['texture_colors'],**policy['light_colors']})
     palette,chunks=scene_assets.convert(obj,transform=lambda p:tuple(p[i]*scale+translation[i] for i in range(3)),palette=[tuple(color)])
     if len(chunks)!=1:raise ValueError('Gameplay object model needs one reviewed mesh: '+directory)
-    return chunks[0],{'file':path.relative_to(source).as_posix(),'sha256':hashlib.sha256(path.read_bytes()).hexdigest(),
-            'roots':roots,'source_scale':scale,'geo_translation':translation,'texture_policy':'authored flat RGB; source geometry retained'}
+    return chunks[0],palette,{'file':path.relative_to(source).as_posix(),'sha256':hashlib.sha256(path.read_bytes()).hexdigest(),
+            'roots':roots,'source_scale':scale,'geo_translation':translation,'texture_policy':'authored flat RGB per source material; source geometry retained'}
+
+
+def warp_doors(source,world):
+    """Export every source door warp, even when its destination is unsupported.
+
+    Visibility and transition support are separate: rendering a door must not
+    silently add a course or enable a warp that the world adapter cannot load.
+    """
+    from sm64_castle import level_nodes
+    nodes={level:level_nodes(source,level) for level in ('castle_grounds','castle_inside','pss')}
+    rows=[]
+    for area,a in enumerate(world['areas']):
+        for o in a['collision']['special_objects']:
+            if o['preset'].endswith('_door_warp'):
+                kind=2 if 'metal' in o['preset'] else (0 if 'wooden' in o['preset'] else 1)
+                rows.append([area,*o['position'],o['yaw'],kind])
+        for o in nodes[a['source_level']][a['source_area']]['objects']:
+            if o['behavior']=='bhvDoorWarp' and o['model']!='MODEL_NONE':
+                kind=2 if 'METAL' in o['model'] else (0 if 'WOODEN' in o['model'] else 1)
+                rows.append([area,*o['position'],o['yaw'],kind])
+    if len(rows)!=len(set(map(tuple,rows))):raise ValueError('Duplicate source warp-door placement')
+    return rows
 
 def generate(source,world,destination):
     preset_names=source/'include/macro_preset_names.h';presets=source/'include/macro_presets.h'
@@ -109,20 +138,28 @@ def generate(source,world,destination):
            ('star','star',['star_seg3_dl_0302B870'],0.25,[0,0,0],[255,224,40]),
            ('door','door',['door_seg3_dl_03014A80'],0.25,[3,0,0],[132,76,32]),
            ('castle_door','door',['door_seg3_dl_03013E28'],0.25,[3,0,0],[216,182,124]),
+           ('metal_door','door',['door_seg3_dl_03014BE0'],0.25,[3,0,0],[112,128,144]),
            ('coin','coin',['coin_seg3_dl_03007800'],1,[0,0,0],[255,224,40])]
     lines=['#ifndef CASTLE_GAMEPLAY_DATA_H','#define CASTLE_GAMEPLAY_DATA_H','#include "assets.h"','#include "game_services.h"',
            '#define CASTLE_GAMEPLAY_STORAGE __attribute__((section(".game_assets")))']
     models=[];palette=world['resident_scene']['palette']
     for name,directory,roots,scale,translation,color in specs:
-        (vertices,triangles),report=model(source,directory,roots,scale,translation,color)
-        if color not in palette:
-            if len(palette)>=256:raise ValueError('Gameplay palette exceeds 256 colors')
-            palette.append(color)
+        (vertices,triangles),mesh_palette,report=model(source,directory,roots,scale,translation,color)
+        if directory!='door':mesh_palette=[tuple(color)]
+        remap=[]
+        for rgb in mesh_palette:
+            rgb=list(rgb)
+            if rgb not in palette:
+                if len(palette)>=256:raise ValueError('Gameplay palette exceeds 256 colors')
+                palette.append(rgb)
+            remap.append(palette.index(rgb))
         index=palette.index(color)
+        triangle_colors=[remap[t[3]] if directory=='door' else index for t in triangles]
         lines+=['static const CASTLE_GAMEPLAY_STORAGE scene_vertex_t castle_'+name+'_vertices[]={'+','.join('{'+','.join(map(str,v))+'}' for v in vertices)+'};',
-                'static const CASTLE_GAMEPLAY_STORAGE scene_triangle_t castle_'+name+'_triangles[]={'+','.join('{'+','.join(map(str,t[:3]))+','+str(index)+'}' for t in triangles)+'};',
+                'static const CASTLE_GAMEPLAY_STORAGE scene_triangle_t castle_'+name+'_triangles[]={'+','.join('{'+','.join(map(str,t[:3]))+','+str(c)+'}' for t,c in zip(triangles,triangle_colors))+'};',
                 'static const CASTLE_GAMEPLAY_STORAGE scene_mesh_t castle_'+name+'_mesh={castle_'+name+'_vertices,castle_'+name+'_triangles,'+str(len(vertices))+','+str(len(triangles))+'};']
-        report.update({'id':name,'vertices':len(vertices),'triangles':len(triangles),'palette_index':index});models.append(report)
+        report.update({'id':name,'vertices':len(vertices),'triangles':len(triangles),'palette_index':index,
+                       'used_palette_indices':sorted(set(triangle_colors))});models.append(report)
         if name=='star':lines.append('#define CASTLE_HUD_COLOR '+str(index)+'u')
     macros=source/'levels/pss/areas/1/macro.inc.c';coins=[];boxes=[]
     text=re.sub(r'/\*.*?\*/|//[^\n]*','',macros.read_text(),flags=re.S)
@@ -146,6 +183,9 @@ def generate(source,world,destination):
                 doors.append([area,*o['position'],o['yaw'],requirement,0 if o['preset']=='special_wooden_door' else 1])
     lines.append('static const CASTLE_GAMEPLAY_STORAGE int16_t castle_local_doors[][7]={'+','.join('{'+','.join(map(str,d))+'}' for d in doors)+'};')
     lines.append('#define CASTLE_LOCAL_DOOR_COUNT '+str(len(doors))+'u')
+    warps=warp_doors(source,world)
+    lines.append('static const CASTLE_GAMEPLAY_STORAGE int16_t castle_warp_doors[][6]={'+','.join('{'+','.join(map(str,d))+'}' for d in warps)+'};')
+    lines.append('#define CASTLE_WARP_DOOR_COUNT '+str(len(warps))+'u')
     lines.append('static const CASTLE_GAMEPLAY_STORAGE int16_t castle_slide_coins[][3]={'+','.join('{'+','.join(map(str,p))+'}' for p in coins)+'};')
     lines.append('#define CASTLE_SLIDE_COIN_COUNT '+str(len(coins))+'u')
     lines.append('static const CASTLE_GAMEPLAY_STORAGE int16_t castle_game_rotations[256][2]={'+','.join('{%d,%d}'%(round(math.cos(i*math.tau/256)*256),round(math.sin(i*math.tau/256)*256)) for i in range(256))+'};')
@@ -158,7 +198,7 @@ def generate(source,world,destination):
         for behavior in sorted(set(re.findall(r'\b(bhv\w+)\b',path.read_text()))):
             inventory.append({'level':level,'behavior':behavior,'status':'transition-adapter' if 'Warp' in behavior or behavior=='bhvWarp' else 'not-original-engine-ported'})
     report={'format':'soc-sm64-gameplay-coverage','version':1,'source_commit':json.loads((ROOT/'sm64.lock.json').read_text())['commit'],
-            'imported_functions':functions,'models':models,'local_doors':len(doors),'slide_single_coins':len(coins),
+            'imported_functions':functions,'models':models,'local_doors':len(doors),'warp_doors':warps,'slide_single_coins':len(coins),
             'movement_sources':movement,
             'numeric_policy':{'velocities':'Q8; nearest source coefficient, integer division truncates toward zero',
                 'trig':'256-angle Q8 sine/cosine; Mario display yaw retains existing 32 directions',

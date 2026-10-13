@@ -1,0 +1,53 @@
+{
+  "baseline_commit": "2a13501",
+  "baseline_package": [
+    {
+      "file": "mario-castle-gameplay-sdram-direct-packed-mul-geometry-uncapped-interpolated.bin",
+      "address": 0,
+      "bytes": 41488,
+      "sha256": "a8599a94746d39517ada26ec96dbe19b6fda129351cebf620f72aaeb264f4db9"
+    },
+    {
+      "file": "mario-castle-gameplay-sdram-direct-packed-mul-geometry-uncapped-interpolated.assets.bin",
+      "address": 2147483648,
+      "bytes": 887500,
+      "sha256": "cffbbd3c39daeda6d07c9b43d5219902f830949be791e31b10b2b45ed832f6eb"
+    }
+  ],
+  "new_package": [
+    {
+      "file": "mario-castle-gameplay-sdram-direct-packed-mul-geometry-uncapped-interpolated.bin",
+      "address": 0,
+      "bytes": 41668,
+      "sha256": "63d38f0f10380b647a6369be2c19deb4a1c00ccf1f09c5fb1f15d7850b9a562d"
+    },
+    {
+      "file": "mario-castle-gameplay-sdram-direct-packed-mul-geometry-uncapped-interpolated.assets.bin",
+      "address": 2147483648,
+      "bytes": 888172,
+      "sha256": "a3e2de6cdc21903ec75c908686e63305c8add1136634181629ba139552bbdb39"
+    }
+  ],
+  "reproduction": {
+    "method": "Native production castle_gameplay_draw; front view aimed at source entrance; count emitted DRAW_TRIANGLE commands with view depth greater than 300 to exclude HUD",
+    "before_front_door_triangles": 0,
+    "after_front_door_triangles": 96,
+    "scope": "Door-only command submission test; not a physical VGA screenshot or frame-time comparison"
+  },
+  "verification": {
+    "castle_gameplay_tests": 13,
+    "portable_pipeline_tests": 13,
+    "sdram_package_tests": 3
+  },
+  "source_models": "Original source door meshes, source scale 0.25 and composed geo translation [3,0,0]; positions and yaw from original collision/level scripts",
+  "rendered_warp_doors": 15,
+  "existing_room_doors": 15,
+  "material_policy": "Source triangle material assignments retained; overlay fallback is two-thirds base RGB, handle fallback [255,208,48], normal shading from existing scene_assets.convert; authored approximations, not sampled textures",
+  "hardware_changes": false,
+  "performance_claim": "None; additional door triangles add rendering work. No sustained frame-time benchmark performed.",
+  "source_sha256": {
+    "scripts/sm64_gameplay.py": "2b624f7db0d32812e658393b034edd140655520412fb048434a4581515b924d7",
+    "firmware/ports/castle_gameplay.c": "c244edbfd81dff59def0dd74eb481c35a2c654e04cfd04bdb1bded44eb490528",
+    "scripts/test_castle_gameplay.py": "7ff9d9fa2ec899ccad5eb949aaf5744d73eb273733213420b22179f3cb83f60d"
+  }
+}
