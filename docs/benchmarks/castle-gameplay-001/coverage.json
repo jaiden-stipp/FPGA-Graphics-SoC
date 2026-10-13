@@ -1,0 +1,580 @@
+{
+  "format": "soc-sm64-gameplay-coverage",
+  "version": 1,
+  "source_commit": "2b17d081c9798b31b91dc71f37994b0da28cffc9",
+  "imported_functions": [
+    {
+      "file": "src/game/behaviors/exclamation_box.inc.c",
+      "function": "exclamation_box_act_0",
+      "source_file_sha256": "1e5e347fda532fc7ed840dfd8934c3cf555fcaf41c5f6fdc3f20aebccccded2d",
+      "source_body_sha256": "48c577e870bf459745f037c507331aa15be75007a96fb86f3e09ca0282850a23",
+      "generated_body_sha256": "48c577e870bf459745f037c507331aa15be75007a96fb86f3e09ca0282850a23",
+      "numeric_lowering": "exact integral literals; integer object positions; no floating arithmetic in these function bodies",
+      "omitted_effects": [
+        "rumble",
+        "triangle break particles",
+        "US region selected"
+      ]
+    },
+    {
+      "file": "src/game/behaviors/exclamation_box.inc.c",
+      "function": "exclamation_box_act_2",
+      "source_file_sha256": "1e5e347fda532fc7ed840dfd8934c3cf555fcaf41c5f6fdc3f20aebccccded2d",
+      "source_body_sha256": "c2416fc6fd0e1f4a289e1937f40630e748120db33b0163a6ad1ccac88165ad48",
+      "generated_body_sha256": "28447cad2aa46df0b03dbb162d55dbbf2aacc5ac15cb77f7d88904b86fa8d017",
+      "numeric_lowering": "exact integral literals; integer object positions; no floating arithmetic in these function bodies",
+      "omitted_effects": [
+        "rumble",
+        "triangle break particles",
+        "US region selected"
+      ]
+    },
+    {
+      "file": "src/game/behaviors/exclamation_box.inc.c",
+      "function": "exclamation_box_spawn_contents",
+      "source_file_sha256": "1e5e347fda532fc7ed840dfd8934c3cf555fcaf41c5f6fdc3f20aebccccded2d",
+      "source_body_sha256": "0231da537d71befb8aee6b7a2b381e659b5b2985cfda163df450a25963707bbe",
+      "generated_body_sha256": "db82ab8450d8cd2d5c7c15225c9e24deb3191c74590d78aaa74aad5695a3f043",
+      "numeric_lowering": "exact integral literals; integer object positions; no floating arithmetic in these function bodies",
+      "omitted_effects": [
+        "rumble",
+        "triangle break particles",
+        "US region selected"
+      ]
+    },
+    {
+      "file": "src/game/behaviors/exclamation_box.inc.c",
+      "function": "exclamation_box_act_4",
+      "source_file_sha256": "1e5e347fda532fc7ed840dfd8934c3cf555fcaf41c5f6fdc3f20aebccccded2d",
+      "source_body_sha256": "fc3279fba9aefc02b8ee23262f23c8e52ab343db1de62e333a93d89c008ae7ca",
+      "generated_body_sha256": "78cbf8496d49fea31c5817b45eb7057d2b623f445ec3abda2d3c7f35158ff688",
+      "numeric_lowering": "exact integral literals; integer object positions; no floating arithmetic in these function bodies",
+      "omitted_effects": [
+        "rumble",
+        "triangle break particles",
+        "US region selected"
+      ]
+    },
+    {
+      "file": "src/game/behaviors/sparkle_spawn_star.inc.c",
+      "function": "bhv_spawned_star_init",
+      "source_file_sha256": "b33804fda7e23bf187c57ebc1d7b4d3233ec1fc6079c8a6dadf6263668b08fcf",
+      "source_body_sha256": "5bf5383291c745ed2dc0d9e4015413ff2d68e2b1a01f37c1670bf23b535e0d6e",
+      "generated_body_sha256": "5bf5383291c745ed2dc0d9e4015413ff2d68e2b1a01f37c1670bf23b535e0d6e",
+      "numeric_lowering": "exact integral literals; integer object positions; no floating arithmetic in these function bodies",
+      "omitted_effects": [
+        "rumble",
+        "triangle break particles",
+        "US region selected"
+      ]
+    },
+    {
+      "file": "src/game/behaviors/sparkle_spawn_star.inc.c",
+      "function": "set_sparkle_spawn_star_hitbox",
+      "source_file_sha256": "b33804fda7e23bf187c57ebc1d7b4d3233ec1fc6079c8a6dadf6263668b08fcf",
+      "source_body_sha256": "208f57d6ff3975f711cf01bbb78c50d3d2eb356dbd5055ebda81dcdecd5c5dab",
+      "generated_body_sha256": "208f57d6ff3975f711cf01bbb78c50d3d2eb356dbd5055ebda81dcdecd5c5dab",
+      "numeric_lowering": "exact integral literals; integer object positions; no floating arithmetic in these function bodies",
+      "omitted_effects": [
+        "rumble",
+        "triangle break particles",
+        "US region selected"
+      ]
+    },
+    {
+      "file": "src/game/behaviors/sparkle_spawn_star.inc.c",
+      "function": "set_y_home_to_pos",
+      "source_file_sha256": "b33804fda7e23bf187c57ebc1d7b4d3233ec1fc6079c8a6dadf6263668b08fcf",
+      "source_body_sha256": "4b96ff88b5f2d5e9eb0e0ef28245854c8dde9036c4747830839b00e3016b9bea",
+      "generated_body_sha256": "4b96ff88b5f2d5e9eb0e0ef28245854c8dde9036c4747830839b00e3016b9bea",
+      "numeric_lowering": "exact integral literals; integer object positions; no floating arithmetic in these function bodies",
+      "omitted_effects": [
+        "rumble",
+        "triangle break particles",
+        "US region selected"
+      ]
+    },
+    {
+      "file": "src/game/behaviors/sparkle_spawn_star.inc.c",
+      "function": "slow_star_rotation",
+      "source_file_sha256": "b33804fda7e23bf187c57ebc1d7b4d3233ec1fc6079c8a6dadf6263668b08fcf",
+      "source_body_sha256": "d56d818ef4ea58180d7c62b3bd8be7492bd3db4900f3647f4f30818746b22a54",
+      "generated_body_sha256": "d56d818ef4ea58180d7c62b3bd8be7492bd3db4900f3647f4f30818746b22a54",
+      "numeric_lowering": "exact integral literals; integer object positions; no floating arithmetic in these function bodies",
+      "omitted_effects": [
+        "rumble",
+        "triangle break particles",
+        "US region selected"
+      ]
+    },
+    {
+      "file": "src/game/behaviors/sparkle_spawn_star.inc.c",
+      "function": "bhv_spawned_star_loop",
+      "source_file_sha256": "b33804fda7e23bf187c57ebc1d7b4d3233ec1fc6079c8a6dadf6263668b08fcf",
+      "source_body_sha256": "e8653b1144be9430f68fd1970beac0d9d9d109f8f5cd77eb09a0cc9fd7830bc6",
+      "generated_body_sha256": "ab647e69c1f2bde30ba9f8265788f19a7f2164db7df43ef9b56c60e6d029b28c",
+      "numeric_lowering": "exact integral literals; integer object positions; no floating arithmetic in these function bodies",
+      "omitted_effects": [
+        "rumble",
+        "triangle break particles",
+        "US region selected"
+      ]
+    }
+  ],
+  "models": [
+    {
+      "file": "actors/exclamation_box/model.inc.c",
+      "sha256": "d68fefe1ec68ab66d7ffd4ace4559dcb0c3e76e4e417a6c8cfd5e709b7ba7604",
+      "roots": [
+        "exclamation_box_seg8_dl_08019438"
+      ],
+      "source_scale": 2,
+      "geo_translation": [
+        0,
+        0,
+        0
+      ],
+      "texture_policy": "authored flat RGB; source geometry retained",
+      "id": "box",
+      "vertices": 8,
+      "triangles": 12,
+      "palette_index": 146
+    },
+    {
+      "file": "actors/star/model.inc.c",
+      "sha256": "3c2eb03c742efa979cef686e654e1eb3cfe9642d17523332a054f5f039bcebec",
+      "roots": [
+        "star_seg3_dl_0302B870"
+      ],
+      "source_scale": 0.25,
+      "geo_translation": [
+        0,
+        0,
+        0
+      ],
+      "texture_policy": "authored flat RGB; source geometry retained",
+      "id": "star",
+      "vertices": 12,
+      "triangles": 20,
+      "palette_index": 147
+    },
+    {
+      "file": "actors/door/model.inc.c",
+      "sha256": "e899db61aad718b7c7899474b7aae1413f8284d92584ca797c50b3c2a0acf39b",
+      "roots": [
+        "door_seg3_dl_03014A80"
+      ],
+      "source_scale": 0.25,
+      "geo_translation": [
+        3,
+        0,
+        0
+      ],
+      "texture_policy": "authored flat RGB; source geometry retained",
+      "id": "door",
+      "vertices": 32,
+      "triangles": 48,
+      "palette_index": 148
+    },
+    {
+      "file": "actors/door/model.inc.c",
+      "sha256": "e899db61aad718b7c7899474b7aae1413f8284d92584ca797c50b3c2a0acf39b",
+      "roots": [
+        "door_seg3_dl_03013E28"
+      ],
+      "source_scale": 0.25,
+      "geo_translation": [
+        3,
+        0,
+        0
+      ],
+      "texture_policy": "authored flat RGB; source geometry retained",
+      "id": "castle_door",
+      "vertices": 32,
+      "triangles": 48,
+      "palette_index": 149
+    },
+    {
+      "file": "actors/coin/model.inc.c",
+      "sha256": "b41429f30e530af4e8276144e695447f25c74b439749804a95e7f976423f25d7",
+      "roots": [
+        "coin_seg3_dl_03007800"
+      ],
+      "source_scale": 1,
+      "geo_translation": [
+        0,
+        0,
+        0
+      ],
+      "texture_policy": "authored flat RGB; source geometry retained",
+      "id": "coin",
+      "vertices": 4,
+      "triangles": 2,
+      "palette_index": 147
+    }
+  ],
+  "local_doors": 15,
+  "slide_single_coins": 20,
+  "movement_sources": [
+    {
+      "file": "src/game/mario_actions_moving.c",
+      "function": "update_sliding",
+      "source_file_sha256": "8baa74fee5590e9137308eddf38696cc7dc861144c4b5dbe0de0847f5f0e7073",
+      "source_body_sha256": "3cca409394f030a8f242ba7539c48accc34e36fa1ef4718bf7b888e3f63870a1",
+      "implementation": "reviewed integer lowering, not verbatim C"
+    },
+    {
+      "file": "src/game/mario_actions_moving.c",
+      "function": "update_sliding_angle",
+      "source_file_sha256": "8baa74fee5590e9137308eddf38696cc7dc861144c4b5dbe0de0847f5f0e7073",
+      "source_body_sha256": "79985f55df1ac796ef456c1a76387478601da108dedde9aa0fead8ae5be87425",
+      "implementation": "reviewed integer lowering, not verbatim C"
+    },
+    {
+      "file": "src/game/mario_actions_moving.c",
+      "function": "update_walking_speed",
+      "source_file_sha256": "8baa74fee5590e9137308eddf38696cc7dc861144c4b5dbe0de0847f5f0e7073",
+      "source_body_sha256": "d0fb3cfb160fdfd497b9b2a7ea8b40348f7276b10499ce9478f49eed20efda86",
+      "implementation": "reviewed integer lowering, not verbatim C"
+    },
+    {
+      "file": "src/game/mario_actions_airborne.c",
+      "function": "update_air_without_turn",
+      "source_file_sha256": "5bf31e13c496de14b3a18ee31f4259fe85d29f4e9394a7c9f5b36143e85beb12",
+      "source_body_sha256": "f9d2d768973d3726ad2d1f11b8831881857fb4ddd9774c94bb9245a9cf9153de",
+      "implementation": "reviewed integer lowering, not verbatim C"
+    }
+  ],
+  "numeric_policy": {
+    "velocities": "Q8; nearest source coefficient, integer division truncates toward zero",
+    "trig": "256-angle Q8 sine/cosine; Mario display yaw retains existing 32 directions",
+    "derived_coefficients": {
+      "walking_1_1": 282,
+      "air_drag_0_35": 90,
+      "friction_0_98": 251,
+      "friction_0_96": 246,
+      "friction_0_92": 236,
+      "steering_0_02": 5,
+      "slide_1_degree_normal_y": 4095
+    },
+    "authored_safety": "100 source units/tick vector cap; horizontal collision substeps at most 8 units and radius/2, rebinding the spatial grid every substep"
+  },
+  "save_fixture": {
+    "initial_stars": 70,
+    "initial_key_bits": 3,
+    "slide_star_bit": 0,
+    "reason": "unlocked castle traversal fixture, not original new-game progression"
+  },
+  "mission_source": {
+    "file": "levels/pss/areas/1/macro.inc.c",
+    "sha256": "629a1d8e159f99b461a78f0d6f2bf81950991547ef6c2a11bde9c9384ab05de1",
+    "box_position": [
+      -6385,
+      -4200,
+      5770
+    ]
+  },
+  "behavior_script": {
+    "file": "data/behavior_data.c",
+    "sha256": "6a73e4bd89edb2a001dd6ed130e7a7ffa37dce754ee13ff9ea3a5e09bdb42343",
+    "spawned_star_second_byte": 1,
+    "spawned_star_set_home": true
+  },
+  "macro_preset": {
+    "name": "macro_box_star_1",
+    "index": 68,
+    "contents": 8,
+    "sources": [
+      {
+        "file": "include/macro_preset_names.h",
+        "sha256": "5406d7acef9f9cfebb3c34d66abb4e66973d605656dca45fa4652e2c9dd5204f"
+      },
+      {
+        "file": "include/macro_presets.h",
+        "sha256": "4d05ebc1ef4d27ce3bee288f31bccb7e9ee06ec02ed6c5259c6052549e092650"
+      }
+    ]
+  },
+  "box_collision": {
+    "file": "actors/exclamation_box_outline/collision.inc.c",
+    "sha256": "3c7b7ae885a56201e89d2f01424150b13d962bfe89775cd6143c0f53b16d2109",
+    "scale": 2,
+    "bounds": [
+      -52,
+      52,
+      60,
+      104,
+      -52,
+      52
+    ],
+    "runtime": "shared axis-aligned solid collider; original triangle solver not ported"
+  },
+  "supported": "five original areas and transitions; source box/star control flow; scoped fixed-point walking/sliding, attack, ground pound; RAM mission save",
+  "limitations": [
+    "not complete SM64 action engine",
+    "shared capsule collision instead of original mario_step.c",
+    "quantized movement and trigonometry",
+    "wooden/castle door source geometry retained; star-number alpha badges deferred; authored hinge interaction",
+    "source star-spawn timing retained but camera cutscene adapted to gameplay freeze",
+    "audio, particles, dialog, swimming, original Lakitu, NPCs, caps and other missions not ported",
+    "coin billboard geometry retained with solid flat color; alpha textures and coin-line/blue-coin spawning not implemented",
+    "save persists area changes and retries, not power cycles"
+  ],
+  "behavior_inventory": [
+    {
+      "level": "castle_grounds",
+      "behavior": "bhvAirborneWarp",
+      "status": "transition-adapter"
+    },
+    {
+      "level": "castle_grounds",
+      "behavior": "bhvAmbientSounds",
+      "status": "not-original-engine-ported"
+    },
+    {
+      "level": "castle_grounds",
+      "behavior": "bhvBird",
+      "status": "not-original-engine-ported"
+    },
+    {
+      "level": "castle_grounds",
+      "behavior": "bhvBirdsSoundLoop",
+      "status": "not-original-engine-ported"
+    },
+    {
+      "level": "castle_grounds",
+      "behavior": "bhvButterfly",
+      "status": "not-original-engine-ported"
+    },
+    {
+      "level": "castle_grounds",
+      "behavior": "bhvCameraLakitu",
+      "status": "not-original-engine-ported"
+    },
+    {
+      "level": "castle_grounds",
+      "behavior": "bhvCastleFlagWaving",
+      "status": "not-original-engine-ported"
+    },
+    {
+      "level": "castle_grounds",
+      "behavior": "bhvDeathWarp",
+      "status": "transition-adapter"
+    },
+    {
+      "level": "castle_grounds",
+      "behavior": "bhvHiddenAt120Stars",
+      "status": "not-original-engine-ported"
+    },
+    {
+      "level": "castle_grounds",
+      "behavior": "bhvIntroScene",
+      "status": "not-original-engine-ported"
+    },
+    {
+      "level": "castle_grounds",
+      "behavior": "bhvInvisibleObjectsUnderBridge",
+      "status": "not-original-engine-ported"
+    },
+    {
+      "level": "castle_grounds",
+      "behavior": "bhvLaunchDeathWarp",
+      "status": "transition-adapter"
+    },
+    {
+      "level": "castle_grounds",
+      "behavior": "bhvLaunchStarCollectWarp",
+      "status": "transition-adapter"
+    },
+    {
+      "level": "castle_grounds",
+      "behavior": "bhvManyBlueFishSpawner",
+      "status": "not-original-engine-ported"
+    },
+    {
+      "level": "castle_grounds",
+      "behavior": "bhvMario",
+      "status": "not-original-engine-ported"
+    },
+    {
+      "level": "castle_grounds",
+      "behavior": "bhvMoatGrills",
+      "status": "not-original-engine-ported"
+    },
+    {
+      "level": "castle_grounds",
+      "behavior": "bhvSpinAirborneCircleWarp",
+      "status": "transition-adapter"
+    },
+    {
+      "level": "castle_grounds",
+      "behavior": "bhvSwimmingWarp",
+      "status": "transition-adapter"
+    },
+    {
+      "level": "castle_grounds",
+      "behavior": "bhvWarp",
+      "status": "transition-adapter"
+    },
+    {
+      "level": "castle_grounds",
+      "behavior": "bhvWaterMist2",
+      "status": "not-original-engine-ported"
+    },
+    {
+      "level": "castle_grounds",
+      "behavior": "bhvWaterfallSoundLoop",
+      "status": "not-original-engine-ported"
+    },
+    {
+      "level": "castle_grounds",
+      "behavior": "bhvYoshi",
+      "status": "not-original-engine-ported"
+    },
+    {
+      "level": "castle_inside",
+      "behavior": "bhvAirborneDeathWarp",
+      "status": "transition-adapter"
+    },
+    {
+      "level": "castle_inside",
+      "behavior": "bhvAirborneStarCollectWarp",
+      "status": "transition-adapter"
+    },
+    {
+      "level": "castle_inside",
+      "behavior": "bhvAirborneWarp",
+      "status": "transition-adapter"
+    },
+    {
+      "level": "castle_inside",
+      "behavior": "bhvBooInCastle",
+      "status": "not-original-engine-ported"
+    },
+    {
+      "level": "castle_inside",
+      "behavior": "bhvCameraLakitu",
+      "status": "not-original-engine-ported"
+    },
+    {
+      "level": "castle_inside",
+      "behavior": "bhvCastleFloorTrap",
+      "status": "not-original-engine-ported"
+    },
+    {
+      "level": "castle_inside",
+      "behavior": "bhvClockHourHand",
+      "status": "not-original-engine-ported"
+    },
+    {
+      "level": "castle_inside",
+      "behavior": "bhvClockMinuteHand",
+      "status": "not-original-engine-ported"
+    },
+    {
+      "level": "castle_inside",
+      "behavior": "bhvDddWarp",
+      "status": "transition-adapter"
+    },
+    {
+      "level": "castle_inside",
+      "behavior": "bhvDeathWarp",
+      "status": "transition-adapter"
+    },
+    {
+      "level": "castle_inside",
+      "behavior": "bhvDecorativePendulum",
+      "status": "not-original-engine-ported"
+    },
+    {
+      "level": "castle_inside",
+      "behavior": "bhvDoorWarp",
+      "status": "transition-adapter"
+    },
+    {
+      "level": "castle_inside",
+      "behavior": "bhvFishGroup",
+      "status": "not-original-engine-ported"
+    },
+    {
+      "level": "castle_inside",
+      "behavior": "bhvFlame",
+      "status": "not-original-engine-ported"
+    },
+    {
+      "level": "castle_inside",
+      "behavior": "bhvHardAirKnockBackWarp",
+      "status": "transition-adapter"
+    },
+    {
+      "level": "castle_inside",
+      "behavior": "bhvInstantActiveWarp",
+      "status": "transition-adapter"
+    },
+    {
+      "level": "castle_inside",
+      "behavior": "bhvLaunchDeathWarp",
+      "status": "transition-adapter"
+    },
+    {
+      "level": "castle_inside",
+      "behavior": "bhvLaunchStarCollectWarp",
+      "status": "transition-adapter"
+    },
+    {
+      "level": "castle_inside",
+      "behavior": "bhvMario",
+      "status": "not-original-engine-ported"
+    },
+    {
+      "level": "castle_inside",
+      "behavior": "bhvMips",
+      "status": "not-original-engine-ported"
+    },
+    {
+      "level": "castle_inside",
+      "behavior": "bhvPaintingDeathWarp",
+      "status": "transition-adapter"
+    },
+    {
+      "level": "castle_inside",
+      "behavior": "bhvPaintingStarCollectWarp",
+      "status": "transition-adapter"
+    },
+    {
+      "level": "castle_inside",
+      "behavior": "bhvStarDoor",
+      "status": "not-original-engine-ported"
+    },
+    {
+      "level": "castle_inside",
+      "behavior": "bhvTankFishGroup",
+      "status": "not-original-engine-ported"
+    },
+    {
+      "level": "castle_inside",
+      "behavior": "bhvToadMessage",
+      "status": "not-original-engine-ported"
+    },
+    {
+      "level": "castle_inside",
+      "behavior": "bhvWarp",
+      "status": "transition-adapter"
+    },
+    {
+      "level": "castle_inside",
+      "behavior": "bhvWaterLevelPillar",
+      "status": "not-original-engine-ported"
+    },
+    {
+      "level": "pss",
+      "behavior": "bhvAirborneWarp",
+      "status": "transition-adapter"
+    },
+    {
+      "level": "pss",
+      "behavior": "bhvMario",
+      "status": "not-original-engine-ported"
+    }
+  ]
+}

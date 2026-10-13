@@ -154,23 +154,18 @@ static void move_axis(player_t *p, const player_world_t *w, int32_t dx, int32_t 
     if (p->grounded && floor!=NO_FLOOR && floor>=p->y-w->step_height) y=floor;
     if (!blocked(w,x,y,z)) { p->x=x; p->z=z; p->y=y; }
 }
-void player_step(player_t *p, const player_world_t *w, uint32_t keys) {
+void player_move_horizontal(player_t *p,const player_world_t *w,int32_t dx,int32_t dz) {
+    // Query padding is an asset compiler contract. The caller must split
+    // motion at radius/2 and rebind local candidates between substeps.
+    if(dx>w->radius/2 || dx< -w->radius/2 || dz>w->radius/2 || dz< -w->radius/2)return;
+    move_axis(p,w,dx,0);move_axis(p,w,0,dz);
+}
+static void integrate_motion(player_t *p,const player_world_t *w,uint32_t keys,int32_t dx,int32_t dz) {
     if ((keys&PLAYER_RESET)==PLAYER_RESET) {
         if ((p->previous_keys&PLAYER_RESET)!=PLAYER_RESET) { player_reset(p,w); ++p->respawns; }
         p->previous_keys=keys; return;
     }
-    int32_t dx=0,dz=0;
-    if ((keys&3u)==PLAYER_LEFT) dx=-w->speed;
-    if ((keys&3u)==PLAYER_RIGHT) dx=w->speed;
-    if ((keys&12u)==PLAYER_FORWARD) dz=w->speed;
-    if ((keys&12u)==PLAYER_BACK) dz=-w->speed;
-    if (dx && dz) { int32_t speed=fixed_mul(w->speed,181)>>8; dx=dx>0?speed:-speed; dz=dz>0?speed:-speed; }
-    if (dx || dz) {
-        p->facing=dz>0 ? (dx>0?4u:(dx<0?28u:0u)) :
-                  dz<0 ? (dx>0?12u:(dx<0?20u:16u)) : (dx>0?8u:24u);
-    }
-    // Generated profile limits speed to radius/2 to avoid crossing thin walls.
-    move_axis(p,w,dx,0); move_axis(p,w,0,dz);
+    move_axis(p,w,dx,0);move_axis(p,w,0,dz);
     int32_t floor=player_floor(w,p->x,p->z,p->y+w->step_height);
     if (p->grounded && (floor==NO_FLOOR || p->y-floor>w->step_height)) p->grounded=0;
     if ((keys&PLAYER_JUMP) && !(p->previous_keys&PLAYER_JUMP) && p->grounded) {
@@ -190,4 +185,29 @@ void player_step(player_t *p, const player_world_t *w, uint32_t keys) {
         player_reset(p,w); ++p->respawns;
     }
     p->previous_keys=keys;
+}
+void player_step_motion(player_t *p,const player_world_t *w,uint32_t keys,int32_t dx,int32_t dz) {
+    if(dx>w->radius/2 || dx< -w->radius/2 || dz>w->radius/2 || dz< -w->radius/2)return;
+    // External controllers may have grounded the character on a dynamic
+    // support surface. Consume its jump before a terrain-only floor query
+    // clears that contact. The legacy controller retains its original order.
+    if((keys&PLAYER_RESET)!=PLAYER_RESET && p->grounded && (keys&PLAYER_JUMP) && !(p->previous_keys&PLAYER_JUMP)) {
+        p->velocity_y=w->jump_speed;p->grounded=0;
+    }
+    integrate_motion(p,w,keys,dx,dz);
+}
+void player_step(player_t *p, const player_world_t *w, uint32_t keys) {
+    int32_t dx=0,dz=0;
+    if ((keys&3u)==PLAYER_LEFT) dx=-w->speed;
+    if ((keys&3u)==PLAYER_RIGHT) dx=w->speed;
+    if ((keys&12u)==PLAYER_FORWARD) dz=w->speed;
+    if ((keys&12u)==PLAYER_BACK) dz=-w->speed;
+    if (dx && dz) { int32_t speed=fixed_mul(w->speed,181)>>8; dx=dx>0?speed:-speed; dz=dz>0?speed:-speed; }
+    if (dx || dz) {
+        p->facing=dz>0 ? (dx>0?4u:(dx<0?28u:0u)) :
+                  dz<0 ? (dx>0?12u:(dx<0?20u:16u)) : (dx>0?8u:24u);
+    }
+    // Legacy authored packages retain their validated per-profile movement.
+    // Only the new external-displacement API imposes the substep guard.
+    integrate_motion(p,w,keys,dx,dz);
 }

@@ -28,6 +28,13 @@ void game_view_update(game_view_t *v,const player_t *p,int32_t eye,const int16_t
         m[b+3]=(int16_t)-((fixed_mul(m[b],p->x)+fixed_mul(m[b+1],p->y+eye)+fixed_mul(m[b+2],p->z))>>8);
     }
 }
+uint32_t game_movement_heading(const game_input_t *input,uint32_t yaw) {
+    int32_t side=((input->buttons&2u)!=0)-((input->buttons&1u)!=0);
+    int32_t forward=((input->buttons&4u)!=0)-((input->buttons&8u)!=0);
+    uint32_t angle=forward>0?(side>0?32u:side<0?224u:0u):
+        forward<0?(side>0?96u:side<0?160u:128u):side>0?64u:192u;
+    return (yaw+angle)&255u;
+}
 int game_object_overlap(const game_object_t *o,const player_t *p,int32_t r,int32_t height) {
     return o->enabled && p->x+r>o->x+o->local.min_x && p->x-r<o->x+o->local.max_x &&
         p->z+r>o->z+o->local.min_z && p->z-r<o->z+o->local.max_z &&
@@ -36,6 +43,28 @@ int game_object_overlap(const game_object_t *o,const player_t *p,int32_t r,int32
 void game_door_step(game_object_t *o,int opening,int32_t speed,int32_t travel) {
     o->phase+=opening?speed:-speed;
     if(o->phase<0)o->phase=0;if(o->phase>travel)o->phase=travel;
+}
+uint32_t game_object_resolve_box(const game_object_t *o,player_t *p,const int32_t previous[3],int32_t r,int32_t h) {
+    if(!o->enabled)return 0;
+    int32_t left=o->x+o->local.min_x-r,right=o->x+o->local.max_x+r;
+    int32_t front=o->z+o->local.min_z-r,back=o->z+o->local.max_z+r;
+    int32_t bottom=o->y+o->local.min_y,top=o->y+o->local.max_y;
+    if(p->x<=left || p->x>=right || p->z<=front || p->z>=back)return 0;
+    if(previous[1]>=top && p->y<=top && p->velocity_y<=0){p->y=top;p->velocity_y=0;p->grounded=1;return 1;}
+    if(previous[1]+h<=bottom && p->y+h>=bottom && p->velocity_y>0){p->y=bottom-h;p->velocity_y=0;return 2;}
+    if(p->y+h<=bottom || p->y>=top)return 0;
+    if(previous[0]<=left)p->x=left;
+    else if(previous[0]>=right)p->x=right;
+    else if(previous[2]<=front)p->z=front;
+    else if(previous[2]>=back)p->z=back;
+    else {
+        int32_t distance=p->x-left,side=0;
+        if(right-p->x<distance){distance=right-p->x;side=1;}
+        if(p->z-front<distance){distance=p->z-front;side=2;}
+        if(back-p->z<distance)side=3;
+        if(side==0)p->x=left;else if(side==1)p->x=right;else if(side==2)p->z=front;else p->z=back;
+    }
+    return 4;
 }
 int game_pickup_step(game_object_t *o,const player_t *p,int32_t r,int32_t height) {
     if(!game_object_overlap(o,p,r,height))return 0;

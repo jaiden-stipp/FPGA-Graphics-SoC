@@ -300,6 +300,25 @@ static int direct(const scene_triangle_t *t) {
     }
     return 0;
 }
+int world_draw_instance(const scene_mesh_t *mesh,const int32_t position[3],int32_t co,int32_t si,
+                        const player_t *p,const int16_t v[12]) {
+    if(mesh->vertex_count>128 || mesh->triangle_count>256)return -1;
+    for(uint32_t j=0;j<mesh->vertex_count;++j) {
+        const scene_vertex_t *s=mesh->vertices+j;
+        int32_t x=position[0]+((fixed_mul(s->x,co)+fixed_mul(s->z,si))>>8);
+        int32_t z=position[2]+((fixed_mul(s->z,co)-fixed_mul(s->x,si))>>8);
+        direct_points[j]=transform(x,position[1]+s->y,z,p,v);
+        uint8_t code=0;
+        for(uint32_t k=0;k<6;++k)if(plane(direct_points[j],k)<0)code|=(uint8_t)(1u<<k);
+        direct_outcodes[j]=code;
+    }
+    for(uint32_t j=0;j<mesh->triangle_count;++j) {
+        const scene_triangle_t *t=mesh->triangles+j;
+        if(t->a>=mesh->vertex_count || t->b>=mesh->vertex_count || t->c>=mesh->vertex_count)return -1;
+        if(direct(t))return -1;
+    }
+    return 0;
+}
 int world_draw(const world_area_t *a,const player_t *p,const int16_t v[12],uint32_t reserved) {
     if(selected!=a || reserved>15)return -1;
     world_direct_triangles=0;world_gpu_chunks=0;world_fallback_chunks=0;

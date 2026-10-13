@@ -168,7 +168,7 @@ def event_exits(source,areas):
                 'spawn_behavior':spawn['behavior']})
     return result
 
-def actor(source,palette):
+def actor(source,palette,gameplay=False):
     profile=json.loads((ROOT/'profiles/sm64-mario-sdram.json').read_text());policy=profile['actor']
     text=(source/policy['source']).read_text();points=[];local_points=[];parts=[];faces=[];reports=[]
     for part in policy['parts']:
@@ -181,7 +181,12 @@ def actor(source,palette):
     path=ROOT/'build/castle/actor.obj';game_assets.write_obj(path,points,faces,{**policy['light_colors'],**policy['texture_colors']})
     low=min(p[1] for p in points);high=max(p[1] for p in points);center=[(min(p[i] for p in points)+max(p[i] for p in points))/2 for i in range(3)]
     palette,chunks=scene_assets.convert(path,transform=lambda p:((p[0]-center[0])*180/(high-low),(p[1]-low)*180/(high-low),(p[2]-center[2])*180/(high-low)),palette=palette)
-    chunks,lines,report=animation_assets.prepare(source,{**profile['animation'],'height':180},parts,local_points,faces,chunks)
+    animation_policy={**profile['animation'],'height':180}
+    if gameplay:
+        animation_policy['clips']=animation_policy['clips']+[
+            {'role':'slide','source':'assets/anims/anim_91.inc.c','symbol':'anim_91'},
+            {'role':'ground-pound','source':'assets/anims/anim_3C_3D.inc.c','symbol':'anim_3D'}]
+    chunks,lines,report=animation_assets.prepare(source,animation_policy,parts,local_points,faces,chunks)
     lines=[s.replace('actor_meshes','portable_meshes') for s in lines]
     (ROOT/'firmware/generated/castle_actor_data.h').write_text('#ifndef CASTLE_ACTOR_DATA_H\n#define CASTLE_ACTOR_DATA_H\n#include "portable_data.h"\n'+
         '\n'.join(lines).replace('static const ','static const __attribute__((section(".game_assets"))) ')+
@@ -269,9 +274,9 @@ def geometry(source,level,area,palette,shade=True):
         'shading':shading,
         'appearance_policy':'declared flat colors with baked brightness and face lighting; alpha/decal faces retained but drawing deferred until texture/alpha/decal support' if shade else 'declared-flat-colors; texture alpha/decal appearance rendered solid; geometry retained'}
 
-def export(destination,shade=True):
+def export(destination,shade=True,gameplay=False):
     source=sm64_subset.fetch();destination.mkdir(parents=True,exist_ok=True);(ROOT/'build/castle').mkdir(parents=True,exist_ok=True)
-    palette=[(100,170,230)];palette,actors,animation=actor(source,palette);areas=[];types=surface_types(source)
+    palette=[(100,170,230)];palette,actors,animation=actor(source,palette,gameplay);areas=[];types=surface_types(source)
     for index,(level,number,name) in enumerate(AREAS):
         vertices,triangles,provenance=geometry(source,level,number,palette,shade)
         area_dir=source/'levels'/level/'areas'/str(number)
@@ -290,6 +295,9 @@ def export(destination,shade=True):
             'save_fixture':{'course_stars':70,'castle_keys':2,'slide_box_star':False}},'animation':animation}
     world['transitions'],world['unsupported_transitions']=transitions(source,areas)
     world['event_exits']=event_exits(source,areas)
+    if gameplay:
+        from sm64_gameplay import generate
+        generate(source,world,destination)
     lines=['#ifndef CASTLE_TRANSITIONS_H','#define CASTLE_TRANSITIONS_H','#include "world.h"',
         'static const __attribute__((section(".game_assets"))) world_transition_t castle_transitions[]={']
     for t in world['transitions']:
@@ -314,6 +322,15 @@ def export(destination,shade=True):
             os.path.relpath(ROOT/'firmware/src/animation.c',destination).replace('\\','/'),
             os.path.relpath(ROOT/'firmware/src/game_services.c',destination).replace('\\','/')],
             'exports':['world_select','world_collision','world_floor_contact','world_exit_find','world_prepare','world_draw','world_transition_find','world_areas','player_bind_query','player_floor_index','camera_boom','camera_orbit_step','castle_floor_event']}}
+    if gameplay:
+        project['name']='mario-castle-gameplay'
+        project['port']['sources'][0]=os.path.relpath(ROOT/'firmware/ports/castle_game.c',destination).replace('\\','/')
+        project['port']['sources'] += [os.path.relpath(ROOT/'firmware/ports'/name,destination).replace('\\','/') for name in ('castle_controller.c','castle_gameplay.c')]
+        project['port']['sources'].append(os.path.relpath(ROOT/'firmware/src/game_memory.c',destination).replace('\\','/'))
+        project['port']['exports'] += ['player_move_horizontal','player_step_motion','world_draw_instance',
+            'castle_controller_reset','castle_controller_step','castle_gameplay_init','castle_gameplay_enter',
+            'castle_gameplay_step','castle_gameplay_stars','castle_gameplay_keys','castle_gameplay_frozen',
+            'castle_gameplay_mission','castle_gameplay_probe','castle_gameplay_draw','animation_step_clip','game_movement_heading','game_object_resolve_box','memset','memcpy','memmove']
     (destination/'game.project.json').write_text(json.dumps(project,indent=2)+'\n')
     print('Exported original castle/slide geometry and collision:',path)
     for a in areas:print(a['id'],len(a['triangles']),'render triangles',len(a['collision']['triangles']),'original collision faces')
@@ -322,5 +339,6 @@ def export(destination,shade=True):
 def main():
     parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--out',type=Path,default=ROOT/'build/castle')
     parser.add_argument('--legacy-flat-colors',action='store_true',help='Reproduce the Stage 6 material baseline without baked/face shading')
-    args=parser.parse_args();export(args.out.resolve(),not args.legacy_flat_colors)
+    parser.add_argument('--gameplay',action='store_true',help='Add the scoped source box/star mission and integer movement port')
+    args=parser.parse_args();export(args.out.resolve(),not args.legacy_flat_colors,args.gameplay)
 if __name__=='__main__':main()

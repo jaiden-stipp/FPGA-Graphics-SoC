@@ -1,8 +1,9 @@
 # Castle world pipeline: implementation checkpoint
 
-This is a software foundation for the selected complete-castle milestone. It
-does not yet implement the Secret Slide star mission or the original SM64
-movement engine. The hardware image is unchanged.
+This page describes the traversal-only software foundation for the selected
+castle milestone. The optional [gameplay extension](castle-gameplay.md) adds
+the Secret Slide box-star mission; neither variant implements the complete
+original SM64 movement engine. The hardware image is unchanged.
 
 ## Reproduce the package
 

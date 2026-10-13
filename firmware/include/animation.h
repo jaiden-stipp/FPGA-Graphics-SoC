@@ -26,6 +26,8 @@ typedef struct {
 typedef struct { int16_t r[9]; int32_t t[3]; } animation_matrix_t;
 void animation_reset(animation_t *state,const player_t *player,const animation_package_t *package);
 void animation_step(animation_t *state,const player_t *player,const animation_package_t *package);
+int animation_step_clip(animation_t *state,const player_t *player,const animation_package_t *package,
+                        uint32_t selected,uint32_t clip_count);
 void animation_pose(const animation_t *state,const animation_package_t *package,
                     animation_matrix_t *matrices,scene_vertex_t *vertices);
 #endif

@@ -36,6 +36,10 @@ int world_floor_contact(const world_area_t *area,const player_t *player,world_co
 const world_exit_t *world_exit_find(const world_exit_t *exits,uint32_t count,uint32_t area,uint32_t event);
 int world_prepare(const world_area_t *area,const player_t *player,const int16_t view[12],uint32_t reserved);
 int world_draw(const world_area_t *area,const player_t *player,const int16_t view[12],uint32_t reserved);
+// Source-neutral dynamic instance drawing through the terrain frustum clipper.
+// Model vertices use source units; Q8 rotation and translation remain separate.
+int world_draw_instance(const scene_mesh_t *mesh,const int32_t position[3],int32_t cosine,int32_t sine,
+                        const player_t *player,const int16_t view[12]);
 int32_t world_transition_find(const world_transition_t *transitions,uint32_t count,uint32_t area,
     const player_t *player,uint32_t use,uint32_t stars,uint32_t keys);
 #endif

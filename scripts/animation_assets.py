@@ -153,7 +153,8 @@ def vertex(matrix,point):
 def load(source,policy):
     joints,display,provenance=hierarchy(source,policy)
     clips=[clip(source,spec,len(joints)) for spec in policy['clips']]
-    if [c['role'] for c in clips]!=['idle','walk','jump','land']:
+    roles=[c['role'] for c in clips]
+    if roles[:4]!=['idle','walk','jump','land'] or len(roles)!=len(set(roles)) or len(roles)>16:
         raise ValueError('Declare idle/walk/jump/land animation roles in order')
     return joints,display,clips,provenance
 

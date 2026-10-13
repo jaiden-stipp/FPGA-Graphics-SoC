@@ -43,6 +43,11 @@ void animation_step(animation_t *s,const player_t *player,const animation_packag
     else if (!s->grounded) selected=ANIMATION_LAND;
     else if (s->clip==ANIMATION_LAND && s->phase<((uint32_t)(p->clips[ANIMATION_LAND].end-1u)<<8))
         selected=ANIMATION_LAND;
+    animation_step_clip(s,player,p,selected,4);
+}
+int animation_step_clip(animation_t *s,const player_t *player,const animation_package_t *p,
+                        uint32_t selected,uint32_t clip_count) {
+    if(selected>=clip_count)return -1;
     if (selected!=s->clip) { s->clip=selected; s->phase=(uint32_t)p->clips[selected].start<<8; }
     else {
         const animation_clip_t *clip=p->clips+selected;
@@ -56,6 +61,7 @@ void animation_step(animation_t *s,const player_t *player,const animation_packag
         }
     }
     s->grounded=player->grounded; s->previous_x=player->x; s->previous_z=player->z;
+    return 0;
 }
 void animation_pose(const animation_t *s,const animation_package_t *p,
                     animation_matrix_t *matrices,scene_vertex_t *vertices) {

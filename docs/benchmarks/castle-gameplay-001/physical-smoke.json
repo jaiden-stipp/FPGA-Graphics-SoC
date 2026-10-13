@@ -1,0 +1,99 @@
+{
+  "scope": "Physical local-code package loading and frame production; no hardware programming or full mission replay",
+  "candidate": "build\\mario-castle-gameplay-sdram-direct-packed-mul-geometry-uncapped-interpolated.package.json",
+  "baseline": "build\\mario-castle-audit-fixed-sdram-direct-packed-mul-geometry-uncapped-interpolated.package.json",
+  "hardware": {
+    "file": "build/quartus-arch-stage5-worker/ArchStage5SoC.sof",
+    "sha256": "e2b1dce3d5814f348e0ca88b38fe49e494e68fddd9e897aeeac4c3a75b7c6e14",
+    "build_command": "scripts/run.ps1 build_geometry_worker.py worker",
+    "cpu_features": 2147483651,
+    "gpu_features": 3,
+    "input_abi": 1229848833
+  },
+  "candidate_segments": [
+    {
+      "address": 0,
+      "bytes": 41488,
+      "sha256": "a8599a94746d39517ada26ec96dbe19b6fda129351cebf620f72aaeb264f4db9"
+    },
+    {
+      "address": 2147483648,
+      "bytes": 887500,
+      "sha256": "cffbbd3c39daeda6d07c9b43d5219902f830949be791e31b10b2b45ed832f6eb"
+    }
+  ],
+  "before": {
+    "initialized": true,
+    "held": false,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 59806,
+    "refresh_count": 1473014933,
+    "input_abi": 1229848833,
+    "cpu_features": 2147483651,
+    "gpu_features": 3
+  },
+  "sample_start": {
+    "initialized": true,
+    "held": false,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 113,
+    "refresh_count": 1480261429,
+    "input_abi": 1229848833,
+    "cpu_features": 2147483651,
+    "gpu_features": 3
+  },
+  "sample_end": {
+    "initialized": true,
+    "held": false,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 173,
+    "refresh_count": 1480397396,
+    "input_abi": 1229848833,
+    "cpu_features": 2147483651,
+    "gpu_features": 3
+  },
+  "sample_seconds": 1.0,
+  "frame_delta": 60,
+  "candidate_pass": true,
+  "restored_start": {
+    "initialized": true,
+    "held": false,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 113,
+    "refresh_count": 1487526974,
+    "input_abi": 1229848833,
+    "cpu_features": 2147483651,
+    "gpu_features": 3
+  },
+  "restored_end": {
+    "initialized": true,
+    "held": false,
+    "words": [
+      0,
+      0,
+      0
+    ],
+    "scratch": 173,
+    "refresh_count": 1487662917,
+    "input_abi": 1229848833,
+    "cpu_features": 2147483651,
+    "gpu_features": 3
+  },
+  "restore_pass": true
+}

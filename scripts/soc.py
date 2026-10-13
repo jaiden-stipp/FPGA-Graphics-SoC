@@ -460,7 +460,7 @@ def simulate(args):
     if args.full:
         tests += ["soc_top_tb", "soc_game_top_tb", "soc_scene_top_tb", "soc_mario_top_tb", "soc_mario_bridge_top_tb"]
         available += ['geometry_stream_tb','geometry_game_tb','setup_overlap_tb','pixel_lanes_tb','pixel_banks_tb']
-        available += ['sdram_exec_game_tb','sdram_mario_top_tb','beacon_sdram_top_tb','quake_sdram_top_tb','portable_scene_top_tb','quake_interactive_top_tb','castle_world_top_tb','projection_precision_tb','screen_edge_coverage_tb','depth_edge_coverage_tb','render_frame_replay_tb','packed_render_replay_tb','dma_render_replay_tb','gpu_fractional_decoder_tb','gpu_fractional_mesh_tb']
+        available += ['castle_gameplay_top_tb','sdram_exec_game_tb','sdram_mario_top_tb','beacon_sdram_top_tb','quake_sdram_top_tb','portable_scene_top_tb','quake_interactive_top_tb','castle_world_top_tb','projection_precision_tb','screen_edge_coverage_tb','depth_edge_coverage_tb','render_frame_replay_tb','packed_render_replay_tb','dma_render_replay_tb','gpu_fractional_decoder_tb','gpu_fractional_mesh_tb']
     if getattr(args, "tests", None):
         requested = args.tests.split(",")
         if set(requested) - set(available + tests):
@@ -470,6 +470,7 @@ def simulate(args):
         raise RuntimeError("Run sm64-mario or build-fw --app all to generate the bridge fixture")
     include = "+incdir+" + str(ROOT / "rtl/generated") + "+" + str(ROOT / "external/renderer/rtl/common") + "+" + str(ROOT / "sim/generated") + "+" + str(ROOT / "sim")
     src = sources(args.full) + ([ROOT/'sim/sdram_device_model.sv'] if args.full or any('sdram' in name or name in ('udp_loader_tb','gfx_dma_memory_tb') for name in tests) else []) + [ROOT / f"sim/{name}.sv" for name in tests]
+    if 'castle_gameplay_top_tb' in tests and 'sdram_exec_game_tb' not in tests:src.append(ROOT/'sim/sdram_exec_game_tb.sv')
     if ('packed_render_replay_tb' in tests or 'dma_render_replay_tb' in tests) and 'render_frame_replay_tb' not in tests:
         src.insert(-1,ROOT/'sim/render_frame_replay_tb.sv')
     if any(name in tests for name in ('portable_scene_top_tb','quake_interactive_top_tb','castle_world_top_tb')) and 'quake_sdram_top_tb' not in tests:

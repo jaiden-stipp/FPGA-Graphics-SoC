@@ -10,6 +10,10 @@
 #include "castle_transitions.h"
 #include "castle_rules.h"
 #include "render_interpolation.h"
+#ifdef CASTLE_GAMEPLAY
+#include "castle_gameplay.h"
+static castle_controller_t controller;
+#endif
 static player_t player;
 static animation_t animation;
 static animation_matrix_t joints[GAME_ANIMATION_JOINTS];
@@ -56,6 +60,9 @@ static void enter_area(uint32_t area,const int16_t arrival[3],uint8_t yaw) {
     transition_cooldown=15;pending_event=pending_ticks=0;
     world_collision(world_areas+area,&player);
     animation_reset(&animation,&player,&game_animation_package);
+#ifdef CASTLE_GAMEPLAY
+    castle_controller_reset(&controller,&player);castle_gameplay_enter(area);
+#endif
 }
 int game_port_init(void) {
     current_area=previous_buttons=transition_cooldown=0;view.yaw=128;view.pitch=CASTLE_DEFAULT_PITCH;
@@ -63,6 +70,9 @@ int game_port_init(void) {
     pending_event=pending_ticks=castle_exit_event=0;
     world_select(world_areas,&player);
     animation_reset(&animation,&player,&game_animation_package);
+#ifdef CASTLE_GAMEPLAY
+    castle_gameplay_init();castle_controller_reset(&controller,&player);
+#endif
     castle_mission_state=0;camera_update();render_capture(1);return 0;
 }
 void game_port_update(uint32_t word) {
@@ -75,7 +85,15 @@ void game_port_update(uint32_t word) {
         if(view.pitch< -32)view.pitch=-32;if(view.pitch>0)view.pitch=0;
     }
     world_collision(world_areas+current_area,&player);
+#ifdef CASTLE_GAMEPLAY
+    if(!pending_ticks && !castle_gameplay_frozen())castle_controller_step(&controller,&player,world_areas+current_area,current_area==4,game_movement_keys(&input,view.yaw),input.buttons,game_movement_heading(&input,view.yaw));
+    if(player.respawns!=old_respawns){castle_controller_reset(&controller,&player);castle_gameplay_enter(current_area);}
+    uint32_t mission_event=castle_gameplay_step(&player,current_area,input.buttons,controller.action);
+    castle_mission_state=castle_gameplay_mission();
+    if(mission_event && !pending_ticks){pending_event=castle_exit_event=mission_event;pending_ticks=20;}
+#else
     player_step(&player,world_areas[current_area].physics,game_movement_keys(&input,view.yaw));
+#endif
     if(pending_ticks) {
         if(!--pending_ticks) {
             const world_exit_t *exit=world_exit_find(castle_exits,CASTLE_EXIT_COUNT,current_area,pending_event);
@@ -95,7 +113,12 @@ void game_port_update(uint32_t word) {
             }
         }
         int32_t i=world_transition_find(castle_transitions,CASTLE_TRANSITION_COUNT,current_area,&player,
-            (input.buttons&GAME_USE)&&!(previous_buttons&GAME_USE),70,3);
+            (input.buttons&GAME_USE)&&!(previous_buttons&GAME_USE),
+#ifdef CASTLE_GAMEPLAY
+            castle_gameplay_stars(),castle_gameplay_keys());
+#else
+            70,3);
+#endif
         if(i>=0 && !pending_event) {
             const world_transition_t *t=castle_transitions+i;
             enter_area(t->destination_area,t->arrival,t->yaw);
@@ -103,6 +126,11 @@ void game_port_update(uint32_t word) {
     }
     previous_buttons=input.buttons;
     DETAIL_START(animation_start);
+#ifdef CASTLE_GAMEPLAY
+    if(controller.action==CASTLE_ACTION_SLIDE)animation_step_clip(&animation,&player,&game_animation_package,4,6);
+    else if(controller.action==CASTLE_ACTION_GROUND_POUND)animation_step_clip(&animation,&player,&game_animation_package,5,6);
+    else
+#endif
     animation_step(&animation,&player,&game_animation_package);
     DETAIL_END(PROFILE_ANIMATION_STEP,animation_start);
 #ifdef CASTLE_PROFILE_FIXED_POSE
@@ -157,6 +185,9 @@ static int render_frame(uint32_t frame,uint32_t alpha) {
         model[b+3]=render_view.view[b+3];
     }
     for(uint32_t h=0;h<PORTABLE_MESH_COUNT;++h)if(gfx_draw_matrix((uint8_t)h,model))return -1;
+#ifdef CASTLE_GAMEPLAY
+    if(castle_gameplay_draw(current_area,&render_player,&render_view))return -1;
+#endif
     castle_draw_cycles=SOC_CYCLES-start;
     return gfx_end_frame();
 }

@@ -125,6 +125,11 @@ def lower(text, profile, *, face_attributes=None):
                 break
             if command == "gsSPDisplayList":
                 visit(args[0])
+            elif command == "gsSPBranchList":
+                if len(args)!=1:raise ValueError("Display-list branch requires one target")
+                # N64 tail call: execute the target and never return to the
+                # parent list. Retain the vertex cache and material state.
+                visit(args[0]);ended=True;break
             elif command == "gsSPVertex":
                 pointer = re.fullmatch(r"(\w+)(?:\s*\+\s*(\d+))?", args[0])
                 if not pointer or pointer[1] not in arrays or arrays[pointer[1]][0] != "Vtx":

@@ -1,0 +1,122 @@
+{
+  "checkpoint": "CASTLE-GAMEPLAY-001",
+  "baseline_commit": "fcf1b8c",
+  "scope": "Software gameplay port; not a complete original SM64 engine port or hardware optimization",
+  "host_checks": 188,
+  "host_suites": 23,
+  "full_system_simulation": {
+    "frames": 2,
+    "cycles_including_boot_and_startup": 4128366,
+    "retention_test_cycles": 1000,
+    "steady_state_fps_claim": false
+  },
+  "physical_scope": "Physical local-code package loading and frame production; no hardware programming or full mission replay",
+  "physical_frame_sample": {
+    "frames": 60,
+    "seconds": 1.0,
+    "steady_state_mission_fps_claim": false
+  },
+  "selected_deployment_restored": true,
+  "hardware_programmed": false,
+  "source_hashes": {
+    "firmware/include/castle_gameplay.h": "63117995bba939ba1da38e3b9cc5afc91b87588e8bc1dcf500730884bbbabf58",
+    "firmware/ports/castle.c": "1c0c376447f037943fe191ab51df2f8a88a70305a0024a3fee7f903aa6723725",
+    "firmware/ports/castle_game.c": "c615a7473979bd1da30908cafde072c969ecd27805df4e039f4beb3daf88616b",
+    "firmware/ports/castle_controller.c": "f6234ef1f2e056118cdcb85c5fc7b0473c98ea116ec5ba5dcdcf8c2b073d00ee",
+    "firmware/ports/castle_gameplay.c": "e597a58b430a5cc5731e2705fe6b22c7590f5ad80228eca284e37e23b732f375",
+    "firmware/src/player.c": "722509ef9d5d247486576f24a2bf782a0835fbae6d6fea6314aee1189f07907b",
+    "firmware/src/world.c": "6f922c281fb1923d4ce6dde389f4d7ceb2102a3ca5da2b5edfd027bb2c2c0144",
+    "firmware/src/game_services.c": "b2ef45f36c36f95e9adcbc9d4d61f416faecd1c3c6b01b6059b2eb8496a928c0",
+    "firmware/src/animation.c": "4e60d42eabbe30fa7c2291add32d06167ddefa80089c613f936ccbbe89db9040",
+    "firmware/src/game_memory.c": "91d0b6e9e3809c52c54523e73b2adf2866b574fe21cb53235689fa3ed40f2f44",
+    "scripts/sm64_gameplay.py": "83f5318b5d20b34c5abaf9effc6a2f3acee84a2044c8d0d03f92cd2c67cf03c2",
+    "scripts/sm64_castle.py": "db50fc78e09f2159be0252afa55b048d059159a6dc30187a408fcce917ddb417",
+    "scripts/animation_assets.py": "06ca6a9be3b11f0a0a7763c7fc96931cdf1b0f9615055707d214a8aa96b97d38",
+    "scripts/sm64_subset.py": "c20dc20a43539257f788ac3e5815ea79e8ef0b9e46bf2a3d4235ec5e7c202e8a",
+    "scripts/test_castle_gameplay.py": "5aa0721b211c82198e3dc88ad97a1640e929e15c83a50ac4af9cfe3cf95cb996",
+    "sim/castle_gameplay_top_tb.sv": "efc8c3bbc11b6b5b7a5a7ee3620a72b2f883ed1d17343c92bdfae54e0f085794",
+    "sim/sdram_exec_game_tb.sv": "a2abdbd7f5e6ed8f45808bd509e3101b57ab7d96b49b6c03d1f1553d6f5cbbe1",
+    "firmware/include/player.h": "2880f58df12a8d87579b50c1d8017083828baaa10f703d044d068b80c32aee12",
+    "firmware/include/world.h": "eda8d14b0d9bb5e9b55908df07796489ef73ecb076516ed2acd2dbafbd97696d",
+    "firmware/include/animation.h": "83e45fbececadb902d39cebcdcf68d47dc32062f480d6a812a6a652ceff47998",
+    "firmware/include/game_services.h": "e88199246d31d027960fa548654f2a208417de3529bc7cce50d2ea81527cc423",
+    "scripts/soc.py": "4fb906eaa9b569b64805a01e423218798240f5686db4b1e86f8b779690edb9c5",
+    "scripts/run.ps1": "24ea367eba54363dbc973e33c76f5cc8e02e7351fb68582417be1a26b34d0df3"
+  },
+  "package_sizes": {
+    "local": {
+      "segments": [
+        {
+          "file": "mario-castle-gameplay-sdram-direct-packed-mul-geometry-uncapped-interpolated.bin",
+          "address": 0,
+          "bytes": 41488,
+          "sha256": "a8599a94746d39517ada26ec96dbe19b6fda129351cebf620f72aaeb264f4db9"
+        },
+        {
+          "file": "mario-castle-gameplay-sdram-direct-packed-mul-geometry-uncapped-interpolated.assets.bin",
+          "address": 2147483648,
+          "bytes": 887500,
+          "sha256": "cffbbd3c39daeda6d07c9b43d5219902f830949be791e31b10b2b45ed832f6eb"
+        }
+      ],
+      "execution": null
+    },
+    "exec": {
+      "segments": [
+        {
+          "file": "mario-castle-gameplay-sdram-direct-packed-mul-geometry-uncapped-interpolated-exec.bin",
+          "address": 0,
+          "bytes": 1900,
+          "sha256": "ac0388c3ef6013c8a1897ee0194b3dbdc460dc733763ba27cb71e9a12ff94bb2"
+        },
+        {
+          "file": "mario-castle-gameplay-sdram-direct-packed-mul-geometry-uncapped-interpolated-exec.code.bin",
+          "address": 2147483648,
+          "bytes": 39652,
+          "sha256": "364c63fb88fe029069579f2943892982c4e094b7068acad5b2ce0dbce6eddeec"
+        },
+        {
+          "file": "mario-castle-gameplay-sdram-direct-packed-mul-geometry-uncapped-interpolated-exec.state.bin",
+          "address": 2164260864,
+          "bytes": 12,
+          "sha256": "31cb2ebeda3f296e6bc556a8b5325cf4e60933c93fc3cc135e2170028d274a83"
+        },
+        {
+          "file": "mario-castle-gameplay-sdram-direct-packed-mul-geometry-uncapped-interpolated-exec.assets.bin",
+          "address": 2164270752,
+          "bytes": 887500,
+          "sha256": "1192b6bd157c67e5a2a3a98da0b489510c2fe9aff5b199282782d5f1775c0001"
+        }
+      ],
+      "execution": {
+        "abi": "local-boot-sdram-v1",
+        "entry": 2147490432,
+        "code_address": 2147483648,
+        "code_bytes": 39652,
+        "bss_address": 2164260876,
+        "bss_bytes": 9856
+      }
+    }
+  },
+  "tool_versions": {
+    "clang": "clang version 21.1.6\nTarget: x86_64-pc-windows-msvc\nThread model: posix\nInstalledDir: C:\\Program Files\\LLVM\\bin",
+    "python": "3.12.14"
+  },
+  "native_slide_replay": {
+    "updates": 1059,
+    "last": {
+      "tick": 1058,
+      "input": 0,
+      "target": 24,
+      "position": [
+        -6361,
+        -4314,
+        5781
+      ],
+      "area": 1,
+      "mission": 1,
+      "respawns": 0
+    },
+    "mid_route_position_injection": false
+  }
+}

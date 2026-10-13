@@ -15,8 +15,10 @@ typedef struct { uint32_t yaw; int32_t pitch; int16_t view[12]; } game_view_t;
 #define GAME_RESET 128u
 void game_input_decode(game_input_t *input,uint32_t word);
 uint32_t game_movement_keys(const game_input_t *input,uint32_t yaw);
+uint32_t game_movement_heading(const game_input_t *input,uint32_t yaw);
 void game_view_update(game_view_t *view,const player_t *player,int32_t eye,const int16_t rotations[256][2]);
 int game_object_overlap(const game_object_t *object,const player_t *player,int32_t radius,int32_t height);
+uint32_t game_object_resolve_box(const game_object_t *object,player_t *player,const int32_t previous[3],int32_t radius,int32_t height);
 void game_door_step(game_object_t *door,int opening,int32_t speed,int32_t travel);
 int game_pickup_step(game_object_t *pickup,const player_t *player,int32_t radius,int32_t height);
 uint32_t game_animation_frame(uint32_t tick,uint32_t period,uint32_t count);
