@@ -39,6 +39,24 @@ class EngineSlice(unittest.TestCase):
         replay(self.lib);report=json.loads((engine.OUT/'source-report.json').read_text())
         self.assertEqual(self.lib.sm64_engine_probe(5),report['terrain_faces'])
         self.assertEqual(self.lib.sm64_engine_probe(6),report['derived_surface_nodes'])
+    def test_repeated_jump_routes_include_rollout_steep_and_wall_transitions(self):
+        seen=set()
+        for yaw in (0,32,64,96,128,160,192,224):
+            for buttons in (4,5,6,8,1,2):
+                self.lib.sm64_engine_init((c.c_int32*3)(-1328,260,4664))
+                for tick in range(900):
+                    result=Result()
+                    self.lib.sm64_engine_update(buttons|(16 if tick%45<7 else 0),yaw,c.byref(result))
+                    seen.add(result.action)
+                    self.assertEqual(result.fault,0,(yaw,buttons,tick,hex(result.action)))
+                for tick in range(60):
+                    result=Result();self.lib.sm64_engine_update(0,yaw,c.byref(result))
+                    seen.add(result.action)
+                    self.assertEqual(result.fault,0,('released',yaw,buttons,tick,hex(result.action)))
+        self.assertIn(0x03000885,seen) # Original steep jump.
+        self.assertIn(0x010008ad,seen) # Original backward rollout.
+        self.assertIn(0x000008a7,seen) # Original airborne wall hit.
+        self.assertIn(0x0c400209,seen) # Original wall-standing after release.
     def test_all_original_animation_ids_are_present(self):
         text=(engine.OUT/'animations.inc').read_text();report=json.loads((engine.OUT/'source-report.json').read_text())
         self.assertIn('anim_C3',text);self.assertIn('anim_70',text);self.assertEqual(report['animation_tables'],209)

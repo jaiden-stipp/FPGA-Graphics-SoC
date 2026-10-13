@@ -1,0 +1,29 @@
+Uploading mario-original-engine-grounds-exec.bin: 1,744 bytes at 0x00000000
+Verifying mario-original-engine-grounds-exec.bin: 1,744 bytes at 0x00000000
+Uploading mario-original-engine-grounds-exec.code.bin: 89,000 bytes at 0x80000000
+Verifying mario-original-engine-grounds-exec.code.bin: 89,000 bytes at 0x80000000
+Uploading mario-original-engine-grounds-exec.state.bin: 22,772 bytes at 0x81000000
+Verifying mario-original-engine-grounds-exec.state.bin: 22,772 bytes at 0x81000000
+Uploading mario-original-engine-grounds-exec.assets.bin: 1,479,080 bytes at 0x8101bfe0
+  276,840/1,479,080 bytes
+  553,464/1,479,080 bytes
+  837,456/1,479,080 bytes
+  1,115,184/1,479,080 bytes
+  1,385,856/1,479,080 bytes
+Verifying mario-original-engine-grounds-exec.assets.bin: 1,479,080 bytes at 0x8101bfe0
+  285,504/1,479,080 bytes
+  568,212/1,479,080 bytes
+  856,452/1,479,080 bytes
+  1,126,824/1,479,080 bytes
+  1,397,964/1,479,080 bytes
+Readback verified; CPU released.
+Stopped: 962 replies, 962 accepted; keys expire after 300 ms.
+PASS route: backward-rollout fault: 0 frame progress: 491
+Stopped: 962 replies, 962 accepted; keys expire after 300 ms.
+Traceback (most recent call last):
+  File "C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\scripts\verify_sm64_movement.py", line 59, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\scripts\verify_sm64_movement.py", line 43, in main
+    raise RuntimeError('Movement smoke test failed: '+str(route))
+RuntimeError: Movement smoke test failed: {'name': 'diagonal-steep-jump-wall', 'seconds': 16.35999999998603, 'start': {'initialized': True, 'held': False, 'words': (0, 0, 0), 'scratch': 51, 'refresh_count': 19210946, 'input_abi': 1229848833, 'cpu_features': 2147483655, 'gpu_features': 3}, 'end': {'initialized': True, 'held': False, 'words': (0, 0, 0), 'scratch': 551, 'refresh_count': 21428043, 'input_abi': 1229848833, 'cpu_features': 2147483655, 'gpu_features': 3}, 'fields': {'fault': 205521417, 'player': [4982, 4294966785, 4294965203, 0, 1, 9, 0, 0], 'frame': 551}}

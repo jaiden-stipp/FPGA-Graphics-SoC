@@ -1,0 +1,261 @@
+{
+  "started_utc": "2026-10-13T19:25:53.597864+00:00",
+  "hardware": {
+    "file": "build\\quartus-sdram-exec\\SdramExecSoC.sof",
+    "sha256": "140fa00e9d66def31e6897be29bc927469de72a9a051481186f7d7b2bc30be15",
+    "cpu_features": 2147483655,
+    "gpu_features": 3
+  },
+  "package": {
+    "format": "soc-game-package",
+    "version": 1,
+    "app": "original-engine-grounds",
+    "segments": [
+      {
+        "file": "mario-original-engine-grounds-exec.bin",
+        "address": 0,
+        "bytes": 1744,
+        "sha256": "8a82a8b55b215de84fbdf98322079f3dfc7e9f9ac7d3e174a50a48bc214f943b"
+      },
+      {
+        "file": "mario-original-engine-grounds-exec.code.bin",
+        "address": 2147483648,
+        "bytes": 89000,
+        "sha256": "dcfa493b15d85c0b6c493fcbb0e7ba82b8853c5fabece80051cee0965a2d24bf"
+      },
+      {
+        "file": "mario-original-engine-grounds-exec.state.bin",
+        "address": 2164260864,
+        "bytes": 22772,
+        "sha256": "5f55ad07b6ff23f26a13f4563df79df6face39c7d772ffc8fb48cf8cd7a20168"
+      },
+      {
+        "file": "mario-original-engine-grounds-exec.assets.bin",
+        "address": 2164375520,
+        "bytes": 1479080,
+        "sha256": "40ecc2b119b8ebd97adc46d1bd6344faee5206f9655c133c3876c10fd2928dac"
+      }
+    ],
+    "execution": {
+      "abi": "local-boot-sdram-v1",
+      "entry": 2147485512,
+      "code_address": 2147483648,
+      "code_bytes": 89000,
+      "bss_address": 2164283636,
+      "bss_bytes": 91864
+    },
+    "required_cpu_features": {
+      "sdram-exec-v1": true,
+      "mul": true,
+      "geometry-worker-v1": true
+    },
+    "target": {
+      "id": "de2-115-fixed-v2",
+      "runtime_abi": 1,
+      "required_features": [
+        "indexed-flat-rgb",
+        "triangle-collision",
+        "custom-rv32i-gameplay",
+        "mouse-look-v1"
+      ]
+    },
+    "content": {
+      "format": "soc-game-assets",
+      "version": 1,
+      "runtime_abi": 1,
+      "game": "mario-original-engine-grounds",
+      "units": "gpu-q8.8",
+      "material_policy": "indexed-flat-rgb",
+      "palette_colors": 182,
+      "meshes": [
+        {
+          "vertices": 128,
+          "triangles": 200
+        },
+        {
+          "vertices": 8,
+          "triangles": 12
+        }
+      ],
+      "collision": {
+        "abi": "triangle-q12-normal-v1",
+        "floors": 2816,
+        "walls": 4747
+      },
+      "animation": {
+        "abi": "none",
+        "clips": []
+      },
+      "configuration": {
+        "module": "world",
+        "physics": {},
+        "camera": {
+          "focal": 256,
+          "near_z": 257
+        },
+        "spawn": [
+          0,
+          0,
+          0
+        ],
+        "game": {
+          "port": "custom",
+          "implementation_status": "Original Mario grounds action/collision slice; full engine, objects and original camera incomplete"
+        },
+        "world": {
+          "abi": "sdram-areas-v1",
+          "areas": 5,
+          "stored_chunks": 83,
+          "render_scale": 4,
+          "near_gpu": 257,
+          "far_gpu": 30000,
+          "focal_gpu": 256,
+          "resident_handles": 2,
+          "cache_policy": "uploads-between-frames; uncached-visible-triangles-software-clipped"
+        }
+      },
+      "source": {
+        "profile": "game.project.json",
+        "sha256": "8a30f95ac51dc5ba9c0977f2f654bf53eb351947031c83947f2da8ffb10a1472"
+      }
+    },
+    "cadence": {
+      "simulation_tick_cycles": 1666667,
+      "clock_hz": 50000000,
+      "render": "uncapped",
+      "render_repeat_safe": true,
+      "interpolation": true
+    }
+  },
+  "success": false,
+  "scope": "Host-paced live UDP movement smoke tests, not cycle-exact replay or an FPS benchmark. Other senders are not disabled.",
+  "startup": {
+    "start": {
+      "initialized": true,
+      "held": false,
+      "words": [
+        0,
+        0,
+        0
+      ],
+      "scratch": 51,
+      "refresh_count": 16305317,
+      "input_abi": 1229848833,
+      "cpu_features": 2147483655,
+      "gpu_features": 3
+    },
+    "end": {
+      "initialized": true,
+      "held": false,
+      "words": [
+        0,
+        0,
+        0
+      ],
+      "scratch": 81,
+      "refresh_count": 16441151,
+      "input_abi": 1229848833,
+      "cpu_features": 2147483655,
+      "gpu_features": 3
+    },
+    "seconds": 1.0,
+    "frames": 30,
+    "scope": "One short live frame-production sample; input is not forced neutral; not sustained FPS or a controlled movement/mission benchmark"
+  },
+  "routes": [
+    {
+      "name": "backward-rollout",
+      "seconds": 16.375,
+      "start": {
+        "initialized": true,
+        "held": false,
+        "words": [
+          0,
+          0,
+          0
+        ],
+        "scratch": 142,
+        "refresh_count": 16719246,
+        "input_abi": 1229848833,
+        "cpu_features": 2147483655,
+        "gpu_features": 3
+      },
+      "end": {
+        "initialized": true,
+        "held": false,
+        "words": [
+          0,
+          0,
+          0
+        ],
+        "scratch": 633,
+        "refresh_count": 18939045,
+        "input_abi": 1229848833,
+        "cpu_features": 2147483655,
+        "gpu_features": 3
+      },
+      "fields": {
+        "fault": 0,
+        "player": [
+          4294965367,
+          260,
+          5652,
+          0,
+          1,
+          0,
+          0,
+          0
+        ],
+        "frame": 633
+      }
+    },
+    {
+      "name": "diagonal-steep-jump-wall",
+      "seconds": 16.35999999998603,
+      "start": {
+        "initialized": true,
+        "held": false,
+        "words": [
+          0,
+          0,
+          0
+        ],
+        "scratch": 51,
+        "refresh_count": 19210946,
+        "input_abi": 1229848833,
+        "cpu_features": 2147483655,
+        "gpu_features": 3
+      },
+      "end": {
+        "initialized": true,
+        "held": false,
+        "words": [
+          0,
+          0,
+          0
+        ],
+        "scratch": 551,
+        "refresh_count": 21428043,
+        "input_abi": 1229848833,
+        "cpu_features": 2147483655,
+        "gpu_features": 3
+      },
+      "fields": {
+        "fault": 205521417,
+        "player": [
+          4982,
+          4294966785,
+          4294965203,
+          0,
+          1,
+          9,
+          0,
+          0
+        ],
+        "frame": 551
+      }
+    }
+  ],
+  "error": "RuntimeError(\"Movement smoke test failed: {'name': 'diagonal-steep-jump-wall', 'seconds': 16.35999999998603, 'start': {'initialized': True, 'held': False, 'words': (0, 0, 0), 'scratch': 51, 'refresh_count': 19210946, 'input_abi': 1229848833, 'cpu_features': 2147483655, 'gpu_features': 3}, 'end': {'initialized': True, 'held': False, 'words': (0, 0, 0), 'scratch': 551, 'refresh_count': 21428043, 'input_abi': 1229848833, 'cpu_features': 2147483655, 'gpu_features': 3}, 'fields': {'fault': 205521417, 'player': [4982, 4294966785, 4294965203, 0, 1, 9, 0, 0], 'frame': 551}}\")",
+  "finished_utc": "2026-10-13T19:28:38.997329+00:00"
+}

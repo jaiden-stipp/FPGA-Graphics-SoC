@@ -1,0 +1,25 @@
+Uploading mario-original-engine-grounds-exec.bin: 1,744 bytes at 0x00000000
+Verifying mario-original-engine-grounds-exec.bin: 1,744 bytes at 0x00000000
+Uploading mario-original-engine-grounds-exec.code.bin: 89,364 bytes at 0x80000000
+Verifying mario-original-engine-grounds-exec.code.bin: 89,364 bytes at 0x80000000
+Uploading mario-original-engine-grounds-exec.state.bin: 22,772 bytes at 0x81000000
+Verifying mario-original-engine-grounds-exec.state.bin: 22,772 bytes at 0x81000000
+Uploading mario-original-engine-grounds-exec.assets.bin: 1,479,080 bytes at 0x8101bfe0
+  286,116/1,479,080 bytes
+  567,888/1,479,080 bytes
+  854,100/1,479,080 bytes
+  1,140,816/1,479,080 bytes
+  1,426,020/1,479,080 bytes
+Verifying mario-original-engine-grounds-exec.assets.bin: 1,479,080 bytes at 0x8101bfe0
+  273,912/1,479,080 bytes
+  546,012/1,479,080 bytes
+  817,596/1,479,080 bytes
+  1,097,064/1,479,080 bytes
+  1,391,256/1,479,080 bytes
+Readback verified; CPU released.
+Stopped: 962 replies, 962 accepted; keys expire after 300 ms.
+PASS route: backward-rollout fault: 0 frame progress: 490
+Stopped: 962 replies, 962 accepted; keys expire after 300 ms.
+PASS route: diagonal-steep-jump-wall fault: 0 frame progress: 499
+Stopped: 62 replies, 62 accepted; keys expire after 300 ms.
+PASS reset once per press; game left running at spawn

@@ -2,6 +2,8 @@
 
 Measured on the DE2-115 on October 13, 2026. Comparison baseline: `45370e4`.
 
+Subsequent movement coverage and recoverable fault handling are documented in [the movement freeze correction](sm64-engine-movement-fix.md). The measurements below describe the original `ed85809` experiment, not the later expanded-action binary.
+
 This experiment runs a scoped set of original Mario actions and collision functions on the RV32I CPU using software floating point and the existing SDRAM-execution hardware image. It is an engine slice, not a complete SM64 port. The selected castle demo was restored after every physical validation pass.
 
 ## Measurement correction

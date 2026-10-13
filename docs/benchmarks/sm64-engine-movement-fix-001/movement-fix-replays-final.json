@@ -1,0 +1,1090 @@
+{
+  "routes": [
+    {
+      "yaw": 0,
+      "buttons": 4,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        -1978,
+        -511,
+        -2573
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x3000880",
+        "0x4000440",
+        "0x400044a",
+        "0x4000470",
+        "0xc400201"
+      ]
+    },
+    {
+      "yaw": 0,
+      "buttons": 5,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        -6331,
+        543,
+        -4437
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x386",
+        "0x8c0453",
+        "0x10008ad",
+        "0x3000880",
+        "0x3000885",
+        "0x4000440",
+        "0x400044a",
+        "0x4000470",
+        "0xc000232",
+        "0xc400201"
+      ]
+    },
+    {
+      "yaw": 0,
+      "buttons": 6,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        4677,
+        -511,
+        -2866
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x8a7",
+        "0x10208b6",
+        "0x3000880",
+        "0x3000885",
+        "0x4000440",
+        "0x4000470",
+        "0x4000471",
+        "0xc400209"
+      ]
+    },
+    {
+      "yaw": 0,
+      "buttons": 8,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        -2096,
+        260,
+        5537
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x386",
+        "0x8c0453",
+        "0x10008ad",
+        "0x3000880",
+        "0x3000885",
+        "0x4000440",
+        "0x4000470",
+        "0xc000232",
+        "0xc400201"
+      ]
+    },
+    {
+      "yaw": 0,
+      "buttons": 1,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        -7183,
+        260,
+        2173
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x386",
+        "0x8c0453",
+        "0x10008ad",
+        "0x3000880",
+        "0x3000885",
+        "0x4000440",
+        "0x400044a",
+        "0x4000470",
+        "0xc000232"
+      ]
+    },
+    {
+      "yaw": 0,
+      "buttons": 2,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        -301,
+        260,
+        4229
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x386",
+        "0x8c0453",
+        "0x10008ad",
+        "0x3000880",
+        "0x4000440",
+        "0x4000470",
+        "0xc000232",
+        "0xc400201"
+      ]
+    },
+    {
+      "yaw": 32,
+      "buttons": 4,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        -6331,
+        543,
+        -4437
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x386",
+        "0x8c0453",
+        "0x10008ad",
+        "0x3000880",
+        "0x3000885",
+        "0x4000440",
+        "0x400044a",
+        "0x4000470",
+        "0xc000232",
+        "0xc400201"
+      ]
+    },
+    {
+      "yaw": 32,
+      "buttons": 5,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        -7183,
+        260,
+        2173
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x386",
+        "0x8c0453",
+        "0x10008ad",
+        "0x3000880",
+        "0x3000885",
+        "0x4000440",
+        "0x400044a",
+        "0x4000470",
+        "0xc000232"
+      ]
+    },
+    {
+      "yaw": 32,
+      "buttons": 6,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        -1978,
+        -511,
+        -2573
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x3000880",
+        "0x4000440",
+        "0x400044a",
+        "0x4000470",
+        "0xc400201"
+      ]
+    },
+    {
+      "yaw": 32,
+      "buttons": 8,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        -417,
+        260,
+        4679
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x386",
+        "0x8c0453",
+        "0x10008ad",
+        "0x3000880",
+        "0x3000885",
+        "0x4000440",
+        "0x4000470",
+        "0xc000232",
+        "0xc400201"
+      ]
+    },
+    {
+      "yaw": 32,
+      "buttons": 1,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        -5544,
+        425,
+        3718
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x386",
+        "0x8c0453",
+        "0x10008ad",
+        "0x3000880",
+        "0x4000440",
+        "0x4000470",
+        "0xc000232",
+        "0xc400201"
+      ]
+    },
+    {
+      "yaw": 32,
+      "buttons": 2,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        4677,
+        -511,
+        -2866
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x8a7",
+        "0x10208b6",
+        "0x3000880",
+        "0x3000885",
+        "0x4000440",
+        "0x4000470",
+        "0x4000471",
+        "0xc400209"
+      ]
+    },
+    {
+      "yaw": 64,
+      "buttons": 4,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        -7183,
+        260,
+        2173
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x386",
+        "0x8c0453",
+        "0x10008ad",
+        "0x3000880",
+        "0x3000885",
+        "0x4000440",
+        "0x400044a",
+        "0x4000470",
+        "0xc000232"
+      ]
+    },
+    {
+      "yaw": 64,
+      "buttons": 5,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        -5544,
+        425,
+        3718
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x386",
+        "0x8c0453",
+        "0x10008ad",
+        "0x3000880",
+        "0x4000440",
+        "0x4000470",
+        "0xc000232",
+        "0xc400201"
+      ]
+    },
+    {
+      "yaw": 64,
+      "buttons": 6,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        -6331,
+        543,
+        -4437
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x386",
+        "0x8c0453",
+        "0x10008ad",
+        "0x3000880",
+        "0x3000885",
+        "0x4000440",
+        "0x400044a",
+        "0x4000470",
+        "0xc000232",
+        "0xc400201"
+      ]
+    },
+    {
+      "yaw": 64,
+      "buttons": 8,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        -301,
+        260,
+        4229
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x386",
+        "0x8c0453",
+        "0x10008ad",
+        "0x3000880",
+        "0x4000440",
+        "0x4000470",
+        "0xc000232",
+        "0xc400201"
+      ]
+    },
+    {
+      "yaw": 64,
+      "buttons": 1,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        -2096,
+        260,
+        5537
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x386",
+        "0x8c0453",
+        "0x10008ad",
+        "0x3000880",
+        "0x3000885",
+        "0x4000440",
+        "0x4000470",
+        "0xc000232",
+        "0xc400201"
+      ]
+    },
+    {
+      "yaw": 64,
+      "buttons": 2,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        -1978,
+        -511,
+        -2573
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x3000880",
+        "0x4000440",
+        "0x400044a",
+        "0x4000470",
+        "0xc400201"
+      ]
+    },
+    {
+      "yaw": 96,
+      "buttons": 4,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        -5544,
+        425,
+        3718
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x386",
+        "0x8c0453",
+        "0x10008ad",
+        "0x3000880",
+        "0x4000440",
+        "0x4000470",
+        "0xc000232",
+        "0xc400201"
+      ]
+    },
+    {
+      "yaw": 96,
+      "buttons": 5,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        -2096,
+        260,
+        5537
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x386",
+        "0x8c0453",
+        "0x10008ad",
+        "0x3000880",
+        "0x3000885",
+        "0x4000440",
+        "0x4000470",
+        "0xc000232",
+        "0xc400201"
+      ]
+    },
+    {
+      "yaw": 96,
+      "buttons": 6,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        -7183,
+        260,
+        2173
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x386",
+        "0x8c0453",
+        "0x10008ad",
+        "0x3000880",
+        "0x3000885",
+        "0x4000440",
+        "0x400044a",
+        "0x4000470",
+        "0xc000232"
+      ]
+    },
+    {
+      "yaw": 96,
+      "buttons": 8,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        4677,
+        -511,
+        -2866
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x8a7",
+        "0x10208b6",
+        "0x3000880",
+        "0x3000885",
+        "0x4000440",
+        "0x4000470",
+        "0x4000471",
+        "0xc400209"
+      ]
+    },
+    {
+      "yaw": 96,
+      "buttons": 1,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        -417,
+        260,
+        4679
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x386",
+        "0x8c0453",
+        "0x10008ad",
+        "0x3000880",
+        "0x3000885",
+        "0x4000440",
+        "0x4000470",
+        "0xc000232",
+        "0xc400201"
+      ]
+    },
+    {
+      "yaw": 96,
+      "buttons": 2,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        -6331,
+        543,
+        -4437
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x386",
+        "0x8c0453",
+        "0x10008ad",
+        "0x3000880",
+        "0x3000885",
+        "0x4000440",
+        "0x400044a",
+        "0x4000470",
+        "0xc000232",
+        "0xc400201"
+      ]
+    },
+    {
+      "yaw": 128,
+      "buttons": 4,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        -2096,
+        260,
+        5537
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x386",
+        "0x8c0453",
+        "0x10008ad",
+        "0x3000880",
+        "0x3000885",
+        "0x4000440",
+        "0x4000470",
+        "0xc000232",
+        "0xc400201"
+      ]
+    },
+    {
+      "yaw": 128,
+      "buttons": 5,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        -417,
+        260,
+        4679
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x386",
+        "0x8c0453",
+        "0x10008ad",
+        "0x3000880",
+        "0x3000885",
+        "0x4000440",
+        "0x4000470",
+        "0xc000232",
+        "0xc400201"
+      ]
+    },
+    {
+      "yaw": 128,
+      "buttons": 6,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        -5544,
+        425,
+        3718
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x386",
+        "0x8c0453",
+        "0x10008ad",
+        "0x3000880",
+        "0x4000440",
+        "0x4000470",
+        "0xc000232",
+        "0xc400201"
+      ]
+    },
+    {
+      "yaw": 128,
+      "buttons": 8,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        -1978,
+        -511,
+        -2573
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x3000880",
+        "0x4000440",
+        "0x400044a",
+        "0x4000470",
+        "0xc400201"
+      ]
+    },
+    {
+      "yaw": 128,
+      "buttons": 1,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        -301,
+        260,
+        4229
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x386",
+        "0x8c0453",
+        "0x10008ad",
+        "0x3000880",
+        "0x4000440",
+        "0x4000470",
+        "0xc000232",
+        "0xc400201"
+      ]
+    },
+    {
+      "yaw": 128,
+      "buttons": 2,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        -7183,
+        260,
+        2173
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x386",
+        "0x8c0453",
+        "0x10008ad",
+        "0x3000880",
+        "0x3000885",
+        "0x4000440",
+        "0x400044a",
+        "0x4000470",
+        "0xc000232"
+      ]
+    },
+    {
+      "yaw": 160,
+      "buttons": 4,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        -417,
+        260,
+        4679
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x386",
+        "0x8c0453",
+        "0x10008ad",
+        "0x3000880",
+        "0x3000885",
+        "0x4000440",
+        "0x4000470",
+        "0xc000232",
+        "0xc400201"
+      ]
+    },
+    {
+      "yaw": 160,
+      "buttons": 5,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        -301,
+        260,
+        4229
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x386",
+        "0x8c0453",
+        "0x10008ad",
+        "0x3000880",
+        "0x4000440",
+        "0x4000470",
+        "0xc000232",
+        "0xc400201"
+      ]
+    },
+    {
+      "yaw": 160,
+      "buttons": 6,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        -2096,
+        260,
+        5537
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x386",
+        "0x8c0453",
+        "0x10008ad",
+        "0x3000880",
+        "0x3000885",
+        "0x4000440",
+        "0x4000470",
+        "0xc000232",
+        "0xc400201"
+      ]
+    },
+    {
+      "yaw": 160,
+      "buttons": 8,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        -6331,
+        543,
+        -4437
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x386",
+        "0x8c0453",
+        "0x10008ad",
+        "0x3000880",
+        "0x3000885",
+        "0x4000440",
+        "0x400044a",
+        "0x4000470",
+        "0xc000232",
+        "0xc400201"
+      ]
+    },
+    {
+      "yaw": 160,
+      "buttons": 1,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        4677,
+        -511,
+        -2866
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x8a7",
+        "0x10208b6",
+        "0x3000880",
+        "0x3000885",
+        "0x4000440",
+        "0x4000470",
+        "0x4000471",
+        "0xc400209"
+      ]
+    },
+    {
+      "yaw": 160,
+      "buttons": 2,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        -5544,
+        425,
+        3718
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x386",
+        "0x8c0453",
+        "0x10008ad",
+        "0x3000880",
+        "0x4000440",
+        "0x4000470",
+        "0xc000232",
+        "0xc400201"
+      ]
+    },
+    {
+      "yaw": 192,
+      "buttons": 4,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        -301,
+        260,
+        4229
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x386",
+        "0x8c0453",
+        "0x10008ad",
+        "0x3000880",
+        "0x4000440",
+        "0x4000470",
+        "0xc000232",
+        "0xc400201"
+      ]
+    },
+    {
+      "yaw": 192,
+      "buttons": 5,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        4677,
+        -511,
+        -2866
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x8a7",
+        "0x10208b6",
+        "0x3000880",
+        "0x3000885",
+        "0x4000440",
+        "0x4000470",
+        "0x4000471",
+        "0xc400209"
+      ]
+    },
+    {
+      "yaw": 192,
+      "buttons": 6,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        -417,
+        260,
+        4679
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x386",
+        "0x8c0453",
+        "0x10008ad",
+        "0x3000880",
+        "0x3000885",
+        "0x4000440",
+        "0x4000470",
+        "0xc000232",
+        "0xc400201"
+      ]
+    },
+    {
+      "yaw": 192,
+      "buttons": 8,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        -7183,
+        260,
+        2173
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x386",
+        "0x8c0453",
+        "0x10008ad",
+        "0x3000880",
+        "0x3000885",
+        "0x4000440",
+        "0x400044a",
+        "0x4000470",
+        "0xc000232"
+      ]
+    },
+    {
+      "yaw": 192,
+      "buttons": 1,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        -1978,
+        -511,
+        -2573
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x3000880",
+        "0x4000440",
+        "0x400044a",
+        "0x4000470",
+        "0xc400201"
+      ]
+    },
+    {
+      "yaw": 192,
+      "buttons": 2,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        -2096,
+        260,
+        5537
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x386",
+        "0x8c0453",
+        "0x10008ad",
+        "0x3000880",
+        "0x3000885",
+        "0x4000440",
+        "0x4000470",
+        "0xc000232",
+        "0xc400201"
+      ]
+    },
+    {
+      "yaw": 224,
+      "buttons": 4,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        4677,
+        -511,
+        -2866
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x8a7",
+        "0x10208b6",
+        "0x3000880",
+        "0x3000885",
+        "0x4000440",
+        "0x4000470",
+        "0x4000471",
+        "0xc400209"
+      ]
+    },
+    {
+      "yaw": 224,
+      "buttons": 5,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        -1978,
+        -511,
+        -2573
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x3000880",
+        "0x4000440",
+        "0x400044a",
+        "0x4000470",
+        "0xc400201"
+      ]
+    },
+    {
+      "yaw": 224,
+      "buttons": 6,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        -301,
+        260,
+        4229
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x386",
+        "0x8c0453",
+        "0x10008ad",
+        "0x3000880",
+        "0x4000440",
+        "0x4000470",
+        "0xc000232",
+        "0xc400201"
+      ]
+    },
+    {
+      "yaw": 224,
+      "buttons": 8,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        -5544,
+        425,
+        3718
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x386",
+        "0x8c0453",
+        "0x10008ad",
+        "0x3000880",
+        "0x4000440",
+        "0x4000470",
+        "0xc000232",
+        "0xc400201"
+      ]
+    },
+    {
+      "yaw": 224,
+      "buttons": 1,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        -6331,
+        543,
+        -4437
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x386",
+        "0x8c0453",
+        "0x10008ad",
+        "0x3000880",
+        "0x3000885",
+        "0x4000440",
+        "0x400044a",
+        "0x4000470",
+        "0xc000232",
+        "0xc400201"
+      ]
+    },
+    {
+      "yaw": 224,
+      "buttons": 2,
+      "movement_updates": 900,
+      "released_updates": 60,
+      "final_position": [
+        -417,
+        260,
+        4679
+      ],
+      "fault": 0,
+      "visited_actions": [
+        "0x386",
+        "0x8c0453",
+        "0x10008ad",
+        "0x3000880",
+        "0x3000885",
+        "0x4000440",
+        "0x4000470",
+        "0xc000232",
+        "0xc400201"
+      ]
+    }
+  ],
+  "total_updates": 46080,
+  "fault_count": 0,
+  "visited_actions": [
+    "0x386",
+    "0x8a7",
+    "0x8c0453",
+    "0x10008ad",
+    "0x10208b6",
+    "0x3000880",
+    "0x3000885",
+    "0x4000440",
+    "0x400044a",
+    "0x4000470",
+    "0x4000471",
+    "0xc000232",
+    "0xc400201",
+    "0xc400209"
+  ]
+}

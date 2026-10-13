@@ -1,0 +1,506 @@
+[
+  {
+    "yaw": 0,
+    "buttons": 5,
+    "tick": 315,
+    "fault": "0x3000885",
+    "action": "0x3000885",
+    "position": [
+      -7202,
+      404,
+      -1400
+    ]
+  },
+  {
+    "yaw": 0,
+    "buttons": 6,
+    "tick": 90,
+    "fault": "0x3000885",
+    "action": "0x3000885",
+    "position": [
+      -430,
+      294,
+      3577
+    ]
+  },
+  {
+    "yaw": 0,
+    "buttons": 8,
+    "tick": 90,
+    "fault": "0x10008ad",
+    "action": "0x10008ad",
+    "position": [
+      -1452,
+      260,
+      5146
+    ]
+  },
+  {
+    "yaw": 0,
+    "buttons": 1,
+    "tick": 225,
+    "fault": "0x10008ad",
+    "action": "0x10008ad",
+    "position": [
+      -6338,
+      536,
+      4085
+    ]
+  },
+  {
+    "yaw": 0,
+    "buttons": 2,
+    "tick": 90,
+    "fault": "0x10008ad",
+    "action": "0x10008ad",
+    "position": [
+      -120,
+      260,
+      4700
+    ]
+  },
+  {
+    "yaw": 32,
+    "buttons": 4,
+    "tick": 315,
+    "fault": "0x3000885",
+    "action": "0x3000885",
+    "position": [
+      -7202,
+      404,
+      -1400
+    ]
+  },
+  {
+    "yaw": 32,
+    "buttons": 5,
+    "tick": 225,
+    "fault": "0x10008ad",
+    "action": "0x10008ad",
+    "position": [
+      -6338,
+      536,
+      4085
+    ]
+  },
+  {
+    "yaw": 32,
+    "buttons": 8,
+    "tick": 90,
+    "fault": "0x10008ad",
+    "action": "0x10008ad",
+    "position": [
+      -776,
+      260,
+      5214
+    ]
+  },
+  {
+    "yaw": 32,
+    "buttons": 1,
+    "tick": 225,
+    "fault": "0x10008ad",
+    "action": "0x10008ad",
+    "position": [
+      -2909,
+      347,
+      5617
+    ]
+  },
+  {
+    "yaw": 32,
+    "buttons": 2,
+    "tick": 90,
+    "fault": "0x3000885",
+    "action": "0x3000885",
+    "position": [
+      -430,
+      294,
+      3577
+    ]
+  },
+  {
+    "yaw": 64,
+    "buttons": 4,
+    "tick": 225,
+    "fault": "0x10008ad",
+    "action": "0x10008ad",
+    "position": [
+      -6338,
+      536,
+      4085
+    ]
+  },
+  {
+    "yaw": 64,
+    "buttons": 5,
+    "tick": 225,
+    "fault": "0x10008ad",
+    "action": "0x10008ad",
+    "position": [
+      -2909,
+      347,
+      5617
+    ]
+  },
+  {
+    "yaw": 64,
+    "buttons": 6,
+    "tick": 315,
+    "fault": "0x3000885",
+    "action": "0x3000885",
+    "position": [
+      -7202,
+      404,
+      -1400
+    ]
+  },
+  {
+    "yaw": 64,
+    "buttons": 8,
+    "tick": 90,
+    "fault": "0x10008ad",
+    "action": "0x10008ad",
+    "position": [
+      -120,
+      260,
+      4700
+    ]
+  },
+  {
+    "yaw": 64,
+    "buttons": 1,
+    "tick": 90,
+    "fault": "0x10008ad",
+    "action": "0x10008ad",
+    "position": [
+      -1452,
+      260,
+      5146
+    ]
+  },
+  {
+    "yaw": 96,
+    "buttons": 4,
+    "tick": 225,
+    "fault": "0x10008ad",
+    "action": "0x10008ad",
+    "position": [
+      -2909,
+      347,
+      5617
+    ]
+  },
+  {
+    "yaw": 96,
+    "buttons": 5,
+    "tick": 90,
+    "fault": "0x10008ad",
+    "action": "0x10008ad",
+    "position": [
+      -1452,
+      260,
+      5146
+    ]
+  },
+  {
+    "yaw": 96,
+    "buttons": 6,
+    "tick": 225,
+    "fault": "0x10008ad",
+    "action": "0x10008ad",
+    "position": [
+      -6338,
+      536,
+      4085
+    ]
+  },
+  {
+    "yaw": 96,
+    "buttons": 8,
+    "tick": 90,
+    "fault": "0x3000885",
+    "action": "0x3000885",
+    "position": [
+      -430,
+      294,
+      3577
+    ]
+  },
+  {
+    "yaw": 96,
+    "buttons": 1,
+    "tick": 90,
+    "fault": "0x10008ad",
+    "action": "0x10008ad",
+    "position": [
+      -776,
+      260,
+      5214
+    ]
+  },
+  {
+    "yaw": 96,
+    "buttons": 2,
+    "tick": 315,
+    "fault": "0x3000885",
+    "action": "0x3000885",
+    "position": [
+      -7202,
+      404,
+      -1400
+    ]
+  },
+  {
+    "yaw": 128,
+    "buttons": 4,
+    "tick": 90,
+    "fault": "0x10008ad",
+    "action": "0x10008ad",
+    "position": [
+      -1452,
+      260,
+      5146
+    ]
+  },
+  {
+    "yaw": 128,
+    "buttons": 5,
+    "tick": 90,
+    "fault": "0x10008ad",
+    "action": "0x10008ad",
+    "position": [
+      -776,
+      260,
+      5214
+    ]
+  },
+  {
+    "yaw": 128,
+    "buttons": 6,
+    "tick": 225,
+    "fault": "0x10008ad",
+    "action": "0x10008ad",
+    "position": [
+      -2909,
+      347,
+      5617
+    ]
+  },
+  {
+    "yaw": 128,
+    "buttons": 1,
+    "tick": 90,
+    "fault": "0x10008ad",
+    "action": "0x10008ad",
+    "position": [
+      -120,
+      260,
+      4700
+    ]
+  },
+  {
+    "yaw": 128,
+    "buttons": 2,
+    "tick": 225,
+    "fault": "0x10008ad",
+    "action": "0x10008ad",
+    "position": [
+      -6338,
+      536,
+      4085
+    ]
+  },
+  {
+    "yaw": 160,
+    "buttons": 4,
+    "tick": 90,
+    "fault": "0x10008ad",
+    "action": "0x10008ad",
+    "position": [
+      -776,
+      260,
+      5214
+    ]
+  },
+  {
+    "yaw": 160,
+    "buttons": 5,
+    "tick": 90,
+    "fault": "0x10008ad",
+    "action": "0x10008ad",
+    "position": [
+      -120,
+      260,
+      4700
+    ]
+  },
+  {
+    "yaw": 160,
+    "buttons": 6,
+    "tick": 90,
+    "fault": "0x10008ad",
+    "action": "0x10008ad",
+    "position": [
+      -1452,
+      260,
+      5146
+    ]
+  },
+  {
+    "yaw": 160,
+    "buttons": 8,
+    "tick": 315,
+    "fault": "0x3000885",
+    "action": "0x3000885",
+    "position": [
+      -7202,
+      404,
+      -1400
+    ]
+  },
+  {
+    "yaw": 160,
+    "buttons": 1,
+    "tick": 90,
+    "fault": "0x3000885",
+    "action": "0x3000885",
+    "position": [
+      -430,
+      294,
+      3577
+    ]
+  },
+  {
+    "yaw": 160,
+    "buttons": 2,
+    "tick": 225,
+    "fault": "0x10008ad",
+    "action": "0x10008ad",
+    "position": [
+      -2909,
+      347,
+      5617
+    ]
+  },
+  {
+    "yaw": 192,
+    "buttons": 4,
+    "tick": 90,
+    "fault": "0x10008ad",
+    "action": "0x10008ad",
+    "position": [
+      -120,
+      260,
+      4700
+    ]
+  },
+  {
+    "yaw": 192,
+    "buttons": 5,
+    "tick": 90,
+    "fault": "0x3000885",
+    "action": "0x3000885",
+    "position": [
+      -430,
+      294,
+      3577
+    ]
+  },
+  {
+    "yaw": 192,
+    "buttons": 6,
+    "tick": 90,
+    "fault": "0x10008ad",
+    "action": "0x10008ad",
+    "position": [
+      -776,
+      260,
+      5214
+    ]
+  },
+  {
+    "yaw": 192,
+    "buttons": 8,
+    "tick": 225,
+    "fault": "0x10008ad",
+    "action": "0x10008ad",
+    "position": [
+      -6338,
+      536,
+      4085
+    ]
+  },
+  {
+    "yaw": 192,
+    "buttons": 2,
+    "tick": 90,
+    "fault": "0x10008ad",
+    "action": "0x10008ad",
+    "position": [
+      -1452,
+      260,
+      5146
+    ]
+  },
+  {
+    "yaw": 224,
+    "buttons": 4,
+    "tick": 90,
+    "fault": "0x3000885",
+    "action": "0x3000885",
+    "position": [
+      -430,
+      294,
+      3577
+    ]
+  },
+  {
+    "yaw": 224,
+    "buttons": 6,
+    "tick": 90,
+    "fault": "0x10008ad",
+    "action": "0x10008ad",
+    "position": [
+      -120,
+      260,
+      4700
+    ]
+  },
+  {
+    "yaw": 224,
+    "buttons": 8,
+    "tick": 225,
+    "fault": "0x10008ad",
+    "action": "0x10008ad",
+    "position": [
+      -2909,
+      347,
+      5617
+    ]
+  },
+  {
+    "yaw": 224,
+    "buttons": 1,
+    "tick": 315,
+    "fault": "0x3000885",
+    "action": "0x3000885",
+    "position": [
+      -7202,
+      404,
+      -1400
+    ]
+  },
+  {
+    "yaw": 224,
+    "buttons": 2,
+    "tick": 90,
+    "fault": "0x10008ad",
+    "action": "0x10008ad",
+    "position": [
+      -776,
+      260,
+      5214
+    ]
+  }
+]

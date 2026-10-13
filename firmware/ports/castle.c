@@ -12,7 +12,7 @@
 #include "render_interpolation.h"
 #ifdef CASTLE_ENGINE_SLICE
 #include "../engine/engine_slice.h"
-static uint32_t castle_engine_fault;
+volatile uint32_t castle_engine_fault;
 #endif
 #ifdef CASTLE_GAMEPLAY
 #include "castle_gameplay.h"
@@ -96,7 +96,11 @@ void game_port_update(uint32_t word) {
     }
     world_collision(world_areas+current_area,&player);
 #ifdef CASTLE_ENGINE_SLICE
-    if(input.buttons&GAME_RESET){const player_world_t *physics=world_areas[0].physics;int32_t engine_spawn[3]={physics->spawn_x,physics->spawn_y,physics->spawn_z};sm64_engine_init(engine_spawn);}
+    if((input.buttons&GAME_RESET) && !(previous_buttons&GAME_RESET)) {
+        const player_world_t *physics=world_areas[0].physics;
+        int32_t engine_spawn[3]={physics->spawn_x,physics->spawn_y,physics->spawn_z};
+        sm64_engine_init(engine_spawn);++player.respawns;camera.initialized=0;
+    }
     // The current renderer's yaw points forward; the original camera yaw
     // describes the opposite direction. Reflect the stick X axis as well.
     uint32_t engine_buttons=(input.buttons&~3u)|((input.buttons&1u)<<1)|((input.buttons&2u)>>1);
@@ -168,9 +172,8 @@ void game_port_update(uint32_t word) {
     castle_area=current_area;
 }
 static int render_frame(uint32_t frame,uint32_t alpha) {
-#ifdef CASTLE_ENGINE_SLICE
-    if(castle_engine_fault)return -1;
-#endif
+    // Unsupported engine actions remain latched in castle_engine_fault.
+    // Keep rendering/input alive so reset can recover the experimental slice.
     uint32_t start=SOC_CYCLES;
     player_t render_player=player;game_view_t render_view=view;
     render_player.x=game_render_lerp(render_previous_player.x,player.x,alpha);

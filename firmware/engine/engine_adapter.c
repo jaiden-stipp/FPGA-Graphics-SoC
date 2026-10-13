@@ -61,6 +61,7 @@ void sm64_engine_init(const int32_t position[3]){
 static s32 dispatch(struct MarioState *m){
     switch(m->action){
     case ACT_IDLE:return act_idle(m);
+    case ACT_STANDING_AGAINST_WALL:return act_standing_against_wall(m);
     case ACT_WALKING:return act_walking(m);
     case ACT_DECELERATING:return act_decelerating(m);
     case ACT_BRAKING:return act_braking(m);
@@ -71,6 +72,22 @@ static s32 dispatch(struct MarioState *m){
     case ACT_DOUBLE_JUMP:return act_double_jump(m);
     case ACT_TRIPLE_JUMP:return act_triple_jump(m);
     case ACT_FREEFALL:return act_freefall(m);
+    case ACT_STEEP_JUMP:return act_steep_jump(m);
+    case ACT_FORWARD_ROLLOUT:return act_forward_rollout(m);
+    case ACT_BACKWARD_ROLLOUT:return act_backward_rollout(m);
+    case ACT_BUTT_SLIDE_AIR:return act_butt_slide_air(m);
+    case ACT_SIDE_FLIP:return act_side_flip(m);
+    case ACT_SIDE_FLIP_LAND:return act_side_flip_land(m);
+    case ACT_SIDE_FLIP_LAND_STOP:return act_side_flip_land_stop(m);
+    case ACT_WALL_KICK_AIR:return act_wall_kick_air(m);
+    case ACT_AIR_HIT_WALL:return act_air_hit_wall(m);
+    case ACT_SOFT_BONK:return act_soft_bonk(m);
+    case ACT_BACKWARD_AIR_KB:return act_backward_air_kb(m);
+    case ACT_FORWARD_AIR_KB:return act_forward_air_kb(m);
+    case ACT_BACKWARD_GROUND_KB:return act_backward_ground_kb(m);
+    case ACT_FORWARD_GROUND_KB:return act_forward_ground_kb(m);
+    case ACT_HARD_BACKWARD_GROUND_KB:return act_hard_backward_ground_kb(m);
+    case ACT_HARD_FORWARD_GROUND_KB:return act_hard_forward_ground_kb(m);
     case ACT_JUMP_LAND:return act_jump_land(m);
     case ACT_DOUBLE_JUMP_LAND:return act_double_jump_land(m);
     case ACT_TRIPLE_JUMP_LAND:return act_triple_jump_land(m);

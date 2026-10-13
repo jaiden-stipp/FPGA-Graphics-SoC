@@ -1,0 +1,15 @@
+{
+  "format": "soc-deployment-selection",
+  "version": 1,
+  "board": "de2-115",
+  "hardware": {
+    "file": "build/quartus-sdram-exec/SdramExecSoC.sof",
+    "sha256": "140fa00e9d66def31e6897be29bc927469de72a9a051481186f7d7b2bc30be15",
+    "build_command": "scripts/run.ps1 build_sdram_execution.py fit",
+    "cpu_features": 2147483655,
+    "gpu_features": 3,
+    "input_abi": 1229848833
+  },
+  "package": "build/mario-original-engine-grounds-exec.package.json",
+  "firmware_command": "scripts/run.ps1 sm64_engine_slice.py game"
+}

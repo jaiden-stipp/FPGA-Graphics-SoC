@@ -1,0 +1,64 @@
+{
+  "baseline_commit": "91215da",
+  "native_routes": 48,
+  "native_updates": 46080,
+  "native_faults": 0,
+  "engine_tests": 8,
+  "default_castle_tests": 13,
+  "physical_route_fields": [
+    {
+      "name": "backward-rollout",
+      "fault": 0,
+      "frames_advanced": 490
+    },
+    {
+      "name": "diagonal-steep-jump-wall",
+      "fault": 0,
+      "frames_advanced": 499
+    }
+  ],
+  "reset": {
+    "fault": 0,
+    "player": [
+      4294965968,
+      260,
+      4664,
+      0,
+      1,
+      0,
+      0,
+      1
+    ],
+    "frame": 107
+  },
+  "final_package_segments": [
+    {
+      "file": "mario-original-engine-grounds-exec.bin",
+      "address": 0,
+      "bytes": 1744,
+      "sha256": "de384d4c1b32d89695fcd4f7810b671b67e5ff2721817b7433296227f3951707"
+    },
+    {
+      "file": "mario-original-engine-grounds-exec.code.bin",
+      "address": 2147483648,
+      "bytes": 89364,
+      "sha256": "6dd10a38561e628e042d800a25eb4bfd3214dcf39859d3b98e0a46f53603e94f"
+    },
+    {
+      "file": "mario-original-engine-grounds-exec.state.bin",
+      "address": 2164260864,
+      "bytes": 22772,
+      "sha256": "5f55ad07b6ff23f26a13f4563df79df6face39c7d772ffc8fb48cf8cd7a20168"
+    },
+    {
+      "file": "mario-original-engine-grounds-exec.assets.bin",
+      "address": 2164375520,
+      "bytes": 1479080,
+      "sha256": "40ecc2b119b8ebd97adc46d1bd6344faee5206f9655c133c3876c10fd2928dac"
+    }
+  ],
+  "hardware_sha256": "140fa00e9d66def31e6897be29bc927469de72a9a051481186f7d7b2bc30be15",
+  "hardware_changed": false,
+  "original_stopped_board_fault_captured": false,
+  "performance_improvement_claim": null
+}
