@@ -84,3 +84,18 @@ still perform capability preflight and full memory readback.
 [real build-order comparison](audits/2026-10-12/fixes/build-order.json),
 [hardware hashes](audits/2026-10-12/fixes/hardware-source-comparison.json),
 [typed historical status](audits/2026-10-12/fixes/stage1-restored-status.extracted.json).
+
+## Physical deployment, October 12, 2026
+
+The guarded audit-fixed package was loaded onto the accepted Stage 5 hardware
+image. Quartus programming succeeded with zero errors and warnings. Full
+readback verified 29,176 CPU bytes and 883,160 asset bytes before CPU release.
+The running CPU reported the expected capabilities and its frame counter
+advanced from 2 to 62 across the one-second startup check. This verifies boot
+and progress; it is not a performance comparison or a visual gameplay check.
+The default deployment selection now references this guarded package. The
+previous interpolated package remains available for rollback.
+
+[Physical boot evidence](audits/2026-10-12/boot/boot-check.json),
+[programming log](audits/2026-10-12/boot/programming.log),
+[deployment log](audits/2026-10-12/boot/deployment.log).
