@@ -3,13 +3,13 @@
   "version": 1,
   "board": "de2-115",
   "hardware": {
-    "file": "build/quartus-arch-stage5-worker/ArchStage5SoC.sof",
-    "sha256": "e2b1dce3d5814f348e0ca88b38fe49e494e68fddd9e897aeeac4c3a75b7c6e14",
-    "build_command": "scripts/run.ps1 build_geometry_worker.py worker",
-    "cpu_features": 2147483651,
+    "file": "build/quartus-sdram-exec/SdramExecSoC.sof",
+    "sha256": "140fa00e9d66def31e6897be29bc927469de72a9a051481186f7d7b2bc30be15",
+    "build_command": "scripts/run.ps1 build_sdram_execution.py fit",
+    "cpu_features": 2147483655,
     "gpu_features": 3,
     "input_abi": 1229848833
   },
-  "package": "build/mario-castle-gameplay-sdram-direct-packed-mul-geometry-uncapped-interpolated.package.json",
-  "firmware_command": "scripts/run.ps1 soc.py portable-game --project build/castle-gameplay/game.project.json --terrain-direct --packed-gfx --integer-mul --geometry-offload --uncapped-render --interpolate-render"
+  "package": "build/mario-original-engine-grounds-exec.package.json",
+  "firmware_command": "scripts/run.ps1 sm64_engine_slice.py game"
 }

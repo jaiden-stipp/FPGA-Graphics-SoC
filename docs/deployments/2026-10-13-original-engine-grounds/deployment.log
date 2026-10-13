@@ -1,0 +1,19 @@
+Programming SDRAM execution hardware
+Uploading mario-original-engine-grounds-exec.bin: 1,744 bytes at 0x00000000
+Verifying mario-original-engine-grounds-exec.bin: 1,744 bytes at 0x00000000
+Uploading mario-original-engine-grounds-exec.code.bin: 81,960 bytes at 0x80000000
+Verifying mario-original-engine-grounds-exec.code.bin: 81,960 bytes at 0x80000000
+Uploading mario-original-engine-grounds-exec.state.bin: 22,748 bytes at 0x81000000
+Verifying mario-original-engine-grounds-exec.state.bin: 22,748 bytes at 0x81000000
+Uploading mario-original-engine-grounds-exec.assets.bin: 1,479,080 bytes at 0x8101bfc0
+  365,592/1,479,080 bytes
+  723,996/1,479,080 bytes
+  1,081,104/1,479,080 bytes
+  1,436,796/1,479,080 bytes
+Verifying mario-original-engine-grounds-exec.assets.bin: 1,479,080 bytes at 0x8101bfc0
+  359,244/1,479,080 bytes
+  713,976/1,479,080 bytes
+  1,050,852/1,479,080 bytes
+  1,393,224/1,479,080 bytes
+Readback verified; CPU released.
+New game running; frames advanced: 30

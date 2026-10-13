@@ -1,0 +1,71 @@
+{
+  "started_utc": "2026-10-13T19:11:08.640192+00:00",
+  "hardware": {
+    "file": "build\\quartus-sdram-exec\\SdramExecSoC.sof",
+    "sha256": "140fa00e9d66def31e6897be29bc927469de72a9a051481186f7d7b2bc30be15",
+    "cpu_features": 2147483655,
+    "gpu_features": 3
+  },
+  "package": "C:\\Users\\Orb1t\\Documents\\Codex\\FPGA-Game-SoC\\build\\mario-original-engine-grounds-exec.package.json",
+  "segments": [
+    {
+      "file": "mario-original-engine-grounds-exec.bin",
+      "address": 0,
+      "bytes": 1744,
+      "sha256": "459df5b639eca7590f2f6357730dfe85cd6eb4788aab571bcb423d4bf51d8826"
+    },
+    {
+      "file": "mario-original-engine-grounds-exec.code.bin",
+      "address": 2147483648,
+      "bytes": 81960,
+      "sha256": "0bd379f3390e47a42acda97e0ef1aad63de212bc2482bec2879659eb63145625"
+    },
+    {
+      "file": "mario-original-engine-grounds-exec.state.bin",
+      "address": 2164260864,
+      "bytes": 22748,
+      "sha256": "3fc156423bcc2bd74b957e8e4bb569e2e3145029f9823d49a17f444b6dfa82f2"
+    },
+    {
+      "file": "mario-original-engine-grounds-exec.assets.bin",
+      "address": 2164375488,
+      "bytes": 1479080,
+      "sha256": "941f8063f758c0e83fa19c4c72d1712e9edc0efa6eaf38135d9ceb3dacbc5da4"
+    }
+  ],
+  "success": true,
+  "frame_sample": {
+    "start": {
+      "initialized": true,
+      "held": false,
+      "words": [
+        0,
+        0,
+        0
+      ],
+      "scratch": 50,
+      "refresh_count": 12907587,
+      "input_abi": 1229848833,
+      "cpu_features": 2147483655,
+      "gpu_features": 3
+    },
+    "end": {
+      "initialized": true,
+      "held": false,
+      "words": [
+        0,
+        0,
+        0
+      ],
+      "scratch": 80,
+      "refresh_count": 13043385,
+      "input_abi": 1229848833,
+      "cpu_features": 2147483655,
+      "gpu_features": 3
+    },
+    "seconds": 1.0,
+    "frames": 30,
+    "scope": "One short live frame-production sample; input is not forced neutral; not sustained FPS or a controlled movement/mission benchmark"
+  },
+  "finished_utc": "2026-10-13T19:12:52.146538+00:00"
+}

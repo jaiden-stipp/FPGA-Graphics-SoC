@@ -89,7 +89,7 @@ def main():
         if changed:
             print('Restoring selected hardware and exact castle demo package',flush=True)
             try:
-                program(old_sof,'ArchStage5SoC','restore');upload(loader,restored_package)
+                program(old_sof,old_sof.stem,'restore');upload(loader,restored_package)
                 record['restored_frame_sample']=frame_sample(loader);record['restored']=True
             except Exception as restore_error:
                 record['restore_error']=repr(restore_error);save('physical-record.json',record);raise
