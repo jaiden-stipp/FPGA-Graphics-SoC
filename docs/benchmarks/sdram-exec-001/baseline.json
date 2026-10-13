@@ -1,0 +1,179 @@
+{
+  "commit": "a73c295f4c65c4f74d6ba0cd1280a9fa2663c2ba",
+  "selection": {
+    "format": "soc-deployment-selection",
+    "version": 1,
+    "board": "de2-115",
+    "hardware": {
+      "file": "build/quartus-arch-stage5-worker/ArchStage5SoC.sof",
+      "sha256": "e2b1dce3d5814f348e0ca88b38fe49e494e68fddd9e897aeeac4c3a75b7c6e14",
+      "build_command": "scripts/run.ps1 build_geometry_worker.py worker",
+      "cpu_features": 2147483651,
+      "gpu_features": 3,
+      "input_abi": 1229848833
+    },
+    "package": "build/mario-castle-audit-fixed-sdram-direct-packed-mul-geometry-uncapped-interpolated.package.json",
+    "firmware_command": "scripts/run.ps1 soc.py portable-game --project build/castle-shaded/audit-fixed.project.json --terrain-direct --packed-gfx --integer-mul --geometry-offload --uncapped-render --interpolate-render"
+  },
+  "package": {
+    "format": "soc-game-package",
+    "version": 1,
+    "app": "portable",
+    "segments": [
+      {
+        "file": "mario-castle-audit-fixed-sdram-direct-packed-mul-geometry-uncapped-interpolated.bin",
+        "address": 0,
+        "bytes": 29176,
+        "sha256": "1ddf2d255c690c5094356969a173e22d1e3f347ec75ef85a7dd370834cbf7ca1"
+      },
+      {
+        "file": "mario-castle-audit-fixed-sdram-direct-packed-mul-geometry-uncapped-interpolated.assets.bin",
+        "address": 2147483648,
+        "bytes": 883160,
+        "sha256": "65413afb4c49b42581291d48547d58407cd118678d02bca0bb1869f790b226d4"
+      }
+    ],
+    "required_cpu_features": {
+      "mul": true,
+      "mmio_feature_bit": 0,
+      "geometry-worker-v1": true
+    },
+    "content": {
+      "format": "soc-game-assets",
+      "version": 1,
+      "runtime_abi": 1,
+      "game": "mario-castle-audit-fixed",
+      "units": "gpu-q8.8",
+      "material_policy": "indexed-flat-rgb",
+      "palette_colors": 146,
+      "meshes": [
+        {
+          "vertices": 128,
+          "triangles": 200
+        },
+        {
+          "vertices": 8,
+          "triangles": 12
+        }
+      ],
+      "collision": {
+        "abi": "triangle-q12-normal-v1",
+        "floors": 2816,
+        "walls": 4747
+      },
+      "animation": {
+        "abi": "none",
+        "clips": []
+      },
+      "configuration": {
+        "module": "world",
+        "physics": {},
+        "camera": {
+          "focal": 256,
+          "near_z": 257
+        },
+        "spawn": [
+          0,
+          0,
+          0
+        ],
+        "game": {
+          "port": "custom",
+          "implementation_status": "castle-traversal-foundation; mission incomplete"
+        },
+        "world": {
+          "abi": "sdram-areas-v1",
+          "areas": 5,
+          "stored_chunks": 83,
+          "render_scale": 4,
+          "near_gpu": 257,
+          "far_gpu": 30000,
+          "focal_gpu": 256,
+          "resident_handles": 2,
+          "cache_policy": "uploads-between-frames; uncached-visible-triangles-software-clipped"
+        }
+      },
+      "source": {
+        "profile": "audit-fixed.project.json",
+        "sha256": "aba1bc20a16c382370d6a006dd782bc148c563692fe584dfbbdc2be188b0fce4"
+      }
+    },
+    "target": {
+      "id": "de2-115-fixed-v2",
+      "runtime_abi": 1,
+      "required_features": [
+        "indexed-flat-rgb",
+        "triangle-collision",
+        "custom-rv32i-gameplay",
+        "mouse-look-v1"
+      ]
+    },
+    "required_gpu_features": {
+      "packed-enqueue-v1": true
+    },
+    "diagnostic": {
+      "terrain_submission": "CPU-clipped direct triangles; GPU resident terrain cache bypassed",
+      "purpose": "isolate terrain mesh uploads and cached-versus-direct clipping; not a performance optimization"
+    },
+    "cadence": {
+      "simulation_tick_cycles": 1666667,
+      "clock_hz": 50000000,
+      "render": "uncapped",
+      "render_repeat_safe": true,
+      "interpolation": true
+    }
+  },
+  "sha256": {
+    "build\\mario-castle-audit-fixed-sdram-direct-packed-mul-geometry-uncapped-interpolated.assets.bin": "65413afb4c49b42581291d48547d58407cd118678d02bca0bb1869f790b226d4",
+    "build\\mario-castle-audit-fixed-sdram-direct-packed-mul-geometry-uncapped-interpolated.bin": "1ddf2d255c690c5094356969a173e22d1e3f347ec75ef85a7dd370834cbf7ca1",
+    "build\\mario-castle-audit-fixed-sdram-direct-packed-mul-geometry-uncapped-interpolated.package.json": "1adf0123e203b2c519b230e8b9f4b9a7592615280b6ed3d6d5758aa1c0c052fd",
+    "build\\quartus-arch-stage5-worker\\ArchStage5SoC.sof": "e2b1dce3d5814f348e0ca88b38fe49e494e68fddd9e897aeeac4c3a75b7c6e14",
+    "fpga\\soc.sdc": "8bab502639ba541613e3cfaa35303f2869d321c5e1a3ad7741fb2ad25f8f4d7c",
+    "rtl\\boards\\de2_115_soc_top.sv": "68b19deb015b2669d4a51293fc7eed805a7678baefdd10e62493d8f2707bd7e0",
+    "rtl\\generated\\depth_test_stage.sv": "d6e5094c02091fd3a0ab689a64b348b78599e1e131b0f0ab3ba6c8693e3f1347",
+    "rtl\\generated\\framebuffer_banked.sv": "1f3fb7bc403cda88702bca6306a1933cfcf7c695170c60c5aa30a17424ebf65d",
+    "rtl\\generated\\framebuffer_single.sv": "2adc6221ad724bd9e9b58f4b8110018b4ecaf5d14b79898475b9dde15df4a767",
+    "rtl\\generated\\graphics_command_processor.sv": "05923b5253ec4e94a237ebc1bac6c33aec6b8a568633ba89167df3dfeb90a7dd",
+    "rtl\\generated\\graphics_command_stream_decoder.sv": "402b175b9a49f494d2000a24626123dae19cc411cce86256db56aa14202b18f8",
+    "rtl\\generated\\graphics_pipeline.sv": "b0451141ca66c6d4707898886505caa2bbb5498b2c87a464ffd93c82ee5170bc",
+    "rtl\\generated\\graphics_renderer_core.sv": "e245d4943cf9b4bf9a5577e58f562e098dcf720f75213b0a456786266cd9b999",
+    "rtl\\generated\\graphics_stream_renderer.sv": "fc9ff8c6396a768d3cd4ae5eaf2590d48530b9f405270f73ee72f635630fc53f",
+    "rtl\\generated\\indexed_mesh_store.sv": "5f69d0116f11f06988d74bbeb16dc00ca42ea3b22d40ed0fe47eeae761cb317a",
+    "rtl\\generated\\palette_ip.v": "53f971debd4c8f5bba38caf8782a08de919dcbef37b0b7c342849bfe773658bc",
+    "rtl\\generated\\pixel_bank_ram.sv": "03effd3296788bba8dfb5e386ced2222d0ddfa60071737f89fd7ff0c905ee118",
+    "rtl\\generated\\render_performance_counters.sv": "4f2e202fac5746684acacc154b8937626dc8e045c329e688581c9c6dca5808fa",
+    "rtl\\generated\\renderer.sv": "fb4a176b74d2717763d2b7e85bf5c3c14c294245b16b835b1fceb909f275106e",
+    "rtl\\generated\\renderer_dual.sv": "bffa2aa34a43b1a79ef58913db1f263f9fec05aaffbe2199c964a9ea2309764b",
+    "rtl\\generated\\renderer_overlap.sv": "e9cd306c1960c4c5ba50333a5351c301d1597a7dbd562d6730342e1dc6cddac5",
+    "rtl\\generated\\renderer_serial.sv": "c7214137bde8fd2e3a31f57550cc86a2097e75b02e099a2b6d3b5718c3fc57f0",
+    "rtl\\generated\\RV32I_SoC.sv": "5e8aa778a2f592e2c5e652c5e79a8d9fa32e3ad33b50adfc90055164f5102f83",
+    "rtl\\generated\\soc_ControlUnit.sv": "39cbee4843c35f8bc5b206d1a76d7e02104152abb7bda16a32b942b9a420e06f",
+    "rtl\\generated\\soc_EX_MEM.sv": "0988aa26a575d5b49fdc4ca1e7501684e75ab9a10bd81e0569fe24a2f14100d1",
+    "rtl\\generated\\soc_ID_EX.sv": "4b8a8bea79f603e1751d176a490743111043776b8d6c8aa0aefefbd717e6b762",
+    "rtl\\generated\\soc_IF_ID.sv": "ae0dd0847cb48d7a19a547543f0e9cfb38c4c5d9eea0adfaaa7128956b82dccd",
+    "rtl\\generated\\soc_MEM_WB.sv": "2654fe037b68c41fe7dc6f6f67dd5bcf7da7aff5d9b06f5f190c62e33b13613b",
+    "rtl\\generated\\soc_PC_IF.sv": "40f4ba9537bc9856ff8bc13b289f79adf54b6877bc33f4aa00c7d2a91cebb3c5",
+    "rtl\\generated\\soc_PipelineAssertions.sv": "abbdc1bbdfdbccd9ba124d6fa2281acfa6b12699fbaa0f55fd7d67d7ecc012e7",
+    "rtl\\generated\\soc_ram.sv": "965aecf84c1c77e96eb41486ebd358745b97aaa2e5e3be46292e5bdcfbbdc758",
+    "rtl\\generated\\soc_RegFile.sv": "0edae9416aaacb1bef7feb21f269488323d5c79b705e5056bc2ab6e0a0cc9837",
+    "rtl\\generated\\transform_3d_pipeline.sv": "8b90afabe74fc762e237574bd8412867cd91bf4a19e9afdfe15fd55e156d42cc",
+    "rtl\\generated\\triangle_setup_engine.sv": "8df64541a102b0796dbf062f11cd41830480c1befeb68acb2f6019a06323bf85",
+    "rtl\\generated\\vga_controller.sv": "8312b589fe0a9e30ed4ea25cb9d744b18e58fa8d7042b77941a0cd024c99e59b",
+    "rtl\\generated\\zbuffer_banked.sv": "acbd1b458f672938ef6aa58a4e96d27c405ea3269743882ea2a6dbd2c71804bc",
+    "rtl\\generated\\zbuffer_single.sv": "8e7e32269b301b35323f18cc165685b4e48d00848bf4f7e8cbf2f282fb660e37",
+    "rtl\\geometry_worker.sv": "2d4f2add8787f49e6cec0071902fb395b5a9eb93011ed706cc358227f5f2c487",
+    "rtl\\gfx_command_dma.sv": "3ab02142603634f2e6bbb0d3e12cbf8663995eab3c3b5c0c52f9020bfd0c8269",
+    "rtl\\sdram_bridge.sv": "b58bd47a0b71f179df8acb3855e935fb8b6def5b04fad0221caf7864b59974ed",
+    "rtl\\sdram_cache.sv": "433f43139bc0a562edc4e722cbc2893b69c3d86c58734ce293eb3bc6b626d92b",
+    "rtl\\sdram_capture_clock.sv": "9d20b840ed55776d25aaf34915b044d7d4b023f5fea6923bddf419bf81374ce0",
+    "rtl\\sdram_command_arbiter.sv": "6abd1cc03b5bd7b68ebed28adbd3650b03ec13e623372b0d88c0f4cf95505e3c",
+    "rtl\\sdram_controller.sv": "cb8fd223b7720aaf69b14d0e5dd4ee3e640c2036f2d35e014ca57a52db4a800e",
+    "rtl\\soc_alu.sv": "f8c9c56634bc527431ebb37b541ad1416a10e389ba072551abc52c80e4afc5e0",
+    "rtl\\soc_cpu_counters.sv": "f03a2ec07acaab146b6252889aa6a819a85a512e2a313a3b41137c99c2d3c166",
+    "rtl\\soc_memory.sv": "b5328997b1494c7f734f26bf8046d4dba89001a428328fbfc5a5274b12a5d4ec",
+    "rtl\\soc_mmio.sv": "d16a92b2bdb1a47f4f80c6e173b7d26f216a13113b6ee594fe3b339a5ce92f7c",
+    "rtl\\soc_top.sv": "835c329c44219d0521ea7645b7f8cf22d8dde2e8efe50e473b999c3672862ea8",
+    "rtl\\udp_controls.sv": "eddabdecaf25fb98d847c214db158acb396e46b59797f5d4fc394c14560d1bf0",
+    "rtl\\udp_memory_loader.sv": "334d9d75ad119320cf210a48dad791f5932caf4c5f34169d92abc0d753f7e79f"
+  }
+}
