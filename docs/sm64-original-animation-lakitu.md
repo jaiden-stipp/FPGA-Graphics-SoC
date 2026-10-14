@@ -2,6 +2,14 @@
 
 October 13, 2026. Before-change repository reference: `6fd250e`.
 
+Follow-up: the initial `1cd022e` release had a reflected camera conversion that
+reversed GPU backface culling and mouse directions. Native/FPGA agreement alone
+did not detect that renderer-contract error. The corrected X/Z conversion,
+independent direction tests and actual GPU framebuffer reproduction are recorded
+in [controls and culling correction](lakitu-controls-culling-fix.md). Measurements
+below remain the historical milestone results, not verification of the old
+conversion's visible geometry.
+
 This software milestone replaces the original-engine grounds package's independent six-clip animation selector and custom orbit camera. It reuses the same source/asset conversion, game-package loader, renderer, CPU, GPU and accepted SDRAM-execution hardware. Original SM64 sources and mesh geometry are unchanged.
 
 ## Animation bridge

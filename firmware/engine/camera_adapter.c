@@ -38,7 +38,10 @@ void sm64_engine_camera_step(int16_t *view,uint32_t render_scale){
     mtxf_lookat(matrix,gLakituState.pos,gLakituState.focus,gLakituState.roll);
     for(unsigned k=0;k<3;++k)relative[k]=(gLakituState.pos[k]-gMarioState->pos[k])*render_scale;
     for(unsigned row=0;row<3;++row){
-        float sign=row==2?-1.0f:1.0f;float translation=0;
+        // SDK look-at uses negative forward. The existing renderer/source
+        // winding contract needs a proper rotation, so change X and Z together.
+        // Flipping Z alone reflects every triangle and reverses backface culling.
+        float sign=row==1?1.0f:-1.0f;float translation=0;
         for(unsigned k=0;k<3;++k){float r=matrix[k][row]*sign;view[row*4+k]=(s16)(r*256.0f);translation-=r*relative[k];}
         if(!(translation>=-32768.0f && translation<=32767.0f)){engine_unsupported(0x203);return;}
         view[row*4+3]=(s16)translation;

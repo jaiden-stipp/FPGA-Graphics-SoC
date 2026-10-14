@@ -75,6 +75,9 @@ class VisualCamera(unittest.TestCase):
             view=[v if v<0x80000000 else v-0x100000000 for v in row[17:]]
             for axis in range(3):self.assertAlmostEqual(sum(v*v for v in view[axis*4:axis*4+3])/65536,1,delta=.02)
             self.assertGreater(view[11],0) # Mario is in front of the camera.
+            a,b,d=view[0:3],view[4:7],view[8:11]
+            determinant=a[0]*(b[1]*d[2]-b[2]*d[1])-a[1]*(b[0]*d[2]-b[2]*d[0])+a[2]*(b[0]*d[1]-b[1]*d[0])
+            self.assertGreater(determinant,0,'Camera reflection reverses GPU face culling')
         (engine.OUT/'visual-native-trace.json').write_text(json.dumps(first,indent=2)+'\n')
     def test_camera_movement_water_and_cbuttons_do_not_fault(self):
         lib=self.lib;view=(c.c_int16*12)();pose=(c.c_int16*408)();modes=set()

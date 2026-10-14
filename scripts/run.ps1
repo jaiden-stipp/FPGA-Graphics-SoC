@@ -13,6 +13,7 @@ $runnerAllowed += @('test_screen_edges.py','diagnose_screen_edges.py','replay_re
 $runnerAllowed += @('test_castle_gameplay.py')
 $runnerAllowed += @('sm64_engine_slice.py','verify_sm64_engine_slice.py','verify_sm64_movement.py','test_sm64_engine_slice.py','test_sm64_visual_camera.py','verify_sm64_visual_camera.py')
 $runnerAllowed += @('summarize_sm64_visual_camera.py')
+$runnerAllowed += @('test_camera_controls_fix.py','reproduce_lakitu_culling.py')
 if ($runnerScript -notin $runnerAllowed) { throw "Unknown project command: $runnerScript" }
 $runnerPython = Get-Command python.exe -ErrorAction SilentlyContinue | Where-Object Source -NotLike '*WindowsApps*' | Select-Object -First 1 -ExpandProperty Source
 if (-not $runnerPython) {

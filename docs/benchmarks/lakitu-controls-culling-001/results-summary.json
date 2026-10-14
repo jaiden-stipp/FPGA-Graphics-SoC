@@ -1,0 +1,277 @@
+{
+  "before_commit": "1cd022e",
+  "hardware": {
+    "file": "build/quartus-sdram-exec/SdramExecSoC.sof",
+    "sha256": "140fa00e9d66def31e6897be29bc927469de72a9a051481186f7d7b2bc30be15",
+    "build_command": "scripts/run.ps1 build_sdram_execution.py fit",
+    "cpu_features": 2147483655,
+    "gpu_features": 3,
+    "input_abi": 1229848833
+  },
+  "host_suites": 26,
+  "host_tests": 211,
+  "native_fpga_records": 96,
+  "gpu_framebuffer_reproduction": {
+    "scope": "Render the same original grounds view with reflected and corrected cameras.\n\nUses production terrain clipping/commands and actual GPU RTL replay. Terrain,\neye/focus, palette and hardware are identical; only the camera X row changes.\nNo physical FPGA writes. Native engine fixtures must have been built first.\n",
+    "frames": [
+      {
+        "label": "reflected-camera",
+        "non_background_pixels": 16822,
+        "view": [
+          256,
+          0,
+          0,
+          0,
+          0,
+          236,
+          -97,
+          -457,
+          0,
+          -97,
+          -236,
+          4137
+        ]
+      },
+      {
+        "label": "proper-camera",
+        "non_background_pixels": 73001,
+        "view": [
+          -256,
+          0,
+          0,
+          0,
+          0,
+          236,
+          -97,
+          -457,
+          0,
+          -97,
+          -236,
+          4137
+        ]
+      }
+    ]
+  },
+  "wasd_axes": [
+    {
+      "heading": 0,
+      "buttons": 1,
+      "render_axis_displacement": -422.9873046875
+    },
+    {
+      "heading": 0,
+      "buttons": 2,
+      "render_axis_displacement": 422.987548828125
+    },
+    {
+      "heading": 0,
+      "buttons": 4,
+      "render_axis_displacement": 318.8920364379883
+    },
+    {
+      "heading": 0,
+      "buttons": 8,
+      "render_axis_displacement": -318.8920364379883
+    },
+    {
+      "heading": 16384,
+      "buttons": 1,
+      "render_axis_displacement": -422.986328125
+    },
+    {
+      "heading": 16384,
+      "buttons": 2,
+      "render_axis_displacement": 422.986328125
+    },
+    {
+      "heading": 16384,
+      "buttons": 4,
+      "render_axis_displacement": 318.8929567337036
+    },
+    {
+      "heading": 16384,
+      "buttons": 8,
+      "render_axis_displacement": -318.89277267456055
+    },
+    {
+      "heading": 32768,
+      "buttons": 1,
+      "render_axis_displacement": -422.987548828125
+    },
+    {
+      "heading": 32768,
+      "buttons": 2,
+      "render_axis_displacement": 422.9873046875
+    },
+    {
+      "heading": 32768,
+      "buttons": 4,
+      "render_axis_displacement": 318.8920364379883
+    },
+    {
+      "heading": 32768,
+      "buttons": 8,
+      "render_axis_displacement": -318.8920364379883
+    },
+    {
+      "heading": 49152,
+      "buttons": 1,
+      "render_axis_displacement": -422.986328125
+    },
+    {
+      "heading": 49152,
+      "buttons": 2,
+      "render_axis_displacement": 422.986328125
+    },
+    {
+      "heading": 49152,
+      "buttons": 4,
+      "render_axis_displacement": 318.89277267456055
+    },
+    {
+      "heading": 49152,
+      "buttons": 8,
+      "render_axis_displacement": -318.8929567337036
+    }
+  ],
+  "live_routes": [
+    {
+      "name": "walk-jump",
+      "fault": 0,
+      "frame_progress": 25
+    },
+    {
+      "name": "rotate-camera",
+      "fault": 0,
+      "frame_progress": 96
+    },
+    {
+      "name": "zoom-camera",
+      "fault": 0,
+      "frame_progress": 96
+    },
+    {
+      "name": "punch-crouch",
+      "fault": 0,
+      "frame_progress": 96
+    }
+  ],
+  "reset": {
+    "castle_engine_fault": [
+      0
+    ],
+    "castle_engine_state": [
+      205521409,
+      2176,
+      54536,
+      0
+    ],
+    "castle_engine_visual": [
+      196,
+      14,
+      16,
+      0
+    ],
+    "castle_engine_view": [
+      65280,
+      0,
+      15335424,
+      4265148315,
+      4288348160,
+      260308758
+    ],
+    "castle_engine_pose_cycles": [
+      757306
+    ],
+    "castle_engine_camera_cycles": [
+      230682
+    ],
+    "game_player": [
+      4294965968,
+      260,
+      4664,
+      0,
+      1,
+      16,
+      0,
+      1
+    ],
+    "game_frame": [
+      24
+    ],
+    "game_update_cycles": [
+      2052003
+    ],
+    "game_frame_cycles": [
+      3335839
+    ]
+  },
+  "scope": "Camera/control correctness correction; unchanged FPGA hardware and source geometry. GPU reproduction is one frozen terrain view, not full-level validation or a performance claim.",
+  "artifact_sha256": {
+    "diagnostic-build.log": "45a17b94caf713793e98fc44088a4eeeadcb38715b6ad2cdfc44eb8dcf9ada57",
+    "direction-tests.log": "63f24f9574d65fecebe52a9de8bd337d7562eb87b2d4b37e82ec85a72cf9b00f",
+    "game-build.log": "0ef459760c7edd86f68e760bea8d316b68def0815d561e860df6e5f9cc43a734",
+    "input-directions.json": "c446f2748ba7d10c169e07181cffa76080f7993abaef31841bedd4a49c72a50c",
+    "packages/mario-original-engine-grounds-exec.assets.bin": "0dbf7d5fc34e38d72fe98f1787e68eeb05be8982d6158c7e1673cbbe98dcdc72",
+    "packages/mario-original-engine-grounds-exec.bin": "aae53db9f98c4ef3aaa9473d4d94e124f3eeca5f8525f0f9cb546abed9da8341",
+    "packages/mario-original-engine-grounds-exec.code.bin": "6690c8a9c91b7df2f4cc5ea12dfa1fd4ecb23b54421e34e41b70a73abeac924f",
+    "packages/mario-original-engine-grounds-exec.elf": "30c5871705d98a4afa7bcde4de94ee956bff5df648970c8a27279f5539f7c449",
+    "packages/mario-original-engine-grounds-exec.isa.json": "904d9929ea8c5f17843725157306b115db5a9eace7bf9d8f961eb79da62e0890",
+    "packages/mario-original-engine-grounds-exec.map": "f0e4a62f6799e64d7068046d2ce00a25a1af571a9aef6314da1776a98ff44c67",
+    "packages/mario-original-engine-grounds-exec.package.json": "9dd2ae04fe51ceec839c92afa0c966c0ae07e8e9047a7521993554345f7f0076",
+    "packages/mario-original-engine-grounds-exec.state.bin": "56b558aa53efa5ddf79683730e67c3e4a634abfa268beb1c43841e9bc097a9ff",
+    "packages/sm64-original-visual-diagnostic.assets.bin": "40388992c570cc031b6ec21e61739efe136e66148beeae47e405bae47545e8df",
+    "packages/sm64-original-visual-diagnostic.bin": "4a3de00564d149cbc4679127943da0abf5b5c271e81a7584d7525702411af48e",
+    "packages/sm64-original-visual-diagnostic.code.bin": "e56c795087233190822f252a4a70cf0796cc92216bc1d66e58be59b26e701bda",
+    "packages/sm64-original-visual-diagnostic.elf": "a8ab5e5660287735573e37831d61c7634365227e4c9b6f2a572e1bcfd336be61",
+    "packages/sm64-original-visual-diagnostic.isa.json": "0c02c37af6f8a1ed7cc4a16d7419fcc6735708749c6ad896ec99234dcdb53090",
+    "packages/sm64-original-visual-diagnostic.map": "13671ec606b4f77b7d9dc33ff1180aa43368b821a0bfd47cc5da85e794a1b2f6",
+    "packages/sm64-original-visual-diagnostic.package.json": "c5ae7a1e5e52382b4352105fde59e622f50190d5761c64a6da094bebd5d96c0a",
+    "packages/sm64-original-visual-diagnostic.state.bin": "62b416dce3e040d5c6a573dc113277a24bf6e4af6f567771c4012e1a4521baf4",
+    "physical.log": "09c67b5f9b02170ed19f95360d5c17936756a7b7fcf09c79aec0b3048ac0af23",
+    "replay/frame-1.color.hex": "18879a5dffb025feba3994aede5baab1f96e561fb96ac0e4923b4e66e08e968d",
+    "replay/frame-1.depth.hex": "b3e0ba781abac17f3bd2db86a2d30d3eee837a1152fcd1a6f98a1077975e1dec",
+    "replay/frame-1.palette.hex": "d9ce3f121e566e08c2a7c0396e42a1d44a1d044b9e52214b130dda3946249ce3",
+    "replay/frame-2.color.hex": "c3d6aced5cddd4de1339a2d27629236944e7b307b36116454c3cbbfbfa2ec0c3",
+    "replay/frame-2.depth.hex": "d5d4a364d335258b9672b6e4360af699af86e79157b54af8dd211fa85a6de02e",
+    "replay/frame-2.palette.hex": "d9ce3f121e566e08c2a7c0396e42a1d44a1d044b9e52214b130dda3946249ce3",
+    "replay/frame-commands.log": "347cb3c87b8af31edd844d1aadc8d60e81c61336501e8aebbff5be422befcdaa",
+    "replay/frame-timeline.log": "88136390f5623682d9674d1c7090d16d8ce69faef7009b521b1c03e785616808",
+    "replay/frame-triangles.log": "6573e7d07dc384eda3957b38c91b20862b6c39278b6969e73e71936afb68ec56",
+    "replay/input.json": "b694ace4bf4de079490e886e725f1bcffefa39904cb279e2938d355ee70935c6",
+    "replay/proper-camera.png": "bbcd9cc55de4d42d90f1a696e3ae4c15031ae614c3dec9d4e7cf90f1acf695cd",
+    "replay/reflected-camera.png": "0c7b43735f0648beb4b422990b8f73c6922d1c04f8b40ed41876e599f27497d8",
+    "replay/results.json": "88a9d97c2de69749b22ec8fc8cb8d92eaa6121b7cc7769f94c363d8cef25f41e",
+    "replay/simulation.log": "ab719113bc1b6008e3bbe2622af14799a962f332cf0786a771c1dacdd5b425b1",
+    "replay.log": "522752b30d46fa238e4e4400ca814192ec8599177f4ff8b8f637c5b345f72d31",
+    "tests/summary.json": "8b10378350e38798128ce477c0f2e88ed758944227c5df9c6d0c4517eb01a650",
+    "tests/test_animation.log": "18bf0f65ba2702e4d704676d7888aefaf73a7eb4eed1eecd63b0e1690af611f8",
+    "tests/test_audit_fixes.log": "7db3ad220648847d26c83db9d351da601fb70f78e546894e29f86e03241d32cb",
+    "tests/test_camera.log": "ca40a9e719ab23d8f521813f8a34f3656819cacd179feb73bb0e37df853ed4ef",
+    "tests/test_camera_controls_fix.log": "04a98c6987494326b4aba60d8b360f6435c6328eae1b6a89ca96d41af7d0509a",
+    "tests/test_castle_gameplay.log": "dcc2613bde38a55c1a4d496bc51c840c854d0c88d7c5672b003e18769c4b665b",
+    "tests/test_dma_gfx.log": "675acae210f64eaab06e8a64a87735747c90df1f8f9660c49eb6ef9121f0b7fb",
+    "tests/test_game_clock.log": "5f0ddc7d34c41a46851fe35d174938dc7fade0bf0f24e9d2b8b17b58d6e91425",
+    "tests/test_game_packages.log": "d17afb74bcdf34de3765cc368b6db070d9cd3a67fa0185912e813d8ff69b1b91",
+    "tests/test_geometry_loader.log": "4cd49ad0c73a8aa832fab522c6a78b7c7920d0020aa82b81b4234fa118a1a5f0",
+    "tests/test_gfx_staging.log": "a8a07f8d648a6cd6b93c16a9c281df7764858ad5884cfea9a6bb210f40bf9590",
+    "tests/test_gpu_fractional.log": "82078021e7c99aa15f88e1d83c8d68a3ed5429f4ef4a04daef7d23f0ffb90121",
+    "tests/test_interactive_demo.log": "433c4b70fe9302218561972a4dee24f01baae445c60f7f704853b7a6f73a9386",
+    "tests/test_packed_gfx.log": "c69cf20670e2178da1f40be8ae86f58145062b222cf8f1e96276802146aa0479",
+    "tests/test_player.log": "a3eafd44c0823da501c78a5c868870468cd06baf4dbc8ff0f237e9296204717c",
+    "tests/test_portable_pipeline.log": "49210c092a219a648889a1ecb9bb7aeebc652dc7f83a6f7a4535419fcdc72fdb",
+    "tests/test_quake_pipeline.log": "8e6148fb8e62124105d9cf1d0fcab0c58b5b204d4e99b32f32b45c54e010d6af",
+    "tests/test_render_fixes.log": "0471a179335c62c045ecc16de00cc02fa894526afb2511e7c90b7645a876007c",
+    "tests/test_render_replay.log": "c5c68835c5679d2c0d23caaadf0275f948d8623a34d93b32ab4cd8a60626e555",
+    "tests/test_scene_pipeline.log": "ed77ca8764fdf03507b07d59c9933aeca6e1c9ef1013fe76069f87a32c888442",
+    "tests/test_screen_edges.log": "4421ec8dffc1fc2edb53f7bc8818d168d89daa3b6b3e55be0341a1c755930ce6",
+    "tests/test_sdram_execution.log": "26005f63f31ae841a13fd8d2f1fbcddcee658307d0c08d66d773c7a540138a20",
+    "tests/test_sdram_package.log": "6f5a71068d124fc87f18bf1d571739e07018085c4076f85c65cd9e0bb42f21d3",
+    "tests/test_sm64_engine_slice.log": "695894e16c8cd34c64190e13649164ef48e759c3fc22b4fe29ffdb1cd36e2235",
+    "tests/test_sm64_visual_camera.log": "720a012e86adf9d1b31514d7f94c2b2fc00e2af006c7e216f8bacbb9d3de2c3c",
+    "tests/test_terrain_offload.log": "93c65cc030f707e840f63110da49644675a2cac6f93acb75e340e1a4d1e8fb75",
+    "tests/test_world_pipeline.log": "2917679741c9d33cb6bba7d96b4b599d038f5297c4b1c1d1d144b4291cade1b5",
+    "visual-physical.json": "a649639dfc3c48cf2262a19ea0b27c2447502cc5b2323e4add41fc7067fc14f3",
+    "visual-tests.log": "ca14f284332bf3a9f04ed10b535f69e62e098fd39dbde8fd67ac2279c41343b9"
+  }
+}

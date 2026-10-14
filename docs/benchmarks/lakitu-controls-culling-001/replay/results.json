@@ -1,0 +1,41 @@
+{
+  "scope": "Render the same original grounds view with reflected and corrected cameras.\n\nUses production terrain clipping/commands and actual GPU RTL replay. Terrain,\neye/focus, palette and hardware are identical; only the camera X row changes.\nNo physical FPGA writes. Native engine fixtures must have been built first.\n",
+  "frames": [
+    {
+      "label": "reflected-camera",
+      "non_background_pixels": 16822,
+      "view": [
+        256,
+        0,
+        0,
+        0,
+        0,
+        236,
+        -97,
+        -457,
+        0,
+        -97,
+        -236,
+        4137
+      ]
+    },
+    {
+      "label": "proper-camera",
+      "non_background_pixels": 73001,
+      "view": [
+        -256,
+        0,
+        0,
+        0,
+        0,
+        236,
+        -97,
+        -457,
+        0,
+        -97,
+        -236,
+        4137
+      ]
+    }
+  ]
+}

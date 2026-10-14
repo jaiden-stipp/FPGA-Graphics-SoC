@@ -40,3 +40,4 @@ docs/benchmarks/sm64-engine-slice-001/** -text -whitespace
 docs/benchmarks/sm64-engine-movement-fix-001/** -text -whitespace
 docs/benchmarks/sm64-grounds-traversal-001/** -text -whitespace
 docs/benchmarks/sm64-visual-camera-001/** -text -whitespace
+docs/benchmarks/lakitu-controls-culling-001/** -text -whitespace

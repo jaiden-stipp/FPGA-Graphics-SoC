@@ -1,0 +1,82 @@
+[
+  {
+    "heading": 0,
+    "buttons": 1,
+    "render_axis_displacement": -422.9873046875
+  },
+  {
+    "heading": 0,
+    "buttons": 2,
+    "render_axis_displacement": 422.987548828125
+  },
+  {
+    "heading": 0,
+    "buttons": 4,
+    "render_axis_displacement": 318.8920364379883
+  },
+  {
+    "heading": 0,
+    "buttons": 8,
+    "render_axis_displacement": -318.8920364379883
+  },
+  {
+    "heading": 16384,
+    "buttons": 1,
+    "render_axis_displacement": -422.986328125
+  },
+  {
+    "heading": 16384,
+    "buttons": 2,
+    "render_axis_displacement": 422.986328125
+  },
+  {
+    "heading": 16384,
+    "buttons": 4,
+    "render_axis_displacement": 318.8929567337036
+  },
+  {
+    "heading": 16384,
+    "buttons": 8,
+    "render_axis_displacement": -318.89277267456055
+  },
+  {
+    "heading": 32768,
+    "buttons": 1,
+    "render_axis_displacement": -422.987548828125
+  },
+  {
+    "heading": 32768,
+    "buttons": 2,
+    "render_axis_displacement": 422.9873046875
+  },
+  {
+    "heading": 32768,
+    "buttons": 4,
+    "render_axis_displacement": 318.8920364379883
+  },
+  {
+    "heading": 32768,
+    "buttons": 8,
+    "render_axis_displacement": -318.8920364379883
+  },
+  {
+    "heading": 49152,
+    "buttons": 1,
+    "render_axis_displacement": -422.986328125
+  },
+  {
+    "heading": 49152,
+    "buttons": 2,
+    "render_axis_displacement": 422.986328125
+  },
+  {
+    "heading": 49152,
+    "buttons": 4,
+    "render_axis_displacement": 318.89277267456055
+  },
+  {
+    "heading": 49152,
+    "buttons": 8,
+    "render_axis_displacement": -318.8929567337036
+  }
+]

@@ -12,6 +12,7 @@
 #include "render_interpolation.h"
 #ifdef CASTLE_ENGINE_SLICE
 #include "../engine/engine_slice.h"
+#include "../engine/camera_input.h"
 #include "spawn.inc"
 volatile uint32_t castle_engine_fault;
 volatile uint32_t castle_engine_state[4]; // action, health, water level, warp timer
@@ -19,8 +20,7 @@ volatile uint32_t castle_engine_visual[4]; // animation, frame, camera mode, cam
 volatile int16_t castle_engine_view[12];
 volatile uint32_t castle_engine_pose_cycles,castle_engine_camera_cycles;
 static uint32_t castle_engine_respawn_seen;
-static uint32_t engine_look_seen,engine_look_yaw;
-static int32_t engine_look_pitch,engine_look_dx,engine_look_dy;
+static engine_camera_input_t engine_look;
 #endif
 #ifdef CASTLE_GAMEPLAY
 #include "castle_gameplay.h"
@@ -114,7 +114,7 @@ int game_port_init(void) {
     int32_t engine_spawn[3]={player.x,player.y,player.z};
     sm64_engine_init_heading(engine_spawn,ENGINE_GROUNDS_SPAWN_YAW);castle_engine_fault=sm64_engine_probe(0);
     castle_engine_respawn_seen=0;
-    engine_look_seen=0;engine_look_dx=engine_look_dy=0;
+    engine_look=(engine_camera_input_t){0};
 #endif
     castle_mission_state=0;camera_update();render_capture(1);return 0;
 }
@@ -136,22 +136,12 @@ void game_port_update(uint32_t word) {
         int32_t engine_spawn[3]={physics->spawn_x,physics->spawn_y,physics->spawn_z};
         sm64_engine_init_heading(engine_spawn,ENGINE_GROUNDS_SPAWN_YAW);++player.respawns;camera.initialized=0;
         castle_engine_respawn_seen=0;
-        engine_look_seen=0;engine_look_dx=engine_look_dy=0;
+        engine_look=(engine_camera_input_t){0};
     }
-    // The current renderer's yaw points forward; the original camera yaw
-    // describes the opposite direction. Reflect the stick X axis as well.
-    uint32_t engine_buttons=(input.buttons&~3u)|((input.buttons&1u)<<1)|((input.buttons&2u)>>1);
+    uint32_t engine_buttons=engine_input_buttons(input.buttons);
     // Convert mouse deltas to original C-button events without forcing Lakitu
     // to an absolute orbit. The first packet establishes an input reference.
-    if(input.has_look){
-        if(engine_look_seen){engine_look_dx+=(((int32_t)input.yaw-(int32_t)engine_look_yaw+128)&255)-128;
-            engine_look_dy+=input.pitch-engine_look_pitch;}
-        engine_look_yaw=input.yaw;engine_look_pitch=input.pitch;engine_look_seen=1;
-        if(engine_look_dx>=32){engine_buttons|=ENGINE_CAMERA_RIGHT;engine_look_dx-=32;}
-        else if(engine_look_dx<=-32){engine_buttons|=ENGINE_CAMERA_LEFT;engine_look_dx+=32;}
-        if(engine_look_dy>=16){engine_buttons|=ENGINE_CAMERA_DOWN;engine_look_dy-=16;}
-        else if(engine_look_dy<=-16){engine_buttons|=ENGINE_CAMERA_UP;engine_look_dy+=16;}
-    }
+    if(input.has_look)engine_buttons|=engine_input_look(&engine_look,input.yaw,input.pitch);
     engine_result_t engine_state;sm64_engine_update(engine_buttons,ENGINE_USE_CAMERA_YAW,&engine_state);
     castle_engine_fault=engine_state.fault;
     castle_engine_state[0]=engine_state.action;
