@@ -55,8 +55,77 @@ class EngineSlice(unittest.TestCase):
                     self.assertEqual(result.fault,0,('released',yaw,buttons,tick,hex(result.action)))
         self.assertIn(0x03000885,seen) # Original steep jump.
         self.assertIn(0x010008ad,seen) # Original backward rollout.
-        self.assertIn(0x000008a7,seen) # Original airborne wall hit.
-        self.assertIn(0x0c400209,seen) # Original wall-standing after release.
+        self.assertIn(0x010208b6,seen) # Original soft bonk, dry wall contact.
+    def test_original_ledge_grab_rejects_steep_surface_and_climb_fixture(self):
+        self.lib.sm64_engine_init((c.c_int32*3)(-1328,260,4664));seen=set()
+        for tick in range(687):
+            r=Result();self.lib.sm64_engine_update(8|(16 if tick%45<7 else 0),96,c.byref(r))
+            self.assertEqual(r.fault,0);seen.add(r.action)
+        self.assertEqual(r.action,0x0800034b) # ACT_LEDGE_GRAB, real grounds wall.
+        for tick in range(3):
+            self.lib.sm64_engine_update(16 if tick==0 else 0,96,c.byref(r));seen.add(r.action)
+            self.assertEqual(r.fault,0)
+        self.assertIn(0x010208b6,seen) # Original releases the steep ledge.
+        # Isolate the climb action on a real flat castle floor. The route above
+        # is a steep grab and is intentionally rejected by original logic.
+        place=self.lib.sm64_engine_test_place;place.argtypes=[c.POINTER(c.c_int32),c.c_uint32,c.c_uint32]
+        self.lib.sm64_engine_init((c.c_int32*3)(-1328,260,4664))
+        place((c.c_int32*3)(-1328,260,4664),0x0800034b,0x880);seen=set()
+        for tick in range(90):
+            self.lib.sm64_engine_update(16 if tick==0 else 0,0,c.byref(r));seen.add(r.action)
+            self.assertEqual(r.fault,0)
+        self.assertIn(0x0000054f,seen)
+        self.assertEqual(r.grounded,1)
+    def test_water_health_drowning_and_ground_respawn(self):
+        place=self.lib.sm64_engine_test_place;place.argtypes=[c.POINTER(c.c_int32),c.c_uint32,c.c_uint32]
+        self.lib.sm64_engine_init((c.c_int32*3)(-1328,260,4664))
+        place((c.c_int32*3)(-1260,-400,-733),0x380022c0,0x100);r=Result();seen=set()
+        for _ in range(400):
+            self.lib.sm64_engine_update(0,0,c.byref(r));seen.add(r.action);self.assertEqual(r.fault,0)
+            if self.lib.sm64_engine_probe(8):break
+        self.assertIn(0x300032c4,seen) # ACT_DROWNING.
+        self.assertEqual(self.lib.sm64_engine_probe(8),1)
+        self.assertEqual([r.x,r.y,r.z],[-1328,260,4664]);self.assertEqual(self.lib.sm64_engine_probe(9),0x880)
+    def test_original_crouch_backflip_long_jump_ground_pound_and_punch(self):
+        cases=[('crouch',[32]*50,0x0c008220),
+               ('backflip',[32]*35+[48]+[0]*90,0x01000883),
+               ('long-jump',[4]*60+[36,52]+[4]*90,0x03000888),
+               ('ground-pound',[16]+[0]*7+[32]+[0]*90,0x008008a9),
+               ('punch',[64]+[0]*90,0x00800380)]
+        for name,inputs,expected in cases:
+            self.lib.sm64_engine_init((c.c_int32*3)(-1328,260,4664));seen=set();r=Result()
+            for keys in inputs:
+                self.lib.sm64_engine_update(keys,0,c.byref(r));seen.add(r.action);self.assertEqual(r.fault,0,(name,hex(r.action)))
+            self.assertIn(expected,seen,name)
+    def test_water_health_loss_recovery_and_real_shore_exit(self):
+        place=self.lib.sm64_engine_test_place;place.argtypes=[c.POINTER(c.c_int32),c.c_uint32,c.c_uint32]
+        for height,comparison in [(-400,self.assertLess),(-161,self.assertGreater)]:
+            self.lib.sm64_engine_init((c.c_int32*3)(-1328,260,4664))
+            place((c.c_int32*3)(-1260,height,-733),0x380022c0,0x400);r=Result()
+            for _ in range(20):self.lib.sm64_engine_update(0,0,c.byref(r));self.assertEqual(r.fault,0)
+            comparison(self.lib.sm64_engine_probe(9),0x400)
+        self.lib.sm64_engine_init((c.c_int32*3)(-1328,260,4664));wet=False;exited=False
+        for tick in range(1800):
+            self.lib.sm64_engine_update(4|(16 if tick%45<7 else 0),0,c.byref(r));self.assertEqual(r.fault,0)
+            if r.action&0x1c0==0xc0:wet=True
+            elif wet:exited=True
+        self.assertTrue(wet);self.assertTrue(exited)
+    def test_out_of_bounds_and_large_fall_recover_via_original_death(self):
+        place=self.lib.sm64_engine_test_place;place.argtypes=[c.POINTER(c.c_int32),c.c_uint32,c.c_uint32]
+        for position in ((9000,4000,0),(-1328,5000,4664)):
+            self.lib.sm64_engine_init((c.c_int32*3)(-1328,260,4664));place((c.c_int32*3)(*position),0x0100088c,0x880)
+            r=Result();seen=set()
+            for _ in range(600):
+                self.lib.sm64_engine_update(0,0,c.byref(r));seen.add(r.action);self.assertEqual(r.fault,0)
+                if self.lib.sm64_engine_probe(8):break
+            if position[0]==-1328:
+                self.assertLess(self.lib.sm64_engine_probe(9),0x880)
+                place((c.c_int32*3)(*position),0x0100088c,self.lib.sm64_engine_probe(9))
+                for _ in range(600):
+                    self.lib.sm64_engine_update(0,0,c.byref(r));self.assertEqual(r.fault,0)
+                    if self.lib.sm64_engine_probe(8):break
+            self.assertEqual(self.lib.sm64_engine_probe(8),1,position)
+            self.assertEqual([r.x,r.y,r.z],[-1328,260,4664])
     def test_all_original_animation_ids_are_present(self):
         text=(engine.OUT/'animations.inc').read_text();report=json.loads((engine.OUT/'source-report.json').read_text())
         self.assertIn('anim_C3',text);self.assertIn('anim_70',text);self.assertEqual(report['animation_tables'],209)

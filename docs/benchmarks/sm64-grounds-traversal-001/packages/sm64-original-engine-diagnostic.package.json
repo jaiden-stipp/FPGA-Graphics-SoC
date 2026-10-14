@@ -1,0 +1,43 @@
+{
+  "format": "soc-game-package",
+  "version": 1,
+  "app": "original-engine-diagnostic",
+  "segments": [
+    {
+      "file": "sm64-original-engine-diagnostic.bin",
+      "address": 0,
+      "bytes": 168,
+      "sha256": "922dfb43d55780c314cb91c6d8c86c7b774a8820cc995867a9c8637629a0ff9a"
+    },
+    {
+      "file": "sm64-original-engine-diagnostic.code.bin",
+      "address": 2147483648,
+      "bytes": 100388,
+      "sha256": "e8ca3abdf123002c9d50251b6713c6d515f6a05c70e85ce542bc4ba4f0d8ca25"
+    },
+    {
+      "file": "sm64-original-engine-diagnostic.state.bin",
+      "address": 2164260864,
+      "bytes": 22872,
+      "sha256": "ac11f0b66ee30938ecfdf0825232d0661f11555ec94f391f10d62215b1dc2aab"
+    },
+    {
+      "file": "sm64-original-engine-diagnostic.assets.bin",
+      "address": 2164370464,
+      "bytes": 591364,
+      "sha256": "2c3a5a9270d11b092ebefb88c6b5ce6b16ea66dccc1c28f3b9b844a7b1f2c070"
+    }
+  ],
+  "execution": {
+    "abi": "local-boot-sdram-v1",
+    "entry": 2147483648,
+    "code_address": 2147483648,
+    "code_bytes": 100388,
+    "bss_address": 2164283736,
+    "bss_bytes": 86712
+  },
+  "required_cpu_features": {
+    "sdram-exec-v1": true,
+    "mul": true
+  }
+}

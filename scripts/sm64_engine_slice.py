@@ -6,7 +6,9 @@ OUT=ROOT/'build/engine-slice'
 LLVM=Path('C:/Program Files/LLVM/bin')
 ORIGINAL=['src/game/mario.c','src/game/mario_actions_stationary.c','src/game/mario_actions_moving.c',
           'src/game/mario_actions_airborne.c','src/game/mario_actions_object.c','src/game/mario_step.c','src/engine/math_util.c',
-          'src/engine/graph_node.c','src/engine/surface_collision.c']
+          'src/engine/graph_node.c','src/engine/surface_collision.c',
+          'src/game/mario_actions_automatic.c','src/game/mario_actions_cutscene.c','src/game/interaction.c']
+INCLUDED=['src/engine/surface_load.c','src/game/mario_actions_submerged.c']
 
 def run(command):
     r=subprocess.run(list(map(str,command)),cwd=ROOT,capture_output=True,text=True)
@@ -48,6 +50,14 @@ def prepare():
            'static const __attribute__((section(".game_assets"))) s16 engine_triangles[][5]={'+','.join('{'+','.join(map(str,t[:3]))+','+t[3]+','+str(c['triangle_forces'][i])+'}' for i,t in enumerate(tris))+'};',
            'static const __attribute__((section(".game_assets"))) s16 engine_environment[]={'+','.join(map(str,[len(c['water_boxes'])]+[n for box in c['water_boxes'] for n in box]))+'};']
     (OUT/'terrain.inc').write_text('\n'.join(lines)+'\n')
+    # Copy adapter warp deadlines from the pinned upstream service rather than
+    # maintaining unrelated timing literals.
+    level_text=(source/'src/game/level_update.c').read_text();delays=[]
+    for op in ('DEATH','WARP_FLOOR'):
+        match=re.search(r'case WARP_OP_'+op+r':(?:(?!case WARP_OP_).)*?sDelayedWarpTimer\s*=\s*(\d+)',level_text,re.S)
+        if not match:raise ValueError('Missing original warp delay '+op)
+        delays.append('#define ENGINE_'+op+'_DELAY '+match[1])
+    (OUT/'respawn.inc').write_text('\n'.join(delays)+'\n')
     # Original animation tables/data, with declarations moved ahead of use only.
     # No animation values or frame counts are replaced by proxy timing.
     anim=['#pragma clang section rodata=".game_assets"'];names=[]
@@ -62,14 +72,17 @@ def prepare():
     anim+=['static const struct Animation *const engine_animations[]={'+','.join(n for n in names)+'};','#pragma clang section rodata=""']
     (OUT/'animations.inc').write_text('\n'.join(anim)+'\n')
     adapter=(ROOT/'firmware/engine/engine_adapter.c').read_text()
-    called=set(re.findall(r'return (act_\w+)\(m\)',adapter))|{'mario_reset_bodystate','update_mario_inputs'}
+    called=set(re.findall(r'return (act_\w+)\(m\)',adapter))|{'mario_reset_bodystate','update_mario_inputs',
+        'check_common_stationary_cancels','check_common_moving_cancels','check_common_airborne_cancels',
+        'check_common_automatic_cancels','play_far_fall_sound','update_mario_health','update_mario_info_for_cam',
+        'sink_mario_in_quicksand','squish_mario_model','mario_handle_special_floors'}
     declarations=[]
     for name in sorted(called):
         match=next((m for rel in ORIGINAL for m in [re.search(r'^((?:s32|u32|void|s16)\s+'+name+r'\([^)]*\))\s*\{',(source/rel).read_text(),re.M)] if m),None)
         if not match:raise ValueError('Missing original engine entry '+name)
         declarations.append(match[1]+';')
     (OUT/'actions.inc').write_text('\n'.join(declarations)+'\n')
-    report={'source_commit':json.loads((ROOT/'sm64.lock.json').read_text())['commit'],'original_files':{p:hashlib.sha256((source/p).read_bytes()).hexdigest() for p in ORIGINAL+['src/engine/surface_load.c']},'terrain_faces':len(tris),'derived_surface_nodes':nodes,'animation_tables':len(names),'scope':'Original grounds action/collision experiment; no original objects, audio, Lakitu camera, full action dispatch, or save engine'}
+    report={'source_commit':json.loads((ROOT/'sm64.lock.json').read_text())['commit'],'original_files':{p:hashlib.sha256((source/p).read_bytes()).hexdigest() for p in ORIGINAL+INCLUDED},'service_source_files':{'src/game/level_update.c':hashlib.sha256((source/'src/game/level_update.c').read_bytes()).hexdigest()},'terrain_faces':len(tris),'derived_surface_nodes':nodes,'animation_tables':len(names),'scope':'Original grounds movement, swimming, ledge and death actions; objects, audio, Lakitu camera, full action dispatch and saves incomplete'}
     (OUT/'source-report.json').write_text(json.dumps(report,indent=2)+'\n')
     return source
 
@@ -80,14 +93,14 @@ def flags(native=False):
             '-I'+str(ROOT/'external/sm64/src'),'-I'+str(ROOT/'external/sm64'),'-I'+str(OUT),
             '-I'+str(ROOT/'external/sm64/src/game'),'-I'+str(ROOT/'external/sm64/src/engine'),
             '-I'+str(ROOT/'firmware/engine')]
-    if native:result+=['-flto','-ffp-contract=off']
+    if native:result+=['-flto','-ffp-contract=off','-DSOC_ENGINE_TEST']
     else:result=['--target=riscv32-unknown-elf','-march=rv32i','-mabi=ilp32','-msmall-data-limit=0','-mno-relax']+result
     return result
 
 def native_sources(source):
     # COFF resolves unused-object references before GC. Retain the source call
     # closure instead of supplying fake implementations for unrelated actions.
-    paths=ORIGINAL+['src/engine/surface_load.c'];functions={};texts={}
+    paths=ORIGINAL+INCLUDED;functions={};texts={}
     for relative in paths:
         text=(source/relative).read_text();texts[relative]=text
         clean=re.sub(r'/\*.*?\*/|//[^\n]*',lambda m:' '*len(m[0]),text,flags=re.S)
@@ -99,7 +112,7 @@ def native_sources(source):
             if depth:raise ValueError('Cannot parse original function '+match[1])
             if match[1] in functions:raise ValueError('Ambiguous engine function '+match[1])
             functions[match[1]]=(relative,match.start(),end,clean[match.start():end])
-    roots='\n'.join((ROOT/'firmware/engine'/p).read_text() for p in ('engine_adapter.c','surface_adapter.c'))
+    roots='\n'.join((ROOT/'firmware/engine'/p).read_text() for p in ('engine_adapter.c','surface_adapter.c','submerged_adapter.c'))
     keep=set(re.findall(r'\b(\w+)\s*\(',roots))&functions.keys()
     while True:
         # Function addresses passed as callbacks (landing/jump handlers) count
@@ -124,9 +137,9 @@ def compile_objects(native=False):
     available={p.stem:p for p in list((soft/'source').glob('*.c'))+list((soft/'source/8086-SSE').glob('*.c'))}
     soft_sources=[available[name] for name in sorted(official)]
     # Compile once per source/configuration. Archive GC removes unreferenced formats.
-    sources=[overlay/p for p in ORIGINAL]+[ROOT/'firmware/engine'/name for name in ('surface_adapter.c','engine_adapter.c','platform_effects.c','softfloat_abi.c','integer_abi.c')]+soft_sources
+    sources=[overlay/p for p in ORIGINAL]+[ROOT/'firmware/engine'/name for name in ('surface_adapter.c','engine_adapter.c','submerged_adapter.c','platform_effects.c','softfloat_abi.c','integer_abi.c')]+soft_sources
     objects=[]
-    dependencies=sorted(set(list((ROOT/'firmware/engine').rglob('*.h'))+list((source/'include').rglob('*.h'))+list((source/'src').rglob('*.h'))+list(OUT.glob('*.inc'))+[source/p for p in ORIGINAL]+[source/'src/engine/surface_load.c']))
+    dependencies=sorted(set(list((ROOT/'firmware/engine').rglob('*.h'))+list((source/'include').rglob('*.h'))+list((source/'src').rglob('*.h'))+list(OUT.glob('*.inc'))+[source/p for p in ORIGINAL+INCLUDED]))
     dependency_hash=hashlib.sha256(b''.join(hashlib.sha256(p.read_bytes()).digest() for p in dependencies)).digest()
     def compile_one(pair):
         i,p=pair;obj=dest/(str(i)+'-'+p.stem+'.o');extra=sf_flags if p in soft_sources or p.name=='softfloat_abi.c' else []
@@ -151,7 +164,7 @@ def compile_objects(native=False):
 def diagnostic(native=False):
     archive=compile_objects(native)
     if native:
-        names=['sm64_engine_init','sm64_engine_update','sm64_engine_probe','__addsf3','__subsf3','__mulsf3','__divsf3','sqrtf','__muldi3','__ashldi3','__lshrdi3','__ashrdi3','__udivsi3','__divsi3']
+        names=['sm64_engine_init','sm64_engine_update','sm64_engine_probe','sm64_engine_test_place','__addsf3','__subsf3','__mulsf3','__divsf3','sqrtf','__muldi3','__ashldi3','__lshrdi3','__ashrdi3','__udivsi3','__divsi3']
         run([LLVM/'clang.exe',*flags(True),'-shared','-fuse-ld=lld','-nostdlib','-Wl,/noentry','-Wl,/opt:ref','-Wl,/include:_fltused',*['-Wl,/export:'+n for n in names],archive,ROOT/'firmware/src/game_memory.c','-o',OUT/'engine.dll'])
     else:
         stem='sm64-original-engine-diagnostic'

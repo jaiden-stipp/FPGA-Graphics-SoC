@@ -1,0 +1,8 @@
+Exported original castle/slide geometry and collision: C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\engine-slice\assets\world.json
+castle_geo_ground 785 render triangles 879 original collision faces
+castle_ground_floor 2181 render triangles 2144 original collision faces
+castle_upper_floor 2546 render triangles 2019 original collision faces
+castle_basement 1419 render triangles 1395 original collision faces
+secret_slide 1347 render triangles 1126 original collision faces
+Compiled original engine and SoftFloat: 320 objects
+Linked diagnostic: [('sm64-original-engine-diagnostic.bin', 168), ('sm64-original-engine-diagnostic.code.bin', 100388), ('sm64-original-engine-diagnostic.state.bin', 22872), ('sm64-original-engine-diagnostic.assets.bin', 591364)] {'abi': 'local-boot-sdram-v1', 'entry': 2147483648, 'code_address': 2147483648, 'code_bytes': 100388, 'bss_address': 2164283736, 'bss_bytes': 86712}

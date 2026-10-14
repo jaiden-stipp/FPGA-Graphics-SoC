@@ -1,0 +1,6 @@
+{
+  "file": "build\\quartus-sdram-exec\\SdramExecSoC.sof",
+  "sha256": "140fa00e9d66def31e6897be29bc927469de72a9a051481186f7d7b2bc30be15",
+  "cpu_features": 2147483655,
+  "gpu_features": 3
+}

@@ -1,0 +1,146 @@
+[
+  {
+    "file": "test_animation.py",
+    "exit_code": 0,
+    "tests": 8,
+    "seconds": 1.078
+  },
+  {
+    "file": "test_audit_fixes.py",
+    "exit_code": 0,
+    "tests": 11,
+    "seconds": 3.718
+  },
+  {
+    "file": "test_camera.py",
+    "exit_code": 0,
+    "tests": 14,
+    "seconds": 1.938
+  },
+  {
+    "file": "test_castle_gameplay.py",
+    "exit_code": 0,
+    "tests": 13,
+    "seconds": 5.156
+  },
+  {
+    "file": "test_dma_gfx.py",
+    "exit_code": 0,
+    "tests": 6,
+    "seconds": 0.703
+  },
+  {
+    "file": "test_game_clock.py",
+    "exit_code": 0,
+    "tests": 5,
+    "seconds": 0.422
+  },
+  {
+    "file": "test_game_packages.py",
+    "exit_code": 0,
+    "tests": 6,
+    "seconds": 2.125
+  },
+  {
+    "file": "test_geometry_loader.py",
+    "exit_code": 0,
+    "tests": 2,
+    "seconds": 0.156
+  },
+  {
+    "file": "test_gfx_staging.py",
+    "exit_code": 0,
+    "tests": 2,
+    "seconds": 0.531
+  },
+  {
+    "file": "test_gpu_fractional.py",
+    "exit_code": 0,
+    "tests": 3,
+    "seconds": 2.922
+  },
+  {
+    "file": "test_interactive_demo.py",
+    "exit_code": 0,
+    "tests": 15,
+    "seconds": 1.828
+  },
+  {
+    "file": "test_packed_gfx.py",
+    "exit_code": 0,
+    "tests": 3,
+    "seconds": 1.078
+  },
+  {
+    "file": "test_player.py",
+    "exit_code": 0,
+    "tests": 11,
+    "seconds": 1.281
+  },
+  {
+    "file": "test_portable_pipeline.py",
+    "exit_code": 0,
+    "tests": 13,
+    "seconds": 25.969
+  },
+  {
+    "file": "test_quake_pipeline.py",
+    "exit_code": 0,
+    "tests": 5,
+    "seconds": 1.375
+  },
+  {
+    "file": "test_render_fixes.py",
+    "exit_code": 0,
+    "tests": 5,
+    "seconds": 1.75
+  },
+  {
+    "file": "test_render_replay.py",
+    "exit_code": 0,
+    "tests": 3,
+    "seconds": 0.828
+  },
+  {
+    "file": "test_scene_pipeline.py",
+    "exit_code": 0,
+    "tests": 12,
+    "seconds": 1.828
+  },
+  {
+    "file": "test_screen_edges.py",
+    "exit_code": 0,
+    "tests": 3,
+    "seconds": 1.0
+  },
+  {
+    "file": "test_sdram_execution.py",
+    "exit_code": 0,
+    "tests": 8,
+    "seconds": 0.532
+  },
+  {
+    "file": "test_sdram_package.py",
+    "exit_code": 0,
+    "tests": 3,
+    "seconds": 0.218
+  },
+  {
+    "file": "test_sm64_engine_slice.py",
+    "exit_code": 0,
+    "tests": 13,
+    "seconds": 12.891
+  },
+  {
+    "file": "test_terrain_offload.py",
+    "exit_code": 0,
+    "tests": 5,
+    "seconds": 1.266
+  },
+  {
+    "file": "test_world_pipeline.py",
+    "exit_code": 0,
+    "tests": 34,
+    "seconds": 10.125
+  }
+]

@@ -38,3 +38,4 @@ docs/benchmarks/castle-gameplay-001/** -text -whitespace
 docs/benchmarks/castle-doors-001/** -text -whitespace
 docs/benchmarks/sm64-engine-slice-001/** -text -whitespace
 docs/benchmarks/sm64-engine-movement-fix-001/** -text -whitespace
+docs/benchmarks/sm64-grounds-traversal-001/** -text -whitespace

@@ -1,0 +1,8 @@
+...............
+----------------------------------------------------------------------
+Ran 15 tests in 1.505s
+
+OK
+Quake E1M1 start region: 786 triangles, 5 handles, spawn [0, 0, 0]
+Exported original Quake scene IR and project: C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\quake-interactive\scene.project.json
+Quake interactive demo: 11 handles, 1224 triangles, 8 original run frames; C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\build\quake-interactive/game.project.json

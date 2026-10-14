@@ -13,6 +13,8 @@
 #ifdef CASTLE_ENGINE_SLICE
 #include "../engine/engine_slice.h"
 volatile uint32_t castle_engine_fault;
+volatile uint32_t castle_engine_state[4]; // action, health, water level, warp timer
+static uint32_t castle_engine_respawn_seen;
 #endif
 #ifdef CASTLE_GAMEPLAY
 #include "castle_gameplay.h"
@@ -82,6 +84,7 @@ int game_port_init(void) {
 #ifdef CASTLE_ENGINE_SLICE
     int32_t engine_spawn[3]={player.x,player.y,player.z};
     sm64_engine_init(engine_spawn);castle_engine_fault=sm64_engine_probe(0);
+    castle_engine_respawn_seen=0;
 #endif
     castle_mission_state=0;camera_update();render_capture(1);return 0;
 }
@@ -100,12 +103,19 @@ void game_port_update(uint32_t word) {
         const player_world_t *physics=world_areas[0].physics;
         int32_t engine_spawn[3]={physics->spawn_x,physics->spawn_y,physics->spawn_z};
         sm64_engine_init(engine_spawn);++player.respawns;camera.initialized=0;
+        castle_engine_respawn_seen=0;
     }
     // The current renderer's yaw points forward; the original camera yaw
     // describes the opposite direction. Reflect the stick X axis as well.
     uint32_t engine_buttons=(input.buttons&~3u)|((input.buttons&1u)<<1)|((input.buttons&2u)>>1);
     engine_result_t engine_state;sm64_engine_update(engine_buttons,(view.yaw+128u)&255u,&engine_state);
     castle_engine_fault=engine_state.fault;
+    castle_engine_state[0]=engine_state.action;
+    castle_engine_state[1]=sm64_engine_probe(9);
+    castle_engine_state[2]=sm64_engine_probe(10);
+    castle_engine_state[3]=sm64_engine_probe(11);
+    uint32_t engine_respawns=sm64_engine_probe(8);
+    if(engine_respawns!=castle_engine_respawn_seen){player.respawns+=engine_respawns-castle_engine_respawn_seen;castle_engine_respawn_seen=engine_respawns;camera.initialized=0;}
     player.x=engine_state.x;player.y=engine_state.y;player.z=engine_state.z;
     player.velocity_y=engine_state.velocity_y;player.grounded=engine_state.grounded;player.facing=engine_state.facing;
     controller.action=player.grounded?(input.buttons&15u?CASTLE_ACTION_WALK:CASTLE_ACTION_IDLE):CASTLE_ACTION_AIR;

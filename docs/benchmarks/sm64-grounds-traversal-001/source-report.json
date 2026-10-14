@@ -1,0 +1,26 @@
+{
+  "source_commit": "2b17d081c9798b31b91dc71f37994b0da28cffc9",
+  "original_files": {
+    "src/game/mario.c": "42298cc5015ba1daafd9be25de6df0c371902005245d31b7fe178d37a96d7c14",
+    "src/game/mario_actions_stationary.c": "a6ce312eadb4271646643b14c90ca7c6135de9d0846cd7a6a5642972c8501608",
+    "src/game/mario_actions_moving.c": "8baa74fee5590e9137308eddf38696cc7dc861144c4b5dbe0de0847f5f0e7073",
+    "src/game/mario_actions_airborne.c": "5bf31e13c496de14b3a18ee31f4259fe85d29f4e9394a7c9f5b36143e85beb12",
+    "src/game/mario_actions_object.c": "607b2a828ecbd11d78f6ddc53310b5af32eb23799037e0cfd9cadb54d6a3958a",
+    "src/game/mario_step.c": "b83a0de5cd44258d0eca12906d57f3981f0e52563d0ee1aaee8b8a9e3cf0d617",
+    "src/engine/math_util.c": "6ffb1e9234b208352f1bbd32d59b97683a766f2cdeb2118d939fbad97033b587",
+    "src/engine/graph_node.c": "e2142abdc495313abc32a49533c14f797065e859c302f541f64fb37b841cd4cd",
+    "src/engine/surface_collision.c": "491d522233662c8971f5966001665879c09acd1032ef1159384336e6ef00d19e",
+    "src/game/mario_actions_automatic.c": "f767b373a957fcbd75a1b66b92775f82c363dfc5223d46fdd0c3e2e4fa588495",
+    "src/game/mario_actions_cutscene.c": "24297b3dae3f85fa3220c4c719114cd9413c98263ca7d61b80aa58d02bbd2a78",
+    "src/game/interaction.c": "91eff7d2ccd9c65bda2e96b51706e568195b8c13b667ebc2e7e59d5c4f5583af",
+    "src/engine/surface_load.c": "34a5459a0f8eb5849a3747c7c6e7266d4e00c9abaf3761f2b68683a95efc12b8",
+    "src/game/mario_actions_submerged.c": "2d62515175b6c76ee12a09d1abac62920b291ec1ad181a9f7b6074e9c83b4c70"
+  },
+  "service_source_files": {
+    "src/game/level_update.c": "d46f5938a4debb59ee879b8a6fe1281aa04071510ed91ed024f63abda184aebe"
+  },
+  "terrain_faces": 879,
+  "derived_surface_nodes": 3237,
+  "animation_tables": 209,
+  "scope": "Original grounds movement, swimming, ledge and death actions; objects, audio, Lakitu camera, full action dispatch and saves incomplete"
+}

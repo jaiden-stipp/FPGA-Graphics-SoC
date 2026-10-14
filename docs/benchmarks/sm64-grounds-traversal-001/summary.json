@@ -1,0 +1,96 @@
+{
+  "baseline_commit": "8f485f8",
+  "hardware_changed": false,
+  "native_only_fixtures_excluded_from_target": true,
+  "suites": 24,
+  "tests": 203,
+  "diagnostic_native_mismatches": 0,
+  "diagnostic_updates": 96,
+  "diagnostic_instrumented_cycles": {
+    "minimum": 24674,
+    "median": 25417.0,
+    "maximum": 117787
+  },
+  "diagnostic_stack_high_water_bytes": 712,
+  "configured_clock_hz": 50000000,
+  "externally_calibrated_frequency": false,
+  "routes": [
+    {
+      "name": "water-entry",
+      "fault": 0,
+      "action": "0x300024d1",
+      "frames_advanced": 1001,
+      "seconds": 20.35999999998603
+    },
+    {
+      "name": "shore-exit",
+      "fault": 0,
+      "action": "0xc00023d",
+      "frames_advanced": 2625,
+      "seconds": 60.35999999998603
+    },
+    {
+      "name": "ledge-approach",
+      "fault": 0,
+      "action": "0x380022c0",
+      "frames_advanced": 891,
+      "seconds": 24.375
+    },
+    {
+      "name": "advanced-controls",
+      "fault": 0,
+      "action": "0xc400201",
+      "frames_advanced": 250,
+      "seconds": 8.35999999998603
+    }
+  ],
+  "reset": {
+    "fault": 0,
+    "player": [
+      4294965968,
+      260,
+      4664,
+      0,
+      1,
+      0,
+      0,
+      1
+    ],
+    "engine_state": [
+      205521409,
+      2176,
+      54536,
+      0
+    ],
+    "frame": 107
+  },
+  "package_segments": [
+    {
+      "file": "mario-original-engine-grounds-exec.bin",
+      "address": 0,
+      "bytes": 1744,
+      "sha256": "de5112b78a401e9a8da8d20df71b129af92317dd0d5de8d50d9c0c773ffafd5b"
+    },
+    {
+      "file": "mario-original-engine-grounds-exec.code.bin",
+      "address": 2147483648,
+      "bytes": 120948,
+      "sha256": "d67a57fcf93a06f8894de6d149e85e12dd97f2324e070a6ab1fb0ed1ce72542d"
+    },
+    {
+      "file": "mario-original-engine-grounds-exec.state.bin",
+      "address": 2164260864,
+      "bytes": 22852,
+      "sha256": "16938265dce86b462fb1c8cf7370d139c6ac683dbe282916ea239cc2e42bdf58"
+    },
+    {
+      "file": "mario-original-engine-grounds-exec.assets.bin",
+      "address": 2164375712,
+      "bytes": 1479080,
+      "sha256": "51cfe8a7b7b33c7c6b690982993dcddead047cec56187d49fb6a1661c657c5b4"
+    }
+  ],
+  "bss_bytes": 91968,
+  "performance_improvement_claim": null,
+  "completed_hardware_ledge_climb_claim": false
+}

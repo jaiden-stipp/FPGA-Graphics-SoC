@@ -2,6 +2,8 @@
 
 October 13, 2026. Before-change reference: `91215da`; original measured engine experiment: `ed85809`.
 
+The later [grounds traversal milestone](sm64-engine-grounds-traversal.md) adds original water/health/group rules and broader movement coverage. Results below describe this earlier movement-fix binary.
+
 The first engine slice's 96-update replay did not cover several ordinary movement transitions. Longer native replays reproduced unsupported `ACT_STEEP_JUMP` (`0x03000885`), `ACT_BACKWARD_ROLLOUT` (`0x010008ad`), and subsequently `ACT_AIR_HIT_WALL` (`0x000008a7`). The adapter latched those action IDs as faults. `castle.c` returned an error when that fault was set, so `portable_main.c` exited rendering and stopped advancing frames.
 
 The user's stopped board did not answer either initial UDP status attempt. Its exact action/fault could therefore not be captured before reprogramming. The native failures establish a reproducible software cause matching movement/jump-triggered stops, not proof of the exact original board state. Loss of UDP response itself was not explained by these source-level failures.

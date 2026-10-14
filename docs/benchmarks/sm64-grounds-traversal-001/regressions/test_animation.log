@@ -1,0 +1,14 @@
+test_all_original_frames_match_independent_float_poses (__main__.AnimationTests.test_all_original_frames_match_independent_float_poses) ... ok
+test_animation_does_not_modify_player_or_add_lateral_motion (__main__.AnimationTests.test_animation_does_not_modify_player_or_add_lateral_motion) ... ok
+test_grounded_foot_contact_and_airborne_pose_are_separate (__main__.AnimationTests.test_grounded_foot_contact_and_airborne_pose_are_separate) ... ok
+test_original_channels_preserved_at_every_reachable_frame (__main__.AnimationTests.test_original_channels_preserved_at_every_reachable_frame) ... ok
+test_original_xyz_axes_and_neutral_root (__main__.AnimationTests.test_original_xyz_axes_and_neutral_root) ... ok
+test_source_local_vertices_are_unchanged (__main__.AnimationTests.test_source_local_vertices_are_unchanged) ... ok
+test_source_policies_reject_unresolved_or_unsupported_nodes (__main__.AnimationTests.test_source_policies_reject_unresolved_or_unsupported_nodes) ... ok
+test_state_transitions_idle_walk_jump_land_respawn (__main__.AnimationTests.test_state_transitions_idle_walk_jump_land_respawn) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.817s
+
+OK
+Maximum skeletal vertex error: 1.0549 Q8.8 coordinate units
