@@ -14,6 +14,7 @@
 #include "game/object_helpers.h"
 #include "game/obj_behaviors.h"
 #include "behavior_data.h"
+#include "dialog_ids.h"
 #include "respawn.inc"
 struct NumTimesCalled gNumCalls;
 #ifdef _WIN32
@@ -24,12 +25,17 @@ u8 gSpecialTripleJump;
 s8 gShowDebugText;
 struct Object *gCurrentObject;
 s32 gNumFindFloorMisses;
-s16 gCameraMovementFlags;
 s16 engine_warp_timer;
 Vec3f gGlobalSoundSource;
 s8 gDebugLevelSelect;
 struct HudDisplay gHudDisplay;
 s16 gCurrAreaIndex=1;
+s16 gCurrSaveFileNum=1;
+// No save/mission engine or collected stars in the original grounds slice.
+// Read-only camera gating observes an empty slot; no fabricated progress.
+s32 save_file_get_total_star_count(s32 fileIndex,s32 minCourse,s32 maxCourse){(void)fileIndex;(void)minCourse;(void)maxCourse;return 0;}
+struct DemoInput *gCurrDemoInput;
+s16 get_dialog_id(void){return DIALOG_NONE;}
 // Identity-only tokens for original comparisons. No behavior interpreter or
 // actor is instantiated in this movement milestone.
 const BehaviorScript bhvKoopaShellUnderwater[]={0};
@@ -42,8 +48,6 @@ void stop_sound(u32 soundBits,f32 *pos){(void)soundBits;(void)pos;}
 void set_sound_moving_speed(u8 bank,u8 speed){(void)bank;(void)speed;}
 void lower_background_noise(s32 value){(void)value;}
 void raise_background_noise(s32 value){(void)value;}
-void set_camera_shake_from_hit(s16 shake){(void)shake;}
-void set_camera_mode(struct Camera *c,s16 mode,s16 frames){(void)frames;c->mode=mode;}
 void print_text_fmt_int(s32 x,s32 y,const char *str,s32 n){(void)x;(void)y;(void)str;(void)n;}
 void stop_shell_music(void){}
 void load_level_init_text(u32 arg){(void)arg;}

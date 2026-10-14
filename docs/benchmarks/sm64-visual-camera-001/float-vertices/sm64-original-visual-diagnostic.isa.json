@@ -1,0 +1,15 @@
+{
+  "compiler_isa": "rv32i",
+  "extra_instruction": "low MUL only",
+  "decoded_instruction_count": 37947,
+  "mul_addresses": [
+    2147626212,
+    2147626468,
+    2147626472,
+    2147626476,
+    2147626480,
+    2147626484,
+    2147626488
+  ],
+  "unresolved_symbols": []
+}

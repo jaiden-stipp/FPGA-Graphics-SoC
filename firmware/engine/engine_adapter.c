@@ -12,6 +12,7 @@
 #include "engine/graph_node.h"
 #include "engine/math_util.h"
 #include "engine/surface_collision.h"
+#include "game/mario_misc.h"
 #include "engine_slice.h"
 #include "actions.inc"
 #include "animations.inc"
@@ -22,18 +23,21 @@ struct Object *gMarioObject=&engine_mario_object;
 static struct Area engine_area;
 struct Area *gCurrentArea=&engine_area;
 static struct Camera engine_camera;
-struct PlayerCameraState gPlayerCameraState[2];
-static struct MarioBodyState engine_body;
+#define engine_body gBodyStates[0]
 static struct Controller engine_controller;
+static struct Controller engine_controller2;
+struct Controller *gPlayer1Controller=&engine_controller,*gPlayer2Controller=&engine_controller2;
 static struct Animation engine_animation;
 static struct DmaHandlerList engine_animation_list;
 s16 gCurrLevelNum=LEVEL_CASTLE_GROUNDS;
 u16 gAreaUpdateCounter;
 static uint32_t engine_fault;
 static int32_t engine_spawn[3];
+static uint32_t engine_spawn_yaw;
 static uint32_t engine_respawns;
 extern s16 engine_warp_timer;
 void engine_reset_swimming(void);
+void engine_camera_reset(void);
 s32 engine_submerged_action(struct MarioState *m);
 void engine_unsupported(uint32_t code){if(!engine_fault)engine_fault=code;}
 void engine_load_surfaces(void);
@@ -59,14 +63,20 @@ static void reset_mario(const int32_t position[3]){
     m->health=0x880;m->numLives=4;m->flags=MARIO_NORMAL_CAP|MARIO_CAP_ON_HEAD;m->unkB0=189;
     m->marioObj->header.gfx.animInfo.animID=-1;set_mario_animation(m,MARIO_ANIM_IDLE_HEAD_LEFT);
     vec3f_set(m->pos,(float)position[0],(float)position[1],(float)position[2]);
+    m->faceAngle[1]=(s16)engine_spawn_yaw;
+    vec3s_copy(m->marioObj->header.gfx.angle,m->faceAngle);
     m->floorHeight=find_floor(m->pos[0],m->pos[1],m->pos[2],&m->floor);
     if(!m->floor){engine_fault=2;return;}
     m->pos[1]=m->floorHeight;vec3f_copy(m->marioObj->header.gfx.pos,m->pos);m->action=ACT_IDLE;
+    vec3f_set(m->marioObj->header.gfx.scale,1.0f,1.0f,1.0f);
+    engine_area.index=1;update_mario_info_for_cam(m);engine_camera_reset();
 }
-void sm64_engine_init(const int32_t position[3]){
+void sm64_engine_init_heading(const int32_t position[3],uint32_t yaw){
+    engine_spawn_yaw=yaw;
     for(unsigned i=0;i<3;++i)engine_spawn[i]=position[i];
     engine_respawns=0;engine_warp_timer=0;engine_load_surfaces();reset_mario(position);
 }
+void sm64_engine_init(const int32_t position[3]){sm64_engine_init_heading(position,0);}
 #ifdef SOC_ENGINE_TEST
 // Initial-condition fixture only, absent from the FPGA executable. Original
 // actions, geometry queries, damage, health and transitions still execute.
@@ -96,6 +106,7 @@ static s32 dispatch(struct MarioState *m){
     }
     switch(m->action){
     case ACT_IDLE:return act_idle(m);
+    case ACT_FIRST_PERSON:return act_first_person(m);
     case ACT_STANDING_AGAINST_WALL:return act_standing_against_wall(m);
     case ACT_WALKING:return act_walking(m);
     case ACT_DECELERATING:return act_decelerating(m);
@@ -191,9 +202,14 @@ void sm64_engine_update(uint32_t buttons,uint32_t yaw,engine_result_t *result){
         float y=(buttons&4u?64.0f:0.0f)-(buttons&8u?64.0f:0.0f);
         if(x!=0.0f && y!=0.0f){x*=0.7071067811865475f;y*=0.7071067811865475f;}
         c->stickX=x;c->stickY=y;c->stickMag=sqrtf(x*x+y*y);
-        u16 down=(buttons&16u?A_BUTTON:0)|(buttons&32u?Z_TRIG:0)|(buttons&64u?B_BUTTON:0);
+        u16 down=(buttons&16u?A_BUTTON:0)|(buttons&32u?Z_TRIG:0)|(buttons&64u?B_BUTTON:0)
+            |(buttons&ENGINE_CAMERA_LEFT?L_CBUTTONS:0)|(buttons&ENGINE_CAMERA_RIGHT?R_CBUTTONS:0)
+            |(buttons&ENGINE_CAMERA_UP?U_CBUTTONS:0)|(buttons&ENGINE_CAMERA_DOWN?D_CBUTTONS:0);
         c->buttonPressed=down&~c->buttonDown;c->buttonDown=down;
-        m->area->camera->yaw=(s16)(yaw<<8);++gAreaUpdateCounter;
+        // Explicit yaw remains available for deterministic movement diagnostics.
+        // Gameplay uses the yaw calculated by the original camera last tick.
+        if(yaw!=ENGINE_USE_CAMERA_YAW)m->area->camera->yaw=(s16)(yaw<<8);
+        ++gAreaUpdateCounter;
         extern u32 gGlobalTimer;++gGlobalTimer;
         mario_reset_bodystate(m);update_mario_inputs(m);mario_handle_special_floors(m);
         // Upstream geometry-input processing requests death when outside the

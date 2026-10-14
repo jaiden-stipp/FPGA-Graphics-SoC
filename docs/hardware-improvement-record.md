@@ -608,3 +608,28 @@ instruction execution with local boot, coherent reload, reproducible linker/
 package tooling and measured capacity/resource/performance tradeoffs.
 [Implementation and measurements](sdram-execution.md),
 [raw result summary](benchmarks/sdram-exec-001/results-summary.json).
+
+## Original visual animation and normal Lakitu software checkpoint
+
+October 13, 2026; before-change repository reference `6fd250e`. No RTL, clock,
+fitted image or hardware optimization changed. The original-engine grounds port
+now uses engine-selected animation channels, SDK bone/body transforms and normal
+Lakitu camera routines through the existing source/asset/package pipeline.
+
+All 208 host tests across 25 suites passed. A 96-update FPGA diagnostic matched
+native movement, animation, pose and camera records. Live movement/jump, camera
+rotation, zoom, punch/crouch and held-reset smoke checks passed with no engine
+faults. The new package remains loaded on the same accepted hardware.
+
+The first visual bridge's full float-vertex pose median was 2,087,726.5 cycles;
+lowering the final SDK matrices to Q14 integer vertex transforms reduced it to
+769,589.5 cycles, a 63.137% decrease for that diagnostic. Native first/last-frame
+comparisons across all 209 animations found at most one GPU coordinate unit of
+difference from the float-vertex reference. These are measured software-pose
+results, not whole-game FPS improvements or new hardware-performance claims.
+Code grew from 120,948 to 170,208 bytes as original functionality was added.
+Fixed mesh variants, textures, other areas, object/mission code, full saves and
+camera cutscenes remain incomplete.
+
+[Implementation, scope and reproducible checks](sm64-original-animation-lakitu.md),
+[derived measurements and hashed raw evidence](benchmarks/sm64-visual-camera-001/results-summary.json).

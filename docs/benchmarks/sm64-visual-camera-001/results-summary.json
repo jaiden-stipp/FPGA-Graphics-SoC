@@ -1,0 +1,223 @@
+{
+  "before_repository_commit": "6fd250e",
+  "hardware": {
+    "file": "build/quartus-sdram-exec/SdramExecSoC.sof",
+    "sha256": "140fa00e9d66def31e6897be29bc927469de72a9a051481186f7d7b2bc30be15",
+    "build_command": "scripts/run.ps1 build_sdram_execution.py fit",
+    "cpu_features": 2147483655,
+    "gpu_features": 3,
+    "input_abi": 1229848833
+  },
+  "host_suites": 25,
+  "host_tests": 208,
+  "native_fpga_replay_records": 96,
+  "cross_backend_non_pose_mismatch_ticks": [],
+  "diagnostic_phases": {
+    "movement": {
+      "float_vertices": {
+        "minimum_cycles": 27143,
+        "median_cycles": 28304.0,
+        "maximum_cycles": 123535
+      },
+      "q14_vertices": {
+        "minimum_cycles": 24653,
+        "median_cycles": 26122.5,
+        "maximum_cycles": 115230
+      }
+    },
+    "camera": {
+      "float_vertices": {
+        "minimum_cycles": 232611,
+        "median_cycles": 255857.5,
+        "maximum_cycles": 264516
+      },
+      "q14_vertices": {
+        "minimum_cycles": 221196,
+        "median_cycles": 244475.5,
+        "maximum_cycles": 255034
+      }
+    },
+    "pose": {
+      "float_vertices": {
+        "minimum_cycles": 2061154,
+        "median_cycles": 2087726.5,
+        "maximum_cycles": 2100268
+      },
+      "q14_vertices": {
+        "minimum_cycles": 753531,
+        "median_cycles": 769589.5,
+        "maximum_cycles": 775394
+      }
+    }
+  },
+  "median_pose_cycle_reduction_percent": 63.13743682422003,
+  "quantization": {
+    "animation_ids": 209,
+    "frames_per_id": 2,
+    "vertices_per_pose": 136,
+    "maximum_coordinate_error_gpu_units": 1,
+    "source_units_per_gpu_unit": 0.25,
+    "scope": "Native animation first/last frame matrix-to-vertex comparison; fixed mesh switches, normal unsquished model"
+  },
+  "linked_sizes": {
+    "baseline": {
+      "segments": {
+        "mario-original-engine-grounds-exec.bin": 1744,
+        "mario-original-engine-grounds-exec.code.bin": 120948,
+        "mario-original-engine-grounds-exec.state.bin": 22852,
+        "mario-original-engine-grounds-exec.assets.bin": 1479080
+      },
+      "bss_bytes": 91968
+    },
+    "candidate": {
+      "segments": {
+        "mario-original-engine-grounds-exec.bin": 1744,
+        "mario-original-engine-grounds-exec.code.bin": 170208,
+        "mario-original-engine-grounds-exec.state.bin": 22952,
+        "mario-original-engine-grounds-exec.assets.bin": 1478336
+      },
+      "bss_bytes": 95308
+    }
+  },
+  "live_routes": [
+    {
+      "name": "walk-jump",
+      "seconds": 6.312999999965541,
+      "frame_progress": 25,
+      "fault": 0
+    },
+    {
+      "name": "rotate-camera",
+      "seconds": 6.312000000034459,
+      "frame_progress": 97,
+      "fault": 0
+    },
+    {
+      "name": "zoom-camera",
+      "seconds": 6.312999999965541,
+      "frame_progress": 97,
+      "fault": 0
+    },
+    {
+      "name": "punch-crouch",
+      "seconds": 6.297000000020489,
+      "frame_progress": 97,
+      "fault": 0
+    }
+  ],
+  "reset": {
+    "castle_engine_fault": [
+      0
+    ],
+    "castle_engine_state": [
+      205521409,
+      2176,
+      54536,
+      0
+    ],
+    "castle_engine_visual": [
+      196,
+      14,
+      16,
+      0
+    ],
+    "castle_engine_view": [
+      256,
+      0,
+      15335424,
+      4265148315,
+      4288348160,
+      260308758
+    ],
+    "castle_engine_pose_cycles": [
+      751978
+    ],
+    "castle_engine_camera_cycles": [
+      230621
+    ],
+    "game_player": [
+      4294965968,
+      260,
+      4664,
+      0,
+      1,
+      16,
+      0,
+      1
+    ],
+    "game_frame": [
+      25
+    ],
+    "game_update_cycles": [
+      2041744
+    ],
+    "game_frame_cycles": [
+      3335842
+    ]
+  },
+  "scope": "Pose-backend comparison in a 96-update diagnostic; timer-read overhead included. Software/code/data layouts differ; hardware unchanged. No sustained FPS, full-game speedup or N64-console equivalence claim.",
+  "artifacts_sha256": {
+    "final/native-source-closure.json": "165e4afab8bc2a3936dc77a1809fde9ef87c8195a0931239324be3ad25754701",
+    "final/source-report.json": "52e8f102817c3ff10c4f65998578fe1dafe15202a195cecc69ce19d3c6645c5d",
+    "final/summary.json": "bb4cb931aa7ebe2332b16d82f358691c62498a1abf9bec179adfc561f20b9699",
+    "final/test_animation.log": "bb75c7ac41b33882ac9ff391c80a69c1133a5fbb354628753caa89dcdba566e7",
+    "final/test_audit_fixes.log": "bbe15122b0b3cf82f898b3786150ddf7d15aeabb95baf613e129d02a84b54e38",
+    "final/test_camera.log": "190058e8ce08fbbee90549a81d09f8578db33d6a4339ab6806903fddf037cce0",
+    "final/test_castle_gameplay.log": "f53a3e772622449cc49957fa1ce97347174741aad1da271fb593d3a2fbcc90e1",
+    "final/test_dma_gfx.log": "1b693a28a96991b07852a6128d03c8a2c76a6de3a273c91d57217d6d5f803cd0",
+    "final/test_game_clock.log": "26717a7236fda8ff9291a896074aa337f7af2ac63716e05626ff3186c44b4291",
+    "final/test_game_packages.log": "c16be9ae2132af6df8681d29dc468e63e1471dd7bb18cd9893c6533565c39482",
+    "final/test_geometry_loader.log": "4cd49ad0c73a8aa832fab522c6a78b7c7920d0020aa82b81b4234fa118a1a5f0",
+    "final/test_gfx_staging.log": "071df92d14e5bf6209c00b011c8cc20b4832ed93361c493c38b071a70d66e371",
+    "final/test_gpu_fractional.log": "372926791990bc90c7020057d7c60d8f3d2da7bc634de691860ef2cbd73a4c07",
+    "final/test_interactive_demo.log": "f726b9a8d10770f7ae13a2f33923efa4d71e3e3fb716b41b7a3d16bd7f2b3a59",
+    "final/test_packed_gfx.log": "8ff42d7f5c1e3b7c74147e888fc08b42b3b0c69276f866c48e0f862be65c2258",
+    "final/test_player.log": "f1d2ec87f8308e4e31a2c87d95d869a8c3ed6eac222cd86b6a1790972c0a73f6",
+    "final/test_portable_pipeline.log": "147419b81c564fea20e3b2b2e0b35d40a952efe19665761185c90257b2ae9040",
+    "final/test_quake_pipeline.log": "e03a0cef139947fb52f09432021c4f31372ae6afe713a9c0f20097b0ef88e2bc",
+    "final/test_render_fixes.log": "aac5b8c96ff20e7b48703d0cb17faaa4271d26d42a8443897456aad2d4ac9259",
+    "final/test_render_replay.log": "189e1ab55a26ff51518cf48aacb83736bb0938870c6680689129c792428cea98",
+    "final/test_scene_pipeline.log": "7cd974bb974cdb1aedd4de0ee8b5f0ca19300ae5d933c158d3ccc4e7e4b53aac",
+    "final/test_screen_edges.log": "14f504789d5b43f98c3dd504f511c180967454e556f1df7cf3d76f9d7ee6b1eb",
+    "final/test_sdram_execution.log": "55676e420d6a92c8c90f22c5ac03f1f0e517a94e72c20b543dc8b31653d24021",
+    "final/test_sdram_package.log": "cdeaebb6f746bb7bf5848003bc5413863b4597a56224dcbd35aa80c7fcf86282",
+    "final/test_sm64_engine_slice.log": "a4b5059c0eb74d3fc69b0a2b8344fc645244295c5eb9860840c1cae0e6fe237f",
+    "final/test_sm64_visual_camera.log": "b40469979e04a2b74bbeec84b5b5bcd0db527c49d2ea32218ff6342d91d3b922",
+    "final/test_terrain_offload.log": "2b096e048f7ade24c74a45d44c55faccd2fc7e97f6a0a68de51c7763040fb146",
+    "final/test_world_pipeline.log": "d613c545a6b7ab2beacc4e4b59adebe81f59da2f7ef48ef227fa795bf6c478e7",
+    "final/visual-diagnostic-build.log": "45a17b94caf713793e98fc44088a4eeeadcb38715b6ad2cdfc44eb8dcf9ada57",
+    "final/visual-float-reference-build.log": "071c59a02551855ef37c249e1bbb8825920f80106974ea462b55ca6a894191cf",
+    "final/visual-game-build.log": "2fc82178830ee57006e893727c5b46e3da3f39b5923714768faf5ad466c9f0fe",
+    "final/visual-native-trace.json": "ddffb03fc4739a0995366940d2b3c2ee61d01897f4f557ea70d706042ea40c83",
+    "final/visual-physical.json": "222610bf2b67ae01d25a23394b805934eef453ad1da145381ee7f9b901749098",
+    "final/visual-physical.log": "5b23cc11337ab67c12d2c394a7552311285c22a8ed93e8e5f8be380feb7e11e4",
+    "final/visual-quantization.json": "077574dcf8432b27f0e28b2aeab9dcd423b465c2438e81cdc3a16840c8d0560d",
+    "final/visual-tests.log": "08ae7a25e1b5a25736c11378714e1b52ad3579fb7e3d870f169d835f55c257d9",
+    "float-vertices/sm64-original-visual-diagnostic.assets.bin": "0935a6d95ed804b5187303dc253d47303783a217fd9ab7cb7046b6582a99e2be",
+    "float-vertices/sm64-original-visual-diagnostic.bin": "87eb222c59689f3fb28ac9f92934094457324e1bd44442ca422a64c1d9f74070",
+    "float-vertices/sm64-original-visual-diagnostic.code.bin": "a5fa8673935b07421d5a274aea4d7b5987bd34975148756bc1131a2f6bff71e9",
+    "float-vertices/sm64-original-visual-diagnostic.elf": "7df58eeb7ab377a047953e3e685ff9380c10fa987cef0f1cf465ed2cf4084907",
+    "float-vertices/sm64-original-visual-diagnostic.isa.json": "d2871db90ec60d3e9078858f87b3e43cc2f68035fa704db763b54b78d50c8a94",
+    "float-vertices/sm64-original-visual-diagnostic.map": "619619182540fd8ed83009f8951b56f9d6e3d84d5e53d990e5e6eebd50d9ece8",
+    "float-vertices/sm64-original-visual-diagnostic.package.json": "f2bf75e587647ea1b2aed290a83869ef1b2160b02c75615675502986f08e3385",
+    "float-vertices/sm64-original-visual-diagnostic.state.bin": "384670d7469e0170bfaa297e863511f6b480c12b8c2bac7698db62f651cc3f04",
+    "float-vertices/visual-physical.json": "e8e12add14f0903029c93e1d8103209789502fd58c02308c0bfae21f64d6c4f0",
+    "float-vertices/visual-physical.log": "e29897a84f7d24f67a81c2d665929ce89441663c929397873746c635b6470253",
+    "packages/mario-original-engine-grounds-exec.assets.bin": "dda834cda37126d49cb4d017bbc9ecbde4827a00fc67289e303cf2f443cb66cd",
+    "packages/mario-original-engine-grounds-exec.bin": "a8b4f25d698ace08db4f38ae863bb7edec68d7ed82eb7e25fa99527520e68a27",
+    "packages/mario-original-engine-grounds-exec.code.bin": "8a240afd035a7c81139d4f6cc43ea0466e33c76479d09e30eb18fe9623095b71",
+    "packages/mario-original-engine-grounds-exec.elf": "5e338ba3faa25e78ec483b35054a70905efb856a154f838ae0b30223b495ae10",
+    "packages/mario-original-engine-grounds-exec.isa.json": "dd339fb960e6111b06dbc7093b68bdb3e372fb8197d877e8fc516d2c4f9c7f4c",
+    "packages/mario-original-engine-grounds-exec.map": "38613aede8bf99bf3e5ab2db3ea6a956c5981bc8db9b202993e933f4f0698f97",
+    "packages/mario-original-engine-grounds-exec.package.json": "c08bdba6298f253bde4f930ed9db1c42c500926ef2c58ff3464c9c121367bd12",
+    "packages/mario-original-engine-grounds-exec.state.bin": "8d9e84c57a8f502bf36e368a974a9eb80cff4fb87b5c28b53dd47bfaaae8f30b",
+    "packages/sm64-original-visual-diagnostic.assets.bin": "40388992c570cc031b6ec21e61739efe136e66148beeae47e405bae47545e8df",
+    "packages/sm64-original-visual-diagnostic.bin": "4a3de00564d149cbc4679127943da0abf5b5c271e81a7584d7525702411af48e",
+    "packages/sm64-original-visual-diagnostic.code.bin": "4b9947b9d5c06796bddb2d917a8a6b6360458f21122d281710998de0f3b1793d",
+    "packages/sm64-original-visual-diagnostic.elf": "801f1c2d277e7c51d13a7cc9ff480a3c4ad59deb88f76e7ec91b68ab6ebc9d7c",
+    "packages/sm64-original-visual-diagnostic.isa.json": "0c02c37af6f8a1ed7cc4a16d7419fcc6735708749c6ad896ec99234dcdb53090",
+    "packages/sm64-original-visual-diagnostic.map": "8ef0e485a3e7b7478dcb0284a6b9a2b927e64b735cf70eae6289ff3a9d05d50e",
+    "packages/sm64-original-visual-diagnostic.package.json": "a9b32b86461dce0768b22d29e70ad20a431f9d6b4c8c8fa53ded061bcb03263d",
+    "packages/sm64-original-visual-diagnostic.state.bin": "62b416dce3e040d5c6a573dc113277a24bf6e4af6f567771c4012e1a4521baf4"
+  }
+}

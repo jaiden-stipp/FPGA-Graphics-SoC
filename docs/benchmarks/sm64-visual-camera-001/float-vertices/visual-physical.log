@@ -1,0 +1,55 @@
+Uploading sm64-original-visual-diagnostic.bin: 168 bytes at 0x00000000
+Verifying sm64-original-visual-diagnostic.bin: 168 bytes at 0x00000000
+Uploading sm64-original-visual-diagnostic.code.bin: 155,800 bytes at 0x80000000
+Verifying sm64-original-visual-diagnostic.code.bin: 155,800 bytes at 0x80000000
+Uploading sm64-original-visual-diagnostic.state.bin: 22,968 bytes at 0x81000000
+Verifying sm64-original-visual-diagnostic.state.bin: 22,968 bytes at 0x81000000
+Uploading sm64-original-visual-diagnostic.assets.bin: 591,364 bytes at 0x8101d960
+  367,512/591,364 bytes
+Verifying sm64-original-visual-diagnostic.assets.bin: 591,364 bytes at 0x8101d960
+  350,964/591,364 bytes
+Readback verified; CPU released.
+PASS all 96 FPGA animation, pose, camera and movement records match native
+Uploading mario-original-engine-grounds-exec.bin: 1,744 bytes at 0x00000000
+Verifying mario-original-engine-grounds-exec.bin: 1,744 bytes at 0x00000000
+Uploading mario-original-engine-grounds-exec.code.bin: 170,280 bytes at 0x80000000
+Verifying mario-original-engine-grounds-exec.code.bin: 170,280 bytes at 0x80000000
+Uploading mario-original-engine-grounds-exec.state.bin: 22,948 bytes at 0x81000000
+Verifying mario-original-engine-grounds-exec.state.bin: 22,948 bytes at 0x81000000
+Uploading mario-original-engine-grounds-exec.assets.bin: 1,478,056 bytes at 0x8101ca40
+  358,116/1,478,056 bytes
+  711,168/1,478,056 bytes
+  1,053,840/1,478,056 bytes
+  1,405,884/1,478,056 bytes
+Verifying mario-original-engine-grounds-exec.assets.bin: 1,478,056 bytes at 0x8101ca40
+  354,144/1,478,056 bytes
+  712,236/1,478,056 bytes
+  1,078,428/1,478,056 bytes
+  1,438,452/1,478,056 bytes
+Readback verified; CPU released.
+Stopped: 363 replies, 363 accepted; keys expire after 300 ms.
+Uploading mario-original-engine-grounds-exec.bin: 1,744 bytes at 0x00000000
+Verifying mario-original-engine-grounds-exec.bin: 1,744 bytes at 0x00000000
+Uploading mario-original-engine-grounds-exec.code.bin: 120,948 bytes at 0x80000000
+Verifying mario-original-engine-grounds-exec.code.bin: 120,948 bytes at 0x80000000
+Uploading mario-original-engine-grounds-exec.state.bin: 22,852 bytes at 0x81000000
+Verifying mario-original-engine-grounds-exec.state.bin: 22,852 bytes at 0x81000000
+Uploading mario-original-engine-grounds-exec.assets.bin: 1,479,080 bytes at 0x8101c0a0
+  359,676/1,479,080 bytes
+  724,896/1,479,080 bytes
+  1,089,900/1,479,080 bytes
+  1,455,648/1,479,080 bytes
+Verifying mario-original-engine-grounds-exec.assets.bin: 1,479,080 bytes at 0x8101c0a0
+  364,332/1,479,080 bytes
+  732,240/1,479,080 bytes
+  1,097,028/1,479,080 bytes
+  1,460,640/1,479,080 bytes
+Readback verified; CPU released.
+Traceback (most recent call last):
+  File "C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\scripts\verify_sm64_visual_camera.py", line 83, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "C:\Users\Orb1t\Documents\Codex\FPGA-Game-SoC\scripts\verify_sm64_visual_camera.py", line 67, in main
+    if state['castle_engine_fault'][0] or end['scratch']<=start['scratch'] or end['scratch']>>16==0xdead:raise RuntimeError('Live route failed: '+str(route))
+                                                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: Live route failed: {'name': 'walk-jump', 'elapsed_seconds': 6.312999999965541, 'start': {'initialized': True, 'held': False, 'words': (0, 0, 0), 'scratch': 16, 'refresh_count': 396417735, 'input_abi': 1229848833, 'cpu_features': 2147483655, 'gpu_features': 3}, 'end': {'initialized': True, 'held': False, 'words': (0, 0, 0), 'scratch': 0, 'refresh_count': 397268693, 'input_abi': 1229848833, 'cpu_features': 2147483655, 'gpu_features': 3}, 'fields': {'castle_engine_fault': [0], 'castle_engine_state': [201327165, 2176, 54536, 0], 'castle_engine_visual': [16, 1, 16, 30786], 'castle_engine_view': [65284, 5963734, 15859698, 4264165460, 4289462232, 304218349], 'castle_engine_pose_cycles': [2125254], 'castle_engine_camera_cycles': [260742], 'game_player': [4294965814, 260, 5542, 0, 1, 31, 0, 0], 'game_frame': [45], 'game_update_cycles': [9979816], 'game_frame_cycles': [10843718]}}

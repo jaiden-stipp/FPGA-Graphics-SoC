@@ -1,0 +1,8 @@
+{
+  "animation_ids": 209,
+  "frames_per_id": 2,
+  "vertices_per_pose": 136,
+  "maximum_coordinate_error_gpu_units": 1,
+  "source_units_per_gpu_unit": 0.25,
+  "scope": "Native animation first/last frame matrix-to-vertex comparison; fixed mesh switches, normal unsquished model"
+}

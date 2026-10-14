@@ -1,0 +1,49 @@
+{
+  "source_commit": "2b17d081c9798b31b91dc71f37994b0da28cffc9",
+  "original_files": {
+    "src/game/mario.c": "42298cc5015ba1daafd9be25de6df0c371902005245d31b7fe178d37a96d7c14",
+    "src/game/mario_actions_stationary.c": "a6ce312eadb4271646643b14c90ca7c6135de9d0846cd7a6a5642972c8501608",
+    "src/game/mario_actions_moving.c": "8baa74fee5590e9137308eddf38696cc7dc861144c4b5dbe0de0847f5f0e7073",
+    "src/game/mario_actions_airborne.c": "5bf31e13c496de14b3a18ee31f4259fe85d29f4e9394a7c9f5b36143e85beb12",
+    "src/game/mario_actions_object.c": "607b2a828ecbd11d78f6ddc53310b5af32eb23799037e0cfd9cadb54d6a3958a",
+    "src/game/mario_step.c": "b83a0de5cd44258d0eca12906d57f3981f0e52563d0ee1aaee8b8a9e3cf0d617",
+    "src/engine/math_util.c": "6ffb1e9234b208352f1bbd32d59b97683a766f2cdeb2118d939fbad97033b587",
+    "src/engine/graph_node.c": "e2142abdc495313abc32a49533c14f797065e859c302f541f64fb37b841cd4cd",
+    "src/engine/surface_collision.c": "491d522233662c8971f5966001665879c09acd1032ef1159384336e6ef00d19e",
+    "src/game/mario_actions_automatic.c": "f767b373a957fcbd75a1b66b92775f82c363dfc5223d46fdd0c3e2e4fa588495",
+    "src/game/mario_actions_cutscene.c": "24297b3dae3f85fa3220c4c719114cd9413c98263ca7d61b80aa58d02bbd2a78",
+    "src/game/interaction.c": "91eff7d2ccd9c65bda2e96b51706e568195b8c13b667ebc2e7e59d5c4f5583af",
+    "src/game/mario_misc.c": "0a9dc03016497ee4dadc9cb3928fe235781bf34c1e355a6e8b98461d33850ef2",
+    "src/engine/behavior_script.c": "bd5d118c4ec8e8719d94722cb16f47a8d9e5f658757312ff2ba3b69ed1a5153d",
+    "src/engine/surface_load.c": "34a5459a0f8eb5849a3747c7c6e7266d4e00c9abaf3761f2b68683a95efc12b8",
+    "src/game/mario_actions_submerged.c": "2d62515175b6c76ee12a09d1abac62920b291ec1ad181a9f7b6074e9c83b4c70",
+    "src/game/camera.c": "e350515ff254f339a960cbfc3ba5e4edd6f0e07fd76aca75a9f23fbafa09b727",
+    "src/game/behaviors/intro_peach.inc.c": "71947cbb3865de51092946e048948928cb65285001c0b2b07ced7ef791bebceb",
+    "src/game/behaviors/intro_lakitu.inc.c": "ebf5e61c2d4152dcd2122a6379994ac03c09675b1e3bb1ebee8294865eae21da",
+    "src/game/behaviors/end_birds_1.inc.c": "037b87169656376b5639c8f6907dd3d130ba4b43ec214c416c615a99776fec37",
+    "src/game/behaviors/end_birds_2.inc.c": "49459e56ad607f29969dcaed360ba404879177ae14a6478ffa9edcfb84aac2a3",
+    "src/game/behaviors/intro_scene.inc.c": "38460841ef91972021a9139c9feebd2ed58264d9325e7d23d00d770632270c9b"
+  },
+  "service_source_files": {
+    "src/game/level_update.c": "d46f5938a4debb59ee879b8a6fe1281aa04071510ed91ed024f63abda184aebe",
+    "levels/castle_grounds/script.c": "e08651f4e2ce50e12db906b77364d78e294a2d11efe3286a45666a95fea4f196",
+    "actors/mario/geo.inc.c": "4ee5a67fbb2e6f9a6ad5e76945e9b7e1dff3b189580b771501ebba8b6147b8a9",
+    "src/game/rendering_graph_node.c": "707f9445d5876c18dc2365cf97ccd4841fd8e8f086b25b46e931a501e0a3b53c"
+  },
+  "terrain_faces": 879,
+  "derived_surface_nodes": 3237,
+  "animation_tables": 209,
+  "visual": {
+    "joints": 20,
+    "vertices": 136,
+    "model_scale_q16": 16384,
+    "root_motion": "original flags and all eligible translation channels",
+    "callbacks": [
+      "geo_mario_tilt_torso",
+      "geo_mario_head_rotation",
+      "geo_mario_hand_foot_scaler"
+    ],
+    "final_vertices": "Q14 matrix lowering; original SDK float reference available for comparison"
+  },
+  "scope": "Original grounds movement and normal Lakitu camera with engine-selected visual animation; fixed eye/cap/hand switches, objects, audio, cutscenes, other areas, full action dispatch and saves incomplete"
+}

@@ -2,8 +2,8 @@
 
 ## Current Castle deployment
 
-The selected hardware is the 50 MHz Stage 5 geometry-worker image with setup
-overlap and two raster lanes. See `profiles/current-deployment.json` for its
+The selected hardware is the 50 MHz SDRAM-execution image with the geometry
+worker, setup overlap and two raster lanes. See `profiles/current-deployment.json` for its
 exact identity. The generic `SoC.qpf` / `build/quartus/SoC.sof` recipes below
 are historical scaffold/example builds; they do not select this topology.
 
@@ -13,12 +13,11 @@ From a fresh checkout with Clang, LLD and llvm-objcopy on PATH:
 .\scripts\run.ps1 soc.py bootstrap
 # Build only if the selected SOF is absent. A new fit must pass timing and
 # be reviewed/hash-selected before replacing the accepted hardware artifact.
-.\scripts\run.ps1 build_geometry_worker.py worker
-.\scripts\run.ps1 sm64_castle.py --out build/castle-shaded
-.\scripts\run.ps1 soc.py portable-game --project build/castle-shaded/game.project.json --terrain-direct --packed-gfx --integer-mul --geometry-offload --uncapped-render --interpolate-render
+.\scripts\run.ps1 build_sdram_execution.py fit
+.\scripts\run.ps1 sm64_engine_slice.py game
 .\scripts\run.ps1 current_deployment.py --write-cdf
 # Open build/current-deployment.cdf in Quartus Programmer, program, then load:
-.\scripts\run.ps1 load_game.py build/mario-castle-sdram-direct-packed-mul-geometry-uncapped-interpolated.package.json
+.\scripts\run.ps1 load_game.py build/mario-original-engine-grounds-exec.package.json
 ```
 
 `current_deployment.py` verifies the accepted SOF hash, package segments and recorded hardware features; it
@@ -26,6 +25,10 @@ never programs the board or changes user-owned Chain*.cdf files. A refit may
 produce another hash even from unchanged source; do not silently accept it.
 Castle traversal/appearance remain a scoped port, with deferred alpha decoration
 and an incomplete Secret Slide mission. See [render corrections](docs/render-correctness-fixes.md).
+The selected original-engine grounds package adds original movement, engine-selected
+skeletal animation and normal Lakitu camera routines. It does not include the full
+castle, object/mission engine, textures, dynamic mesh variants or camera cutscenes.
+See [animation and camera implementation/evidence](docs/sm64-original-animation-lakitu.md).
 
 Run the complete host suite with `python scripts/test_all.py` after installing
 `requirements-dev.txt`. Fixtures are generated from pinned source into isolated

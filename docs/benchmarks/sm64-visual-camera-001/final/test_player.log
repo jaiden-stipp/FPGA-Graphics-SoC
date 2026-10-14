@@ -1,0 +1,18 @@
+test_air_movement_and_landing_on_sloped_floor (__main__.PlayerTests.test_air_movement_and_landing_on_sloped_floor) ... ok
+test_ceiling_stops_upward_movement_then_lands (__main__.PlayerTests.test_ceiling_stops_upward_movement_then_lands) ... ok
+test_declared_spawn_and_capture_positions_have_stable_support (__main__.PlayerTests.test_declared_spawn_and_capture_positions_have_stable_support) ... ok
+test_game_asset_build_does_not_emit_viewer_assets (__main__.PlayerTests.test_game_asset_build_does_not_emit_viewer_assets) ... ok
+test_imported_field_to_bridge_route_and_jump (__main__.PlayerTests.test_imported_field_to_bridge_route_and_jump) ... ok
+test_integer_products (__main__.PlayerTests.test_integer_products) ... ok
+test_jump_lands_and_held_key_does_not_auto_repeat (__main__.PlayerTests.test_jump_lands_and_held_key_does_not_auto_repeat) ... ok
+test_move_turn_diagonal_and_opposite_keys (__main__.PlayerTests.test_move_turn_diagonal_and_opposite_keys) ... ok
+test_real_world_spawn_movement_jump_and_reset (__main__.PlayerTests.test_real_world_spawn_movement_jump_and_reset) ... ok
+test_walk_off_edge_fall_and_respawn (__main__.PlayerTests.test_walk_off_edge_fall_and_respawn) ... ok
+test_wall_blocks_and_slides_without_tunneling (__main__.PlayerTests.test_wall_blocks_and_slides_without_tunneling) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 1.112s
+
+OK
+Conversion report: build\game\world/conversion.json (static scene; gameplay not ported)
+Game: 5 meshes, 212 actor triangles; 188 floors/138 walls; spawn [-1576, -208, 1616]

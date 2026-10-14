@@ -11,6 +11,8 @@ $runnerAllowed += @('build_setup_overlap.py','measure_setup_overlap.py','build_p
 $runnerAllowed += @('measure_terrain_offload.py','test_game_clock.py','measure_render_cadence.py','audit_stage6_timing.py','test_render_fixes.py')
 $runnerAllowed += @('test_screen_edges.py','diagnose_screen_edges.py','replay_render_route.py','compare_render_frames.py','test_gpu_fractional.py','test_render_replay.py','test_packed_gfx.py','measure_gfx_staging.py','test_gfx_staging.py','test_dma_gfx.py')
 $runnerAllowed += @('test_castle_gameplay.py')
+$runnerAllowed += @('sm64_engine_slice.py','verify_sm64_engine_slice.py','verify_sm64_movement.py','test_sm64_engine_slice.py','test_sm64_visual_camera.py','verify_sm64_visual_camera.py')
+$runnerAllowed += @('summarize_sm64_visual_camera.py')
 if ($runnerScript -notin $runnerAllowed) { throw "Unknown project command: $runnerScript" }
 $runnerPython = Get-Command python.exe -ErrorAction SilentlyContinue | Where-Object Source -NotLike '*WindowsApps*' | Select-Object -First 1 -ExpandProperty Source
 if (-not $runnerPython) {

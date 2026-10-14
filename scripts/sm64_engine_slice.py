@@ -4,11 +4,13 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'build/engine-slice'
 LLVM=Path('C:/Program Files/LLVM/bin')
+FLOAT_VERTICES=False
 ORIGINAL=['src/game/mario.c','src/game/mario_actions_stationary.c','src/game/mario_actions_moving.c',
           'src/game/mario_actions_airborne.c','src/game/mario_actions_object.c','src/game/mario_step.c','src/engine/math_util.c',
           'src/engine/graph_node.c','src/engine/surface_collision.c',
-          'src/game/mario_actions_automatic.c','src/game/mario_actions_cutscene.c','src/game/interaction.c']
-INCLUDED=['src/engine/surface_load.c','src/game/mario_actions_submerged.c']
+          'src/game/mario_actions_automatic.c','src/game/mario_actions_cutscene.c','src/game/interaction.c',
+          'src/game/mario_misc.c','src/engine/behavior_script.c']
+INCLUDED=['src/engine/surface_load.c','src/game/mario_actions_submerged.c','src/game/camera.c']+['src/game/behaviors/'+p+'.inc.c' for p in ('intro_peach','intro_lakitu','end_birds_1','end_birds_2','intro_scene')]
 
 def run(command):
     r=subprocess.run(list(map(str,command)),cwd=ROOT,capture_output=True,text=True)
@@ -37,8 +39,8 @@ def prepare():
     world=sm64_castle.export(OUT/'assets',gameplay=True)
     project=OUT/'assets/game.project.json';spec=json.loads(project.read_text());spec['name']='mario-original-engine-grounds'
     spec['port']['sources']=[s.replace('/castle_game.c','/castle_engine.c') for s in spec['port']['sources']]
-    spec['port']['exports']+=['sm64_engine_init','sm64_engine_update','sm64_engine_probe'];project.write_text(json.dumps(spec,indent=2)+'\n')
-    world['implementation_status']='Original Mario grounds action/collision slice; full engine, objects and original camera incomplete'
+    spec['port']['exports']+=['sm64_engine_init','sm64_engine_init_heading','sm64_engine_update','sm64_engine_probe','sm64_engine_pose','sm64_engine_camera_step','sm64_engine_visual_probe'];project.write_text(json.dumps(spec,indent=2)+'\n')
+    world['implementation_status']='Original grounds actions/collision, engine-selected animation and normal Lakitu camera; fixed mesh switches, cutscenes, objects, other areas and full engine incomplete'
     (OUT/'assets/world.json').write_text(json.dumps(world,indent=2)+'\n')
     a=world['areas'][0];c=a['collision'];v=c['vertices'];tris=c['triangles']
     def shifted(x):return max(0,((x+8192+32768)&65535)-32768)
@@ -50,6 +52,28 @@ def prepare():
            'static const __attribute__((section(".game_assets"))) s16 engine_triangles[][5]={'+','.join('{'+','.join(map(str,t[:3]))+','+t[3]+','+str(c['triangle_forces'][i])+'}' for i,t in enumerate(tris))+'};',
            'static const __attribute__((section(".game_assets"))) s16 engine_environment[]={'+','.join(map(str,[len(c['water_boxes'])]+[n for box in c['water_boxes'] for n in box]))+'};']
     (OUT/'terrain.inc').write_text('\n'.join(lines)+'\n')
+    grounds_script=re.sub(r'/\*.*?\*/|//[^\n]*','',(source/'levels/castle_grounds/script.c').read_text(),flags=re.S)
+    spawn=re.search(r'MARIO_POS\(\s*1\s*,\s*(-?\d+)\s*,\s*(-?\d+)\s*,\s*(-?\d+)\s*,\s*(-?\d+)\s*\)',grounds_script)
+    if not spawn or list(map(int,spawn.groups()[1:]))!=a['spawn']:raise ValueError('Original grounds spawn differs from world manifest')
+    (OUT/'spawn.inc').write_text('#define ENGINE_GROUNDS_SPAWN_YAW '+str((int(spawn[1])*65536//360)&65535)+'u\n')
+    animation=world['animation'];rig=animation['joints'];verts=animation['vertex_sources'];display=animation['display_joints']
+    if max(abs(x) for v in verts for x in v['local'])>4096:raise ValueError('Visual Q14 product proof requires raw coordinates <=4096')
+    profile=json.loads((ROOT/'profiles/sm64-mario-sdram.json').read_text())
+    geo_text=(source/profile['animation']['geo_source']).read_text()
+    main_geo=re.search(r'const GeoLayout mario_geo\[\]\s*=\s*\{(.*?)\};',geo_text,re.S)[1]
+    scale=re.search(r'GEO_SCALE\([^,]+,\s*(\d+)\)',main_geo)[1]
+    head_parts=[p['display_list'] for p in profile['actor']['parts'] if 'cap_on' in p['display_list']]
+    if len(head_parts)!=1:raise ValueError('Selected Mario mesh must identify one cap-on head display list')
+    head=display[head_parts[0]]
+    visual=['#define ENGINE_VISUAL_JOINTS '+str(len(rig)), '#define ENGINE_VISUAL_VERTICES '+str(len(verts)),
+            '#define ENGINE_MODEL_SCALE_Q16 '+scale,'#define ENGINE_TORSO_JOINT '+str(display['mario_low_poly_torso']),
+            '#define ENGINE_HEAD_JOINT '+str(head),
+            'static const __attribute__((section(".game_assets"))) s16 visual_joints[][4]={'+','.join('{'+','.join(map(str,[j['parent'],*j['translation']]))+'}' for j in rig)+'};',
+            'static const __attribute__((section(".game_assets"))) s16 visual_vertices[][3]={'+','.join('{'+','.join(map(str,v['local']))+'}' for v in verts)+'};',
+            'static const __attribute__((section(".game_assets"))) u8 visual_bindings[]={'+','.join(str(v['joint']) for v in verts)+'};']
+    for label,part in [('LEFT_HAND','mario_low_poly_left_hand_closed'),('RIGHT_HAND','mario_low_poly_right_hand_closed'),('RIGHT_FOOT','mario_low_poly_right_foot')]:
+        visual.append('#define ENGINE_'+label+'_JOINT '+str(display[part]))
+    (OUT/'visual.inc').write_text('\n'.join(visual)+'\n')
     # Copy adapter warp deadlines from the pinned upstream service rather than
     # maintaining unrelated timing literals.
     level_text=(source/'src/game/level_update.c').read_text();delays=[]
@@ -82,7 +106,7 @@ def prepare():
         if not match:raise ValueError('Missing original engine entry '+name)
         declarations.append(match[1]+';')
     (OUT/'actions.inc').write_text('\n'.join(declarations)+'\n')
-    report={'source_commit':json.loads((ROOT/'sm64.lock.json').read_text())['commit'],'original_files':{p:hashlib.sha256((source/p).read_bytes()).hexdigest() for p in ORIGINAL+INCLUDED},'service_source_files':{'src/game/level_update.c':hashlib.sha256((source/'src/game/level_update.c').read_bytes()).hexdigest()},'terrain_faces':len(tris),'derived_surface_nodes':nodes,'animation_tables':len(names),'scope':'Original grounds movement, swimming, ledge and death actions; objects, audio, Lakitu camera, full action dispatch and saves incomplete'}
+    report={'source_commit':json.loads((ROOT/'sm64.lock.json').read_text())['commit'],'original_files':{p:hashlib.sha256((source/p).read_bytes()).hexdigest() for p in ORIGINAL+INCLUDED},'service_source_files':{p:hashlib.sha256((source/p).read_bytes()).hexdigest() for p in ('src/game/level_update.c','levels/castle_grounds/script.c','actors/mario/geo.inc.c','src/game/rendering_graph_node.c')},'terrain_faces':len(tris),'derived_surface_nodes':nodes,'animation_tables':len(names),'visual':{'joints':len(rig),'vertices':len(verts),'model_scale_q16':int(scale),'root_motion':'original flags and all eligible translation channels','callbacks':['geo_mario_tilt_torso','geo_mario_head_rotation','geo_mario_hand_foot_scaler'],'final_vertices':'Q14 matrix lowering; original SDK float reference available for comparison'},'scope':'Original grounds movement and normal Lakitu camera with engine-selected visual animation; fixed eye/cap/hand switches, objects, audio, cutscenes, other areas, full action dispatch and saves incomplete'}
     (OUT/'source-report.json').write_text(json.dumps(report,indent=2)+'\n')
     return source
 
@@ -100,7 +124,7 @@ def flags(native=False):
 def native_sources(source):
     # COFF resolves unused-object references before GC. Retain the source call
     # closure instead of supplying fake implementations for unrelated actions.
-    paths=ORIGINAL+INCLUDED;functions={};texts={}
+    paths=ORIGINAL+[p for p in INCLUDED if '/behaviors/' not in p];functions={};texts={}
     for relative in paths:
         text=(source/relative).read_text();texts[relative]=text
         clean=re.sub(r'/\*.*?\*/|//[^\n]*',lambda m:' '*len(m[0]),text,flags=re.S)
@@ -112,18 +136,35 @@ def native_sources(source):
             if depth:raise ValueError('Cannot parse original function '+match[1])
             if match[1] in functions:raise ValueError('Ambiguous engine function '+match[1])
             functions[match[1]]=(relative,match.start(),end,clean[match.start():end])
-    roots='\n'.join((ROOT/'firmware/engine'/p).read_text() for p in ('engine_adapter.c','surface_adapter.c','submerged_adapter.c'))
-    keep=set(re.findall(r'\b(\w+)\s*\(',roots))&functions.keys()
+    roots='\n'.join((ROOT/'firmware/engine'/p).read_text() for p in ('engine_adapter.c','surface_adapter.c','submerged_adapter.c','visual_adapter.c','camera_adapter.c'))
+    arrays={}
+    camera=texts['src/game/camera.c']
+    for match in re.finditer(r'^[ \t]*(?:(?:static|const)\s+)*(?:struct\s+\w+|\w+)(?:\s+|\s*\*\s*)(\w+)\s*(?:\[[^\]]*\]\s*)+\s*=\s*\{',camera,re.M):
+        depth=1;end=match.end()
+        while depth and end<len(camera):depth+=(camera[end]=='{')-(camera[end]=='}');end+=1
+        if depth:raise ValueError('Cannot parse camera table '+match[1])
+        arrays[match[1]]=(match.start(),camera.index(';',end)+1,camera[match.start():end])
+    roots+='\n'+'\n'.join(re.findall(r'^STATIC_ASSERT.*$',camera,re.M))
+    keep=set(re.findall(r'\b(\w+)\s*\(',roots))&functions.keys();tables=set()
     while True:
         # Function addresses passed as callbacks (landing/jump handlers) count
         # as dependencies too, even without a following parenthesis.
-        called=set(n for name in keep for n in re.findall(r'\b(\w+)\b',functions[name][3]))&functions.keys()
-        if called<=keep:break
-        keep|=called
+        tokens=set(re.findall(r'\b(\w+)\b',roots+'\n'+'\n'.join(functions[name][3] for name in keep)+'\n'+'\n'.join(arrays[name][2] for name in tables)))
+        called=tokens&functions.keys();used_tables=tokens&arrays.keys()
+        if called<=keep and used_tables<=tables:break
+        keep|=called;tables|=used_tables
     dest=OUT/'native-source'
     for relative,text in texts.items():
         edits=sorted((start,end) for name,(rel,start,end,_) in functions.items() if rel==relative and name not in keep)
-        for start,end in reversed(edits):text=text[:start]+'\n'+text[end:]
+        if relative=='src/game/camera.c':edits+= [(start,end) for name,(start,end,_) in arrays.items() if name not in tables]
+        array_edits={(start,end) for name,(start,end,_) in arrays.items() if name not in tables} if relative=='src/game/camera.c' else set()
+        for start,end in sorted(edits,reverse=True):
+            declaration='' if (start,end) in array_edits else text[start:text.index('{',start)].rstrip()+';\n'
+            text=text[:start]+declaration+text[end:]
+        if relative=='src/game/camera.c':
+            # The grounds normal-camera closure does not instantiate cinematic
+            # actors. Their conditional compilation has alternate brace bodies.
+            text=re.sub(r'^#include "behaviors/[^\"]+"\s*$', '',text,flags=re.M)
         p=dest/relative;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(text)
     (OUT/'native-source-closure.json').write_text(json.dumps({name:{'file':functions[name][0],'body_sha256':hashlib.sha256(texts[functions[name][0]][functions[name][1]:functions[name][2]].encode()).hexdigest()} for name in sorted(keep)},indent=2)+'\n')
     return dest
@@ -137,12 +178,14 @@ def compile_objects(native=False):
     available={p.stem:p for p in list((soft/'source').glob('*.c'))+list((soft/'source/8086-SSE').glob('*.c'))}
     soft_sources=[available[name] for name in sorted(official)]
     # Compile once per source/configuration. Archive GC removes unreferenced formats.
-    sources=[overlay/p for p in ORIGINAL]+[ROOT/'firmware/engine'/name for name in ('surface_adapter.c','engine_adapter.c','submerged_adapter.c','platform_effects.c','softfloat_abi.c','integer_abi.c')]+soft_sources
+    sources=[overlay/p for p in ORIGINAL]+[ROOT/'firmware/engine'/name for name in ('surface_adapter.c','engine_adapter.c','submerged_adapter.c','visual_adapter.c','camera_adapter.c','platform_effects.c','softfloat_abi.c','integer_abi.c')]+soft_sources
     objects=[]
     dependencies=sorted(set(list((ROOT/'firmware/engine').rglob('*.h'))+list((source/'include').rglob('*.h'))+list((source/'src').rglob('*.h'))+list(OUT.glob('*.inc'))+[source/p for p in ORIGINAL+INCLUDED]))
     dependency_hash=hashlib.sha256(b''.join(hashlib.sha256(p.read_bytes()).digest() for p in dependencies)).digest()
     def compile_one(pair):
         i,p=pair;obj=dest/(str(i)+'-'+p.stem+'.o');extra=sf_flags if p in soft_sources or p.name=='softfloat_abi.c' else []
+        if not native and p.name=='camera_adapter.c':extra+=['-mllvm','-enable-global-merge=false']
+        if FLOAT_VERTICES and p.name=='visual_adapter.c':extra+=['-DSOC_VISUAL_FLOAT_REFERENCE']
         cmd=[LLVM/'clang.exe',*(['-I'+str(overlay)] if native else []),*flags(native),*extra,'-c',p,'-o',obj]
         identity=hashlib.sha256(p.read_bytes()+dependency_hash+json.dumps(list(map(str,cmd))).encode()).hexdigest()
         stamp=obj.with_suffix('.hash')
@@ -161,16 +204,16 @@ def compile_objects(native=False):
     run([LLVM/'llvm-ar.exe','rcs',archive,*objects]);print('Compiled original engine and SoftFloat:',len(objects),'objects',flush=True)
     return archive
 
-def diagnostic(native=False):
+def diagnostic(native=False,visual=False):
     archive=compile_objects(native)
     if native:
-        names=['sm64_engine_init','sm64_engine_update','sm64_engine_probe','sm64_engine_test_place','__addsf3','__subsf3','__mulsf3','__divsf3','sqrtf','__muldi3','__ashldi3','__lshrdi3','__ashrdi3','__udivsi3','__divsi3']
+        names=['sm64_engine_init','sm64_engine_init_heading','sm64_engine_update','sm64_engine_probe','sm64_engine_pose','sm64_engine_camera_step','sm64_engine_visual_probe','sm64_engine_test_animation','sm64_engine_test_float_pose','sm64_engine_test_place','__addsf3','__subsf3','__mulsf3','__divsf3','sqrtf','__muldi3','__ashldi3','__lshrdi3','__ashrdi3','__udivsi3','__divsi3']
         run([LLVM/'clang.exe',*flags(True),'-shared','-fuse-ld=lld','-nostdlib','-Wl,/noentry','-Wl,/opt:ref','-Wl,/include:_fltused',*['-Wl,/export:'+n for n in names],archive,ROOT/'firmware/src/game_memory.c','-o',OUT/'engine.dll'])
     else:
-        stem='sm64-original-engine-diagnostic'
+        stem=('sm64-original-visual-float-diagnostic' if FLOAT_VERTICES else 'sm64-original-visual-diagnostic') if visual else 'sm64-original-engine-diagnostic'
         run([LLVM/'clang.exe',*flags(),'-fuse-ld=lld','-nostdlib','-DSOC_SDRAM_EXEC','-DSOC_STACK_CANARY','-Wl,--gc-sections','-Wl,--no-relax','-Wl,--error-limit=0',
              '-I'+str(ROOT/'firmware/include'),'-Wl,-T,firmware/link-sdram-exec.ld','-Wl,-Map,build/'+stem+'.map',
-             ROOT/'firmware/start.S',ROOT/'firmware/engine/diagnostic.c',ROOT/'firmware/src/game_memory.c',archive,'-o',ROOT/'build'/ (stem+'.elf')])
+             ROOT/'firmware/start.S',ROOT/'firmware/engine'/('visual_diagnostic.c' if visual else 'diagnostic.c'),ROOT/'firmware/src/game_memory.c',archive,'-o',ROOT/'build'/ (stem+'.elf')])
         from sdram_execution import extract
         segments,execution=extract(ROOT,stem,str(LLVM/'llvm-objcopy.exe'),str(LLVM/'llvm-nm.exe'))
         package={'format':'soc-game-package','version':1,'app':'original-engine-diagnostic','segments':segments,'execution':execution,'required_cpu_features':{'sdram-exec-v1':True,'mul':True}}
@@ -211,7 +254,7 @@ def game():
     cpp=['-I'+str(ROOT/'firmware/include'),'-I'+str(ROOT/'firmware/generated')]
     objects=[]
     for i,source in enumerate(common+sources):
-        check(source,str(LLVM/'clang.exe'),additional_api=api,extra_flags=options)
+        check(source,str(LLVM/'clang.exe'),additional_api=api,extra_flags=options+['-I'+str(OUT)])
         obj=OUT/'rv32'/('renderer-'+str(i)+'.o');run([LLVM/'clang.exe',*cpp,*flags(),*options,'-Wall','-Wextra','-Werror','-c',source,'-o',obj]);objects.append(obj)
     stem='mario-original-engine-grounds-exec'
     run([LLVM/'clang.exe',*flags(),*cpp,*options,'-fuse-ld=lld','-nostdlib','-Wl,--gc-sections','-Wl,--no-relax','-Wl,-T,firmware/link-sdram-exec.ld','-Wl,-Map,build/'+stem+'.map',ROOT/'firmware/start.S',*objects,archive,'-o',ROOT/'build'/(stem+'.elf')])
@@ -222,11 +265,14 @@ def game():
     package_segments(path);print('Built original-engine grounds:',path,[(s['file'],s['bytes']) for s in segments],flush=True)
 
 def main():
-    p=argparse.ArgumentParser(description=__doc__);p.add_argument('action',choices=['prepare','objects','diagnostic','game']);p.add_argument('--native',action='store_true');a=p.parse_args()
+    global FLOAT_VERTICES
+    p=argparse.ArgumentParser(description=__doc__);p.add_argument('action',choices=['prepare','objects','diagnostic','game']);p.add_argument('--native',action='store_true');p.add_argument('--visual',action='store_true');p.add_argument('--float-vertices',action='store_true',help='Original SDK float vertex reference diagnostic');a=p.parse_args()
+    if a.float_vertices and (a.action!='diagnostic' or not a.visual or a.native):p.error('--float-vertices requires diagnostic --visual without --native')
+    FLOAT_VERTICES=a.float_vertices
     if a.action=='prepare':prepare()
     elif a.action=='objects':compile_objects(a.native)
     elif a.action=='game':game()
     else:
-        diagnostic(a.native)
-        if not a.native:audit_isa(ROOT/'build/sm64-original-engine-diagnostic.elf')
+        diagnostic(a.native,a.visual)
+        if not a.native:audit_isa(ROOT/'build'/((('sm64-original-visual-float-diagnostic.elf' if FLOAT_VERTICES else 'sm64-original-visual-diagnostic.elf') if a.visual else 'sm64-original-engine-diagnostic.elf')))
 if __name__=='__main__':main()

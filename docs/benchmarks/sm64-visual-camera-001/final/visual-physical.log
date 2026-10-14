@@ -1,0 +1,35 @@
+Uploading sm64-original-visual-diagnostic.bin: 168 bytes at 0x00000000
+Verifying sm64-original-visual-diagnostic.bin: 168 bytes at 0x00000000
+Uploading sm64-original-visual-diagnostic.code.bin: 155,720 bytes at 0x80000000
+Verifying sm64-original-visual-diagnostic.code.bin: 155,720 bytes at 0x80000000
+Uploading sm64-original-visual-diagnostic.state.bin: 22,972 bytes at 0x81000000
+Verifying sm64-original-visual-diagnostic.state.bin: 22,972 bytes at 0x81000000
+Uploading sm64-original-visual-diagnostic.assets.bin: 592,476 bytes at 0x8101dd40
+  364,800/592,476 bytes
+Verifying sm64-original-visual-diagnostic.assets.bin: 592,476 bytes at 0x8101dd40
+  359,976/592,476 bytes
+Readback verified; CPU released.
+PASS all 96 FPGA animation, pose, camera and movement records match native
+Uploading mario-original-engine-grounds-exec.bin: 1,744 bytes at 0x00000000
+Verifying mario-original-engine-grounds-exec.bin: 1,744 bytes at 0x00000000
+Uploading mario-original-engine-grounds-exec.code.bin: 170,208 bytes at 0x80000000
+Verifying mario-original-engine-grounds-exec.code.bin: 170,208 bytes at 0x80000000
+Uploading mario-original-engine-grounds-exec.state.bin: 22,952 bytes at 0x81000000
+Verifying mario-original-engine-grounds-exec.state.bin: 22,952 bytes at 0x81000000
+Uploading mario-original-engine-grounds-exec.assets.bin: 1,478,336 bytes at 0x8101ce00
+  363,768/1,478,336 bytes
+  722,784/1,478,336 bytes
+  1,086,060/1,478,336 bytes
+  1,449,888/1,478,336 bytes
+Verifying mario-original-engine-grounds-exec.assets.bin: 1,478,336 bytes at 0x8101ce00
+  364,356/1,478,336 bytes
+  725,736/1,478,336 bytes
+  1,092,684/1,478,336 bytes
+  1,455,180/1,478,336 bytes
+Readback verified; CPU released.
+PASS live route: walk-jump frames: 25
+PASS live route: rotate-camera frames: 97
+PASS live route: zoom-camera frames: 97
+PASS live route: punch-crouch frames: 97
+Stopped: 1506 replies, 1506 accepted; keys expire after 300 ms.
+PASS held reset; original camera/animation game left running at spawn
