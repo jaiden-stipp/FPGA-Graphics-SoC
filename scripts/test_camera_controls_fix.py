@@ -18,8 +18,8 @@ uint32_t map_buttons(uint32_t buttons){return engine_input_buttons(buttons);}
 void look_reset(void){state=(engine_camera_input_t){0};}
 uint32_t map_look(uint32_t yaw,int32_t pitch){return engine_input_look(&state,yaw,pitch);}
 ''')
-        dll=dest/'input-probe.dll'
-        subprocess.run([str(engine.LLVM/'clang.exe'),*native_flags(['map_buttons','look_reset','map_look']),'-I'+str(engine.ROOT/'firmware/engine'),str(source),'-o',str(dll)],check=True)
+        dll=dest/('input-probe'+engine.native_library().suffix)
+        subprocess.run([str(engine.llvm_tool('clang')),*native_flags(['map_buttons','look_reset','map_look']),'-I'+str(engine.ROOT/'firmware/engine'),str(source),'-o',str(dll)],check=True)
         cls.input=c.CDLL(str(dll));cls.input.map_buttons.restype=cls.input.map_look.restype=c.c_uint32
     def test_mouse_sign_wrap_and_queued_edges(self):
         i=self.input;i.look_reset()

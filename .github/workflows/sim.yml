@@ -11,7 +11,7 @@ jobs:
       - run: python3 scripts/test_scene_pipeline.py
       - run: python3 scripts/test_sdram_package.py
       - run: python3 scripts/soc.py bootstrap
-      - run: python3 scripts/soc.py sim --simulator iverilog --tests sdram_cache_tb,sdram_memory_tb,udp_loader_tb
+      - run: python3 scripts/soc.py sim --simulator iverilog --tests sdram_cache_tb,sdram_model_storage_tb,sdram_memory_tb,udp_loader_tb
       - run: python3 scripts/soc.py build-fw --cc riscv64-unknown-elf-gcc
       - run: python3 scripts/test_player.py
       - run: python3 scripts/test_camera.py
@@ -35,3 +35,12 @@ jobs:
         run: python3 scripts/soc.py sim --simulator iverilog --tests cpu_mul_tb,cpu_counter_pipeline_tb,soc_cpu_counters_tb,soc_mmio_tb,packed_mmio_tb
       - name: Geometry-worker feature configuration
         run: python3 scripts/soc.py sim --simulator iverilog --geometry-worker --disable-command-dma --tests soc_mmio_tb,cpu_geometry_tb,geometry_worker_tb
+      - name: Upload regression diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-logs
+          path: |
+            build/*.log
+            build/tests/*.log
+            build/tests/summary.json

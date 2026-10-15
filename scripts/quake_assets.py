@@ -13,6 +13,7 @@ import re
 import shutil
 import struct
 import subprocess
+import urllib.error
 import urllib.request
 import zipfile
 import game_assets
@@ -20,6 +21,7 @@ import game_package
 
 ROOT=Path(__file__).resolve().parents[1]
 SHAREWARE_URL='https://www.gamers.org/pub/idgames/idstuff/quake/quake106.zip'
+SHAREWARE_MIRROR='https://ftp.gwdg.de/pub/misc/ftp.idsoftware.com/idstuff/quake/quake106.zip'
 ZIP_SHA='ec6c9d34b1ae0252ac0066045b6611a7919c2a0d78a3a66d9387a8f597553239'
 PAK_SHA='35a9c55e5e5a284a159ad2a62e0e8def23d829561fe2f54eb402dbc0a9a946af'
 
@@ -31,8 +33,15 @@ def fetch_shareware():
     if pak.exists() and digest(pak.read_bytes())==PAK_SHA: return pak
     archive=directory/'quake106.zip'
     if not archive.exists():
-        with urllib.request.urlopen(SHAREWARE_URL,timeout=30) as response:
-            data=response.read(10*1024*1024)
+        failures=[]
+        for url in (SHAREWARE_URL,SHAREWARE_MIRROR):
+            try:
+                with urllib.request.urlopen(url,timeout=30) as response:
+                    data=response.read(10*1024*1024)
+                break
+            except (urllib.error.URLError,TimeoutError) as error:
+                failures.append(str(error))
+        else:raise RuntimeError('Quake shareware download failed: '+'; '.join(failures))
         if digest(data)!=ZIP_SHA: raise ValueError('Quake shareware archive hash mismatch')
         archive.write_bytes(data)
     if digest(archive.read_bytes())!=ZIP_SHA: raise ValueError('Quake shareware archive hash mismatch')

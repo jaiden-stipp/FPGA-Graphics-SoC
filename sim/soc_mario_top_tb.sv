@@ -58,7 +58,7 @@ module soc_mario_top_tb #(
             word_index=0;
             while(!$feof(fd)) begin
                 read_count=$fscanf(fd,"%h\n",value);
-                if(read_count==1) begin chip.memory[word_index]=value; word_index=word_index+1; end
+                if(read_count==1) begin chip.write_word(word_index,value); word_index=word_index+1; end
             end
             $fclose(fd);
         end

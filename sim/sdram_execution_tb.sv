@@ -51,7 +51,7 @@ module sdram_execution_tb;
  end
  initial begin
   fd=$fopen("build/sdram-exec-test.external.txt","r");if(!fd)$fatal(1,"Missing diagnostic fixture");
-  while(!$feof(fd))begin scan=$fscanf(fd,"%h %h\n",key,value);if(scan==2)chip.memory[key]=value;end
+  while(!$feof(fd))begin scan=$fscanf(fd,"%h %h\n",key,value);if(scan==2)chip.write_word(key,value);end
   $fclose(fd);repeat(5)@(negedge clk);reset=0;wait(initialized);
   // Real loader writes replace code before CPU release, with explicit readback.
   loader_access(1,32'h80010004,32'h00000013,0);

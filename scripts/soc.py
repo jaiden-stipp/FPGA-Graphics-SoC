@@ -304,6 +304,16 @@ def firmware(args):
              "-Wl,-T,firmware/link.ld", "-Wl,--no-relax"]
     if is_clang:
         flags = ["--target=riscv32-unknown-elf", "-fuse-ld=lld"] + flags
+    # LLVM 18 can emit __mulsi3 even for array-address arithmetic. Supply
+    # the baseline RV32I ABI helper without requiring a hosted runtime or
+    # enabling M instructions. Archive extraction leaves other apps alone.
+    builtins=BUILD/'rv32i-builtins.a'
+    runtime_flags=(['--target=riscv32-unknown-elf'] if is_clang else [])+['-march=rv32i','-mabi=ilp32','-O1','-ffreestanding','-fno-builtin']
+    run([cc,*runtime_flags,'-c','firmware/rv32i_builtins.S','-o',BUILD/'rv32i-builtins.o'])
+    # GCC can also lower aggregate initialization to memset under -nostdlib.
+    # Reuse the existing freestanding services; extract them only when needed.
+    run([cc,*runtime_flags,'-c','firmware/src/game_memory.c','-o',BUILD/'rv32i-memory.o'])
+    run([tool(prefix+'ar'),'rcs',builtins,BUILD/'rv32i-builtins.o',BUILD/'rv32i-memory.o'])
     apps = ["scene", "game", "triangle", "game-test", "scene-test", "mario", "mario-test", "mario-bridge-test"] if args.app == "all" else [args.app]
     prepare_legacy_assets(args,apps)
     for app in apps:
@@ -347,7 +357,7 @@ def firmware(args):
         if app == "mario-bridge-test":
             app_flags += ["-DPLAYER_TICK_CYCLES=100000u", "-DPLAYER_VALIDATION_VIEW=0"]
         if use_sdram and app != 'sdram-test': app_sources += ['firmware/src/sdram.c']
-        run([cc] + compile_flags + app_flags + app_sources + ["-o", f"build/{stem}.elf"])
+        run([cc] + compile_flags + app_flags + app_sources + [builtins,"-o", f"build/{stem}.elf"])
         if execute_sdram:
             from sdram_execution import extract
             exec_segments,exec_metadata=extract(ROOT,stem,objcopy,tool(prefix+'nm'))
@@ -456,7 +466,7 @@ def simulate(args):
     if args.full and simulator != "modelsim":
         raise RuntimeError("Full VGA test requires ModelSim with the altera_mf library")
     tests = ["soc_mmio_tb", "soc_memory_tb", "cpu_stream_tb", "game_stream_tb", "udp_controls_tb", "scene_stream_tb", "mario_stream_tb"]
-    available = tests + ['sdram_exec_protection_tb','sdram_instruction_cache_tb','sdram_execution_tb','geometry_worker_tb','cpu_geometry_tb','gfx_dma_tb','sdram_arbiter_tb','gfx_dma_memory_tb','packed_mmio_tb','sdram_cache_tb','sdram_memory_tb','sdram_cpu_tb','udp_loader_tb','udp_extended_input_tb','soc_cpu_counters_tb','cpu_counter_pipeline_tb','cpu_batch_stream_tb','cpu_mul_tb']
+    available = tests + ['cpu_builtins_tb','sdram_exec_protection_tb','sdram_instruction_cache_tb','sdram_execution_tb','geometry_worker_tb','cpu_geometry_tb','gfx_dma_tb','sdram_arbiter_tb','gfx_dma_memory_tb','packed_mmio_tb','sdram_cache_tb','sdram_model_storage_tb','sdram_memory_tb','sdram_cpu_tb','udp_loader_tb','udp_extended_input_tb','soc_cpu_counters_tb','cpu_counter_pipeline_tb','cpu_batch_stream_tb','cpu_mul_tb']
     if args.full:
         tests += ["soc_top_tb", "soc_game_top_tb", "soc_scene_top_tb", "soc_mario_top_tb", "soc_mario_bridge_top_tb"]
         available += ['geometry_stream_tb','geometry_game_tb','setup_overlap_tb','pixel_lanes_tb','pixel_banks_tb']
@@ -468,6 +478,12 @@ def simulate(args):
         tests = requested
     if "soc_mario_bridge_top_tb" in tests and not (BUILD/"mario-bridge-test.hex").exists():
         raise RuntimeError("Run sm64-mario or build-fw --app all to generate the bridge fixture")
+    if any(name in tests for name in ('geometry_worker_tb','cpu_geometry_tb')):
+        from geometry_vectors import generate
+        generate(BUILD/'arch-stage5')
+        if 'cpu_geometry_tb' in tests:
+            from build_geometry_probe import build
+            build()
     include = "+incdir+" + str(ROOT / "rtl/generated") + "+" + str(ROOT / "external/renderer/rtl/common") + "+" + str(ROOT / "sim/generated") + "+" + str(ROOT / "sim")
     src = sources(args.full) + ([ROOT/'sim/sdram_device_model.sv'] if args.full or any('sdram' in name or name in ('udp_loader_tb','gfx_dma_memory_tb') for name in tests) else []) + [ROOT / f"sim/{name}.sv" for name in tests]
     if 'castle_gameplay_top_tb' in tests and 'sdram_exec_game_tb' not in tests:src.append(ROOT/'sim/sdram_exec_game_tb.sv')
@@ -502,6 +518,17 @@ def simulate(args):
                 raise RuntimeError(f"Simulation failed: {name}")
             print("PASS", name)
     else:
+        # Icarus 12 cannot assign variable part-selects of a struct member.
+        # payload is the least-significant field, so indexing the packed
+        # command itself selects exactly the same bits. Simulation copy only.
+        types=(ROOT/'rtl/generated/renderer_types.svh' if args.full else ROOT/'external/renderer/rtl/common/renderer_types.svh').read_text()
+        if not re.search(r'logic\s+\[\d+:0\]\s+payload;\s*}\s*graphics_command_t;',types):
+            raise RuntimeError('Icarus decoder adaptation requires payload as the final packed field')
+        for index,path in enumerate(src):
+            if path.name=='graphics_command_stream_decoder.sv':
+                decoder=path.read_text().replace('decoded_command.payload[','decoded_command[')
+                src[index]=BUILD/'iverilog_command_decoder.sv'
+                write(src[index],decoder)
         for name in tests:
             exe = BUILD / f"{name}.vvp"
             run([tool("iverilog"), "-g2012", "-s", name, "-I",
@@ -510,8 +537,13 @@ def simulate(args):
                 (["-DSOC_DISABLE_COMMAND_DMA"] if getattr(args,"disable_command_dma",False) else []) +
                 (["-DSOC_GPU_SETUP_OVERLAP"] if getattr(args,"setup_overlap",False) else []) +
                 (["-DSOC_GPU_TWO_PIXEL_LANES"] if getattr(args,"two_pixel_lanes",False) else []) + src)
-            result = run([tool("vvp"), exe], stdout=subprocess.PIPE,
-                         stderr=subprocess.STDOUT, text=True)
+            try:
+                result = run([tool("vvp"), exe], stdout=subprocess.PIPE,
+                             stderr=subprocess.STDOUT, text=True)
+            except subprocess.CalledProcessError as exc:
+                write(BUILD / f"{name}.log", exc.stdout or "")
+                print(exc.stdout or "")
+                raise
             write(BUILD / f"{name}.log", result.stdout)
             if "PASS " + name not in result.stdout:
                 raise RuntimeError(f"Simulation ended without PASS: {result.stdout}")

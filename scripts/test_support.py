@@ -37,7 +37,7 @@ def linked_test_packages():
     pak=quake_assets.fetch_shareware()
     quake_assets.generate(ROOT/'profiles/quake-e1m1.json',pak)
     quake_demo.emit(pak,ROOT/'build/quake-interactive')
-    inputs=[*ROOT.glob('*.lock.json'),* (ROOT/'scripts').glob('*.py'),*(ROOT/'firmware').rglob('*.c'),*(ROOT/'firmware/include').glob('*.h'),*(ROOT/'profiles').glob('*.json')]
+    inputs=[*ROOT.glob('*.lock.json'),* (ROOT/'scripts').glob('*.py'),*(ROOT/'firmware').rglob('*.c'),*(ROOT/'firmware').rglob('*.S'),*(ROOT/'firmware/include').glob('*.h'),*(ROOT/'profiles').glob('*.json')]
     # Generated data is reproduced above; do not key on unrelated global headers.
     signature=hashlib.sha256(b''.join(p.read_bytes() for p in sorted(inputs))+pak.read_bytes()+subprocess.check_output([shutil.which('clang'),'--version'])).hexdigest()
     stamp=folder/'linked-fixtures.json'

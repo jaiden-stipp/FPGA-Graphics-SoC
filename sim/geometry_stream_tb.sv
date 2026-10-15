@@ -46,7 +46,7 @@ module geometry_stream_tb;
             index=0;
             while(!$feof(file))begin
                 rc=$fscanf(file,"%h\n",word);
-                if(rc==1)begin chip.memory[index]=word;index++;end
+                if(rc==1)begin chip.write_word(index,word);index++;end
             end
             $fclose(file);
         end

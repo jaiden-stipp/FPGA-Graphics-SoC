@@ -4,6 +4,15 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'build/engine-slice'
 LLVM=Path('C:/Program Files/LLVM/bin')
+def llvm_tool(name):
+    found=shutil.which(name)
+    if found:return Path(found)
+    fallback=LLVM/(name+'.exe')
+    if os.name=='nt' and fallback.is_file():return fallback
+    raise FileNotFoundError('Install LLVM and add '+name+' to PATH')
+
+def native_library():
+    return OUT/('engine.dll' if os.name=='nt' else 'engine.so')
 FLOAT_VERTICES=False
 ORIGINAL=['src/game/mario.c','src/game/mario_actions_stationary.c','src/game/mario_actions_moving.c',
           'src/game/mario_actions_airborne.c','src/game/mario_actions_object.c','src/game/mario_step.c','src/engine/math_util.c',
@@ -117,7 +126,9 @@ def flags(native=False):
             '-I'+str(ROOT/'external/sm64/src'),'-I'+str(ROOT/'external/sm64'),'-I'+str(OUT),
             '-I'+str(ROOT/'external/sm64/src/game'),'-I'+str(ROOT/'external/sm64/src/engine'),
             '-I'+str(ROOT/'firmware/engine')]
-    if native:result+=['-flto','-ffp-contract=off','-DSOC_ENGINE_TEST']
+    if native:
+        result+=['-flto','-ffp-contract=off','-DSOC_ENGINE_TEST']
+        if os.name!='nt':result+=['-fPIC']
     else:result=['--target=riscv32-unknown-elf','-march=rv32i','-mabi=ilp32','-msmall-data-limit=0','-mno-relax']+result
     return result
 
@@ -186,7 +197,7 @@ def compile_objects(native=False):
         i,p=pair;obj=dest/(str(i)+'-'+p.stem+'.o');extra=sf_flags if p in soft_sources or p.name=='softfloat_abi.c' else []
         if not native and p.name=='camera_adapter.c':extra+=['-mllvm','-enable-global-merge=false']
         if FLOAT_VERTICES and p.name=='visual_adapter.c':extra+=['-DSOC_VISUAL_FLOAT_REFERENCE']
-        cmd=[LLVM/'clang.exe',*(['-I'+str(overlay)] if native else []),*flags(native),*extra,'-c',p,'-o',obj]
+        cmd=[llvm_tool('clang'),*(['-I'+str(overlay)] if native else []),*flags(native),*extra,'-c',p,'-o',obj]
         identity=hashlib.sha256(p.read_bytes()+dependency_hash+json.dumps(list(map(str,cmd))).encode()).hexdigest()
         stamp=obj.with_suffix('.hash')
         if not obj.exists() or not stamp.exists() or stamp.read_text()!=identity:
@@ -201,37 +212,42 @@ def compile_objects(native=False):
     if errors:raise RuntimeError('\n'.join(errors))
     archive=dest/'engine.a'
     if archive.exists():archive.unlink()
-    run([LLVM/'llvm-ar.exe','rcs',archive,*objects]);print('Compiled original engine and SoftFloat:',len(objects),'objects',flush=True)
+    run([llvm_tool('llvm-ar'),'rcs',archive,*objects]);print('Compiled original engine and SoftFloat:',len(objects),'objects',flush=True)
     return archive
 
 def diagnostic(native=False,visual=False):
     archive=compile_objects(native)
     if native:
         names=['sm64_engine_init','sm64_engine_init_heading','sm64_engine_update','sm64_engine_probe','sm64_engine_pose','sm64_engine_camera_step','sm64_engine_visual_probe','sm64_engine_test_animation','sm64_engine_test_float_pose','sm64_engine_test_place','__addsf3','__subsf3','__mulsf3','__divsf3','sqrtf','__muldi3','__ashldi3','__lshrdi3','__ashrdi3','__udivsi3','__divsi3']
-        run([LLVM/'clang.exe',*flags(True),'-shared','-fuse-ld=lld','-nostdlib','-Wl,/noentry','-Wl,/opt:ref','-Wl,/include:_fltused',*['-Wl,/export:'+n for n in names],archive,ROOT/'firmware/src/game_memory.c','-o',OUT/'engine.dll'])
+        if os.name=='nt':
+            link=['-Wl,/noentry','-Wl,/opt:ref','-Wl,/include:_fltused',*['-Wl,/export:'+n for n in names]]
+        else:
+            link=['-Wl,--gc-sections','-Wl,--no-undefined',*['-Wl,-u,'+n for n in names]]
+        run([llvm_tool('clang'),*flags(True),'-shared','-fuse-ld=lld','-nostdlib',*link,archive,ROOT/'firmware/src/game_memory.c','-o',native_library()])
     else:
         stem=('sm64-original-visual-float-diagnostic' if FLOAT_VERTICES else 'sm64-original-visual-diagnostic') if visual else 'sm64-original-engine-diagnostic'
-        run([LLVM/'clang.exe',*flags(),'-fuse-ld=lld','-nostdlib','-DSOC_SDRAM_EXEC','-DSOC_STACK_CANARY','-Wl,--gc-sections','-Wl,--no-relax','-Wl,--error-limit=0',
+        run([llvm_tool('clang'),*flags(),'-fuse-ld=lld','-nostdlib','-DSOC_SDRAM_EXEC','-DSOC_STACK_CANARY','-Wl,--gc-sections','-Wl,--no-relax','-Wl,--error-limit=0',
              '-I'+str(ROOT/'firmware/include'),'-Wl,-T,firmware/link-sdram-exec.ld','-Wl,-Map,build/'+stem+'.map',
              ROOT/'firmware/start.S',ROOT/'firmware/engine'/('visual_diagnostic.c' if visual else 'diagnostic.c'),ROOT/'firmware/src/game_memory.c',archive,'-o',ROOT/'build'/ (stem+'.elf')])
         from sdram_execution import extract
-        segments,execution=extract(ROOT,stem,str(LLVM/'llvm-objcopy.exe'),str(LLVM/'llvm-nm.exe'))
+        segments,execution=extract(ROOT,stem,str(llvm_tool('llvm-objcopy')),str(llvm_tool('llvm-nm')))
         package={'format':'soc-game-package','version':1,'app':'original-engine-diagnostic','segments':segments,'execution':execution,'required_cpu_features':{'sdram-exec-v1':True,'mul':True}}
         (ROOT/'build'/(stem+'.package.json')).write_text(json.dumps(package,indent=2)+'\n')
         print('Linked diagnostic:',[(s['file'],s['bytes']) for s in segments],execution,flush=True)
 
 def audit_isa(elf):
-    text=run([LLVM/'llvm-objdump.exe','-d',elf]);instructions=[];muls=[]
+    from rv32i_subset import instruction_words
+    text=run([llvm_tool('llvm-objdump'),'-d',elf]);instructions=[];muls=[]
     allowed={0x03,0x23,0x13,0x33,0x37,0x17,0x63,0x6f,0x67}
-    for address,encoded in re.findall(r'^\s*([0-9a-f]+):\s+([0-9a-f]{8})\s',text,re.M):
-        word=int(encoded,16);op=word&127
+    for location,word in instruction_words(text):
+        address=f'{location:x}';encoded=f'{word:08x}';op=word&127
         if op not in allowed:raise ValueError('Unsupported executable opcode at '+address+': '+encoded)
         if op==0x33 and word>>25==1:
             if (word>>12)&7:raise ValueError('Only low MUL is implemented: '+address)
             muls.append(int(address,16))
         instructions.append(int(address,16))
     if not instructions or not muls:raise ValueError('Missing decoded instructions or required MUL helper')
-    undefined=run([LLVM/'llvm-nm.exe','--undefined-only',elf]).strip()
+    undefined=run([llvm_tool('llvm-nm'),'--undefined-only',elf]).strip()
     if undefined:raise ValueError('Unresolved runtime symbols: '+undefined)
     report={'compiler_isa':'rv32i','extra_instruction':'low MUL only','decoded_instruction_count':len(instructions),'mul_addresses':muls,'unresolved_symbols':[]}
     elf.with_suffix('.isa.json').write_text(json.dumps(report,indent=2)+'\n')
@@ -254,11 +270,11 @@ def game():
     cpp=['-I'+str(ROOT/'firmware/include'),'-I'+str(ROOT/'firmware/generated')]
     objects=[]
     for i,source in enumerate(common+sources):
-        check(source,str(LLVM/'clang.exe'),additional_api=api,extra_flags=options+['-I'+str(OUT)])
-        obj=OUT/'rv32'/('renderer-'+str(i)+'.o');run([LLVM/'clang.exe',*cpp,*flags(),*options,'-Wall','-Wextra','-Werror','-c',source,'-o',obj]);objects.append(obj)
+        check(source,str(llvm_tool('clang')),additional_api=api,extra_flags=options+['-I'+str(OUT)])
+        obj=OUT/'rv32'/('renderer-'+str(i)+'.o');run([llvm_tool('clang'),*cpp,*flags(),*options,'-Wall','-Wextra','-Werror','-c',source,'-o',obj]);objects.append(obj)
     stem='mario-original-engine-grounds-exec'
-    run([LLVM/'clang.exe',*flags(),*cpp,*options,'-fuse-ld=lld','-nostdlib','-Wl,--gc-sections','-Wl,--no-relax','-Wl,-T,firmware/link-sdram-exec.ld','-Wl,-Map,build/'+stem+'.map',ROOT/'firmware/start.S',*objects,archive,'-o',ROOT/'build'/(stem+'.elf')])
-    segments,execution=extract(ROOT,stem,str(LLVM/'llvm-objcopy.exe'),str(LLVM/'llvm-nm.exe'));audit_isa(ROOT/'build'/(stem+'.elf'))
+    run([llvm_tool('clang'),*flags(),*cpp,*options,'-fuse-ld=lld','-nostdlib','-Wl,--gc-sections','-Wl,--no-relax','-Wl,-T,firmware/link-sdram-exec.ld','-Wl,-Map,build/'+stem+'.map',ROOT/'firmware/start.S',*objects,archive,'-o',ROOT/'build'/(stem+'.elf')])
+    segments,execution=extract(ROOT,stem,str(llvm_tool('llvm-objcopy')),str(llvm_tool('llvm-nm')));audit_isa(ROOT/'build'/(stem+'.elf'))
     package={'format':'soc-game-package','version':1,'app':'original-engine-grounds','segments':segments,'execution':execution,'required_cpu_features':{'sdram-exec-v1':True,'mul':True,'geometry-worker-v1':True},'target':target,'content':content,'cadence':{'simulation_tick_cycles':1666667,'clock_hz':50000000,'render':'uncapped','render_repeat_safe':True,'interpolation':True}}
     path=ROOT/'build'/(stem+'.package.json');path.write_text(json.dumps(package,indent=2)+'\n')
     from load_game import package_segments

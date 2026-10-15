@@ -2,7 +2,8 @@
 """Check a hand-ported C translation unit against the freestanding RV32I subset.
 
 Clang provides the C parser. Floating-point/64-bit operations, indirect calls,
-and unresolved runtime/OS/library helpers fail rather than being silently emulated.
+and unresolved runtime/OS/library helpers fail. The explicitly supplied baseline
+RV32I __mulsi3 helper is permitted for compiler-generated 32-bit multiplication.
 """
 import argparse
 import hashlib
@@ -30,6 +31,12 @@ def children(node):
     yield node
     for child in node.get("inner", []):
         yield from children(child)
+
+def instruction_words(disassembly):
+    """LLVM versions print RISC-V words as either bytes or eight hex digits."""
+    for match in re.finditer(r'^\s*([0-9a-f]+):\s+((?:[0-9a-f]{2}\s+){3}[0-9a-f]{2}|[0-9a-f]{8})\s',disassembly,re.M):
+        raw=match[2]
+        yield int(match[1],16),int.from_bytes(bytes.fromhex(raw),'little') if len(raw.split())==4 else int(raw,16)
 
 
 def check(source, cc="clang", additional_api=(), extra_flags=()):
@@ -81,13 +88,15 @@ def check(source, cc="clang", additional_api=(), extra_flags=()):
     subprocess.run([compiler, *flags, "-c", str(source), "-o", str(obj)], check=True)
     symbols = subprocess.check_output([nm, "-u", str(obj)], text=True)
     unresolved = {line.split()[-1] for line in symbols.splitlines() if line.strip()}
-    unsupported = unresolved - api
+    runtime_helpers={'__mulsi3'} # Supplied by firmware/rv32i_builtins.S.
+    unsupported = unresolved - api - runtime_helpers
     if unsupported:
         raise ValueError("Unsupported compiler/runtime symbols: " + ", ".join(sorted(unsupported)))
     report = {"source": str(source), "sha256": hashlib.sha256(source.read_bytes()).hexdigest(),
               "target": "rv32i/ilp32", "functions": sorted(defined), "external_api": sorted(unresolved),
               "numeric_policy": "integer/fixed-point, at most 32-bit operations",
-              "runtime_policy": "static storage/stack, direct calls, no OS/heap or implicit compiler arithmetic helpers"}
+              "runtime_helpers": sorted(unresolved & runtime_helpers),
+              "runtime_policy": "static storage/stack, direct calls, no OS/heap; supplied RV32I __mulsi3 only"}
     (out / (source.stem + ".json")).write_text(json.dumps(report, indent=2) + "\n")
     print(f"PASS RV32I C subset: {source.name}; report build/subset/{source.stem}.json")
 

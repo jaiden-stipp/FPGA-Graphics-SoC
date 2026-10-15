@@ -50,7 +50,7 @@ module quake_sdram_top_tb #(
         index=0;
         while(!$feof(fd)) begin
             read_count=$fscanf(fd,"%h\n",value);
-            if(read_count==1) begin chip.memory[index]=value; index=index+1; end
+            if(read_count==1) begin chip.write_word(index,value); index=index+1; end
         end
         $fclose(fd);
     end

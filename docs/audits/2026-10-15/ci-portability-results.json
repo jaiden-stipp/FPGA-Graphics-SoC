@@ -1,0 +1,383 @@
+{
+  "baseline_commit": "52ea5d83d74472190a817915364fbfd72d1ba972",
+  "failed_job": "https://github.com/jaiden-stipp/FPGA-Graphics-SoC/actions/runs/38510402536/job/115677347468",
+  "scope": "Local Linux replay of workflow commands; not a GitHub-hosted rerun or physical FPGA performance measurement",
+  "environment": {
+    "os": "WSL Ubuntu 22.04",
+    "python": "3.10",
+    "iverilog": "12.0, source tag v12_0",
+    "llvm": "18.1.8"
+  },
+  "workflow_steps": [
+    {
+      "command": "python3 scripts/test_scene_pipeline.py",
+      "exit_code": 0,
+      "seconds": 1.8,
+      "log": "ci-step-02.log"
+    },
+    {
+      "command": "python3 scripts/test_sdram_package.py",
+      "exit_code": 0,
+      "seconds": 0.062,
+      "log": "ci-step-03.log"
+    },
+    {
+      "command": "python3 scripts/soc.py bootstrap",
+      "exit_code": 0,
+      "seconds": 0.117,
+      "log": "ci-step-04.log"
+    },
+    {
+      "command": "python3 scripts/soc.py sim --simulator iverilog --tests sdram_cache_tb,sdram_model_storage_tb,sdram_memory_tb,udp_loader_tb",
+      "exit_code": 0,
+      "seconds": 10.557,
+      "log": "ci-step-05.log"
+    },
+    {
+      "command": "python3 scripts/soc.py build-fw --cc riscv64-unknown-elf-gcc",
+      "exit_code": 0,
+      "seconds": 5.899,
+      "log": "ci-step-06.log"
+    },
+    {
+      "command": "python3 scripts/test_player.py",
+      "exit_code": 0,
+      "seconds": 0.771,
+      "log": "ci-step-07.log"
+    },
+    {
+      "command": "python3 scripts/test_camera.py",
+      "exit_code": 0,
+      "seconds": 1.826,
+      "log": "ci-step-08.log"
+    },
+    {
+      "command": "python3 scripts/test_animation.py",
+      "exit_code": 0,
+      "seconds": 0.848,
+      "log": "ci-step-09.log"
+    },
+    {
+      "command": "python3 scripts/soc.py sim --simulator iverilog",
+      "exit_code": 0,
+      "seconds": 1130.99,
+      "log": "ci-step-10.log"
+    },
+    {
+      "command": "python3 scripts/soc.py game-packages --fetch-quake --cc riscv64-unknown-elf-gcc",
+      "exit_code": 0,
+      "seconds": 5.295,
+      "log": "ci-step-11.log"
+    },
+    {
+      "command": "python3 scripts/test_game_packages.py",
+      "exit_code": 0,
+      "seconds": 21.364,
+      "log": "ci-step-12.log"
+    },
+    {
+      "command": "python3 scripts/test_quake_pipeline.py",
+      "exit_code": 0,
+      "seconds": 1.312,
+      "log": "ci-step-13.log"
+    },
+    {
+      "command": "python3 scripts/soc.py portable-game --project examples/portable-room/game.project.json",
+      "exit_code": 0,
+      "seconds": 3.105,
+      "log": "ci-step-14.log"
+    },
+    {
+      "command": "python3 scripts/soc.py portable-game --project examples/custom-port/game.project.json",
+      "exit_code": 0,
+      "seconds": 3.193,
+      "log": "ci-step-15.log"
+    },
+    {
+      "command": "python3 scripts/portable_game.py export-quake",
+      "exit_code": 0,
+      "seconds": 0.316,
+      "log": "ci-step-16.log"
+    },
+    {
+      "command": "python3 scripts/soc.py portable-game --project build/quake.scene-ir.project.json",
+      "exit_code": 0,
+      "seconds": 4.449,
+      "log": "ci-step-17.log"
+    },
+    {
+      "command": "python3 scripts/test_portable_pipeline.py",
+      "exit_code": 0,
+      "seconds": 2.907,
+      "log": "ci-step-18.log"
+    },
+    {
+      "command": "python3 scripts/quake_demo.py",
+      "exit_code": 0,
+      "seconds": 0.382,
+      "log": "ci-step-19.log"
+    },
+    {
+      "command": "python3 scripts/soc.py portable-game --project build/quake-interactive/game.project.json",
+      "exit_code": 0,
+      "seconds": 5.799,
+      "log": "ci-step-20.log"
+    },
+    {
+      "command": "python3 scripts/test_interactive_demo.py",
+      "exit_code": 0,
+      "seconds": 1.508,
+      "log": "ci-step-21.log"
+    },
+    {
+      "command": "python3 scripts/soc.py sim --simulator iverilog --tests udp_extended_input_tb",
+      "exit_code": 0,
+      "seconds": 0.27,
+      "log": "ci-step-22.log"
+    },
+    {
+      "command": "python3 scripts/test_all.py",
+      "exit_code": 0,
+      "seconds": 61.798,
+      "log": "ci-step-23.log"
+    },
+    {
+      "command": "python3 scripts/soc.py sim --simulator iverilog --tests cpu_mul_tb,cpu_counter_pipeline_tb,soc_cpu_counters_tb,soc_mmio_tb,packed_mmio_tb",
+      "exit_code": 0,
+      "seconds": 0.638,
+      "log": "ci-step-24.log"
+    },
+    {
+      "command": "python3 scripts/soc.py sim --simulator iverilog --geometry-worker --disable-command-dma --tests soc_mmio_tb,cpu_geometry_tb,geometry_worker_tb",
+      "exit_code": 0,
+      "seconds": 54.859,
+      "log": "ci-step-25.log"
+    }
+  ],
+  "native_suites": [
+    {
+      "file": "test_animation.py",
+      "exit_code": 0,
+      "tests": 8,
+      "seconds": 0.925
+    },
+    {
+      "file": "test_audit_fixes.py",
+      "exit_code": 0,
+      "tests": 11,
+      "seconds": 2.941
+    },
+    {
+      "file": "test_camera.py",
+      "exit_code": 0,
+      "tests": 14,
+      "seconds": 1.884
+    },
+    {
+      "file": "test_camera_controls_fix.py",
+      "exit_code": 0,
+      "tests": 3,
+      "seconds": 4.754
+    },
+    {
+      "file": "test_castle_gameplay.py",
+      "exit_code": 0,
+      "tests": 13,
+      "seconds": 4.748
+    },
+    {
+      "file": "test_dma_gfx.py",
+      "exit_code": 0,
+      "tests": 6,
+      "seconds": 0.506
+    },
+    {
+      "file": "test_game_clock.py",
+      "exit_code": 0,
+      "tests": 5,
+      "seconds": 0.329
+    },
+    {
+      "file": "test_game_packages.py",
+      "exit_code": 0,
+      "tests": 6,
+      "seconds": 1.855
+    },
+    {
+      "file": "test_geometry_loader.py",
+      "exit_code": 0,
+      "tests": 2,
+      "seconds": 0.051
+    },
+    {
+      "file": "test_gfx_staging.py",
+      "exit_code": 0,
+      "tests": 2,
+      "seconds": 0.473
+    },
+    {
+      "file": "test_gpu_fractional.py",
+      "exit_code": 0,
+      "tests": 3,
+      "seconds": 2.563
+    },
+    {
+      "file": "test_interactive_demo.py",
+      "exit_code": 0,
+      "tests": 15,
+      "seconds": 1.536
+    },
+    {
+      "file": "test_packed_gfx.py",
+      "exit_code": 0,
+      "tests": 3,
+      "seconds": 1.013
+    },
+    {
+      "file": "test_player.py",
+      "exit_code": 0,
+      "tests": 11,
+      "seconds": 0.725
+    },
+    {
+      "file": "test_portable_pipeline.py",
+      "exit_code": 0,
+      "tests": 13,
+      "seconds": 2.913
+    },
+    {
+      "file": "test_quake_pipeline.py",
+      "exit_code": 0,
+      "tests": 8,
+      "seconds": 1.269
+    },
+    {
+      "file": "test_render_fixes.py",
+      "exit_code": 0,
+      "tests": 5,
+      "seconds": 1.059
+    },
+    {
+      "file": "test_render_replay.py",
+      "exit_code": 0,
+      "tests": 3,
+      "seconds": 0.371
+    },
+    {
+      "file": "test_rv32i_builtins.py",
+      "exit_code": 0,
+      "tests": 1,
+      "seconds": 6.55
+    },
+    {
+      "file": "test_scene_pipeline.py",
+      "exit_code": 0,
+      "tests": 13,
+      "seconds": 1.466
+    },
+    {
+      "file": "test_screen_edges.py",
+      "exit_code": 0,
+      "tests": 3,
+      "seconds": 0.974
+    },
+    {
+      "file": "test_sdram_execution.py",
+      "exit_code": 0,
+      "tests": 8,
+      "seconds": 0.177
+    },
+    {
+      "file": "test_sdram_package.py",
+      "exit_code": 0,
+      "tests": 3,
+      "seconds": 0.062
+    },
+    {
+      "file": "test_sm64_engine_slice.py",
+      "exit_code": 0,
+      "tests": 13,
+      "seconds": 4.627
+    },
+    {
+      "file": "test_sm64_visual_camera.py",
+      "exit_code": 0,
+      "tests": 5,
+      "seconds": 4.519
+    },
+    {
+      "file": "test_terrain_offload.py",
+      "exit_code": 0,
+      "tests": 5,
+      "seconds": 1.309
+    },
+    {
+      "file": "test_world_pipeline.py",
+      "exit_code": 0,
+      "tests": 34,
+      "seconds": 8.492
+    }
+  ],
+  "native_test_total": 216,
+  "evidence_files": {
+    "build/ci-portability/linux-workflow/ci-engine.log": "dec48ae05adc9663223f91bdaea642aba658b955af32decb7a826a8123744ef7",
+    "build/ci-portability/linux-workflow/ci-fresh-shareware.log": "b89304c5faabdf5830c0230d30b92bfdde2678ef3b4bb67c42056f896ef15cdd",
+    "build/ci-portability/linux-workflow/ci-step-02.log": "ad5c957b39c1e74d8e137bdfb59c9c63ad7f313f94c53a7b67dfe90f69ce9490",
+    "build/ci-portability/linux-workflow/ci-step-03.log": "2c37d50a88147ca2ebd5197d74ee37d462dab650d793512e849814c28d5a38f0",
+    "build/ci-portability/linux-workflow/ci-step-04.log": "6279a7141ada77b4347754608decba560598be4f5b28512a0a32b23378a00386",
+    "build/ci-portability/linux-workflow/ci-step-05.log": "8fdbf6efc7adc16782550cbeea9f8789f02c04dd7a3c3985f4335fb3b55288e7",
+    "build/ci-portability/linux-workflow/ci-step-06.log": "eac9ffd5fce0ae2c880fd8613141494e508874540a92e5a6d98185df6e2cbd8d",
+    "build/ci-portability/linux-workflow/ci-step-07.log": "4b89ed5fb4a9de308a1af41e48bb8a3254776a8a2da242428d380e2369698e45",
+    "build/ci-portability/linux-workflow/ci-step-08.log": "3c40faa1a4c7e966934a22eace80e70b9f0bf121f9df205aa8ba7e727b3290ac",
+    "build/ci-portability/linux-workflow/ci-step-09.log": "c3801363d407c698020965a31b8e7ae6464f79c066ea939701819fcbfba47a9c",
+    "build/ci-portability/linux-workflow/ci-step-10.log": "79f3303a355030d1e0974beb113cc3bbc42c5fa192600144d1bf3e9c7a147048",
+    "build/ci-portability/linux-workflow/ci-step-11.log": "0a39a4140f8c311c8baf40caa7047170e7592d9ede5f4a5971b70557b4066966",
+    "build/ci-portability/linux-workflow/ci-step-12.log": "f47492988ee32c626e7622f653d08c27e45d6885905e534a9bc50ae1c6fcf1c6",
+    "build/ci-portability/linux-workflow/ci-step-13.log": "d6b7099d872852c124fe0c90df634a4b71e5780d68a6daa63359cf6b3302c07d",
+    "build/ci-portability/linux-workflow/ci-step-14.log": "da068318a56d55d85161f4b3d9acbb459eb880a2bf294586a8715f3e46f25e9d",
+    "build/ci-portability/linux-workflow/ci-step-15.log": "0aba994b0c04a12fc500f1569fcb674adbde883830abc42d39d271d1d28b73f8",
+    "build/ci-portability/linux-workflow/ci-step-16.log": "c70523573b480ede80eb0c82c4a66b5de39acce5fa442bb77448aaed426e3202",
+    "build/ci-portability/linux-workflow/ci-step-17.log": "302e02db1090f994be9550fa6f240de224ae301c0982c0438fba5d00675f36a0",
+    "build/ci-portability/linux-workflow/ci-step-18.log": "154311e80519540bdabba99fdf7b6f68c16d7e47cc3a55c926540709faa3c62c",
+    "build/ci-portability/linux-workflow/ci-step-19.log": "610fb3875e5c2c580e0a0f05a1de2cd0d25dfeb7561dc67a69f934c322a26cd8",
+    "build/ci-portability/linux-workflow/ci-step-20.log": "fc50144cd7d45ce0b703db2501ee66e7269e98ddbad4a62095179f6a97fe3110",
+    "build/ci-portability/linux-workflow/ci-step-21.log": "d0179e3c98faa2ed9567507726aa5fd25be5607192c0074c0a8d8cb7f0c6148d",
+    "build/ci-portability/linux-workflow/ci-step-22.log": "c2d682294822f8af89a9303e6859b37211b7c7eefcb204f9efa447f92229aaa7",
+    "build/ci-portability/linux-workflow/ci-step-23.log": "2518ce0e531372f727b73298de86be17e4d8e1153ee32f28995d6d3b94c58e2c",
+    "build/ci-portability/linux-workflow/ci-step-24.log": "251c5a72493769f60abf2ab9aaa4ebb83826bdb6b704900b9d365c041eab9483",
+    "build/ci-portability/linux-workflow/ci-step-25.log": "f29bbcfe12defd359946b21a8f9a2000c445144ff849b6996a244309b52fd58f",
+    "build/ci-portability/linux-workflow/ci-workflow.log": "96926630e94232a21391f1b7614ac883c7662ce703348a2823114e5e14b69c4d",
+    "build/ci-portability/linux-workflow/cpu_geometry_tb.log": "a5a2c4aa8cc2657563d18af95828cf000690fa2599ad6f21896166c8d5d8ce35",
+    "build/ci-portability/linux-workflow/geometry_worker_tb.log": "6e6f9f9f05c0dbb66078bcf98451b434d9840d34930be61da3734ba92e399366",
+    "build/ci-portability/linux-workflow/mario_stream_tb.log": "0fdaaac2f8cea2f45ccaa928618bf8e37c9a13601a2e6b2a86827cf526ba85ed",
+    "build/ci-portability/linux-workflow/sdram_memory_tb.log": "c9ebe9e9eced5eb740a370bb1e4bbc75057e09ec78394a234d00d73036198356",
+    "build/ci-portability/linux-workflow/tests/test_animation.log": "9b63822ff8a3d7dc9668e61f44f605945da023bf6e63fd9c9d50241fe207c364",
+    "build/ci-portability/linux-workflow/tests/test_audit_fixes.log": "dd49d0b6ae16ea7c19c39ab373c394a343c9f4da9dd6138abc1dcdc57c3f879f",
+    "build/ci-portability/linux-workflow/tests/test_camera.log": "dd32795f14070526f557e7427df61fb358df9bf1146fbbbb039de699b1d6d161",
+    "build/ci-portability/linux-workflow/tests/test_camera_controls_fix.log": "7b0e152d7bbf7af4959447aa3ba503a158880482622f53fc832a2d81ed50a803",
+    "build/ci-portability/linux-workflow/tests/test_castle_gameplay.log": "99bd8f74ce66f663ec86f8cdce9a0261ee93a15d5ee1d7b5225cd808f3cb1361",
+    "build/ci-portability/linux-workflow/tests/test_dma_gfx.log": "59c49522e9916bd955635b2c1dab90eda9f8891b74a68c226cd1b9f51eb69526",
+    "build/ci-portability/linux-workflow/tests/test_game_clock.log": "4c465e8b706b3020e97cb2a6ea8fd105e29945e5aedf0323942a2afa988a7c40",
+    "build/ci-portability/linux-workflow/tests/test_game_packages.log": "c71f76cf3e357ee8af949c4cc461484f5563020a58a7272f698efc3bae827c01",
+    "build/ci-portability/linux-workflow/tests/test_geometry_loader.log": "a6707d4eff38012da33ddc34bc6dc076a3b17151cfc9aef223c8790cbe64c3da",
+    "build/ci-portability/linux-workflow/tests/test_gfx_staging.log": "f64c5466a5fd77132eb1deda831cb59ce6ed6c9464c302ec4d24347671eb58b7",
+    "build/ci-portability/linux-workflow/tests/test_gpu_fractional.log": "2c207519844adfc6a5f2a398a325ee1c044528b7185cf3fe7896e4ebc6bae464",
+    "build/ci-portability/linux-workflow/tests/test_interactive_demo.log": "f96673d23ccf7b7421db7e0302bca1f69b47ef124d141c0a84a9dac904d6ced9",
+    "build/ci-portability/linux-workflow/tests/test_packed_gfx.log": "3b092be91ee9929196c0f78ac77a76becae8cab37e9fe6d4b3514eaba70f40db",
+    "build/ci-portability/linux-workflow/tests/test_player.log": "de2ab80c985ca34d3d371f841bb39244f74b46c063521500d779cdee549f8324",
+    "build/ci-portability/linux-workflow/tests/test_portable_pipeline.log": "f77d81eb19c3215e4b4a26f68dbf50fc7715f40b45e3d5446188475cb01f5383",
+    "build/ci-portability/linux-workflow/tests/test_quake_pipeline.log": "f72a258e9ab9d7cce16f6583ba348188fb37e49407e7e91e80025f94177b2536",
+    "build/ci-portability/linux-workflow/tests/test_render_fixes.log": "a5304298a295d96d444bccb18ca9c1c4f1383a17ebdcfb9cd5c550cabcc84868",
+    "build/ci-portability/linux-workflow/tests/test_render_replay.log": "b42f6bc4168a9bfed49972b3f60fd35e1d9b8a1ee1b71f86fef7122e76568ce1",
+    "build/ci-portability/linux-workflow/tests/test_rv32i_builtins.log": "63ab0a1b010dcd1847565363019f17f0d85cc1f9f941a373c554f0df539c4dd2",
+    "build/ci-portability/linux-workflow/tests/test_scene_pipeline.log": "b74ac415fe39d89f7131a5ea9581669ddf9c5dfd11a2b75acb44158ca4cad239",
+    "build/ci-portability/linux-workflow/tests/test_screen_edges.log": "4112ebff46eaf6d230d596d46cfa91d202d061f631e84ed109fc33dee6b061cb",
+    "build/ci-portability/linux-workflow/tests/test_sdram_execution.log": "9d6cdaa9bb00deaf304ddb02066096cd90c1156f8588eb90720e29524ba18c09",
+    "build/ci-portability/linux-workflow/tests/test_sdram_package.log": "2c37d50a88147ca2ebd5197d74ee37d462dab650d793512e849814c28d5a38f0",
+    "build/ci-portability/linux-workflow/tests/test_sm64_engine_slice.log": "c5fb9cfb77ed80c5f34e47c5f149486b462a3c46108670a9bceb500a7987277f",
+    "build/ci-portability/linux-workflow/tests/test_sm64_visual_camera.log": "ce55eadc1f85929f6827b0ac9bb18ad1d872edd57aa1ba04852a7270a26ac9fa",
+    "build/ci-portability/linux-workflow/tests/test_terrain_offload.log": "1ec5b31d76bf9ccd9acfce28498cfaa88c3680ba2f73dc69d2867ea40f1ff4e9",
+    "build/ci-portability/linux-workflow/tests/test_world_pipeline.log": "b2a35a638e4a06678a9bb56bf36b49b8f0d135c5acffedf57e05ad4ce6719765",
+    "build/ci-portability/linux-workflow/udp_loader_tb.log": "d0f994472c9a7b3c0d40fdddf783450112710a5d8a907c9b81c530e6ba54624d"
+  }
+}

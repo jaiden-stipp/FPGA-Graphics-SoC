@@ -153,6 +153,13 @@ class ScenePipelineTests(unittest.TestCase):
         for p in received:
             self.assertEqual(struct.unpack(">H",p[-2:])[0],binascii.crc_hqx(p[12:-2],0xffff))
 
+    def test_instruction_audit_reads_both_llvm_encodings(self):
+        words='100: 02000033 mul zero, zero, zero\n104: 02001033 mulh zero, zero, zero\n'
+        octets='100: 33 00 00 02 mul zero, zero, zero\n104: 33 10 00 02 mulh zero, zero, zero\n'
+        expected=[(0x100,0x02000033),(0x104,0x02001033)]
+        self.assertEqual(list(rv32i_subset.instruction_words(words)),expected)
+        self.assertEqual(list(rv32i_subset.instruction_words(octets)),expected)
+
     @unittest.skipUnless(shutil.which("clang") and shutil.which("llvm-nm"), "Clang C subset audit not installed")
     def test_c_subset_rejects_float_heap_and_runtime_helpers(self):
         with tempfile.TemporaryDirectory() as tmp:

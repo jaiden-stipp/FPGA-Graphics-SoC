@@ -2,14 +2,50 @@
 // Sparse JEDEC command model for the board's 13-row/10-column/2-bank-bit pair.
 // Checks initialization/timing/refresh, CL3 read delay, auto-precharge and DQM.
 // Physical signal integrity is verified separately by the on-board self-test.
-module sdram_device_model (
+module sdram_device_model #(
+    // Storage capacity, not address width. Full word addresses remain tagged.
+    parameter integer STORAGE_BITS=21
+) (
     input wire DRAM_CLK, DRAM_CKE, DRAM_CS_N, DRAM_RAS_N, DRAM_CAS_N, DRAM_WE_N,
     input wire [12:0] DRAM_ADDR,
     input wire [1:0] DRAM_BA,
     input wire [3:0] DRAM_DQM,
     inout wire [31:0] DRAM_DQ
 );
-    logic [31:0] memory[int unsigned];
+    // Icarus does not implement SystemVerilog associative arrays. A bounded
+    // sparse hash table keeps full-address tests practical on both simulators.
+    // Unwritten words read as zero; exhaustion fails instead of aliasing data.
+    localparam integer STORAGE_WORDS=1 << STORAGE_BITS;
+    bit occupied[0:STORAGE_WORDS-1];
+    logic [31:0] memory[0:STORAGE_WORDS-1];
+    integer unsigned tags[0:STORAGE_WORDS-1];
+    function automatic integer slot(input integer unsigned address);
+        integer index, probes;
+        begin
+            index=(address ^ (address >> STORAGE_BITS)) & (STORAGE_WORDS-1);
+            probes=0;
+            while (occupied[index] && tags[index]!=address && probes<STORAGE_WORDS) begin
+                index=(index+1) & (STORAGE_WORDS-1);
+                probes=probes+1;
+            end
+            if (probes==STORAGE_WORDS) $fatal(1,"SDRAM model storage exhausted; increase STORAGE_BITS");
+            slot=index;
+        end
+    endfunction
+    function automatic [31:0] read_word(input integer unsigned address);
+        integer index;
+        begin
+            index=slot(address);
+            read_word=occupied[index] ? memory[index] : 32'b0;
+        end
+    endfunction
+    task automatic write_word(input integer unsigned address,input logic [31:0] data);
+        integer index;
+        begin
+            index=slot(address);
+            tags[index]=address; memory[index]=data; occupied[index]=1;
+        end
+    endtask
     logic [12:0] row[0:3];
     bit opened[0:3];
     integer available[0:3], activated[0:3];
@@ -18,7 +54,7 @@ module sdram_device_model (
     integer read_beats=0;
     integer unsigned read_base, read_column;
     bit mode_set=0, precharged=0, drive=0;
-    logic [31:0] output_data, pending_data;
+    logic [31:0] output_data, pending_data, write_data;
     integer unsigned key;
     assign DRAM_DQ=drive ? output_data : 32'bz;
     initial for (integer i=0;i<4;i=i+1) begin opened[i]=0; available[i]=0; activated[i]=0; end
@@ -34,7 +70,7 @@ module sdram_device_model (
         end else if (burst_left!=0) begin
             // Sequential fixed-length bursts wrap within their aligned block.
             key=read_base | ((read_column+beat) & (burst_length-1));
-            output_data<=#6.4 (memory.exists(key) ? memory[key] : 0);
+            output_data<=#6.4 read_word(key);
             drive<=#6.4 1; beat=beat+1; burst_left=burst_left-1;
             read_beats=read_beats+1;
         end
@@ -68,7 +104,7 @@ module sdram_device_model (
                 if (DRAM_WE_N) begin
                     if(read_delay || burst_left) $fatal(1,"Read burst interrupted");
                     read_commands=read_commands+1;
-                    pending_data=memory.exists(key) ? memory[key] : 0;
+                    pending_data=read_word(key);
                     // Preserve the legacy BL1 fixture. BL8 first-beat alignment
                     // is calibrated to the numbered-word physical-board probe;
                     // the original sparse model returned it one clock too late.
@@ -77,11 +113,14 @@ module sdram_device_model (
                     read_base=key & ~(burst_length-1); read_column=key & (burst_length-1);
                     available[DRAM_BA]=cycle+6+burst_length-1;
                 end else begin
-                    if (!memory.exists(key)) memory[key]=0;
+                    write_data=read_word(key);
                     for (integer b=0;b<4;b=b+1) if (!DRAM_DQM[b]) begin
-                        if ($isunknown(DRAM_DQ[b*8+:8])) $fatal(1,"Unknown SDRAM write data");
-                        memory[key][b*8+:8]=DRAM_DQ[b*8+:8];
+                        // Icarus 12 misreports $isunknown on this variable
+                        // part-select. Reduction XOR still detects both X/Z.
+                        if ((^DRAM_DQ[b*8+:8]) === 1'bx) $fatal(1,"Unknown SDRAM write data DQ=%h DQM=%h byte=%0d",DRAM_DQ,DRAM_DQM,b);
+                        write_data[b*8+:8]=DRAM_DQ[b*8+:8];
                     end
+                    write_word(key,write_data);
                     available[DRAM_BA]=cycle+3;
                 end
                 opened[DRAM_BA]=0;

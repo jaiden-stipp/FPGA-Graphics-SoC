@@ -14,7 +14,7 @@ def main():
     dest=engine.ROOT/'build/camera-controls-fix/replay';dest.mkdir(parents=True,exist_ok=True)
     # Windows keeps loaded DLL files locked throughout simulation. Use a copy
     # so independent engine regression builds can refresh their own DLL.
-    library=dest/'engine-reference.dll';shutil.copy2(engine.OUT/'engine.dll',library)
+    library=dest/('engine-reference'+engine.native_library().suffix);shutil.copy2(engine.native_library(),library)
     lib=configure(c.CDLL(str(library)));lib.sm64_engine_probe.restype=c.c_uint32
     lib.sm64_engine_update.argtypes=[c.c_uint32,c.c_uint32,c.POINTER(Result)]
     view=(c.c_int16*12)()

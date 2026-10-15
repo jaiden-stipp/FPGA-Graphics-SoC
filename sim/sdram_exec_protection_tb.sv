@@ -28,7 +28,7 @@ module sdram_exec_protection_tb;
   wait(!stall);@(negedge clk);#1;if(instruction!==32'h13)$fatal(1,"Initial code fetch");
   addr=32'h80000000;wdata=32'hdeadbeef;write_en=1;
   repeat(3)@(negedge clk);#1;
-  if(!stall || !errors[3] || chip.memory[0]!==32'h13)$fatal(1,"Executable store was not protected");
+  if(!stall || !errors[3] || chip.read_word(0)!==32'h13)$fatal(1,"Executable store was not protected");
   write_en=0;load_hold=1;
   access(0,32'h80000000,0,32'h13);
   access(1,32'h80000000,32'h00100093,0);

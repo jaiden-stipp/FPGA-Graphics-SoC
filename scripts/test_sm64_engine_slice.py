@@ -8,7 +8,7 @@ class Result(c.Structure):
 
 def input_at(tick):return 0 if tick<8 else 4 if tick<20 else 20 if tick<27 else 4 if tick<42 else 0
 def load_reference():
-    lib=c.CDLL(str(engine.OUT/'engine.dll'))
+    lib=c.CDLL(str(engine.native_library()))
     lib.sm64_engine_init.argtypes=[c.POINTER(c.c_int32)]
     lib.sm64_engine_update.argtypes=[c.c_uint32,c.c_uint32,c.POINTER(Result)]
     lib.sm64_engine_probe.restype=c.c_uint32

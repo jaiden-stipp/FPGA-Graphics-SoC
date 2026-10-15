@@ -19,7 +19,7 @@ module sdram_exec_game_tb #(
  initial begin
   fd=$fopen(EXTERNAL_FILE,"r");
   if(!fd)$fatal(1,"Missing executable game fixture");
-  while(!$feof(fd))begin scan=$fscanf(fd,"%h %h\n",key,value);if(scan==2)chip.memory[key]=value;end
+  while(!$feof(fd))begin scan=$fscanf(fd,"%h %h\n",key,value);if(scan==2)chip.write_word(key,value);end
   $fclose(fd);repeat(5)@(negedge clk);reset=0;wait(initialized);@(negedge clk);load_hold=0;
   wait(scratch>=2 || scratch[31:16]==16'hdead);
   if(errors || scratch[31:16]==16'hdead || frames<2)$fatal(1,"SDRAM game failed PC=%h scratch=%h errors=%h frames=%0d",pc,scratch,errors,frames);

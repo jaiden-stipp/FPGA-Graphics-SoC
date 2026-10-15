@@ -2,6 +2,7 @@
 import ctypes as c
 import copy
 import json
+import io
 import math
 import os
 from pathlib import Path
@@ -10,6 +11,7 @@ import struct
 import subprocess
 import tempfile
 import unittest
+from unittest.mock import patch
 import quake_assets
 from test_player import Player
 
@@ -110,5 +112,27 @@ int floor_fixture(int x,int z,int ceiling) { return player_floor(&game_world,x,z
                 path.write_text(json.dumps(profile))
                 with self.assertRaises(ValueError):
                     quake_assets.generate(path,ROOT/'build/quake-shareware/pak0.pak')
+
+class SharewareDownloads(unittest.TestCase):
+    def test_unavailable_primary_tries_mirror_and_checks_hash(self):
+        with tempfile.TemporaryDirectory() as folder, patch.object(quake_assets,'ROOT',Path(folder)):
+            with patch.object(quake_assets.urllib.request,'urlopen',side_effect=[
+                quake_assets.urllib.error.URLError('primary unavailable'),io.BytesIO(b'invalid archive')
+            ]) as fetch:
+                with self.assertRaisesRegex(ValueError,'archive hash mismatch'):quake_assets.fetch_shareware()
+                self.assertEqual([call.args[0] for call in fetch.call_args_list],
+                                 [quake_assets.SHAREWARE_URL,quake_assets.SHAREWARE_MIRROR])
+
+    def test_corrupt_primary_is_rejected_without_fallback(self):
+        with tempfile.TemporaryDirectory() as folder, patch.object(quake_assets,'ROOT',Path(folder)):
+            with patch.object(quake_assets.urllib.request,'urlopen',return_value=io.BytesIO(b'corrupt')) as fetch:
+                with self.assertRaisesRegex(ValueError,'archive hash mismatch'):quake_assets.fetch_shareware()
+                self.assertEqual(fetch.call_count,1)
+
+    def test_both_sources_unavailable_report_download_failure(self):
+        with tempfile.TemporaryDirectory() as folder, patch.object(quake_assets,'ROOT',Path(folder)):
+            with patch.object(quake_assets.urllib.request,'urlopen',side_effect=quake_assets.urllib.error.URLError('offline')) as fetch:
+                with self.assertRaisesRegex(RuntimeError,'shareware download failed'):quake_assets.fetch_shareware()
+                self.assertEqual(fetch.call_count,2)
 
 if __name__=='__main__':unittest.main()

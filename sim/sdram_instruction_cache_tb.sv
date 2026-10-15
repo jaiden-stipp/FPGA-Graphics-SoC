@@ -21,7 +21,7 @@ module sdram_instruction_cache_tb;
   if(instruction!==expected)$fatal(1,"Fetch %h got %h expected %h",pc,instruction,expected);
  endtask
  initial begin
-  for(integer n=0;n<8;n++)begin chip.memory[n]=32'h10000000+n;chip.memory[1024+n]=32'h20000000+n;chip.memory[32768+n]=32'h30000000+n;end
+  for(integer n=0;n<8;n++)begin chip.write_word(n,32'h10000000+n);chip.write_word(1024+n,32'h20000000+n);chip.write_word(32768+n,32'h30000000+n);end
   repeat(5)@(negedge clk);reset=0;wait(initialized);
   check(32'h8000001c,32'h10000007);
   for(integer n=0;n<8;n++)check(32'h80000000+n*4,32'h10000000+n);
@@ -42,7 +42,7 @@ module sdram_instruction_cache_tb;
    check(32'h80020000,32'h30000000);
   end
   // Reloaded code is visible after explicit invalidation; never mid-execution.
-  @(negedge clk);selected=0;chip.memory[32768]=32'habcdef01;invalidate=1;
+  @(negedge clk);selected=0;chip.write_word(32768,32'habcdef01);invalidate=1;
   @(negedge clk);invalidate=0;
   check(32'h80020000,32'habcdef01);
   $display("PASS sdram_instruction_cache_tb (all beats, warm hits, conflicting tags, addresses beyond 64K, in-flight/final-beat invalidation, code reload)");$finish;
